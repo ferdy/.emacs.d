@@ -1,0 +1,185 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/manuel/desktop/essential/layout/" . "includes/")
+ ("/home/manuel/desktop/essential/" . "layout/")
+ ("/home/manuel/desktop/" . "essential/")
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/essential/lang/" . "en/")
+ ("/home/" . "manuel/")
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/essential/" . "layout/")
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/" . "essential/")
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/" . "theme/")
+ ("/home/manuel/documents/websites/elearning/backup_20140312/" . "moodle/")
+ ("/home/manuel/documents/websites/elearning/" . "elearning_no_moodle_bak/")
+ ("/home/manuel/.offlineimap/" . "cert/")
+ ("/home/manuel/images/" . "wallpapers/")
+ ("/home/manuel/documents/websites/informatica.boccaperta.com/current/wp-content/themes/" . "responsivepro/")
+ ("/home/manuel/documents/websites/informatica.boccaperta.com/current/wp-content/" . "themes/")
+ ("/home/manuel/documents/websites/informatica.boccaperta.com/current/" . "wp-content/")
+ ("/home/manuel/documents/websites/informatica.boccaperta.com/" . "current/")
+ ("/home/manuel/documents/websites/" . "elearning/")
+ ("/home/manuel/githubs/" . "surf/")
+ ("/home/manuel/documents/boccaperta/blog/" . "cli-tools/")
+ ("/home/manuel/documents/learnc/" . "vari/")
+ ("/home/manuel/" . "documents/")
+ ("/home/manuel/documents/boccaperta/assistenzapc/linuxbbq/" . "emacs/")
+ ("/home/manuel/documents/boccaperta/corsi/informatica/" . "patente_europea/")
+ ("/home/manuel/documents/boccaperta/corsi/" . "informatica/")
+ ("/home/manuel/documents/boccaperta/assistenzapc/" . "linuxbbq/")
+ ("/home/manuel/documents/boccaperta/" . "blog/")
+ ("/home/manuel/documents/" . "boccaperta/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/manuel/documents/boccaperta/blog/"
+ "/home/manuel/desktop/essential/layout/includes/"
+ "/home/manuel/desktop/essential/layout/"
+ "/home/manuel/desktop/"
+ "/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/essential/layout/"
+ "/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/essential/lang/en/"
+ "/home/manuel/documents/"
+ "/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/essential/style/"
+ "/home/manuel/documents/websites/elearning/backup_20140312/moodle/login/"
+ "/home/manuel/documents/boccaperta/blog/cli-tools/"
+ "/home/manuel/"
+ "/home/manuel/documents/boccaperta/assistenzapc/linuxbbq/"
+ "/home/manuel/.newsbeuter/"
+ "/home/manuel/documents/boccaperta/blog/linuxbbq/"
+ "/home/manuel/.offlineimap/cert/"
+ "/home/manuel/.mutt/"
+ "/home/manuel/documents/boccaperta/blog/window-manager/"
+ "/home/manuel/documents/websites/informatica.boccaperta.com/current/wp-content/themes/responsivepro/"
+ "/home/manuel/documents/boccaperta/corsi/informatica/patente_europea/"
+ "/home/manuel/documents/boccaperta/corsi/matematica/"
+ "/home/manuel/githubs/surf/"
+ "/home/manuel/documents/boccaperta/blog/gentoo/"
+ "/home/manuel/documents/learnc/vari/"
+ "/home/manuel/documents/boccaperta/assistenzapc/"
+ "/home/manuel/bin/"
+ "/home/manuel/documents/boccaperta/assistenzapc/emacs/"
+ "/home/manuel/documents/boccaperta/assistenzapc/linuxbbq/emacs/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "iosicons.php"
+ "login.php"
+ "esercizi_1i_10_02_10.pdf"
+ "frontpage.php"
+ "theme_essential.php"
+ "3_gennaio_2011.pdf"
+ "index_form.html"
+ "essential.css"
+ "index.php"
+ "st"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/manuel/documents/boccaperta/blog/" (21447 42754 171804 56000) "../" "security/" "void-linux/" "pyroom/" "riflessione-distribuzioni/" "linux-command-line/" "passare-a-linux/" "framebuffer/" "fedora17-articolo/" "xscreensaver-theme/" "deadbeef/" "senso-comunita/" "emacs/" "pentium-4/" "server-hp/" "minimalismo/" "newsletter_gennaio2014" "web-browser-choice/" "mcomix/" "confronto-distribuzioni/" "linux.png" "window-manager/" "internet-archive/" "crunchanb11-gtk-icons-articolo/" "todo-articoli-blog.org" "trisquel-boccaperta" "greentick.svg" "799px-trisquel-logo.png" "crunchbang11-articolo/" "ps3ms-articolo/" "speedcrunch/" "crux_31.png" "awf-minus-token.svg" "script-shell/" "twitter-widget.bak" "freesoftware-opensource" "servizi-manuel/" "the-c-programming-language/" "script-i3-conky-status/" "mint+xfce/" "etica-hacker/" "universal-media-server/" "awf-plus-token.svg" "lxde/" "crunchbang-xfce-4_10/" "from-bash-to-z-shell/" "fedora/" "recupero-acer-1304xc/" "gentoo/" "redcross.svg" "suckless/" "linux-from-scratch/" "linuxbbq/" "ubuntu/" "un-anno-di-boccaperta/" "sid-vantaggi-stable/" "./" "liberta-creativita-linux/" "archlinux/" "killx/" "post-paola/" "cli-tools/")
+
+ ("/home/manuel/" (21448 53118 657114 162000) "pictures/" "bin/" ".Xdefaults" ".smex-items" ".texmf-var/" "dropbox/" ".trc" ".gksu.lock" "images/" ".sbclrc" ".gstream/" ".ratpoisonkeys" ".newsbeuter/" "fonts.scale" "firefox/" ".gnome2_private/" ".nano/" "conkyrc-top" ".cache/" ".mkshrc" "downloads/" ".zshrc" ".gitconfig" "quicklisp.lisp" ".grl-podcasts" ".winff/" ".thumbnails/" ".tmux.conf" ".spectrwm.conf" ".config/" ".viminfo" "videos/" "emacs/" "music/" ".pam_environment" ".gntpositions" ".cups/" ".poedit/" ".rpmdb/" ".emacs" "githubs/" ".selected_editor" ".gtkrc-2.0" ".sane/" ".emacs.d/" ".tuxcmd/" ".vimperator/" ".ilg-config" ".ssh/" ".xauthority" ".Poedit" ".grip-oggenc" ".adobe/" "oki_drivers/" ".bash_profile" ".i3/" ".vimperatorrc" "templates/" ".ratpoison_history" ".offlineimaprc" ".fontconfig/" "backups/" ".hardinfo/" ".directory" ".reminders" ".w3m/" ".gnupg/" "org/" "documents/" ".themes/" ".pulse-cookie" ".offlineimap/" ".grl-metadata-store" ".shell_aliases" ".i3status.conf" "podcasts/" "reminders/" ".mplayer2/" ".Xauthority" ".macromedia/" ".recently-used" ".bash_history" ".cvspass" ".iceauthority" ".console_colors/" ".fltk/" ".bashrc" ".pangzerorc" ".gtk-bookmarks" ".mozilla/" ".zsh_history" "sources/" ".grl-bookmarks" ".gegl-0.0/" ".profile" ".libreoffice/" ".hplip/" ".cddb/" ".conf/" ".ccache/" "fonts.dir" ".subversion/" ".local/" ".pulse/" ".surf/" "mail/" "quicklisp/" "pdf/" ".grip-lame" ".muttrc" ".xinput.d/" ".dmenu_cache" ".mplayer/" ".vimrc" ".urlview" ".moc/" ".aptitude/" ".ratpoisonrc" ".icedtea/" ".zcompdump" ".weechat/" ".xinputrc" ".spumux/" ".ripoff/" ".spice-vdagent/" ".ripperxrc" "scripts/" ".cwmrc" ".pbuilderrc" ".urxvt/" ".scribus/" ".grip" ".elinks/" ".ncftp/" ".purple/" "desktop/" "equalizer_presets/" ".xinitrc" ".dmrc" ".dbus/" ".abook/" ".dropbox/" ".Xresources" ".fonts/" ".pki/" ".icons/" ".cmus/" ".sylpheed-2.0/" ".marks/" ".pentadactylrc" ".gstreamer-0.10/" ".bash_aliases" ".gconf/" ".bash_logout" "tmp/" ".sc_history" ".gnome2/" ".gimp-2.8/" ".mpv/" ".java/" ".disk-manager.conf" ".zdirs" ".mutt/" ".bzr.log" ".putty/" ".rpdb2_settings/" "virtualbox/" ".grip-mp3encode" ".desktop" ".keysnail.js" ".filezilla/" "../" "./")
+
+ ("/home/manuel/desktop/essential/layout/includes/" (21435 10582 0 0) "../" "middleblocks.php" "footer.php" "header.php" "marketingspots.php" "fonts.php" "slideshow.php" "analytics.php" "./" "iosicons.php")
+
+ ("/home/manuel/desktop/essential/layout/" (21435 10582 0 0) "../" "secure.php" "includes/" "embedded.php" "frontpage.php" "maintenance.php" "columns2.php" "login.php" "columns3.php" "./" "columns1.php")
+
+ ("/home/manuel/desktop/essential/" (21435 10582 0 0) "../" "style/" "README.txt" "lang/" "javascript/" "settings.php" "layout/" "jquery/" "pix/" "config.php" "fonts/" "renderers.php" "lib.php" "renderers/" "version.php" "pix_core/" "./")
+
+ ("/home/manuel/desktop/" (21448 8966 337161 478000) "../" "proforma Brazzale Giulia 2014.pdf" "del_f24_manuale_uberti_manuel_3.pdf" "740 F24 UBERTI MANUEL 20140616.pdf" "theme_essential_moodle27_2014070802.zip" "esercizi_1i_10_02_10.pdf" "del_f24_manuale_uberti_manuel_2.pdf" "ar-m276_20140114_155226.pdf" "proforma Uberti Manuel 2014.pdf" "conto-bancoposta-dell.doc" "cambio_dati_fatturazione.pdf" "essential/" "./" "moodle_bak/")
+
+ ("/home/manuel/documents/websites/elearning/elearning_no_moodle_bak/" (21273 61322 810708 588000) "../" "cgi-bin/" "index.php" "ver.php" "./")
+
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/essential/layout/" (21280 51423 404289 191000) "../" "secure.php" "includes/" "embedded.php" "frontpage.php" "maintenance.php" "columns2.php" "columns3.php" "./" "columns1.php")
+
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/essential/lang/en/" (21280 51421 717631 661000) "../" "theme_essential.php" "./")
+
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/essential/lang/" (21280 51422 757626 27000) "../" "en_us/" "ru/" "en_ar/" "de/" "en/" "es/" "./" "tr/")
+
+ ("/home/" (21337 21626 391751 170000) "../" "manuel/" "lost+found/" "work/" "./" "snapshot/")
+
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/essential/style/" (21280 51426 400939 623000) "../" "alternative3.css" "nojs.css" "categories.css" "slides.css" "essential.css" "settings.css" "alternative1.css" "editicons.css" "font-awesome.min.css" "./" "dock.css" "alternative2.css")
+
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/essential/" (21330 14261 673473 192000) "../" "style/" "lang/" "javascript/" "settings.php" "layout/" "jquery/" "pix/" "readme.txt" "config.php" "fonts/" "renderers.php" "lib.php" "renderers/" "version.php" "pix_core/" "./")
+
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/theme/" (21280 51457 640770 382000) "../" "yui_image.php" "serenity/" "sky_high/" "yui_combo.php" "canvas/" "nimble/" "clean/" "index.php" "standardold/" "upgrade.txt" "formal_white/" "splash/" "jquery.php" "formfactor/" "leatherbound/" "javascript.php" "anomaly/" "binarius/" "font.php" "afterburner/" "magazine/" "arialist/" "nonzero/" "essential/" "switchdevice.php" "boxxie/" "image.php" "bootstrapbase/" "brick/" "styles_debug.php" "./" "standard/" "overlay/" "styles.php" "fusion/" "base/")
+
+ ("/home/manuel/documents/websites/" (21447 64646 290937 874000) "responsivepro.zip" "../" "immagini/" "piwik/" "elearning/" "boccaperta.com/" "informatica.boccaperta.com/" "bcperta-prova/" "./" "asianfeast.org/")
+
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/login/" (21280 51059 932924 951000) "../" "restored_password_form.php" "forgot_password_form.php" "signup_form.php" "unlock_account.php" "signup.php" "index.php" "change_password.php" "confirm.php" "token.php" "change_password_form.php" "logout.php" "forgot_password.php" "lib.php" "set_password_form.php" "./" "index_form.html")
+
+ ("/home/manuel/documents/websites/elearning/backup_20140312/moodle/" (21330 14375 436190 220000) "report/" "user/" "../" "cgi-bin/" "auth/" "rss/" "question/" "backup/" "install/" "repository/" "course/" "message/" "githash.php" "login/" "behat.yml.dist" "webservice/" "admin/" "pluginfile.php" "index.php" "enrol/" "lang/" "my/" "grade/" "filter/" "cohort/" "rating/" "help_ajax.php" "comment/" "notes/" "pix/" "mdeploy.php" "composer.json" "calendar/" "readme.txt" "config.php" "completion/" "copying.txt" "mod/" ".shifter.json" "userpix/" "blocks/" "plagiarism/" "config-dist.php" "lib/" "version.php" "ver.php" "trademark.txt" "install.php" "draftfile.php" "brokenfile.php" "phpunit.xml.dist" "tag/" "mdeploytest.php" "group/" "mnet/" "help.php" "file.php" "./" ".jshintrc" "files/" "tags.txt" "portfolio/" "iplookup/" "local/" "blog/" "error/" "badges/" "cache/" "theme/")
+
+ ("/home/manuel/documents/websites/elearning/backup_20140312/" (21280 51146 999119 939000) "../" "index.php" "moodledata/" "moodle/" "./")
+
+ ("/home/manuel/documents/websites/elearning/" (21445 26319 334081 339000) "../" "backup_20140715/" "backup_20140312/" "backup_db/" "elearning_no_moodle_bak/" "./")
+
+ ("/home/manuel/documents/boccaperta/blog/cli-tools/" (21445 27665 996785 841000) "the-end" "../" "zsh" "ncdu.png" "ceni" "htop.png" "alsamixer" "finch.png" "remind" "w3m" "st" "alsamixer.png" "coreutils" "zsh.png" "youtube-dl" "moc" "mocp.png" "burniso" "readom" "youtube-dl.png" "tmux" "the-end.png" "finch" "urxvt_001.png" "lp-printfile.png" "urxvt" "ncdu" "htop" "ceni.png" "./" "lp-printfile" "cli-tools")
+
+ ("/home/manuel/.newsbeuter/" (21445 26928 327448 805000) "../" "history.search" "config" "queue" "cache.db" "urls" "./" "history.cmdline")
+
+ ("/home/manuel/documents/boccaperta/assistenzapc/linuxbbq/" (21445 20107 970545 47000) "backup_usr_share_fonts_local.tar.gz" "../" "burn-dvd-from-cli" "init_systems/" "suckless-tools-setup" "mutt_config" "linuxbbq-coal" "dwm/" "add-fonts-pcf" "mutt" "infinality-fonts" "urxvt_solarized" "mount_galaxy_sii" "killxdots/" "linuxbbq-ponymuncher" "usb-restore-partition-table" "wm_configs/" "linuxbbq-elektra" "gtk-dark-firefox-fix" "inittab.backup" "./" "firefox-no-desktop-directory")
+
+ ("/home/manuel/documents/boccaperta/blog/linuxbbq/" (21445 5333 119412 975000) "../" "echinus2.png" "sidbang.png" "sidbang-boccaperta.png" "asuseeepc.jpg" "linuxbbq-coal" "linuxbbq-bowlful" "ponymuncher.png" "linuxbbq-sidbang" "cream_ahwm.png" "linuxbbq-oldschool" "linuxbbq_oldschool_twm.png" "2014_02_19_161315_1024x600_scrot.png" "phoebe_by_gekkopba-d6mrwhy.png" "linuxbbq-ponymuncher" "busy.png" "linuxbbq-chickenwing" "linuxbbq_oldschool_9wm.png" "linuxbbq-cream" "linuxbbq-elektra" "linuxbbq_oldschool_w9wm.png" "clean.png" "cream_weewm.png" "./" "echinus1.png" "linuxbbq-logo.png")
+
+ ("/home/manuel/documents/boccaperta/blog/window-manager/" (21443 43048 888629 295000) "../" "2bwm/" "spectrwm/" "dwm/" "tinywm/" "i3wm/" "matwm2/" "wm2" "tlfw" "ratpoison/" "cwm/" "./")
+
+ ("/home/manuel/.offlineimap/cert/" (21443 59169 178227 153000) "../" "imap.boccaperta.com.pem" "sha1" "60d07948.0" "031d5d88.0" "./")
+
+ ("/home/manuel/.offlineimap/" (21443 59139 788386 426000) "../" "Repository-manuel-remote/" "Repository-manuel-local/" "Account-manuel/" "cert/" "./" "pid")
+
+ ("/home/manuel/.mutt/" (21443 45705 421843 340000) "../" "certificates" "info_boccaperta" "manuel_boccaperta" "manuel_gmail_firma" "info_boccaperta_firma" "manuel_linuxbbq_firma" "manuel_gmail" "manuel_boccaperta_firma" "solarized/" "manuel_linuxbbq" "./" "cache/")
+
+ ("/home/manuel/images/wallpapers/" (21260 55661 36078 397000) "artwork/" "games/" "shared" "people/" "music/" "scenery/" "comics/" "linux/" "movies/" "cities/" "abstract/" "nature/" "animals/" "../" "./")
+
+ ("/home/manuel/images/" (21356 57182 500550 434000) "../" "win95-chandler-rachel.jpeg" "./" "wallpapers/")
+
+ ("/home/manuel/documents/boccaperta/corsi/matematica/" (21440 15417 940475 741000) "../" "tabelline.ods" "Frazioni_Espressioni_4Operazioni_Intermediate_UbiMath.pdf" "verifica_frazioni.pdf" "tabelline.sc" "CalcoloLetterale_Manuale_UbiLearning.pdf" "esercizi_1_a_b_scient_16_10_08.pdf" "./" "piano-lezioni.org")
+
+ ("/home/manuel/documents/" (21440 58 31495 652000) "learnlisp/" "../" "tempi-cottura-pentola-pressione" "venezia69/" "neutralmilkhotel/" "websites/" "liberoregistrazione.html" "conferma_infostrada.pdf" "annuncio_casa.pdf" "libri/" "liberoregistrazione_files/" "learnc/" "prova.odt" "cina.pdf" "the_four_agreements" "curriculum/" "massimo_urbani_varie" "accredito-brazzale.jpg" "fumetti/" "conto-banco-posta.html" "prova-acquisto-galaxy-s3.jpeg" "firefox_recovery_key.html" "koreaff.pdf" "comely/" "formulariorilascioerinnovo.doc" "per_te.pdf" "4_pilastri.pdf" "bpclick_apertura_onlinev3_3b.pdf" "wn3000rp_um_27jun2011.pdf" "festivalaltovicentino/" "nhm/" "3_gennaio_2011.pdf" "codiceistanzeonline" "samsung_root/" "referti_estratti.pdf" "cv_pelizzari_vilma.doc" "sottotitoli/" "feff/" "quote_it_hsb_dhsa_13245242.2_2009-11-04.pdf" "freebsd/" "scout/" "ricette/" "buste-paga-mamma" "japanese_grammar_guide.pdf" "p85.pdf" "matrimonio/" "indirizzolaura" "crescere_un_cucciolo.pdf" "tempi-cottura-pentola-pressione.odt" "lettera_presentazione_mamma.doc" "anobii-wishlist.pdf" "aa9_9_modello.pdf" "pin-da-non-dimenticare" "learnpython/" "modulo_accredito_stampa_11.pdf" "wipeout/" "lucasartssolutions/" "articolivari/" "./" "gwailoutavern/" "esercizi/" "accredito-uberti.jpg" "asianfeast.org/" "conto-banco-posta_files/" "boccaperta/" "obayashi-libro/")
+
+ ("/home/manuel/documents/websites/informatica.boccaperta.com/current/wp-content/themes/responsivepro/" (21330 14217 407046 338000) "loop-nav.php" "../" "pro/" "post-data.php" "footer.php" "blog-excerpt.php" "single.php" "front-page.php" "screenshot.png" "style.css" "sitemap.php" "functions.php" "header.php" "index.php" "loop-header.php" "sidebar-colophon.php" "page.php" "post-meta.php" "content-sidebar-half-page.php" "rtl.css" "sidebar-gallery.php" "template-parts/" "sidebar-content-half-page.php" "sidebar-left-half.php" "archive.php" "languages/" "readme.txt" "core/" "sidebar-home.php" "landing-page.php" "license.txt" "wpml-config.xml" "comments.php" "full-width-page.php" "sidebar-right.php" "sidebar.php" "sidebar-half-left.php" "404.php" "sidebar-left.php" "image.php" "blog.php" "content-sidebar-page.php" "sidebar-top.php" "changelog.txt" "search.php" "home.php" "./" "readme.md" "sidebar-content-page.php" "sidebar-right-half.php" "searchform.php" "post-meta-page.php" "loop-no-posts.php" "sidebar-footer.php")
+
+ ("/home/manuel/documents/websites/informatica.boccaperta.com/current/wp-content/themes/" (21259 13016 262651 88000) "../" "index.php" "shell-lite/" "twentytwelve/" "twentyten/" "twentyfourteen/" "responsivepro/" "responsivepro-child/" "twentyeleven/" "shell-child-theme/" "./" "twentythirteen/")
+
+ ("/home/manuel/documents/websites/informatica.boccaperta.com/current/wp-content/" (21259 13019 642632 777000) "../" "themes/" "index.php" "upgrade/" "languages/" "plugins/" "uploads/" "./")
+
+ ("/home/manuel/documents/websites/informatica.boccaperta.com/current/" (21330 14205 430444 554000) "wp-config-sample.php" "leggimi.txt" "../" "cgi-bin/" "sitemap.xml" "single.php" "wp-cron.php" "wp-includes/" "wp-mail.php" "index.php" ".htaccess" "wp-comments-post.php" "wp-links-opml.php" "wp-admin/" "wp-blog-header.php" "wp-settings.php" "license.txt" "wp-signup.php" "wp-login.php" "wp-content/" "wp-trackback.php" "wp-load.php" "readme.html" "licenza.html" "xmlrpc.php" "./" "wp-config.php" "wp-activate.php")
+
+ ("/home/manuel/documents/websites/informatica.boccaperta.com/" (21383 1028 727703 555000) "backup_piwik/" "../" "sitemap.xml" "backup_20140529/" "current/" "backup_db/" "backup_20140506/" "./")
+
+ ("/home/manuel/documents/boccaperta/corsi/informatica/patente_europea/" (21435 43467 595497 263000) "../" "01.org" "syllabus_ecdl_v5_mod_4.pdf" "esempio.html" "syllabus_ecdl_v5_mod_1.pdf" "syllabus_ecdl_core_v5.pdf" "esercizi.org" "01.doc" "./" "syllabus_ecdl_v5_mod_2.pdf" "syllabus-ecdl-v5-mod-7.pdf")
+
+ ("/home/manuel/documents/boccaperta/assistenzapc/" (21430 35957 479465 681000) "../" "security/" "crunchbang/" "ssh_server" "debian/" "emacs/" "avast_linux/" "gpg/" "moodle_aruba" "mint+cinnamon/" "firefox-thunderbird-theme/" "t61_manual.pdf" "mint+xfce/" "da_installare" "change_username" "fedora/" "gentoo/" "linuxbbq/" "ubuntu/" "git-server" "./" "checklist_boccaperta.ods" "archlinux/")
+
+ ("/home/manuel/githubs/surf/" (21430 57703 971766 494000) "../" "surf.o" ".git/" "surf-open.sh" "surf.1" "config.h" "surf" "license" "makefile" "surf.png" "readme" "arg.h" "surf.c" "todo.md" "config.mk" "./" "config.def.h")
+
+ ("/home/manuel/githubs/" (21419 56501 817933 767000) "../" "slock/" "surf_patches/" "spectrwm/" "dwm/" "st/" "dwm_patches/" "surf/" "st_patches/" "minirc_hut/" "hosts-gen/" "sinit/" "swarp-0.1/" "minirc/" "monsterwm/" "tabbed/" "cwm/" "./" "org-mode/")
+
+ ("/home/manuel/documents/boccaperta/blog/gentoo/" (21417 45247 178541 214000) "../" "gentoo-eudev.png" "gentoo-eudev" "gblend.png" "gentoo-cwm.png" "gentoo-systemd-udev.png" "gentoo" "./")
+
+ ("/home/manuel/documents/learnc/vari/" (21434 26025 283248 231000) "../" "maths.c" "maths" "./")
+
+ ("/home/manuel/documents/learnc/" (21416 26189 358886 763000) "../" "bookansic/" "stitchcounter/" "inchcmconverter/" "vari/" "./" "booklcthw/")
+
+ ("/home/manuel/bin/" (21429 13843 347211 909000) "helperscript" "../" "aif2mp3" "mkmnt" "get-kernel" "colors-crunch" "mp42mp3" "colors-panes" "touchpad-off" "pipes" "spegni_boccapertapc" "frenchmaid" "split2flac" "m4a2mp3" "status_bloat" "xfce4-installador" "dmenu.sh" "status" "fillmp3reader" "mountfat" "pminstaller.sh" "monitor-on" "laptop-on" "console-colors" "get-suckless-code" "net/" "ddiso" "screenlock" "mountntfs" "i3-exit" "colors-battle" "batt.sh" "dobackup" "sys-info" "colors-pacman" "projector-on" "quickdict" "colst" "mountnetware" "tinyradio" "baraction.sh" "wav2mp3" "fclean" "printfile" "env-infox" "get-wmcode" "flac2mp3" "colors" "touchpad-on" "roamswitch" "colors-tab" "chroot-mnt" "palleterx" "./" "env-info" "fehbg" "netpro" "ccolor")
+
+ ("/home/manuel/Desktop/" (21400 27479 929233 683000) "../" "./")
+
+ ("/home/manuel/documents/boccaperta/assistenzapc/emacs/" (21429 13158 530921 877000) "../" "org-mode-vcs" "emacs-w3m" "tramp-mode" "emacs-elfeed" "mastering-emacs-effective-editing" "emacs-iswitchb" "emacs-recompiling-repo" "emacs-wiki" "emacs-pomode" "emacs-no-gtk3" "emacs-guile-slime" "emacs-org2mode" "./")
+
+ ("/home/manuel/documents/boccaperta/agenda/" (21243 39703 472431 492000) "../" "corsi-aule.org" "boccaperta-info.org" "calendario-supplenze-todo.org" "boccaperta-todo.org" "boccaperta_diary_2014.org" "./")
+
+ ("/home/manuel/documents/boccaperta/assistenzapc/linuxbbq/emacs/" (21428 65338 165416 406000) "../" "emacs-w3m" "emacs-elfeed" "mastering-emacs-effective-editing" "emacs-iswitchb" "emacs-recompiling-repo" "emacs-pomode" "emacs-no-gtk3" "emacs-guile-slime" "emacs-org2mode" "emacs-elfeed~" "./")
+
+ ("/home/manuel/documents/boccaperta/corsi/informatica/" (21421 14348 841577 613000) "../" "recupero/" "patente_europea/" "tools/" "corso_conline/" "./")
+
+ ("/home/manuel/documents/boccaperta/corsi/" (21416 14310 91805 161000) "arabo/" "../" "tedesco/" "immagini/" "matematica/" "registro_10_lezioni.odt" "flashcards_lez1-4.odt" "informatica/" "cinese_per_bambini/" "programmacorsocritica.ods" "giapponese/" "calendario_corsi_primavera2013.pdf" "questionario_valutazione_finale.odt" "inglese/" "registro_20_lezioni.odt" "modulo_iscrizione.odt" "spagnolo/" "registri/" "italiano/" "registro_corsi_consolidamento.odt" "./" "francese/" "critica/" "varie/")
+
+ ("/home/manuel/documents/boccaperta/" (21330 13844 815731 505000) "../" "images/" "calendario-gennaio-2014" "attestati/" "corsi/" "cartelli/" "assistenzapc/" "da_installare" "manuali/" "server/" "agenda/" "corsi_gennaio2014.pdf" "./" "contabilita/" "blog/")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
