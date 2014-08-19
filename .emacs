@@ -61,7 +61,7 @@
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 
-;; minor mode to hide the mode line
+;; minor mode to hide the mode line (see http://bzg.fr/emacs-hide-mode-line.html)
 (defvar-local hidden-mode-line-mode nil)
 
 (define-minor-mode hidden-mode-line-mode
@@ -87,7 +87,7 @@
 ;; If you want to hide the mode-line in every buffer by default
 ;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
-;; custom keybindings activated with C^x t
+;; custom keybindings activated with C^x t (see http://endlessparentheses.com/the-toggle-map-and-wizardry.html)
 (define-prefix-command 'toggle-map)
 ;; The manual recommends C-c for user keys, but C-x t is
 ;; always free, whereas C-c t is used by some modes.
