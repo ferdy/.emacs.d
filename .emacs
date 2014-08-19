@@ -61,6 +61,32 @@
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 
+;; minor mode to hide the mode line
+(defvar-local hidden-mode-line-mode nil)
+
+(define-minor-mode hidden-mode-line-mode
+  "Minor mode to hide the mode-line in the current buffer."
+  :init-value nil
+  :global t
+  :variable hidden-mode-line-mode
+  :group 'editing-basics
+  (if hidden-mode-line-mode
+      (setq hide-mode-line mode-line-format
+            mode-line-format nil)
+    (setq mode-line-format hide-mode-line
+          hide-mode-line nil))
+  (force-mode-line-update)
+  ;; Apparently force-mode-line-update is not always enough to
+  ;; redisplay the mode-line
+  (redraw-display)
+  (when (and (called-interactively-p 'interactive)
+             hidden-mode-line-mode)
+    (run-with-idle-timer
+     0 nil 'message "Hidden Mode Line Mode enabled.")))
+
+;; If you want to hide the mode-line in every buffer by default
+;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
+
 ;; custom keybindings activated with C^x t
 (define-prefix-command 'toggle-map)
 ;; The manual recommends C-c for user keys, but C-x t is
@@ -68,6 +94,7 @@
 (define-key ctl-x-map "t" 'toggle-map)
 (define-key toggle-map "v" 'visual-line-mode)
 (define-key toggle-map "c" 'column-number-mode)
+(define-key toggle-map "h" 'hidden-mode-line-mode)
 
 ;; set the directory where all backup and autosave files will be saved
 (defvar backup-dir "~/tmp/")
