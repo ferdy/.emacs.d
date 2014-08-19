@@ -64,6 +64,7 @@
 
 ;; minor mode to hide the mode line (see http://bzg.fr/emacs-hide-mode-line.html)
 (defvar-local hidden-mode-line-mode nil)
+(defvar-local hide-mode-line nil)
 
 (define-minor-mode hidden-mode-line-mode
   "Minor mode to hide the mode-line in the current buffer."
@@ -86,7 +87,7 @@
      0 nil 'message "Hidden Mode Line Mode enabled.")))
 
 ;; If you want to hide the mode-line in every buffer by default
-;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
+(add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
 ;; custom keybindings activated with C^x t (see http://endlessparentheses.com/the-toggle-map-and-wizardry.html)
 (define-prefix-command 'toggle-map)
@@ -95,6 +96,7 @@
 (define-key ctl-x-map "t" 'toggle-map)
 (define-key toggle-map "v" 'visual-line-mode)
 (define-key toggle-map "c" 'column-number-mode)
+(define-key toggle-map "l" 'linum-mode)
 (define-key toggle-map "h" 'hidden-mode-line-mode)
 
 ;; set the directory where all backup and autosave files will be saved
