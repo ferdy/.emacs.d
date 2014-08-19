@@ -14,15 +14,18 @@
                                :size 11.4
                                :weight 'normal)))
 
-;; Turn off blinking cursor
+;; turn off blinking cursor
 (blink-cursor-mode 0)
 
-;; Turn off mouse interface early in startup to avoid momentary display
+;; turn on column number mode
+(setq column-number-mode t)
+
+;; turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
-;; Better backspacing
+;; better backspacing
 (global-set-key (kbd "C-?") 'help-command)
 (global-set-key (kbd "M-?") 'mark-paragraph)
 (global-set-key (kbd "C-h") 'delete-backward-char)
@@ -47,6 +50,9 @@
 ;; disable splash screen
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t)
+
+;; disable scratch buffer message
+(setq initial-scratch-message nil)
 
 ;; tooltips in the echo area
 (tooltip-mode -1)
