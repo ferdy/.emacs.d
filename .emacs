@@ -78,7 +78,7 @@
     (setq mode-line-format hide-mode-line
           hide-mode-line nil))
   (force-mode-line-update)
-  ;; Apparently force-mode-line-update is not always enough to
+  ;; apparently force-mode-line-update is not always enough to
   ;; redisplay the mode-line
   (redraw-display)
   (when (and (called-interactively-p 'interactive)
@@ -86,7 +86,7 @@
     (run-with-idle-timer
      0 nil 'message "Hidden Mode Line Mode enabled.")))
 
-;; If you want to hide the mode-line in every buffer by default
+;; if you want to hide the mode-line in every buffer by default
 (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
 ;; custom keybindings activated with C^x t (see http://endlessparentheses.com/the-toggle-map-and-wizardry.html)
