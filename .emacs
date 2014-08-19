@@ -17,9 +17,6 @@
 ;; turn off blinking cursor
 (blink-cursor-mode 0)
 
-;; turn on column number mode
-(setq column-number-mode t)
-
 ;; turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -58,20 +55,27 @@
 (tooltip-mode -1)
 (setq tooltip-use-echo-area t)
 
-;; Turn on ido-mode for better buffers switching
+;; turn on ido-mode for better buffers switching
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 
-;; Set the directory where all backup and autosave files will be saved
+(define-prefix-command 'toggle-map)
+;; The manual recommends C-c for user keys, but C-x t is
+;; always free, whereas C-c t is used by some modes.
+(define-key ctl-x-map "t" 'toggle-map)
+(define-key toggle-map "v" 'visual-line-mode)
+(define-key toggle-map "c" 'column-number-mode)
+
+;; set the directory where all backup and autosave files will be saved
 (defvar backup-dir "~/tmp/")
 (setq backup-directory-alist
       `((".*" . ,backup-dir)))
 (setq auto-save-file-name-transforms
       `((".*" ,backup-dir t)))
 
-;; Set solarized theme
+;; set solarized theme
 (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 (require 'solarized-dark-theme)
 (load-theme 'solarized-dark t)
@@ -84,31 +88,31 @@
 ;;(add-to-list 'load-path "~/.emacs.d/el-get/dired+")
 ;;(require 'dired+)
 
-;; Auto refresh buffers
+;; auto refresh buffers
 (global-auto-revert-mode 1)
 
-;; Also auto refresh dired, but be quiet about it
+;; also auto refresh dired, but be quiet about it
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
 
 ;; PACKAGES SETUP
 (require 'package)
-;; Add the original Emacs Lisp Package Archive
+;; add the original Emacs Lisp Package Archive
 (add-to-list 'package-archives
              '("elpa" . "http://tromey.com/elpa/"))
-;; Add the user-contributed repository
+;; add the user-contributed repository
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; Add Melpa
+;; add Melpa
 (add-to-list 'package-archives
 '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-;; Packages installed via package-el are activated
+;; packages installed via package-el are activated
 ;; AFTER .emacs is loaded. So I need to call initialize
 ;; to be able to load custom theme
 ;;(package-initialize)
 
-;; Use El-Get to sync repos and dependencies.
+;; use El-Get to sync repos and dependencies.
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
@@ -135,7 +139,7 @@
 (show-paren-mode 1)
 
 ;; SLIME SETUP
-;;Get slime to associate with sbcl
+;;get slime to associate with sbcl
 ;;the path MAY be emacs or emacs24...depending on build
 (setq slime-backend "/usr/share/common-lisp/source/slime/swank-loader.lisp")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
