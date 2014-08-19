@@ -29,7 +29,8 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "M-h") 'backward-kill-word)
 
-;; better forward and backward paragraph (see http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html)
+;; better forward and backward paragraph
+;; (see http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html)
 (global-set-key "\M-a" 'custom/backward-paragraph)
 (global-set-key "\M-e" 'custom/forward-paragraph)
 
@@ -97,7 +98,8 @@
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 
-;; minor mode to hide the mode line (see http://bzg.fr/emacs-hide-mode-line.html)
+;; minor mode to hide the mode line
+;; (see http://bzg.fr/emacs-hide-mode-line.html)
 (defvar-local hidden-mode-line-mode nil)
 (defvar-local hide-mode-line nil)
 
@@ -124,7 +126,8 @@
 ;; if you want to hide the mode-line in every buffer by default
 (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
-;; custom keybindings activated with C^x t (see http://endlessparentheses.com/the-toggle-map-and-wizardry.html)
+;; custom keybindings activated with C^x t
+;; (see http://endlessparentheses.com/the-toggle-map-and-wizardry.html)
 (define-prefix-command 'toggle-map)
 ;; The manual recommends C-c for user keys, but C-x t is
 ;; always free, whereas C-c t is used by some modes.
@@ -206,7 +209,7 @@
 
 ;; SLIME SETUP
 ;;get slime to associate with sbcl
-;;the path MAY be emacs or emacs24...depending on build
+;;the path MAY be emacs or emacs24, depending on build
 (setq slime-backend "/usr/share/common-lisp/source/slime/swank-loader.lisp")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
 (setq inferior-lisp-program "/usr/bin/sbcl")
