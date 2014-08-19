@@ -29,6 +29,41 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "M-h") 'backward-kill-word)
 
+;; better forward and backward paragraph (see http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html)
+(global-set-key "\M-a" 'custom/backward-paragraph)
+(global-set-key "\M-e" 'custom/forward-paragraph)
+
+(defun custom/forward-paragraph (&optional n)
+  "Advance just past next blank line."
+  (interactive "p")
+  (let ((m (use-region-p))
+        (para-commands
+         '(custom/forward-paragraph custom/backward-paragraph)))
+    ;; only push mark if it's not active and we're not repeating.
+    (or m
+        (not (member this-command para-commands))
+        (member last-command para-commands)
+        (push-mark))
+    ;; the actual movement.
+    (dotimes (_ (abs n))
+      (if (> n 0)
+          (skip-chars-forward "\n[:blank:]")
+        (skip-chars-backward "\n[:blank:]"))
+      (if (search-forward-regexp
+           "\n[[:blank:]]*\n[[:blank:]]*" nil t (cl-signum n))
+          (goto-char (match-end 0))
+        (goto-char (if (> n 0) (point-max) (point-min)))))
+    ;; if mark wasn't active, I like to indent the line too.
+    (unless m
+      (indent-according-to-mode)
+      ;; this looks redundant, but it's surprisingly necessary.
+      (back-to-indentation))))
+
+(defun custom/backward-paragraph (&optional n)
+  "go back up to previous blank line."
+  (interactive "p")
+  (custom/forward-paragraph (- n)))
+
 ;; C^n adds new line when at the end of a line
 (setq next-line-add-newlines t)
 
