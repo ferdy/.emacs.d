@@ -61,6 +61,7 @@
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 
+;; custom keybindings activated with C^x t
 (define-prefix-command 'toggle-map)
 ;; The manual recommends C-c for user keys, but C-x t is
 ;; always free, whereas C-c t is used by some modes.
