@@ -139,6 +139,7 @@
 (define-key toggle-map "c" 'column-number-mode)
 (define-key toggle-map "l" 'linum-mode)
 (define-key toggle-map "h" 'hidden-mode-line-mode)
+(define-key toggle-map "s" 'eshell)
 
 ;; set the directory where all backup and autosave files will be saved
 (defvar backup-dir "~/tmp/")
