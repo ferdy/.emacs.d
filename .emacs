@@ -139,12 +139,7 @@
 (define-key toggle-map "s" 'eshell)
 
 ;; kill only the current buffer
-;; see http://www.masteringemacs.org/articles/2014/02/28/my-emacs-keybindings/
 (global-set-key (kbd "C-x C-k") 'kill-this-buffer)
-
-(defun kill-this-buffer ()
-      (interactive)
-      (kill-buffer (current-buffer)))
 
 ;; C^n adds new line when at the end of a line
 (setq next-line-add-newlines t)
