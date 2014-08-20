@@ -290,7 +290,7 @@
 (setq doc-view-continuous t)
 
 ;; E-SHELL SETUP
-;; clear shell
+;; clear eshell buffer
 ;; (see http://www.khngai.com/emacs/eshell.php)
 (defun eshell/clear ()
   "clear the eshell buffer."
