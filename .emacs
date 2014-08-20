@@ -14,7 +14,7 @@
                                :size 11.4
                                :weight 'normal)))
 
-;; Enable syntax highlighting
+;; enable syntax highlighting
 (global-font-lock-mode 1)
 
 ;; turn off blinking cursor
