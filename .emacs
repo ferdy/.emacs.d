@@ -14,6 +14,9 @@
                                :size 11.4
                                :weight 'normal)))
 
+;; Enable syntax highlighting
+(global-font-lock-mode 1)
+
 ;; turn off blinking cursor
 (blink-cursor-mode 0)
 
@@ -239,9 +242,6 @@
 
 ;; Org-mode log DONE tasks
 (setq org-log-done 'time)
-
-;; Org-mode font lock
-(global-font-lock-mode 1)
 
 ;; Org-mode: update parent nodes when child is removed
 (defun myorg-update-parent-cookie ()
