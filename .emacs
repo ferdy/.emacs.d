@@ -156,6 +156,7 @@
 (require 'dired)
 (define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file) ; was dired-advertised-find-file
 (define-key dired-mode-map (kbd "^") (lambda () (interactive) (find-alternate-file "..")))  ; was dired-up-directory
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;;(add-to-list 'load-path "~/.emacs.d/el-get/dired+")
 ;;(require 'dired+)
@@ -286,26 +287,3 @@
 
 ;; DOC-VIEW-MODE SETUP
 (setq doc-view-continuous t)
-
-;; CUSTOM VARIABLES - DON'T TOUCH
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(background-color "#fdf6e3")
- '(background-mode light)
- '(cursor-color "#657b83")
- '(custom-enabled-themes (quote (solarized-dark)))
- '(custom-safe-themes (quote ("d6a00ef5e53adf9b6fe417d2b4404895f26210c52bb8716971be106550cea257" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "7fa9dc3948765d7cf3d7a289e40039c2c64abf0fad5c616453b263b601532493" default)))
- '(dired-listing-switches "-al --group-directories-first")
- '(fci-rule-color "#383838")
- '(foreground-color "#657b83"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(put 'dired-find-alternate-file 'disabled nil)
