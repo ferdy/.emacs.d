@@ -293,7 +293,7 @@
 ;; clear shell
 ;; (see http://www.khngai.com/emacs/eshell.php)
 (defun eshell/clear ()
-  "to clear the eshell buffer."
+  "clear the eshell buffer."
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
