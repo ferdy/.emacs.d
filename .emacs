@@ -26,6 +26,36 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
 
+;; scrolling
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
+
+;; disable annoying prompts
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq kill-buffer-query-functions
+  (remq 'process-kill-buffer-query-function
+         kill-buffer-query-functions))
+
+;; disable splash screen
+(setq inhibit-startup-message t
+      inhibit-startup-echo-area-message t)
+
+;; disable scratch buffer message
+(setq initial-scratch-message nil)
+
+;; tooltips in the echo area
+(tooltip-mode -1)
+(setq tooltip-use-echo-area t)
+
+;; turn on ido-mode for better buffers switching
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(setq ido-create-new-buffer 'always)
+(ido-mode 1)
+
 ;; better backspacing
 (global-set-key (kbd "C-?") 'help-command)
 (global-set-key (kbd "M-?") 'mark-paragraph)
@@ -68,39 +98,6 @@
   (interactive "p")
   (custom/forward-paragraph (- n)))
 
-;; C^n adds new line when at the end of a line
-(setq next-line-add-newlines t)
-
-;; scrolling
-(setq redisplay-dont-pause t
-      scroll-margin 1
-      scroll-step 1
-      scroll-conservatively 10000
-      scroll-preserve-screen-position 1)
-
-;; disable annoying prompts
-(fset 'yes-or-no-p 'y-or-n-p)
-(setq kill-buffer-query-functions
-  (remq 'process-kill-buffer-query-function
-         kill-buffer-query-functions))
-
-;; disable splash screen
-(setq inhibit-startup-message t
-      inhibit-startup-echo-area-message t)
-
-;; disable scratch buffer message
-(setq initial-scratch-message nil)
-
-;; tooltips in the echo area
-(tooltip-mode -1)
-(setq tooltip-use-echo-area t)
-
-;; turn on ido-mode for better buffers switching
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(setq ido-create-new-buffer 'always)
-(ido-mode 1)
-
 ;; minor mode to hide the mode line
 ;; (see http://bzg.fr/emacs-hide-mode-line.html)
 (defvar-local hidden-mode-line-mode nil)
@@ -140,6 +137,17 @@
 (define-key toggle-map "l" 'linum-mode)
 (define-key toggle-map "h" 'hidden-mode-line-mode)
 (define-key toggle-map "s" 'eshell)
+
+;; kill only the current buffer
+;; see http://www.masteringemacs.org/articles/2014/02/28/my-emacs-keybindings/
+(global-set-key (kbd "C-x C-k") 'kill-this-buffer)
+
+(defun kill-this-buffer ()
+      (interactive)
+      (kill-buffer (current-buffer)))
+
+;; C^n adds new line when at the end of a line
+(setq next-line-add-newlines t)
 
 ;; set the directory where all backup and autosave files will be saved
 (defvar backup-dir "~/tmp/")
