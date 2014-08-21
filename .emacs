@@ -57,10 +57,10 @@
 (ido-mode 1)
 
 ;; better backspacing
-(global-set-key (kbd "C-?") 'help-command)
-(global-set-key (kbd "M-?") 'mark-paragraph)
-(global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "M-h") 'backward-kill-word)
+(global-set-key "\C-?" 'help-command)
+(global-set-key "\M-?" 'mark-paragraph)
+(global-set-key "\C-h" 'delete-backward-char)
+(global-set-key "\M-h" 'backward-kill-word)
 
 ;; better forward and backward paragraph
 ;; (see http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html)
@@ -149,7 +149,7 @@
 (define-key toggle-map "m" 'magit-status)
 
 ;; kill only the current buffer
-(global-set-key (kbd "C-x C-k") 'kill-this-buffer)
+(global-set-key "\C-x\C-k" 'kill-this-buffer)
 
 ;; C^n adds new line when at the end of a line
 (setq next-line-add-newlines t)
