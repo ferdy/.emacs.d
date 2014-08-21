@@ -321,11 +321,16 @@
   ad-do-it
   (delete-other-windows))
 
+(defun custom-kill-buffers (regexp)
+  "Kill buffers matching REGEXP without asking for confirmation."
+  (interactive "sKill buffers matching this regular expression: ")
+  (flet ((kill-buffer-ask (buffer) (kill-buffer buffer)))
+    (kill-matching-buffers regexp)))
+
 (defun magit-quit-session ()
   "Restores the previous window configuration and kills the magit buffer"
   (interactive)
-  (kill-buffer)
-  (kill-buffer "*magit-process*")
+  (custom-kill-buffers "^\\*magit")
   (jump-to-register :magit-fullscreen))
 
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
