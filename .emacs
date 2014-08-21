@@ -154,6 +154,12 @@
 ;; C^n adds new line when at the end of a line
 (setq next-line-add-newlines t)
 
+;; activate guru-mode
+;; see https://github.com/bbatsov/guru-mode
+(add-to-list 'load-path "~/.emacs.d/various")
+(require 'guru-mode)
+(guru-global-mode +1)
+
 ;; set the directory where all backup and autosave files will be saved
 (defvar backup-dir "~/tmp/")
 (setq backup-directory-alist
