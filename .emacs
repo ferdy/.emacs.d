@@ -310,5 +310,3 @@
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
-
-;; MAGIT
