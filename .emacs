@@ -199,6 +199,13 @@
 (require 'solarized-dark-theme)
 (load-theme 'solarized-dark t)
 
+(if (daemonp)
+(add-hook 'after-make-frame-functions
+          '(lambda (f)
+             (with-selected-frame f
+               (when (window-system f) (load-theme 'solarized-dark t)))))
+(load-theme 'solarized-dark t))
+
 ;; DIRED SETUP
 (require 'dired)
 (define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file) ; was dired-advertised-find-file
