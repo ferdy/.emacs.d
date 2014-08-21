@@ -137,6 +137,7 @@
 (define-key toggle-map "l" 'linum-mode)
 (define-key toggle-map "h" 'hidden-mode-line-mode)
 (define-key toggle-map "s" 'eshell)
+(define-key toggle-map "m" 'magit-status)
 
 ;; kill only the current buffer
 (global-set-key (kbd "C-x C-k") 'kill-this-buffer)
@@ -182,7 +183,7 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; add Melpa
 (add-to-list 'package-archives
-'("melpa" . "http://melpa.milkbox.net/packages/") t)
+	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;; packages installed via package-el are activated
 ;; AFTER .emacs is loaded. So I need to call initialize
@@ -300,3 +301,5 @@
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
+
+;; MAGIT
