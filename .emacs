@@ -94,9 +94,18 @@
       (back-to-indentation))))
 
 (defun custom/backward-paragraph (&optional n)
-  "go back up to previous blank line."
+  "Go back up to previous blank line."
   (interactive "p")
   (custom/forward-paragraph (- n)))
+
+;; better window movings
+(global-set-key "\C-x\C-n" 'other-window)
+(global-set-key "\C-x\C-p" 'other-window-backward)
+
+(defun other-window-backward (&optional n)
+  "Select Nth previous window."
+  (interactive "P")
+  (other-window (- (prefix-numeric-value n))))
 
 ;; minor mode to hide the mode line
 ;; (see http://bzg.fr/emacs-hide-mode-line.html)
@@ -297,7 +306,7 @@
 ;; clear eshell buffer
 ;; (see http://www.khngai.com/emacs/eshell.php)
 (defun eshell/clear ()
-  "clear the eshell buffer."
+  "Clear the eshell buffer."
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
