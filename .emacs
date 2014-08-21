@@ -57,10 +57,10 @@
 (ido-mode 1)
 
 ;; better backspacing
-(global-set-key "\C-?" 'help-command)
-(global-set-key "\M-?" 'mark-paragraph)
-(global-set-key "\C-h" 'delete-backward-char)
-(global-set-key "\M-h" 'backward-kill-word)
+(global-set-key (kbd "C-?") 'help-command)
+(global-set-key (kbd "M-?") 'mark-paragraph)
+(global-set-key (kbd "C-h") 'delete-backward-char)
+(global-set-key (kbd "M-h") 'backward-kill-word)
 
 ;; better forward and backward paragraph
 ;; (see http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html)
@@ -196,8 +196,8 @@
 
 ;; packages installed via package-el are activated
 ;; AFTER .emacs is loaded. So I need to call initialize
-;; to be able to load custom theme
-;;(package-initialize)
+;; to be able to use theme.
+(package-initialize)
 
 ;; use El-Get to sync repos and dependencies.
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -310,3 +310,21 @@
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
+
+;; MAGIT SETUP
+(require 'magit)
+
+;; full screen magit-status
+;; see http://whattheemacsd.com/setup-magit.el-01.html
+(defadvice magit-status (around magit-fullscreen activate)
+  (window-configuration-to-register :magit-fullscreen)
+  ad-do-it
+  (delete-other-windows))
+
+(defun magit-quit-session ()
+  "Restores the previous window configuration and kills the magit buffer"
+  (interactive)
+  (kill-buffer)
+  (jump-to-register :magit-fullscreen))
+
+(define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
