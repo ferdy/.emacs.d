@@ -203,6 +203,7 @@
                (when (window-system f) (load-theme 'solarized-dark t)))))
 (load-theme 'solarized-dark t))
 
+;; functions to remove background when on terminals
 (defun on-frame-open (frame)
   (if (not (display-graphic-p frame))
     (set-face-background 'default "unspecified-bg" frame)))
