@@ -75,6 +75,15 @@
 (tooltip-mode -1)
 (setq tooltip-use-echo-area t)
 
+;; linum+ for better line numbers
+(add-to-list 'load-path "~/.emacs.d/various")
+(require 'linum+)
+(setq linum+-dynamic-format " %%%dd")
+
+;; linum+ resets linum-format to "smart" when it's loaded, hence we have to
+;; use a eval-after-load hook to set it to "dynamic".
+(eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))
+
 ;; turn on ido-mode for better buffers switching
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
