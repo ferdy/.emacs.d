@@ -222,9 +222,6 @@
 (define-key dired-mode-map (kbd "^") (lambda () (interactive) (find-alternate-file "..")))  ; was dired-up-directory
 (put 'dired-find-alternate-file 'disabled nil)
 
-;;(add-to-list 'load-path "~/.emacs.d/el-get/dired+")
-;;(require 'dired+)
-
 ;; auto refresh buffers
 (global-auto-revert-mode 1)
 
