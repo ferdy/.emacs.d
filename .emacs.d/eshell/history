@@ -1,0 +1,95 @@
+ls
+l
+ls
+clear
+cls
+clear
+exit
+exit
+exit
+find-file conkyrc-top 
+cp conkyrc-top conkyrc-top.bak
+ls
+rm conkyrc-top.bak 
+man ls
+dired .
+alias ff 'find-file $1'
+alias d 'dired $1'
+ff conkyrc-top 
+clear
+htop
+top
+Welcome to the Emacs shell
+clear
+ff .emacs.d/
+ff .emacs
+exit
+clear
+ls
+clear
+ff .emacs
+clear
+ff .emacs
+clear
+exit
+cd documents/boccaperta/blog/
+ls
+mkdir github
+cd github/
+ff github
+mv ~/desktop/650_1000_GitHub_Logo.png github_logo.png
+ls
+cd ..
+ff todo-articoli-blog.org 
+cd
+ff desktop/mail 
+ls
+ls desktop/
+clear
+ls
+exit
+ff .emacs
+ssh -p 2130 admin@192.168.1.50
+alias sshserver ssh -p 2130 admin@192.168.1.50
+sshserver 
+alias sshserver
+clear
+exit
+cp .emacs githubs/boccaperta-it/emacs/
+exit
+cd documents/
+ls
+cd boccaperta/
+ls
+cd contabilita/
+l
+ls
+clear
+cd
+ls
+exit
+cp .emacs githubs/boccaperta-it/emacs/
+exit
+rm .emacs.bak
+cp .emacs githubs/boccaperta-it/emacs/
+exit
+cp .emacs githubs/boccaperta-it/emacs/
+exit
+cp .emacs githubs/boccaperta-it/emacs/
+exit
+cp .emacs githubs/linuxbbq/application-mods/emacs/.emacs_gekkop_20140821
+exit
+cp .emacs githubs/boccaperta-it/emacs/
+rm -rf githubs/boccaperta-it/emacs/
+cp .emacs githubs/boccaperta-it/emacs/
+exit
+cp .emacs githubs/boccaperta-it/emacs/
+exit
+cp .emacs githubs/boccaperta-it/emacs/
+exit
+cp .emacs githubs/boccaperta-it/emacs/
+exit
+cp .xinitrc githubs/boccaperta-it/wm-configs/
+cp .ratpoisonkeys githubs/boccaperta-it/wm-configs/
+cp .emacs githubs/boccaperta-it/emacs/
+exit
