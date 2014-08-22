@@ -194,7 +194,6 @@
 ;; set solarized theme
 (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 (require 'solarized-dark-theme)
-(load-theme 'solarized-dark t)
 
 (if (daemonp)
 (add-hook 'after-make-frame-functions
