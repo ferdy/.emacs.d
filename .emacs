@@ -42,9 +42,6 @@
                                :size 11.4
                                :weight 'normal)))
 
-;; enable syntax highlighting
-(global-font-lock-mode 1)
-
 ;; turn off blinking cursor
 (blink-cursor-mode 0)
 
@@ -195,7 +192,28 @@
       `((".*" ,backup-dir t)))
 
 ;; set solarized theme
+(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
+(require 'solarized-dark-theme)
 (load-theme 'solarized-dark t)
+
+(if (daemonp)
+(add-hook 'after-make-frame-functions
+          '(lambda (f)
+             (with-selected-frame f
+               (when (window-system f) (load-theme 'solarized-dark t)))))
+(load-theme 'solarized-dark t))
+
+(defun on-frame-open (frame)
+  (if (not (display-graphic-p frame))
+    (set-face-background 'default "unspecified-bg" frame)))
+(on-frame-open (selected-frame))
+(add-hook 'after-make-frame-functions 'on-frame-open)
+
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+(add-hook 'window-setup-hook 'on-after-init)
 
 ;; DIRED SETUP
 (require 'dired)

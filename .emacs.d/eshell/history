@@ -93,3 +93,10 @@ cp .xinitrc githubs/boccaperta-it/wm-configs/
 cp .ratpoisonkeys githubs/boccaperta-it/wm-configs/
 cp .emacs githubs/boccaperta-it/emacs/
 exit
+ls
+cd githubs/boccaperta-it/emacs/
+ls -la
+rm -rf .emacs.d/
+cp -r ~/.emacs.d/ .
+cp ~/.emacs .
+exit

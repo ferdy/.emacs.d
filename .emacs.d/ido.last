@@ -36,21 +36,22 @@
  ("/home/manuel/documents/boccaperta/corsi/informatica/" . "corso_conline/")
  ("/home/manuel/documents/boccaperta/corsi/" . "matematica/")
  ("/home/manuel/documents/boccaperta/assistenzapc/" . "linuxbbq/")
- ("/home/manuel/documents/boccaperta/" . "assistenzapc/")
+ ("/home/manuel/documents/boccaperta/" . "blog/")
  ("/home/manuel/documents/" . "boccaperta/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
  "/home/manuel/"
- "/home/manuel/documents/boccaperta/assistenzapc/linuxbbq/"
+ "/home/manuel/documents/boccaperta/blog/"
  "/home/manuel/documents/boccaperta/blog/cli-tools/"
+ "/home/manuel/desktop/"
+ "/home/manuel/documents/boccaperta/assistenzapc/linuxbbq/"
  "/home/manuel/documents/websites/boccaperta.com/current/"
  "/home/manuel/documents/boccaperta/corsi/matematica/"
  "/home/manuel/githubs/linuxbbq/application-mods/emacs/"
  "/home/manuel/documents/boccaperta/"
  "/home/manuel/documents/libri/tech/emacs/"
- "/home/manuel/documents/boccaperta/blog/"
  "/admin@192.168.1.50:"
  "/ssh:admin@192.168.1.50:"
  "/ssh:admin@"
@@ -73,7 +74,6 @@
  "/home/manuel/documents/boccaperta/blog/linuxbbq/"
  "/home/manuel/documents/boccaperta/blog/crux/"
  "/home/manuel/githubs/boccaperta-it/dotfiles/"
- "/home/manuel/desktop/"
  "/home/manuel/documents/boccaperta/pubblicita/"
  "/home/manuel/.ssh/"
  "/home/manuel/desktop/essential/layout/includes/"
@@ -96,23 +96,25 @@
 
 ;; ----- ido-work-file-list -----
 (
- ".muttrc"
  ".emacs"
+ "todo-articoli-blog.org"
+ "newsbeuter"
+ "mutt"
+ "test.org"
+ "alsamixer"
+ ".muttrc"
  "linuxbbq-haggis"
  ".ratpoisonkeys"
  ".xinitrc"
- "newsbeuter"
- ".gitconfig"
- "sitemap.xml"
- "esercizi_1i_10_02_10.pdf"
- "README"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/manuel/" (21494 64265 956736 545000) ".dmrc" ".muttrc" ".fbselect" ".Xresources" "./" ".gitconfig" ".emacs.d/" ".Xdefaults" "xcolors/" ".nano/" ".ratpoisonrc" ".putty/" ".mozilla/" ".pentadactylrc" ".ratpoison_history" ".java/" ".newsbeuter/" ".bash_logout" ".dbus/" ".shell_aliases" ".rpmdb/" ".gtkrc-2.0" ".cups/" "videos/" ".links2/" ".grip" ".config/" ".texmf-var/" ".recently-used" ".moc/" ".cwmrc" ".mutt/" ".bash_aliases" ".pulse/" ".dropbox/" "images/" ".grl-metadata-store" "documents/" ".Trash-1000/" ".desktop" ".zcompdump" ".bashrc" ".grip-mp3encode" ".selected_editor" "downloads/" "dmenu-4.5/" ".rpdb2_settings/" ".libreoffice/" ".ncftp/" ".macromedia/" ".mpv/" "oki_drivers/" ".zshrc" "equalizer_presets/" ".vimrc" "mail/" "conkyrc-top" "music/" ".spice-vdagent/" ".hardinfo/" ".pam_environment" ".sbclrc" ".pulse-cookie" ".keysnail.js" ".gimp-2.8/" ".trc" ".conf/" ".Poedit" ".bzr.log" ".tmux.conf" ".cddb/" "githubs/" ".gegl-0.0/" ".ratpoisonkeys" ".cvspass" ".elinks/" ".grl-podcasts" ".thumbnails/" ".notmuch-config" ".evilwmrc" ".spumux/" ".surf/" ".xinputrc" ".emacs~" ".fontconfig/" ".ccache/" "fonts.dir" ".smex-items" ".emacs" ".gstream/" "tmp/" ".urxvt/" ".marks/" ".xauthority" "bin/" ".viminfo" "pdf/" "fonts.scale" "backups/" ".local/" ".spectrwm.conf" "desktop/" "../" ".icedtea/" ".icons/" ".aptitude/" ".offlineimap/" ".offlineimaprc" ".directory" ".grl-bookmarks" ".bash_history" "quicklisp/" ".grip-oggenc" ".adobe/" ".abook/" ".subversion/" ".gstreamer-0.10/" "podcasts/" "templates/" ".gnome2_private/" ".gntpositions" "scrots/" "README" ".pangzerorc" ".mplayer/" "evilwm/" ".dmenu_cache" ".profile" ".cache/" ".pbuilderrc" ".themes/" "dropbox/" ".gtk-bookmarks" ".purple/" ".poedit/" ".urlview" "emacs/" ".sane/" ".xinput.d/" ".mplayer2/" "org/" "quicklisp.lisp" "reminders/" ".hplip/" ".xinitrc" ".gnupg/" ".zsh_history" ".ripoff/" "firefox/" ".ssh/" ".gconf/" ".filezilla/" ".iceauthority" "git/" "sources/" ".disk-manager.conf" ".Xauthority" ".sc_history" ".grip-lame" "pictures/" ".gnome2/" ".fltk/" ".bash_profile" ".winff/" ".console_colors/" ".sylpheed-2.0/" ".fonts/")
+ ("/home/manuel/" (21495 1973 695830 367000) ".dmrc" ".muttrc" ".fbselect" ".Xresources" "./" ".gitconfig" ".emacs.d/" ".Xdefaults" "xcolors/" ".nano/" ".ratpoisonrc" ".putty/" ".mozilla/" ".pentadactylrc" ".ratpoison_history" ".java/" ".newsbeuter/" ".bash_logout" ".dbus/" ".shell_aliases" ".rpmdb/" ".gtkrc-2.0" ".cups/" "videos/" ".links2/" ".grip" ".config/" ".texmf-var/" ".recently-used" ".moc/" ".cwmrc" ".mutt/" ".bash_aliases" ".pulse/" ".dropbox/" "images/" ".grl-metadata-store" "documents/" ".Trash-1000/" ".desktop" ".zcompdump" ".bashrc" ".grip-mp3encode" ".selected_editor" "downloads/" "dmenu-4.5/" ".rpdb2_settings/" ".libreoffice/" ".ncftp/" ".macromedia/" ".mpv/" "oki_drivers/" ".zshrc" "equalizer_presets/" ".vimrc" "mail/" "conkyrc-top" "music/" ".spice-vdagent/" ".hardinfo/" ".pam_environment" ".sbclrc" ".pulse-cookie" ".keysnail.js" ".gimp-2.8/" ".trc" ".conf/" ".Poedit" ".bzr.log" ".tmux.conf" ".cddb/" "githubs/" ".gegl-0.0/" ".ratpoisonkeys" ".cvspass" ".elinks/" ".grl-podcasts" ".thumbnails/" ".notmuch-config" ".evilwmrc" ".spumux/" ".surf/" ".xinputrc" ".emacs~" ".fontconfig/" ".ccache/" "fonts.dir" ".smex-items" ".emacs" ".gstream/" "tmp/" ".urxvt/" ".marks/" ".xauthority" "bin/" ".viminfo" "pdf/" "fonts.scale" "backups/" ".local/" ".spectrwm.conf" "desktop/" "../" ".icedtea/" ".icons/" ".aptitude/" ".offlineimap/" ".offlineimaprc" ".directory" ".grl-bookmarks" ".bash_history" "quicklisp/" ".grip-oggenc" ".adobe/" ".abook/" ".subversion/" ".gstreamer-0.10/" "podcasts/" "templates/" ".gnome2_private/" ".gntpositions" "scrots/" "README" ".pangzerorc" ".mplayer/" "evilwm/" ".dmenu_cache" ".profile" ".cache/" ".pbuilderrc" ".themes/" "dropbox/" ".gtk-bookmarks" ".purple/" ".poedit/" ".urlview" "emacs/" ".sane/" ".xinput.d/" ".mplayer2/" "org/" "quicklisp.lisp" "reminders/" ".hplip/" ".xinitrc" ".gnupg/" ".zsh_history" ".ripoff/" "firefox/" ".ssh/" ".gconf/" ".filezilla/" ".iceauthority" "git/" "sources/" ".disk-manager.conf" ".Xauthority" ".sc_history" ".grip-lame" "pictures/" ".gnome2/" ".fltk/" ".bash_profile" ".winff/" ".console_colors/" ".sylpheed-2.0/" ".fonts/")
 
- ("/home/manuel/documents/boccaperta/blog/cli-tools/" (21494 10746 738204 553000) "newsbeuter" "./" "burniso" "cli-tools" "zsh.png" "remind" "youtube-dl.png" "the-end" "tmux" "w3m" "ncdu" "readom" "finch.png" "ceni" "ceni.png" "the-end.png" "lp-printfile.png" "htop" "st" "../" "alsamixer" "finch" "youtube-dl" "ncdu.png" "mutt" "alsamixer.png" "moc" "zsh" "htop.png" "lp-printfile" "mocp.png" "coreutils" "urxvt" "urxvt_001.png")
+ ("/home/manuel/desktop/" (21494 64259 483438 281000) "./" "emacs-color-theme-solarized/" "documento.pdf" "modulo.pdf" "../")
+
+ ("/home/manuel/documents/boccaperta/blog/cli-tools/" (21494 10760 684795 665000) "newsbeuter" "./" "burniso" "cli-tools" "zsh.png" "remind" "youtube-dl.png" "the-end" "tmux" "w3m" "ncdu" "readom" "finch.png" "ceni" "ceni.png" "the-end.png" "lp-printfile.png" "htop" "st" "../" "alsamixer" "finch" "youtube-dl" "ncdu.png" "mutt" "alsamixer.png" "moc" "zsh" "htop.png" "lp-printfile" "mocp.png" "coreutils" "urxvt" "urxvt_001.png")
 
  ("/home/manuel/documents/boccaperta/blog/" (21493 44361 711135 602000) "pentium-4/" "ps3ms-articolo/" "recupero-acer-1304xc/" "./" "twitter-widget.bak" "cli-tools/" "script-shell/" "script-i3-conky-status/" "liberta-creativita-linux/" "void-linux/" "killx/" "pyroom/" "universal-media-server/" "trisquel-boccaperta" "greentick.svg" "github/" "framebuffer/" "security/" "speedcrunch/" "ubuntu/" "from-bash-to-z-shell/" "mint+xfce/" "sid-vantaggi-stable/" "deadbeef/" "archlinux/" "un-anno-di-boccaperta/" "linux-command-line/" "gentoo/" "todo-articoli-blog.org" "web-browser-choice/" "servizi-manuel/" "internet-archive/" "the-c-programming-language/" "awf-minus-token.svg" "awf-plus-token.svg" "freesoftware-opensource" "lxde/" "redcross.svg" "mcomix/" "riflessione-distribuzioni/" "crunchanb11-gtk-icons-articolo/" "../" "linuxbbq/" "799px-trisquel-logo.png" "xscreensaver-theme/" "suckless/" "crunchbang11-articolo/" "fedora/" "server-hp/" "etica-hacker/" "post-paola/" "emacs/" "passare-a-linux/" "crunchbang-xfce-4_10/" "crux/" "linux.png" "minimalismo/" "senso-comunita/" "window-manager/" "linux-from-scratch/" "newsletter_gennaio2014" "confronto-distribuzioni/")
 
@@ -165,8 +167,6 @@
  ("/home/manuel/documents/boccaperta/assistenzapc/linuxbbq/" (21491 16717 42971 845000) "urxvt_solarized" "./" "linuxbbq-ponymuncher" "infinality-fonts" "wm_configs/" "fonts/" "suckless-tools-setup" "usb-restore-partition-table" "linuxbbq-coal" "elinks-setup" "add-fonts-pcf" "init_systems/" "mutt_config" "burn-dvd-from-cli" "firefox-no-desktop-directory" "inittab.backup" "gtk-dark-firefox-fix" "../" "killxdots/" "mutt" "mount_galaxy_sii" "dwm/" "linuxbbq-haggis" "linuxbbq-elektra")
 
  ("/home/manuel/.newsbeuter/" (21491 16432 677845 717000) "./" "cache.db.lock" "history.cmdline" "cache.db" "history.search" "queue" "../" "urls" "config")
-
- ("/home/manuel/desktop/" (21491 15667 425324 779000) "./" "../" "2014-08-19-140344_1280x800_scrot.png")
 
  ("/home/manuel/documents/boccaperta/corsi/matematica/" (21491 6848 369768 371000) "./" "esercizi_1_a_b_scient_16_10_08.pdf" "CalcoloLetterale_Manuale_UbiLearning.pdf" "ProvaDeb1B .doc" "1B_finale_14.doc" "esercizi_equazioni_1_grado_maggio_2010.pdf" "tabelline.sc" "tabelline.ods" "esercizi_1i_10_02_10.pdf" "../" "Frazioni_Espressioni_4Operazioni_Intermediate_UbiMath.pdf" "verifica_frazioni.pdf" "piano-lezioni.org" "compito_alessio_20140812.odt" "compito_alessio_20140819.odt")
 
