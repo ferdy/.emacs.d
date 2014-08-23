@@ -90,6 +90,10 @@
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 
+;; faster echo keystrokes
+;; see http://endlessparentheses.com/faster-keystroke-echo.html
+(setq echo-keystrokes 0.1)
+
 ;; better backspacing
 (global-set-key (kbd "C-?") 'help-command)
 (global-set-key (kbd "M-?") 'mark-paragraph)
