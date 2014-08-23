@@ -100,6 +100,14 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "M-h") 'backward-kill-word)
 
+;; hungry-delete-mode
+;; http://endlessparentheses.com/hungry-delete-mode.html
+(unless (fboundp 'hungry-delete-mode)
+  (package-install 'hungry-delete))
+
+(require 'hungry-delete)
+(global-hungry-delete-mode)
+
 ;; better forward and backward paragraph
 ;; (see http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html)
 (global-set-key "\M-a" 'custom/backward-paragraph)
@@ -189,6 +197,10 @@
 ;; goto line is M-g
 (global-set-key "\M-g" 'goto-line)
 
+;; see http://endlessparentheses.com/Meta-Binds-Part-1%253A-Drunk-in-the-Dark.html
+(global-set-key "\M-9" 'backward-sexp)
+(global-set-key "\M-0" 'forward-sexp)
+
 ;; kill only the current buffer
 (global-set-key "\C-x\C-k" 'kill-this-buffer)
 
@@ -197,6 +209,9 @@
 
 ;; activate guru-mode
 ;; see https://github.com/bbatsov/guru-mode
+(unless (fboundp 'guru-mode)
+  (package-install 'guru-mode))
+
 (require 'guru-mode)
 (guru-global-mode +1)
 
@@ -347,6 +362,9 @@
     (erase-buffer)))
 
 ;; MAGIT SETUP
+(unless (fboundp 'magit)
+  (package-install 'magit))
+
 (require 'magit)
 
 ;; fullscreen magit-status
