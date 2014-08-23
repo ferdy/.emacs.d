@@ -182,6 +182,9 @@
 (define-key toggle-map "s" 'eshell)
 (define-key toggle-map "m" 'magit-status)
 
+;; goto line is M-g
+(global-set-key "\M-g" 'goto-line)
+
 ;; kill only the current buffer
 (global-set-key "\C-x\C-k" 'kill-this-buffer)
 
