@@ -90,7 +90,7 @@
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 
-;; turn on unique buffer names
+;; set unique buffer names
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward uniquify-separator ":")
 
