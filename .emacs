@@ -6,7 +6,7 @@
 ;; This setup makes the maintenance easier.
 
 ;; this is where all the configurations file are
-(add-to-list 'load-path "~/.emacs.d/elisp/")
+(add-to-list 'load-path "~/.emacs.d/config/")
 
 ;; load packages configuration
 (load-library "packages")
