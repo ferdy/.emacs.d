@@ -90,6 +90,10 @@
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 
+;; turn on unique buffer names
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'post-forward uniquify-separator ":")
+
 ;; faster echo keystrokes
 ;; see http://endlessparentheses.com/faster-keystroke-echo.html
 (setq echo-keystrokes 0.1)
