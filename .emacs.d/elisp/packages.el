@@ -2,7 +2,6 @@
 ;;
 ;; This file stores all the packages related configurations.
 
-;; PACKAGES SETUP
 (require 'package)
 ;; add the original Emacs Lisp Package Archive
 (add-to-list 'package-archives
