@@ -147,6 +147,20 @@
 (setq org2blog/wp-use-sourcecode-shortcode 't)
 (setq org2blog/wp-sourcecode-default-params nil)
 
+;; ORG-PRESENT SETUP
+(add-to-list 'load-path "~/.emacs.d/various")
+(autoload 'org-present "org-present" nil t)
+
+(add-hook 'org-present-mode-hook
+          (lambda ()
+            (org-present-big)
+            (org-display-inline-images t t)))
+
+(add-hook 'org-present-mode-quit-hook
+          (lambda ()
+            (org-present-small)
+            (org-remove-inline-images)))
+
 ;; DOC-VIEW-MODE SETUP
 (setq doc-view-continuous t)
 
