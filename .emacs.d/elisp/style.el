@@ -157,7 +157,6 @@
 
 (add-hook 'window-setup-hook 'on-after-init)
 
-;; PER-FILE SETUP
 ;; C-specific Indentation
 (setq c-default-style "linux"
       c-basic-offset 4)
