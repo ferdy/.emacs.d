@@ -120,6 +120,19 @@
 (defadvice kill-whole-line (after fix-cookies activate)
   (myorg-update-parent-cookie))
 
+;; completion with ido
+(setq org-completion-use-ido t)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (sh . t)
+   (C .t)
+   (awk .t)
+   (lisp .t)
+   (python .t)
+   (scheme .t)))
+
 ;; customized agenda view
 (setq org-agenda-custom-commands
             '(("g" "Agenda and giulia-tagged tasks"
@@ -172,6 +185,9 @@
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
+
+(setq eshell-cmpl-cycle-completions nil
+      eshell-save-history-on-exit t)
 
 ;; MAGIT SETUP
 (unless (fboundp 'magit)
