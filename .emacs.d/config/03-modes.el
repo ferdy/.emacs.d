@@ -215,3 +215,50 @@
   (jump-to-register :magit-fullscreen))
 
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+
+;; AUCTEX SETUP
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
+(add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
+(autoload 'reftex-mode     "reftex" "RefTeX Minor Mode" t)
+(autoload 'turn-on-reftex  "reftex" "RefTeX Minor Mode" nil)
+(autoload 'reftex-citation "reftex-cite" "Make citation" nil)
+(autoload 'reftex-index-phrase-mode "reftex-index" "Phrase mode" t)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
+(add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
+
+;; prettify symbols
+(require 'latex-pretty-symbols)
+
+;; Make RefTeX faster
+(setq reftex-enable-partial-scans t)
+(setq reftex-save-parse-info t)
+(setq reftex-use-multiple-selection-buffers t)
+(setq reftex-plug-into-AUCTeX t)
+
+;; Make RefTeX work with Org-Mode
+;; use 'C-c (' instead of 'C-c [' because the latter is already
+;; defined in orgmode to the add-to-agenda command.
+(defun org-mode-reftex-setup ()
+  (load-library "reftex")
+  (and (buffer-file-name)
+  (file-exists-p (buffer-file-name))
+  (reftex-parse-all))
+  (define-key org-mode-map (kbd "C-c (") 'reftex-citation))
+
+(add-hook 'org-mode-hook 'org-mode-reftex-setup)
+
+;; use latexmk for compilation by default
+(eval-after-load "tex"
+  '(add-to-list 'TeX-command-list '("latexmk" "latexmk -synctex=1 -shell-escape -pdf %s" TeX-run-TeX nil t :help "Process file with latexmk"))
+)
+(eval-after-load "tex"
+  '(add-to-list 'TeX-command-list '("xelatexmk" "latexmk -synctex=1 -shell-escape -xelatex %s" TeX-run-TeX nil t :help "Process file with xelatexmk"))
+)
+
+(add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
+
+; add LaTeX to the list of languages Org-babel will recognize
+(require 'ob-latex)
+
+;; add LaTeX to a list of languages that raise noweb-type errors
+(add-to-list 'org-babel-noweb-error-langs "latex")
