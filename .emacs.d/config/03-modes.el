@@ -75,6 +75,8 @@
 
 ;; SCHEME SETUP
 ;; associate Scheme with GNUGuile
+;; required packages:
+;; guile-2.0
 (setq scheme-program-name "guile")
 ;; parenthesis and syntax highlighting
 (setq show-paren-delay 0
@@ -82,8 +84,11 @@
 (show-paren-mode 1)
 
 ;; SLIME SETUP
-;;get slime to associate with sbcl
-;;the path MAY be emacs or emacs24, depending on build
+;; get slime to associate with sbcl
+;; the path MAY be emacs or emacs24, depending on build
+;; required packages:
+;; sbcl, slime, sbcl-doc, cl-clx-sbcl,
+;; cl-ppcre, autoconf, texinfo, cl-swank
 (setq slime-backend "/usr/share/common-lisp/source/slime/swank-loader.lisp")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
 (setq inferior-lisp-program "/usr/bin/sbcl")
@@ -148,8 +153,8 @@
 ;; ORG2BLOG SETUP
 ;; required packages:
 ;; bzr
-(unless (fboundp 'xml-rpc-el)
-  (package-install 'xml-rpc-el))
+(unless (fboundp 'xml-rpc)
+  (package-install 'xml-rpc))
 
 (unless (fboundp 'metaweblog)
   (package-install 'metaweblog))
@@ -160,10 +165,10 @@
 (unless (fboundp 'htmlize)
   (package-install 'htmlize))
 
-(add-to-list 'load-path "~/.emacs.d/el-get/metaweblog")
-(add-to-list 'load-path "~/.emacs.d/el-get/xml-rpc-el")
-(add-to-list 'load-path "~/.emacs.d/el-get/org2blog")
-(add-to-list 'load-path "~/.emacs.d/el-get/htmlize")
+(add-to-list 'load-path "~/.emacs.d/elpa/metaweblog")
+(add-to-list 'load-path "~/.emacs.d/elpa/xml-rpc")
+(add-to-list 'load-path "~/.emacs.d/elpa/org2blog")
+(add-to-list 'load-path "~/.emacs.d/elpa/htmlize")
 
 (require 'org2blog-autoloads)
 
