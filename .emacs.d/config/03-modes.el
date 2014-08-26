@@ -219,7 +219,8 @@
 ;; AUCTEX SETUP
 ;; requires texlive packages:
 ;; texlive-latex-base, texlive-latex-recommended, latexmk,
-;; texlive-latex-extra, texlive-fonts-recommended
+;; texlive-latex-extra, texlive-fonts-recommended,
+;; texlive-generic-recommended
 (unless (fboundp 'auctex)
   (package-install 'auctex))
 
