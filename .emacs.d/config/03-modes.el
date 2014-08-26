@@ -93,6 +93,7 @@
 (slime-setup)
 
 ;; ORG-MODE SETUP
+;; get latest org here: git clone git://orgmode.org/org-mode.git
 (add-to-list 'load-path (expand-file-name "~/githubs/org-mode/lisp"))
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
 (require 'org)
@@ -145,10 +146,25 @@
                 (tags "manuel")))))
 
 ;; ORG2BLOG SETUP
+;; required packages:
+;; bzr
+(unless (fboundp 'xml-rpc-el)
+  (package-install 'xml-rpc-el))
+
+(unless (fboundp 'metaweblog)
+  (package-install 'metaweblog))
+
+(unless (fboundp 'org2blog)
+  (package-install 'org2blog))
+
+(unless (fboundp 'htmlize)
+  (package-install 'htmlize))
+
 (add-to-list 'load-path "~/.emacs.d/el-get/metaweblog")
 (add-to-list 'load-path "~/.emacs.d/el-get/xml-rpc-el")
 (add-to-list 'load-path "~/.emacs.d/el-get/org2blog")
 (add-to-list 'load-path "~/.emacs.d/el-get/htmlize")
+
 (require 'org2blog-autoloads)
 
 (setq org2blog/wp-blog-alist
@@ -217,7 +233,7 @@
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
 ;; AUCTEX SETUP
-;; requires texlive packages:
+;; required packages:
 ;; texlive-latex-base, texlive-latex-recommended, latexmk,
 ;; texlive-latex-extra, texlive-fonts-recommended,
 ;; texlive-generic-recommended
