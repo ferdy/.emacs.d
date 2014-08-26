@@ -217,6 +217,12 @@
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
 ;; AUCTEX SETUP
+;; requires texlive packages:
+;; texlive-latex-base, texlive-latex-recommended, latexmk,
+;; texlive-latex-extra, texlive-fonts-recommended
+(unless (fboundp 'auctex)
+  (package-install 'auctex))
+
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
 (autoload 'reftex-mode     "reftex" "RefTeX Minor Mode" t)
