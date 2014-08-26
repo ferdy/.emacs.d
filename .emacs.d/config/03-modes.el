@@ -269,8 +269,8 @@
 
 ;; add LaTeX to a list of languages that raise noweb-type errors
 (add-to-list 'org-babel-noweb-error-langs "latex")
-;; use ebib for BibTeX
 
+;; use ebib for BibTeX
 (unless (fboundp 'ebib)
   (package-install 'ebib))
 
