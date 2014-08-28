@@ -297,3 +297,15 @@
 
 ;; use ebib links in org-mode
 (org-add-link-type "ebib" 'ebib)
+
+;; minor mode for 'override' keybindings
+;; see comments here: http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html
+(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
+
+(define-key my-keys-minor-mode-map (kbd "M-h") 'backward-kill-word)
+
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  t " my-keys" 'my-keys-minor-mode-map)
+
+(my-keys-minor-mode 1)
