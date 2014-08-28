@@ -4,7 +4,7 @@
 
 ;; set default font
 (set-face-attribute 'default nil
-                    :family "Anonymous Pro"
+                    :family "Source Code Pro"
                     :height 115
                     :weight 'normal
                     :width 'normal)
