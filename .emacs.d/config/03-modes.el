@@ -53,6 +53,26 @@
 ;; if you want to hide the mode-line in every buffer by default
 (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
+;; minor mode for 'override' keybindings
+;; see comments here: http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html
+(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
+
+(define-key my-keys-minor-mode-map (kbd "M-h") 'backward-kill-word)
+(define-key my-keys-minor-mode-map (kbd "M-a") 'custom/backward-paragraph)
+(define-key my-keys-minor-mode-map (kbd "M-e") 'custom/forward-paragraph)
+
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  t " my-keys" 'my-keys-minor-mode-map)
+
+(my-keys-minor-mode 1)
+
+;; turn it off in the minibuffer
+(defun my-minibuffer-setup-hook ()
+  (my-keys-minor-mode 0))
+
+(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
+
 ;; DIRED SETUP
 (require 'dired)
 (define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file) ; was dired-advertised-find-file
@@ -297,23 +317,3 @@
 
 ;; use ebib links in org-mode
 (org-add-link-type "ebib" 'ebib)
-
-;; minor mode for 'override' keybindings
-;; see comments here: http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html
-(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
-
-(define-key my-keys-minor-mode-map (kbd "M-h") 'backward-kill-word)
-(define-key my-keys-minor-mode-map (kbd "M-a") 'custom/backward-paragraph)
-(define-key my-keys-minor-mode-map (kbd "M-e") 'custom/forward-paragraph)
-
-(define-minor-mode my-keys-minor-mode
-  "A minor mode so that my key settings override annoying major modes."
-  t " my-keys" 'my-keys-minor-mode-map)
-
-(my-keys-minor-mode 1)
-
-;; turn it off in the minibuffer
-(defun my-minibuffer-setup-hook ()
-  (my-keys-minor-mode 0))
-
-(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
