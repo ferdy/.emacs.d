@@ -317,3 +317,13 @@
 
 ;; use ebib links in org-mode
 (org-add-link-type "ebib" 'ebib)
+
+;; ERC SETUP
+(defun read-lines (filePath)
+"Return a list of lines of a file at filePath."
+(with-temp-buffer
+    (insert-file-contents filePath)
+    (split-string (buffer-string) "\n")))
+
+(let ((acc (read-lines "~/.my-erc-account")))
+  (setq erc-nick (car acc)))
