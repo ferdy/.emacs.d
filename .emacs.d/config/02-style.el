@@ -4,8 +4,8 @@
 
 ;; set default font
 (set-face-attribute 'default nil
-                    :family "Source Code Pro"
-                    :height 110
+                    :family "M+ 1m"
+                    :height 120
                     :weight 'normal
                     :width 'normal)
 
