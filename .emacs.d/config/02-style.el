@@ -4,8 +4,8 @@
 
 ;; set default font
 (set-face-attribute 'default nil
-                    :family "M+ 1m"
-                    :height 120
+                    :family "Anonymous Pro"
+                    :height 110
                     :weight 'normal
                     :width 'normal)
 
