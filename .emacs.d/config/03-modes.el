@@ -275,6 +275,9 @@
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 
 ;; prettify symbols
+(unless (fboundp 'latex-pretty-symbols)
+  (package-install 'latex-pretty-symbols))
+
 (require 'latex-pretty-symbols)
 
 ;; Make RefTeX faster
