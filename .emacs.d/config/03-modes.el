@@ -86,6 +86,14 @@
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
 
+;; group directories first
+(setq dired-listing-switches "--group-directories-first -lah")
+
+;; omit hidden files by default (C-x M-o to show them)
+(require 'dired-x)
+(setq-default dired-omit-files-p t) ; Buffer-local variable
+(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+
 ;; PO-MODE SETUP
 (add-to-list 'load-path "~/.emacs.d/el-get/po-mode")
 (require 'po-mode)
