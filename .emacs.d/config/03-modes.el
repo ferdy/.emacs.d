@@ -91,7 +91,7 @@
 
 ;; omit hidden files by default (C-x M-o to show them)
 (require 'dired-x)
-(setq-default dired-omit-files-p t) ; Buffer-local variable
+(setq-default dired-omit-files-p t)
 (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
 
 ;; PO-MODE SETUP
