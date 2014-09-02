@@ -329,6 +329,10 @@
 ;; use ebib links in org-mode
 (org-add-link-type "ebib" 'ebib)
 
+;; enable latex-preview-pane
+(unless (fboundp 'latex-preview-pane)
+  (package-install 'latex-preview-pane))
+
 ;; ERC SETUP
 (defun read-lines (filePath)
 "Return a list of lines of a file at filePath."

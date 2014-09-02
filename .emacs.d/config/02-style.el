@@ -166,3 +166,6 @@
 
 ;; delete trailing whitespaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; enable browse-kill-ring
+(require 'browse-kill-ring)
