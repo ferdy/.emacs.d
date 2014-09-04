@@ -342,3 +342,9 @@
 
 (let ((acc (read-lines "~/.my-erc-account")))
   (setq erc-nick (car acc)))
+
+;; ELECTRIC-PAIR-MODE SETUP
+(electric-pair-mode +1)
+
+(setq electric-pair-pairs '((?\" . ?\")
+			    (?\{ . ?\})))
