@@ -1,9 +1,9 @@
-;; Emacs init file
-;;
-;; This file simply loads the different configuration files
-;; I have in ~/.emacs.d/config.
-;;
-;; This setup makes the maintenance easier.
+;;;; Emacs init file
+
+;;; This file simply loads the different configuration files
+;;; I have in ~/.emacs.d/config.
+
+;;; This setup makes the maintenance easier.
 
 ;;; Load all ".el" files under ~/.emacs.d/config directory.
 (load "~/.emacs.d/load-directory")
