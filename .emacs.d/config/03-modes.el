@@ -1,8 +1,8 @@
-;; modes.el
-;;
-;; This file stores the configurations of every mode I use.
+;;;; 03-modes.el
 
-;; hungry-delete-mode
+;;; This file stores the configurations of every mode I use.
+
+;; Turn on hungry-delete-mode
 ;; http://endlessparentheses.com/hungry-delete-mode.html
 (unless (fboundp 'hungry-delete-mode)
   (package-install 'hungry-delete))
@@ -10,23 +10,23 @@
 (require 'hungry-delete)
 (global-hungry-delete-mode)
 
-;; turn on guru-mode
-;; see https://github.com/bbatsov/guru-mode
+;; Turn on guru-mode
+;; See https://github.com/bbatsov/guru-mode
 (unless (fboundp 'guru-mode)
   (package-install 'guru-mode))
 
 (require 'guru-mode)
 (guru-global-mode +1)
 
-;; turn on smartscan
-;; see: https://github.com/mickeynp/smart-scan
+;; Turn on smartscan
+;; See: https://github.com/mickeynp/smart-scan
 (unless (fboundp 'smartscan)
   (package-install 'smartscan))
 
 (global-smartscan-mode 1)
 
-;; minor mode to hide the mode line
-;; (see http://bzg.fr/emacs-hide-mode-line.html)
+;; Minor mode to hide the mode line
+;; See http://bzg.fr/emacs-hide-mode-line.html
 (defvar-local hidden-mode-line-mode nil)
 (defvar-local hide-mode-line nil)
 
@@ -50,11 +50,11 @@
     (run-with-idle-timer
      0 nil 'message "Hidden Mode Line Mode enabled.")))
 
-;; if you want to hide the mode-line in every buffer by default
+;; If you want to hide the mode-line in every buffer by default
 (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
-;; minor mode for 'override' keybindings
-;; see comments here: http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html
+;; Minor mode for 'override' keybindings
+;; See comments here: http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html
 (defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
 
 (define-key my-keys-minor-mode-map (kbd "M-h") 'backward-kill-word)
@@ -67,7 +67,7 @@
 
 (my-keys-minor-mode 1)
 
-;; turn it off in the minibuffer
+;; Turn it off in the minibuffer
 (defun my-minibuffer-setup-hook ()
   (my-keys-minor-mode 0))
 
@@ -79,17 +79,17 @@
 (define-key dired-mode-map (kbd "^") (lambda () (interactive) (find-alternate-file "..")))  ; was dired-up-directory
 (put 'dired-find-alternate-file 'disabled nil)
 
-;; auto refresh buffers
+;; Auto refresh buffers
 (global-auto-revert-mode 1)
 
-;; also auto refresh dired, but be quiet about it
+;; Also auto refresh dired, but be quiet about it
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
 
-;; group directories first
+;; Group directories first
 (setq dired-listing-switches "--group-directories-first -lah")
 
-;; omit hidden files by default (C-x M-o to show them)
+;; Omit hidden files by default (C-x M-o to show them)
 (require 'dired-x)
 (setq-default dired-omit-files-p t)
 (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
@@ -102,45 +102,44 @@
 (autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t)
 
 ;; SCHEME SETUP
-;; associate Scheme with GNUGuile
-;; required packages:
-;; guile-2.0
+;; Associate Scheme with GNUGuile
+;; Required packages: guile-2.0
 (setq scheme-program-name "guile")
-;; parenthesis and syntax highlighting
+;; Parenthesis and syntax highlighting
 (setq show-paren-delay 0
       show-paren-style 'parenthesis)
 (show-paren-mode 1)
 
 ;; SLIME SETUP
-;; get slime to associate with sbcl
-;; the path MAY be emacs or emacs24, depending on build
-;; required packages:
+;; Get slime to associate with sbcl
+;; The path MAY be emacs or emacs24, depending on build
+;; Required packages:
 ;; sbcl, slime, sbcl-doc, cl-clx-sbcl,
 ;; cl-ppcre, autoconf, texinfo, cl-swank
 (setq slime-backend "/usr/share/common-lisp/source/slime/swank-loader.lisp")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
 (setq inferior-lisp-program "/usr/bin/sbcl")
-;;(require 'slime)
+;; (require 'slime)
 (load-file "/usr/share/emacs/site-lisp/slime/slime.el")
-;;(slime-setup '(slime-fancy))
+;; (slime-setup '(slime-fancy))
 (slime-setup)
 
 ;; ORG-MODE SETUP
-;; get latest org here: git clone git://orgmode.org/org-mode.git
+;; Get latest org here: git clone git://orgmode.org/org-mode.git
 (add-to-list 'load-path (expand-file-name "~/githubs/org-mode/lisp"))
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
 (require 'org)
 
-;; Org-mode keys
+;; Keybindings
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-;; Org-mode log DONE tasks
+;; Log DONE tasks
 (setq org-log-done 'time)
 
-;; Org-mode: update parent nodes when child is removed
+;; Update parent nodes when child is removed
 (defun myorg-update-parent-cookie ()
   (when (equal major-mode 'org-mode)
     (save-excursion
@@ -154,7 +153,7 @@
 (defadvice kill-whole-line (after fix-cookies activate)
   (myorg-update-parent-cookie))
 
-;; completion with ido
+;; Completion with ido
 (setq org-completion-use-ido t)
 
 (org-babel-do-load-languages
@@ -167,7 +166,7 @@
    (python .t)
    (scheme .t)))
 
-;; customized agenda view
+;; Customized agenda view
 (setq org-agenda-custom-commands
             '(("g" "Agenda and giulia-tagged tasks"
                ((agenda "")
@@ -179,8 +178,7 @@
                 (tags "manuel")))))
 
 ;; ORG2BLOG SETUP
-;; required packages:
-;; bzr
+;; Required packages: bzr
 (unless (fboundp 'xml-rpc)
   (package-install 'xml-rpc))
 
@@ -227,8 +225,8 @@
 (setq doc-view-continuous t)
 
 ;; E-SHELL SETUP
-;; clear eshell buffer
-;; (see http://www.khngai.com/emacs/eshell.php)
+;; Clear eshell buffer
+;; See http://www.khngai.com/emacs/eshell.php
 (defun eshell/clear ()
   "Clear the eshell buffer."
   (interactive)
@@ -244,8 +242,8 @@
 
 (require 'magit)
 
-;; fullscreen magit-status
-;; see http://whattheemacsd.com/setup-magit.el-01.html
+;; Fullscreen magit-status
+;; See http://whattheemacsd.com/setup-magit.el-01.html
 (defadvice magit-status (around magit-fullscreen activate)
   (window-configuration-to-register :magit-fullscreen)
   ad-do-it
@@ -266,7 +264,7 @@
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
 ;; AUCTEX SETUP
-;; required packages:
+;; Required packages:
 ;; texlive-latex-base, texlive-latex-recommended, latexmk,
 ;; texlive-latex-extra, texlive-fonts-recommended,
 ;; texlive-generic-recommended, texlive-xetex
@@ -282,7 +280,7 @@
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 
-;; prettify symbols
+;; Prettify symbols
 (unless (fboundp 'latex-pretty-symbols)
   (package-install 'latex-pretty-symbols))
 
@@ -295,7 +293,7 @@
 (setq reftex-plug-into-AUCTeX t)
 
 ;; Make RefTeX work with Org-Mode
-;; use 'C-c (' instead of 'C-c [' because the latter is already
+;; Use 'C-c (' instead of 'C-c [' because the latter is already
 ;; defined in orgmode to the add-to-agenda command.
 (defun org-mode-reftex-setup ()
   (load-library "reftex")
@@ -306,7 +304,7 @@
 
 (add-hook 'org-mode-hook 'org-mode-reftex-setup)
 
-;; use latexmk for compilation by default
+;; Use latexmk for compilation by default
 (eval-after-load "tex"
   '(add-to-list 'TeX-command-list '("latexmk" "latexmk -synctex=1 -shell-escape -pdf %s" TeX-run-TeX nil t :help "Process file with latexmk"))
 )
@@ -316,23 +314,23 @@
 
 (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "xelatexmk")))
 
-;; set default engine: xetex
+;; Set default engine: xetex
 (setq-default TeX-engine 'xetex)
 
-; add LaTeX to the list of languages Org-babel will recognize
+; Add LaTeX to the list of languages Org-babel will recognize
 (require 'ob-latex)
 
-;; add LaTeX to a list of languages that raise noweb-type errors
+;; Add LaTeX to a list of languages that raise noweb-type errors
 (add-to-list 'org-babel-noweb-error-langs "latex")
 
-;; use ebib for BibTeX
+;; Use ebib for BibTeX
 (unless (fboundp 'ebib)
   (package-install 'ebib))
 
-;; use ebib links in org-mode
+;; Use ebib links in org-mode
 (org-add-link-type "ebib" 'ebib)
 
-;; enable latex-preview-pane
+;; Enable latex-preview-pane
 (unless (fboundp 'latex-preview-pane)
   (package-install 'latex-preview-pane))
 

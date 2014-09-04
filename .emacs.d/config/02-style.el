@@ -1,15 +1,15 @@
-;; style.el
-;;
-;; This file stores the interface customizations.
+;;;; 02-style.el
 
-;; set default font
+;;; This file stores the interface customizations.
+
+;; Set default font
 (set-face-attribute 'default nil
                     :family "Anonymous Pro"
                     :height 110
                     :weight 'normal
                     :width 'normal)
 
-;; set font fallback
+;; Set font fallback
 (when (functionp 'set-fontset-font)
   (set-fontset-font "fontset-default"
                     'unicode
@@ -18,26 +18,26 @@
                                :size 11.4
                                :weight 'normal)))
 
-;; turn off blinking cursor
+;; Turn off blinking cursor
 (blink-cursor-mode 0)
 
-;; toggle all frames maximized and fullscreen
+;; Toggle all frames maximized and fullscreen
 (modify-all-frames-parameters '((fullscreen . maximized)))
 
-;; turn off mouse interface early in startup to avoid momentary display
+;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
 
-;; scrolling
+;; Scrolling
 (setq redisplay-dont-pause t
       scroll-margin 1
       scroll-step 1
       scroll-conservatively 10000
       scroll-preserve-screen-position 1)
 
-;; undo scrolling
+;; Undo scrolling
 (defvar unscroll-point (make-marker)
   "Cursor position for next call to 'unscroll'.")
 
@@ -88,54 +88,54 @@
   (set-window-start nil unscroll-window-start)
   (set-window-hscroll nil unscroll-hscroll))
 
-;; disable annoying prompts
+;; Disable annoying prompts
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq kill-buffer-query-functions
   (remq 'process-kill-buffer-query-function
          kill-buffer-query-functions))
 
-;; disable splash screen
+;; Disable splash screen
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t)
 
-;; disable scratch buffer message
+;; Disable scratch buffer message
 (setq initial-scratch-message nil)
 
-;; tooltips in the echo area
+;; Tooltips in the echo area
 (tooltip-mode -1)
 (setq tooltip-use-echo-area t)
 
-;; linum+ for better line numbers
+;; Linum+ for better line numbers
 (add-to-list 'load-path "~/.emacs.d/various")
 (require 'linum+)
 (setq linum+-dynamic-format " %%%dd")
 
-;; linum+ resets linum-format to "smart" when it's loaded, hence we have to
+;; Linum+ resets linum-format to "smart" when it's loaded, hence we have to
 ;; use a eval-after-load hook to set it to "dynamic".
 (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))
 
-;; turn on ido-mode for better buffers switching
+;; Turn on ido-mode for better buffers switching
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 
-;; set unique buffer names
+;; Set unique buffer names
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward uniquify-separator ":")
 
-;; faster echo keystrokes
-;; see http://endlessparentheses.com/faster-keystroke-echo.html
+;; Faster echo keystrokes
+;; See http://endlessparentheses.com/faster-keystroke-echo.html
 (setq echo-keystrokes 0.1)
 
-;; set the directory where all backup and autosave files will be saved
+;; Set the directory where all backup and autosave files will be saved
 (defvar backup-dir "~/tmp/")
 (setq backup-directory-alist
       `((".*" . ,backup-dir)))
 (setq auto-save-file-name-transforms
       `((".*" ,backup-dir t)))
 
-;; set solarized theme
+;; Set solarized theme
 (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 (require 'solarized-dark-theme)
 
@@ -146,7 +146,7 @@
                (when (window-system f) (load-theme 'solarized-dark t)))))
 (load-theme 'solarized-dark t))
 
-;; functions to remove background when on terminals
+;; Functions to remove background when on terminals
 (defun on-frame-open (frame)
   (if (not (display-graphic-p frame))
     (set-face-background 'default "unspecified-bg" frame)))
@@ -164,8 +164,8 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 
-;; delete trailing whitespaces
+;; Delete trailing whitespaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; enable browse-kill-ring
+;; Enable browse-kill-ring
 (require 'browse-kill-ring)

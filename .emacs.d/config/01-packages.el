@@ -1,24 +1,25 @@
-;; packages.el
-;;
-;; This file stores all the packages related configurations.
+;;;;  01-packages.el
+
+;;; This file stores all the packages related configurations.
 
 (require 'package)
-;; add the original Emacs Lisp Package Archive
+
+;; Add the original Emacs Lisp Package Archive
 (add-to-list 'package-archives
              '("elpa" . "http://tromey.com/elpa/"))
-;; add the user-contributed repository
+;; Add the user-contributed repository
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; add Melpa
+;; Add Melpa
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-;; packages installed via package-el are activated
+;; Packages installed via package-el are activated
 ;; AFTER .emacs is loaded. So I need to call initialize
 ;; to be able to use theme.
 (package-initialize)
 
-;; use El-Get to sync repos and dependencies.
+;; Use El-Get to sync repos and dependencies.
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
