@@ -269,7 +269,7 @@
 ;; required packages:
 ;; texlive-latex-base, texlive-latex-recommended, latexmk,
 ;; texlive-latex-extra, texlive-fonts-recommended,
-;; texlive-generic-recommended
+;; texlive-generic-recommended, texlive-xetex
 (unless (fboundp 'auctex)
   (package-install 'auctex))
 
@@ -314,7 +314,10 @@
   '(add-to-list 'TeX-command-list '("xelatexmk" "latexmk -synctex=1 -shell-escape -xelatex %s" TeX-run-TeX nil t :help "Process file with xelatexmk"))
 )
 
-(add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
+(add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "xelatexmk")))
+
+;; set default engine: xetex
+(setq-default TeX-engine 'xetex)
 
 ; add LaTeX to the list of languages Org-babel will recognize
 (require 'ob-latex)
