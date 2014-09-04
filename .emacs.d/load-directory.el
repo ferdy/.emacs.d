@@ -1,7 +1,6 @@
 ;;;; load-directory.el
 
-;;; Handy function to load recursively all '.el' files in a given directory
-
+;; Handy function to load recursively all '.el' files in a given directory
 (defun load-directory (directory)
   "Load recursively all '.el' files in DIRECTORY."
   (dolist (element (directory-files-and-attributes directory nil nil nil))
