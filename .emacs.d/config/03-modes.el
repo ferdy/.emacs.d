@@ -177,36 +177,6 @@
                 (tags-todo "manuel")
                 (tags "manuel")))))
 
-;; ORG2BLOG SETUP
-;; Required packages: bzr
-(unless (fboundp 'xml-rpc)
-  (package-install 'xml-rpc))
-
-(unless (fboundp 'metaweblog)
-  (package-install 'metaweblog))
-
-(unless (fboundp 'org2blog)
-  (package-install 'org2blog))
-
-(unless (fboundp 'htmlize)
-  (package-install 'htmlize))
-
-(add-to-list 'load-path "~/.emacs.d/elpa/metaweblog")
-(add-to-list 'load-path "~/.emacs.d/elpa/xml-rpc")
-(add-to-list 'load-path "~/.emacs.d/elpa/org2blog")
-(add-to-list 'load-path "~/.emacs.d/elpa/htmlize")
-
-(require 'org2blog-autoloads)
-
-(setq org2blog/wp-blog-alist
-           '(("informatica.boccaperta.com"
-
-              :url "http://informatica.boccaperta.com/xmlrpc.php"
-              :username "manuel")))
-
-(setq org2blog/wp-use-sourcecode-shortcode 't)
-(setq org2blog/wp-sourcecode-default-params nil)
-
 ;; ORG-PRESENT SETUP
 (add-to-list 'load-path "~/.emacs.d/various")
 (autoload 'org-present "org-present" nil t)
