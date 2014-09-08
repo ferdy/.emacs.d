@@ -12,7 +12,7 @@
 
 ;; Turn on guru-mode
 ;; See https://github.com/bbatsov/guru-mode
-(unless (fboundp 'guru-mode)
+(unless (package-installed-p 'guru-mode)
   (package-install 'guru-mode))
 
 (require 'guru-mode)
@@ -20,7 +20,7 @@
 
 ;; Turn on smartscan
 ;; See: https://github.com/mickeynp/smart-scan
-(unless (fboundp 'smartscan)
+(unless (package-installed-p 'smartscan)
   (package-install 'smartscan))
 
 (global-smartscan-mode 1)
@@ -207,7 +207,7 @@
       eshell-save-history-on-exit t)
 
 ;; MAGIT SETUP
-(unless (fboundp 'magit)
+(unless (package-installed-p 'magit)
   (package-install 'magit))
 
 (require 'magit)
@@ -238,7 +238,7 @@
 ;; texlive-latex-base, texlive-latex-recommended, latexmk,
 ;; texlive-latex-extra, texlive-fonts-recommended,
 ;; texlive-generic-recommended, texlive-xetex
-(unless (fboundp 'auctex)
+(unless (package-installed-p 'auctex)
   (package-install 'auctex))
 
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
@@ -251,7 +251,7 @@
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 
 ;; Prettify symbols
-(unless (fboundp 'latex-pretty-symbols)
+(unless (package-installed-p 'latex-pretty-symbols)
   (package-install 'latex-pretty-symbols))
 
 (require 'latex-pretty-symbols)
@@ -294,14 +294,14 @@
 (add-to-list 'org-babel-noweb-error-langs "latex")
 
 ;; Use ebib for BibTeX
-(unless (fboundp 'ebib)
+(unless (package-installed-p 'ebib)
   (package-install 'ebib))
 
 ;; Use ebib links in org-mode
 (org-add-link-type "ebib" 'ebib)
 
 ;; Enable latex-preview-pane
-(unless (fboundp 'latex-preview-pane)
+(unless (package-installed-p 'latex-preview-pane)
   (package-install 'latex-preview-pane))
 
 ;; ERC SETUP
@@ -319,3 +319,10 @@
 
 (setq electric-pair-pairs '((?\" . ?\")
 			    (?\{ . ?\})))
+;; CLOJURE MODE
+(unless (package-installed-p 'clojure-mode)
+  (package-install 'clojure-mode))
+
+;; CIDER
+(unless (package-installed-p 'cider)
+  (package-install 'cider))
