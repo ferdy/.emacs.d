@@ -115,10 +115,31 @@
 (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))
 
 ;; Turn on ido-mode for better buffers switching
+(defvar ido-context-switch-command nil)
+(defvar ido-cur-item nil)
+(defvar ido-default-item nil)
+(defvar ido-cur-list nil)
+
+(unless (package-installed-p 'ido-ubiquitous)
+  (package-install 'ido-ubiquitous))
+(ido-ubiquitous-mode +1)
+
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
+
+;; Enable smex
+;; See https://github.com/nonsequitur/smex
+(unless (package-installed-p 'smex)
+  (package-install 'smex))
+
+(smex-initialize)
+
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; Set unique buffer names
 (require 'uniquify)
