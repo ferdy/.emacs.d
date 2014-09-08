@@ -10,14 +10,6 @@
 (require 'hungry-delete)
 (global-hungry-delete-mode)
 
-;; Turn on guru-mode
-;; See https://github.com/bbatsov/guru-mode
-(unless (package-installed-p 'guru-mode)
-  (package-install 'guru-mode))
-
-(require 'guru-mode)
-(guru-global-mode +1)
-
 ;; Turn on smartscan
 ;; See: https://github.com/mickeynp/smart-scan
 (unless (package-installed-p 'smartscan)
