@@ -124,6 +124,15 @@
   (package-install 'ido-ubiquitous))
 (ido-ubiquitous-mode +1)
 
+;; Turn on flx-ido-mode for better flex matching
+;; See https://github.com/lewang/flx
+(unless (package-installed-p 'flx-ido)
+  (package-install 'flx-ido))
+(flx-ido-mode 1)
+
+;; disable ido faces to see flx highlights.
+(setq ido-use-faces nil)
+
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq ido-create-new-buffer 'always)
