@@ -4,10 +4,9 @@
 
 ;; Turn on hungry-delete-mode
 ;; http://endlessparentheses.com/hungry-delete-mode.html
-(unless (fboundp 'hungry-delete-mode)
+(unless (package-installed-p 'hungry-delete-mode)
   (package-install 'hungry-delete))
 
-(require 'hungry-delete)
 (global-hungry-delete-mode)
 
 ;; Turn on smartscan
@@ -311,6 +310,7 @@
 
 (setq electric-pair-pairs '((?\" . ?\")
 			    (?\{ . ?\})))
+
 ;; CLOJURE MODE
 (unless (package-installed-p 'clojure-mode)
   (package-install 'clojure-mode))
@@ -318,3 +318,17 @@
 ;; CIDER
 (unless (package-installed-p 'cider)
   (package-install 'cider))
+
+;; Enable eldoc in Clojure buffers
+(add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+
+;; Hide the *nrepl-connection* and *nrepl-server* when C-x b
+;; (they are available in C-x C-b)
+(setq nrepl-hide-special-buffers t)
+
+;; Prefer local resources to remote (tramp) ones when both are available
+(setq cider-prefer-local-resources t)
+
+;; Prevent the auto-display of the REPL buffer in a separate
+;; window after connection is established
+(setq cider-repl-pop-to-buffer-on-connect nil)
