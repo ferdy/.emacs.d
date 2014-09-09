@@ -16,9 +16,7 @@
   "Replace OLDTAGS elements with NEWTAGS elements recursively."
   (custom/only-strings-p oldtags)
   (custom/only-strings-p newtags)
-  (and (not (eq (length oldtags)
-		(length newtags)))
-       (error ("Lists must have same length.")))
+  (custom/lists-same-length-p oldtags newtags)
   (and (not (eq (car oldtags) nil))
        (not (eq (car newtags) nil))
        (save-excursion
@@ -37,3 +35,11 @@
        (if (stringp (car list))
 	   (not (custom/only-strings-p (cdr list)))
 	 (error ("List must only contain strings.")))))
+
+;; Check if two lists have the same length
+(defun custom/lists-same-length-p (a b)
+  "Check if lists A and B have the same length."
+  (if (eq (length a)
+	  (length b))
+       t
+      (error ("Lists must have same length."))))
