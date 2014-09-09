@@ -13,11 +13,13 @@
 
 (defun custom/replace-matches-recursively (oldtags newtags)
   "Replace OLDTAGS elements with NEWTAGS elements recursively."
-  (save-excursion
-    (save-restriction
-      (save-match-data
-	(goto-char (point-min))
-	(replace-string (car oldtags)
-			(car newtags))
-	(custom/replace-matches-recursively (cdr-safe oldtags)
-					    (cdr-safe newtags))))))
+  (and (not (eq (car oldtags) nil))
+       (not (eq (car newtags) nil))
+       (save-excursion
+	 (save-restriction
+	   (save-match-data
+	     (goto-char (point-min))
+	     (replace-string (car oldtags)
+			     (car newtags))
+	     (custom/replace-matches-recursively (cdr oldtags)
+						 (cdr newtags)))))))
