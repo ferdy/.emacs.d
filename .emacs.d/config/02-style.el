@@ -246,7 +246,3 @@
 
 ;; Enable browse-kill-ring
 (require 'browse-kill-ring)
-
-;; Enable rainbow-mode
-(unless (package-installed-p 'rainbow-mode)
-  (package-install 'rainbow-mode))
