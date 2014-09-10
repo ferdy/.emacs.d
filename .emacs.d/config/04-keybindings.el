@@ -131,3 +131,52 @@ This is the same as using \\[set-mark-command] with the prefix argument."
             ido-text-init ido-text
             ido-exit 'refresh)
       (exit-minibuffer))))
+
+;; Use a ido-charged recentf
+(require 'recentf)
+
+;; get rid of 'find-file-read-only' and replace it with something
+;; more useful.
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+
+;; enable recent files mode.
+(recentf-mode t)
+
+;; 50 files ought to be enough.
+(setq recentf-max-saved-items 50)
+
+(defun ido-recentf-open ()
+  "Use 'ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+
+;; C-z for repeat (usually C-x z)
+(global-set-key (kbd "C-z") 'repeat)
+
+;; C-x C-b for ibuffer
+(global-set-key "\C-x\C-b" 'ibuffer)
+
+;; Searching buffers with occur mode
+(eval-when-compile
+  (require 'cl))
+
+(defun get-buffers-matching-mode (mode)
+  "Returns a list of buffers where their major-mode is equal to MODE"
+  (let ((buffer-mode-matches '()))
+   (dolist (buf (buffer-list))
+     (with-current-buffer buf
+       (if (eq mode major-mode)
+           (add-to-list 'buffer-mode-matches buf))))
+   buffer-mode-matches))
+
+(defun multi-occur-in-this-mode ()
+  "Show all lines matching REGEXP in buffers with this major mode."
+  (interactive)
+  (multi-occur
+   (get-buffers-matching-mode major-mode)
+   (car (occur-read-primary-args))))
+
+;; global key for 'multi-occur-in-this-mode'
+(global-set-key "\C-x\C-o" 'multi-occur-in-this-mode)
