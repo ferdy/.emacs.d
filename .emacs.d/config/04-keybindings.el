@@ -63,8 +63,6 @@
 (define-key toggle-map "c" 'column-number-mode)
 (define-key toggle-map "l" 'linum-mode)
 (define-key toggle-map "h" 'hidden-mode-line-mode)
-(define-key toggle-map "s" 'eshell)
-(define-key toggle-map "m" 'magit-status)
 (define-key toggle-map "u" 'unscroll)
 
 ;; Goto line is M-g
@@ -178,5 +176,14 @@ This is the same as using \\[set-mark-command] with the prefix argument."
    (get-buffers-matching-mode major-mode)
    (car (occur-read-primary-args))))
 
-;; global key for 'multi-occur-in-this-mode'
+;; Global key for 'multi-occur-in-this-mode'
 (global-set-key "\C-x\C-o" 'multi-occur-in-this-mode)
+
+;; Global key for eshell
+(global-set-key (kbd "<f1>") 'eshell)
+
+;; Global key for shell
+(global-set-key (kbd "<f2>") 'shell)
+
+;; Global key for magit-status
+(global-set-key (kbd "<f3>") 'magit-status)
