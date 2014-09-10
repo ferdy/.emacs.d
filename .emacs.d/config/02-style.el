@@ -4,8 +4,8 @@
 
 ;; Set default font
 (set-face-attribute 'default nil
-                    :family "Anonymous Pro"
-                    :height 110
+                    :family "Source Code Pro"
+                    :height 115
                     :weight 'normal
                     :width 'normal)
 
@@ -208,8 +208,12 @@
 (setq auto-save-file-name-transforms
       `((".*" ,backup-dir t)))
 
+;; Install zenburn-theme
+(unless (package-installed-p 'zenburn-theme)
+  (package-install 'zenburn-theme))
+
 ;; Set solarized theme
-(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
+(add-to-list 'load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 (require 'solarized-dark-theme)
 
 (if (daemonp)
@@ -242,3 +246,7 @@
 
 ;; Enable browse-kill-ring
 (require 'browse-kill-ring)
+
+;; Enable rainbow-mode
+(unless (package-installed-p 'rainbow-mode)
+  (package-install 'rainbow-mode))

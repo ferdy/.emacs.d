@@ -168,6 +168,12 @@
                 (tags-todo "manuel")
                 (tags "manuel")))))
 
+;; Turn off preamble and postamble in HTML export
+(setq org-html-preamble nil)
+(setq org-html-postamble nil)
+(setq org-export-html-style-default "")
+(setq org-export-html-style-include-default nil)
+
 ;; ORG-PRESENT SETUP
 (add-to-list 'load-path "~/.emacs.d/various")
 (autoload 'org-present "org-present" nil t)
