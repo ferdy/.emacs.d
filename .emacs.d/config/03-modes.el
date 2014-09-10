@@ -284,7 +284,7 @@
 ;; Set default engine: xetex
 (setq-default TeX-engine 'xetex)
 
-; Add LaTeX to the list of languages Org-babel will recognize
+;; Add LaTeX to the list of languages Org-babel will recognize
 (require 'ob-latex)
 
 ;; Add LaTeX to a list of languages that raise noweb-type errors
