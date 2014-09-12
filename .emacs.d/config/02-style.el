@@ -129,6 +129,14 @@
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
 
+;; Turn on flx-ido for better search results
+(unless (package-installed-p 'flx-ido)
+  (package-install 'flx-ido))
+
+(require 'flx-ido)
+(flx-ido-mode 1)
+(setq flx-ido-use-faces nil)
+
 ;; Ido-charged version of imenu
 ;; See http://www.emacswiki.org/emacs/ImenuMode#toc13
 (defun ido-goto-symbol (&optional symbol-list)
