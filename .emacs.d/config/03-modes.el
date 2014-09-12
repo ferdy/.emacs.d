@@ -338,3 +338,6 @@
 ;; Prevent the auto-display of the REPL buffer in a separate
 ;; window after connection is established
 (setq cider-repl-pop-to-buffer-on-connect nil)
+
+;; Turn on visual-line-mode
+(global-visual-line-mode 1)
