@@ -110,9 +110,7 @@
 (setq slime-backend "/usr/share/common-lisp/source/slime/swank-loader.lisp")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
 (setq inferior-lisp-program "/usr/bin/sbcl")
-;; (require 'slime)
 (load-file "/usr/share/emacs/site-lisp/slime/slime.el")
-;; (slime-setup '(slime-fancy))
 (slime-setup)
 
 ;; ORG-MODE SETUP
@@ -191,7 +189,7 @@
 ;; DOC-VIEW-MODE SETUP
 (setq doc-view-continuous t)
 
-;; E-SHELL SETUP
+;; ESHELL SETUP
 ;; Clear eshell buffer
 ;; See http://www.khngai.com/emacs/eshell.php
 (defun eshell/clear ()
@@ -202,6 +200,18 @@
 
 (setq eshell-cmpl-cycle-completions nil
       eshell-save-history-on-exit t)
+
+;; Eshell history powered by ido
+(add-hook 'eshell-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-c h")
+			   (lambda ()
+			     (interactive)
+			     (insert
+			      (ido-completing-read "Eshell history: "
+						   (delete-dups
+						    (ring-elements eshell-history-ring))))))
+	    (local-set-key (kbd "C-c C-h") 'eshell-list-history)))
 
 ;; MAGIT SETUP
 (unless (package-installed-p 'magit)
