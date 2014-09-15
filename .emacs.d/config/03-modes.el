@@ -344,3 +344,9 @@
   (package-install 'pandoc-mode))
 
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+
+;; MULTIFILES SETUP
+(unless (package-installed-p 'multifiles)
+  (package-install 'multifiles))
+
+(require 'multifiles)
