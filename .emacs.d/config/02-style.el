@@ -105,6 +105,9 @@
 (tooltip-mode -1)
 (setq tooltip-use-echo-area t)
 
+;; Turn on visual-line-mode
+(global-visual-line-mode 1)
+
 ;; Linum+ for better line numbers
 (add-to-list 'load-path "~/.emacs.d/various")
 (require 'linum+)
@@ -253,4 +256,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Enable browse-kill-ring
+(unless (package-installed-p 'browse-kill-ring)
+  (package-install 'browse-kill-ring))
+
 (require 'browse-kill-ring)

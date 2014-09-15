@@ -317,11 +317,11 @@
 (setq electric-pair-pairs '((?\" . ?\")
 			    (?\{ . ?\})))
 
-;; CLOJURE MODE
+;; CLOJURE MODE SETUP
 (unless (package-installed-p 'clojure-mode)
   (package-install 'clojure-mode))
 
-;; CIDER
+;; CIDER SETUP
 (unless (package-installed-p 'cider)
   (package-install 'cider))
 
@@ -339,5 +339,8 @@
 ;; window after connection is established
 (setq cider-repl-pop-to-buffer-on-connect nil)
 
-;; Turn on visual-line-mode
-(global-visual-line-mode 1)
+;; PANDOC SETUP
+(unless (package-installed-p 'pandoc-mode)
+  (package-install 'pandoc-mode))
+
+(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
