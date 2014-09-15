@@ -116,9 +116,9 @@
 (slime-setup)
 
 ;; ORG-MODE SETUP
-;; Get latest org here: git clone git://orgmode.org/org-mode.git
-(add-to-list 'load-path (expand-file-name "~/githubs/org-mode/lisp"))
-(add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
+(unless (package-installed-p 'org)
+  (package-install 'org))
+
 (require 'org)
 
 ;; Keybindings
