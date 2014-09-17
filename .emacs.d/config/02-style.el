@@ -125,12 +125,20 @@
 
 (unless (package-installed-p 'ido-ubiquitous)
   (package-install 'ido-ubiquitous))
+
 (ido-ubiquitous-mode +1)
 
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (setq ido-create-new-buffer 'always)
 (ido-mode 1)
+
+;; Turn on ido-vertical-mode
+(unless (package-installed-p 'ido-vertical-mode)
+  (package-install 'ido-vertical-mode))
+
+(require 'ido-vertical-mode)
+(ido-vertical-mode 1)
 
 ;; Turn on flx-ido for better search results
 (unless (package-installed-p 'flx-ido)
@@ -260,3 +268,11 @@
   (package-install 'browse-kill-ring))
 
 (require 'browse-kill-ring)
+
+;; Smart mode line
+(setq sml/no-confirm-load-theme t)
+(unless (package-installed-p 'smart-mode-line)
+  (package-install 'smart-mode-line))
+
+(sml/setup)
+(sml/apply-theme 'light)

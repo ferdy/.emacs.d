@@ -42,7 +42,7 @@
      0 nil 'message "Hidden Mode Line Mode enabled.")))
 
 ;; If you want to hide the mode-line in every buffer by default
-(add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
+;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
 ;; Minor mode for 'override' keybindings
 ;; See comments here: http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html
@@ -245,6 +245,7 @@
 ;; texlive-latex-base, texlive-latex-recommended, latexmk,
 ;; texlive-latex-extra, texlive-fonts-recommended,
 ;; texlive-generic-recommended, texlive-xetex
+;; texlive-lang-italian
 (unless (package-installed-p 'auctex)
   (package-install 'auctex))
 
