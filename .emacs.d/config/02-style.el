@@ -16,7 +16,7 @@
                     (font-spec :family "DejaVu Sans Mono"
                                :width 'normal
                                :size 11.4
-                               :weight 'normal)))
+			       :weight 'normal)))
 
 ;; Turn off blinking cursor
 (blink-cursor-mode 0)
@@ -269,10 +269,56 @@
 
 (require 'browse-kill-ring)
 
-;; Smart mode line
-(setq sml/no-confirm-load-theme t)
-(unless (package-installed-p 'smart-mode-line)
-  (package-install 'smart-mode-line))
+;; Mode line setup
+;; See http://amitp.blogspot.com/2011/08/emacs-custom-mode-line.html
+(setq-default
+ mode-line-format
+ '(; Position
+   "%4l:"
+   "%3c"
+   ; emacsclient [default -- keep?]
+   mode-line-client
+   "  "
+   ; read-only or modified status
+   (:eval
+    (cond (buffer-read-only
+           " RO ")
+          ((buffer-modified-p)
+           " ** ")
+          (t "      ")))
+   "    "
+   ; directory and buffer/file name
+   (:eval (shorten-directory default-directory 30))
+   "%b"
+   ; narrow [default -- keep?]
+   " %n "
+   ; mode indicators: vc, recursive edit, major mode, minor modes, process, global
+   (vc-mode vc-mode)
+   "  %["
+   mode-name
+   "%] "
+   (:eval (format-mode-line minor-mode-alist))
+   mode-line-process
+   (global-mode-string global-mode-string)
+   "    "
+   ))
 
-(sml/setup)
-(sml/apply-theme 'light)
+;; Helper function
+(defun shorten-directory (dir max-length)
+  "Show up to `max-length' characters of a directory name `dir'."
+  (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
+        (output ""))
+    (when (and path (equal "" (car path)))
+      (setq path (cdr path)))
+    (while (and path (< (length output) (- max-length 4)))
+      (setq output (concat (car path) "/" output))
+      (setq path (cdr path)))
+    (when path
+      (setq output (concat ".../" output)))
+    output))
+
+;; Extra mode line faces
+(make-face 'mode-line-80col-face)
+(set-face-attribute 'mode-line-80col-face nil
+    :inherit 'mode-line-position-face
+    :foreground "black" :background "#eab700")
