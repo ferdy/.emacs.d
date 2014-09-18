@@ -316,9 +316,3 @@
     (when path
       (setq output (concat ".../" output)))
     output))
-
-;; Extra mode line faces
-(make-face 'mode-line-80col-face)
-(set-face-attribute 'mode-line-80col-face nil
-    :inherit 'mode-line-position-face
-    :foreground "black" :background "#eab700")
