@@ -301,6 +301,7 @@
    mode-line-process
    (global-mode-string global-mode-string)
    "    "
+   "%p"
    ))
 
 ;; Helper function
