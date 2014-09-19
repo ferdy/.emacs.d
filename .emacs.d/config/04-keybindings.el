@@ -185,8 +185,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; Global key for shell
 (global-set-key (kbd "<f2>") 'shell)
 
+;; Global key for ansi-term
+(global-set-key (kbd "<f3>") 'ansi-term)
+
 ;; Global key for magit-status
-(global-set-key (kbd "<f3>") 'magit-status)
+(global-set-key (kbd "<f4>") 'magit-status)
 
 ;; Global key fo mf/mirror-region-in-multifile
 (global-set-key (kbd "C-!") 'mf/mirror-region-in-multifile)
