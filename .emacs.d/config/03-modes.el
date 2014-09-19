@@ -361,3 +361,9 @@
   (package-install 'multifiles))
 
 (require 'multifiles)
+
+;; RAINBOW DELIMITERS SETUP
+(unless (package-installed-p 'rainbow-delimiters)
+  (package-install 'rainbow-delimiters))
+
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)

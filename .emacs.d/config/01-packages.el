@@ -14,10 +14,10 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-;; Packages installed via package-el are activated
-;; AFTER .emacs is loaded. So I need to call initialize
-;; to be able to use theme.
 (package-initialize)
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
 
 ;; Use El-Get to sync repos and dependencies.
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
