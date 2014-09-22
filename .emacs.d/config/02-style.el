@@ -227,10 +227,6 @@
 (setq auto-save-file-name-transforms
       `((".*" ,backup-dir t)))
 
-;; Install zenburn-theme
-(unless (package-installed-p 'zenburn-theme)
-  (package-install 'zenburn-theme))
-
 ;; Set solarized theme
 (add-to-list 'load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
 (require 'solarized-dark-theme)
@@ -301,7 +297,7 @@
    mode-line-process
    (global-mode-string global-mode-string)
    "    "
-   "%p"
+   "%p/%I"
    ))
 
 ;; Helper function
@@ -317,3 +313,10 @@
     (when path
       (setq output (concat "../" output)))
     output))
+
+;; Exclude some directories in grep
+(eval-after-load 'grep
+  '(progn
+     (add-to-list 'grep-find-ignored-directories "auto")
+     (add-to-list 'grep-find-ignored-directories "elpa")))
+(add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))

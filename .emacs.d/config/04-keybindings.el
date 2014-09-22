@@ -133,11 +133,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; Use a ido-charged recentf
 (require 'recentf)
 
-;; get rid of 'find-file-read-only' and replace it with something
+;; Get rid of 'find-file-read-only' and replace it with something
 ;; more useful.
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
-;; enable recent files mode.
+;; Enable recent files mode.
 (recentf-mode t)
 
 ;; 50 files ought to be enough.
