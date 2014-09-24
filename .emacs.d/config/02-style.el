@@ -293,7 +293,7 @@
    "  %["
    mode-name
    "%] "
-   (:eval (format-mode-line minor-mode-alist))
+   ; (:eval (format-mode-line minor-mode-alist))
    mode-line-process
    (global-mode-string global-mode-string)
    "    "
