@@ -67,5 +67,6 @@
 (defun create-scratch-buffer nil
   "Create a scratch buffer."
   (interactive)
+  (cd "~/")
   (switch-to-buffer (get-buffer-create "*scratch*"))
   (lisp-interaction-mode))
