@@ -62,3 +62,10 @@
     (interactive)
     (revert-buffer nil t t)
     (message (concat "Reverted buffer " (buffer-name))))
+
+;; Create scratch buffer, useful if I kill it by mistake
+(defun create-scratch-buffer nil
+  "Create a scratch buffer."
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*"))
+  (lisp-interaction-mode))
