@@ -26,7 +26,7 @@
 	     (replace-string (car oldtags)
 			     (car newtags))
 	     (custom/replace-string-matches-recursively (cdr oldtags)
-						 (cdr newtags)))))))
+							(cdr newtags)))))))
 
 ;; Check if the given list contains only strings
 (defun custom/only-strings-p (list)
@@ -41,7 +41,7 @@
   "Check if lists A and B have the same length."
   (if (eq (length a)
 	  (length b))
-       t
+      t
     (error ("Lists must have same length."))))
 
 ;; Insert the name of the other buffer or window into the active buffer
@@ -59,9 +59,9 @@
 
 ;; Reverts (reloads from file) the current buffer without asking any questions
 (defun revert-this-buffer ()
-    (interactive)
-    (revert-buffer nil t t)
-    (message (concat "Reverted buffer " (buffer-name))))
+  (interactive)
+  (revert-buffer nil t t)
+  (message (concat "Reverted buffer " (buffer-name))))
 
 ;; Create scratch buffer, useful if I kill it by mistake
 (defun create-scratch-buffer nil
@@ -70,3 +70,32 @@
   (cd "~/")
   (switch-to-buffer (get-buffer-create "*scratch*"))
   (lisp-interaction-mode))
+
+;; Aggressive auto-indentation
+;; http://endlessparentheses.com/permanent-auto-indentation.html
+(require 'cl-lib)
+(defun custom/indent-defun ()
+  "Indent current defun."
+  (interactive)
+  (unless (region-active-p)
+    (let ((l (save-excursion (beginning-of-defun 1) (point)))
+          (r (save-excursion (end-of-defun 1) (point))))
+      (cl-letf (((symbol-function 'message) #'ignore))
+        (indent-region l r)))))
+
+(defun custom/activate-aggressive-indent ()
+  "Locally add `custom/indent-defun' to `post-command-hook'."
+  (add-hook 'post-command-hook
+            #'custom/indent-defun nil 'local))
+
+(add-hook 'emacs-lisp-mode-hook
+          #'custom/activate-aggressive-indent)
+
+(add-hook 'clojure-mode-hook
+          #'custom/activate-aggressive-indent)
+
+(add-hook 'shell-script-mode-hook
+          #'custom/activate-aggressive-indent)
+
+(add-hook 'c-mode-hook
+	  #'custom/activate-aggressive-indent)

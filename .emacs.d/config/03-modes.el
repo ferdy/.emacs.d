@@ -157,14 +157,14 @@
 
 ;; Customized agenda view
 (setq org-agenda-custom-commands
-            '(("g" "Agenda and giulia-tagged tasks"
-               ((agenda "")
-                (tags-todo "giulia")
-                (tags "giulia")))
-              ("m" "Agenda and manuel-tagged tasks"
-               ((agenda "")
-                (tags-todo "manuel")
-                (tags "manuel")))))
+      '(("g" "Agenda and giulia-tagged tasks"
+	 ((agenda "")
+	  (tags-todo "giulia")
+	  (tags "giulia")))
+	("m" "Agenda and manuel-tagged tasks"
+	 ((agenda "")
+	  (tags-todo "manuel")
+	  (tags "manuel")))))
 
 ;; Turn off preamble and postamble in HTML export
 (setq org-html-preamble nil)
