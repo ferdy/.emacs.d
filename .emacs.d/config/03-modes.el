@@ -276,8 +276,8 @@
 (defun org-mode-reftex-setup ()
   (load-library "reftex")
   (and (buffer-file-name)
-  (file-exists-p (buffer-file-name))
-  (reftex-parse-all))
+       (file-exists-p (buffer-file-name))
+       (reftex-parse-all))
   (define-key org-mode-map (kbd "C-c (") 'reftex-citation))
 
 (add-hook 'org-mode-hook 'org-mode-reftex-setup)
@@ -285,10 +285,10 @@
 ;; Use latexmk for compilation by default
 (eval-after-load "tex"
   '(add-to-list 'TeX-command-list '("latexmk" "latexmk -synctex=1 -shell-escape -pdf %s" TeX-run-TeX nil t :help "Process file with latexmk"))
-)
+  )
 (eval-after-load "tex"
   '(add-to-list 'TeX-command-list '("xelatexmk" "latexmk -synctex=1 -shell-escape -xelatex %s" TeX-run-TeX nil t :help "Process file with xelatexmk"))
-)
+  )
 
 (add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "xelatexmk")))
 
@@ -312,10 +312,16 @@
 (unless (package-installed-p 'latex-preview-pane)
   (package-install 'latex-preview-pane))
 
+;; Add latex-extra
+(unless (package-installed-p 'latex-extra)
+  (package-install 'latex-extra))
+
+(add-hook 'LaTeX-mode-hook #'latex-extra-mode)
+
 ;; ERC SETUP
 (defun read-lines (filePath)
-"Return a list of lines of a file at filePath."
-(with-temp-buffer
+  "Return a list of lines of a file at filePath."
+  (with-temp-buffer
     (insert-file-contents filePath)
     (split-string (buffer-string) "\n")))
 
