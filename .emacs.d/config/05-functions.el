@@ -88,6 +88,7 @@
   (add-hook 'post-command-hook
             #'custom/indent-defun nil 'local))
 
+;; add hooks for every programming language I need aggressive auto-indentation
 (add-hook 'emacs-lisp-mode-hook
           #'custom/activate-aggressive-indent)
 
