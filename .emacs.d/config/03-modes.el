@@ -339,5 +339,7 @@
 (require 'tramp)
 
 (setq tramp-default-method "ssh")
-(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+
+;; ANGE FTP SETUP
+(setq ange-ftp-dumb-unix-host-regexp "^ftp\\.aruba\\.it\\|ftp\\.tripod\\.com\\|ftp\\.geocities\\.com$")
