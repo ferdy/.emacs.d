@@ -1,8 +1,10 @@
 ;;;;  01-packages.el
 
-;;; This file stores all the packages related configurations.
+;;; This file stores all the packages related configurations
+;;; and install/refresh default packages
 
 (require 'package)
+(package-initialize)
 
 ;; Add the original Emacs Lisp Package Archive
 (add-to-list 'package-archives
@@ -14,11 +16,6 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
-(package-initialize)
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
 ;; Use El-Get to sync repos and dependencies.
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -29,3 +26,40 @@
     (let (el-get-master-branch)
       (goto-char (point-max))
       (eval-print-last-sexp))))
+
+;; Default packages
+(defvar custom/packages '(ido-ubiquitous
+			  ido-vertical-mode
+			  flx-ido
+			  smex
+			  browse-kill-ring
+			  hungry-delete-mode
+			  smartscan
+			  org
+			  magit
+			  auctex
+			  latex-pretty-symbols
+			  ebib
+			  latex-preview-pane
+			  latex-extra
+			  adaptive-wrap
+			  clojure-mode
+			  cider
+			  pandoc-mode
+			  multifiles
+			  rainbow-delimiters
+			  bookmark+)
+  "Default packages")
+
+(defun custom/packages-installed-p ()
+  (loop for pkg in custom/packages
+        when (not (package-installed-p pkg)) do (return nil)
+        finally (return t)))
+
+(unless (custom/packages-installed-p)
+  (when (not package-archive-contents)
+    (message "%s" "Refreshing package database...")
+    (package-refresh-contents)
+    (dolist (pkg custom/packages)
+      (when (not (package-installed-p pkg))
+	(package-install pkg)))))

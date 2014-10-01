@@ -4,16 +4,10 @@
 
 ;; Turn on hungry-delete-mode
 ;; http://endlessparentheses.com/hungry-delete-mode.html
-(unless (package-installed-p 'hungry-delete-mode)
-  (package-install 'hungry-delete))
-
 (global-hungry-delete-mode)
 
 ;; Turn on smartscan
 ;; See: https://github.com/mickeynp/smart-scan
-(unless (package-installed-p 'smartscan)
-  (package-install 'smartscan))
-
 (global-smartscan-mode 1)
 
 ;; Minor mode to hide the mode line
@@ -114,9 +108,6 @@
 (slime-setup)
 
 ;; ORG-MODE SETUP
-(unless (package-installed-p 'org)
-  (package-install 'org))
-
 (require 'org)
 
 ;; Keybindings
@@ -214,9 +205,6 @@
 	    (local-set-key (kbd "C-c C-h") 'eshell-list-history)))
 
 ;; MAGIT SETUP
-(unless (package-installed-p 'magit)
-  (package-install 'magit))
-
 (require 'magit)
 
 ;; Fullscreen magit-status
@@ -246,9 +234,6 @@
 ;; texlive-latex-extra, texlive-fonts-recommended,
 ;; texlive-generic-recommended, texlive-xetex
 ;; texlive-lang-italian
-(unless (package-installed-p 'auctex)
-  (package-install 'auctex))
-
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
 (autoload 'reftex-mode     "reftex" "RefTeX Minor Mode" t)
@@ -259,9 +244,6 @@
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 
 ;; Prettify symbols
-(unless (package-installed-p 'latex-pretty-symbols)
-  (package-install 'latex-pretty-symbols))
-
 (require 'latex-pretty-symbols)
 
 ;; Make RefTeX faster
@@ -301,27 +283,13 @@
 ;; Add LaTeX to a list of languages that raise noweb-type errors
 (add-to-list 'org-babel-noweb-error-langs "latex")
 
-;; Use ebib for BibTeX
-(unless (package-installed-p 'ebib)
-  (package-install 'ebib))
-
 ;; Use ebib links in org-mode
 (org-add-link-type "ebib" 'ebib)
 
-;; Enable latex-preview-pane
-(unless (package-installed-p 'latex-preview-pane)
-  (package-install 'latex-preview-pane))
-
 ;; Add latex-extra
-(unless (package-installed-p 'latex-extra)
-  (package-install 'latex-extra))
-
 (add-hook 'LaTeX-mode-hook #'latex-extra-mode)
 
-;; Turn on adaptive wrap
-(unless (package-installed-p 'adaptive-wrap)
-  (package-install 'adaptive-wrap))
-
+;; Turn on adaptive wrap for latex-mode
 (eval-after-load 'tex-mode
   '(progn
      (add-hook 'latex-mode-hook #'adaptive-wrap)))
@@ -342,14 +310,7 @@
 (setq electric-pair-pairs '((?\" . ?\")
 			    (?\{ . ?\})))
 
-;; CLOJURE MODE SETUP
-(unless (package-installed-p 'clojure-mode)
-  (package-install 'clojure-mode))
-
 ;; CIDER SETUP
-(unless (package-installed-p 'cider)
-  (package-install 'cider))
-
 ;; Enable eldoc in Clojure buffers
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
@@ -365,26 +326,13 @@
 (setq cider-repl-pop-to-buffer-on-connect nil)
 
 ;; PANDOC SETUP
-(unless (package-installed-p 'pandoc-mode)
-  (package-install 'pandoc-mode))
-
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
 ;; MULTIFILES SETUP
-(unless (package-installed-p 'multifiles)
-  (package-install 'multifiles))
-
 (require 'multifiles)
 
 ;; RAINBOW DELIMITERS SETUP
-(unless (package-installed-p 'rainbow-delimiters)
-  (package-install 'rainbow-delimiters))
-
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-;; BOOKMARKS+ SETUP
-(unless (package-installed-p 'bookmark+)
-  (package-install 'bookmark+))
 
 ;; TRAMP SETUP
 (setq tramp-default-method "ssh")

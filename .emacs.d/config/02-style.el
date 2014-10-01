@@ -65,17 +65,17 @@
   (unscroll-maybe-remember))
 
 (defadvice scroll-down (before remember-for-unscroll
-			     activate compile)
+			       activate compile)
   "Remember where we started from, for 'unscroll'."
   (unscroll-maybe-remember))
 
 (defadvice scroll-left (before remember-for-unscroll
-			     activate compile)
+			       activate compile)
   "Remember where we started from, for 'unscroll'."
   (unscroll-maybe-remember))
 
 (defadvice scroll-right (before remember-for-unscroll
-			     activate compile)
+				activate compile)
   "Remember where we started from, for 'unscroll'."
   (unscroll-maybe-remember))
 
@@ -91,8 +91,8 @@
 ;; Disable annoying prompts
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq kill-buffer-query-functions
-  (remq 'process-kill-buffer-query-function
-         kill-buffer-query-functions))
+      (remq 'process-kill-buffer-query-function
+	    kill-buffer-query-functions))
 
 ;; Disable splash screen
 (setq inhibit-startup-message t
@@ -123,9 +123,6 @@
 (defvar ido-default-item nil)
 (defvar ido-cur-list nil)
 
-(unless (package-installed-p 'ido-ubiquitous)
-  (package-install 'ido-ubiquitous))
-
 (ido-ubiquitous-mode +1)
 
 (setq ido-enable-flex-matching t)
@@ -134,16 +131,10 @@
 (ido-mode 1)
 
 ;; Turn on ido-vertical-mode
-(unless (package-installed-p 'ido-vertical-mode)
-  (package-install 'ido-vertical-mode))
-
 (require 'ido-vertical-mode)
 (ido-vertical-mode 1)
 
 ;; Turn on flx-ido for better search results
-(unless (package-installed-p 'flx-ido)
-  (package-install 'flx-ido))
-
 (require 'flx-ido)
 (flx-ido-mode 1)
 (setq flx-ido-use-faces nil)
@@ -151,60 +142,57 @@
 ;; Ido-charged version of imenu
 ;; See http://www.emacswiki.org/emacs/ImenuMode#toc13
 (defun ido-goto-symbol (&optional symbol-list)
-      "Refresh imenu and jump to a place in the buffer using Ido."
-      (interactive)
-      (unless (featurep 'imenu)
-        (require 'imenu nil t))
+  "Refresh imenu and jump to a place in the buffer using Ido."
+  (interactive)
+  (unless (featurep 'imenu)
+    (require 'imenu nil t))
+  (cond
+   ((not symbol-list)
+    (let ((ido-mode ido-mode)
+	  (ido-enable-flex-matching
+	   (if (boundp 'ido-enable-flex-matching)
+	       ido-enable-flex-matching t))
+	  name-and-pos symbol-names position)
+      (unless ido-mode
+	(ido-mode 1)
+	(setq ido-enable-flex-matching t))
+      (while (progn
+	       (imenu--cleanup)
+	       (setq imenu--index-alist nil)
+	       (ido-goto-symbol (imenu--make-index-alist))
+	       (setq selected-symbol
+		     (ido-completing-read "Symbol? " symbol-names))
+	       (string= (car imenu--rescan-item) selected-symbol)))
+      (unless (and (boundp 'mark-active) mark-active)
+	(push-mark nil t nil))
+      (setq position (cdr (assoc selected-symbol name-and-pos)))
       (cond
-       ((not symbol-list)
-        (let ((ido-mode ido-mode)
-              (ido-enable-flex-matching
-               (if (boundp 'ido-enable-flex-matching)
-                   ido-enable-flex-matching t))
-              name-and-pos symbol-names position)
-          (unless ido-mode
-            (ido-mode 1)
-            (setq ido-enable-flex-matching t))
-          (while (progn
-                   (imenu--cleanup)
-                   (setq imenu--index-alist nil)
-                   (ido-goto-symbol (imenu--make-index-alist))
-                   (setq selected-symbol
-                         (ido-completing-read "Symbol? " symbol-names))
-                   (string= (car imenu--rescan-item) selected-symbol)))
-          (unless (and (boundp 'mark-active) mark-active)
-            (push-mark nil t nil))
-          (setq position (cdr (assoc selected-symbol name-and-pos)))
-          (cond
-           ((overlayp position)
-            (goto-char (overlay-start position)))
-           (t
-            (goto-char position)))))
-       ((listp symbol-list)
-        (dolist (symbol symbol-list)
-          (let (name position)
-            (cond
-             ((and (listp symbol) (imenu--subalist-p symbol))
-              (ido-goto-symbol symbol))
-             ((listp symbol)
-              (setq name (car symbol))
-              (setq position (cdr symbol)))
-             ((stringp symbol)
-              (setq name symbol)
-              (setq position
-                    (get-text-property 1 'org-imenu-marker symbol))))
-            (unless (or (null position) (null name)
-                        (string= (car imenu--rescan-item) name))
-              (add-to-list 'symbol-names name)
-              (add-to-list 'name-and-pos (cons name position))))))))
+       ((overlayp position)
+	(goto-char (overlay-start position)))
+       (t
+	(goto-char position)))))
+   ((listp symbol-list)
+    (dolist (symbol symbol-list)
+      (let (name position)
+	(cond
+	 ((and (listp symbol) (imenu--subalist-p symbol))
+	  (ido-goto-symbol symbol))
+	 ((listp symbol)
+	  (setq name (car symbol))
+	  (setq position (cdr symbol)))
+	 ((stringp symbol)
+	  (setq name symbol)
+	  (setq position
+		(get-text-property 1 'org-imenu-marker symbol))))
+	(unless (or (null position) (null name)
+		    (string= (car imenu--rescan-item) name))
+	  (add-to-list 'symbol-names name)
+	  (add-to-list 'name-and-pos (cons name position))))))))
 
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 
 ;; Enable smex
 ;; See https://github.com/nonsequitur/smex
-(unless (package-installed-p 'smex)
-  (package-install 'smex))
-
 (smex-initialize)
 
 (global-set-key (kbd "M-x") 'smex)
@@ -232,16 +220,16 @@
 (require 'solarized-dark-theme)
 
 (if (daemonp)
-(add-hook 'after-make-frame-functions
-          '(lambda (f)
-             (with-selected-frame f
-               (when (window-system f) (load-theme 'solarized-dark t)))))
-(load-theme 'solarized-dark t))
+    (add-hook 'after-make-frame-functions
+	      '(lambda (f)
+		 (with-selected-frame f
+		   (when (window-system f) (load-theme 'solarized-dark t)))))
+  (load-theme 'solarized-dark t))
 
 ;; Functions to remove background when on terminals
 (defun on-frame-open (frame)
   (if (not (display-graphic-p frame))
-    (set-face-background 'default "unspecified-bg" frame)))
+      (set-face-background 'default "unspecified-bg" frame)))
 (on-frame-open (selected-frame))
 
 (add-hook 'after-make-frame-functions 'on-frame-open)
@@ -260,9 +248,6 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Enable browse-kill-ring
-(unless (package-installed-p 'browse-kill-ring)
-  (package-install 'browse-kill-ring))
-
 (require 'browse-kill-ring)
 
 ;; Mode line setup
@@ -272,10 +257,10 @@
  '(; Position
    "%4l:"
    "%3c"
-   ; emacsclient [default -- keep?]
+					; emacsclient [default -- keep?]
    mode-line-client
    "  "
-   ; read-only or modified status
+					; read-only or modified status
    (:eval
     (cond (buffer-read-only
            " RO ")
@@ -283,18 +268,18 @@
            " ** ")
           (t "      ")))
    "    "
-   ; directory and buffer/file name
+					; directory and buffer/file name
    (:eval (shorten-directory default-directory 30))
    "%b"
-   ; narrow [default -- keep?]
+					; narrow [default -- keep?]
    " %n "
-   ; mode indicators: vc, recursive edit, major mode, minor modes, process, global
+					; mode indicators: vc, recursive edit, major mode, minor modes, process, global
    (vc-mode vc-mode)
    "  %["
    mode-name
    "%] "
-   ; uncomment to show minor modes
-   ; (:eval (format-mode-line minor-mode-alist))
+					; uncomment to show minor modes
+					; (:eval (format-mode-line minor-mode-alist))
    mode-line-process
    (global-mode-string global-mode-string)
    "    "
