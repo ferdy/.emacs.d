@@ -28,6 +28,7 @@
       (eval-print-last-sexp))))
 
 ;; Default packages
+;; See: http://www.aaronbedra.com/emacs.d/
 (defvar custom/packages '(ido-ubiquitous
 			  ido-vertical-mode
 			  flx-ido

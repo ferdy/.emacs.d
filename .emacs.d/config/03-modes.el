@@ -3,7 +3,7 @@
 ;;; This file stores the configurations of every mode I use.
 
 ;; Turn on hungry-delete-mode
-;; http://endlessparentheses.com/hungry-delete-mode.html
+;; See: http://endlessparentheses.com/hungry-delete-mode.html
 (global-hungry-delete-mode)
 
 ;; Turn on smartscan
