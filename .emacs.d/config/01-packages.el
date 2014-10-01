@@ -34,7 +34,7 @@
 			  flx-ido
 			  smex
 			  browse-kill-ring
-			  hungry-delete-mode
+			  hungry-delete
 			  smartscan
 			  org
 			  magit
