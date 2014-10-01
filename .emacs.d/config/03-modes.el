@@ -335,4 +335,9 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; TRAMP SETUP
+(add-to-list 'load-path "~/emacs/tramp/lisp/")
+(require 'tramp)
+
 (setq tramp-default-method "ssh")
+(eval-after-load 'tramp '(setenv "SHELL" "/bin/bash"))
+(setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
