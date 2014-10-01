@@ -318,6 +318,14 @@
 
 (add-hook 'LaTeX-mode-hook #'latex-extra-mode)
 
+;; Turn on adaptive wrap
+(unless (package-installed-p 'adaptive-wrap)
+  (package-install 'adaptive-wrap))
+
+(eval-after-load 'tex-mode
+  '(progn
+     (add-hook 'latex-mode-hook #'adaptive-wrap)))
+
 ;; ERC SETUP
 (defun read-lines (filePath)
   "Return a list of lines of a file at filePath."
@@ -373,3 +381,10 @@
   (package-install 'rainbow-delimiters))
 
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+
+;; BOOKMARKS+ SETUP
+(unless (package-installed-p 'bookmark+)
+  (package-install 'bookmark+))
+
+;; TRAMP SETUP
+(setq tramp-default-method "ssh")
