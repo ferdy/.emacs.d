@@ -136,8 +136,10 @@ buffer."
           (add-text-properties left pos (list from nil to prop) object))))))
 
 ;; Edit file with root privileges
-(defadvice ido-find-file (after find-file-sudo activate)
+(defun open-with-sudo ()
   "Find file as root if necessary."
   (unless (and buffer-file-name
 	       (file-writable-p buffer-file-name))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(add-hook 'find-file-hook 'open-with-sudo)
