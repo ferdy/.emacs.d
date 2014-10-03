@@ -101,7 +101,7 @@
 (add-hook 'c-mode-hook
 	  #'custom/activate-aggressive-indent)
 
-;; Function to toggle image display on/off, especially useful in eww
+;; Toggle image display on/off, especially useful in eww
 (defvar-local custom/display-images t)
 
 (defun custom/toggle-image-display ()
