@@ -163,11 +163,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defun get-buffers-matching-mode (mode)
   "Returns a list of buffers where their major-mode is equal to MODE"
   (let ((buffer-mode-matches '()))
-   (dolist (buf (buffer-list))
-     (with-current-buffer buf
-       (if (eq mode major-mode)
-           (add-to-list 'buffer-mode-matches buf))))
-   buffer-mode-matches))
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf
+	(if (eq mode major-mode)
+	    (add-to-list 'buffer-mode-matches buf))))
+    buffer-mode-matches))
 
 (defun multi-occur-in-this-mode ()
   "Show all lines matching REGEXP in buffers with this major mode."
