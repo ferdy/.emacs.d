@@ -2,10 +2,10 @@
 
 ;;; This file contains various functions
 
+;; Replace HTML tags with the ones used by WordPress editor
 (defvar oldtags '("<i>" "</i>" "<b>" "</b>"))
 (defvar newtags '("<em>" "</em>" "<strong>" "</strong>"))
 
-;; Replace HTML tags with the ones used by WordPress editor
 (defun custom/replace-html-tags ()
   "Replace HTML tags with the ones used by WordPress editor."
   (interactive)
