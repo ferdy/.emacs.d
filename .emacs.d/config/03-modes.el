@@ -295,14 +295,18 @@
      (add-hook 'latex-mode-hook #'adaptive-wrap)))
 
 ;; ERC SETUP
-(defun read-lines (filePath)
-  "Return a list of lines of a file at filePath."
-  (with-temp-buffer
-    (insert-file-contents filePath)
-    (split-string (buffer-string) "\n")))
+;; requires in ~/.ercpass the format
+;; (setq variable "nickname")
+;; (setq variable "password")
+(load "~/.ercpass")
+(require 'erc-services)
+(erc-services-mode 1)
 
-(let ((acc (read-lines "~/.my-erc-account")))
-  (setq erc-nick (car acc)))
+(setq erc-nick gp-nick)
+(setq erc-prompt-for-nickserv-password nil)
+(setq erc-nickserve-passwords
+      `((freenode (,gp-nick . ,gp-pass))))
+(setq erc-autojoin-channels-alist '((".*" "#linuxbbq")))
 
 ;; ELECTRIC-PAIR-MODE SETUP
 (electric-pair-mode +1)
