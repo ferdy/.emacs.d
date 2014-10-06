@@ -75,9 +75,14 @@
 ;; http://endlessparentheses.com/permanent-auto-indentation.html
 (require 'cl-lib)
 (defun custom/indent-defun ()
-  "Indent current defun."
+  "Indent current defun.
+Do nothing if mark is active (to avoid deactivaing it), or if
+buffer is not modified (to avoid creating accidental
+modifications)."
   (interactive)
-  (unless (region-active-p)
+  (unless (or (region-active-p)
+              buffer-read-only
+              (null (buffer-modified-p)))
     (let ((l (save-excursion (beginning-of-defun 1) (point)))
           (r (save-excursion (end-of-defun 1) (point))))
       (cl-letf (((symbol-function 'message) #'ignore))
