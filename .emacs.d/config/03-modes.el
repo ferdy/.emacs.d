@@ -314,6 +314,9 @@
 (setq electric-pair-pairs '((?\" . ?\")
 			    (?\{ . ?\})))
 
+;; CLOJURE MODE SETUP
+(require 'clojure-mode-extra-font-locking)
+
 ;; CIDER SETUP
 ;; Enable eldoc in Clojure buffers
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
