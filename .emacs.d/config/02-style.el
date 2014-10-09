@@ -257,8 +257,6 @@
  '(; Position
    "%4l:"
    "%3c"
-   ;; emacsclient [default -- keep?]
-   mode-line-client
    "  "
    ;; read-only or modified status
    (:eval
@@ -266,25 +264,26 @@
            " RO ")
           ((buffer-modified-p)
            " ** ")
-          (t "      ")))
+          (t "    ")))
    "  "
    ;; directory and buffer/file name
    (:eval
     (when (= (length (window-list)) 1)
-     (shorten-directory default-directory 30)))
+      (shorten-directory default-directory 30)))
    "%b"
-   ;; narrow [default -- keep?]
-   " %n "
+   "    "
    ;; mode indicators: vc, recursive edit, major mode, minor modes, process, global
    (vc-mode vc-mode)
    "  %["
    mode-name
    "%] "
-   ;; uncomment to show minor modes
-   ;; (:eval (format-mode-line minor-mode-alist))
+   ;; minor modes
+   (:eval
+    (when (= (length (window-list)) 1)
+      (format-mode-line minor-mode-alist)))
    mode-line-process
    (global-mode-string global-mode-string)
-   "  "
+   "    "
    "%p/%I"
    ))
 
