@@ -6,10 +6,6 @@
 ;; See: http://endlessparentheses.com/hungry-delete-mode.html
 (global-hungry-delete-mode)
 
-;; Turn on smartscan
-;; See: https://github.com/mickeynp/smart-scan
-(global-smartscan-mode 1)
-
 ;; Minor mode to hide the mode line
 ;; See http://bzg.fr/emacs-hide-mode-line.html
 (defvar-local hidden-mode-line-mode nil)

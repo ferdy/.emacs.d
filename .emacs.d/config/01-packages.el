@@ -35,7 +35,6 @@
 			  smex
 			  browse-kill-ring
 			  hungry-delete
-			  smartscan
 			  org
 			  magit
 			  auctex
