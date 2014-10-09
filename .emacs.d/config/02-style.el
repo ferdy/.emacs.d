@@ -277,7 +277,6 @@
    "  %["
    mode-name
    "%] "
-   ;; minor modes
    (:eval
     (when (= (length (window-list)) 1)
       (format-mode-line minor-mode-alist)))
