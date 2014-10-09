@@ -254,7 +254,7 @@
 ;; See http://amitp.blogspot.com/2011/08/emacs-custom-mode-line.html
 (setq-default
  mode-line-format
- '(; Position
+ '(;; position
    "%4l:"
    "%3c"
    "  "
