@@ -277,9 +277,9 @@
    "  %["
    mode-name
    "%] "
-   (:eval
-    (when (= (length (window-list)) 1)
-      (format-mode-line minor-mode-alist)))
+   ;; (:eval
+   ;;  (when (= (length (window-list)) 1)
+   ;;    (format-mode-line minor-mode-alist)))
    mode-line-process
    (global-mode-string global-mode-string)
    "    "
