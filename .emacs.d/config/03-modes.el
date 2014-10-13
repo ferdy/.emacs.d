@@ -345,6 +345,3 @@
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
 (add-to-list 'backup-directory-alist
 	     (cons tramp-file-name-regexp nil))
-
-;; ANGE FTP SETUP
-(setq ange-ftp-dumb-unix-host-regexp "^ftp\\.aruba\\.it\\|ftp\\.tripod\\.com\\|ftp\\.geocities\\.com$")
