@@ -200,6 +200,10 @@
 						    (ring-elements eshell-history-ring))))))
 	    (local-set-key (kbd "C-c C-h") 'eshell-list-history)))
 
+;; Run scrips from current working on remote system
+(defadvice eshell-gather-process-output (before absolute-cmd (command args) act)
+  (setq command (file-truename command)))
+
 ;; MAGIT SETUP
 (require 'magit)
 
