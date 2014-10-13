@@ -191,8 +191,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; Global key for magit-status
 (global-set-key (kbd "<f4>") 'magit-status)
 
+;; Global key for package-list-packages
+(global-set-key (kbd "<f5>") 'package-list-packages)
+
 ;; Global key for eww
-(global-set-key (kbd "<f5>") 'eww)
+(global-set-key (kbd "<f6>") 'eww)
 
 ;; Global key fo mf/mirror-region-in-multifile
 (global-set-key (kbd "C-!") 'mf/mirror-region-in-multifile)

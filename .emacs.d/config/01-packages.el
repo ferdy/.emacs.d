@@ -47,7 +47,8 @@
 			  cider
 			  pandoc-mode
 			  multifiles
-			  rainbow-delimiters)
+			  rainbow-delimiters
+			  bookmark+)
   "Default packages")
 
 (defun custom/packages-installed-p ()
