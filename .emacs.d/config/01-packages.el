@@ -61,3 +61,6 @@
   (dolist (pkg custom/packages)
     (when (not (package-installed-p pkg))
       (package-install pkg))))
+
+;; Always load newer compiled files
+(setq load-prefer-newer t)
