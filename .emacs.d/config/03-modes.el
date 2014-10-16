@@ -243,9 +243,6 @@
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
 
-;; Prettify symbols
-(require 'latex-pretty-symbols)
-
 ;; Make RefTeX faster
 (setq reftex-enable-partial-scans t)
 (setq reftex-save-parse-info t)

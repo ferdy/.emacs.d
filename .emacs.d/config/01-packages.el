@@ -38,7 +38,6 @@
 			  org
 			  magit
 			  auctex
-			  latex-pretty-symbols
 			  ebib
 			  latex-extra
 			  adaptive-wrap
