@@ -1,5 +1,4 @@
 ;;;; 02-style.el
-
 ;;; This file stores the interface customizations.
 
 ;; Set default font
@@ -106,7 +105,7 @@
 (setq tooltip-use-echo-area t)
 
 ;; Turn on visual-line-mode
-(global-visual-line-mode 1)
+(global-visual-line-mode +1)
 
 ;; Linum+ for better line numbers
 (add-to-list 'load-path "~/.emacs.d/various")

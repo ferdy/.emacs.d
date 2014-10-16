@@ -48,7 +48,9 @@
 			  pandoc-mode
 			  multifiles
 			  rainbow-delimiters
-			  bookmark+)
+			  bookmark+
+			  names
+			  aggressive-indent)
   "Default packages")
 
 (defun custom/packages-installed-p ()

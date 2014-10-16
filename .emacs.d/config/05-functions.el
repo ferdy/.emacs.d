@@ -71,41 +71,6 @@
   (switch-to-buffer (get-buffer-create "*scratch*"))
   (lisp-interaction-mode))
 
-;; Aggressive auto-indentation
-;; http://endlessparentheses.com/permanent-auto-indentation.html
-(require 'cl-lib)
-(defun custom/indent-defun ()
-  "Indent current defun.
-Do nothing if mark is active (to avoid deactivaing it), or if
-buffer is not modified (to avoid creating accidental
-modifications)."
-  (interactive)
-  (unless (or (region-active-p)
-              buffer-read-only
-              (null (buffer-modified-p)))
-    (let ((l (save-excursion (beginning-of-defun 1) (point)))
-          (r (save-excursion (end-of-defun 1) (point))))
-      (cl-letf (((symbol-function 'message) #'ignore))
-        (indent-region l r)))))
-
-(defun custom/activate-aggressive-indent ()
-  "Locally add `custom/indent-defun' to `post-command-hook'."
-  (add-hook 'post-command-hook
-            #'custom/indent-defun nil 'local))
-
-;; Add hooks for every programming language I need aggressive auto-indentation
-(add-hook 'emacs-lisp-mode-hook
-          #'custom/activate-aggressive-indent)
-
-(add-hook 'clojure-mode-hook
-          #'custom/activate-aggressive-indent)
-
-(add-hook 'shell-script-mode-hook
-          #'custom/activate-aggressive-indent)
-
-(add-hook 'c-mode-hook
-	  #'custom/activate-aggressive-indent)
-
 ;; Toggle image display on/off, especially useful in eww
 (defvar-local custom/display-images t)
 

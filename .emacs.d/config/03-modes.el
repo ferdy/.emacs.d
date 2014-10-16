@@ -349,3 +349,6 @@
 (setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
 (add-to-list 'backup-directory-alist
 	     (cons tramp-file-name-regexp nil))
+
+;; AGGRESSIVE INDENT SETUP
+(global-aggressive-indent-mode 1)
