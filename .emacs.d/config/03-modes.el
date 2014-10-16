@@ -272,7 +272,7 @@
   '(add-to-list 'TeX-command-list '("xelatexmk" "latexmk -synctex=1 -shell-escape -xelatex %s" TeX-run-TeX nil t :help "Process file with xelatexmk"))
   )
 
-(add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "latexmk")))
+(add-hook 'TeX-mode-hook '(lambda () (setq TeX-command-default "xelatexmk")))
 
 ;; Set default engine: xetex
 (setq-default TeX-engine 'xetex)

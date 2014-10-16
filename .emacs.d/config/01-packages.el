@@ -40,7 +40,6 @@
 			  auctex
 			  latex-pretty-symbols
 			  ebib
-			  latex-preview-pane
 			  latex-extra
 			  adaptive-wrap
 			  clojure-mode
