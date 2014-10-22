@@ -55,11 +55,6 @@
 (add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
 
 ;; DIRED SETUP
-(require 'dired)
-(define-key dired-mode-map (kbd "<return>") 'dired-find-alternate-file) ; was dired-advertised-find-file
-(define-key dired-mode-map (kbd "^") (lambda () (interactive) (find-alternate-file "..")))  ; was dired-up-directory
-(put 'dired-find-alternate-file 'disabled nil)
-
 ;; Auto refresh buffers
 (global-auto-revert-mode 1)
 
@@ -74,6 +69,12 @@
 (require 'dired-x)
 (setq-default dired-omit-files-p t)
 (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+
+;; Reuse buffer for directories
+(require 'dired+)
+(diredp-toggle-find-file-reuse-dir 1)
+(setq diredp-hide-details-initially-flag nil)
+(setq diredp-hide-details-propagate-flag nil)
 
 ;; PO-MODE SETUP
 (add-to-list 'load-path "~/.emacs.d/el-get/po-mode")
@@ -352,16 +353,16 @@
 
 ;; ELFEED SETUP
 (setq elfeed-feeds
-      '("http://kmandla.wordpress.com/feed/"
-	"http://inconsolation.wordpress.com/feed/"
-	"http://planet.emacsen.org/atom.xml"
-	"http://endlessparentheses.com/atom.xml"
-	"http://www.masteringemacs.org/feed/"
-	"https://www.techdirt.com/techdirt_rss.xml"
-	"http://rt.com/rss/"
-	"http://feeds.theguardian.com/theguardian/world/rss"
-	"http://www.wumingfoundation.com/giap/?feed=rss2"
-	"http://feeds.feedburner.com/disinfo/oMPh"
-	"http://flashstrap.blogspot.com/feeds/posts/default"
-	"http://thaifilmjournal.blogspot.com/feeds/posts/default"
-	"http://www.loveasianfilm.com/feed"))
+      '(("http://kmandla.wordpress.com/feed/" blog)
+	("http://inconsolation.wordpress.com/feed/" blog)
+	("http://planet.emacsen.org/atom.xml" emacs)
+	("http://endlessparentheses.com/atom.xml" emacs)
+	("http://www.masteringemacs.org/feed/" emacs)
+	("https://www.techdirt.com/techdirt_rss.xml" tech)
+	("http://rt.com/rss/" news)
+	("http://feeds.theguardian.com/theguardian/world/rss" news)
+	("http://www.wumingfoundation.com/giap/?feed=rss2" blog)
+	("http://feeds.feedburner.com/disinfo/oMPh" news)
+	("http://flashstrap.blogspot.com/feeds/posts/default" music)
+	("http://thaifilmjournal.blogspot.com/feeds/posts/default" cinema)
+	("http://www.loveasianfilm.com/feed" cinema)))

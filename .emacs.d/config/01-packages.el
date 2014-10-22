@@ -49,7 +49,8 @@
 			  bookmark+
 			  names
 			  aggressive-indent
-			  elfeed)
+			  elfeed
+			  dired+)
   "Default packages")
 
 (defun custom/packages-installed-p ()

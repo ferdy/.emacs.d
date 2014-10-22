@@ -223,3 +223,12 @@ prefix argument."
 (global-set-key [remap org-kill-line] (bol-with-prefix org-kill-line))
 (global-set-key [remap kill-line] (bol-with-prefix kill-line))
 (global-set-key "\C-k" (bol-with-prefix kill-visual-line))
+
+;; Elfeed: mark all feed as read
+(require 'elfeed-search)
+(defun elfeed-mark-all-as-read ()
+  (interactive)
+  (mark-whole-buffer)
+  (elfeed-search-untag-all-unread))
+
+(define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)
