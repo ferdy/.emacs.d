@@ -226,6 +226,7 @@ prefix argument."
 
 ;; Elfeed: mark all feed as read
 (require 'elfeed-search)
+
 (defun elfeed-mark-all-as-read ()
   (interactive)
   (mark-whole-buffer)
