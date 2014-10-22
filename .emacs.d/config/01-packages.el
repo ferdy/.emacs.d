@@ -48,7 +48,8 @@
 			  rainbow-delimiters
 			  bookmark+
 			  names
-			  aggressive-indent)
+			  aggressive-indent
+			  elfeed)
   "Default packages")
 
 (defun custom/packages-installed-p ()

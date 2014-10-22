@@ -194,8 +194,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; Global key for package-list-packages
 (global-set-key (kbd "<f5>") 'package-list-packages)
 
-;; Global key for eww
-(global-set-key (kbd "<f6>") 'eww)
+;; Global key for elfeed
+(global-set-key (kbd "<f6>") 'elfeed)
 
 ;; Global key fo mf/mirror-region-in-multifile
 (global-set-key (kbd "C-!") 'mf/mirror-region-in-multifile)

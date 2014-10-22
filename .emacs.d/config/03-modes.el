@@ -349,3 +349,19 @@
 
 ;; AGGRESSIVE INDENT SETUP
 (global-aggressive-indent-mode 1)
+
+;; ELFEED SETUP
+(setq elfeed-feeds
+      '("http://kmandla.wordpress.com/feed/"
+	"http://inconsolation.wordpress.com/feed/"
+	"http://planet.emacsen.org/atom.xml"
+	"http://endlessparentheses.com/atom.xml"
+	"http://www.masteringemacs.org/feed/"
+	"https://www.techdirt.com/techdirt_rss.xml"
+	"http://rt.com/rss/"
+	"http://feeds.theguardian.com/theguardian/world/rss"
+	"http://www.wumingfoundation.com/giap/?feed=rss2"
+	"http://feeds.feedburner.com/disinfo/oMPh"
+	"http://flashstrap.blogspot.com/feeds/posts/default"
+	"http://thaifilmjournal.blogspot.com/feeds/posts/default"
+	"http://www.loveasianfilm.com/feed"))
