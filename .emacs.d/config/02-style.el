@@ -104,6 +104,17 @@
 (tooltip-mode -1)
 (setq tooltip-use-echo-area t)
 
+;; Remove *Messages* buffer
+(setq-default message-log-max nil)
+(kill-buffer "*Messages*")
+
+;; Automatically close some buffers on exit
+(add-hook 'minibuffer-exit-hook
+'(lambda ()
+(let ((completions "*Completions*"))
+(and (get-buffer completions)
+     (kill-buffer completions)))))
+
 ;; Turn on visual-line-mode
 (global-visual-line-mode +1)
 
