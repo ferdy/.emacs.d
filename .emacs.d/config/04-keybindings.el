@@ -185,17 +185,17 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; Global key for shell
 (global-set-key (kbd "<f2>") 'shell)
 
-;; Global key for ansi-term
-(global-set-key (kbd "<f3>") 'ansi-term)
-
 ;; Global key for magit-status
-(global-set-key (kbd "<f4>") 'magit-status)
+(global-set-key (kbd "<f3>") 'magit-status)
 
 ;; Global key for package-list-packages
-(global-set-key (kbd "<f5>") 'package-list-packages)
+(global-set-key (kbd "<f4>") 'package-list-packages)
 
 ;; Global key for elfeed
-(global-set-key (kbd "<f6>") 'elfeed)
+(global-set-key (kbd "<f5>") 'elfeed)
+
+;; Global key for emms
+(global-set-key (kbd "<f6>") 'emms)
 
 ;; Kill entire line with prefix argument
 ;; see http://endlessparentheses.com/kill-entire-line-with-prefix-argument.html

@@ -49,7 +49,8 @@
 			  names
 			  aggressive-indent
 			  elfeed
-			  dired+)
+			  dired+
+			  emms)
   "Default packages")
 
 (defun custom/packages-installed-p ()
