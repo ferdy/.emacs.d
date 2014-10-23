@@ -316,3 +316,8 @@
      (add-to-list 'grep-find-ignored-directories "auto")
      (add-to-list 'grep-find-ignored-directories "elpa")))
 (add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
+
+;; Set default browser
+(setq gnus-button-url 'browse-url-generic
+      browse-url-generic-program "surf"
+      browse-url-browser-function gnus-button-url)
