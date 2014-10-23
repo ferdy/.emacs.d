@@ -44,7 +44,6 @@
 			  clojure-mode
 			  cider
 			  pandoc-mode
-			  multifiles
 			  rainbow-delimiters
 			  bookmark+
 			  names

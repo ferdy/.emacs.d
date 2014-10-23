@@ -333,9 +333,6 @@
 ;; PANDOC SETUP
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 
-;; MULTIFILES SETUP
-(require 'multifiles)
-
 ;; RAINBOW DELIMITERS SETUP
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 

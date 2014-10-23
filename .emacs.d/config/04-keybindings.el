@@ -197,9 +197,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; Global key for elfeed
 (global-set-key (kbd "<f6>") 'elfeed)
 
-;; Global key fo mf/mirror-region-in-multifile
-(global-set-key (kbd "C-!") 'mf/mirror-region-in-multifile)
-
 ;; Kill entire line with prefix argument
 ;; see http://endlessparentheses.com/kill-entire-line-with-prefix-argument.html
 (defmacro bol-with-prefix (function)
