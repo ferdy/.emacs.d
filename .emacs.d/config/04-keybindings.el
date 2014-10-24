@@ -194,8 +194,8 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; Global key for elfeed
 (global-set-key (kbd "<f5>") 'elfeed)
 
-;; Global key for emms
-(global-set-key (kbd "<f6>") 'emms)
+;; Global key for bongo-playlist
+(global-set-key (kbd "<f6>") 'bongo-playlist)
 
 ;; Kill entire line with prefix argument
 ;; see http://endlessparentheses.com/kill-entire-line-with-prefix-argument.html

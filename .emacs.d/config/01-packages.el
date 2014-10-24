@@ -11,7 +11,7 @@
              '("elpa" . "http://tromey.com/elpa/"))
 ;; Add the user-contributed repository
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+             '("marmalade" . "https://marmalade-repo.org/packages/"))
 ;; Add Melpa
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
@@ -50,7 +50,8 @@
 			  aggressive-indent
 			  elfeed
 			  dired+
-			  emms)
+			  bongo
+			  volume)
   "Default packages")
 
 (defun custom/packages-installed-p ()

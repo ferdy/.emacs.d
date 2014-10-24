@@ -363,9 +363,3 @@
 	("http://flashstrap.blogspot.com/feeds/posts/default" music)
 	("http://thaifilmjournal.blogspot.com/feeds/posts/default" cinema)
 	("http://www.loveasianfilm.com/feed" cinema)))
-
-;; EMMS SETUP
-(require 'emms-setup)
-(emms-standard)
-(emms-default-players)
-(setq emms-source-file-default-directory "~/music/")
