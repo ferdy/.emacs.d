@@ -356,6 +356,7 @@
 	("http://endlessparentheses.com/atom.xml" emacs)
 	("http://www.masteringemacs.org/feed/" emacs)
 	("https://www.techdirt.com/techdirt_rss.xml" tech)
+	("https://firstlook.org/theintercept/feeds/" tech)
 	("http://rt.com/rss/" news)
 	("http://feeds.theguardian.com/theguardian/world/rss" news)
 	("http://www.wumingfoundation.com/giap/?feed=rss2" blog)
