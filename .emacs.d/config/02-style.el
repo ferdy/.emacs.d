@@ -110,10 +110,10 @@
 
 ;; Automatically close some buffers on exit
 (add-hook 'minibuffer-exit-hook
-'(lambda ()
-(let ((completions "*Completions*"))
-(and (get-buffer completions)
-     (kill-buffer completions)))))
+	  '(lambda ()
+	     (let ((completions "*Completions*"))
+	       (and (get-buffer completions)
+		    (kill-buffer completions)))))
 
 ;; Turn on visual-line-mode
 (global-visual-line-mode +1)

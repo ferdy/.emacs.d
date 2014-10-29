@@ -364,3 +364,17 @@
 	("http://flashstrap.blogspot.com/feeds/posts/default" music)
 	("http://thaifilmjournal.blogspot.com/feeds/posts/default" cinema)
 	("http://www.loveasianfilm.com/feed" cinema)))
+
+;; MU4E SETUP
+;; Required packages: mu4e
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+(require 'mu4e)
+
+(setq mu4e-maildir "~/mail")
+(setq mu4e-get-mail-command "offlineimap"
+      mu4e-update-interval 300)
+(setq message-send-mail-function 'smtpmail-send-it)
+(setq smtpmail-smtp-server "smtp.boccaperta.com")
+
+;; Set mu4e as default Emacs e-mail program
+(setq mail-user-agent 'mu4e-user-agent)
