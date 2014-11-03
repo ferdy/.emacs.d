@@ -14,7 +14,7 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 ;; Add Melpa
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+	     '("melpa" . "http://melpa.org/packages/") t)
 
 ;; Use El-Get to sync repos and dependencies.
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
