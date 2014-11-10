@@ -1,4 +1,4 @@
-;;;;  01-packages.el
+;;;; 01-packages.el
 
 ;;; This file stores all the packages related configurations
 ;;; and install/refresh default packages

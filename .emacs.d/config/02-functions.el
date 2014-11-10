@@ -1,4 +1,4 @@
-;;;; 05-functions.el
+;;;; 02-functions.el
 
 ;;; This file contains various functions
 

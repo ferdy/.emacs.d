@@ -1,4 +1,4 @@
-;;;; keybindings.el
+;;;; 05-keybindings.el
 
 ;;; This file stores all the keybindings I use.
 

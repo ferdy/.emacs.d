@@ -1,4 +1,4 @@
-;;;; 03-modes.el
+;;;; 04-modes.el
 
 ;;; This file stores the configurations of every mode I use.
 

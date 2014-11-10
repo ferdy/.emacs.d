@@ -1,4 +1,4 @@
-;;;; 02-style.el
+;;;; 03-style.el
 ;;; This file stores the interface customizations.
 
 ;; Set default font
