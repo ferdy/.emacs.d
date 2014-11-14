@@ -30,7 +30,6 @@
 ;; Default packages
 ;; See: http://www.aaronbedra.com/emacs.d/
 (defvar custom/packages '(solarized-theme
-			  smart-mode-line
 			  ido-ubiquitous
 			  ido-vertical-mode
 			  flx-ido
@@ -55,8 +54,7 @@
 			  bongo
 			  volume
 			  company
-			  company-auctex
-			  smartparens)
+			  company-auctex)
   "Default packages")
 
 (defun custom/packages-installed-p ()
