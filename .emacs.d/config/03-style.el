@@ -257,56 +257,6 @@
 ;; Enable browse-kill-ring
 (require 'browse-kill-ring)
 
-;; Mode line setup
-;; See http://amitp.blogspot.com/2011/08/emacs-custom-mode-line.html
-(setq-default
- mode-line-format
- '(;; position
-   "%4l:"
-   "%3c"
-   "  "
-   ;; read-only or modified status
-   (:eval
-    (cond (buffer-read-only
-           " RO ")
-          ((buffer-modified-p)
-           " ** ")
-          (t "    ")))
-   "  "
-   ;; directory and buffer/file name
-   (:eval
-    (when (= (length (window-list)) 1)
-      (shorten-directory default-directory 30)))
-   "%b"
-   "    "
-   ;; mode indicators: vc, recursive edit, major mode, minor modes, process, global
-   (vc-mode vc-mode)
-   "  %["
-   mode-name
-   "%] "
-   ;; (:eval
-   ;;  (when (= (length (window-list)) 1)
-   ;;    (format-mode-line minor-mode-alist)))
-   mode-line-process
-   (global-mode-string global-mode-string)
-   "    "
-   "%p/%I"
-   ))
-
-;; Helper function
-(defun shorten-directory (dir max-length)
-  "Show up to `max-length' characters of a directory name `dir'."
-  (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
-        (output ""))
-    (when (and path (equal "" (car path)))
-      (setq path (cdr path)))
-    (while (and path (< (length output) (- max-length 4)))
-      (setq output (concat (car path) "/" output))
-      (setq path (cdr path)))
-    (when path
-      (setq output (concat "../" output)))
-    output))
-
 ;; Exclude some directories in grep
 (eval-after-load 'grep
   '(progn
@@ -318,3 +268,7 @@
 (setq gnus-button-url 'browse-url-generic
       browse-url-generic-program "surf"
       browse-url-browser-function gnus-button-url)
+
+;; smart-mode-line setup
+(sml/setup)
+(sml/apply-theme 'respectful)
