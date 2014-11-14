@@ -54,7 +54,8 @@
 			  bongo
 			  volume
 			  company
-			  company-auctex)
+			  company-auctex
+			  smartparens)
   "Default packages")
 
 (defun custom/packages-installed-p ()

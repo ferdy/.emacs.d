@@ -307,10 +307,10 @@
 (setq erc-autojoin-channels-alist '((".*" "#linuxbbq")))
 
 ;; ELECTRIC-PAIR-MODE SETUP
-(electric-pair-mode +1)
+;; (electric-pair-mode +1)
 
-(setq electric-pair-pairs '((?\" . ?\")
-			    (?\{ . ?\})))
+;; (setq electric-pair-pairs '((?\" . ?\")
+;; 			    (?\{ . ?\})))
 
 ;; CLOJURE MODE SETUP
 (require 'clojure-mode-extra-font-locking)
@@ -420,3 +420,10 @@
 ;; company for Cider
 (add-hook 'cider-repl-mode-hook 'company-mode)
 (add-hook 'cider-mode-hook 'company-mode)
+
+;; SMARTPARENS SETUP
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
+
+(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+(sp-local-pair 'org-mode "'" nil :actions nil)
