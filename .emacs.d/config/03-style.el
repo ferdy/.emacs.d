@@ -257,9 +257,6 @@
 ;; Delete trailing whitespaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Enable browse-kill-ring
-(require 'browse-kill-ring)
-
 ;; Exclude some directories in grep
 (eval-after-load 'grep
   '(progn

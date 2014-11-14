@@ -34,7 +34,6 @@
 			  ido-vertical-mode
 			  flx-ido
 			  smex
-			  browse-kill-ring
 			  hungry-delete
 			  org
 			  magit
@@ -51,8 +50,6 @@
 			  aggressive-indent
 			  elfeed
 			  dired+
-			  bongo
-			  volume
 			  company
 			  company-auctex)
   "Default packages")

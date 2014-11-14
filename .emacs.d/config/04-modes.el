@@ -307,10 +307,10 @@
 (setq erc-autojoin-channels-alist '((".*" "#linuxbbq")))
 
 ;; ELECTRIC-PAIR-MODE SETUP
-;; (electric-pair-mode +1)
+(electric-pair-mode +1)
 
-;; (setq electric-pair-pairs '((?\" . ?\")
-;; 			    (?\{ . ?\})))
+(setq electric-pair-pairs '((?\" . ?\")
+			    (?\{ . ?\})))
 
 ;; CLOJURE MODE SETUP
 (require 'clojure-mode-extra-font-locking)
@@ -364,45 +364,6 @@
 	("http://flashstrap.blogspot.com/feeds/posts/default" music)
 	("http://thaifilmjournal.blogspot.com/feeds/posts/default" cinema)
 	("http://www.loveasianfilm.com/feed" cinema)))
-
-;; MU4E SETUP
-;; Required packages: mu4e, gnutls-bin
-;; Optional: nullmailer
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
-(require 'mu4e)
-
-;; Set mu4e as default Emacs e-mail program
-(setq mail-user-agent 'mu4e-user-agent)
-
-(setq mu4e-maildir "~/mail")
-(setq mu4e-get-mail-command "offlineimap"
-      mu4e-update-interval 300)
-
-(setq mu4e-compose-signature-auto-include 't)
-(setq  message-signature
-       (concat
-	"Manuel Uberti\n"
-	"Email: manuel@boccaperta.com\n"
-	"Web: informatica.boccaperta.com"
-	"\n"))
-
-(require 'smtpmail)
-(require 'starttls)
-(defun gnutls-available-p ()
-  "Function redefined in order not to use built-in GnuTLS support"
-  nil)
-(setq starttls-gnutls-program "gnutls-cli")
-(setq starttls-use-gnutls t)
-(setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-stream-type 'starttls
-      smtpmail-default-smtp-server "smtp.boccaperta.com"
-      smtpmail-smtp-server "smtp.boccaperta.com"
-      smtpmail-smtp-service 587)
-
-;; Requires nullmailer
-;; (setq message-send-mail-function 'message-send-mail-with-sendmail)
-
-(setq message-kill-buffer-on-exit t)
 
 ;; POST-MODE SETUP
 (autoload 'post-mode "post" "mode for e-mail" t)
