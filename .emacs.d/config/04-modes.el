@@ -160,6 +160,16 @@
 (setq org-export-html-style-default "")
 (setq org-export-html-style-include-default nil)
 
+;; Auto insert custom text upon opening an org file
+(auto-insert-mode)
+(setq auto-insert-query nil)
+(eval-after-load 'autoinsert
+  '(define-auto-insert '("\\.org\\'" . "Org skeleton")
+     '(
+       "Short description: "
+       "#+STARTUP: showall\n"
+       > _ \n \n)))
+
 ;; ORG-PRESENT SETUP
 (add-to-list 'load-path "~/.emacs.d/various")
 (autoload 'org-present "org-present" nil t)
