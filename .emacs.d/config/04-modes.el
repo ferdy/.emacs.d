@@ -409,3 +409,14 @@
 (add-to-list 'auto-mode-alist
              '("\\.*mutt-*\\|.article\\|\\.followup"
 	       . post-mode))
+
+;; COMPANY-MODE SETUP
+(require 'company-auctex)
+
+;; company for AUCTeX
+(company-auctex-init)
+(add-hook 'LaTeX-mode-hook 'company-mode)
+
+;; company for Cider
+(add-hook 'cider-repl-mode-hook 'company-mode)
+(add-hook 'cider-mode-hook 'company-mode)

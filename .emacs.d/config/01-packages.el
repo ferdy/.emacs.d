@@ -29,7 +29,8 @@
 
 ;; Default packages
 ;; See: http://www.aaronbedra.com/emacs.d/
-(defvar custom/packages '(ido-ubiquitous
+(defvar custom/packages '(solarized-theme
+			  ido-ubiquitous
 			  ido-vertical-mode
 			  flx-ido
 			  smex
@@ -51,7 +52,9 @@
 			  elfeed
 			  dired+
 			  bongo
-			  volume)
+			  volume
+			  company
+			  company-auctex)
   "Default packages")
 
 (defun custom/packages-installed-p ()

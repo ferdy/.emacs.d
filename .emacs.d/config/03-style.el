@@ -226,9 +226,6 @@
       `((".*" ,backup-dir t)))
 
 ;; Set solarized theme
-(add-to-list 'load-path "~/.emacs.d/themes/emacs-color-theme-solarized")
-(require 'solarized-dark-theme)
-
 (if (daemonp)
     (add-hook 'after-make-frame-functions
 	      '(lambda (f)
