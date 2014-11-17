@@ -194,6 +194,9 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; Global key for elfeed
 (global-set-key (kbd "<f5>") 'elfeed)
 
+;; Global key for mu4e
+(global-set-key (kbd "<f6>") 'mu4e)
+
 ;; Kill entire line with prefix argument
 ;; see http://endlessparentheses.com/kill-entire-line-with-prefix-argument.html
 (defmacro bol-with-prefix (function)

@@ -391,3 +391,44 @@
 ;; company for Cider
 (add-hook 'cider-repl-mode-hook 'company-mode)
 (add-hook 'cider-mode-hook 'company-mode)
+
+;; MU4E SETUP
+;; Required packages: mu4e, gnutls-bin
+;; Optional: nullmailer
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+(require 'mu4e)
+
+;; Set mu4e as default Emacs e-mail program
+(setq mail-user-agent 'mu4e-user-agent)
+
+(setq mu4e-maildir "~/mail")
+(setq mu4e-get-mail-command "offlineimap"
+      mu4e-update-interval 300)
+
+;; set this to nil so signature is not included by default
+;; you can include in message with C-c C-w
+(setq mu4e-compose-signature-auto-include 't)
+(setq mu4e-compose-signature
+      (concat
+       "Manuel Uberti\n"
+       "Email: manuel@boccaperta.com\n"
+       "Web: informatica.boccaperta.com"
+       "\n"))
+
+;; Smtp setup
+(require 'smtpmail)
+(require 'starttls)
+
+;; Send mail using nullmailer
+;; Check /etc/nullmailer/remotes for smtp settings
+(setq message-send-mail-function 'message-send-mail-with-sendmail)
+
+;; Don't keep message buffers around
+(setq message-kill-buffer-on-exit t)
+
+;; Show images
+(setq mu4e-show-images t)
+
+;; Show full addresses in view message (instead of just names)
+;; toggle per name with M-RET
+(setq mu4e-view-show-addresses 't)
