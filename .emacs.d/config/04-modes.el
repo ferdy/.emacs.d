@@ -184,6 +184,21 @@
             (org-present-small)
             (org-remove-inline-images)))
 
+;; ORG2BLOG SETUP
+(add-to-list 'load-path "~/.emacs.d/el-get/metaweblog")
+(add-to-list 'load-path "~/.emacs.d/el-get/xml-rpc")
+
+(require 'org2blog-autoloads)
+
+(setq org2blog/wp-blog-alist
+      '(("informatica.boccaperta.com"
+
+	 :url "http://informatica.boccaperta.com/xmlrpc.php"
+	 :username "manuel")))
+
+(setq org2blog/wp-use-sourcecode-shortcode 't)
+(setq org2blog/wp-sourcecode-default-params nil)
+
 ;; DOC-VIEW-MODE SETUP
 (setq doc-view-continuous t)
 
