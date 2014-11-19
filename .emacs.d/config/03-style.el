@@ -229,6 +229,12 @@
 ;; Make the modeline high contrast
 (setq solarized-high-contrast-mode-line t)
 
+;; Don't change size of org-mode headlines (but keep other size-changes)
+(setq solarized-scale-org-headlines nil)
+
+;; Underline below the font bottomline instead of the baseline
+(setq x-underline-at-descent-line t)
+
 (if (daemonp)
     (add-hook 'after-make-frame-functions
 	      '(lambda (f)
