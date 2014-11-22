@@ -95,6 +95,10 @@
 ;; Associate Scheme with GNUGuile
 ;; Required packages: guile-2.0
 (setq scheme-program-name "guile")
+
+;; Use this for Chicken Scheme instead of Guile
+;;(setq scheme-program-name "csi -:c")
+
 ;; Parenthesis and syntax highlighting
 (setq show-paren-delay 0
       show-paren-style 'parenthesis)
