@@ -11,11 +11,11 @@
 ;; Set font fallback
 (when (functionp 'set-fontset-font)
   (set-fontset-font "fontset-default"
-                    'unicode
-                    (font-spec :family "DejaVu Sans Mono"
-                               :width 'normal
-                               :size 11.4
-			       :weight 'normal)))
+		    'unicode
+		    (font-spec :family "DejaVu Sans Mono"
+			       :width 'normal
+			       :size 11.4
+ 			       :weight 'normal)))
 
 ;; Turn off blinking cursor
 (blink-cursor-mode 0)

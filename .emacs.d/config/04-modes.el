@@ -214,6 +214,9 @@
 ;; DOC-VIEW-MODE SETUP
 (setq doc-view-continuous t)
 
+;; No large file warning
+(setq large-file-warning-threshold nil)
+
 ;; ESHELL SETUP
 ;; Clear eshell buffer
 ;; See http://www.khngai.com/emacs/eshell.php
@@ -384,6 +387,9 @@
 
 ;; AGGRESSIVE INDENT SETUP
 (global-aggressive-indent-mode 1)
+
+;; Disable for cider-repl
+(add-to-list 'aggressive-indent-excluded-modes 'cider-repl-mode)
 
 ;; ELFEED SETUP
 (setq elfeed-feeds
