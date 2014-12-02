@@ -465,3 +465,6 @@
 ;; Show full addresses in view message (instead of just names)
 ;; toggle per name with M-RET
 (setq mu4e-view-show-addresses 't)
+
+;; UNDO-TREE SETUP
+(global-undo-tree-mode)

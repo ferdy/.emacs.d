@@ -51,7 +51,8 @@
 			  elfeed
 			  dired+
 			  company
-			  company-auctex)
+			  company-auctex
+			  undo-tree)
   "Default packages")
 
 (defun custom/packages-installed-p ()
