@@ -41,6 +41,7 @@
 (define-key my-keys-minor-mode-map (kbd "M-h") 'backward-kill-word)
 (define-key my-keys-minor-mode-map (kbd "M-a") 'custom/backward-paragraph)
 (define-key my-keys-minor-mode-map (kbd "M-e") 'custom/forward-paragraph)
+(define-key my-keys-minor-mode-map (kbd "C-?") 'help-command)
 
 (define-minor-mode my-keys-minor-mode
   "A minor mode so that my key settings override annoying major modes."
