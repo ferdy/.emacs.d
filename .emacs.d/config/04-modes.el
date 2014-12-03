@@ -372,6 +372,7 @@
 
 ;; PANDOC SETUP
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+(setq org-pandoc-output-format (quote odt))
 
 ;; RAINBOW DELIMITERS SETUP
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -398,15 +399,7 @@
 	("http://planet.emacsen.org/atom.xml" emacs)
 	("http://endlessparentheses.com/atom.xml" emacs)
 	("http://www.masteringemacs.org/feed/" emacs)
-	("https://www.techdirt.com/techdirt_rss.xml" tech)
-	("https://firstlook.org/theintercept/feeds/" tech)
-	("http://rt.com/rss/" news)
-	("http://feeds.theguardian.com/theguardian/world/rss" news)
-	("http://www.wumingfoundation.com/giap/?feed=rss2" blog)
-	("http://feeds.feedburner.com/disinfo/oMPh" news)
-	("http://flashstrap.blogspot.com/feeds/posts/default" music)
-	("http://thaifilmjournal.blogspot.com/feeds/posts/default" cinema)
-	("http://www.loveasianfilm.com/feed" cinema)))
+	("http://flashstrap.blogspot.com/feeds/posts/default" music)))
 
 ;; POST-MODE SETUP
 (autoload 'post-mode "post" "mode for e-mail" t)
