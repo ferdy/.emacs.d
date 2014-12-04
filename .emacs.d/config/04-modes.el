@@ -467,3 +467,6 @@
 (add-to-list 'load-path "/home/manuel/githubs/sx.el")
 (require 'sx)
 (require 'sx-tab)
+
+;; PDF-TOOLS
+(pdf-tools-install)
