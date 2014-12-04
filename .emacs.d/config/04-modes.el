@@ -373,7 +373,7 @@
 
 ;; PANDOC SETUP
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-(setq org-pandoc-output-format (quote odt))
+(setq org-pandoc-output-format 'odt)
 
 ;; RAINBOW DELIMITERS SETUP
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
@@ -462,3 +462,8 @@
 
 ;; UNDO-TREE SETUP
 (global-undo-tree-mode)
+
+;; SX.EL
+(add-to-list 'load-path "/home/manuel/githubs/sx.el")
+(require 'sx)
+(require 'sx-tab)
