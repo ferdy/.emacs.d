@@ -470,4 +470,3 @@
 
 ;; PDF-TOOLS
 (pdf-tools-install)
-(setq pdf-info-log nil)

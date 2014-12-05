@@ -3,8 +3,8 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "pdf-annot" "pdf-annot.el" (21632 43425 516822
-;;;;;;  582000))
+;;;### (autoloads nil "pdf-annot" "pdf-annot.el" (21633 33096 88987
+;;;;;;  492000))
 ;;; Generated autoloads from pdf-annot.el
 
 (autoload 'pdf-annot-minor-mode "pdf-annot" "\
@@ -16,8 +16,8 @@ Support for PDF Annotations.
 
 ;;;***
 
-;;;### (autoloads nil "pdf-history" "pdf-history.el" (21632 43425
-;;;;;;  520822 602000))
+;;;### (autoloads nil "pdf-history" "pdf-history.el" (21633 33096
+;;;;;;  88987 492000))
 ;;; Generated autoloads from pdf-history.el
 
 (autoload 'pdf-history-minor-mode "pdf-history" "\
@@ -33,8 +33,8 @@ may be naviagted with the following keys.
 
 ;;;***
 
-;;;### (autoloads nil "pdf-isearch" "pdf-isearch.el" (21632 43425
-;;;;;;  520822 602000))
+;;;### (autoloads nil "pdf-isearch" "pdf-isearch.el" (21633 33096
+;;;;;;  92987 512000))
 ;;; Generated autoloads from pdf-isearch.el
 
 (autoload 'pdf-isearch-minor-mode "pdf-isearch" "\
@@ -71,8 +71,8 @@ While in `isearch-mode' the following keys are available.
 
 ;;;***
 
-;;;### (autoloads nil "pdf-links" "pdf-links.el" (21632 43425 516822
-;;;;;;  582000))
+;;;### (autoloads nil "pdf-links" "pdf-links.el" (21633 33096 84987
+;;;;;;  473000))
 ;;; Generated autoloads from pdf-links.el
 
 (autoload 'pdf-links-minor-mode "pdf-links" "\
@@ -104,8 +104,8 @@ scroll the current page.
 
 ;;;***
 
-;;;### (autoloads nil "pdf-misc" "pdf-misc.el" (21632 43425 520822
-;;;;;;  602000))
+;;;### (autoloads nil "pdf-misc" "pdf-misc.el" (21633 33096 88987
+;;;;;;  492000))
 ;;; Generated autoloads from pdf-misc.el
 
 (autoload 'pdf-misc-minor-mode "pdf-misc" "\
@@ -132,8 +132,8 @@ Provide a right-click context menu in PDF buffers.
 
 ;;;***
 
-;;;### (autoloads nil "pdf-occur" "pdf-occur.el" (21632 43425 516822
-;;;;;;  582000))
+;;;### (autoloads nil "pdf-occur" "pdf-occur.el" (21633 33096 84987
+;;;;;;  473000))
 ;;; Generated autoloads from pdf-occur.el
 
 (autoload 'pdf-occur "pdf-occur" "\
@@ -143,8 +143,8 @@ List lines containing STRING in BUFFER.
 
 ;;;***
 
-;;;### (autoloads nil "pdf-outline" "pdf-outline.el" (21632 43425
-;;;;;;  516822 582000))
+;;;### (autoloads nil "pdf-outline" "pdf-outline.el" (21633 33096
+;;;;;;  88987 492000))
 ;;; Generated autoloads from pdf-outline.el
 
 (autoload 'pdf-outline-minor-mode "pdf-outline" "\
@@ -173,8 +173,8 @@ Enable imenu in the current PDF buffer.
 
 ;;;***
 
-;;;### (autoloads nil "pdf-sync" "pdf-sync.el" (21632 43425 520822
-;;;;;;  602000))
+;;;### (autoloads nil "pdf-sync" "pdf-sync.el" (21633 33096 88987
+;;;;;;  492000))
 ;;; Generated autoloads from pdf-sync.el
 
 (autoload 'pdf-sync-minor-mode "pdf-sync" "\
@@ -199,8 +199,8 @@ with AUCTeX.
 
 ;;;***
 
-;;;### (autoloads nil "pdf-tools" "pdf-tools.el" (21632 43425 516822
-;;;;;;  582000))
+;;;### (autoloads nil "pdf-tools" "pdf-tools.el" (21633 33096 84987
+;;;;;;  473000))
 ;;; Generated autoloads from pdf-tools.el
 
 (autoload 'pdf-tools-enable-minor-modes "pdf-tools" "\
@@ -224,8 +224,8 @@ See `pdf-view-mode' and `pdf-tools-enabled-modes'.
 
 ;;;***
 
-;;;### (autoloads nil "pdf-view" "pdf-view.el" (21632 43425 520822
-;;;;;;  602000))
+;;;### (autoloads nil "pdf-view" "pdf-view.el" (21633 33096 92987
+;;;;;;  512000))
 ;;; Generated autoloads from pdf-view.el
 
 (autoload 'pdf-view-bookmark-jump "pdf-view" "\
@@ -236,8 +236,8 @@ See `pdf-view-mode' and `pdf-tools-enabled-modes'.
 ;;;***
 
 ;;;### (autoloads nil nil ("pdf-cache.el" "pdf-info.el" "pdf-tools-pkg.el"
-;;;;;;  "pdf-util.el" "tablist-filter.el" "tablist.el") (21632 43425
-;;;;;;  537137 316000))
+;;;;;;  "pdf-util.el" "tablist-filter.el" "tablist.el") (21633 33096
+;;;;;;  105690 105000))
 
 ;;;***
 
