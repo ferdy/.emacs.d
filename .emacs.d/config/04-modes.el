@@ -345,7 +345,6 @@
 (setq erc-prompt-for-nickserv-password nil)
 (setq erc-nickserve-passwords
       `((freenode (,gp-nick . ,gp-pass))))
-(setq erc-autojoin-channels-alist '((".*" "#linuxbbq")))
 
 ;; ELECTRIC-PAIR-MODE SETUP
 (electric-pair-mode +1)
@@ -409,15 +408,20 @@
 	       . post-mode))
 
 ;; COMPANY-MODE SETUP
-(require 'company-auctex)
+;; Easy navigation to candidates with M-<n>
+(setq company-show-numbers t)
 
 ;; company for AUCTeX
+(require 'company-auctex)
 (company-auctex-init)
 (add-hook 'LaTeX-mode-hook 'company-mode)
 
 ;; company for Cider
 (add-hook 'cider-repl-mode-hook 'company-mode)
 (add-hook 'cider-mode-hook 'company-mode)
+
+;; company for Elisp
+(add-hook 'emacs-lisp-mode-hook 'company-mode)
 
 ;; MU4E SETUP
 ;; Required packages: mu4e, gnutls-bin
@@ -462,12 +466,6 @@
 
 ;; UNDO-TREE SETUP
 (global-undo-tree-mode)
-
-;; SX.EL
-(add-to-list 'load-path "/home/manuel/githubs/sx.el")
-(require 'sx)
-(require 'sx-tab)
-(require 'sx-interaction)
 
 ;; PDF-TOOLS
 (pdf-tools-install)
