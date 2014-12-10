@@ -275,7 +275,7 @@
 ;; texlive-latex-base, texlive-latex-recommended, latexmk,
 ;; texlive-latex-extra, texlive-fonts-recommended,
 ;; texlive-generic-recommended, texlive-xetex
-;; texlive-lang-italian
+;; texlive-lang-italian, cjk-latex, latex-cjk-all
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
 (autoload 'reftex-mode     "reftex" "RefTeX Minor Mode" t)
