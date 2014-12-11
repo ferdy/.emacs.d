@@ -276,6 +276,9 @@
 ;; texlive-latex-extra, texlive-fonts-recommended,
 ;; texlive-generic-recommended, texlive-xetex
 ;; texlive-lang-italian, cjk-latex, latex-cjk-all
+(setq TeX-parse-self t); Enable parse on load.
+(setq TeX-auto-save t); Enable parse on save.
+
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
 (autoload 'reftex-mode     "reftex" "RefTeX Minor Mode" t)
@@ -284,6 +287,7 @@
 (autoload 'reftex-index-phrase-mode "reftex-index" "Phrase mode" t)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'latex-mode-hook 'turn-on-reftex)   ; with Emacs latex mode
+(add-hook 'LaTeX-mode-hook #'latex-extra-mode) ; extra commands and keys
 
 ;; Make RefTeX faster
 (setq reftex-enable-partial-scans t)
