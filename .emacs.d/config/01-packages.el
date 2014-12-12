@@ -52,7 +52,9 @@
 			  dired+
 			  company
 			  company-auctex
-			  undo-tree)
+			  undo-tree
+			  web-mode
+			  js2-mode)
   "Default packages")
 
 (defun custom/packages-installed-p ()
