@@ -232,6 +232,9 @@
 ;; Don't change size of org-mode headlines (but keep other size-changes)
 (setq solarized-scale-org-headlines nil)
 
+;; Avoid all font-size changes
+(setq solarized-use-variable-pitch nil)
+
 ;; Underline below the font bottomline instead of the baseline
 (setq x-underline-at-descent-line t)
 
