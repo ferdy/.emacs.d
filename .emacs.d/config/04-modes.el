@@ -474,10 +474,6 @@
 ;; PDF-TOOLS
 (pdf-tools-install)
 
-;; SX.EL
-(add-to-list 'load-path "/home/manuel/githubs/sx.el")
-(require 'sx-load)
-
 ;; WEB-MODE
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
