@@ -130,12 +130,12 @@ This is the same as using \\[set-mark-command] with the prefix argument."
             ido-exit 'refresh)
       (exit-minibuffer))))
 
-;; Use a ido-charged recentf
+;; Use a helm-charged recentf
 (require 'recentf)
 
 ;; Get rid of 'find-file-read-only' and replace it with something
 ;; more useful.
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
 
 ;; Enable recent files mode.
 (recentf-mode t)
@@ -230,3 +230,13 @@ prefix argument."
   (elfeed-search-untag-all-unread))
 
 (define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)
+
+;; Minor mode for 'override' keybindings
+(require 'my-keys-mode)
+
+(define-key my-keys-mode-map (kbd "M-a") 'custom/backward-paragraph)
+(define-key my-keys-mode-map (kbd "M-e") 'custom/forward-paragraph)
+(define-key my-keys-mode-map (kbd "C-h") 'delete-backward-char)
+(define-key my-keys-mode-map (kbd "M-h") 'backward-kill-word)
+
+(my-keys-mode 1)

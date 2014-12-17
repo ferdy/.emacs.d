@@ -54,7 +54,8 @@
 			  company-auctex
 			  undo-tree
 			  web-mode
-			  js2-mode)
+			  js2-mode
+			  helm)
   "Default packages")
 
 (defun custom/packages-installed-p ()

@@ -4,7 +4,7 @@
 ;; Set default font
 (set-face-attribute 'default nil
                     :family "Source Code Pro"
-                    :height 115
+                    :height 110
                     :weight 'normal
                     :width 'normal)
 
@@ -127,88 +127,53 @@
 ;; use a eval-after-load hook to set it to "dynamic".
 (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))
 
-;; Turn on ido-mode for better buffers switching
-(defvar ido-context-switch-command nil)
-(defvar ido-cur-item nil)
-(defvar ido-default-item nil)
-(defvar ido-cur-list nil)
+;; Helm setup
+(require 'helm-config)
+(helm-mode 1)
 
-(ido-ubiquitous-mode +1)
+;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
 
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(setq ido-create-new-buffer 'always)
-(ido-mode 1)
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
+(define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB works in terminal
+(define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
 
-;; Turn on ido-vertical-mode
-(require 'ido-vertical-mode)
-(ido-vertical-mode 1)
+(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t)
 
-;; Turn on flx-ido for better search results
-(require 'flx-ido)
-(flx-ido-mode 1)
-(setq flx-ido-use-faces nil)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(setq helm-M-x-fuzzy-match t) ;; optional fuzzy matching for helm-M-x
 
-;; Ido-charged version of imenu
-;; See http://www.emacswiki.org/emacs/ImenuMode#toc13
-(defun ido-goto-symbol (&optional symbol-list)
-  "Refresh imenu and jump to a place in the buffer using Ido."
-  (interactive)
-  (unless (featurep 'imenu)
-    (require 'imenu nil t))
-  (cond
-   ((not symbol-list)
-    (let ((ido-mode ido-mode)
-	  (ido-enable-flex-matching
-	   (if (boundp 'ido-enable-flex-matching)
-	       ido-enable-flex-matching t))
-	  name-and-pos symbol-names position)
-      (unless ido-mode
-	(ido-mode 1)
-	(setq ido-enable-flex-matching t))
-      (while (progn
-	       (imenu--cleanup)
-	       (setq imenu--index-alist nil)
-	       (ido-goto-symbol (imenu--make-index-alist))
-	       (setq selected-symbol
-		     (ido-completing-read "Symbol? " symbol-names))
-	       (string= (car imenu--rescan-item) selected-symbol)))
-      (unless (and (boundp 'mark-active) mark-active)
-	(push-mark nil t nil))
-      (setq position (cdr (assoc selected-symbol name-and-pos)))
-      (cond
-       ((overlayp position)
-	(goto-char (overlay-start position)))
-       (t
-	(goto-char position)))))
-   ((listp symbol-list)
-    (dolist (symbol symbol-list)
-      (let (name position)
-	(cond
-	 ((and (listp symbol) (imenu--subalist-p symbol))
-	  (ido-goto-symbol symbol))
-	 ((listp symbol)
-	  (setq name (car symbol))
-	  (setq position (cdr symbol)))
-	 ((stringp symbol)
-	  (setq name symbol)
-	  (setq position
-		(get-text-property 1 'org-imenu-marker symbol))))
-	(unless (or (null position) (null name)
-		    (string= (car imenu--rescan-item) name))
-	  (add-to-list 'symbol-names name)
-	  (add-to-list 'name-and-pos (cons name position))))))))
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
-(global-set-key (kbd "M-i") 'ido-goto-symbol)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match t)
 
-;; Enable smex
-;; See https://github.com/nonsequitur/smex
-(smex-initialize)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;; C-h is delete-backward-char, don't touch it!
+(define-key helm-find-files-map (kbd "C-h") nil)
+
+(setq helm-semantic-fuzzy-match t
+      helm-imenu-fuzzy-match t)
+
+(add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
+
+(global-set-key (kbd "C-c h o") 'helm-occur)
+
+(setq helm-apropos-function-list t)
+
+(require 'helm-eshell)
+(add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
 
 ;; Set unique buffer names
 (require 'uniquify)

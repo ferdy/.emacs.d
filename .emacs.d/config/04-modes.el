@@ -34,35 +34,6 @@
 ;; If you want to hide the mode-line in every buffer by default
 ;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
-;; Minor mode for 'override' keybindings
-;; See comments here: http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html
-(defvar my-keys-minor-mode-map (make-keymap) "my-keys-minor-mode keymap.")
-
-(define-key my-keys-minor-mode-map (kbd "M-h") 'backward-kill-word)
-(define-key my-keys-minor-mode-map (kbd "M-a") 'custom/backward-paragraph)
-(define-key my-keys-minor-mode-map (kbd "M-e") 'custom/forward-paragraph)
-(define-key my-keys-minor-mode-map (kbd "C-?") 'help-command)
-
-(define-minor-mode my-keys-minor-mode
-  "A minor mode so that my key settings override annoying major modes."
-  t " my-keys" 'my-keys-minor-mode-map)
-
-(defadvice load (after give-my-keybindings-priority)
-  "Try to ensure that my keybindings always have priority."
-  (if (not (eq (car (car minor-mode-map-alist)) 'my-keys-minor-mode))
-      (let ((mykeys (assq 'my-keys-minor-mode minor-mode-map-alist)))
-	(assq-delete-all 'my-keys-minor-mode minor-mode-map-alist)
-	(add-to-list 'minor-mode-map-alist mykeys))))
-(ad-activate 'load)
-
-(my-keys-minor-mode 1)
-
-;; Turn it off in the minibuffer
-(defun my-minibuffer-setup-hook ()
-  (my-keys-minor-mode 0))
-
-(add-hook 'minibuffer-setup-hook 'my-minibuffer-setup-hook)
-
 ;; DIRED SETUP
 ;; Auto refresh buffers
 (global-auto-revert-mode 1)
@@ -119,6 +90,9 @@
 
 ;; ORG-MODE SETUP
 (require 'org)
+
+;; Fontify src
+(setq org-src-fontify-natively t)
 
 ;; Keybindings
 (global-set-key "\C-cl" 'org-store-link)
