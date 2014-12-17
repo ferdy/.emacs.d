@@ -117,9 +117,6 @@
 (defadvice kill-whole-line (after fix-cookies activate)
   (myorg-update-parent-cookie))
 
-;; Completion with ido
-(setq org-completion-use-ido t)
-
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
@@ -203,18 +200,6 @@
 
 (setq eshell-cmpl-cycle-completions nil
       eshell-save-history-on-exit t)
-
-;; Eshell history powered by ido
-(add-hook 'eshell-mode-hook
-	  (lambda ()
-	    (local-set-key (kbd "C-c h")
-			   (lambda ()
-			     (interactive)
-			     (insert
-			      (ido-completing-read "Eshell history: "
-						   (delete-dups
-						    (ring-elements eshell-history-ring))))))
-	    (local-set-key (kbd "C-c C-h") 'eshell-list-history)))
 
 ;; Run scrips from current working on remote system
 (defadvice eshell-gather-process-output (before absolute-cmd (command args) act)

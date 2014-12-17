@@ -44,19 +44,6 @@
       t
     (error ("Lists must have same length."))))
 
-;; Insert the name of the other buffer or window into the active buffer
-(defun insert-other-buffer-file-name ()
-  "Inserts the full filepath of a buffer into the current buffer."
-  (interactive)
-  (insert (buffer-file-name
-	   (get-buffer
-	    (ido-completing-read
-	     "Select the buffer to get the filename from: "
-	     (loop for buf being the buffers
-		   when (buffer-file-name buf)
-		   collect (buffer-name buf) into file-buffers
-		   finally return file-buffers))))))
-
 ;; Reverts (reloads from file) the current buffer without asking any questions
 (defun revert-this-buffer ()
   (interactive)

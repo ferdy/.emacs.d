@@ -102,34 +102,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (deactivate-mark nil))
 (define-key global-map [remap exchange-point-and-mark] 'exchange-point-and-mark-no-activate)
 
-;; Ido bury buffer
-;; See http://endlessparentheses.com/Ido-Bury-Buffer.html
-(add-hook
- 'ido-setup-hook
- (defun custom/define-ido-bury-key ()
-   (define-key ido-completion-map
-     (kbd "C-b") 'custom/ido-bury-buffer-at-head)))
-
-(defun custom/ido-bury-buffer-at-head ()
-  "Bury the buffer at the head of 'ido-matches'."
-  (interactive)
-  (let ((enable-recursive-minibuffers t)
-        (buf (ido-name (car ido-matches)))
-        (nextbuf (cadr ido-matches)))
-    (when (get-buffer buf)
-      ;; If next match names a buffer use the buffer object;
-      ;; buffer name may be changed by packages such as
-      ;; uniquify.
-      (when (and nextbuf (get-buffer nextbuf))
-        (setq nextbuf (get-buffer nextbuf)))
-      (bury-buffer buf)
-      (if (bufferp nextbuf)
-          (setq nextbuf (buffer-name nextbuf)))
-      (setq ido-default-item nextbuf
-            ido-text-init ido-text
-            ido-exit 'refresh)
-      (exit-minibuffer))))
-
 ;; Use a helm-charged recentf
 (require 'recentf)
 
@@ -142,13 +114,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 ;; 50 files ought to be enough.
 (setq recentf-max-saved-items 50)
-
-(defun ido-recentf-open ()
-  "Use 'ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
 
 ;; C-z for repeat (usually C-x z)
 (global-set-key (kbd "C-z") 'repeat)
