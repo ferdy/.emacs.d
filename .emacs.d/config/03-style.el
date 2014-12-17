@@ -159,7 +159,12 @@
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 
 ;; C-h is delete-backward-char, don't touch it!
-(define-key helm-find-files-map (kbd "C-h") nil)
+(eval-after-load "helm-files"
+  '(let ((helm-find-files-C-h-map (lookup-key helm-find-files-map (kbd "C-h"))))
+     ;; make sure C-h is no longer a prefix key
+     (define-key helm-find-files-map (kbd "C-h") nil)
+     ;; rebind "C-h ..." to "M-m ..." to preserve functionality
+     (define-key helm-find-files-map (kbd "M-m") helm-find-files-C-h-map)))
 
 (setq helm-semantic-fuzzy-match t
       helm-imenu-fuzzy-match t)
@@ -173,7 +178,7 @@
 (require 'helm-eshell)
 (add-hook 'eshell-mode-hook
           #'(lambda ()
-              (define-key eshell-mode-map (kbd "C-c C-l")  'helm-eshell-history)))
+              (define-key eshell-mode-map (kbd "C-c C-l") 'helm-eshell-history)))
 
 ;; Set unique buffer names
 (require 'uniquify)
