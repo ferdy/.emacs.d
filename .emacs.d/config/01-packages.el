@@ -4,7 +4,6 @@
 ;;; and install/refresh default packages
 
 (require 'package)
-(package-initialize)
 
 ;; Add the original Emacs Lisp Package Archive
 (add-to-list 'package-archives
@@ -15,6 +14,8 @@
 ;; Add Melpa
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/") t)
+
+(package-initialize)
 
 ;; Use El-Get to sync repos and dependencies.
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
@@ -30,6 +31,10 @@
 ;; Default packages
 ;; See: http://www.aaronbedra.com/emacs.d/
 (defvar custom/packages '(solarized-theme
+			  ido-ubiquitous
+			  ido-vertical-mode
+			  flx-ido
+			  smex
 			  hungry-delete
 			  org
 			  magit
@@ -50,8 +55,7 @@
 			  company-auctex
 			  undo-tree
 			  web-mode
-			  js2-mode
-			  helm)
+			  js2-mode)
   "Default packages")
 
 (defun custom/packages-installed-p ()
