@@ -212,6 +212,17 @@
 (defadvice eshell-gather-process-output (before absolute-cmd (command args) act)
   (setq command (file-truename command)))
 
+(add-hook 'eshell-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-c h")
+			   (lambda ()
+			     (interactive)
+			     (insert
+			      (ido-completing-read "Eshell history: "
+						   (delete-dups
+						    (ring-elements eshell-history-ring))))))
+	    (local-set-key (kbd "C-c C-h") 'eshell-list-history)))
+
 ;; MAGIT SETUP
 (require 'magit)
 

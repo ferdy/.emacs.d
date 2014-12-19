@@ -232,7 +232,9 @@ prefix argument."
 (define-key my-keys-mode-map (kbd "M-e") 'custom/forward-paragraph)
 (define-key my-keys-mode-map (kbd "C-h") 'delete-backward-char)
 (define-key my-keys-mode-map (kbd "M-h") 'backward-kill-word)
+(define-key my-keys-mode-map (kbd "C-?") 'help-command)
+(define-key my-keys-mode-map (kbd "M-?") 'mark-paragraph)
 
-(my-keys-mode 1)
+(global-my-keys-mode 1)
 
 ;;; 05-keybindings ends here
