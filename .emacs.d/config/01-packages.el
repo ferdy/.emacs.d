@@ -60,7 +60,8 @@
 			  web-mode
 			  js2-mode
 			  iedit
-			  flycheck)
+			  flycheck
+			  flycheck-pos-tip)
   "Default packages.")
 
 (defun custom/packages-installed-p ()
@@ -77,7 +78,5 @@
 
 ;; Always load newer compiled files
 (setq load-prefer-newer t)
-
-(provide '01-packages)
 
 ;;; 01-packages.el ends here

@@ -145,6 +145,4 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (message "Opening file...")
     (message "Aborting")))
 
-(provide '02-functions)
-
 ;;; 02-functions.el ends here

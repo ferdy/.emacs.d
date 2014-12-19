@@ -452,6 +452,8 @@
 ;; FLYCHECK SETUP
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
-(provide '04-modes)
+(eval-after-load 'flycheck
+  '(custom-set-variables
+    '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
 ;;; 04-modes.el ends here

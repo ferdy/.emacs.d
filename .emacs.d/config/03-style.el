@@ -336,6 +336,4 @@
 ;; Better ediff behavior
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-(provide '03-style)
-
 ;;; 03-style.el ends here

@@ -235,6 +235,4 @@ prefix argument."
 
 (my-keys-mode 1)
 
-(provide '05-keybindings)
-
 ;;; 05-keybindings ends here
