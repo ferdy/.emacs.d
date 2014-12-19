@@ -196,7 +196,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (defmacro bol-with-prefix (function)
   "Define a new function which calls FUNCTION.
 Except it moves to beginning of line before calling FUNCTION when
-called with a prefix argument. The FUNCTION still receives the
+called with a prefix argument.  The FUNCTION still receives the
 prefix argument."
   (let ((name (intern (format "custom/%s-BOL" function))))
     `(progn
@@ -219,6 +219,7 @@ prefix argument."
 (require 'elfeed-search)
 
 (defun elfeed-mark-all-as-read ()
+  "Mark all fees as read."
   (interactive)
   (mark-whole-buffer)
   (elfeed-search-untag-all-unread))
