@@ -1,6 +1,9 @@
-;;;; load-directory.el
+;;; ~/.emacs.d/load-directory.el --- Summary
 
+;;; Commentary:
 ;; Handy function to load recursively all '.el' files in a given directory
+
+;;; Code:
 (defun load-directory (directory)
   "Load recursively all '.el' files in DIRECTORY."
   (dolist (element (directory-files-and-attributes directory nil nil nil))
@@ -13,3 +16,7 @@
         (load-directory fullpath))
        ((and (eq isdir nil) (string= (substring path -3) ".el"))
         (load (file-name-sans-extension fullpath)))))))
+
+(provide 'load-directory)
+
+;;; load-directory.el ends here
