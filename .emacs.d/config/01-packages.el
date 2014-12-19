@@ -58,7 +58,8 @@
 			  js2-mode
 			  iedit
 			  flycheck
-			  flycheck-pos-tip)
+			  flycheck-pos-tip
+			  browse-kill-ring)
   "Default packages.")
 
 (defun custom/packages-installed-p ()

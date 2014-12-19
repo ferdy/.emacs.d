@@ -456,4 +456,8 @@
   '(custom-set-variables
     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
+;; BROWSE-KILL-RING SETUP
+(when (require 'browse-kill-ring nil 'noerror)
+  (browse-kill-ring-default-keybindings))
+
 ;;; 04-modes.el ends here
