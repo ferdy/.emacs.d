@@ -1,6 +1,10 @@
-;;;; 04-modes.el
+;;; 04-modes.el --- Summary
 
-;;; This file stores the configurations of every mode I use.
+;;; Commentary:
+
+;; This file stores the configurations of every mode I use.
+
+;;; Code:
 
 ;; Turn on hungry-delete-mode
 ;; See: http://endlessparentheses.com/hungry-delete-mode.html
@@ -116,6 +120,9 @@
 
 (defadvice kill-whole-line (after fix-cookies activate)
   (myorg-update-parent-cookie))
+
+;; Completion with ido
+(setq org-completion-use-ido t)
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -441,3 +448,10 @@
 
 ;; JS2-MODE
 (add-hook 'js-mode-hook 'js2-minor-mode)
+
+;; FLYCHECK SETUP
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(provide '04-modes)
+
+;;; 04-modes.el ends here

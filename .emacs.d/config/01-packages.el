@@ -1,8 +1,11 @@
-;;;; 01-packages.el
+;;; 01-packages.el --- Summary
 
-;;; This file stores all the packages related configurations
-;;; and install/refresh default packages
+;;; Commentary:
 
+;; This file stores all the packages related configurations
+;; and install/refresh default packages
+
+;;; Code:
 (require 'package)
 
 ;; Add the original Emacs Lisp Package Archive
@@ -55,8 +58,10 @@
 			  company-auctex
 			  undo-tree
 			  web-mode
-			  js2-mode)
-  "Default packages")
+			  js2-mode
+			  iedit
+			  flycheck)
+  "Default packages.")
 
 (defun custom/packages-installed-p ()
   (loop for pkg in custom/packages
@@ -72,3 +77,7 @@
 
 ;; Always load newer compiled files
 (setq load-prefer-newer t)
+
+(provide '01-packages)
+
+;;; 01-packages.el ends here

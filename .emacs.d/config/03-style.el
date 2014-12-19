@@ -1,6 +1,9 @@
-;;;; 03-style.el
-;;; This file stores the interface customizations.
+;;; 03-style.el --- Summary
 
+;;; Commentary:
+;; This file stores the interface customizations.
+
+;;; Code:
 ;; Set default font
 (set-face-attribute 'default nil
                     :family "Source Code Pro"
@@ -100,9 +103,8 @@
 ;; Disable scratch buffer message
 (setq initial-scratch-message nil)
 
-;; Tooltips in the echo area
+;; Disable tooltips
 (tooltip-mode -1)
-(setq tooltip-use-echo-area t)
 
 ;; Remove *Messages* buffer
 (setq-default message-log-max nil)
@@ -316,7 +318,7 @@
 
 ;; Helper function
 (defun shorten-directory (dir max-length)
-  "Show up to `max-length' characters of a directory name `dir'."
+  "For directory name DIR show up to MAX-LENGTH characters."
   (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
         (output ""))
     (when (and path (equal "" (car path)))
@@ -327,3 +329,13 @@
     (when path
       (setq output (concat "../" output)))
     output))
+
+;; Let apropos commands perform more extensive searches than default
+(setq apropos-do-all t)
+
+;; Better ediff behavior
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+(provide '03-style)
+
+;;; 03-style.el ends here

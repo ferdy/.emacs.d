@@ -1,7 +1,9 @@
-;;;; 05-keybindings.el
+;;; 05-keybindings.el --- Summary
 
-;;; This file stores all the keybindings I use.
+;;; Commentary:
+;; This file stores all the keybindings I use.
 
+;;; Code:
 ;; Better backspacing
 (global-set-key (kbd "C-?") 'help-command)
 (global-set-key (kbd "M-?") 'mark-paragraph)
@@ -232,3 +234,7 @@ prefix argument."
 (define-key my-keys-mode-map (kbd "M-h") 'backward-kill-word)
 
 (my-keys-mode 1)
+
+(provide '05-keybindings)
+
+;;; 05-keybindings ends here

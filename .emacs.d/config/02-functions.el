@@ -1,7 +1,10 @@
-;;;; 02-functions.el
+;;; 02-functions.el --- Summary
 
-;;; This file contains various functions
+;;; Commentary:
 
+;; This file contains various functions
+
+;;; Code:
 ;; Replace HTML tags with the ones used by WordPress editor
 (defvar oldtags '("<i>" "</i>" "<b>" "</b>"))
 (defvar newtags '("<em>" "</em>" "<strong>" "</strong>"))
@@ -115,8 +118,8 @@ a new instance."
 
 ;; Create a keybinding to start some terminal program
 (defmacro custom/program-shortcut (name key &optional use-existing)
-  "Macro to create a key binding KEY to start some terminal program PRG;
-    if USE-EXISTING is true, try to switch to an existing buffer"
+  "Macro to start some terminal program NAME with 'key-binding' KEY;
+if USE-EXISTING is true, try to switch to an existing buffer"
   `(global-set-key ,key
 		   '(lambda()
 		      (interactive)
@@ -136,8 +139,12 @@ a new instance."
 
 ;; Open recent files with ido
 (defun ido-recentf-open ()
-  "Use 'ido-completing-read' to \\[find-file] a recent file"
+  "Use 'ido-completing-read' to \\[find-file] a recent file."
   (interactive)
   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
       (message "Opening file...")
     (message "Aborting")))
+
+(provide '02-functions)
+
+;;; 02-functions.el ends here

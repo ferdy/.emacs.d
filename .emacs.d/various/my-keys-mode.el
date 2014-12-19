@@ -1,10 +1,12 @@
 ;;; my-keys-mode.el ---                              -*- lexical-binding: t; -*-
 
+;;; Commentary:
 ;; Source: https://emacs.stackexchange.com/a/358/219
 
 ;; My minor mode
 ;; Main use is to have my key bindings have the highest priority
 
+;;; Code:
 (defvar my-keys-mode-map (make-sparse-keymap)
   "Keymap while my-keys-mode is active.")
 
@@ -26,13 +28,13 @@
 
 ;;;###autoload
 (defun turn-on-my-keys-mode ()
-  "Turns on my-keys-mode."
+  "Turn on my-keys-mode."
   (interactive)
   (my-keys-mode t))
 
 ;;;###autoload
 (defun turn-off-my-keys-mode ()
-  "Turns off my-keys-mode."
+  "Turn off my-keys-mode."
   (interactive)
   (my-keys-mode -1))
 
@@ -43,3 +45,5 @@
 (add-hook 'minibuffer-setup-hook 'turn-off-my-keys-mode)
 
 (provide 'my-keys-mode)
+
+;;; my-keys-mode.el ends here
