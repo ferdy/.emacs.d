@@ -1,4 +1,4 @@
-;;; 05-keybindings.el --- Summary
+;;; 05-keybindings.el --- Part of my Emacs configuration
 
 ;;; Commentary:
 ;; This file stores all the keybindings I use.

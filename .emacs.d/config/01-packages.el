@@ -1,4 +1,4 @@
-;;; 01-packages.el --- Summary
+;;; 01-packages.el --- Part of my Emacs configuration
 
 ;;; Commentary:
 

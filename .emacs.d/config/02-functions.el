@@ -1,4 +1,4 @@
-;;; 02-functions.el --- Summary
+;;; 02-functions.el --- Part of my Emacs configuration
 
 ;;; Commentary:
 

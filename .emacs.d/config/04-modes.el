@@ -1,4 +1,4 @@
-;;; 04-modes.el --- Summary
+;;; 04-modes.el --- Part of my Emacs configuration
 
 ;;; Commentary:
 

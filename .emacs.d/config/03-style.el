@@ -1,4 +1,4 @@
-;;; 03-style.el --- Summary
+;;; 03-style.el --- Part of my Emacs configuration
 
 ;;; Commentary:
 ;; This file stores the interface customizations.
