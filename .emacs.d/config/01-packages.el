@@ -31,6 +31,7 @@
 ;; See: http://www.aaronbedra.com/emacs.d/
 (defvar custom/packages '(;; Theme
 			  solarized-theme
+			  smart-mode-line
 			  ;; General editing
 			  hungry-delete
 			  adaptive-wrap
@@ -47,6 +48,7 @@
 			  dired+
 			  pandoc-mode
 			  elfeed
+			  paradox
 			  ;; Ido
 			  ido-ubiquitous
 			  ido-vertical-mode
