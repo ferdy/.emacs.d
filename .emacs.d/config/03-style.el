@@ -336,4 +336,15 @@
 ;; Better ediff behavior
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+;; BROWSE-KILL-RING SETUP
+(when (require 'browse-kill-ring nil 'noerror)
+  (browse-kill-ring-default-keybindings))
+
+;; UNICODE-FONTS SETUP
+(unicode-fonts-setup)
+
+;; AG SETUP
+(setq ag-reuse-buffers t
+      ag-highlight-search t)
+
 ;;; 03-style.el ends here

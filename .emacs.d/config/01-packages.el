@@ -32,55 +32,52 @@
 ;; See: http://www.aaronbedra.com/emacs.d/
 (defvar custom/packages '(;; Theme
 			  solarized-theme
-
-			  ;; Utilities
+			  ;; General editing
 			  hungry-delete
 			  adaptive-wrap
-			  rainbow-delimiters
-			  bookmark+
-			  names
-			  aggressive-indent
 			  iedit
 			  undo-tree
 			  browse-kill-ring
+			  ;; General coding
+			  rainbow-delimiters
+			  aggressive-indent
+			  ;; Utilities
+			  bookmark+
+			  names
 			  unicode-fonts
 			  dired+
 			  pandoc-mode
 			  elfeed
-
 			  ;; Ido
 			  ido-ubiquitous
 			  ido-vertical-mode
 			  flx-ido
 			  smex
-
 			  ;; Org-mode
 			  org
-
 			  ;; Magit for version control
 			  magit
-
 			  ;; LaTeX
 			  auctex
 			  ebib
 			  latex-extra
-
 			  ;; Clojure
 			  clojure-mode
 			  cider
-
 			  ;; Company
 			  company
 			  company-auctex
 			  company-math
-
 			  ;; Web development
 			  web-mode
 			  js2-mode
-
 			  ;; Flycheck
 			  flycheck
-			  flycheck-pos-tip)
+			  flycheck-pos-tip
+			  ;; Search and replace
+			  ag
+			  wgrep wgrep-ag
+			  visual-regexp)
 
   "Default packages.")
 

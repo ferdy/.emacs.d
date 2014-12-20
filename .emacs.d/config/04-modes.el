@@ -226,9 +226,23 @@
 ;; MAGIT SETUP
 (require 'magit)
 
+;; Shut up, Magit!
+(setq magit-save-some-buffers 'dontask
+      magit-stage-all-confirm nil
+      magit-unstage-all-confirm nil
+      ;; Except when you ask something useful…
+      magit-set-upstream-on-push t
+      ;; Use IDO for completion
+      magit-completing-read-function #'magit-ido-completing-read)
+
+;; Auto-revert files after Magit operations
+(magit-auto-revert-mode)
+(setq magit-auto-revert-mode-lighter "")
+
 ;; Fullscreen magit-status
 ;; See http://whattheemacsd.com/setup-magit.el-01.html
 (defadvice magit-status (around magit-fullscreen activate)
+  "Turn fullscreen on for magit-status."
   (window-configuration-to-register :magit-fullscreen)
   ad-do-it
   (delete-other-windows))
@@ -240,7 +254,7 @@
     (kill-matching-buffers regexp)))
 
 (defun magit-quit-session ()
-  "Restores the previous window configuration and kills the magit buffer"
+  "Restore the previous window configuration and kill the magit buffer."
   (interactive)
   (custom-kill-buffers "^\\*magit")
   (jump-to-register :magit-fullscreen))
@@ -475,12 +489,5 @@
 (eval-after-load 'flycheck
   '(custom-set-variables
     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
-
-;; BROWSE-KILL-RING SETUP
-(when (require 'browse-kill-ring nil 'noerror)
-  (browse-kill-ring-default-keybindings))
-
-;; UNICODE-FONTS SETUP
-(unicode-fonts-setup)
 
 ;;; 04-modes.el ends here
