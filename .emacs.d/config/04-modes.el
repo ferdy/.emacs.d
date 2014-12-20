@@ -67,7 +67,7 @@
 
 ;; SCHEME SETUP
 ;; Associate Scheme with GNUGuile
-;; Required packages: guile-2.0
+;; Requires: guile-2.0
 (setq scheme-program-name "guile")
 
 ;; Use this for Chicken Scheme instead of Guile
@@ -81,8 +81,7 @@
 ;; SLIME SETUP
 ;; Get slime to associate with sbcl
 ;; The path MAY be emacs or emacs24, depending on build
-;; Required packages:
-;; sbcl, slime, sbcl-doc, cl-clx-sbcl,
+;; Requires: sbcl, slime, sbcl-doc, cl-clx-sbcl,
 ;; cl-ppcre, autoconf, texinfo, cl-swank
 (setq slime-backend "/usr/share/common-lisp/source/slime/swank-loader.lisp")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
@@ -260,9 +259,8 @@
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
 ;; AUCTEX SETUP
-;; Required packages:
-;; texlive-latex-base, texlive-latex-recommended, latexmk,
-;; texlive-latex-extra, texlive-fonts-recommended,
+;; Requires: ;; texlive-latex-base, texlive-latex-recommended,
+;; latexmk, texlive-latex-extra, texlive-fonts-recommended,
 ;; texlive-generic-recommended, texlive-xetex
 ;; texlive-lang-italian, cjk-latex, latex-cjk-all
 (setq TeX-parse-self t); Enable parse on load.
@@ -327,7 +325,7 @@
      (add-hook 'latex-mode-hook #'adaptive-wrap)))
 
 ;; ERC SETUP
-;; requires in ~/.ercpass the format
+;; Requires in ~/.ercpass the format
 ;; (setq variable "nickname")
 ;; (setq variable "password")
 (load "~/.ercpass")
@@ -426,7 +424,7 @@
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
 
 ;; MU4E SETUP
-;; Required packages: mu4e, gnutls-bin
+;; Requires: mu4e, gnutls-bin
 ;; Optional: nullmailer
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 (require 'mu4e)
@@ -470,6 +468,7 @@
 (global-undo-tree-mode)
 
 ;; PDF-TOOLS
+;; Requires: https://github.com/politza/pdf-tools
 (pdf-tools-install)
 
 ;; WEB-MODE
@@ -482,6 +481,7 @@
 (add-hook 'js-mode-hook 'js2-minor-mode)
 
 ;; FLYCHECK SETUP
+;; Requires: chktex
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (eval-after-load 'flycheck
@@ -489,6 +489,7 @@
     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
 ;; FLYSPELL MODE SETUP
+;; Requires: aspell, aspell-in, aspell-en
 (defun flyspell-detect-ispell-args (&optional RUN-TOGETHER)
   "If RUN-TOGETHER is true, spell check the CamelCase words."
   (let (args)
