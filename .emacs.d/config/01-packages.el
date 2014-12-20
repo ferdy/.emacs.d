@@ -32,6 +32,8 @@
 (defvar custom/packages '(;; Theme
 			  solarized-theme
 			  smart-mode-line
+			  fill-column-indicator
+			  page-break-lines
 			  ;; General editing
 			  hungry-delete
 			  adaptive-wrap

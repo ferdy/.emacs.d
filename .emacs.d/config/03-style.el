@@ -302,4 +302,7 @@
 (setq ag-reuse-buffers t
       ag-highlight-search t)
 
+;; PAGE BREAK LINES
+(turn-on-page-break-lines-mode)
+
 ;;; 03-style.el ends here
