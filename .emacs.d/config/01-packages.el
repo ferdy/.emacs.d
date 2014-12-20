@@ -30,36 +30,58 @@
 
 ;; Default packages
 ;; See: http://www.aaronbedra.com/emacs.d/
-(defvar custom/packages '(solarized-theme
-			  ido-ubiquitous
-			  ido-vertical-mode
-			  flx-ido
-			  smex
+(defvar custom/packages '(;; Theme
+			  solarized-theme
+
+			  ;; Utilities
 			  hungry-delete
-			  org
-			  magit
-			  auctex
-			  ebib
-			  latex-extra
 			  adaptive-wrap
-			  clojure-mode
-			  cider
-			  pandoc-mode
 			  rainbow-delimiters
 			  bookmark+
 			  names
 			  aggressive-indent
-			  elfeed
+			  iedit
+			  undo-tree
+			  browse-kill-ring
+			  unicode-fonts
 			  dired+
+			  pandoc-mode
+			  elfeed
+
+			  ;; Ido
+			  ido-ubiquitous
+			  ido-vertical-mode
+			  flx-ido
+			  smex
+
+			  ;; Org-mode
+			  org
+
+			  ;; Magit for version control
+			  magit
+
+			  ;; LaTeX
+			  auctex
+			  ebib
+			  latex-extra
+
+			  ;; Clojure
+			  clojure-mode
+			  cider
+
+			  ;; Company
 			  company
 			  company-auctex
-			  undo-tree
+			  company-math
+
+			  ;; Web development
 			  web-mode
 			  js2-mode
-			  iedit
+
+			  ;; Flycheck
 			  flycheck
-			  flycheck-pos-tip
-			  browse-kill-ring)
+			  flycheck-pos-tip)
+
   "Default packages.")
 
 (defun custom/packages-installed-p ()

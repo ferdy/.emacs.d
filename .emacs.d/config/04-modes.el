@@ -397,6 +397,15 @@
 (company-auctex-init)
 (add-hook 'LaTeX-mode-hook 'company-mode)
 
+;; local configuration for TeX modes
+(defun my-latex-mode-setup ()
+  "Add company-math backends."
+  (setq-local company-backends
+              (append '(company-math-symbols-latex company-latex-commands)
+                      company-backends)))
+
+(add-hook 'TeX-mode-hook 'my-latex-mode-setup)
+
 ;; company for Cider
 (add-hook 'cider-repl-mode-hook 'company-mode)
 (add-hook 'cider-mode-hook 'company-mode)
@@ -470,5 +479,8 @@
 ;; BROWSE-KILL-RING SETUP
 (when (require 'browse-kill-ring nil 'noerror)
   (browse-kill-ring-default-keybindings))
+
+;; UNICODE-FONTS SETUP
+(unicode-fonts-setup)
 
 ;;; 04-modes.el ends here
