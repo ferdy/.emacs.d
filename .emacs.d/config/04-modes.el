@@ -488,4 +488,57 @@
   '(custom-set-variables
     '(flycheck-display-errors-function #'flycheck-pos-tip-error-messages)))
 
+;; FLYSPELL MODE SETUP
+(defun flyspell-detect-ispell-args (&optional RUN-TOGETHER)
+  "If RUN-TOGETHER is true, spell check the CamelCase words."
+  (let (args)
+    (cond
+     ((string-match  "aspell$" ispell-program-name)
+      (setq args (list "--sug-mode=ultra" "--lang=it_IT"))
+      (if RUN-TOGETHER
+          (setq args (append args '("--run-together" "--run-together-limit=5" "--run-together-min=2")))))
+     ((string-match "hunspell$" ispell-program-name)
+      (setq args nil)))
+    args
+    ))
+
+(cond
+ ((executable-find "aspell")
+  (setq ispell-program-name "aspell")
+  (setq ispell-dictionary "italiano"))
+ ((executable-find "hunspell")
+  (setq ispell-program-name "hunspell")
+  (setq ispell-local-dictionary "it_IT")
+  (setq ispell-local-dictionary-alist
+        '(("it_IT" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8))))
+ (t (setq ispell-program-name nil)))
+
+;; ispell-cmd-args is useless, it's the list of *extra* arguments we will append to the ispell process when "ispell-word" is called.
+;; ispell-extra-args is the command arguments which will *always* be used when start ispell process
+(setq ispell-extra-args (flyspell-detect-ispell-args t))
+
+(defadvice ispell-word (around my-ispell-word activate)
+  (let ((old-ispell-extra-args ispell-extra-args))
+    (ispell-kill-ispell t)
+    (setq ispell-extra-args (flyspell-detect-ispell-args))
+    ad-do-it
+    (setq ispell-extra-args old-ispell-extra-args)
+    (ispell-kill-ispell t)
+    ))
+
+(setq flyspell-use-meta-tab nil
+      ;; Make Flyspell less chatty
+      flyspell-issue-welcome-flag nil
+      flyspell-issue-message-flag nil)
+
+(global-set-key (kbd "C-c I")
+		(lambda()(interactive)
+		  (ispell-change-dictionary "italiano")
+		  (flyspell-buffer)))
+
+(global-set-key (kbd "C-c E")
+		(lambda()(interactive)
+		  (ispell-change-dictionary "english")
+		  (flyspell-buffer)))
+
 ;;; 04-modes.el ends here
