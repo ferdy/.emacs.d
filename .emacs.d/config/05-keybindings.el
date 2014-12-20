@@ -183,7 +183,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key (kbd "<f3>") 'magit-status)
 
 ;; Global key for package-list-packages
-(global-set-key (kbd "<f4>") 'package-list-packages)
+(global-set-key (kbd "<f4>") 'paradox-list-packages)
 
 ;; Global key for elfeed
 (global-set-key (kbd "<f5>") 'elfeed)
