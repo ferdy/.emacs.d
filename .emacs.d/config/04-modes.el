@@ -542,4 +542,7 @@
 		  (ispell-change-dictionary "english")
 		  (flyspell-buffer)))
 
+;; PARADOX SETUP
+(setq paradox-execute-asynchronously t)
+
 ;;; 04-modes.el ends here
