@@ -48,6 +48,7 @@
 			  names
 			  unicode-fonts
 			  dired+
+			  markdown-mode
 			  pandoc-mode
 			  elfeed
 			  paradox
