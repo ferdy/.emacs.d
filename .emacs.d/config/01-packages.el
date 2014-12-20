@@ -80,7 +80,6 @@
 			  ag
 			  wgrep wgrep-ag
 			  visual-regexp)
-
   "Default packages.")
 
 (defun custom/packages-installed-p ()
