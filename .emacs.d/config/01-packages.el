@@ -1,9 +1,8 @@
 ;;; 01-packages.el --- Part of my Emacs configuration
 
 ;;; Commentary:
-
 ;; This file stores all the packages related configurations
-;; and install/refresh default packages
+;; and install/refresh default packages.
 
 ;;; Code:
 (require 'package)

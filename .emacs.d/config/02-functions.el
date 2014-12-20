@@ -1,8 +1,7 @@
 ;;; 02-functions.el --- Part of my Emacs configuration
 
 ;;; Commentary:
-
-;; This file contains various functions
+;; This file contains various useful functions.
 
 ;;; Code:
 ;; Replace HTML tags with the ones used by WordPress editor

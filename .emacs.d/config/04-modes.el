@@ -1,11 +1,9 @@
 ;;; 04-modes.el --- Part of my Emacs configuration
 
 ;;; Commentary:
-
 ;; This file stores the configurations of every mode I use.
 
 ;;; Code:
-
 ;; Turn on hungry-delete-mode
 ;; See: http://endlessparentheses.com/hungry-delete-mode.html
 (global-hungry-delete-mode)
