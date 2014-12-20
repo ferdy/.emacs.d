@@ -51,6 +51,7 @@
 			  pandoc-mode
 			  elfeed
 			  paradox
+			  sx
 			  ;; Ido
 			  ido-ubiquitous
 			  ido-vertical-mode
