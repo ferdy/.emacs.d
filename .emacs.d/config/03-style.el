@@ -344,6 +344,7 @@
 (unicode-fonts-setup)
 
 ;; AG SETUP
+;; Require: silversearcher-ag
 (setq ag-reuse-buffers t
       ag-highlight-search t)
 
