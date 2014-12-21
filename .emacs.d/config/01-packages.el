@@ -84,6 +84,7 @@
   "Default packages.")
 
 (defun custom/packages-installed-p ()
+  "Check if all required packages are already installed."
   (loop for pkg in custom/packages
         when (not (package-installed-p pkg)) do (return nil)
         finally (return t)))
