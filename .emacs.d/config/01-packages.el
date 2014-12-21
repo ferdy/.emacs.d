@@ -37,6 +37,7 @@
 			  iedit
 			  undo-tree
 			  browse-kill-ring
+			  smartscan
 			  ;; General coding
 			  rainbow-delimiters
 			  aggressive-indent

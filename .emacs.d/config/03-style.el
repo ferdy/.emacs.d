@@ -305,4 +305,7 @@
 ;; PAGE BREAK LINES
 (turn-on-page-break-lines-mode)
 
+;; SMARTSCAN MODE
+(global-smartscan-mode 1)
+
 ;;; 03-style.el ends here

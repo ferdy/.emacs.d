@@ -220,6 +220,11 @@
 						    (ring-elements eshell-history-ring))))))
 	    (local-set-key (kbd "C-c C-h") 'eshell-list-history)))
 
+;; Disable smartscan for eshell
+(add-hook 'eshell-mode-hook
+	  (lambda ()
+	    (smartscan-mode -1)))
+
 ;; MAGIT SETUP
 (require 'magit)
 
@@ -519,6 +524,7 @@
 (setq ispell-extra-args (flyspell-detect-ispell-args t))
 
 (defadvice ispell-word (around my-ispell-word activate)
+  "Take care of extra args."
   (let ((old-ispell-extra-args ispell-extra-args))
     (ispell-kill-ispell t)
     (setq ispell-extra-args (flyspell-detect-ispell-args))
