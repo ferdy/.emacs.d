@@ -256,7 +256,8 @@
 (defun custom-kill-buffers (regexp)
   "Kill buffers matching REGEXP without asking for confirmation."
   (interactive "sKill buffers matching this regular expression: ")
-  (flet ((kill-buffer-ask (buffer) (kill-buffer buffer)))
+  (cl-letf (((symbol-function 'kill-buffer-ask)
+	     (lambda (buffer) (kill-buffer buffer))))
     (kill-matching-buffers regexp)))
 
 (defun magit-quit-session ()
@@ -493,6 +494,8 @@
 
 ;; FLYCHECK SETUP
 ;; Requires: chktex
+(setq-default flycheck-emacs-lisp-load-path 'inherit)
+
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (eval-after-load 'flycheck

@@ -43,4 +43,8 @@
 (load "~/.emacs.d/load-directory")
 (load-directory "~/.emacs.d/config")
 
+;; An Emacs server for `emacsclient'
+(require 'server)
+(unless (server-running-p) (server-start))
+
 ;;; init.el ends here
