@@ -24,7 +24,7 @@
 (blink-cursor-mode 0)
 
 ;; Toggle all frames maximized and fullscreen
-(modify-all-frames-parameters '((fullscreen . maximized)))
+;; (modify-all-frames-parameters '((fullscreen . maximized)))
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -293,9 +293,6 @@
 ;; BROWSE-KILL-RING SETUP
 (when (require 'browse-kill-ring nil 'noerror)
   (browse-kill-ring-default-keybindings))
-
-;; UNICODE-FONTS SETUP
-(unicode-fonts-setup)
 
 ;; AG SETUP
 ;; Require: silversearcher-ag
