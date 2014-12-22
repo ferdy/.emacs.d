@@ -106,6 +106,7 @@
 
 ;; Update parent nodes when child is removed
 (defun myorg-update-parent-cookie ()
+  "Update parent nodes when child is removed."
   (when (equal major-mode 'org-mode)
     (save-excursion
       (ignore-errors
@@ -194,6 +195,8 @@
 (setq large-file-warning-threshold nil)
 
 ;; ESHELL SETUP
+(require 'eshell)
+
 ;; Clear eshell buffer
 ;; See http://www.khngai.com/emacs/eshell.php
 (defun eshell/clear ()
@@ -207,6 +210,7 @@
 
 ;; Run scrips from current working on remote system
 (defadvice eshell-gather-process-output (before absolute-cmd (command args) act)
+  "Run scrips from current working on remote system."
   (setq command (file-truename command)))
 
 (add-hook 'eshell-mode-hook
@@ -291,6 +295,7 @@
 ;; Use 'C-c (' instead of 'C-c [' because the latter is already
 ;; defined in orgmode to the add-to-agenda command.
 (defun org-mode-reftex-setup ()
+  "Make RefTeX work with Org-Mode."
   (load-library "reftex")
   (and (buffer-file-name)
        (file-exists-p (buffer-file-name))

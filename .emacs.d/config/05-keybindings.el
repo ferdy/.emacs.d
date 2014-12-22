@@ -228,6 +228,9 @@ prefix argument."
 
 (define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)
 
+;; C-h deletes char in isearch
+(define-key isearch-mode-map (kbd "C-h") 'isearch-delete-char)
+
 ;; Minor mode for 'override' keybindings
 (require 'my-keys-mode)
 
