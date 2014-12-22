@@ -67,6 +67,7 @@
 (define-key toggle-map "u" 'unscroll)
 (define-key toggle-map "s" 'create-scratch-buffer)
 (define-key toggle-map "f" 'fci-mode)
+(define-key toggle-map "d" 'discover-my-major)
 
 ;; Goto line is M-g
 (global-set-key "\M-g" 'goto-line)

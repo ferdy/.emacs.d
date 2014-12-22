@@ -395,6 +395,7 @@
 	("http://planet.emacsen.org/atom.xml" emacs)
 	("http://endlessparentheses.com/atom.xml" emacs)
 	("http://www.masteringemacs.org/feed/" emacs)
+	("http://oremacs.com/atom.xml" emacs)
 	("http://flashstrap.blogspot.com/feeds/posts/default" music)))
 
 ;; POST-MODE SETUP

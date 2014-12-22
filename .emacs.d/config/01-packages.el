@@ -38,6 +38,8 @@
 			  undo-tree
 			  browse-kill-ring
 			  smartscan
+			  discover
+			  discover-my-major
 			  ;; General coding
 			  rainbow-delimiters
 			  aggressive-indent
