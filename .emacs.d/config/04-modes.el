@@ -114,9 +114,11 @@
         (org-update-parent-todo-statistics)))))
 
 (defadvice org-kill-line (after fix-cookies activate)
+  "Update parent node."
   (myorg-update-parent-cookie))
 
 (defadvice kill-whole-line (after fix-cookies activate)
+  "Update parent node."
   (myorg-update-parent-cookie))
 
 ;; Completion with ido
@@ -470,7 +472,7 @@
 (setq message-kill-buffer-on-exit t)
 
 ;; Show images
-(setq mu4e-show-images t)
+(setq mu4e-view-show-images t)
 
 ;; Show full addresses in view message (instead of just names)
 ;; toggle per name with M-RET

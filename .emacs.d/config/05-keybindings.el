@@ -16,7 +16,7 @@
 (global-set-key "\M-e" 'custom/forward-paragraph)
 
 (defun custom/forward-paragraph (&optional n)
-  "Advance just past next blank line."
+  "Advance N times just past next blank line."
   (interactive "p")
   (let ((m (use-region-p))
         (para-commands
@@ -42,7 +42,7 @@
       (back-to-indentation))))
 
 (defun custom/backward-paragraph (&optional n)
-  "Go back up to previous blank line."
+  "Go back up N times to previous blank line."
   (interactive "p")
   (custom/forward-paragraph (- n)))
 
@@ -88,7 +88,7 @@
 ;; Better mark commands
 ;; See http://www.masteringemacs.org/articles/2010/12/22/fixing-mark-commands-transient-mark-mode/
 (defun push-mark-no-activate ()
-  "Pushes 'point' to 'mark-ring' and does not activate the region
+  "Pushes 'point' to 'mark-ring' and does not activate the region.
 Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
   (interactive)
   (push-mark (point) t nil)
@@ -160,7 +160,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (require 'cl))
 
 (defun get-buffers-matching-mode (mode)
-  "Returns a list of buffers where their major-mode is equal to MODE"
+  "Return a list of buffers where their MAJOR-MODE is equal to MODE."
   (let ((buffer-mode-matches '()))
     (dolist (buf (buffer-list))
       (with-current-buffer buf
@@ -226,7 +226,7 @@ prefix argument."
 (defun elfeed-mark-all-as-read ()
   "Mark all fees as read."
   (interactive)
-  (mark-whole-buffer)
+  (call-interactively 'mark-whole-buffer)
   (elfeed-search-untag-all-unread))
 
 (define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)

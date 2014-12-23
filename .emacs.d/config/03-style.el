@@ -55,6 +55,7 @@
 (put 'scroll-right 'unscrollable t)
 
 (defun unscroll-maybe-remember ()
+  "Remember where we started scrolling."
   (if (not (get last-command 'unscrollable))
       (progn
 	(set-marker unscroll-point (point))
@@ -154,7 +155,7 @@
 ;; Ido-charged version of imenu
 ;; See http://www.emacswiki.org/emacs/ImenuMode#toc13
 (defun ido-goto-symbol (&optional symbol-list)
-  "Refresh imenu and jump to a place in the buffer using Ido."
+  "Refresh imenu and jump to a place in the buffer not in SYMBOL-LIST using Ido."
   (interactive)
   (unless (featurep 'imenu)
     (require 'imenu nil t))
@@ -249,6 +250,7 @@
 
 ;; Functions to remove background when on terminals
 (defun on-frame-open (frame)
+  "Remove background for FRAME on terminals."
   (if (not (display-graphic-p frame))
       (set-face-background 'default "unspecified-bg" frame)))
 (on-frame-open (selected-frame))
@@ -256,6 +258,7 @@
 (add-hook 'after-make-frame-functions 'on-frame-open)
 
 (defun on-after-init ()
+  "Remove background after init on terminals."
   (unless (display-graphic-p (selected-frame))
     (set-face-background 'default "unspecified-bg" (selected-frame))))
 

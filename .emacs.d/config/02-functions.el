@@ -5,13 +5,13 @@
 
 ;;; Code:
 ;; Replace HTML tags with the ones used by WordPress editor
-(defvar oldtags '("<i>" "</i>" "<b>" "</b>"))
-(defvar newtags '("<em>" "</em>" "<strong>" "</strong>"))
+(defvar my-oldtags '("<i>" "</i>" "<b>" "</b>"))
+(defvar my-newtags '("<em>" "</em>" "<strong>" "</strong>"))
 
 (defun custom/replace-html-tags ()
   "Replace HTML tags with the ones used by WordPress editor."
   (interactive)
-  (custom/replace-string-matches-recursively oldtags newtags))
+  (custom/replace-string-matches-recursively my-oldtags my-newtags))
 
 ;; Replace OLDTAGS elements with NEWTAGS elements recursively
 (defun custom/replace-string-matches-recursively (oldtags newtags)
@@ -25,18 +25,18 @@
 	 (save-restriction
 	   (save-match-data
 	     (goto-char (point-min))
-	     (replace-string (car oldtags)
-			     (car newtags))
+	     (while (search-forward (car oldtags))
+	       (replace-match (car newtags)))
 	     (custom/replace-string-matches-recursively (cdr oldtags)
 							(cdr newtags)))))))
 
 ;; Check if the given list contains only strings
 (defun custom/only-strings-p (list)
-  "Check if LIST contains only strings."
+  "Check if LIST does contain only strings."
   (and (not (eq (car list) nil))
        (if (stringp (car list))
 	   (not (custom/only-strings-p (cdr list)))
-	 (error ("List must only contain strings.")))))
+	 (error "List must only contain strings"))))
 
 ;; Check if two lists have the same length
 (defun custom/lists-same-length-p (a b)
@@ -44,10 +44,11 @@
   (if (eq (length a)
 	  (length b))
       t
-    (error ("Lists must have same length."))))
+    (error "Lists must have same length")))
 
 ;; Reverts (reloads from file) the current buffer without asking any questions
 (defun revert-this-buffer ()
+  "Revert current buffer."
   (interactive)
   (revert-buffer nil t t)
   (message (concat "Reverted buffer " (buffer-name))))
@@ -75,7 +76,7 @@
 Only applies if display property is an image.
 If INVERT is non-nil, move from 'display-backup to 'display
 instead.
-Optional OBJECT specifies the string or buffer. Nil means current
+ Optional OBJECT specifies the string or buffer.  Nil means current
 buffer."
   (let* ((inhibit-read-only t)
          (from (if invert 'display-backup 'display))
@@ -105,9 +106,9 @@ buffer."
 
 ;; Run a program in a term buffer, if it is already running switch to it
 (defun custom/term-start-or-switch (prg &optional use-existing)
-  "Run program PRG in a terminal buffer. If USE-EXISTING is non-nil
-and PRG is already running, switch to that buffer instead of starting
-a new instance."
+  "Run program PRG in a terminal buffer.
+If USE-EXISTING is non-nil and PRG is already running,
+switch to that buffer instead of starting a new instance."
   (interactive)
   (let ((bufname (concat "*" prg "*")))
     (when (not (and use-existing
