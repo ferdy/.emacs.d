@@ -40,6 +40,7 @@
 			  smartscan
 			  discover
 			  discover-my-major
+			  expand-region
 			  ;; General coding
 			  rainbow-delimiters
 			  aggressive-indent

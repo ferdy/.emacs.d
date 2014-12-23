@@ -76,6 +76,9 @@
 (global-set-key "\M-9" 'backward-sexp)
 (global-set-key "\M-0" 'forward-sexp)
 
+;; See http://endlessparentheses.com/where-do-you-bind-expand-region-.html
+(global-set-key (kbd "M-2") #'er/expand-region)
+
 ;; Kill only the current buffer
 (global-set-key "\C-x\C-k" 'kill-this-buffer)
 
