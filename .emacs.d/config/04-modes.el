@@ -74,7 +74,7 @@
 (setq geiser-impl-installed-implementations '(guile))
 
 ;; Use this for Chicken Scheme instead of Guile
-;;(setq scheme-program-name "csi -:c")
+;; (setq scheme-program-name "csi -:c")
 
 ;; SLIME SETUP
 ;; Requires: sbcl, slime, sbcl-doc, cl-clx-sbcl,
