@@ -41,6 +41,7 @@
 			  discover
 			  discover-my-major
 			  expand-region
+			  ace-jump-mode
 			  ;; General coding
 			  rainbow-delimiters
 			  aggressive-indent

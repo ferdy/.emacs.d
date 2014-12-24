@@ -314,7 +314,15 @@
 ;; PAGE BREAK LINES
 (turn-on-page-break-lines-mode)
 
-;; SMARTSCAN MODE
+;; SMARTSCAN MODE SETUP
 (global-smartscan-mode 1)
+
+;; ACE-JUMP-MODE SETUP
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key global-map (kbd "C-c j") 'ace-jump-mode-pop-mark)
+
+;; Sync marks with Emacs built-in commands
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
 
 ;;; 03-style.el ends here
