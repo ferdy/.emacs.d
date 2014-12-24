@@ -70,6 +70,9 @@
 ;; Requires: guile-2.0
 (setq scheme-program-name "guile")
 
+;; Geiser for Scheme
+(setq geiser-impl-installed-implementations '(guile))
+
 ;; Use this for Chicken Scheme instead of Guile
 ;;(setq scheme-program-name "csi -:c")
 
@@ -83,11 +86,11 @@
 ;; The path MAY be emacs or emacs24, depending on build
 ;; Requires: sbcl, slime, sbcl-doc, cl-clx-sbcl,
 ;; cl-ppcre, autoconf, texinfo, cl-swank
-(setq slime-backend "/usr/share/common-lisp/source/slime/swank-loader.lisp")
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
 (setq inferior-lisp-program "/usr/bin/sbcl")
-(load-file "/usr/share/emacs/site-lisp/slime/slime.el")
-(slime-setup)
+(setq slime-contribs '(slime-fancy))
+
+;; Enable slime-company
+(slime-setup '(slime-company))
 
 ;; ORG-MODE SETUP
 (require 'org)

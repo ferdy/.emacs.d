@@ -71,6 +71,11 @@
 			  ;; Clojure
 			  clojure-mode
 			  cider
+			  ;; Common Lisp
+			  slime
+			  slime-company
+			  ;; Scheme
+			  geiser
 			  ;; Company
 			  company
 			  company-auctex
