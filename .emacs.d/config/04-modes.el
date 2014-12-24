@@ -74,7 +74,14 @@
 (setq geiser-impl-installed-implementations '(guile))
 
 ;; Use this for Chicken Scheme instead of Guile
-;; (setq scheme-program-name "csi -:c")
+;; (setq scheme-program-name "csi -:c"
+;; (add-to-list 'load-path "~/githubs/swank-chicken/")
+;; (autoload 'chicken-slime "chicken-slime" "SWANK backend for Chicken" t)
+;; (setq swank-chicken-path "~/githubs/swank-chicken/swank-chicken.scm")
+
+;; (add-hook 'scheme-mode-hook
+;;           (lambda ()
+;;             (slime-mode t)))
 
 ;; SLIME SETUP
 ;; Requires: sbcl, slime, sbcl-doc, cl-clx-sbcl,
