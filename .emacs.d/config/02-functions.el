@@ -41,9 +41,7 @@
 ;; Check if two lists have the same length
 (defun custom/lists-same-length-p (a b)
   "Check if lists A and B have the same length."
-  (if (eq (length a)
-	  (length b))
-      t
+  (if (eq (length a)(length b)) t
     (error "Lists must have same length")))
 
 ;; Reverts (reloads from file) the current buffer without asking any questions
