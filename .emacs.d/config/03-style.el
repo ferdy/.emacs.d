@@ -121,6 +121,12 @@
 ;; Turn on visual-line-mode
 (global-visual-line-mode +1)
 
+;; Parenthesis and syntax highlighting
+(setq show-paren-delay 0
+      show-paren-style 'parenthesis)
+
+(show-paren-mode 1)
+
 ;; Linum+ for better line numbers
 (add-to-list 'load-path "~/.emacs.d/various")
 (require 'linum+)

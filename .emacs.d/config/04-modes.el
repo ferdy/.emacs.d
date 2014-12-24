@@ -76,14 +76,7 @@
 ;; Use this for Chicken Scheme instead of Guile
 ;;(setq scheme-program-name "csi -:c")
 
-;; Parenthesis and syntax highlighting
-(setq show-paren-delay 0
-      show-paren-style 'parenthesis)
-(show-paren-mode 1)
-
 ;; SLIME SETUP
-;; Get slime to associate with sbcl
-;; The path MAY be emacs or emacs24, depending on build
 ;; Requires: sbcl, slime, sbcl-doc, cl-clx-sbcl,
 ;; cl-ppcre, autoconf, texinfo, cl-swank
 (setq inferior-lisp-program "/usr/bin/sbcl")
