@@ -300,7 +300,16 @@
 ;; AG SETUP
 ;; Require: silversearcher-ag
 (setq ag-reuse-buffers t
-      ag-highlight-search t)
+      ag-highlight-search t
+      ;; Use Projectile to find the project root
+      ag-project-root-function (lambda (d) (let ((default-directory d))
+					     (projectile-project-root))))
+
+;; PROJECTILE SETUP
+(setq projectile-completion-system 'ido
+      projectile-find-dir-includes-top-level t)
+
+(projectile-global-mode)
 
 ;; PAGE BREAK LINES
 (turn-on-page-break-lines-mode)
