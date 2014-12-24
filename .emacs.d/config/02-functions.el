@@ -25,7 +25,7 @@
 	 (save-restriction
 	   (save-match-data
 	     (goto-char (point-min))
-	     (while (search-forward (car oldtags))
+	     (while (search-forward (car oldtags) nil 'noerror)
 	       (replace-match (car newtags)))
 	     (custom/replace-string-matches-recursively (cdr oldtags)
 							(cdr newtags)))))))
