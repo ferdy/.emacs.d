@@ -325,4 +325,7 @@
 (eval-after-load "ace-jump-mode"
   '(ace-jump-mode-enable-mark-sync))
 
+;; EASY-KILL SETUP
+(global-set-key [remap kill-ring-save] 'easy-kill)
+
 ;;; 03-style.el ends here

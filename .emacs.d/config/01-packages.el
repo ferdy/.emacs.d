@@ -42,6 +42,7 @@
 			  discover-my-major
 			  expand-region
 			  ace-jump-mode
+			  easy-kill
 			  ;; General coding
 			  rainbow-delimiters
 			  aggressive-indent
