@@ -1,0 +1,165 @@
+#!/bin/bash
+
+alias ins='sudo apt-get -y install --no-install-recommends'
+
+prerequisites()
+{
+    echo "
+configuring prerequisites..."
+    ins make gcc automake autoconf
+    ins git
+    echo "
+... done"
+}
+
+ag_setup()
+{
+    echo "
+configuring ag..."
+    ins silversearcher-ag
+    echo "
+... done"
+}
+
+scheme_setup()
+{
+    echo "
+configuring Scheme..."
+    ins guile-2.0
+    echo "
+... done"
+}
+
+commonlisp_setup()
+{
+    echo "
+configuring Common Lisp..."
+    ins sbcl slime sbcl-doc
+    ins cl-clx-sbcl cl-ppcre
+    ins texinfo cl-swank
+    echo "
+... done"
+}
+
+clojure_setup()
+{
+    echo "
+configuring Clojure..."
+    ins openjdk-7-jre openjdk-7-jre
+    echo "
+getting Lein..."
+    if [ ! -d "/home/manuel/bin" ]; then
+	mkdir -p /home/manuel/bin
+	export PATH=$PATH:/home/manuel/bin
+    fi
+    cd /home/manuel/bin
+    wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+    chmod 755 lein
+    echo "
+... done"
+    cd /home/manuel/
+}
+
+latex_setup()
+{
+    echo "
+configuring LaTeX..."
+    ins texlive-latex-base
+    ins texlive-latex-recommended
+    ins latexmk
+    ins texlive-latex-extra
+    ins texlive-fonts-recommended
+    ins texlive-generic-recommended
+    ins texlive-xetex
+    ins texlive-lang-italian
+    ins cjk-latex latex-cjk-all
+    echo "
+... done. Configuring chktex for Flycheck..."
+    cd /home/manuel
+    if [ ! -d "/home/manuel/sources" ]; then
+	mkdir -p /home/manuel/sources
+    fi
+    cd /home/manuel/sources
+    wget http://download.savannah.gnu.org/releases/chktex/chktex-1.7.2.tar.gz
+    tar xzf chktex-1.7.2.tar.gz
+    rm chktex-1.7.2.tar.gz
+    cd chktex-1.7.2
+    ./configure --enable-lacheck-replace && make
+    sudo make install
+    cp /usr/local/etc/chktexrc /home/manuel/.chktexrc
+    echo "
+... done"
+    cd /home/manuel
+}
+
+pandoc_setup()
+{
+    echo "
+configuring Pandoc..."
+    ins pandoc
+    echo "
+... done"
+}
+
+pdftools_setup()
+{
+    echo "
+configuring pdf-tools..."
+    echo "
+configuring dependencies..."
+    ins libpng-dev libz-dev
+    ins libpoppler-glib-dev
+    ins -t experimental libpoppler-private-dev
+    ins imagemagick
+    echo "
+... done. Building pdf-tools..."
+    cd /home/manuel
+    if [ ! -d "/home/manuel/githubs" ]; then
+	mkdir -p /home/manuel/githubs
+    fi
+    cd /home/manuel/githubs
+    git clone https://github.com/politza/pdf-tools
+    cd pdf-tools
+    ./autogen.sh
+    ./configure && make
+    make install-package
+    echo "
+... done"
+    cd /home/manuel
+}
+
+flyspell_setup()
+{
+    echo "
+configuring flyspell..."
+    ins aspell aspell-en aspell-it
+    echo "
+... done"
+}
+
+echo "
+##########################################
+# esetup                                 #
+# Script for creating the right          #
+# environment for my Emacs configuration #
+##########################################"
+
+sudo -v # gets user password for next sudos
+
+cd /home/manuel
+prerequisites
+ag_setup
+scheme_setup
+commonlisp_setup
+clojure_setup
+latex_setup
+pandoc_setup
+pdftools_setup
+flyspell_setup
+
+# removing alias
+unalias ins
+
+echo "
+environment ready, now fire up Emacs!
+"

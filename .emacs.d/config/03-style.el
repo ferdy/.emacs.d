@@ -304,7 +304,7 @@
   (browse-kill-ring-default-keybindings))
 
 ;; AG SETUP
-;; Require: silversearcher-ag
+;; Requires: silversearcher-ag
 (setq ag-reuse-buffers t
       ag-highlight-search t
       ;; Use Projectile to find the project root

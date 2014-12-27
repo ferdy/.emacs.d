@@ -274,7 +274,7 @@
 (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
 
 ;; AUCTEX SETUP
-;; Requires: ;; texlive-latex-base, texlive-latex-recommended,
+;; Requires: texlive-latex-base, texlive-latex-recommended,
 ;; latexmk, texlive-latex-extra, texlive-fonts-recommended,
 ;; texlive-generic-recommended, texlive-xetex
 ;; texlive-lang-italian, cjk-latex, latex-cjk-all
@@ -360,6 +360,7 @@
 			    (?\{ . ?\})))
 
 ;; CLOJURE MODE SETUP
+;; Requires: openjdk-7-jre, openjdk-7-jre, lein
 (require 'clojure-mode-extra-font-locking)
 
 ;; CIDER SETUP
@@ -378,6 +379,7 @@
 (setq cider-repl-pop-to-buffer-on-connect nil)
 
 ;; PANDOC SETUP
+;; Requires: pandoc
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 (setq org-pandoc-output-format 'odt)
 
@@ -439,47 +441,6 @@
 
 ;; company for Elisp
 (add-hook 'emacs-lisp-mode-hook 'company-mode)
-
-;; MU4E SETUP
-;; Requires: mu4e, gnutls-bin
-;; Optional: nullmailer
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
-(require 'mu4e)
-
-;; Set mu4e as default Emacs e-mail program
-(setq mail-user-agent 'mu4e-user-agent)
-
-(setq mu4e-maildir "~/mail")
-(setq mu4e-get-mail-command "offlineimap"
-      mu4e-update-interval 300)
-
-;; set this to nil so signature is not included by default
-;; you can include in message with C-c C-w
-(setq mu4e-compose-signature-auto-include 't)
-(setq mu4e-compose-signature
-      (concat
-       "Manuel Uberti\n"
-       "Email: manuel@boccaperta.com\n"
-       "Web: informatica.boccaperta.com"
-       "\n"))
-
-;; Smtp setup
-(require 'smtpmail)
-(require 'starttls)
-
-;; Send mail using nullmailer
-;; Check /etc/nullmailer/remotes for smtp settings
-(setq message-send-mail-function 'message-send-mail-with-sendmail)
-
-;; Don't keep message buffers around
-(setq message-kill-buffer-on-exit t)
-
-;; Show images
-(setq mu4e-view-show-images t)
-
-;; Show full addresses in view message (instead of just names)
-;; toggle per name with M-RET
-(setq mu4e-view-show-addresses 't)
 
 ;; UNDO-TREE SETUP
 (global-undo-tree-mode)
