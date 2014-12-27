@@ -135,6 +135,24 @@ configuring flyspell..."
 ... done"
 }
 
+font_setup()
+{
+    echo "
+configuring Souce Code Pro..."
+    if [ ! -d "/home/manuel/.fonts" ]; then
+	mkdir -p /home/manuel/.fonts
+    fi
+    cd /home/manuel
+    wget https://github.com/adobe-fonts/source-code-pro/archive/1.017R.tar.gz
+    tar xzf 1.017R.tar.gz
+    cd source-code-pro-1.017R
+    cp -r /home/manuel/source-code-pro-1.017R/TTF /home/manuel/.fonts/souce-code-pro
+    rm -rf source-code-pro-1.017R 1.017R.tar.gz
+    fc-cache -fv
+    echo "
+... done"
+}
+
 echo "
 ##########################################
 # esetup                                 #
@@ -154,6 +172,7 @@ latex_setup
 pandoc_setup
 pdftools_setup
 flyspell_setup
+font_setup
 
 echo "
 environment ready, now fire up Emacs!
