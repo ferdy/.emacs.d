@@ -134,6 +134,9 @@ configuring flyspell..."
 font_setup()
 {
     echo "
+configuring DejaVu fonts..."
+    sudo apt-get -y install --no-install-recommends fonts-dejavu fonts-dejavu-extra
+    echo "
 configuring Souce Code Pro..."
     if [ ! -d "/home/manuel/.fonts" ]; then
 	mkdir -p /home/manuel/.fonts
