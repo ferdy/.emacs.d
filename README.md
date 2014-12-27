@@ -17,11 +17,12 @@ The ```esetup``` script helps creating the right environment *before* starting E
 
 I mainly use Emacs for **Lisp** (Clojure, Common Lisp, Scheme and Elisp) and **LaTeX**, so my setup is planned accordingly.
 
-This configuration is provided with *no guarantee and no support*.
-
-
 setup
 -----
 - clone Emacs trunk and build it
 - run ```esetup``` script
 - run Emacs
+
+note
+----
+This configuration is provided with *no guarantee and no support*.
