@@ -50,12 +50,10 @@ getting Lein..."
 	mkdir -p /home/manuel/bin
 	export PATH=$PATH:/home/manuel/bin
     fi
-    cd /home/manuel/bin
-    wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
-    chmod 755 lein
+    wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O /home/manuel/bin/lein
+    chmod 755 /home/manuel/bin/lein
     echo "
 ... done"
-    cd /home/manuel/
 }
 
 latex_setup()
@@ -73,7 +71,6 @@ configuring LaTeX..."
     sudo apt-get -y install --no-install-recommends cjk-latex latex-cjk-all
     echo "
 ... done. Configuring chktex for Flycheck..."
-    cd /home/manuel
     if [ ! -d "/home/manuel/sources" ]; then
 	mkdir -p /home/manuel/sources
     fi
@@ -83,7 +80,7 @@ configuring LaTeX..."
     rm chktex-1.7.2.tar.gz
     cd chktex-1.7.2
     ./configure --enable-lacheck-replace && make
-    sudo make sudo apt-get -y install --no-install-recommendstall
+    sudo make install
     cp /usr/local/etc/chktexrc /home/manuel/.chktexrc
     echo "
 ... done"
@@ -111,7 +108,6 @@ configuring dependencies..."
     sudo apt-get -y install --no-install-recommends imagemagick
     echo "
 ... done. Building pdf-tools..."
-    cd /home/manuel
     if [ ! -d "/home/manuel/githubs" ]; then
 	mkdir -p /home/manuel/githubs
     fi
@@ -120,7 +116,7 @@ configuring dependencies..."
     cd pdf-tools
     ./autogen.sh
     ./configure && make
-    make sudo apt-get -y install --no-install-recommendstall-package
+    make install-package
     echo "
 ... done"
     cd /home/manuel
