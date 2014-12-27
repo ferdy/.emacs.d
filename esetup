@@ -1,6 +1,14 @@
 #!/bin/bash
 
-alias ins='sudo apt-get -y install --no-install-recommends'
+setins()
+{
+    alias ins='sudo apt-get -y install --no-install-recommends'
+}
+
+unsetins()
+{
+    unset ins
+}
 
 prerequisites()
 {
@@ -147,6 +155,7 @@ echo "
 sudo -v # gets user password for next sudos
 
 cd /home/manuel
+setins
 prerequisites
 ag_setup
 scheme_setup
@@ -156,9 +165,7 @@ latex_setup
 pandoc_setup
 pdftools_setup
 flyspell_setup
-
-# removing alias
-unalias ins
+unsetins
 
 echo "
 environment ready, now fire up Emacs!
