@@ -280,6 +280,8 @@
 ;; texlive-lang-italian, cjk-latex, latex-cjk-all
 (setq TeX-parse-self t); Enable parse on load.
 (setq TeX-auto-save t); Enable parse on save.
+(setq TeX-quote-after-quote t); Disable auto-insert quote
+(setq TeX-save-query nil) ; Don't ask for confirmation when saving before processing
 
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)   ; with AUCTeX LaTeX mode
 (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)

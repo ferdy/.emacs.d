@@ -62,6 +62,8 @@
 			  smex
 			  ;; Org-mode
 			  org
+			  ;; Blogging
+			  org2blog
 			  ;; Magit for version control
 			  magit
 			  ;; LaTeX
