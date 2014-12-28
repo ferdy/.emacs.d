@@ -318,7 +318,7 @@
 (projectile-global-mode)
 
 ;; PAGE BREAK LINES
-(turn-on-page-break-lines-mode)
+(global-page-break-lines-mode)
 
 ;; SMARTSCAN MODE SETUP
 (global-smartscan-mode 1)

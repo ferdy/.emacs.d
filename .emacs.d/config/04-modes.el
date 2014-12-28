@@ -355,8 +355,9 @@
 (setq erc-nickserve-passwords
       `((freenode (,gp-nick . ,gp-pass))))
 
-;; ELECTRIC-PAIR-MODE SETUP
-(electric-pair-mode +1)
+;; Electric pairing and code layout
+(electric-pair-mode)
+(electric-layout-mode)
 
 (setq electric-pair-pairs '((?\" . ?\")
 			    (?\{ . ?\})))
