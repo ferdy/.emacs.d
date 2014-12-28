@@ -14,7 +14,7 @@
 (package-initialize)
 
 ;; Add El-Get
-(when (not (package-installed-p 'el-get))
+(unless (package-installed-p 'el-get)
   (package-install 'el-get)
   (require 'el-get)
 
@@ -97,14 +97,14 @@
 (defun custom/packages-installed-p ()
   "Check if all required packages are already installed."
   (loop for pkg in custom/packages
-        when (not (package-installed-p pkg)) do (return nil)
+        unless (package-installed-p pkg) do (return nil)
         finally (return t)))
 
 (unless (custom/packages-installed-p)
   (message "%s" "Refreshing packages database...")
   (package-refresh-contents)
   (dolist (pkg custom/packages)
-    (when (not (package-installed-p pkg))
+    (unless (package-installed-p pkg)
       (package-install pkg))))
 
 ;; Always load newer compiled files

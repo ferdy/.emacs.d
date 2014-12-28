@@ -109,10 +109,10 @@ If USE-EXISTING is non-nil and PRG is already running,
 switch to that buffer instead of starting a new instance."
   (interactive)
   (let ((bufname (concat "*" prg "*")))
-    (when (not (and use-existing
-		    (let ((buf (get-buffer bufname)))
-		      (and buf (buffer-name (switch-to-buffer bufname))))))
-      (ansi-term prg prg))))
+    (unless (and use-existing
+		 (let ((buf (get-buffer bufname)))
+		   (and buf (buffer-name (switch-to-buffer bufname))))))
+    (ansi-term prg prg)))
 
 ;; Create a keybinding to start some terminal program
 (defmacro custom/program-shortcut (name key &optional use-existing)
