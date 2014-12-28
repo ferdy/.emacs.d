@@ -234,6 +234,10 @@ prefix argument."
 ;; C-h deletes char in isearch
 (define-key isearch-mode-map (kbd "C-h") 'isearch-delete-char)
 
+;; Keys for flx-isearch
+(global-set-key (kbd "C-M-s") #'flx-isearch-forward)
+(global-set-key (kbd "C-M-r") #'flx-isearch-backward)
+
 ;; Minor mode for 'override' keybindings
 (require 'my-keys-mode)
 

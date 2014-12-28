@@ -89,6 +89,7 @@
 			  flycheck
 			  flycheck-pos-tip
 			  ;; Search and replace
+			  flx-isearch
 			  ag
 			  wgrep wgrep-ag
 			  visual-regexp
