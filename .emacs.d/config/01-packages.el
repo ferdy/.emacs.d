@@ -13,16 +13,13 @@
 
 (package-initialize)
 
-;; Use El-Get to sync repos and dependencies.
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+;; Add El-Get
+(when (not (package-installed-p 'el-get))
+  (package-install 'el-get)
+  (require 'el-get)
 
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch)
-      (goto-char (point-max))
-      (eval-print-last-sexp))))
+  (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+  (el-get 'sync))
 
 ;; Default packages
 ;; See: http://www.aaronbedra.com/emacs.d/
