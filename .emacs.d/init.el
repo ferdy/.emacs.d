@@ -28,6 +28,7 @@
 ;;; Code:
 
 ;;; Initialization
+;; See: https://github.com/lunaryorn/.emacs.d
 (when (version< emacs-version "25")
   (error "This configuration needs Emacs trunk, but this is %s!" emacs-version))
 
