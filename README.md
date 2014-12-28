@@ -23,6 +23,6 @@ setup
 - run ```esetup``` script
 - run Emacs
 
-note
+warranty
 ----
-This configuration is provided with *no guarantee and no support*.
+This configuration is provided with *absolutely no warranty, no guarantee and no support*.
