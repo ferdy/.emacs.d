@@ -315,9 +315,6 @@
 (electric-pair-mode)
 (electric-layout-mode)
 
-(setq electric-pair-pairs '((?\" . ?\")
-			    (?\{ . ?\})))
-
 ;; Delete trailing whitespaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
