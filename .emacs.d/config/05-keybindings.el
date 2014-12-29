@@ -76,9 +76,6 @@
 (global-set-key "\M-9" 'backward-sexp)
 (global-set-key "\M-0" 'forward-sexp)
 
-;; See http://endlessparentheses.com/where-do-you-bind-expand-region-.html
-(global-set-key (kbd "M-2") #'er/expand-region)
-
 ;; Kill only the current buffer
 (global-set-key "\C-x\C-k" 'kill-this-buffer)
 
@@ -109,46 +106,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (deactivate-mark nil))
 (define-key global-map [remap exchange-point-and-mark] 'exchange-point-and-mark-no-activate)
 
-;; Ido bury buffer
-;; See http://endlessparentheses.com/Ido-Bury-Buffer.html
-(add-hook
- 'ido-setup-hook
- (defun custom/define-ido-bury-key ()
-   (define-key ido-completion-map
-     (kbd "C-b") 'custom/ido-bury-buffer-at-head)))
-(defun custom/ido-bury-buffer-at-head ()
-  "Bury the buffer at the head of 'ido-matches'."
-  (interactive)
-  (let ((enable-recursive-minibuffers t)
-	(buf (ido-name (car ido-matches)))
-	(nextbuf (cadr ido-matches)))
-    (when (get-buffer buf)
-      ;; If next match names a buffer use the buffer object;
-      ;; buffer name may be changed by packages such as
-      ;; uniquify.
-      (when (and nextbuf (get-buffer nextbuf))
-	(setq nextbuf (get-buffer nextbuf)))
-      (bury-buffer buf)
-      (if (bufferp nextbuf)
-	  (setq nextbuf (buffer-name nextbuf)))
-      (setq ido-default-item nextbuf
-	    ido-text-init ido-text
-	    ido-exit 'refresh)
-      (exit-minibuffer))))
-
-;; Use a ido-charged recentf
-(require 'recentf)
-
-;; Get rid of 'find-file-read-only' and replace it with something
-;; more useful.
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
-
-;; Enable recent files mode.
-(recentf-mode t)
-
-;; 50 files ought to be enough.
-(setq recentf-max-saved-items 50)
-
 ;; C-z for repeat (usually C-x z)
 (global-set-key (kbd "C-z") 'repeat)
 
@@ -178,24 +135,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; Global key for 'multi-occur-in-this-mode'
 (global-set-key "\C-x\C-o" 'multi-occur-in-this-mode)
 
-;; Global key for eshell
-(global-set-key (kbd "<f1>") 'eshell)
-
-;; Global key for shell
-(global-set-key (kbd "<f2>") 'shell)
-
-;; Global key for magit-status
-(global-set-key (kbd "<f3>") 'magit-status)
-
-;; Global key for package-list-packages
-(global-set-key (kbd "<f4>") 'paradox-list-packages)
-
-;; Global key for elfeed
-(global-set-key (kbd "<f5>") 'elfeed)
-
-;; Global key for mu4e
-(global-set-key (kbd "<f6>") 'mu4e)
-
 ;; Kill entire line with prefix argument
 ;; see http://endlessparentheses.com/kill-entire-line-with-prefix-argument.html
 (defmacro bol-with-prefix (function)
@@ -220,23 +159,8 @@ prefix argument."
 (global-set-key [remap kill-line] (bol-with-prefix kill-line))
 (global-set-key "\C-k" (bol-with-prefix kill-visual-line))
 
-;; Elfeed: mark all feed as read
-(require 'elfeed-search)
-
-(defun elfeed-mark-all-as-read ()
-  "Mark all fees as read."
-  (interactive)
-  (call-interactively 'mark-whole-buffer)
-  (elfeed-search-untag-all-unread))
-
-(define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)
-
 ;; C-h deletes char in isearch
 (define-key isearch-mode-map (kbd "C-h") 'isearch-delete-char)
-
-;; Keys for flx-isearch
-(global-set-key (kbd "C-M-s") #'flx-isearch-forward)
-(global-set-key (kbd "C-M-r") #'flx-isearch-backward)
 
 ;; Minor mode for 'override' keybindings
 (require 'my-keys-mode)

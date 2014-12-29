@@ -23,9 +23,6 @@
 ;; Turn off blinking cursor
 (blink-cursor-mode 0)
 
-;; Toggle all frames maximized and fullscreen
-;; (modify-all-frames-parameters '((fullscreen . maximized)))
-
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
@@ -119,7 +116,7 @@
 		    (kill-buffer completions)))))
 
 ;; Turn on visual-line-mode
-(global-visual-line-mode +1)
+(global-visual-line-mode)
 
 ;; Parenthesis and syntax highlighting
 (setq show-paren-delay 0
@@ -136,27 +133,44 @@
 ;; use a eval-after-load hook to set it to "dynamic".
 (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))
 
-;; Turn on ido-mode for better buffers switching
-(defvar ido-context-switch-command nil)
-(defvar ido-cur-item nil)
-(defvar ido-default-item nil)
-(defvar ido-cur-list nil)
+;; IDO
+(use-package ido
+  :init (progn
+	  (ido-mode)
+	  (ido-everywhere))
+  :config
+  (setq ido-enable-flex-matching t ; Match characters if string doesn't match
+	ido-create-new-buffer 'always ; Create a new buffer if nothing matches
+	ido-use-filename-at-point 'guess
+	;; Visit buffers and files in the selected window
+	ido-default-file-method 'selected-window
+	ido-default-buffer-method 'selected-window
+	ido-context-switch-command nil
+	ido-cur-item nil
+	ido-default-item nil
+	ido-cur-list nil))
 
-(ido-ubiquitous-mode +1)
 
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(setq ido-create-new-buffer 'always)
-(ido-mode 1)
+(use-package ido-ubiquitous
+  :ensure t
+  :init (ido-ubiquitous-mode))
 
-;; Turn on ido-vertical-mode
-(require 'ido-vertical-mode)
-(ido-vertical-mode 1)
+(use-package flx-ido
+  :ensure t
+  :init (flx-ido-mode))
 
-;; Turn on flx-ido for better search results
-(require 'flx-ido)
-(flx-ido-mode 1)
-(setq flx-ido-use-faces nil)
+(use-package ido-vertical-mode
+  :ensure t
+  :init (ido-vertical-mode)
+  :config
+  (setq flx-ido-use-faces nil))
+
+;; SMEX
+(use-package smex
+  :ensure t
+  :bind (("M-x" . smex)
+	 ("M-X" . smex-major-mode-commands)
+	 ("C-c C-c M-x" . execute-extended-command)))
 
 ;; Ido-charged version of imenu
 ;; See http://www.emacswiki.org/emacs/ImenuMode#toc13
@@ -210,18 +224,37 @@
 
 (global-set-key (kbd "M-i") 'ido-goto-symbol)
 
-;; Enable smex
-;; See https://github.com/nonsequitur/smex
-(smex-initialize)
-
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;; Ido bury buffer
+;; See http://endlessparentheses.com/Ido-Bury-Buffer.html
+(add-hook
+ 'ido-setup-hook
+ (defun custom/define-ido-bury-key ()
+   (define-key ido-completion-map
+     (kbd "C-b") 'custom/ido-bury-buffer-at-head)))
+(defun custom/ido-bury-buffer-at-head ()
+  "Bury the buffer at the head of 'ido-matches'."
+  (interactive)
+  (let ((enable-recursive-minibuffers t)
+	(buf (ido-name (car ido-matches)))
+	(nextbuf (cadr ido-matches)))
+    (when (get-buffer buf)
+      ;; If next match names a buffer use the buffer object;
+      ;; buffer name may be changed by packages such as
+      ;; uniquify.
+      (when (and nextbuf (get-buffer nextbuf))
+	(setq nextbuf (get-buffer nextbuf)))
+      (bury-buffer buf)
+      (if (bufferp nextbuf)
+	  (setq nextbuf (buffer-name nextbuf)))
+      (setq ido-default-item nextbuf
+	    ido-text-init ido-text
+	    ido-exit 'refresh)
+      (exit-minibuffer))))
 
 ;; Set unique buffer names
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward uniquify-separator ":")
+(use-package uniquify
+  :config
+  (setq uniquify-buffer-name-style 'post-forward uniquify-separator ":"))
 
 ;; Faster echo keystrokes
 ;; See http://endlessparentheses.com/faster-keystroke-echo.html
@@ -235,44 +268,53 @@
       `((".*" ,backup-dir t)))
 
 ;; Set theme
-;; Make the modeline high contrast
-(setq solarized-high-contrast-mode-line t)
+(use-package solarized
+  :ensure solarized-theme
+  :defer t
+  :init
+  (progn
+    (if (daemonp)
+	(add-hook 'after-make-frame-functions
+		  '(lambda (f)
+		     (with-selected-frame f
+		       (when (window-system f) (load-theme 'solarized-dark t)))))
+      (load-theme 'solarized-dark t))
 
-;; Don't change size of org-mode headlines (but keep other size-changes)
-(setq solarized-scale-org-headlines nil)
+    ;; Functions to remove background when on terminals
+    (defun on-frame-open (frame)
+      "Remove background for FRAME on terminals."
+      (if (not (display-graphic-p frame))
+	  (set-face-background 'default "unspecified-bg" frame)))
+    (on-frame-open (selected-frame))
 
-;; Avoid all font-size changes
-(setq solarized-use-variable-pitch nil)
+    (add-hook 'after-make-frame-functions 'on-frame-open)
 
-;; Underline below the font bottomline instead of the baseline
-(setq x-underline-at-descent-line t)
+    (defun on-after-init ()
+      "Remove background after init on terminals."
+      (unless (display-graphic-p (selected-frame))
+	(set-face-background 'default "unspecified-bg" (selected-frame))))
 
-(if (daemonp)
-    (add-hook 'after-make-frame-functions
-	      '(lambda (f)
-		 (with-selected-frame f
-		   (when (window-system f) (load-theme 'solarized-dark t)))))
-  (load-theme 'solarized-dark t))
-
-;; Functions to remove background when on terminals
-(defun on-frame-open (frame)
-  "Remove background for FRAME on terminals."
-  (if (not (display-graphic-p frame))
-      (set-face-background 'default "unspecified-bg" frame)))
-(on-frame-open (selected-frame))
-
-(add-hook 'after-make-frame-functions 'on-frame-open)
-
-(defun on-after-init ()
-  "Remove background after init on terminals."
-  (unless (display-graphic-p (selected-frame))
-    (set-face-background 'default "unspecified-bg" (selected-frame))))
-
-(add-hook 'window-setup-hook 'on-after-init)
+    (add-hook 'window-setup-hook 'on-after-init))
+  :config t
+  ;; Make the modeline high contrast
+  (setq solarized-high-contrast-mode-line t
+	;; Don't change size of org-mode headlines (but keep other size-changes)
+	solarized-scale-org-headlines nil
+	;; Avoid all font-size changes
+	solarized-use-variable-pitch nil
+	;; Underline below the font bottomline instead of the baseline
+	x-underline-at-descent-line t))
 
 ;; C-specific Indentation
 (setq c-default-style "linux"
       c-basic-offset 4)
+
+;; Electric pairing and code layout
+(electric-pair-mode)
+(electric-layout-mode)
+
+(setq electric-pair-pairs '((?\" . ?\")
+			    (?\{ . ?\})))
 
 ;; Delete trailing whitespaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -289,9 +331,20 @@
       browse-url-generic-program "firefox"
       browse-url-browser-function gnus-button-url)
 
+;;; Calendar
+(use-package calendar
+  :defer t
+  :config
+  ;; In Europe we start on Monday
+  (setq calendar-week-start-day 1))
+
 ;; Mode line
-(sml/setup)
-(sml/apply-theme 'automatic)
+(use-package smart-mode-line
+  :ensure t
+  :init
+  (progn
+    (sml/setup)
+    (sml/apply-theme 'automatic)))
 
 ;; Let apropos commands perform more extensive searches than default
 (setq apropos-do-all t)
@@ -299,39 +352,84 @@
 ;; Better ediff behavior
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
-;; BROWSE-KILL-RING SETUP
-(when (require 'browse-kill-ring nil 'noerror)
-  (browse-kill-ring-default-keybindings))
+;; BROWSE-KILL-RING
+(use-package browse-kill-ring
+  :ensure t
+  :bind (("M-y" . browse-kill-ring)))
 
-;; AG SETUP
+;; AG
 ;; Requires: silversearcher-ag
-(setq ag-reuse-buffers t
-      ag-highlight-search t
-      ;; Use Projectile to find the project root
-      ag-project-root-function (lambda (d) (let ((default-directory d))
-					     (projectile-project-root))))
+(use-package ag
+  :ensure t
+  :config
+  (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
+	ag-highlight-search t ; A little fanciness
+	;; Use Projectile to find the project root
+	ag-project-root-function (lambda (d) (let ((default-directory d))
+					       (projectile-project-root)))))
+(use-package wgrep
+  :ensure t
+  :defer t)
 
-;; PROJECTILE SETUP
-(setq projectile-completion-system 'ido
-      projectile-find-dir-includes-top-level t)
+(use-package wgrep-ag
+  :ensure t
+  :defer t)
 
-(projectile-global-mode)
+;; PROJECTILE
+(use-package projectile
+  :ensure t
+  :defer t
+  :init (projectile-global-mode)
+  :config
+  (progn
+    (setq projectile-completion-system 'ido
+	  projectile-find-dir-includes-top-level t)
+    ;; Replace Ack with Ag in Projectile commander
+    (def-projectile-commander-method ?a
+      "Find ag on project."
+      (call-interactively 'projectile-ag))
+    :diminish projectile-mode))
 
 ;; PAGE BREAK LINES
-(global-page-break-lines-mode)
+(use-package page-break-lines
+  :ensure t
+  :init (global-page-break-lines-mode)
+  :defer page-break-lines-modes)
 
-;; SMARTSCAN MODE SETUP
-(global-smartscan-mode 1)
+;; SMARTSCAN MODE
+(use-package smartscan
+  :ensure t
+  :defer t
+  :init (global-smartscan-mode 1))
 
-;; ACE-JUMP-MODE SETUP
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
-(define-key global-map (kbd "C-c j") 'ace-jump-mode-pop-mark)
+;; ACE-JUMP-MODE
+(use-package ace-jump-mode
+  :ensure t
+  :bind (("C-c SPC" . ace-jump-mode)
+	 ("C-c j" . ace-jump-mode-pop-mark))
+  :config
+  ;; Sync marks with Emacs built-in commands
+  (ace-jump-mode-enable-mark-sync))
 
-;; Sync marks with Emacs built-in commands
-(eval-after-load "ace-jump-mode"
-  '(ace-jump-mode-enable-mark-sync))
+;; EASY-KILL
+(use-package easy-kill
+  :ensure t
+  :bind (([remap kill-ring-save] . easy-kill)
+	 ([remap mark-sexp] . easy-mark)))
 
-;; EASY-KILL SETUP
-(global-set-key [remap kill-ring-save] 'easy-kill)
+;; IEDIT
+(use-package iedit
+  :ensure t)
+
+;; EXPAND-REGION
+(use-package expand-region
+  :ensure t
+  :bind (("M-2" . er/expand-region)))
+
+;; FLX-ISEARCH
+(use-package flx-isearch
+  :ensure t
+  :bind (("C-M-s" . flx-isearch-forward)
+	 ("C-M-r" . flx-isearch-backward)))
 
 ;;; 03-style.el ends here
