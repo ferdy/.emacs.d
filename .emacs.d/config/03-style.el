@@ -139,17 +139,96 @@
 	  (ido-mode)
 	  (ido-everywhere))
   :config
-  (setq ido-enable-flex-matching t ; Match characters if string doesn't match
-	ido-create-new-buffer 'always ; Create a new buffer if nothing matches
-	ido-use-filename-at-point 'guess
-	;; Visit buffers and files in the selected window
-	ido-default-file-method 'selected-window
-	ido-default-buffer-method 'selected-window
-	ido-context-switch-command nil
-	ido-cur-item nil
-	ido-default-item nil
-	ido-cur-list nil))
+  (progn
+    (setq ido-enable-flex-matching t ; Match characters if string doesn't match
+	  ido-create-new-buffer 'always ; Create a new buffer if nothing matches
+	  ido-use-filename-at-point 'guess
+	  ;; Visit buffers and files in the selected window
+	  ido-default-file-method 'selected-window
+	  ido-default-buffer-method 'selected-window
+	  ido-context-switch-command nil
+	  ido-cur-item nil
+	  ido-default-item nil
+	  ido-cur-list nil)
 
+    ;; Ido-charged version of imenu
+    ;; See http://www.emacswiki.org/emacs/ImenuMode#toc13
+    (defun ido-goto-symbol (&optional symbol-list)
+      "Refresh imenu and jump to a place in the buffer not in SYMBOL-LIST using Ido."
+      (interactive)
+      (unless (featurep 'imenu)
+	(require 'imenu nil t))
+      (cond
+       ((not symbol-list)
+	(let ((ido-mode ido-mode)
+	      (ido-enable-flex-matching
+	       (if (boundp 'ido-enable-flex-matching)
+		   ido-enable-flex-matching t))
+	      name-and-pos symbol-names position)
+	  (unless ido-mode
+	    (ido-mode 1)
+	    (setq ido-enable-flex-matching t))
+	  (while (progn
+		   (imenu--cleanup)
+		   (setq imenu--index-alist nil)
+		   (ido-goto-symbol (imenu--make-index-alist))
+		   (setq selected-symbol
+			 (ido-completing-read "Symbol? " symbol-names))
+		   (string= (car imenu--rescan-item) selected-symbol)))
+	  (unless (and (boundp 'mark-active) mark-active)
+	    (push-mark nil t nil))
+	  (setq position (cdr (assoc selected-symbol name-and-pos)))
+	  (cond
+	   ((overlayp position)
+	    (goto-char (overlay-start position)))
+	   (t
+	    (goto-char position)))))
+       ((listp symbol-list)
+	(dolist (symbol symbol-list)
+	  (let (name position)
+	    (cond
+	     ((and (listp symbol) (imenu--subalist-p symbol))
+	      (ido-goto-symbol symbol))
+	     ((listp symbol)
+	      (setq name (car symbol))
+	      (setq position (cdr symbol)))
+	     ((stringp symbol)
+	      (setq name symbol)
+	      (setq position
+		    (get-text-property 1 'org-imenu-marker symbol))))
+	    (unless (or (null position) (null name)
+			(string= (car imenu--rescan-item) name))
+	      (add-to-list 'symbol-names name)
+	      (add-to-list 'name-and-pos (cons name position))))))))
+
+    (global-set-key (kbd "M-i") 'ido-goto-symbol)
+
+    ;; Ido bury buffer
+    ;; See http://endlessparentheses.com/Ido-Bury-Buffer.html
+    (add-hook
+     'ido-setup-hook
+     (defun custom/define-ido-bury-key ()
+       (define-key ido-completion-map
+	 (kbd "C-b") 'custom/ido-bury-buffer-at-head)))
+    (defun custom/ido-bury-buffer-at-head ()
+      "Bury the buffer at the head of 'ido-matches'."
+      (interactive)
+      (let ((enable-recursive-minibuffers t)
+	    (buf (ido-name (car ido-matches)))
+	    (nextbuf (cadr ido-matches)))
+	(when (get-buffer buf)
+	  ;; If next match names a buffer use the buffer object;
+	  ;; buffer name may be changed by packages such as
+	  ;; uniquify.
+	  (when (and nextbuf (get-buffer nextbuf))
+	    (setq nextbuf (get-buffer nextbuf)))
+	  (bury-buffer buf)
+	  (if (bufferp nextbuf)
+	      (setq nextbuf (buffer-name nextbuf)))
+	  (setq ido-default-item nextbuf
+		ido-text-init ido-text
+		ido-exit 'refresh)
+	  (exit-minibuffer))))))
 
 (use-package ido-ubiquitous
   :ensure t
@@ -168,88 +247,11 @@
 ;; SMEX
 (use-package smex
   :ensure t
-  :bind (("M-x" . smex)
-	 ("M-X" . smex-major-mode-commands)
-	 ("C-c C-c M-x" . execute-extended-command)))
+  :bind (([remap execute-extended-command] . smex)
+	 ("M-X" . smex-major-mode-commands)))
 
-;; Ido-charged version of imenu
-;; See http://www.emacswiki.org/emacs/ImenuMode#toc13
-(defun ido-goto-symbol (&optional symbol-list)
-  "Refresh imenu and jump to a place in the buffer not in SYMBOL-LIST using Ido."
-  (interactive)
-  (unless (featurep 'imenu)
-    (require 'imenu nil t))
-  (cond
-   ((not symbol-list)
-    (let ((ido-mode ido-mode)
-	  (ido-enable-flex-matching
-	   (if (boundp 'ido-enable-flex-matching)
-	       ido-enable-flex-matching t))
-	  name-and-pos symbol-names position)
-      (unless ido-mode
-	(ido-mode 1)
-	(setq ido-enable-flex-matching t))
-      (while (progn
-	       (imenu--cleanup)
-	       (setq imenu--index-alist nil)
-	       (ido-goto-symbol (imenu--make-index-alist))
-	       (setq selected-symbol
-		     (ido-completing-read "Symbol? " symbol-names))
-	       (string= (car imenu--rescan-item) selected-symbol)))
-      (unless (and (boundp 'mark-active) mark-active)
-	(push-mark nil t nil))
-      (setq position (cdr (assoc selected-symbol name-and-pos)))
-      (cond
-       ((overlayp position)
-	(goto-char (overlay-start position)))
-       (t
-	(goto-char position)))))
-   ((listp symbol-list)
-    (dolist (symbol symbol-list)
-      (let (name position)
-	(cond
-	 ((and (listp symbol) (imenu--subalist-p symbol))
-	  (ido-goto-symbol symbol))
-	 ((listp symbol)
-	  (setq name (car symbol))
-	  (setq position (cdr symbol)))
-	 ((stringp symbol)
-	  (setq name symbol)
-	  (setq position
-		(get-text-property 1 'org-imenu-marker symbol))))
-	(unless (or (null position) (null name)
-		    (string= (car imenu--rescan-item) name))
-	  (add-to-list 'symbol-names name)
-	  (add-to-list 'name-and-pos (cons name position))))))))
-
-(global-set-key (kbd "M-i") 'ido-goto-symbol)
-
-;; Ido bury buffer
-;; See http://endlessparentheses.com/Ido-Bury-Buffer.html
-(add-hook
- 'ido-setup-hook
- (defun custom/define-ido-bury-key ()
-   (define-key ido-completion-map
-     (kbd "C-b") 'custom/ido-bury-buffer-at-head)))
-(defun custom/ido-bury-buffer-at-head ()
-  "Bury the buffer at the head of 'ido-matches'."
-  (interactive)
-  (let ((enable-recursive-minibuffers t)
-	(buf (ido-name (car ido-matches)))
-	(nextbuf (cadr ido-matches)))
-    (when (get-buffer buf)
-      ;; If next match names a buffer use the buffer object;
-      ;; buffer name may be changed by packages such as
-      ;; uniquify.
-      (when (and nextbuf (get-buffer nextbuf))
-	(setq nextbuf (get-buffer nextbuf)))
-      (bury-buffer buf)
-      (if (bufferp nextbuf)
-	  (setq nextbuf (buffer-name nextbuf)))
-      (setq ido-default-item nextbuf
-	    ido-text-init ido-text
-	    ido-exit 'refresh)
-      (exit-minibuffer))))
+;; Tune `eval-expression'
+(add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
 
 ;; Set unique buffer names
 (use-package uniquify
@@ -338,6 +340,15 @@
   ;; In Europe we start on Monday
   (setq calendar-week-start-day 1))
 
+;;; Documentation
+(use-package info
+  :defer t
+  :config
+  ;; Fix the stupid `Info-quoted' face. Courier is an abysmal face, so go back
+  ;; to the default face.
+  (set-face-attribute 'Info-quoted nil :family 'unspecified
+		      :inherit font-lock-constant-face))
+
 ;; Mode line
 (use-package smart-mode-line
   :ensure t
@@ -387,8 +398,7 @@
     ;; Replace Ack with Ag in Projectile commander
     (def-projectile-commander-method ?a
       "Find ag on project."
-      (call-interactively 'projectile-ag))
-    :diminish projectile-mode))
+      (call-interactively 'projectile-ag))))
 
 ;; PAGE BREAK LINES
 (use-package page-break-lines
@@ -435,5 +445,16 @@
 ;; ADAPTIVE-WRAP
 (use-package adaptive-wrap
   :ensure t)
+
+;; SX
+(use-package sx
+  :ensure t)
+
+;; BUG-REFERENCE
+;; See: http://www.lunaryorn.com/2014/12/23/bug-reference-mode.html
+(use-package bug-reference
+  :defer t
+  :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
+	       (add-hook 'text-mode-hook #'bug-reference-mode)))
 
 ;;; 03-style.el ends here
