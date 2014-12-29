@@ -729,9 +729,11 @@
 ;; PARADOX SETUP
 (use-package paradox
   :ensure t
-  :bind (("<f4>" . paradox-list-packages))
+  :bind (("<f4>" . paradox-list-packages)
+	 ("S-<f4>" . paradox-upgrade-packages))
   :config
-  ;; Don't ask for a token, please
-  (setq paradox-github-token t))
+  (setq paradox-github-token t ; Don't ask for a token, please
+	;; No async for now
+	paradox-execute-asynchronously nil))
 
 ;;; 04-modes.el ends here
