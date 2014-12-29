@@ -351,7 +351,7 @@
 	  TeX-source-correlate-mode t
 	  TeX-source-correlate-method 'synctex)
     (setq-default TeX-master nil ; Ask for the master file
-		  TeX-engine 'xetex ; Use xetex
+		  TeX-engine 'luatex ; Use luatex
 		  TeX-PDF-mode t)
     ;; Move to chktex
     (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")))
