@@ -650,7 +650,7 @@
 ;; Requires: chktex
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode)
+  :idle (global-flycheck-mode)
   :config
   (progn
     (setq-default flycheck-emacs-lisp-load-path 'inherit)
