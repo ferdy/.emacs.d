@@ -432,4 +432,8 @@
   :bind (("C-M-s" . flx-isearch-forward)
 	 ("C-M-r" . flx-isearch-backward)))
 
+;; ADAPTIVE-WRAP
+(use-package adaptive-wrap
+  :ensure t)
+
 ;;; 03-style.el ends here
