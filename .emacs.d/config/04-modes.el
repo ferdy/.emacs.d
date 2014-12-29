@@ -219,6 +219,9 @@
 (use-package xml-rpc
   :ensure t)
 
+(use-package htmlize
+  :ensure t)
+
 (use-package org2blog
   :ensure t
   :init (require 'org2blog-autoloads)
@@ -228,9 +231,7 @@
 	  '(("informatica.boccaperta.com"
 
 	     :url "http://informatica.boccaperta.com/xmlrpc.php"
-	     :username "manuel"))
-	  org2blog/wp-use-sourcecode-shortcode 't
-	  org2blog/wp-sourcecode-default-params nil)))
+	     :username "manuel")))))
 
 ;; DOC-VIEW-MODE
 (use-package doc-view
