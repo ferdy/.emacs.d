@@ -460,11 +460,6 @@
 			       (?X . "{%l}"))))
       (setq reftex-cite-format 'biblatex))))
 
-;; Plug reftex into bib-cite
-(use-package bib-cite
-  :defer t
-  :config (setq bib-cite-use-reftex-view-crossref t))
-
 ;;; MARKDOWN-MODE
 (use-package markdown-mode
   :ensure t

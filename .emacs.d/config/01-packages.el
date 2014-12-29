@@ -22,7 +22,6 @@
   (package-install 'use-package))
 
 (require 'use-package)
-(setq use-package-verbose t)
 
 ;; Add El-Get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
