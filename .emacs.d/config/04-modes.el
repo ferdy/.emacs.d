@@ -664,7 +664,8 @@
         '(("it_IT" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8))))
  (t (setq ispell-program-name nil)))
 
-;; ispell-cmd-args is useless, it's the list of *extra* arguments we will append to the ispell process when "ispell-word" is called.
+;; ispell-cmd-args is useless, it's the list of *extra* arguments we will append to
+;; the ispell process when "ispell-word" is called.
 ;; ispell-extra-args is the command arguments which will *always* be used when start ispell process
 (setq ispell-extra-args (flyspell-detect-ispell-args t))
 
