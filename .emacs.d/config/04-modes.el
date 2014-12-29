@@ -77,6 +77,9 @@
     (setq diredp-hide-details-initially-flag nil)
     (setq diredp-hide-details-propagate-flag nil)))
 
+(use-package bookmark+
+  :ensure t)
+
 ;; Track recent files
 (use-package recentf
   :init (recentf-mode)
