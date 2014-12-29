@@ -23,6 +23,17 @@ setup
 - run ```esetup``` script
 - run Emacs
 
+acknowledgements
+----------------
+This configuration would not have been possible without the work of and the inspiration from these people:
+- [Joe Brock](https://github.com/DebianJoe)
+- [Mickey Petersen](https://github.com/mickeynp)
+- [Sebastian Wiesner](https://github.com/lunaryorn)
+- [Artur Malabarba](https://github.com/Bruce-Connor)
+- [Sacha Chua](https://github.com/sachac)
+- [Bozhidar Batsov](https://github.com/bbatsov)
+- [Magnar Sveen](https://github.com/magnars)
+
 warranty
 ----
 This configuration is provided with *absolutely no warranty*, *no guarantee* and *no support*.
