@@ -349,14 +349,6 @@
   (set-face-attribute 'Info-quoted nil :family 'unspecified
 		      :inherit font-lock-constant-face))
 
-;; Mode line
-(use-package smart-mode-line
-  :ensure t
-  :init
-  (progn
-    (sml/setup)
-    (sml/apply-theme 'automatic)))
-
 ;; Let apropos commands perform more extensive searches than default
 (setq apropos-do-all t)
 
@@ -394,7 +386,8 @@
   :config
   (progn
     (setq projectile-completion-system 'ido
-	  projectile-find-dir-includes-top-level t)
+	  projectile-find-dir-includes-top-level t
+	  projectile-mode-line " Projectile")
     ;; Replace Ack with Ag in Projectile commander
     (def-projectile-commander-method ?a
       "Find ag on project."
@@ -456,5 +449,20 @@
   :defer t
   :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
 	       (add-hook 'text-mode-hook #'bug-reference-mode)))
+
+;; Mode line
+(use-package smart-mode-line
+  :ensure t
+  :init
+  (progn
+    ;; Hide some modes
+    (require 'rich-minority)
+    (setq rm-blacklist (quote (" my-keys-mode"
+			       " PgLn"
+			       " Projectile"
+			       " company"
+			       " Undo-Tree")))
+    (sml/setup)
+    (sml/apply-theme 'automatic)))
 
 ;;; 03-style.el ends here
