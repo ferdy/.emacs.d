@@ -63,11 +63,6 @@
     (setq-default dired-omit-files-p t)
     (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))))
 
-;; Ignore uninteresting files
-(use-package ignoramus
-  :ensure t
-  :init (ignoramus-setup))
-
 (use-package dired+
   :ensure t
   :config
@@ -88,10 +83,8 @@
   (setq recentf-max-saved-items 200
 	recentf-max-menu-items 15
 	recentf-auto-cleanup 300
-	recentf-exclude (list "/\\.git/.*\\'" ; Git contents
-			      "/elpa/.*\\'" ; Package files
-			      ;; And all other kinds of boring files
-			      #'ignoramus-boring-p)))
+	recentf-exclude (list "/\\.git/.*\\'"
+			      "/elpa/.*\\'")))
 
 ;; PO-MODE
 ;; (add-to-list 'load-path "~/.emacs.d/el-get/po-mode")
