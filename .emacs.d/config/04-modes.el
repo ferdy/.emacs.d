@@ -87,11 +87,12 @@
 			      "/elpa/.*\\'")))
 
 ;; PO-MODE
-;; (add-to-list 'load-path "~/.emacs.d/el-get/po-mode")
-;; (require 'po-mode)
-;; (setq auto-mode-alist
-;;       (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist))
-;; (autoload 'po-mode "po-mode" "Major mode for translators to edit PO files" t)
+(use-package po-mode
+  :load-path "el-get/po-mode"
+  :config
+  (progn
+    (setq auto-mode-alist
+	  (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist))))
 
 ;; SCHEME
 ;; Requires: guile-2.0
@@ -192,18 +193,20 @@
        > _ \n \n)))
 
 ;; ORG-PRESENT
-(add-to-list 'load-path "~/.emacs.d/various")
-(autoload 'org-present "org-present" nil t)
+(use-package org-present
+  :disabled t
+  :load-path "various"
+  :config
+  (progn
+    (add-hook 'org-present-mode-hook
+	      (lambda ()
+		(org-present-big)
+		(org-display-inline-images t t)))
 
-(add-hook 'org-present-mode-hook
-          (lambda ()
-            (org-present-big)
-            (org-display-inline-images t t)))
-
-(add-hook 'org-present-mode-quit-hook
-          (lambda ()
-            (org-present-small)
-            (org-remove-inline-images)))
+    (add-hook 'org-present-mode-quit-hook
+	      (lambda ()
+		(org-present-small)
+		(org-remove-inline-images)))))
 
 ;; ORG2BLOG
 (use-package metaweblog
@@ -523,13 +526,14 @@
 	  (add-hook hook #'rainbow-delimiters-mode)))
 
 ;; TRAMP SETUP
-(add-to-list 'load-path "~/emacs/tramp/lisp/")
-(require 'tramp)
-
-(setq tramp-default-method "ssh")
-(setq tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
-(add-to-list 'backup-directory-alist
-	     (cons tramp-file-name-regexp nil))
+(use-package tramp
+  :load-path "~/emacs/tramp/lisp/"
+  :config
+  (progn
+    (setq tramp-default-method "ssh"
+	  tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+    (add-to-list 'backup-directory-alist
+		 (cons tramp-file-name-regexp nil))))
 
 ;; AGGRESSIVE INDENT
 (use-package aggressive-indent

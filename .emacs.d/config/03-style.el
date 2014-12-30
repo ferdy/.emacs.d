@@ -125,13 +125,16 @@
 (show-paren-mode 1)
 
 ;; Linum+ for better line numbers
-(add-to-list 'load-path "~/.emacs.d/various")
-(require 'linum+)
-(setq linum+-dynamic-format " %%%dd")
+(use-package linum+
+  :disabled t
+  :load-path "various"
+  :config
+  (progn
+    (setq linum+-dynamic-format " %%%dd")
 
-;; Linum+ resets linum-format to "smart" when it's loaded, hence we have to
-;; use a eval-after-load hook to set it to "dynamic".
-(eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))
+    ;; Linum+ resets linum-format to "smart" when it's loaded, hence we have to
+    ;; use a eval-after-load hook to set it to "dynamic".
+    (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))))
 
 ;; IDO
 (use-package ido
