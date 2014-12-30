@@ -162,15 +162,16 @@ prefix argument."
 (define-key isearch-mode-map (kbd "C-h") 'isearch-delete-char)
 
 ;; Minor mode for 'override' keybindings
-(require 'my-keys-mode)
-
-(define-key my-keys-mode-map (kbd "M-a") 'custom/backward-paragraph)
-(define-key my-keys-mode-map (kbd "M-e") 'custom/forward-paragraph)
-(define-key my-keys-mode-map (kbd "C-h") 'delete-backward-char)
-(define-key my-keys-mode-map (kbd "M-h") 'backward-kill-word)
-(define-key my-keys-mode-map (kbd "C-?") 'help-command)
-(define-key my-keys-mode-map (kbd "M-?") 'mark-paragraph)
-
-(global-my-keys-mode 1)
+(use-package my-keys-mode
+  :load-path "various"
+  :init (global-my-keys-mode 1)
+  :config
+  (progn
+    (define-key my-keys-mode-map (kbd "M-a") 'custom/backward-paragraph)
+    (define-key my-keys-mode-map (kbd "M-e") 'custom/forward-paragraph)
+    (define-key my-keys-mode-map (kbd "C-h") 'delete-backward-char)
+    (define-key my-keys-mode-map (kbd "M-h") 'backward-kill-word)
+    (define-key my-keys-mode-map (kbd "C-?") 'help-command)
+    (define-key my-keys-mode-map (kbd "M-?") 'mark-paragraph)))
 
 ;;; 05-keybindings ends here
