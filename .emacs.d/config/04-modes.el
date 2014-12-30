@@ -238,9 +238,7 @@
   :defer t
   :config
   (progn
-    (setq doc-view-continuous t
-	  ;; No large file warning
-	  large-file-warning-threshold nil)))
+    (setq doc-view-continuous t)))
 
 ;; ESHELL
 (use-package eshell
@@ -624,6 +622,9 @@
 ;; PDF-TOOLS
 ;; Requires: https://github.com/politza/pdf-tools
 (pdf-tools-install)
+
+;; No large file warning
+(setq large-file-warning-threshold nil)
 
 ;; WEB-MODE
 (use-package web-mode
