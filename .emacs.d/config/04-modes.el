@@ -736,4 +736,15 @@
 	;; No async for now
 	paradox-execute-asynchronously nil))
 
+;; SX
+(use-package sx
+  :ensure t)
+
+;; BUG-REFERENCE
+;; See: http://www.lunaryorn.com/2014/12/23/bug-reference-mode.html
+(use-package bug-reference
+  :defer t
+  :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
+	       (add-hook 'text-mode-hook #'bug-reference-mode)))
+
 ;;; 04-modes.el ends here

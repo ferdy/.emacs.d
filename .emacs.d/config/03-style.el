@@ -328,11 +328,6 @@
      (add-to-list 'grep-find-ignored-directories "elpa")))
 (add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
 
-;; Set default browser
-(setq gnus-button-url 'browse-url-generic
-      browse-url-generic-program "firefox"
-      browse-url-browser-function gnus-button-url)
-
 ;;; Calendar
 (use-package calendar
   :defer t
@@ -354,6 +349,11 @@
 
 ;; Better ediff behavior
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;; Browse URLs with eww
+(use-package browse-url
+  :defer t
+  :config (setq browse-url-browser-function #'eww-browse-url))
 
 ;; BROWSE-KILL-RING
 (use-package browse-kill-ring
@@ -449,17 +449,6 @@
 ;; ADAPTIVE-WRAP
 (use-package adaptive-wrap
   :ensure t)
-
-;; SX
-(use-package sx
-  :ensure t)
-
-;; BUG-REFERENCE
-;; See: http://www.lunaryorn.com/2014/12/23/bug-reference-mode.html
-(use-package bug-reference
-  :defer t
-  :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
-	       (add-hook 'text-mode-hook #'bug-reference-mode)))
 
 ;; Mode line
 (use-package smart-mode-line
