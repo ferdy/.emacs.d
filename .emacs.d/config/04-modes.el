@@ -504,10 +504,17 @@
 (use-package cider-repl
   :ensure cider
   :defer t
-  ;; Increase the history size and make it permanent
-  (setq cider-repl-history-size 1000
-	cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
-	cider-repl-pop-to-buffer-on-connect nil))
+  :config
+  (progn
+    ;; Increase the history size and make it permanent
+    (setq cider-repl-history-size 1000
+	  cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
+	  cider-repl-pop-to-buffer-on-connect nil)
+
+    ;; Disable smartscan for cider-repl
+    (add-hook 'cider-repl-mode-hook
+	      (lambda ()
+		(smartscan-mode -1)))))
 
 ;; PANDOC
 ;; Requires: pandoc
