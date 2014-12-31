@@ -393,6 +393,17 @@
       "Find ag on project."
       (call-interactively 'projectile-ag))))
 
+;; Group buffers by Projectile project
+(use-package ibuffer-projectile
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'ibuffer-mode-hook
+	    (lambda ()
+	      (ibuffer-projectile-set-filter-groups)
+	      (unless (eq ibuffer-sorting-mode 'alphabetic)
+		(ibuffer-do-sort-by-alphabetic)))))
+
 ;; PAGE BREAK LINES
 (use-package page-break-lines
   :ensure t
