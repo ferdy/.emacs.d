@@ -6,10 +6,10 @@
 ;;; Code:
 ;; Set default font
 (set-face-attribute 'default nil
-                    :family "Source Code Pro"
-                    :height 110
-                    :weight 'normal
-                    :width 'normal)
+		    :family "Source Code Pro"
+		    :height 110
+		    :weight 'normal
+		    :width 'normal)
 
 ;; Set font fallback
 (when (functionp 'set-fontset-font)
@@ -18,7 +18,7 @@
 		    (font-spec :family "DejaVu Sans Mono"
 			       :width 'normal
 			       :size 11.4
- 			       :weight 'normal)))
+			       :weight 'normal)))
 
 ;; Turn off blinking cursor
 (blink-cursor-mode 0)
@@ -386,8 +386,8 @@
   :config
   (progn
     (setq projectile-completion-system 'ido
-	  projectile-find-dir-includes-top-level t
-	  projectile-mode-line " Projectile")
+	  projectile-find-dir-includes-top-level t)
+
     ;; Replace Ack with Ag in Projectile commander
     (def-projectile-commander-method ?a
       "Find ag on project."
@@ -457,11 +457,16 @@
   (progn
     ;; Hide some modes
     (require 'rich-minority)
-    (setq rm-blacklist (quote (" my-keys-mode"
-			       " PgLn"
-			       " Projectile"
-			       " company"
-			       " Undo-Tree")))
+    (setq rm-blacklist
+	  (format "^ \\(%s\\)$"
+		  (mapconcat #'identity
+			     '("FlyC.*"
+			       "Projectile.*"
+			       "my-keys-mode"
+			       "PgLn"
+			       "company"
+			       "Undo-Tree")
+			     "\\|")))
     (sml/setup)
     (sml/apply-theme 'automatic)))
 

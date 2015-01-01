@@ -278,7 +278,21 @@
 ;; SHELL
 (use-package shell
   :defer t
-  :bind (("<f2>" . shell)))
+  :bind (("<f2>" . shell))
+  :config
+  (progn
+    ;; Clear shell buffer
+    (defun clear-shell ()
+      (interactive)
+      (let ((comint-buffer-maximum-size 0))
+	(comint-truncate-buffer)))
+
+    (define-key shell-mode-map (kbd "C-l") 'clear-shell)
+
+    ;; Disable smartscan for shell
+    (add-hook 'shell-mode-hook
+	      (lambda ()
+		(smartscan-mode -1)))))
 
 ;; MAGIT SETUP
 (use-package magit
