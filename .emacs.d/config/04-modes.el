@@ -139,6 +139,7 @@
     (setq org-src-fontify-natively t
 	  org-log-done 'time
 	  org-completion-use-ido t
+	  org-export-with-smart-quotes t
 	  ;; Customize agenda view
 	  org-agenda-custom-commands
 	  '(("g" "Agenda and giulia-tagged tasks"
@@ -223,7 +224,11 @@
   :init (require 'org2blog-autoloads)
   :config
   (progn
-    (setq org2blog/wp-blog-alist
+    (setq org2blog/wp-use-sourcecode-shortcode t
+	  org2blog/wp-sourcecode-langs
+	  '("bash" "javascript" "php" "text"
+	    "xml" "sh" "elisp" "lisp" "lua")
+	  org2blog/wp-blog-alist
 	  '(("informatica.boccaperta.com"
 
 	     :url "http://informatica.boccaperta.com/xmlrpc.php"
@@ -573,10 +578,9 @@
 	  '(("http://kmandla.wordpress.com/feed/" blog)
 	    ("http://inconsolation.wordpress.com/feed/" blog)
 	    ("http://planet.emacsen.org/atom.xml" emacs)
-	    ("http://endlessparentheses.com/atom.xml" emacs)
 	    ("http://www.masteringemacs.org/feed/" emacs)
-	    ("http://oremacs.com/atom.xml" emacs)
-	    ("http://flashstrap.blogspot.com/feeds/posts/default" music)))
+	    ("http://flashstrap.blogspot.com/feeds/posts/default" music)
+	    ("http://rt.com/rss/" news)))
 
     ;; Elfeed: mark all feed as read
     (require 'elfeed-search)
