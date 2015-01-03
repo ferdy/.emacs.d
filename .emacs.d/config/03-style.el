@@ -20,6 +20,9 @@
 			       :size 11.4
 			       :weight 'normal)))
 
+;; Toggle all frames maximized and fullscreen
+(modify-all-frames-parameters '((fullscreen . maximized)))
+
 ;; Turn off blinking cursor
 (blink-cursor-mode 0)
 

@@ -10,6 +10,9 @@
 (global-set-key (kbd "C-h") 'delete-backward-char)
 (global-set-key (kbd "M-h") 'backward-kill-word)
 
+;; Force backspace only with C-h
+(define-key key-translation-map [?\C-h] [?\C-?])
+
 ;; Better forward and backward paragraph
 ;; See http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html
 (global-set-key "\M-a" 'custom/backward-paragraph)
