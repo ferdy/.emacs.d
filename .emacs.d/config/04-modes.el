@@ -648,22 +648,23 @@
 ;; No large file warning
 (setq large-file-warning-threshold nil)
 
-;; WEB-MODE
-(use-package web-mode
-  :ensure t
-  :defer t
-  :config
-  (progn
-    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.xml\\'" . web-mode))))
-
 ;; JS2-MODE
 (use-package js2-mode
   :ensure t
   :defer t
   :config (add-hook 'js-mode-hook 'js2-minor-mode))
+
+;; CSS-MODE
+(use-package css-mode
+  :defer t
+  :config
+  (add-hook 'css-mode-hook (lambda () (run-hooks 'prog-mode-hook))))
+
+;; CSS-ELDOC
+(use-package css-eldoc
+  :ensure t
+  :commands (turn-on-css-eldoc)
+  :init (add-hook 'css-mode-hook #'turn-on-css-eldoc))
 
 ;; FLYCHECK SETUP
 ;; Requires: chktex
@@ -739,9 +740,10 @@
 		    (lambda()(interactive)
 		      (ispell-change-dictionary "italiano")
 		      (flyspell-buffer)))
+
     (global-set-key (kbd "C-c E")
 		    (lambda()(interactive)
-		      (ispell-change-dictionary "english")
+		      (ispell-change-dictionary "british")
 		      (flyspell-buffer)))))
 
 ;; PARADOX SETUP
