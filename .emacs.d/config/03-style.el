@@ -363,6 +363,11 @@
   :init (global-page-break-lines-mode)
   :defer page-break-lines-modes)
 
+;; FILL COLUMN INDICATOR
+(use-package fill-column-indicator
+  :ensure t
+  :defer t)
+
 ;; SMARTSCAN MODE
 (use-package smartscan
   :ensure t
