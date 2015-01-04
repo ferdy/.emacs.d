@@ -204,6 +204,11 @@
   :bind (([remap execute-extended-command] . smex)
 	 ("M-X" . smex-major-mode-commands)))
 
+;; IMENU
+(use-package imenu
+  :defer t
+  :bind (("M-i" . imenu)))
+
 ;; IMENU-ANYWHERE
 (use-package imenu-anywhere
   :ensure t
