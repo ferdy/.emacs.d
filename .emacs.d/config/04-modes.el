@@ -551,7 +551,7 @@
   :init (dolist (hook '(text-mode-hook prog-mode-hook))
 	  (add-hook hook #'rainbow-delimiters-mode)))
 
-;; TRAMP SETUP
+;; TRAMP
 (use-package tramp
   :load-path "~/emacs/tramp/lisp/"
   :config
