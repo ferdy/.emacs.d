@@ -500,17 +500,21 @@
 
 ;; CLOJURE MODE AND CIDER
 ;; Requires: openjdk-7-jre, openjdk-7-jre, lein
-(use-package clojure-mode
-  :ensure cider
+(use-package cider
+  :ensure t
   :defer t
   :config
-  (progn
-    (add-hook 'clojure-mode-hook #'paredit-mode)
-    (add-hook 'clojure-mode-hook #'cider-mode)))
+  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
+
+(use-package clojure-mode
+  :ensure t
+  :defer t
+  :config
+  (add-hook 'clojure-mode-hook #'cider-mode))
 
 ;; Extra font-locking for Clojure
 (use-package clojure-mode-extra-font-locking
-  :ensure clojure-mode-extra-font-locking
+  :ensure clojure-mode
   :defer t
   :init (with-eval-after-load 'clojure-mode
 	  (require 'clojure-mode-extra-font-locking)))
