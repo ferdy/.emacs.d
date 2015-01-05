@@ -276,10 +276,10 @@
       c-basic-offset 4)
 
 ;; Electric pairing and code layout
-(use-package electric-layout
+(use-package electric
   :init (electric-layout-mode))
 
-(use-package electric-pair
+(use-package elec-pair
   :init (electric-pair-mode))
 
 ;; Delete trailing whitespaces
