@@ -5,7 +5,7 @@ prerequisites()
     echo "
 configuring prerequisites..."
     sudo apt-get -y install --no-install-recommends make gcc automake autoconf
-    sudo apt-get -y install --no-install-recommends git
+    sudo apt-get -y install --no-install-recommends g++ git
     echo "
 ... done"
 }
