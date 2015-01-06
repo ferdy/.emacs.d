@@ -655,7 +655,21 @@
 
 ;; PDF-TOOLS
 ;; Requires: https://github.com/politza/pdf-tools
-(pdf-tools-install)
+(use-package pdf-tools
+  :defer t
+  :init (pdf-tools-install)
+  :config
+  (progn
+    (defun pdf-outline-imenu-ido ()
+      (interactive)
+      (let* ((outline (pdf-outline-imenu-create-index-flat))
+	     (key (ido-completing-read
+		   "Outline: "
+		   (mapcar 'car outline)
+		   nil t nil 'imenu--history-list)))
+	(imenu (assoc key outline))))
+
+    (global-set-key (kbd "C-M-i") 'pdf-outline-imenu-ido)))
 
 ;; No large file warning
 (setq large-file-warning-threshold nil)
