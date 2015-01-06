@@ -669,10 +669,10 @@
 		   nil t nil 'imenu--history-list)))
 	(imenu (assoc key outline))))
 
-    (global-set-key (kbd "C-M-i") 'pdf-outline-imenu-ido)))
+    (global-set-key (kbd "C-M-i") 'pdf-outline-imenu-ido)
 
-;; No large file warning
-(setq large-file-warning-threshold nil)
+    ;; No large file warning
+    (setq large-file-warning-threshold nil)))
 
 ;; JS2-MODE
 (use-package js2-mode
