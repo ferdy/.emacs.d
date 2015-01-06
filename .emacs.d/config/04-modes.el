@@ -4,12 +4,6 @@
 ;; This file stores the configurations of every mode I use.
 
 ;;; Code:
-;; Turn on hungry-delete-mode
-;; See: http://endlessparentheses.com/hungry-delete-mode.html
-(use-package hungry-delete
-  :ensure t
-  :init (global-hungry-delete-mode))
-
 ;; Minor mode to hide the mode line
 ;; See http://bzg.fr/emacs-hide-mode-line.html
 (defvar-local hidden-mode-line-mode nil)
@@ -89,7 +83,8 @@
 ;; PO-MODE
 (use-package po-mode
   :load-path "el-get/po-mode"
-  :config
+  :defer t
+  :init
   (progn
     (setq auto-mode-alist
 	  (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist))))
@@ -99,7 +94,7 @@
 (use-package geiser
   :ensure t
   :defer t
-  :config
+  :init
   (progn
     (setq scheme-program-name "guile")
     (setq geiser-impl-installed-implementations '(guile))))
@@ -221,6 +216,7 @@
 
 (use-package org2blog
   :ensure t
+  :defer t
   :init (require 'org2blog-autoloads)
   :config
   (progn
@@ -509,7 +505,7 @@
 (use-package clojure-mode
   :ensure t
   :defer t
-  :config
+  :init
   (add-hook 'clojure-mode-hook #'cider-mode))
 
 ;; Extra font-locking for Clojure
@@ -543,6 +539,7 @@
 ;; Requires: pandoc
 (use-package pandoc-mode
   :ensure t
+  :defer t
   :config
   (progn
     (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
@@ -558,6 +555,7 @@
 ;; TRAMP
 (use-package tramp
   :load-path "~/emacs/tramp/lisp/"
+  :defer t
   :config
   (progn
     (setq tramp-default-method "ssh"
@@ -572,9 +570,15 @@
   :config
   (add-to-list 'aggressive-indent-excluded-modes 'cider-repl-mode))
 
+;; HUNGRY DELETE
+(use-package hungry-delete
+  :ensure t
+  :init (global-hungry-delete-mode))
+
 ;; ELFEED
 (use-package elfeed
   :ensure t
+  :defer t
   :bind (("<f5>" . elfeed))
   :config
   (progn
@@ -757,6 +761,7 @@
 ;; PARADOX SETUP
 (use-package paradox
   :ensure t
+  :defer t
   :bind (("<f4>" . paradox-list-packages)
 	 ("S-<f4>" . paradox-upgrade-packages))
   :config
@@ -766,7 +771,8 @@
 
 ;; SX
 (use-package sx
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;; BUG-REFERENCE
 ;; See: http://www.lunaryorn.com/2014/12/23/bug-reference-mode.html
