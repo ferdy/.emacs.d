@@ -284,7 +284,7 @@
 	      (lambda ()
 		(smartscan-mode -1)))))
 
-;; MAGIT SETUP
+;; MAGIT
 (use-package magit
   :ensure t
   :defer t
@@ -604,19 +604,15 @@
 (use-package company
   :ensure t
   :defer t
+  :idle (global-company-mode)
   :config
   (progn
-    (setq company-show-numbers t)
+    ;; Use Company for completion
+    (bind-key [remap completion-at-point] #'company-complete company-mode-map)
 
-    ;; company for CSS
-    (add-hook 'css-mode-hook 'company-mode)
-
-    ;; company for Cider
-    (add-hook 'cider-repl-mode-hook 'company-mode)
-    (add-hook 'cider-mode-hook 'company-mode)
-
-    ;; company for Elisp
-    (add-hook 'emacs-lisp-mode-hook 'company-mode)))
+    (setq company-tooltip-align-annotations t
+	  ;; Easy navigation to candidates with M-<n>
+	  company-show-numbers t)))
 
 ;; Company for AUCTeX
 (use-package company-auctex
@@ -635,11 +631,13 @@
     (defun my-latex-mode-setup ()
       "Add company-math backends."
       (setq-local company-backends
-		  (append '(company-math-symbols-latex company-latex-commands)
+		  (append '(company-math-symbols-latex
+			    company-math-symbols-unicode
+			    company-latex-commands)
 			  company-backends)))
     (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
 
-;; UNDO-TREE SETUP
+;; UNDO-TREE
 (use-package undo-tree
   :ensure t
   :init (global-undo-tree-mode))
@@ -683,7 +681,7 @@
   :commands (turn-on-css-eldoc)
   :init (add-hook 'css-mode-hook #'turn-on-css-eldoc))
 
-;; FLYCHECK SETUP
+;; FLYCHECK
 ;; Requires: chktex
 (use-package flycheck
   :ensure t
@@ -694,6 +692,7 @@
     (setq flycheck-completion-system 'ido
 	  flycheck-display-errors-function
 	  #'flycheck-pos-tip-error-messages)
+
     ;; Use italic face for checker name
     (set-face-attribute 'flycheck-error-list-checker-name nil :inherit 'italic)))
 
@@ -703,8 +702,19 @@
   :init
   (setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
 
-;; FLYSPELL MODE SETUP
+;; FLYSPELL MODE
 ;; Requires: aspell, aspell-in, aspell-en
+(use-package ispell
+  :defer t
+  :config
+  (progn
+    (setq ispell-program-name (executable-find "aspell")
+	  ispell-dictionary "italiano"
+	  ispell-choices-win-default-height 5)
+
+    (unless ispell-program-name
+      (warn "No spell checker available. Install aspell."))))
+
 (use-package flyspell
   :defer t
   :config
@@ -714,45 +724,6 @@
 	  flyspell-issue-welcome-flag nil
 	  flyspell-issue-message-flag nil)
 
-    (defun flyspell-detect-ispell-args (&optional RUN-TOGETHER)
-      "If RUN-TOGETHER is true, spell check the CamelCase words."
-      (let (args)
-	(cond
-	 ((string-match  "aspell$" ispell-program-name)
-	  (setq args (list "--sug-mode=ultra" "--lang=it_IT"))
-	  (if RUN-TOGETHER
-	      (setq args (append args '("--run-together" "--run-together-limit=5" "--run-together-min=2")))))
-	 ((string-match "hunspell$" ispell-program-name)
-	  (setq args nil)))
-	args
-	))
-
-    (cond
-     ((executable-find "aspell")
-      (setq ispell-program-name "aspell")
-      (setq ispell-dictionary "italiano"))
-     ((executable-find "hunspell")
-      (setq ispell-program-name "hunspell")
-      (setq ispell-local-dictionary "it_IT")
-      (setq ispell-local-dictionary-alist
-	    '(("it_IT" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil nil nil utf-8))))
-     (t (setq ispell-program-name nil)))
-
-    ;; ispell-cmd-args is useless, it's the list of *extra* arguments we will append to
-    ;; the ispell process when "ispell-word" is called.
-    ;; ispell-extra-args is the command arguments which will *always* be used when start ispell process
-    (setq ispell-extra-args (flyspell-detect-ispell-args t))
-
-    (defadvice ispell-word (around my-ispell-word activate)
-      "Take care of extra args."
-      (let ((old-ispell-extra-args ispell-extra-args))
-	(ispell-kill-ispell t)
-	(setq ispell-extra-args (flyspell-detect-ispell-args))
-	ad-do-it
-	(setq ispell-extra-args old-ispell-extra-args)
-	(ispell-kill-ispell t)
-	))
-
     (global-set-key (kbd "C-c I")
 		    (lambda()(interactive)
 		      (ispell-change-dictionary "italiano")
@@ -761,9 +732,12 @@
     (global-set-key (kbd "C-c E")
 		    (lambda()(interactive)
 		      (ispell-change-dictionary "british")
-		      (flyspell-buffer)))))
+		      (flyspell-buffer)))
 
-;; PARADOX SETUP
+    ;; Free C-M-i for completion
+    (define-key flyspell-mode-map "\M-\t" nil)))
+
+;; PARADOX
 (use-package paradox
   :ensure t
   :defer t
