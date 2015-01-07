@@ -69,17 +69,6 @@
 (use-package bookmark+
   :ensure t)
 
-;; Track recent files
-(use-package recentf
-  :init (recentf-mode)
-  :bind (("C-x C-r" . ido-recentf-open))
-  :config
-  (setq recentf-max-saved-items 200
-	recentf-max-menu-items 15
-	recentf-auto-cleanup 300
-	recentf-exclude (list "/\\.git/.*\\'"
-			      "/elpa/.*\\'")))
-
 ;; PO-MODE
 (use-package po-mode
   :load-path "el-get/po-mode"

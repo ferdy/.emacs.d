@@ -198,6 +198,17 @@
   :config
   (setq flx-ido-use-faces nil))
 
+;; RECENTF
+(use-package recentf
+  :init (recentf-mode)
+  :bind (("C-x C-r" . ido-recentf-open))
+  :config
+  (setq recentf-max-saved-items 200
+	recentf-max-menu-items 15
+	recentf-auto-cleanup 300
+	recentf-exclude (list "/\\.git/.*\\'"
+			      "/elpa/.*\\'")))
+
 ;; SMEX
 (use-package smex
   :ensure t
@@ -214,7 +225,7 @@
   :ensure t
   :bind (("M-I" . imenu-anywhere)))
 
-;; Set unique buffer names
+;; UNIQUIFY
 (use-package uniquify
   :config
   (setq uniquify-buffer-name-style 'post-forward uniquify-separator ":"))
@@ -230,7 +241,7 @@
 (setq auto-save-file-name-transforms
       `((".*" ,backup-dir t)))
 
-;; Set theme
+;; SOLARIZED
 (use-package solarized
   :ensure solarized-theme
   :defer t
@@ -272,10 +283,11 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 
-;; Electric pairing and code layout
+;; ELECTRIC LAYOUT
 (use-package electric
   :init (electric-layout-mode))
 
+;; ELECTRIC PAIR
 (use-package elec-pair
   :init (electric-pair-mode))
 
@@ -289,14 +301,14 @@
      (add-to-list 'grep-find-ignored-directories "elpa")))
 (add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
 
-;;; Calendar
+;; CALENDAR
 (use-package calendar
   :defer t
   :config
   ;; In Europe we start on Monday
   (setq calendar-week-start-day 1))
 
-;;; Documentation
+;; INFO
 (use-package info
   :defer t
   :config
