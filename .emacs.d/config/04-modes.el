@@ -619,6 +619,9 @@
   (progn
     (setq company-show-numbers t)
 
+    ;; company for CSS
+    (add-hook 'css-mode-hook 'company-mode)
+
     ;; company for Cider
     (add-hook 'cider-repl-mode-hook 'company-mode)
     (add-hook 'cider-mode-hook 'company-mode)
@@ -633,7 +636,7 @@
   :init (company-auctex-init)
   :config (add-hook 'LaTeX-mode-hook 'company-mode))
 
-;; Company for math
+;; Company for math symbols
 (use-package company-math
   :ensure t
   :defer t
@@ -645,7 +648,6 @@
       (setq-local company-backends
 		  (append '(company-math-symbols-latex company-latex-commands)
 			  company-backends)))
-
     (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
 
 ;; UNDO-TREE SETUP
