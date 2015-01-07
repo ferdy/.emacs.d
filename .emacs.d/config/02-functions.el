@@ -143,16 +143,4 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (message "Opening file...")
     (message "Aborting")))
 
-;; See: https://github.com/lunaryorn/.emacs.d/blob/master/lisp/lunaryorn-simple.el
-(defun custom/init-time (&optional show)
-  "Get the total time for Emacs init in seconds.
-
-With SHOW non-nil, show the time in the echo area."
-  (interactive (list t))
-  (let ((diff (time-to-seconds (time-subtract after-init-time
-					      before-init-time))))
-    (when show
-      (message "Init took %s seconds" diff))
-    diff))
-
 ;;; 02-functions.el ends here

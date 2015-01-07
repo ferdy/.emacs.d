@@ -788,11 +788,23 @@
   :ensure t
   :defer t)
 
+(use-package sx-question-mode
+  :ensure sx
+  :defer t
+  ;; Display questions in the same window
+  :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
+
 ;; BUG-REFERENCE
 ;; See: http://www.lunaryorn.com/2014/12/23/bug-reference-mode.html
 (use-package bug-reference
   :defer t
   :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
 	       (add-hook 'text-mode-hook #'bug-reference-mode)))
+
+;; ELDOC
+(use-package eldoc
+  :defer t
+  ;; Enable Eldoc for `eval-expression', too
+  :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
 
 ;;; 04-modes.el ends here

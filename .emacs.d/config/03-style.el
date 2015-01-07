@@ -214,9 +214,6 @@
   :ensure t
   :bind (("M-I" . imenu-anywhere)))
 
-;; Tune `eval-expression'
-(add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
-
 ;; Set unique buffer names
 (use-package uniquify
   :config
@@ -431,7 +428,6 @@
 		  (mapconcat #'identity
 			     '("FlyC.*"
 			       "Projectile.*"
-			       "my-keys-mode"
 			       "PgLn"
 			       "company"
 			       "Undo-Tree")
