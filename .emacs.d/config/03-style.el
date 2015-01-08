@@ -394,15 +394,6 @@
   :defer t
   :init (global-smartscan-mode 1))
 
-;; ACE-JUMP-MODE
-(use-package ace-jump-mode
-  :ensure t
-  :bind (("C-c SPC" . ace-jump-mode)
-	 ("C-c j" . ace-jump-mode-pop-mark))
-  :config
-  ;; Sync marks with Emacs built-in commands
-  (ace-jump-mode-enable-mark-sync))
-
 ;; EASY-KILL
 (use-package easy-kill
   :ensure t
