@@ -419,6 +419,17 @@
 (use-package adaptive-wrap
   :ensure t)
 
+;; ANZU
+(use-package anzu
+  :ensure t
+  :init (global-anzu-mode)
+  :config
+  (progn
+    (setq anzu-cons-mode-line-p nil
+	  anzu-mode-lighter "")
+    (setcar (cdr (assq 'isearch-mode minor-mode-alist))
+	    '(:eval (anzu--update-mode-line)))))
+
 ;; Mode line
 (use-package smart-mode-line
   :ensure t
@@ -433,7 +444,8 @@
 			       "Projectile.*"
 			       "PgLn"
 			       "company"
-			       "Undo-Tree")
+			       "Undo-Tree"
+			       "Wrap")
 			     "\\|")))
     (sml/setup)
     (sml/apply-theme 'automatic)))
