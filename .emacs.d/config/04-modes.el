@@ -415,7 +415,8 @@
   :config
   (progn
     ;; No language-specific hyphens please
-    (setq LaTeX-babel-hyphen nil)
+    (setq LaTeX-babel-hyphen nil
+	  LaTeX-command-style '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
     (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode))) ; Easy math input
 
 (use-package auctex-latexmk
@@ -771,5 +772,11 @@
   :defer t
   ;; Enable Eldoc for `eval-expression', too
   :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
+
+;; EMACSSHOT
+(use-package emacsshot
+  :ensure t
+  :bind (("<print>" . emacsshot-snap-frame))
+  :defer t)
 
 ;;; 04-modes.el ends here
