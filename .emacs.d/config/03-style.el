@@ -356,6 +356,8 @@
   :ensure t
   :defer t
   :init (projectile-global-mode)
+  :idle (projectile-cleanup-known-projects)
+  :idle-priority 10
   :config
   (progn
     (setq projectile-completion-system 'ido
