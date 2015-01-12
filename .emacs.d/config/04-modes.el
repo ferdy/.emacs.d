@@ -38,6 +38,7 @@
 
 (use-package dired
   :defer t
+  :bind (("C-c z" . dired-get-size))
   :config
   (progn
     ;; Power up dired
@@ -577,8 +578,7 @@
 	    ("http://inconsolation.wordpress.com/feed/" blog)
 	    ("http://planet.emacsen.org/atom.xml" emacs)
 	    ("http://www.masteringemacs.org/feed/" emacs)
-	    ("http://flashstrap.blogspot.com/feeds/posts/default" music)
-	    ("http://rt.com/rss/" news)))
+	    ("http://flashstrap.blogspot.com/feeds/posts/default" music)))
 
     ;; Elfeed: mark all feed as read
     (require 'elfeed-search)

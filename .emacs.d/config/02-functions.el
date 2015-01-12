@@ -143,4 +143,17 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (message "Opening file...")
     (message "Aborting")))
 
+;; Get files size in dired
+;; See: http://oremacs.com/2015/01/12/dired-file-size/
+(defun dired-get-size ()
+  (interactive)
+  (let ((files (dired-get-marked-files)))
+    (with-temp-buffer
+      (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
+      (message
+       "Size of all marked files: %s"
+       (progn
+         (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
+         (match-string 1))))))
+
 ;;; 02-functions.el ends here
