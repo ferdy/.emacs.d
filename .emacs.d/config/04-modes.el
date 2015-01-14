@@ -45,10 +45,12 @@
     (require 'dired-x)
     ;; Always revert Dired buffers on revisiting
     (setq dired-auto-revert-buffer t
-	  dired-listing-switches "--group-directories-first -lah"
+	  dired-listing-switches "-laGh1v --group-directories-first"
 	  ;; Also auto refresh dired, but be quiet about it
 	  global-auto-revert-non-file-buffers t
-	  auto-revert-verbose nil)))
+	  auto-revert-verbose nil
+	  ;; Don't ask about recursive copies
+	  dired-recursive-copies 'always)))
 
 (use-package dired-x
   :defer t
@@ -747,7 +749,10 @@
   :config
   (setq paradox-github-token t ; Don't ask for a token, please
 	;; No async for now
-	paradox-execute-asynchronously nil))
+	paradox-execute-asynchronously nil)
+
+  ;; Don't need paradox report
+  (remove-hook 'paradox-after-execute-functions #'paradox--report))
 
 ;; SX
 (use-package sx
