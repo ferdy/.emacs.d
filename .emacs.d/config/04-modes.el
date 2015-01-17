@@ -499,7 +499,9 @@
   :ensure t
   :defer t
   :init
-  (add-hook 'clojure-mode-hook #'cider-mode))
+  (progn
+    (add-hook 'clojure-mode-hook #'cider-mode)
+    (add-hook 'clojure-mode-hook #'subword-mode)))
 
 ;; Extra font-locking for Clojure
 (use-package clojure-mode-extra-font-locking
