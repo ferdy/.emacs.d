@@ -156,4 +156,11 @@ if USE-EXISTING is true, try to switch to an existing buffer"
          (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
          (match-string 1))))))
 
+;; See: http://emacsredux.com/blog/2015/01/18/clear-comint-buffers/
+(defun comint-clear-buffer ()
+  "Easily clear comint buffers."
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
+
 ;;; 02-functions.el ends here

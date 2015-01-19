@@ -163,6 +163,9 @@ prefix argument."
 ;; C-h deletes char in isearch
 (define-key isearch-mode-map (kbd "C-h") 'isearch-delete-char)
 
+;; Clear comint buffers
+(define-key comint-mode-map "\C-c\M-o" #'comint-clear-buffer)
+
 ;; Minor mode for 'override' keybindings
 (use-package my-keys-mode
   :load-path "various"
