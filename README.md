@@ -3,8 +3,6 @@ emacs
 
 My Emacs configuration.
 
-An ongoing, probably never-ending, journey through Emacs Lisp looking for the *right* setup for *my* daily usage.
-
 It requires **Emacs trunk** to work.
 I regularly update my sources from here:
 ```console
@@ -17,7 +15,7 @@ The ```esetup``` script helps creating the right environment *before* starting E
 
 I mainly use Emacs for **Lisp** (Clojure, Common Lisp, Scheme and Elisp) and **LaTeX**, so my setup is planned accordingly.
 
-before getting started
+Before getting started
 ----------------------
 Some things you should know before getting started with this configuration:
 - apart from ```init.el```, all the details of this configuration are in ```.emacs.d/config```
@@ -26,13 +24,13 @@ Some things you should know before getting started with this configuration:
 - auto-completion is provided by [company-mode](http://company-mode.github.io/)
 - on-the-fly syntax checking is courtesy of [Flycheck](https://flycheck.readthedocs.org/)
 
-setup
+Setup
 -----
 - clone Emacs trunk and build it
 - run ```esetup``` script
 - run Emacs
 
-acknowledgements
+Acknowledgements
 ----------------
 This configuration would not have been possible without the work of and the inspiration from these people:
 - [Joe Brock](https://github.com/DebianJoe)
@@ -43,6 +41,6 @@ This configuration would not have been possible without the work of and the insp
 - [Bozhidar Batsov](https://github.com/bbatsov)
 - [Magnar Sveen](https://github.com/magnars)
 
-warranty
-----
+Warranty
+--------
 This configuration is provided with *absolutely no warranty*, *no guarantee* and *no support*.
