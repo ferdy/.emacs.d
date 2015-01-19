@@ -321,7 +321,11 @@
 (setq apropos-do-all t)
 
 ;; Better ediff behavior
-(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+(use-package ediff-wind
+  :defer t
+  :config
+  (setq ediff-window-setup-function #'ediff-setup-windows-plain
+	ediff-split-window-function #'split-window-horizontally))
 
 ;; Browse URLs with eww
 (use-package browse-url
