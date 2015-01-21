@@ -421,6 +421,12 @@
   :bind (("C-M-s" . flx-isearch-forward)
 	 ("C-M-r" . flx-isearch-backward)))
 
+;; VISUAL-REGEXP
+(use-package visual-regexp
+  :ensure t
+  :bind (("C-c r" . vr/query-replace)
+	 ("C-c R" . vr/replace)))
+
 ;; ADAPTIVE-WRAP
 (use-package adaptive-wrap
   :ensure t)

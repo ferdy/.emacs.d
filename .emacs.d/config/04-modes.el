@@ -287,6 +287,20 @@
 	      (lambda ()
 		(smartscan-mode -1)))))
 
+;; DIFF-HL
+(use-package diff-hl
+  :ensure t
+  :defer t
+  :init
+  (progn
+    ;; Highlight changes to the current file in the fringe
+    (global-diff-hl-mode)
+    ;; Highlight changed files in the fringe of Dired
+    (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+    ;; Fall back to the display margin, if the fringe is unavailable
+    (unless (display-graphic-p)
+      (diff-hl-margin-mode))))
+
 ;; MAGIT
 (use-package magit
   :ensure t
