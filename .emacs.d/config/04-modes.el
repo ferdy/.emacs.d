@@ -594,7 +594,8 @@
 	  '(("http://kmandla.wordpress.com/feed/" blog)
 	    ("http://inconsolation.wordpress.com/feed/" blog)
 	    ("http://planet.emacsen.org/atom.xml" emacs)
-	    ("http://www.masteringemacs.org/feed/" emacs)
+	    ("http://planet.clojure.in/atom.xml" clojure)
+	    ("http://feeds.feedburner.com/disclojure?format=xml" clojure)
 	    ("http://flashstrap.blogspot.com/feeds/posts/default" music)))
 
     ;; Elfeed: mark all feed as read
