@@ -164,9 +164,10 @@ if USE-EXISTING is true, try to switch to an existing buffer"
     (comint-truncate-buffer)))
 
 ;; Open eshell buffer in the current directory
+;; See: http://www.howardism.org/Technical/Emacs/eshell-fun.html
 (defun eshell-here ()
-  "Open a new shell in the directory associated with the current
-buffer's file.  The eshell is renamed to match that
+  "Open a new shell in the directory associated with the
+current buffer's file.  The eshell is renamed to match that
 directory to make multiple eshell windows easier."
   (interactive)
   (let* ((parent (if (buffer-file-name)
