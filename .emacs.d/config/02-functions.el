@@ -163,4 +163,18 @@ if USE-EXISTING is true, try to switch to an existing buffer"
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
+;; Open eshell buffer in the current directory
+(defun eshell-here ()
+  "Open a new shell in the directory associated with the current
+buffer's file.  The eshell is renamed to match that
+directory to make multiple eshell windows easier."
+  (interactive)
+  (let* ((parent (if (buffer-file-name)
+                     (file-name-directory (buffer-file-name))
+                   default-directory))
+	 (name   (car (last (split-string parent "/" t)))))
+    (other-window 1)
+    (eshell "new")
+    (rename-buffer (concat "*eshell: " name "*"))))
+
 ;;; 02-functions.el ends here

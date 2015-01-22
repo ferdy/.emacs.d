@@ -232,10 +232,9 @@
 ;; ESHELL
 (use-package eshell
   :defer t
-  :bind (("<f1>" . eshell))
+  :bind (("<f1>" . eshell-here))
   :config
   (progn
-
     ;; Clear eshell buffer
     ;; See http://www.khngai.com/emacs/eshell.php
     (defun eshell/clear ()
