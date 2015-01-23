@@ -121,6 +121,9 @@
 ;; Turn on visual-line-mode
 (global-visual-line-mode)
 
+;; Turn on colum-number-mode
+(column-number-mode)
+
 ;; Parenthesis and syntax highlighting
 (setq show-paren-delay 0
       show-paren-style 'parenthesis)
@@ -151,7 +154,7 @@
     (setq linum+-dynamic-format " %%%dd")
 
     ;; Linum+ resets linum-format to "smart" when it's loaded, hence we have to
-    ;; use a eval-after-load hook to set it to "dynamic".
+    ;; use a eval-after-nload hook to set it to "dynamic".
     (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))))
 
 ;; IDO
