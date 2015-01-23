@@ -562,7 +562,6 @@
 
 ;; TRAMP
 (use-package tramp
-  :load-path "~/emacs/tramp/lisp/"
   :defer t
   :config
   (progn
