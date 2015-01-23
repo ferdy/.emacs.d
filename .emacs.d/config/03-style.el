@@ -483,7 +483,8 @@
 			       "PgLn"
 			       "company"
 			       "Undo-Tree"
-			       "Wrap")
+			       "Wrap"
+			       "hhat")
 			     "\\|")))
     (sml/setup)
     (sml/apply-theme 'automatic)))
