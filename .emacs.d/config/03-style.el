@@ -127,6 +127,21 @@
 
 (show-paren-mode 1)
 
+(setq view-read-only t)
+
+;; Delete the selection instead of insert
+(use-package delsel
+  :defer t
+  :init (delete-selection-mode))
+
+;; Subword/superword editing
+(use-package subword
+  :defer t)
+
+;; Highlight the current line
+(use-package hl-line
+  :init (global-hl-line-mode 1))
+
 ;; Linum+ for better line numbers
 (use-package linum+
   :disabled t
@@ -307,6 +322,17 @@
   :config
   ;; In Europe we start on Monday
   (setq calendar-week-start-day 1))
+
+;; Show current time
+(use-package time
+  :bind (("C-c u i" . emacs-init-time)
+	 ("C-c u t" . display-time-world))
+  :config
+  (setq display-time-world-time-format "%H:%M %Z, %d. %b"
+	display-time-world-list '(("Europe/Rome" "Rome")
+				  ("Europe/London" "London")
+				  ("Asia/Hong_Kong" "Hong Kong")
+				  ("Asia/Tokyo" "Tokyo"))))
 
 ;; INFO
 (use-package info

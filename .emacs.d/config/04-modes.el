@@ -72,6 +72,12 @@
 (use-package bookmark+
   :ensure t)
 
+;; HARDHAT
+(use-package hardhat
+  :ensure t
+  :defer t
+  :idle (global-hardhat-mode))
+
 ;; PO-MODE
 (use-package po-mode
   :load-path "el-get/po-mode"
@@ -798,5 +804,10 @@
   :ensure t
   :bind (("<print>" . emacsshot-snap-frame))
   :defer t)
+
+;; The server of `emacsclient'
+(use-package server
+  :defer t
+  :idle (server-start))
 
 ;;; 04-modes.el ends here
