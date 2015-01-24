@@ -336,10 +336,10 @@
     (defun magit-quit-session ()
       "Restore the previous window configuration and kill the magit buffer."
       (interactive)
-      (custom-kill-buffers "^\\*magit")
+      (custom/kill-buffers "^\\*magit")
       (jump-to-register :magit-fullscreen))
 
-  (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
+    (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
 
 ;; GIT MODES
 (use-package git-commit-mode ; Git commit message mode
