@@ -141,10 +141,6 @@
 (use-package subword
   :defer t)
 
-;; Highlight the current line
-(use-package hl-line
-  :init (global-hl-line-mode 1))
-
 ;; Linum+ for better line numbers
 (use-package linum+
   :disabled t
