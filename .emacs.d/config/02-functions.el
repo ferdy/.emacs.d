@@ -178,4 +178,12 @@ directory to make multiple eshell windows easier."
     (eshell "new")
     (rename-buffer (concat "*eshell: " name "*"))))
 
+;; Kill buffers matching a regular expression with no confirmation
+(defun custom-kill-buffers (regexp)
+  "Kill buffers matching REGEXP without asking for confirmation."
+  (interactive "sKill buffers matching this regular expression: ")
+  (cl-letf (((symbol-function 'kill-buffer-ask)
+	     (lambda (buffer) (kill-buffer buffer))))
+    (kill-matching-buffers regexp)))
+
 ;;; 02-functions.el ends here
