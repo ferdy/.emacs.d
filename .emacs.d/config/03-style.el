@@ -423,7 +423,35 @@
 (use-package smartscan
   :ensure t
   :defer t
-  :init (global-smartscan-mode 1))
+  :init (global-smartscan-mode 1)
+  :config
+  (progn
+    ;; See: https://github.com/mwfogleman/config/blob/master/home/.emacs.d/michael.org#smart-scan
+    (defun highlight-symbol-first ()
+      "Jump to the first location of symbol at point."
+      (interactive)
+      (push-mark)
+      (eval
+       `(progn
+	  (goto-char (point-min))
+	  (search-forward-regexp
+	   (rx symbol-start ,(thing-at-point 'symbol) symbol-end)
+	   nil t)
+	  (beginning-of-thing 'symbol))))
+
+    (defun highlight-symbol-last ()
+      "Jump to the last location of symbol at point."
+      (interactive)
+      (push-mark)
+      (eval
+       `(progn
+	  (goto-char (point-max))
+	  (search-backward-regexp
+	   (rx symbol-start ,(thing-at-point 'symbol) symbol-end)
+	   nil t))))
+
+    (bind-keys ("M-P" . highlight-symbol-first)
+	       ("M-N" . highlight-symbol-last))))
 
 ;; EASY-KILL
 (use-package easy-kill
