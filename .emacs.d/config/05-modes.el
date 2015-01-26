@@ -803,9 +803,4 @@
   :bind (("<print>" . emacsshot-snap-frame))
   :defer t)
 
-;; The server of `emacsclient'
-(use-package server
-  :defer t
-  :idle (server-start))
-
 ;;; 05-modes.el ends here
