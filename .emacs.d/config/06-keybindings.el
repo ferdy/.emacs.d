@@ -1,4 +1,4 @@
-;;; 05-keybindings.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; 06-keybindings.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
