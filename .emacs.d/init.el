@@ -42,7 +42,7 @@
 
 (run-with-idle-timer 0 nil #'custom/warn-about-outdated-build)
 
-;; Personal information
+;; Personal informations
 (setq user-full-name "Manuel Uberti")
 (setq user-mail-address "manuel@boccaperta.com")
 

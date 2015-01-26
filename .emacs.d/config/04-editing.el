@@ -1,6 +1,6 @@
 ;;; 04-editing.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2015  Manuel Uberti
+;; Copyright (C) 2013-2015  Manuel Uberti
 
 ;; Author: Manuel Uberti <manuel@boccaperta.com>
 ;; Keywords: convenience
@@ -212,4 +212,4 @@
     (setcar (cdr (assq 'isearch-mode minor-mode-alist))
 	    '(:eval (anzu--update-mode-line)))))
 
-;;; 03-editing.el ends here
+;;; 04-editing.el ends here
