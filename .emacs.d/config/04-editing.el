@@ -218,4 +218,6 @@
   :config (add-to-list
 	   'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
 
+(provide '04-editing.el)
+
 ;;; 04-editing.el ends here

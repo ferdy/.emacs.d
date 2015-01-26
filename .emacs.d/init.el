@@ -50,8 +50,13 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-;; Load all ".el" files under ~/.emacs.d/config directory.
-(load "~/.emacs.d/load-directory")
-(load-directory "~/.emacs.d/config")
+(add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
+
+(require '01-packages.el)
+(require '02-functions.el)
+(require '03-style.el)
+(require '04-editing.el)
+(require '05-modes.el)
+(require '06-keybindings.el)
 
 ;;; init.el ends here
