@@ -1,4 +1,9 @@
-;;; 02-functions.el --- Part of my Emacs configuration
+;;; 02-functions.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2013-2015  Manuel Uberti
+
+;; Author: Manuel Uberti <manuel@boccaperta.com>
+;; Keywords: convenience
 
 ;;; Commentary:
 ;; This file contains various useful functions.
@@ -156,6 +161,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
          (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
          (match-string 1))))))
 
+;; Clear comint buffers
 ;; See: http://emacsredux.com/blog/2015/01/18/clear-comint-buffers/
 (defun comint-clear-buffer ()
   "Easily clear comint buffers."
@@ -167,7 +173,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 ;; See: http://www.howardism.org/Technical/Emacs/eshell-fun.html
 (defun eshell-here ()
   "Open a new shell in the directory associated with the
-current buffer's file.  The eshell is renamed to match that
+current buffer's file. The eshell is renamed to match that
 directory to make multiple eshell windows easier."
   (interactive)
   (let* ((parent (if (buffer-file-name)

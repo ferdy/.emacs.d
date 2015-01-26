@@ -1,4 +1,9 @@
-;;; 01-packages.el --- Part of my Emacs configuration
+;;; 01-packages.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2013-2015  Manuel Uberti
+
+;; Author: Manuel Uberti <manuel@boccaperta.com>
+;; Keywords: convenience
 
 ;;; Commentary:
 ;; This file stores all the packages related configurations

@@ -1,8 +1,10 @@
 ;;; init.el --- Emacs configuration of Manuel Uberti -*- lexical-binding: t; -*-
-;;
+
+;; Copyright (C) 2013-2015  Manuel Uberti
+
 ;; Author: Manuel Uberti <manuel@boccaperta.com>
 ;; URL: https://gihub.com/boccaperta-it/emacs
-;; Keywords: setup
+;; Keywords: convenience
 
 ;; This file is not part of GNU Emacs.
 
@@ -40,7 +42,7 @@
 
 (run-with-idle-timer 0 nil #'custom/warn-about-outdated-build)
 
-;; Set user and mail address
+;; Personal information
 (setq user-full-name "Manuel Uberti")
 (setq user-mail-address "manuel@boccaperta.com")
 

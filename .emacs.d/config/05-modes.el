@@ -1,4 +1,9 @@
-;;; 04-modes.el --- Part of my Emacs configuration
+;;; 05-modes.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2013-2015  Manuel Uberti
+
+;; Author: Manuel Uberti <manuel@boccaperta.com>
+;; Keywords: convenience
 
 ;;; Commentary:
 ;; This file stores the configurations of every mode I use.
