@@ -184,4 +184,4 @@ prefix argument."
     (define-key my-keys-mode-map (kbd "C-?") 'help-command)
     (define-key my-keys-mode-map (kbd "M-?") 'mark-paragraph)))
 
-;;; 05-keybindings ends here
+;;; 06-keybindings ends here
