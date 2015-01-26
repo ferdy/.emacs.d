@@ -89,6 +89,9 @@
 ;; C^n adds new line when at the end of a line
 (setq next-line-add-newlines t)
 
+;; Comment-line
+(global-set-key (kbd "C-;") #'custom/comment-line)
+
 ;; Better mark commands
 ;; See http://www.masteringemacs.org/articles/2010/12/22/fixing-mark-commands-transient-mark-mode/
 (defun push-mark-no-activate ()

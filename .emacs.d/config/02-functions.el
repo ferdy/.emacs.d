@@ -192,4 +192,17 @@ directory to make multiple eshell windows easier."
 	     (lambda (buffer) (kill-buffer buffer))))
     (kill-matching-buffers regexp)))
 
+;; Comment-line
+;; See: http://endlessparentheses.com/implementing-comment-line.html
+(defun custom/comment-line (n)
+  "Comment or uncomment current line and leave point after it.
+With positive prefix, apply to N lines including current one.
+With negative prefix, apply to -N lines above."
+  (interactive "p")
+  (comment-or-uncomment-region
+   (line-beginning-position)
+   (goto-char (line-end-position n)))
+  (forward-line 1)
+  (back-to-indentation))
+
 ;;; 02-functions.el ends here

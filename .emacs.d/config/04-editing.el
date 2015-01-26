@@ -178,7 +178,7 @@
 	      (narrow-to-defun)
 	      (iedit-start (current-word) (point-min) (point-max)))))))
 
-    (global-set-key (kbd "C-;") 'iedit-dwim)))
+    (global-set-key (kbd "C-,") 'iedit-dwim)))
 
 ;; EXPAND-REGION
 (use-package expand-region
@@ -211,5 +211,11 @@
 	  anzu-mode-lighter "")
     (setcar (cdr (assq 'isearch-mode minor-mode-alist))
 	    '(:eval (anzu--update-mode-line)))))
+
+;; ARCHIVE-MODE
+(use-package archive-mode
+  :defer t
+  :config (add-to-list
+	   'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
 
 ;;; 04-editing.el ends here
