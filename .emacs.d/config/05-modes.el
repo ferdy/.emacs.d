@@ -708,6 +708,11 @@
   :commands (turn-on-css-eldoc)
   :init (add-hook 'css-mode-hook #'turn-on-css-eldoc))
 
+;; PHP-MODE
+(use-package php-mode
+  :ensure t
+  :defer t)
+
 ;; FLYCHECK
 ;; Requires: chktex
 (use-package flycheck
