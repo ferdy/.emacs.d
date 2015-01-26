@@ -51,7 +51,7 @@
 (load custom-file)
 
 ;; Require files under ~/.emacs.d/config
-(add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (require '01-packages.el)
 (require '02-functions.el)
