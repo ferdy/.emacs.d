@@ -50,7 +50,7 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-;; Require files under ~/.emacs.d/config
+;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 (require '01-packages.el)
