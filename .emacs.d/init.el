@@ -50,6 +50,7 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+;; Require files under ~/.emacs.d/config
 (add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 
 (require '01-packages.el)
