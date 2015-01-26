@@ -439,6 +439,11 @@
 	  LaTeX-command-style '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
     (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode))) ; Easy math input
 
+(use-package latex-extra
+  :ensure t
+  :defer t
+  :config (add-hook 'LaTeX-mode-hook #'latex-extra-mode))
+
 (use-package auctex-latexmk
   :ensure t
   :defer t
