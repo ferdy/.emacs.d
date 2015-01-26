@@ -17,8 +17,8 @@ I mainly use Emacs for **Lisp** (Clojure, Common Lisp, Scheme and Elisp) and **L
 Before getting started
 ----------------------
 Some things you should know before getting started with this configuration:
-- excluding ```init.el```, all the details of this configuration are in ```.emacs.d/config```
-- the files in ```.emacs.d/config``` help *me* to keep the code clear and easy to maintain
+- excluding ```init.el```, all the details of this configuration are in ```.emacs.d/lisp```
+- the files in ```.emacs.d/lisp``` help *me* to keep the code clear and easy to maintain
 - the theme is [Solarized Dark](https://github.com/bbatsov/solarized-emacs)
 - packages setup is done with the awesome [use-package](https://github.com/jwiegley/use-package)
 - auto-completion is provided by [company-mode](http://company-mode.github.io/)
