@@ -609,7 +609,6 @@
   :init (global-undo-tree-mode))
 
 ;; PDF-TOOLS
-;; Requires: https://github.com/politza/pdf-tools
 (use-package pdf-tools
   :defer t
   :init (pdf-tools-install)
@@ -629,11 +628,11 @@
     ;; No large file warning
     (setq large-file-warning-threshold nil)))
 
-;; JS2-MODE
-(use-package js2-mode
-  :ensure t
-  :defer t
-  :config (add-hook 'js-mode-hook 'js2-minor-mode))
+  ;; JS2-MODE
+  (use-package js2-mode
+    :ensure t
+    :defer t
+    :config (add-hook 'js-mode-hook 'js2-minor-mode))
 
 ;; CSS-MODE
 (use-package css-mode
