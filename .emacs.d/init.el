@@ -24,8 +24,8 @@
 ;; USA.
 
 ;;; Commentary:
-;; This file sets up packages, custom file username and mail address and loads
-;; the different configuration files I have in ~/.emacs.d/lisp.
+;; This file sets up packages, custom file, username and mail address. It also
+;; loads the different configuration files I have in ~/.emacs.d/lisp.
 
 ;;; Code:
 (require 'package)
