@@ -132,7 +132,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
     (dolist (buf (buffer-list))
       (with-current-buffer buf
 	(if (eq mode major-mode)
-	    (add-to-list 'buffer-mode-matches buf))))
+	    (push buf buffer-mode-matches))))
     buffer-mode-matches))
 
 (defun multi-occur-in-this-mode ()
@@ -146,7 +146,7 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (global-set-key "\C-x\C-o" 'multi-occur-in-this-mode)
 
 ;; Kill entire line with prefix argument
-;; see http://endlessparentheses.com/kill-entire-line-with-prefix-argument.html
+;; see http://endlessparnentheses.com/kill-entire-line-with-prefix-argument.html
 (defmacro bol-with-prefix (function)
   "Define a new function which calls FUNCTION.
 Except it moves to beginning of line before calling FUNCTION when

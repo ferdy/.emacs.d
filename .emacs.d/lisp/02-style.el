@@ -221,18 +221,6 @@
 	;; Underline below the font bottomline instead of the baseline
 	x-underline-at-descent-line t))
 
-;; C-specific Indentation
-(setq c-default-style "linux"
-      c-basic-offset 4)
-
-;; ELECTRIC LAYOUT
-(use-package electric
-  :init (electric-layout-mode))
-
-;; ELECTRIC PAIR
-(use-package elec-pair
-  :init (electric-pair-mode))
-
 ;; CALENDAR
 (use-package calendar
   :defer t
@@ -263,50 +251,10 @@
 ;; Let apropos commands perform more extensive searches than default
 (setq apropos-do-all t)
 
-;; Better ediff behavior
-(use-package ediff-wind
-  :defer t
-  :config
-  (setq ediff-window-setup-function #'ediff-setup-windows-plain
-	ediff-split-window-function #'split-window-horizontally))
-
 ;; Browse URLs with eww
 (use-package browse-url
   :defer t
   :config (setq browse-url-browser-function #'eww-browse-url))
-
-;; BROWSE-KILL-RING
-(use-package browse-kill-ring
-  :ensure t
-  :bind (("M-y" . browse-kill-ring)))
-
-;; PROJECTILE
-(use-package projectile
-  :ensure t
-  :defer t
-  :init (projectile-global-mode)
-  :idle (projectile-cleanup-known-projects)
-  :idle-priority 10
-  :config
-  (progn
-    (setq projectile-completion-system 'ido
-	  projectile-find-dir-includes-top-level t)
-
-    ;; Replace Ack with Ag in Projectile commander
-    (def-projectile-commander-method ?a
-      "Find ag on project."
-      (call-interactively 'projectile-ag))))
-
-;; Group buffers by Projectile project
-(use-package ibuffer-projectile
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'ibuffer-mode-hook
-	    (lambda ()
-	      (ibuffer-projectile-set-filter-groups)
-	      (unless (eq ibuffer-sorting-mode 'alphabetic)
-		(ibuffer-do-sort-by-alphabetic)))))
 
 ;; PAGE BREAK LINES
 (use-package page-break-lines
@@ -318,6 +266,20 @@
 (use-package fill-column-indicator
   :ensure t
   :defer t)
+
+;; DIFF-HL
+(use-package diff-hl
+  :ensure t
+  :defer t
+  :init
+  (progn
+    ;; Highlight changes to the current file in the fringe
+    (global-diff-hl-mode)
+    ;; Highlight changed files in the fringe of Dired
+    (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+    ;; Fall back to the display margin, if the fringe is unavailable
+    (unless (display-graphic-p)
+      (diff-hl-margin-mode))))
 
 ;; Mode line
 (use-package smart-mode-line
@@ -339,6 +301,34 @@
 			     "\\|")))
     (sml/setup)
     (sml/apply-theme 'automatic)))
+
+;; Minor mode to hide the mode line
+;; See http://bzg.fr/emacs-hide-mode-line.html
+(defvar-local hidden-mode-line-mode nil)
+(defvar-local hide-mode-line nil)
+
+(define-minor-mode hidden-mode-line-mode
+  "Minor mode to hide the mode-line in the current buffer."
+  :init-value nil
+  :global t
+  :variable hidden-mode-line-mode
+  :group 'editing-basics
+  (if hidden-mode-line-mode
+      (setq hide-mode-line mode-line-format
+	    mode-line-format nil)
+    (setq mode-line-format hide-mode-line
+	  hide-mode-line nil))
+  (force-mode-line-update)
+  ;; apparently force-mode-line-update is not always enough to
+  ;; redisplay the mode-line
+  (redraw-display)
+  (when (and (called-interactively-p 'interactive)
+	     hidden-mode-line-mode)
+    (run-with-idle-timer
+     0 nil 'message "Hidden Mode Line Mode enabled.")))
+
+;; If you want to hide the mode-line in every buffer by default
+;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
 (provide '02-style)
 

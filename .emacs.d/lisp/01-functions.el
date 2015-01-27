@@ -151,6 +151,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 ;; Get files size in dired
 ;; See: http://oremacs.com/2015/01/12/dired-file-size/
 (defun dired-get-size ()
+  "Quick and easy way to get file size in dired."
   (interactive)
   (let ((files (dired-get-marked-files)))
     (with-temp-buffer

@@ -218,6 +218,77 @@
   :config (add-to-list
 	   'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
 
+;; RAINBOW DELIMITERS
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t
+  :init (dolist (hook '(text-mode-hook prog-mode-hook))
+	  (add-hook hook #'rainbow-delimiters-mode)))
+
+;; AGGRESSIVE INDENT
+(use-package aggressive-indent
+  :ensure t
+  :init (global-aggressive-indent-mode 1)
+  :config
+  (add-to-list 'aggressive-indent-excluded-modes 'cider-repl-mode))
+
+;; HUNGRY DELETE
+(use-package hungry-delete
+  :ensure t
+  :init (global-hungry-delete-mode))
+
+;; BROWSE-KILL-RING
+(use-package browse-kill-ring
+  :ensure t
+  :bind (("M-y" . browse-kill-ring)))
+
+;; Better ediff behavior
+(use-package ediff-wind
+  :defer t
+  :config
+  (setq ediff-window-setup-function #'ediff-setup-windows-plain
+	ediff-split-window-function #'split-window-horizontally))
+
+;; PROJECTILE
+(use-package projectile
+  :ensure t
+  :defer t
+  :init (projectile-global-mode)
+  :idle (projectile-cleanup-known-projects)
+  :idle-priority 10
+  :config
+  (progn
+    (setq projectile-completion-system 'ido
+	  projectile-find-dir-includes-top-level t)
+
+    ;; Replace Ack with Ag in Projectile commander
+    (def-projectile-commander-method ?a
+      "Find ag on project."
+      (call-interactively 'projectile-ag))))
+
+;; Group buffers by Projectile project
+(use-package ibuffer-projectile
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'ibuffer-mode-hook
+	    (lambda ()
+	      (ibuffer-projectile-set-filter-groups)
+	      (unless (eq ibuffer-sorting-mode 'alphabetic)
+		(ibuffer-do-sort-by-alphabetic)))))
+
+;; C-specific Indentation
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
+;; ELECTRIC LAYOUT
+(use-package electric
+  :init (electric-layout-mode))
+
+;; ELECTRIC PAIR
+(use-package elec-pair
+  :init (electric-pair-mode))
+
 (provide '03-editing)
 
 ;;; 03-editing.el ends here

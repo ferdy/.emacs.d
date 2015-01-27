@@ -9,34 +9,6 @@
 ;; This file stores the configurations of every mode I use.
 
 ;;; Code:
-;; Minor mode to hide the mode line
-;; See http://bzg.fr/emacs-hide-mode-line.html
-(defvar-local hidden-mode-line-mode nil)
-(defvar-local hide-mode-line nil)
-
-(define-minor-mode hidden-mode-line-mode
-  "Minor mode to hide the mode-line in the current buffer."
-  :init-value nil
-  :global t
-  :variable hidden-mode-line-mode
-  :group 'editing-basics
-  (if hidden-mode-line-mode
-      (setq hide-mode-line mode-line-format
-            mode-line-format nil)
-    (setq mode-line-format hide-mode-line
-          hide-mode-line nil))
-  (force-mode-line-update)
-  ;; apparently force-mode-line-update is not always enough to
-  ;; redisplay the mode-line
-  (redraw-display)
-  (when (and (called-interactively-p 'interactive)
-             hidden-mode-line-mode)
-    (run-with-idle-timer
-     0 nil 'message "Hidden Mode Line Mode enabled.")))
-
-;; If you want to hide the mode-line in every buffer by default
-;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
-
 ;; DIRED
 ;; Auto refresh buffers
 (global-auto-revert-mode 1)
@@ -297,20 +269,6 @@
 	      (lambda ()
 		(smartscan-mode -1)))))
 
-;; DIFF-HL
-(use-package diff-hl
-  :ensure t
-  :defer t
-  :init
-  (progn
-    ;; Highlight changes to the current file in the fringe
-    (global-diff-hl-mode)
-    ;; Highlight changed files in the fringe of Dired
-    (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
-    ;; Fall back to the display margin, if the fringe is unavailable
-    (unless (display-graphic-p)
-      (diff-hl-margin-mode))))
-
 ;; MAGIT
 (use-package magit
   :ensure t
@@ -562,13 +520,6 @@
     (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
     (setq org-pandoc-output-format 'odt)))
 
-;; RAINBOW DELIMITERS
-(use-package rainbow-delimiters
-  :ensure t
-  :defer t
-  :init (dolist (hook '(text-mode-hook prog-mode-hook))
-	  (add-hook hook #'rainbow-delimiters-mode)))
-
 ;; TRAMP
 (use-package tramp
   :defer t
@@ -578,18 +529,6 @@
 	  tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
     (add-to-list 'backup-directory-alist
 		 (cons tramp-file-name-regexp nil))))
-
-;; AGGRESSIVE INDENT
-(use-package aggressive-indent
-  :ensure t
-  :init (global-aggressive-indent-mode 1)
-  :config
-  (add-to-list 'aggressive-indent-excluded-modes 'cider-repl-mode))
-
-;; HUNGRY DELETE
-(use-package hungry-delete
-  :ensure t
-  :init (global-hungry-delete-mode))
 
 ;; ELFEED
 (use-package elfeed
