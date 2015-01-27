@@ -53,11 +53,11 @@
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(require '01-packages.el)
-(require '02-functions.el)
-(require '03-style.el)
-(require '04-editing.el)
-(require '05-modes.el)
-(require '06-keybindings.el)
+(require '01-packages)
+(require '02-functions)
+(require '03-style)
+(require '04-editing)
+(require '05-modes)
+(require '06-keybindings)
 
 ;;; init.el ends here

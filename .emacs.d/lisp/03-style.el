@@ -340,6 +340,6 @@
     (sml/setup)
     (sml/apply-theme 'automatic)))
 
-(provide '03-style.el)
+(provide '03-style)
 
 ;;; 03-style.el ends here

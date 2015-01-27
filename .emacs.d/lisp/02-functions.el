@@ -205,6 +205,6 @@ With negative prefix, apply to -N lines above."
   (forward-line 1)
   (back-to-indentation))
 
-(provide '02-functions.el)
+(provide '02-functions)
 
 ;;; 02-functions.el ends here

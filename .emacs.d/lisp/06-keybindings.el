@@ -187,6 +187,6 @@ prefix argument."
     (define-key my-keys-mode-map (kbd "C-?") 'help-command)
     (define-key my-keys-mode-map (kbd "M-?") 'mark-paragraph)))
 
-(provide '06-keybindings.el)
+(provide '06-keybindings)
 
 ;;; 06-keybindings ends here

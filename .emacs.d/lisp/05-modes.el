@@ -813,6 +813,6 @@
   :bind (("<print>" . emacsshot-snap-frame))
   :defer t)
 
-(provide '05-modes.el)
+(provide '05-modes)
 
 ;;; 05-modes.el ends here
