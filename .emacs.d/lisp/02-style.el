@@ -1,4 +1,4 @@
-;;; 03-style.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; 02-style.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -340,6 +340,6 @@
     (sml/setup)
     (sml/apply-theme 'automatic)))
 
-(provide '03-style)
+(provide '02-style)
 
-;;; 03-style.el ends here
+;;; 02-style.el ends here

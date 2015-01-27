@@ -1,4 +1,4 @@
-;;; 02-functions.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; 01-functions.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -205,6 +205,6 @@ With negative prefix, apply to -N lines above."
   (forward-line 1)
   (back-to-indentation))
 
-(provide '02-functions)
+(provide '01-functions)
 
-;;; 02-functions.el ends here
+;;; 01-functions.el ends here

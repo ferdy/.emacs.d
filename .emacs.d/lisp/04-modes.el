@@ -1,4 +1,4 @@
-;;; 05-modes.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; 04-modes.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -813,6 +813,6 @@
   :bind (("<print>" . emacsshot-snap-frame))
   :defer t)
 
-(provide '05-modes)
+(provide '04-modes)
 
-;;; 05-modes.el ends here
+;;; 04-modes.el ends here

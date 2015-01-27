@@ -1,4 +1,4 @@
-;;; 04-editing.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
+;;; 03-editing.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -218,6 +218,6 @@
   :config (add-to-list
 	   'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
 
-(provide '04-editing)
+(provide '03-editing)
 
-;;; 04-editing.el ends here
+;;; 03-editing.el ends here

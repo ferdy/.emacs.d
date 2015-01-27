@@ -1,4 +1,4 @@
-;;; 06-keybindings.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; 05-keybindings.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -187,6 +187,6 @@ prefix argument."
     (define-key my-keys-mode-map (kbd "C-?") 'help-command)
     (define-key my-keys-mode-map (kbd "M-?") 'mark-paragraph)))
 
-(provide '06-keybindings)
+(provide '05-keybindings)
 
-;;; 06-keybindings ends here
+;;; 05-keybindings ends here
