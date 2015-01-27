@@ -8,9 +8,9 @@ It requires **Emacs trunk** to work. I regularly update my sources from here:
 $ git clone git://git.savannah.gnu.org/emacs.git
 ```
 
-I use Emacs on **LinuxBBQ**. This configuration requires some external packages, all of which are highlighted in the comments when necessary.
+I use Emacs on **LinuxBBQ**. This configuration requires some external packages, all of which are highlighted in the comments when necessary. The packages can be easily installed using ```apt-get```.
 
-The ```esetup``` script helps to create the right environment *before* starting Emacs with this configuration for the first time. If it does not work as you expect, *fix it yourself*.
+The ```esetup``` script helps to create the right environment *before* starting Emacs with this configuration for the first time. The script only works with Debian-based systems. If it does not work as you expect, *fix it yourself*.
 
 I mainly use Emacs for **Lisp** (Clojure, Common Lisp, Scheme and Elisp) and **LaTeX**, so my setup is planned accordingly.
 
@@ -23,6 +23,7 @@ Some things you should know before getting started with this configuration:
 - packages setup is done with the awesome [use-package](https://github.com/jwiegley/use-package)
 - auto-completion is provided by [company-mode](http://company-mode.github.io/)
 - on-the-fly syntax checking is courtesy of [Flycheck](https://flycheck.readthedocs.org/)
+- PDFs are beautifully managed by [pdf-tools](https://github.com/politza/pdf-tools)
 
 Setup
 -----
