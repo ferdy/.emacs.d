@@ -59,7 +59,7 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
-;;; Initialization
+;; Initialization
 ;; See: https://github.com/lunaryorn/.emacs.d
 (when (version< emacs-version "25")
   (error "This configuration needs Emacs trunk, but this is %s!" emacs-version))
@@ -77,6 +77,7 @@
 (setq user-mail-address "manuel@boccaperta.com")
 
 ;; Set separate custom file for the customize interface
+;; See: https://github.com/lunaryorn/.emacs.d
 (defconst custom/custom-file (locate-user-emacs-file "custom.el")
   "File used to store settings from Customization UI.")
 
