@@ -526,7 +526,8 @@
   :config
   (progn
     (setq tramp-default-method "ssh"
-	  tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*")
+	  tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
+	  auto-save-file-name-transforms nil)
     (add-to-list 'backup-directory-alist
 		 (cons tramp-file-name-regexp nil))))
 
@@ -628,11 +629,11 @@
     ;; No large file warning
     (setq large-file-warning-threshold nil)))
 
-  ;; JS2-MODE
-  (use-package js2-mode
-    :ensure t
-    :defer t
-    :config (add-hook 'js-mode-hook 'js2-minor-mode))
+;; JS2-MODE
+(use-package js2-mode
+  :ensure t
+  :mode "\\.js\\(?:on\\)?\\'"
+  :config (add-hook 'js-mode-hook 'js2-minor-mode))
 
 ;; CSS-MODE
 (use-package css-mode
