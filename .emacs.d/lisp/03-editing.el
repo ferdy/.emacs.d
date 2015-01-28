@@ -307,6 +307,12 @@
 	'(:propertize (:eval (concat " " (number-to-string (mc/num-cursors))))
 		      face font-lock-warning-face)))
 
+;; MULTIFILES
+(use-package multifiles
+  :ensure t
+  :defer t
+  :bind (("C-!" . mf/mirror-region-in-multifile)))
+
 (provide '03-editing)
 
 ;;; 03-editing.el ends here
