@@ -604,12 +604,6 @@
 			  company-backends)))
     (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
 
-;; Help popup when idling on a completion candidate
-(use-package company-quickhelp
-  :ensure t
-  :defer t
-  :idle (company-quickhelp-mode 1))
-
 ;; UNDO-TREE
 (use-package undo-tree
   :ensure t
