@@ -752,6 +752,12 @@
   :bind (("<print>" . emacsshot-snap-frame))
   :defer t)
 
+;; CAMCORDER
+(use-package camcorder
+  :ensure t
+  :defer t
+  :init (setq camcorder-window-id-offset -2))
+
 (provide '04-modes)
 
 ;;; 04-modes.el ends here

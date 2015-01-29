@@ -313,6 +313,15 @@
   :defer t
   :bind (("C-!" . mf/mirror-region-in-multifile)))
 
+;; MACROSTEP
+(use-package macrostep
+  :ensure t
+  :defer t
+  :init
+  (with-eval-after-load 'lisp-mode
+    (bind-key "C-c e" #'macrostep-expand emacs-lisp-mode-map)
+    (bind-key "C-c e" #'macrostep-expand lisp-interaction-mode-map)))
+
 (provide '03-editing)
 
 ;;; 03-editing.el ends here
