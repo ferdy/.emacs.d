@@ -604,7 +604,7 @@
 			  company-backends)))
     (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
 
-;; Company popup when idling on a completion candidate
+;; Help popup when idling on a completion candidate
 (use-package company-quickhelp
   :ensure t
   :defer t
