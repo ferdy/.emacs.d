@@ -758,6 +758,12 @@
   :defer t
   :init (setq camcorder-window-id-offset -2))
 
+;; ARCHIVE-MODE
+(use-package archive-mode
+  :defer t
+  :config (add-to-list
+	   'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
+
 (provide '04-modes)
 
 ;;; 04-modes.el ends here

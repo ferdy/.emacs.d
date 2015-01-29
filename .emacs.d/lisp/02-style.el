@@ -147,6 +147,10 @@
   :config
   (setq flx-ido-use-faces nil))
 
+(use-package ido-load-library
+  :ensure t
+  :bind ("C-c f l" . ido-load-library-find))
+
 ;; RECENTF
 (use-package recentf
   :init (recentf-mode)

@@ -212,12 +212,6 @@
     (setcar (cdr (assq 'isearch-mode minor-mode-alist))
 	    '(:eval (anzu--update-mode-line)))))
 
-;; ARCHIVE-MODE
-(use-package archive-mode
-  :defer t
-  :config (add-to-list
-	   'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
-
 ;; RAINBOW DELIMITERS
 (use-package rainbow-delimiters
   :ensure t
