@@ -395,6 +395,7 @@
     ;; No language-specific hyphens please
     (setq LaTeX-babel-hyphen nil
 	  LaTeX-command-style '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
+
     (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode))) ; Easy math input
 
 (use-package latex-extra
