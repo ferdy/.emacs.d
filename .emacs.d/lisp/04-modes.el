@@ -19,8 +19,6 @@
 	 ("C-c C" . copy-file-name-to-clipboard))
   :config
   (progn
-    ;; Power up dired
-    (require 'dired-x)
     ;; Always revert Dired buffers on revisiting
     (setq dired-auto-revert-buffer t
 	  dired-listing-switches "-laGh1v --group-directories-first"
