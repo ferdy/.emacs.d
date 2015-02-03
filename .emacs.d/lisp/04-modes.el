@@ -15,7 +15,8 @@
 
 (use-package dired
   :defer t
-  :bind (("C-c z" . dired-get-size))
+  :bind (("C-c z" . dired-get-size)
+	 ("C-c C" . copy-file-name-to-clipboard))
   :config
   (progn
     ;; Power up dired
@@ -27,7 +28,28 @@
 	  global-auto-revert-non-file-buffers t
 	  auto-revert-verbose nil
 	  ;; Don't ask about recursive copies
-	  dired-recursive-copies 'always)))
+	  dired-recursive-copies 'always)
+
+    ;; Better M-< and M->
+    ;; See: http://whattheemacsd.com/setup-dired.el-02.html
+    (defun dired-back-to-top ()
+      (interactive)
+      (beginning-of-buffer)
+      (dired-next-line 2))
+
+    (define-key dired-mode-map
+      (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
+
+    (defun dired-jump-to-bottom ()
+      (interactive)
+      (end-of-buffer)
+      (dired-next-line -1))
+
+    (define-key dired-mode-map
+      (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
+
+    ;; Use other pane as default destination when copying
+    (setq dired-dwim-target t)))
 
 (use-package dired-x
   :defer t
