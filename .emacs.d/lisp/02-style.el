@@ -25,6 +25,11 @@
 			       :size 11.4
 			       :weight 'normal)))
 
+;; UNICODE-FONTS
+(use-package unicode-fonts
+  :ensure t
+  :init (unicode-fonts-setup))
+
 ;; Toggle all frames maximized and fullscreen
 (modify-all-frames-parameters '((fullscreen . maximized)))
 
