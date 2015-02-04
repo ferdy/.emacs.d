@@ -18,7 +18,7 @@ Before getting started
 ----------------------
 Some things you should know before getting started with this configuration:
 - excluding ```init.el```, all the details of this configuration are in ```.emacs.d/lisp```
-- there are *over 90 packages* already configured and ready to be used
+- there are *more than 90 packages* already configured and ready to be used
 - be sure to check *all* the keybindings before doing something crazy
 
 Setup
