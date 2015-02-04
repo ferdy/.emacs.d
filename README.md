@@ -14,13 +14,6 @@ The ```esetup``` script helps to create the right environment *before* starting 
 
 I mainly use Emacs for **Lisp** (Clojure, Common Lisp, Scheme and Elisp) and **LaTeX**, so my setup is planned accordingly.
 
-Before getting started
-----------------------
-Some things you should know before getting started with this configuration:
-- excluding ```init.el```, all the details of this configuration are in ```.emacs.d/lisp```
-- there are *more than 90 packages* already configured and ready to be used
-- be sure to check *all* the keybindings before doing something crazy
-
 Setup
 -----
 - clone Emacs trunk and build it
