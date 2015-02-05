@@ -103,10 +103,7 @@
   :ensure t
   :config
   (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
-	ag-highlight-search t ; A little fanciness
-	;; Use Projectile to find the project root
-	ag-project-root-function (lambda (d) (let ((default-directory d))
-					       (projectile-project-root)))))
+	ag-highlight-search t))
 
 (use-package wgrep
   :ensure t
@@ -242,34 +239,6 @@
   :config
   (setq ediff-window-setup-function #'ediff-setup-windows-plain
 	ediff-split-window-function #'split-window-horizontally))
-
-;; PROJECTILE
-(use-package projectile
-  :ensure t
-  :defer t
-  :init (projectile-global-mode)
-  :idle (projectile-cleanup-known-projects)
-  :idle-priority 10
-  :config
-  (progn
-    (setq projectile-completion-system 'ido
-	  projectile-find-dir-includes-top-level t)
-
-    ;; Replace Ack with Ag in Projectile commander
-    (def-projectile-commander-method ?a
-      "Find ag on project."
-      (call-interactively 'projectile-ag))))
-
-;; Group buffers by Projectile project
-(use-package ibuffer-projectile
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'ibuffer-mode-hook
-	    (lambda ()
-	      (ibuffer-projectile-set-filter-groups)
-	      (unless (eq ibuffer-sorting-mode 'alphabetic)
-		(ibuffer-do-sort-by-alphabetic)))))
 
 ;; C-specific Indentation
 (setq c-default-style "linux"
