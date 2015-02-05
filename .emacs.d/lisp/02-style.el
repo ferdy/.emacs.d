@@ -210,8 +210,8 @@
 	(add-hook 'after-make-frame-functions
 		  '(lambda (f)
 		     (with-selected-frame f
-		       (when (window-system f) (load-theme 'solarized-dark t)))))
-      (load-theme 'solarized-dark t))
+		       (when (window-system f) (load-theme 'solarized-light t)))))
+      (load-theme 'solarized-light t))
 
     ;; Functions to remove background when on terminals
     (defun on-frame-open (frame)
@@ -230,7 +230,7 @@
     (add-hook 'window-setup-hook 'on-after-init))
   :config t
   ;; Make the modeline high contrast
-  (setq solarized-high-contrast-mode-line t
+  (setq ;; solarized-high-contrast-mode-line t
 	;; Don't change size of org-mode headlines (but keep other size-changes)
 	solarized-scale-org-headlines nil
 	;; Avoid all font-size changes
