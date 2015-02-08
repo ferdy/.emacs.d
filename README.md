@@ -12,7 +12,7 @@ I use Emacs on **LinuxBBQ**. This configuration requires some external packages,
 
 The ```esetup``` script helps to create the right environment *before* starting Emacs with this configuration for the first time. The script only works with Debian-based systems. If it does not work as you expect, *fix it yourself*.
 
-I mainly use Emacs for **Lisp** (Elisp, Clojure, Scheme and Common Lisp) and **LaTeX**, so my setup is planned accordingly. Check the ```.emacs./lisp``` directory for the gory details.
+I mainly use Emacs for **Lisp** (Elisp, Clojure, Scheme and Common Lisp) and **LaTeX**, so my setup is planned accordingly. Check the ```.emacs.d/lisp``` directory for the gory details.
 
 Setup
 -----
