@@ -10,9 +10,6 @@
 
 ;;; Code:
 ;; DIRED
-;; Auto refresh buffers
-(global-auto-revert-mode 1)
-
 (use-package dired
   :defer t
   :bind (("C-c z" . dired-get-size)

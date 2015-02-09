@@ -10,11 +10,8 @@
 
 ;;; Code:
 ;; Scrolling
-(setq redisplay-dont-pause t
-      scroll-margin 1
-      scroll-step 1
-      scroll-conservatively 10000
-      scroll-preserve-screen-position 1)
+(setq scroll-margin 0
+      scroll-conservatively 1000)
 
 ;; Undo scrolling
 (defvar unscroll-point (make-marker)
@@ -284,6 +281,35 @@
   (with-eval-after-load 'lisp-mode
     (bind-key "C-c e" #'macrostep-expand emacs-lisp-mode-map)
     (bind-key "C-c e" #'macrostep-expand lisp-interaction-mode-map)))
+
+;; Save point position in files
+(use-package saveplace
+  :config (setq-default save-place t))
+
+;; Auto-revert buffers of changed files
+(use-package autorevert
+  :init (global-auto-revert-mode))
+
+;; Disable tabs, but given them proper width
+(setq-default indent-tabs-mode nil
+	      tab-width 8)
+
+;; Make Tab complete if the line is indented
+(setq tab-always-indent 'complete)
+
+;; Configure a reasonable fill column, indicate it in the buffer and enable
+;; automatic filling
+(setq-default fill-column 80)
+(add-hook 'text-mode-hook #'auto-fill-mode)
+
+;; Give us narrowing back!
+(put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-defun 'disabled nil)
+
+;; Same for region casing
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 (provide '03-editing)
 

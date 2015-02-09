@@ -84,10 +84,10 @@
 (column-number-mode)
 
 ;; Parenthesis and syntax highlighting
-(setq show-paren-delay 0
-      show-paren-style 'parenthesis)
-
-(show-paren-mode 1)
+(use-package paren ; Highlight paired delimiters
+  :init (show-paren-mode)
+  :config (setq show-paren-when-point-inside-paren t
+		show-paren-when-point-in-periphery t))
 
 ;; Linum+ for better line numbers
 (use-package linum+
