@@ -639,11 +639,11 @@
     (defun pdf-outline-imenu-ido ()
       (interactive)
       (let* ((outline (pdf-outline-imenu-create-index-flat))
-	     (key (ido-completing-read
-		   "Outline: "
-		   (mapcar 'car outline)
-		   nil t nil 'imenu--history-list)))
-	(imenu (assoc key outline))))
+  	     (key (ido-completing-read
+  		   "Outline: "
+  		   (mapcar 'car outline)
+  		   nil t nil 'imenu--history-list)))
+  	(imenu (assoc key outline))))
 
     (global-set-key (kbd "C-M-i") 'pdf-outline-imenu-ido)
 
@@ -784,6 +784,17 @@
   :defer t
   :config (add-to-list
 	   'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
+
+;; PROCED
+(use-package proced
+  :defer t
+  :config
+  (progn
+    ;; Auto-update proced buffer
+    (defun proced-settings ()
+      (proced-toggle-auto-update 1))
+
+    (add-hook 'proced-mode-hook 'proced-settings)))
 
 (provide '04-modes)
 
