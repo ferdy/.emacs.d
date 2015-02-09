@@ -284,7 +284,12 @@
     ;; Disable smartscan for shell
     (add-hook 'shell-mode-hook
 	      (lambda ()
-		(smartscan-mode -1)))))
+		(smartscan-mode -1)))
+
+    ;; Shell buffer maximized
+    (add-hook 'shell-mode-hook
+              (lambda ()
+                (delete-other-windows)))))
 
 ;; MAGIT
 (use-package magit
