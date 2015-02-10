@@ -743,7 +743,8 @@
 	paradox-execute-asynchronously nil)
 
   ;; Don't need paradox report
-  (remove-hook 'paradox-after-execute-functions #'paradox--report))
+  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print)
+  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-display-if-noquery))
 
 ;; SX
 (use-package sx
@@ -797,6 +798,12 @@
       (proced-toggle-auto-update 1))
 
     (add-hook 'proced-mode-hook 'proced-settings)))
+
+;; DISCOVER
+(use-package discover
+  :ensure t
+  :defer t
+  :init (global-discover-mode 1))
 
 (provide '04-modes)
 
