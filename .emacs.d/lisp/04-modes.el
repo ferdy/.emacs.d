@@ -799,12 +799,6 @@
 
     (add-hook 'proced-mode-hook 'proced-settings)))
 
-;; DISCOVER
-(use-package discover
-  :ensure t
-  :defer t
-  :init (global-discover-mode 1))
-
 (provide '04-modes)
 
 ;;; 04-modes.el ends here
