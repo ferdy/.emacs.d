@@ -229,14 +229,12 @@
 
     (add-hook 'window-setup-hook 'on-after-init))
   :config t
-  ;; Make the modeline high contrast
-  (setq ;; solarized-high-contrast-mode-line t
-	;; Don't change size of org-mode headlines (but keep other size-changes)
-	solarized-scale-org-headlines nil
-	;; Avoid all font-size changes
-	solarized-use-variable-pitch nil
-	;; Underline below the font bottomline instead of the baseline
-	x-underline-at-descent-line t))
+  ;; Don't change size of org-mode headlines (but keep other size-changes)
+  (setq solarized-scale-org-headlines nil
+        ;; Avoid all font-size changes
+        solarized-use-variable-pitch nil
+        ;; Underline below the font bottomline instead of the baseline
+        x-underline-at-descent-line t))
 
 ;; CALENDAR
 (use-package calendar
