@@ -250,12 +250,7 @@
 				  (ido-completing-read "Eshell history: "
 						       (delete-dups
 							(ring-elements eshell-history-ring))))))
-		(local-set-key (kbd "C-c C-h") 'eshell-list-history)))
-
-    ;; Disable smartscan for eshell
-    (add-hook 'eshell-mode-hook
-	      (lambda ()
-		(smartscan-mode -1)))))
+		(local-set-key (kbd "C-c C-h") 'eshell-list-history)))))
 
 ;; SHELL
 (use-package shell
@@ -270,11 +265,6 @@
 	(comint-truncate-buffer)))
 
     (define-key shell-mode-map (kbd "C-l") 'clear-shell)
-
-    ;; Disable smartscan for shell
-    (add-hook 'shell-mode-hook
-	      (lambda ()
-		(smartscan-mode -1)))
 
     ;; Shell buffer maximized
     (add-hook 'shell-mode-hook
@@ -516,12 +506,7 @@
     ;; Increase the history size and make it permanent
     (setq cider-repl-history-size 1000
 	  cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
-	  cider-repl-pop-to-buffer-on-connect nil)
-
-    ;; Disable smartscan for cider-repl
-    (add-hook 'cider-repl-mode-hook
-	      (lambda ()
-		(smartscan-mode -1)))))
+	  cider-repl-pop-to-buffer-on-connect nil)))
 
 ;; PANDOC
 ;; Requires: pandoc
@@ -692,6 +677,11 @@
   :defer t
   :init
   (setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
+
+(use-package flycheck-package
+  :ensure t
+  :defer t
+  :init (with-eval-after-load 'flycheck (flycheck-package-setup)))
 
 ;; FLYSPELL MODE
 ;; Requires: aspell, aspell-in, aspell-en

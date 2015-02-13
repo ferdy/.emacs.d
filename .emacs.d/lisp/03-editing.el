@@ -110,40 +110,6 @@
   :ensure t
   :defer t)
 
-;; SMARTSCAN MODE
-(use-package smartscan
-  :ensure t
-  :defer t
-  :init (global-smartscan-mode 1)
-  :config
-  (progn
-    ;; See: https://github.com/mwfogleman/config/blob/master/home/.emacs.d/michael.org#smart-scan
-    (defun highlight-symbol-first ()
-      "Jump to the first location of symbol at point."
-      (interactive)
-      (push-mark)
-      (eval
-       `(progn
-	  (goto-char (point-min))
-	  (search-forward-regexp
-	   (rx symbol-start ,(thing-at-point 'symbol) symbol-end)
-	   nil t)
-	  (beginning-of-thing 'symbol))))
-
-    (defun highlight-symbol-last ()
-      "Jump to the last location of symbol at point."
-      (interactive)
-      (push-mark)
-      (eval
-       `(progn
-	  (goto-char (point-max))
-	  (search-backward-regexp
-	   (rx symbol-start ,(thing-at-point 'symbol) symbol-end)
-	   nil t))))
-
-    (bind-keys ("M-P" . highlight-symbol-first)
-	       ("M-N" . highlight-symbol-last))))
-
 ;; EASY-KILL
 (use-package easy-kill
   :ensure t
@@ -310,6 +276,31 @@
 ;; Same for region casing
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+;; HIGHLIGHT-SYMBOL
+(use-package highlight-symbol
+  :ensure t
+  :defer t
+  :bind
+  (("C-c s %" . highlight-symbol-query-replace)
+   ("C-c s n" . highlight-symbol-next-in-defun)
+   ("C-c s o" . highlight-symbol-occur)
+   ("C-c s p" . highlight-symbol-prev-in-defun))
+  :init
+  (progn
+    ;; Navigate occurrences of the symbol under point with M-n and M-p
+    (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
+    ;; Highlight symbol occurrences
+    (add-hook 'prog-mode-hook #'highlight-symbol-mode))
+  :config
+  (setq highlight-symbol-idle-delay 0.4 ; Highlight almost immediately
+        highlight-symbol-on-navigation-p t)) ; Highlight immediately after navigation
+
+;;; ELISP-SLIME-NAV
+(use-package elisp-slime-nav
+  :ensure t
+  :defer t
+  :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode))
 
 (provide '03-editing)
 
