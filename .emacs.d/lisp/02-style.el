@@ -307,7 +307,9 @@
 			       "company"
 			       "Undo-Tree"
 			       "Wrap"
-			       "hhat")
+			       "hhat"
+                               "SliNav"
+                               "hl-s")
 			     "\\|")))
     (sml/setup)
     (sml/apply-theme 'automatic)))
