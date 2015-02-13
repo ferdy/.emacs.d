@@ -91,16 +91,6 @@
     (setq scheme-program-name "guile")
     (setq geiser-impl-installed-implementations '(guile))))
 
-;; Use this for Chicken Scheme instead of Guile
-;; (setq scheme-program-name "csi -:c"
-;; (add-to-list 'load-path "~/githubs/swank-chicken/")
-;; (autoload 'chicken-slime "chicken-slime" "SWANK backend for Chicken" t)
-;; (setq swank-chicken-path "~/githubs/swank-chicken/swank-chicken.scm")
-
-;; (add-hook 'scheme-mode-hook
-;;           (lambda ()
-;;             (slime-mode t)))
-
 ;; SLIME
 ;; Requires: sbcl, slime, sbcl-doc, cl-clx-sbcl,
 ;; cl-ppcre, autoconf, texinfo, cl-swank
@@ -651,6 +641,13 @@
 
     ;; No large file warning
     (setq large-file-warning-threshold nil)))
+
+;; WEB-MODE
+(use-package web-mode
+  :ensure t
+  :defer t
+  :config
+  (setq web-mode-markup-indent-offset 2))
 
 ;; JS2-MODE
 (use-package js2-mode
