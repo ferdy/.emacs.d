@@ -276,11 +276,17 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-;;; ELISP-SLIME-NAV
+;; ELISP-SLIME-NAV
 (use-package elisp-slime-nav
   :ensure t
   :defer t
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode))
+
+;; ZOP-TO-CHAR
+(use-package zop-to-char
+  :ensure t
+  :bind (("M-z" . zop-to-char)
+         ("M-Z" . zop-up-to-char)))
 
 (provide '03-editing)
 
