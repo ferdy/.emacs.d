@@ -289,6 +289,30 @@
     (unless (display-graphic-p)
       (diff-hl-margin-mode))))
 
+;; HIGHLIGHT-SYMBOL
+(use-package highlight-symbol
+  :ensure t
+  :defer t
+  :bind
+  (("C-c s %" . highlight-symbol-query-replace)
+   ("C-c s n" . highlight-symbol-next-in-defun)
+   ("C-c s o" . highlight-symbol-occur)
+   ("C-c s p" . highlight-symbol-prev-in-defun))
+  :init
+  (progn
+    ;; Navigate occurrences of the symbol under point with M-n and M-p
+    (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
+    ;; Highlight symbol occurrences
+    (add-hook 'prog-mode-hook #'highlight-symbol-mode))
+  :config
+  (setq highlight-symbol-idle-delay 0.4 ; Highlight almost immediately
+        highlight-symbol-on-navigation-p t)) ; Highlight immediately after navigation
+
+;; RAINBOW-MODE
+(use-package rainbow-mode
+  :ensure t
+  :config (add-hook 'css-mode-hook #'rainbow-mode))
+
 ;; Mode line
 (use-package smart-mode-line
   :ensure t
