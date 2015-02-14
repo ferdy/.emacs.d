@@ -120,7 +120,6 @@
 	  ido-cur-list nil)
 
     ;; Ido bury buffer
-    ;; See http://endlessparentheses.com/Ido-Bury-Buffer.html
     (add-hook
      'ido-setup-hook
      (defun custom/define-ido-bury-key ()
@@ -197,7 +196,6 @@
   (setq uniquify-buffer-name-style 'post-forward uniquify-separator ":"))
 
 ;; Faster echo keystrokes
-;; See http://endlessparentheses.com/faster-keystroke-echo.html
 (setq echo-keystrokes 0.1)
 
 ;; SOLARIZED
@@ -315,7 +313,6 @@
     (sml/apply-theme 'automatic)))
 
 ;; Minor mode to hide the mode line
-;; See http://bzg.fr/emacs-hide-mode-line.html
 (defvar-local hidden-mode-line-mode nil)
 (defvar-local hide-mode-line nil)
 

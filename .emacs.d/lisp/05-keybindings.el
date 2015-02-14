@@ -19,7 +19,6 @@
 (define-key key-translation-map [?\C-h] [?\C-?])
 
 ;; Better forward and backward paragraph
-;; See http://endlessparentheses.com/meta-binds-part-2-a-peeve-with-paragraphs.html
 (global-set-key "\M-a" 'custom/backward-paragraph)
 (global-set-key "\M-e" 'custom/forward-paragraph)
 
@@ -64,7 +63,6 @@
   (other-window (- (prefix-numeric-value n))))
 
 ;; Custom keybindings activated with C^x t
-;; See http://endlessparentheses.com/the-toggle-map-and-wizardry.html
 (define-prefix-command 'toggle-map)
 ;; The manual recommends C-c for user keys, but C-x t is
 ;; always free, whereas C-c t is used by some modes.
@@ -78,7 +76,6 @@
 ;; Goto line is M-g
 (global-set-key "\M-g" 'goto-line)
 
-;; See http://endlessparentheses.com/Meta-Binds-Part-1%253A-Drunk-in-the-Dark.html
 (global-set-key "\M-9" 'backward-sexp)
 (global-set-key "\M-0" 'forward-sexp)
 
@@ -92,7 +89,6 @@
 (global-set-key (kbd "C-;") #'comment-line)
 
 ;; Better mark commands
-;; See http://www.masteringemacs.org/articles/2010/12/22/fixing-mark-commands-transient-mark-mode/
 (defun push-mark-no-activate ()
   "Pushes 'point' to 'mark-ring' and does not activate the region.
 Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"

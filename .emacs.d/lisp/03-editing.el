@@ -121,7 +121,6 @@
   :ensure t
   :config
   (progn
-    ;; See: http://www.masteringemacs.org/article/iedit-interactive-multi-occurrence-editing-in-your-buffer
     (defun iedit-dwim (arg)
       "Starts iedit but uses \\[narrow-to-defun] to limit its scope."
       (interactive "P")

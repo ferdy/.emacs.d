@@ -26,7 +26,6 @@
 	  dired-recursive-copies 'always)
 
     ;; Better M-< and M->
-    ;; See: http://whattheemacsd.com/setup-dired.el-02.html
     (defun dired-back-to-top ()
       (interactive)
       (beginning-of-buffer)
@@ -226,7 +225,6 @@
   :config
   (progn
     ;; Clear eshell buffer
-    ;; See http://www.khngai.com/emacs/eshell.php
     (defun eshell/clear ()
       "Clear the eshell buffer."
       (interactive)
@@ -291,7 +289,6 @@
     (magit-auto-revert-mode)
 
     ;; Fullscreen magit-status
-    ;; See http://whattheemacsd.com/setup-magit.el-01.html
     (defadvice magit-status (around magit-fullscreen activate)
       "Turn fullscreen on for magit-status."
       (window-configuration-to-register :magit-fullscreen)
@@ -745,7 +742,6 @@
   :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
 
 ;; BUG-REFERENCE
-;; See: http://www.lunaryorn.com/2014/12/23/bug-reference-mode.html
 (use-package bug-reference
   :defer t
   :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)

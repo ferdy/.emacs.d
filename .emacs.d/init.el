@@ -29,10 +29,10 @@
 
 ;;; Code:
 (require 'package)
+(setq package-enable-at-startup nil)
 
-;; Add Melpa
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
+; Add Melpa
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 (package-initialize)
 
@@ -60,24 +60,25 @@
 (el-get 'sync)
 
 ;; Initialization
-;; See: https://github.com/lunaryorn/.emacs.d
 (when (version< emacs-version "25")
-  (error "This configuration needs Emacs trunk, but this is %s!" emacs-version))
+  (warn "This configuration needs Emacs trunk, but this is %s!" emacs-version))
 
-(defun custom/warn-about-outdated-build ()
-  "Warn about outdated build."
-  (let ((time-since-build (time-subtract (current-time) emacs-build-time)))
-    (when (> (time-to-number-of-days time-since-build) 7)
-      (lwarn 'emacs :warning "Your Emacs build is more than a week old!"))))
+;; And disable the site default settings
+(setq inhibit-default-init t)
 
-(run-with-idle-timer 0 nil #'custom/warn-about-outdated-build)
+;; Warn if the current build is more than a week old
+(run-with-idle-timer
+ 2 nil
+ (lambda ()
+   (let ((time-since-build (time-subtract (current-time) emacs-build-time)))
+     (when (> (time-to-number-of-days time-since-build) 7)
+       (lwarn 'emacs :warning "Your Emacs build is more than a week old!")))))
 
 ;; Personal informations
 (setq user-full-name "Manuel Uberti")
 (setq user-mail-address "manuel@boccaperta.com")
 
 ;; Set separate custom file for the customize interface
-;; See: https://github.com/lunaryorn/.emacs.d
 (defconst custom/custom-file (locate-user-emacs-file "custom.el")
   "File used to store settings from Customization UI.")
 
@@ -91,6 +92,11 @@
 	custom-unlispify-tag-names nil
 	custom-unlispify-menu-entries nil)
   :init (load custom/custom-file 'no-error 'no-message))
+
+;; The server of `emacsclient'
+(use-package server
+  :defer t
+  :idle (server-start))
 
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))

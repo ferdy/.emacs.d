@@ -129,7 +129,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 		      (custom/term-start-or-switch ,name ,use-existing))))
 
 ;; Copy current file name to clipboard
-;; See: http://emacsredux.com/blog/2013/03/27/copy-filename-to-the-clipboard/
 (defun copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
@@ -149,7 +148,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
     (message "Aborting")))
 
 ;; Get files size in dired
-;; See: http://oremacs.com/2015/01/12/dired-file-size/
 (defun dired-get-size ()
   "Quick and easy way to get file size in dired."
   (interactive)
@@ -163,7 +161,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
          (match-string 1))))))
 
 ;; Clear comint buffers
-;; See: http://emacsredux.com/blog/2015/01/18/clear-comint-buffers/
 (defun comint-clear-buffer ()
   "Easily clear comint buffers."
   (interactive)
@@ -171,7 +168,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
     (comint-truncate-buffer)))
 
 ;; Open eshell buffer in the current directory
-;; See: http://www.howardism.org/Technical/Emacs/eshell-fun.html
 (defun eshell-here ()
   "Open a new shell in the directory of the buffer's file.
 The eshell is renamed to match that directory to make multiple eshell
