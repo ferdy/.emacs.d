@@ -51,7 +51,9 @@
   (progn
     ;; Omit hidden files by default (C-x M-o to show them)
     (setq-default dired-omit-files-p t)
-    (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))))
+    (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+    ;; Hide omit files messages
+    (setq dired-omit-verbose nil)))
 
 (use-package dired+
   :ensure t

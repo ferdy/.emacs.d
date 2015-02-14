@@ -204,18 +204,25 @@
   :defer t
   :init
   (progn
+    (setq solarized-use-variable-pitch nil ; Avoid all font-size changes
+          ;; Don't add too much colours to the fringe
+          solarized-emphasize-indicators nil
+          ;; Don't change size of org-mode headlines (but keep other size-changes)
+          solarized-scale-org-headlines nil
+          ;; Underline below the font bottomline instead of the baseline
+          x-underline-at-descent-line t)
     (if (daemonp)
-	(add-hook 'after-make-frame-functions
-		  '(lambda (f)
-		     (with-selected-frame f
-		       (when (window-system f) (load-theme 'solarized-light t)))))
+        (add-hook 'after-make-frame-functions
+                  '(lambda (f)
+                     (with-selected-frame f
+                       (when (window-system f) (load-theme 'solarized-light t)))))
       (load-theme 'solarized-light t))
 
     ;; Functions to remove background when on terminals
     (defun on-frame-open (frame)
       "Remove background for FRAME on terminals."
       (if (not (display-graphic-p frame))
-	  (set-face-background 'default "unspecified-bg" frame)))
+          (set-face-background 'default "unspecified-bg" frame)))
     (on-frame-open (selected-frame))
 
     (add-hook 'after-make-frame-functions 'on-frame-open)
@@ -223,16 +230,9 @@
     (defun on-after-init ()
       "Remove background after init on terminals."
       (unless (display-graphic-p (selected-frame))
-	(set-face-background 'default "unspecified-bg" (selected-frame))))
+        (set-face-background 'default "unspecified-bg" (selected-frame))))
 
-    (add-hook 'window-setup-hook 'on-after-init))
-  :config t
-  ;; Don't change size of org-mode headlines (but keep other size-changes)
-  (setq solarized-scale-org-headlines nil
-        ;; Avoid all font-size changes
-        solarized-use-variable-pitch nil
-        ;; Underline below the font bottomline instead of the baseline
-        x-underline-at-descent-line t))
+    (add-hook 'window-setup-hook 'on-after-init)))
 
 ;; CALENDAR
 (use-package calendar
