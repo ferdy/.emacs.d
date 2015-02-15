@@ -42,6 +42,8 @@
     (define-key dired-mode-map
       (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
 
+    (define-key dired-mode-map "!" 'sudired)
+
     ;; Use other pane as default destination when copying
     (setq dired-dwim-target t)))
 

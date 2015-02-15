@@ -107,6 +107,16 @@ buffer."
 
 (add-hook 'find-file-hook 'open-with-sudo)
 
+;; Open directory with sudo in dired
+(defun sudired ()
+  "Open directory with sudo in dired."
+  (interactive)
+  (require 'tramp)
+  (let ((dir (expand-file-name default-directory)))
+    (if (string-match "^/sudo:" dir)
+        (user-error "Already in sudo")
+      (dired (concat "/sudo::" dir)))))
+
 ;; Run a program in a term buffer, if it is already running switch to it
 (defun custom/term-start-or-switch (prg &optional use-existing)
   "Run program PRG in a terminal buffer.
