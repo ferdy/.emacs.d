@@ -444,7 +444,7 @@
 			       (?X . "{%l}"))))
       (setq reftex-cite-format 'biblatex))))
 
-;;; MARKDOWN-MODE
+;; MARKDOWN-MODE
 (use-package markdown-mode
   :ensure t
   :config
