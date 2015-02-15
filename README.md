@@ -30,6 +30,7 @@ This configuration would not have been possible without the work of and the insp
 - [Sacha Chua](https://github.com/sachac)
 - [Bozhidar Batsov](https://github.com/bbatsov)
 - [Magnar Sveen](https://github.com/magnars)
+- [Oleh Krehel](https://github.com/abo-abo)
 
 Warranty
 --------
