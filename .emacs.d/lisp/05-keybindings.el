@@ -154,9 +154,6 @@ prefix argument."
 (global-set-key [remap kill-line] (bol-with-prefix kill-line))
 (global-set-key "\C-k" (bol-with-prefix kill-visual-line))
 
-;; C-h deletes char in isearch
-(define-key isearch-mode-map (kbd "C-h") 'isearch-delete-char)
-
 ;; Clear comint buffers
 (define-key comint-mode-map "\C-c\M-o" #'comint-clear-buffer)
 
