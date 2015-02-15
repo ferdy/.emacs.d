@@ -31,7 +31,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 
-; Add Melpa
+;; Add Melpa
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
 (package-initialize)
@@ -63,7 +63,7 @@
 (when (version< emacs-version "25")
   (warn "This configuration needs Emacs trunk, but this is %s!" emacs-version))
 
-;; And disable the site default settings
+;; Disable the site default settings
 (setq inhibit-default-init t)
 
 ;; Warn if the current build is more than a week old
