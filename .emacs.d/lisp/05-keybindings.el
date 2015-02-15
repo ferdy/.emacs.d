@@ -9,15 +9,6 @@
 ;; This file stores all the keybindings I use.
 
 ;;; Code:
-;; Better backspacing
-(global-set-key (kbd "C-?") 'help-command)
-(global-set-key (kbd "M-?") 'mark-paragraph)
-(global-set-key (kbd "C-h") 'delete-backward-char)
-(global-set-key (kbd "M-h") 'backward-kill-word)
-
-;; Force backspace only with C-h
-(define-key key-translation-map [?\C-h] [?\C-?])
-
 ;; Better forward and backward paragraph
 (global-set-key "\M-a" 'custom/backward-paragraph)
 (global-set-key "\M-e" 'custom/forward-paragraph)
@@ -169,6 +160,12 @@ prefix argument."
 ;; Clear comint buffers
 (define-key comint-mode-map "\C-c\M-o" #'comint-clear-buffer)
 
+;; Better shrink/enlarge windows
+(global-set-key (kbd "C-S-<up>") 'enlarge-window)
+(global-set-key (kbd "C-S-<down>") 'shrink-window)
+(global-set-key (kbd "C-S-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "C-S-<right>") 'enlarge-window-horizontally)
+
 ;; Minor mode for 'override' keybindings
 (use-package my-keys-mode
   :load-path "various"
@@ -176,11 +173,7 @@ prefix argument."
   :config
   (progn
     (define-key my-keys-mode-map (kbd "M-a") 'custom/backward-paragraph)
-    (define-key my-keys-mode-map (kbd "M-e") 'custom/forward-paragraph)
-    (define-key my-keys-mode-map (kbd "C-h") 'delete-backward-char)
-    (define-key my-keys-mode-map (kbd "M-h") 'backward-kill-word)
-    (define-key my-keys-mode-map (kbd "C-?") 'help-command)
-    (define-key my-keys-mode-map (kbd "M-?") 'mark-paragraph)))
+    (define-key my-keys-mode-map (kbd "M-e") 'custom/forward-paragraph)))
 
 (provide '05-keybindings)
 
