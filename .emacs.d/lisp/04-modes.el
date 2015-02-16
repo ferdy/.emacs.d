@@ -555,16 +555,6 @@
 
     (define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)))
 
-;; POST-MODE
-(use-package post-mode
-  :defer t
-  :init
-  (progn
-    (autoload 'post-mode "post" "mode for e-mail" t)
-    (add-to-list 'auto-mode-alist
-		 '("\\.*mutt-*\\|.article\\|\\.followup"
-		   . post-mode))))
-
 ;; COMPANY-MODE
 (use-package company
   :ensure t
