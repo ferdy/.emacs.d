@@ -785,6 +785,12 @@
 
     (add-hook 'proced-mode-hook 'proced-settings)))
 
+;; TWITTERING-MODE
+(use-package twittering-mode
+  :ensure t
+  :defer t
+  :config (setq twittering-icon-mode t))
+
 (provide '04-modes)
 
 ;;; 04-modes.el ends here
