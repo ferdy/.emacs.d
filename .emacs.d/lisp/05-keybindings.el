@@ -108,28 +108,11 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; C-x C-b for ibuffer
 (global-set-key "\C-x\C-b" 'ibuffer)
 
-;; Searching buffers with occur mode
-(eval-when-compile
-  (require 'cl))
-
-(defun get-buffers-matching-mode (mode)
-  "Return a list of buffers where their MAJOR-MODE is equal to MODE."
-  (let ((buffer-mode-matches '()))
-    (dolist (buf (buffer-list))
-      (with-current-buffer buf
-	(if (eq mode major-mode)
-	    (push buf buffer-mode-matches))))
-    buffer-mode-matches))
-
-(defun multi-occur-in-this-mode ()
-  "Show all lines matching REGEXP in buffers with this major mode."
-  (interactive)
-  (multi-occur
-   (get-buffers-matching-mode major-mode)
-   (car (occur-read-primary-args))))
-
 ;; Global key for 'multi-occur-in-this-mode'
 (global-set-key "\C-x\C-o" 'multi-occur-in-this-mode)
+
+;; Global key for 'occur-dwim'
+(global-set-key "\C-x\M-o" 'occur-dwim)
 
 ;; Kill entire line with prefix argument
 (defmacro bol-with-prefix (function)

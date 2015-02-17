@@ -199,6 +199,37 @@ windows easier."
 	     (lambda (buffer) (kill-buffer buffer))))
     (kill-matching-buffers regexp)))
 
+;; Searching buffers with occur mode
+(eval-when-compile
+  (require 'cl))
+
+(defun get-buffers-matching-mode (mode)
+  "Return a list of buffers where their MAJOR-MODE is equal to MODE."
+  (let ((buffer-mode-matches '()))
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf
+        (if (eq mode major-mode)
+            (push buf buffer-mode-matches))))
+    buffer-mode-matches))
+
+(defun multi-occur-in-this-mode ()
+  "Show all lines matching REGEXP in buffers with this major mode."
+  (interactive)
+  (multi-occur
+   (get-buffers-matching-mode major-mode)
+   (car (occur-read-primary-args))))
+
+(defun occur-dwim ()
+  "Call `occur' with a sane default."
+  (interactive)
+  (push (if (region-active-p)
+            (buffer-substring-no-properties
+             (region-beginning)
+             (region-end))
+          (thing-at-point 'symbol))
+        regexp-history)
+  (call-interactively 'occur))
+
 (provide '01-functions)
 
 ;;; 01-functions.el ends here
