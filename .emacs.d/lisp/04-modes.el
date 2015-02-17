@@ -775,6 +775,11 @@
 
     (add-hook 'proced-mode-hook 'proced-settings)))
 
+;; CSV-MODE
+(use-package csv-mode
+  :ensure t
+  :defer t)
+
 (provide '04-modes)
 
 ;;; 04-modes.el ends here
