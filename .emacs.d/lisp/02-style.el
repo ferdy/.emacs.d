@@ -34,7 +34,7 @@
 (modify-all-frames-parameters '((fullscreen . maximized)))
 
 ;; Turn off blinking cursor
-(blink-cursor-mode 0)
+(blink-cursor-mode -1)
 
 ;; Don't let the cursor go into minibuffer prompt
 (setq minibuffer-prompt-properties '(read-only
@@ -125,6 +125,7 @@
      (defun custom/define-ido-bury-key ()
        (define-key ido-completion-map
 	 (kbd "C-b") 'custom/ido-bury-buffer-at-head)))
+
     (defun custom/ido-bury-buffer-at-head ()
       "Bury the buffer at the head of 'ido-matches'."
       (interactive)
