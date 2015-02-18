@@ -542,7 +542,9 @@
             ("http://planet.emacsen.org/atom.xml" emacs)
 	    ("http://planet.clojure.in/atom.xml" clojure)
 	    ("http://feeds.feedburner.com/disclojure?format=xml" clojure)
-	    ("http://flashstrap.blogspot.com/feeds/posts/default" music)))
+	    ("http://flashstrap.blogspot.com/feeds/posts/default" music)
+            ("http://jazzfromitaly.blogspot.it/feeds/posts/default" music)
+            ("http://www.wumingfoundation.com/giap/?feed=rss2" book)))
 
     ;; Elfeed: mark all feed as read
     (require 'elfeed-search)

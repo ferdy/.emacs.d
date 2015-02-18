@@ -80,7 +80,7 @@
 ;; Turn on visual-line-mode
 (global-visual-line-mode)
 
-;; Turn on colum-number-mode
+;; Turn on column-number-mode
 (column-number-mode)
 
 ;; Parenthesis and syntax highlighting
