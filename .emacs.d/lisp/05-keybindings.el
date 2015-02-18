@@ -63,6 +63,7 @@
 (define-key toggle-map "h" 'hidden-mode-line-mode)
 (define-key toggle-map "u" 'unscroll)
 (define-key toggle-map "s" 'create-scratch-buffer)
+(define-key toggle-map "r" 'revert-this-buffer)
 
 ;; Goto line is M-g
 (global-set-key "\M-g" 'goto-line)
