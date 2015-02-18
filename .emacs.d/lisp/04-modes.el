@@ -782,6 +782,34 @@
   :ensure t
   :defer t)
 
+;; PROJECTILE
+(use-package projectile
+  :ensure t
+  :defer t
+  :init (projectile-global-mode)
+  :idle (projectile-cleanup-known-projects)
+  :idle-priority 10
+  :config
+  (progn
+    (setq projectile-completion-system 'ido
+          projectile-find-dir-includes-top-level t)
+
+    ;; Replace Ack with Ag in Projectile commander
+    (def-projectile-commander-method ?a
+      "Find ag on project."
+      (call-interactively 'projectile-ag))))
+
+;; Group buffers by Projectile project
+(use-package ibuffer-projectile
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'ibuffer-mode-hook
+            (lambda ()
+              (ibuffer-projectile-set-filter-groups)
+              (unless (eq ibuffer-sorting-mode 'alphapbetic)
+                (ibuffer-do-sort-by-alphabetic)))))
+
 (provide '04-modes)
 
 ;;; 04-modes.el ends here

@@ -288,6 +288,14 @@
   :bind (("M-z" . zop-to-char)
          ("M-Z" . zop-up-to-char)))
 
+;; COMPILE
+(use-package compile
+  :config
+  (progn
+    (setq compilation-ask-about-save nil
+          compilation-always-kill t
+          compilation-scroll-output 'first-error)))
+
 (provide '03-editing)
 
 ;;; 03-editing.el ends here
