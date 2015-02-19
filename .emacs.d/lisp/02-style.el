@@ -30,6 +30,11 @@
   :ensure t
   :init (unicode-fonts-setup))
 
+;; LIST-UNICODE-DISPLAY
+(use-package list-unicode-display
+  :ensure t
+  :defer t)
+
 ;; Toggle all frames maximized and fullscreen
 (modify-all-frames-parameters '((fullscreen . maximized)))
 
