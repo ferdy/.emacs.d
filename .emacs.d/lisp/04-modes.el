@@ -254,10 +254,34 @@
 							(ring-elements eshell-history-ring))))))
 		(local-set-key (kbd "C-c C-h") 'eshell-list-history)))))
 
+;; ANSI-TERM
+(use-package ansi-term
+  :defer t
+  :bind (("<f2>" . custom/term))
+  :init
+  (progn
+    ;; Default shell is Zsh
+    (defun custom/term ()
+      "Wrapper for `ansi-term'."
+      (interactive)
+      (ansi-term "/bin/zsh"))
+
+    ;; Close buffer on exit
+    (defun custom/term-exec-hook ()
+      (let* ((buff (current-buffer))
+             (proc (get-buffer-process buff)))
+        (set-process-sentinel
+         proc
+         `(lambda (process event)
+            (if (string= event "finished\n")
+                (custom/kill-buffers "^\\*ansi-term"))))))
+
+    (add-hook 'term-exec-hook 'custom/term-exec-hook)))
+
 ;; SHELL
 (use-package shell
   :defer t
-  :bind (("<f2>" . shell))
+  :bind (("S-<f2>" . shell))
   :config
   (progn
     ;; Clear shell buffer
