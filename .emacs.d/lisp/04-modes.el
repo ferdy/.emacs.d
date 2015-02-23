@@ -763,6 +763,10 @@
           cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
           cider-repl-pop-to-buffer-on-connect nil)))
 
+(use-package latest-clojure-libraries
+  :ensure t
+  :defer t)
+
 ;;; Scheme
 ;; Requires: guile-2.0
 (use-package geiser
