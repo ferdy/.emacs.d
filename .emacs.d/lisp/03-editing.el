@@ -9,7 +9,7 @@
 ;; This file stores editing and searching customizations.
 
 ;;; Code:
-;; Scrolling
+;;; Scrolling
 (setq scroll-margin 0
       scroll-conservatively 1000)
 
@@ -65,18 +65,6 @@
   (set-window-start nil unscroll-window-start)
   (set-window-hscroll nil unscroll-hscroll))
 
-;; View read-only
-(setq view-read-only t)
-
-;; Delete the selection instead of insert
-(use-package delsel
-  :defer t
-  :init (delete-selection-mode))
-
-;; Subword/superword editing
-(use-package subword
-  :defer t)
-
 ;; Set the directory where all backup and autosave files will be saved
 (defvar backup-dir "~/tmp/")
 (setq backup-directory-alist
@@ -87,6 +75,7 @@
 ;; Delete trailing whitespaces
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;;; Search
 ;; Exclude some directories in grep
 (eval-after-load 'grep
   '(progn
@@ -94,7 +83,6 @@
      (add-to-list 'grep-find-ignored-directories "elpa")))
 (add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
 
-;; AG
 ;; Requires: silversearcher-ag
 (use-package ag
   :ensure t
@@ -110,13 +98,46 @@
   :ensure t
   :defer t)
 
-;; EASY-KILL
+(use-package flx-isearch
+  :ensure t
+  :bind (("C-M-s" . flx-isearch-forward)
+         ("C-M-r" . flx-isearch-backward)))
+
+(use-package visual-regexp
+  :ensure t
+  :bind (("C-c r" . vr/query-replace)
+         ("C-c R" . vr/replace)))
+
+(use-package anzu
+  :ensure t
+  :init (global-anzu-mode)
+  :config
+  (progn
+    (setq anzu-cons-mode-line-p nil
+          anzu-mode-lighter "")
+    (setcar (cdr (assq 'isearch-mode minor-mode-alist))
+            '(:eval (anzu--update-mode-line)))))
+
+(use-package zop-to-char
+  :ensure t
+  :bind (("M-z" . zop-to-char)
+         ("M-Z" . zop-up-to-char)))
+
+;;; Editing
+;; Delete the selection instead of insert
+(use-package delsel
+  :defer t
+  :init (delete-selection-mode))
+
+;; Subword/superword editing
+(use-package subword
+  :defer t)
+
 (use-package easy-kill
   :ensure t
   :bind (([remap kill-ring-save] . easy-kill)
 	 ([remap mark-sexp] . easy-mark)))
 
-;; IEDIT
 (use-package iedit
   :ensure t
   :config
@@ -139,58 +160,24 @@
 
     (global-set-key (kbd "C-,") 'iedit-dwim)))
 
-;; EXPAND-REGION
 (use-package expand-region
   :ensure t
   :bind (("M-2" . er/expand-region)))
 
-;; FLX-ISEARCH
-(use-package flx-isearch
-  :ensure t
-  :bind (("C-M-s" . flx-isearch-forward)
-	 ("C-M-r" . flx-isearch-backward)))
-
-;; VISUAL-REGEXP
-(use-package visual-regexp
-  :ensure t
-  :bind (("C-c r" . vr/query-replace)
-	 ("C-c R" . vr/replace)))
-
-;; ADAPTIVE-WRAP
 (use-package adaptive-wrap
   :ensure t)
 
-;; ANZU
-(use-package anzu
-  :ensure t
-  :init (global-anzu-mode)
-  :config
-  (progn
-    (setq anzu-cons-mode-line-p nil
-	  anzu-mode-lighter "")
-    (setcar (cdr (assq 'isearch-mode minor-mode-alist))
-	    '(:eval (anzu--update-mode-line)))))
-
-;; RAINBOW DELIMITERS
-(use-package rainbow-delimiters
-  :ensure t
-  :defer t
-  :init (dolist (hook '(text-mode-hook prog-mode-hook))
-	  (add-hook hook #'rainbow-delimiters-mode)))
-
-;; AGGRESSIVE INDENT
 (use-package aggressive-indent
   :ensure t
   :init (global-aggressive-indent-mode 1)
   :config
   (add-to-list 'aggressive-indent-excluded-modes 'cider-repl-mode))
 
-;; HUNGRY DELETE
 (use-package hungry-delete
   :ensure t
   :init (global-hungry-delete-mode))
 
-;; BROWSE-KILL-RING
+;;; Utilities
 (use-package browse-kill-ring
   :ensure t
   :bind (("M-y" . browse-kill-ring)))
@@ -202,19 +189,6 @@
   (setq ediff-window-setup-function #'ediff-setup-windows-plain
 	ediff-split-window-function #'split-window-horizontally))
 
-;; C-specific Indentation
-(setq c-default-style "linux"
-      c-basic-offset 4)
-
-;; ELECTRIC LAYOUT
-(use-package electric
-  :init (electric-layout-mode))
-
-;; ELECTRIC PAIR
-(use-package elec-pair
-  :init (electric-pair-mode))
-
-;; MULTIPLE CURSORS
 (use-package multiple-cursors
   :ensure t
   :bind (("C-c m e" . mc/mark-more-like-this-extended)
@@ -232,13 +206,11 @@
 	'(:propertize (:eval (concat " " (number-to-string (mc/num-cursors))))
 		      face font-lock-warning-face)))
 
-;; MULTIFILES
 (use-package multifiles
   :ensure t
   :defer t
   :bind (("C-!" . mf/mirror-region-in-multifile)))
 
-;; MACROSTEP
 (use-package macrostep
   :ensure t
   :defer t
@@ -255,40 +227,11 @@
 (use-package autorevert
   :init (global-auto-revert-mode))
 
-;; Disable tabs, but given them proper width
-(setq-default indent-tabs-mode nil
-	      tab-width 8)
-
-;; Make Tab complete if the line is indented
-(setq tab-always-indent 'complete)
-
-;; Configure a reasonable fill column, indicate it in the buffer and enable
-;; automatic filling
-(setq-default fill-column 80)
-(add-hook 'text-mode-hook #'auto-fill-mode)
-
-;; Give us narrowing back!
-(put 'narrow-to-region 'disabled nil)
-(put 'narrow-to-page 'disabled nil)
-(put 'narrow-to-defun 'disabled nil)
-
-;; Same for region casing
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
-;; ELISP-SLIME-NAV
 (use-package elisp-slime-nav
   :ensure t
   :defer t
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode))
 
-;; ZOP-TO-CHAR
-(use-package zop-to-char
-  :ensure t
-  :bind (("M-z" . zop-to-char)
-         ("M-Z" . zop-up-to-char)))
-
-;; COMPILE
 (use-package compile
   :config
   (progn

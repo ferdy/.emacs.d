@@ -9,7 +9,8 @@
 ;; This file stores the configurations of every mode I use.
 
 ;;; Code:
-;; DIRED
+
+;;; Files
 (use-package dired
   :defer t
   :bind (("C-c z" . dired-get-size)
@@ -69,13 +70,21 @@
 (use-package bookmark+
   :ensure t)
 
-;; HARDHAT
 (use-package hardhat
   :ensure t
   :defer t
   :idle (global-hardhat-mode))
 
-;; PO-MODE
+(use-package doc-view
+  :defer t
+  :config
+  (progn
+    (setq doc-view-continuous t)))
+
+;; View read-only
+(setq view-read-only t)
+
+;;; Translation
 (use-package po-mode
   :load-path "el-get/po-mode"
   :defer t
@@ -84,31 +93,7 @@
     (setq auto-mode-alist
 	  (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist))))
 
-;; SCHEME
-;; Requires: guile-2.0
-(use-package geiser
-  :ensure t
-  :defer t
-  :init
-  (progn
-    (setq scheme-program-name "guile")
-    (setq geiser-impl-installed-implementations '(guile))))
-
-;; SLIME
-;; Requires: sbcl, slime, sbcl-doc, cl-clx-sbcl,
-;; cl-ppcre, autoconf, texinfo, cl-swank
-(use-package slime
-  :ensure t
-  :defer t
-  :init (setq inferior-lisp-program "/usr/bin/sbcl")
-  :config (setq slime-contribs '(slime-fancy)))
-
-(use-package slime-company
-  :ensure t
-  :defer t
-  :init (slime-setup '(slime-company)))
-
-;; ORG-MODE
+;;; Org
 (use-package org
   :ensure t
   :bind (("C-c l" . org-store-link)
@@ -173,7 +158,6 @@
        "#+STARTUP: showall\n"
        > _ \n \n)))
 
-;; ORG-PRESENT
 (use-package org-present
   :disabled t
   :load-path "various"
@@ -189,7 +173,6 @@
 		(org-present-small)
 		(org-remove-inline-images)))))
 
-;; ORG2BLOG
 (use-package metaweblog
   :ensure t)
 
@@ -215,14 +198,7 @@
 	     :url "http://informatica.boccaperta.com/xmlrpc.php"
 	     :username "manuel")))))
 
-;; DOC-VIEW-MODE
-(use-package doc-view
-  :defer t
-  :config
-  (progn
-    (setq doc-view-continuous t)))
-
-;; ESHELL
+;;; Shells
 (use-package eshell
   :defer t
   :bind (("<f1>" . eshell-here))
@@ -254,7 +230,6 @@
 							(ring-elements eshell-history-ring))))))
 		(local-set-key (kbd "C-c C-h") 'eshell-list-history)))))
 
-;; ANSI-TERM
 (use-package ansi-term
   :defer t
   :bind (("<f2>" . custom/term))
@@ -278,7 +253,6 @@
 
     (add-hook 'term-exec-hook 'custom/term-exec-hook)))
 
-;; SHELL
 (use-package shell
   :defer t
   :bind (("S-<f2>" . shell))
@@ -297,7 +271,7 @@
               (lambda ()
                 (delete-other-windows)))))
 
-;; MAGIT
+;;; Version control
 (use-package magit
   :ensure t
   :defer t
@@ -331,7 +305,6 @@
 
     (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
 
-;; GIT MODES
 (use-package git-commit-mode ; Git commit message mode
   :ensure t
   :defer t)
@@ -352,7 +325,7 @@
   :ensure t
   :defer t)
 
-;; AUCTeX
+;;; LaTeX
 ;; Requires: texlive-latex-base, texlive-latex-recommended,
 ;; latexmk, texlive-latex-extra, texlive-fonts-recommended,
 ;; texlive-generic-recommended, texlive-xetex
@@ -446,7 +419,6 @@
     ;; Use a modern BibTeX dialect
     (bibtex-set-dialect 'biblatex)))
 
-;; Configure RefTeX
 (use-package reftex
   :defer t
   :init (add-hook 'LaTeX-mode-hook #'reftex-mode)
@@ -471,7 +443,7 @@
 			       (?X . "{%l}"))))
       (setq reftex-cite-format 'biblatex))))
 
-;; MARKDOWN-MODE
+;;; Formatting
 (use-package markdown-mode
   :ensure t
   :config
@@ -479,7 +451,27 @@
     ;; Use Pandoc to process Markdown
     (setq markdown-command "pandoc -s -f markdown -t html5")))
 
-;; ERC
+;; Requires: pandoc
+(use-package pandoc-mode
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+    (setq org-pandoc-output-format 'odt)))
+
+;;; Remote editing
+(use-package tramp
+  :defer t
+  :config
+  (progn
+    (setq tramp-default-method "ssh"
+          tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
+          auto-save-file-name-transforms nil)
+    (add-to-list 'backup-directory-alist
+                 (cons tramp-file-name-regexp nil))))
+
+;;; Web
 ;; Requires in ~/.ercpass the format
 ;; (setq variable "nickname")
 ;; (setq variable "password")
@@ -494,68 +486,8 @@
     (setq erc-nick gp-nick)
     (setq erc-prompt-for-nickserv-password nil)
     (setq erc-nickserve-passwords
-	  `((freenode (,gp-nick . ,gp-pass))))))
+          `((freenode (,gp-nick . ,gp-pass))))))
 
-;; CLOJURE MODE AND CIDER
-;; Requires: openjdk-7-jre, openjdk-7-jre, lein
-(use-package cider
-  :ensure t
-  :defer t
-  :config
-  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
-
-(use-package clojure-mode
-  :ensure t
-  :defer t
-  :init
-  (progn
-    (add-hook 'clojure-mode-hook #'cider-mode)
-    (add-hook 'clojure-mode-hook #'subword-mode)))
-
-;; Extra font-locking for Clojure
-(use-package clojure-mode-extra-font-locking
-  :ensure clojure-mode
-  :defer t
-  :init (with-eval-after-load 'clojure-mode
-	  (require 'clojure-mode-extra-font-locking)))
-
-(use-package nrepl-client
-  :ensure cider
-  :defer t
-  :config (setq nrepl-hide-special-buffers t))
-
-(use-package cider-repl
-  :ensure cider
-  :defer t
-  :config
-  (progn
-    ;; Increase the history size and make it permanent
-    (setq cider-repl-history-size 1000
-	  cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
-	  cider-repl-pop-to-buffer-on-connect nil)))
-
-;; PANDOC
-;; Requires: pandoc
-(use-package pandoc-mode
-  :ensure t
-  :defer t
-  :config
-  (progn
-    (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-    (setq org-pandoc-output-format 'odt)))
-
-;; TRAMP
-(use-package tramp
-  :defer t
-  :config
-  (progn
-    (setq tramp-default-method "ssh"
-	  tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
-	  auto-save-file-name-transforms nil)
-    (add-to-list 'backup-directory-alist
-		 (cons tramp-file-name-regexp nil))))
-
-;; ELFEED
 (use-package elfeed
   :ensure t
   :defer t
@@ -582,7 +514,17 @@
 
     (define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)))
 
-;; COMPANY-MODE
+(use-package sx
+  :ensure t
+  :defer t)
+
+(use-package sx-question-mode
+  :ensure sx
+  :defer t
+  ;; Display questions in the same window
+  :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
+
+;;; Completion
 (use-package company
   :ensure t
   :defer t
@@ -596,14 +538,12 @@
 	  ;; Easy navigation to candidates with M-<n>
 	  company-show-numbers t)))
 
-;; Company for AUCTeX
 (use-package company-auctex
   :ensure t
   :defer t
   :init (company-auctex-init)
   :config (add-hook 'LaTeX-mode-hook 'company-mode))
 
-;; Company for math symbols
 (use-package company-math
   :ensure t
   :defer t
@@ -619,12 +559,11 @@
 			  company-backends)))
     (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
 
-;; UNDO-TREE
+;;; Utilities
 (use-package undo-tree
   :ensure t
   :init (global-undo-tree-mode))
 
-;; PDF-TOOLS
 (use-package pdf-tools
   :defer t
   :init (pdf-tools-install)
@@ -644,37 +583,88 @@
     ;; No large file warning
     (setq large-file-warning-threshold nil)))
 
-;; WEB-MODE
-(use-package web-mode
+(use-package paradox
   :ensure t
   :defer t
+  :bind (("<f4>" . paradox-list-packages)
+         ("S-<f4>" . paradox-upgrade-packages))
   :config
-  (setq web-mode-markup-indent-offset 2))
+  (setq paradox-github-token t ; Don't ask for a token, please
+        ;; No async for now
+        paradox-execute-asynchronously nil)
 
-;; JS2-MODE
-(use-package js2-mode
+  ;; Don't need paradox report
+  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print)
+  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-display-if-noquery))
+
+(use-package bug-reference
+  :defer t
+  :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
+               (add-hook 'text-mode-hook #'bug-reference-mode)))
+
+(use-package eldoc
+  :defer t
+  ;; Enable Eldoc for `eval-expression', too
+  :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
+
+(use-package emacsshot
   :ensure t
-  :mode "\\.js\\(?:on\\)?\\'"
-  :config (add-hook 'js-mode-hook 'js2-minor-mode))
+  :bind (("<print>" . emacsshot-snap-frame))
+  :defer t)
 
-;; CSS-MODE
-(use-package css-mode
+(use-package camcorder
+  :ensure t
+  :defer t
+  :init (setq camcorder-window-id-offset -2))
+
+(use-package archive-mode
+  :defer t
+  :config (add-to-list
+           'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
+
+(use-package proced
   :defer t
   :config
-  (add-hook 'css-mode-hook (lambda () (run-hooks 'prog-mode-hook))))
+  (progn
+    ;; Auto-update proced buffer
+    (defun proced-settings ()
+      (proced-toggle-auto-update 1))
 
-;; CSS-ELDOC
-(use-package css-eldoc
-  :ensure t
-  :commands (turn-on-css-eldoc)
-  :init (add-hook 'css-mode-hook #'turn-on-css-eldoc))
+    (add-hook 'proced-mode-hook 'proced-settings)))
 
-;; PHP-MODE
-(use-package php-mode
+(use-package csv-mode
   :ensure t
   :defer t)
 
-;; FLYCHECK
+;;; Project Management
+(use-package projectile
+  :ensure t
+  :defer t
+  :init (projectile-global-mode)
+  :idle (projectile-cleanup-known-projects)
+  :idle-priority 10
+  :config
+  (progn
+    (setq projectile-completion-system 'ido
+          projectile-find-dir-includes-top-level t)
+
+    ;; Replace Ack with Ag in Projectile commander
+    (def-projectile-commander-method ?a
+      "Find ag on project."
+      (call-interactively 'projectile-ag))))
+
+;; Group buffers by Projectile project
+(use-package ibuffer-projectile
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'ibuffer-mode-hook
+            (lambda ()
+              (ibuffer-projectile-set-filter-groups)
+              (unless (eq ibuffer-sorting-mode 'alphapbetic)
+                (ibuffer-do-sort-by-alphabetic)))))
+
+;;; Syntax checking
 ;; Requires: chktex
 (use-package flycheck
   :ensure t
@@ -700,7 +690,7 @@
   :defer t
   :init (with-eval-after-load 'flycheck (flycheck-package-setup)))
 
-;; FLYSPELL MODE
+;;; Spell checking
 ;; Requires: aspell, aspell-in, aspell-en
 (use-package ispell
   :defer t
@@ -735,105 +725,156 @@
     ;; Free C-M-i for completion
     (define-key flyspell-mode-map "\M-\t" nil)))
 
-;; PARADOX
-(use-package paradox
+;;; Programming
+;;; Clojure
+;; Requires: openjdk-7-jre, openjdk-7-jre, lein
+(use-package cider
   :ensure t
-  :defer t
-  :bind (("<f4>" . paradox-list-packages)
-	 ("S-<f4>" . paradox-upgrade-packages))
-  :config
-  (setq paradox-github-token t ; Don't ask for a token, please
-	;; No async for now
-	paradox-execute-asynchronously nil)
-
-  ;; Don't need paradox report
-  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print)
-  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-display-if-noquery))
-
-;; SX
-(use-package sx
-  :ensure t
-  :defer t)
-
-(use-package sx-question-mode
-  :ensure sx
-  :defer t
-  ;; Display questions in the same window
-  :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
-
-;; BUG-REFERENCE
-(use-package bug-reference
-  :defer t
-  :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
-	       (add-hook 'text-mode-hook #'bug-reference-mode)))
-
-;; ELDOC
-(use-package eldoc
-  :defer t
-  ;; Enable Eldoc for `eval-expression', too
-  :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
-
-;; EMACSSHOT
-(use-package emacsshot
-  :ensure t
-  :bind (("<print>" . emacsshot-snap-frame))
-  :defer t)
-
-;; CAMCORDER
-(use-package camcorder
-  :ensure t
-  :defer t
-  :init (setq camcorder-window-id-offset -2))
-
-;; ARCHIVE-MODE
-(use-package archive-mode
-  :defer t
-  :config (add-to-list
-	   'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
-
-;; PROCED
-(use-package proced
   :defer t
   :config
-  (progn
-    ;; Auto-update proced buffer
-    (defun proced-settings ()
-      (proced-toggle-auto-update 1))
+  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
 
-    (add-hook 'proced-mode-hook 'proced-settings)))
-
-;; CSV-MODE
-(use-package csv-mode
-  :ensure t
-  :defer t)
-
-;; PROJECTILE
-(use-package projectile
-  :ensure t
-  :defer t
-  :init (projectile-global-mode)
-  :idle (projectile-cleanup-known-projects)
-  :idle-priority 10
-  :config
-  (progn
-    (setq projectile-completion-system 'ido
-          projectile-find-dir-includes-top-level t)
-
-    ;; Replace Ack with Ag in Projectile commander
-    (def-projectile-commander-method ?a
-      "Find ag on project."
-      (call-interactively 'projectile-ag))))
-
-;; Group buffers by Projectile project
-(use-package ibuffer-projectile
+(use-package clojure-mode
   :ensure t
   :defer t
   :init
-  (add-hook 'ibuffer-mode-hook
-            (lambda ()
-              (ibuffer-projectile-set-filter-groups)
-              (unless (eq ibuffer-sorting-mode 'alphapbetic)
-                (ibuffer-do-sort-by-alphabetic)))))
+  (progn
+    (add-hook 'clojure-mode-hook #'cider-mode)
+    (add-hook 'clojure-mode-hook #'subword-mode)))
+
+(use-package clojure-mode-extra-font-locking
+  :ensure clojure-mode
+  :defer t
+  :init (with-eval-after-load 'clojure-mode
+          (require 'clojure-mode-extra-font-locking)))
+
+(use-package nrepl-client
+  :ensure cider
+  :defer t
+  :config (setq nrepl-hide-special-buffers t))
+
+(use-package cider-repl
+  :ensure cider
+  :defer t
+  :config
+  (progn
+    ;; Increase the history size and make it permanent
+    (setq cider-repl-history-size 1000
+          cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
+          cider-repl-pop-to-buffer-on-connect nil)))
+
+;;; Scheme
+;; Requires: guile-2.0
+(use-package geiser
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (setq scheme-program-name "guile")
+    (setq geiser-impl-installed-implementations '(guile))))
+
+;;; Slime
+;; Requires: sbcl, slime, sbcl-doc, cl-clx-sbcl,
+;; cl-ppcre, autoconf, texinfo, cl-swank
+(use-package slime
+  :ensure t
+  :defer t
+  :init (setq inferior-lisp-program "/usr/bin/sbcl")
+  :config (setq slime-contribs '(slime-fancy)))
+
+(use-package slime-company
+  :ensure t
+  :defer t
+  :init (slime-setup '(slime-company)))
+
+;;; Haskell
+;; Requires: cabal, haskell-doc
+;; Before: cabal install hlint hasktags hoogle present
+;; Before: cabal install alex happy haddock hasktags hoogle hindent
+;;
+;; Additionally, to be installed from source:
+;; https://github.com/chrisdone/ghci-ng
+(use-package haskell-mode
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (add-hook 'haskell-mode-hook #'subword-mode)           ; Subword navigation
+    (add-hook 'haskell-mode-hook #'haskell-decl-scan-mode) ; Scan and navigate
+                                        ; declarations
+    ;; Insert module templates into new buffers
+    (add-hook 'haskell-mode-hook #'haskell-auto-insert-module-template)
+
+    ;; Automatically run hasktags
+    (setq haskell-tags-on-save t
+          ;; Suggest adding/removing imports as by GHC warnings and Hoggle/GHCI
+          ;; loaded modules respectively
+          haskell-process-suggest-remove-import-lines t
+          haskell-process-auto-import-loaded-modules t
+          haskell-process-use-presentation-mode t ; Don't clutter the echo area
+          haskell-process-show-debug-tips nil     ; Disable tips
+          haskell-process-log t                   ; Log debugging information
+          ;; Suggest imports automatically with Hayoo.  Hayoo is slower because
+          ;; it's networked, but it covers all of hackage, which is really an
+          ;; advantage.
+          haskell-process-suggest-hoogle-imports nil
+          haskell-process-suggest-hayoo-imports t
+          ;; Use GHCI NG from https://github.com/chrisdone/ghci-ng
+          haskell-process-path-ghci "ghci-ng")
+
+    (add-to-list 'haskell-process-args-cabal-repl "--with-ghc=ghci-ng")))
+
+(use-package haskell
+  :ensure haskell-mode
+  :defer t
+  :init (dolist (hook '(haskell-mode-hook haskell-cabal-mode-hook))
+          (add-hook hook #'interactive-haskell-mode)))
+
+(use-package haskell-interactive-mode
+  :ensure haskell-mode
+  :defer t
+  :config (add-hook 'haskell-interactive-mode-hook #'subword-mode))
+
+(use-package haskell-simple-indent
+  :ensure haskell-mode
+  :defer t
+  :init (add-hook 'haskell-mode-hook #'haskell-simple-indent-mode))
+
+(use-package hindent
+  :ensure t
+  :defer t
+  :init (add-hook 'haskell-mode-hook #'hindent-mode))
+
+(use-package flycheck-haskell
+  :ensure t
+  :defer t
+  :init (add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
+
+;;; Web
+(use-package web-mode
+  :ensure t
+  :defer t
+  :config
+  (setq web-mode-markup-indent-offset 2))
+
+(use-package js2-mode
+  :ensure t
+  :mode "\\.js\\(?:on\\)?\\'"
+  :config (add-hook 'js-mode-hook 'js2-minor-mode))
+
+(use-package css-mode
+  :defer t
+  :config
+  (add-hook 'css-mode-hook (lambda () (run-hooks 'prog-mode-hook))))
+
+(use-package css-eldoc
+  :ensure t
+  :commands (turn-on-css-eldoc)
+  :init (add-hook 'css-mode-hook #'turn-on-css-eldoc))
+
+(use-package php-mode
+  :ensure t
+  :defer t)
 
 (provide '04-modes)
 

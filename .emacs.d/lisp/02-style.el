@@ -9,7 +9,7 @@
 ;; This file stores the interface customizations.
 
 ;;; Code:
-;; Set default font
+;;; Fonts
 (set-face-attribute 'default nil
 		    :family "Source Code Pro"
 		    :height 110
@@ -25,16 +25,15 @@
 			       :size 11.4
 			       :weight 'normal)))
 
-;; UNICODE-FONTS
 (use-package unicode-fonts
   :ensure t
   :init (unicode-fonts-setup))
 
-;; LIST-UNICODE-DISPLAY
 (use-package list-unicode-display
   :ensure t
   :defer t)
 
+;;; Interface
 ;; Toggle all frames maximized and fullscreen
 (modify-all-frames-parameters '((fullscreen . maximized)))
 
@@ -48,6 +47,9 @@
 				     minibuffer-avoid-prompt
 				     face
 				     minibuffer-prompt))
+
+;; Faster echo keystrokes
+(setq echo-keystrokes 0.1)
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -106,7 +108,7 @@
     ;; use a eval-after-nload hook to set it to "dynamic".
     (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))))
 
-;; IDO
+;;; Buffer navigation
 (use-package ido
   :init (progn
 	  (ido-mode)
@@ -169,7 +171,6 @@
   :ensure t
   :bind ("C-c f l" . ido-load-library-find))
 
-;; RECENTF
 (use-package recentf
   :init (recentf-mode)
   :bind (("C-x C-r" . ido-recentf-open))
@@ -180,31 +181,11 @@
 	recentf-exclude (list "/\\.git/.*\\'"
 			      "/elpa/.*\\'")))
 
-;; SMEX
-(use-package smex
-  :ensure t
-  :bind (([remap execute-extended-command] . smex)
-	 ("M-X" . smex-major-mode-commands)))
-
-;; IMENU
-(use-package imenu
-  :defer t
-  :bind (("M-i" . imenu)))
-
-;; IMENU-ANYWHERE
-(use-package imenu-anywhere
-  :ensure t
-  :bind (("M-I" . imenu-anywhere)))
-
-;; UNIQUIFY
 (use-package uniquify
   :config
   (setq uniquify-buffer-name-style 'post-forward uniquify-separator ":"))
 
-;; Faster echo keystrokes
-(setq echo-keystrokes 0.1)
-
-;; SOLARIZED
+;;; Theme
 (use-package solarized
   :ensure solarized-theme
   :defer t
@@ -240,14 +221,57 @@
 
     (add-hook 'window-setup-hook 'on-after-init)))
 
-;; CALENDAR
+;;; Utilities
+;; Disable tabs, but given them proper width
+(setq-default indent-tabs-mode nil
+              tab-width 8)
+
+;; Make Tab complete if the line is indented
+(setq tab-always-indent 'complete)
+
+;; Configure a reasonable fill column, indicate it in the buffer and enable
+;; automatic filling
+(setq-default fill-column 80)
+(add-hook 'text-mode-hook #'auto-fill-mode)
+
+;; Give us narrowing back!
+(put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-defun 'disabled nil)
+
+;; Same for region casing
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+;; C-specific Indentation
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
+(use-package electric
+  :init (electric-layout-mode))
+
+(use-package elec-pair
+  :init (electric-pair-mode))
+
+(use-package smex
+  :ensure t
+  :bind (([remap execute-extended-command] . smex)
+         ("M-X" . smex-major-mode-commands)))
+
+(use-package imenu
+  :defer t
+  :bind (("M-i" . imenu)))
+
+(use-package imenu-anywhere
+  :ensure t
+  :bind (("M-I" . imenu-anywhere)))
+
 (use-package calendar
   :defer t
   :config
   ;; In Europe we start on Monday
   (setq calendar-week-start-day 1))
 
-;; Show current time
 (use-package time
   :bind (("C-c u i" . emacs-init-time)
 	 ("C-c u t" . display-time-world))
@@ -258,7 +282,6 @@
 				  ("Asia/Hong_Kong" "Hong Kong")
 				  ("Asia/Tokyo" "Tokyo"))))
 
-;; INFO
 (use-package info
   :defer t
   :config
@@ -275,13 +298,12 @@
   :defer t
   :config (setq browse-url-browser-function #'eww-browse-url))
 
-;; PAGE BREAK LINES
 (use-package page-break-lines
   :ensure t
   :init (global-page-break-lines-mode)
   :defer page-break-lines-modes)
 
-;; DIFF-HL
+;;; Highlightings
 (use-package diff-hl
   :ensure t
   :defer t
@@ -295,7 +317,6 @@
     (unless (display-graphic-p)
       (diff-hl-margin-mode))))
 
-;; HIGHLIGHT-SYMBOL
 (use-package highlight-symbol
   :ensure t
   :defer t
@@ -314,12 +335,17 @@
   (setq highlight-symbol-idle-delay 0.4 ; Highlight almost immediately
         highlight-symbol-on-navigation-p t)) ; Highlight immediately after navigation
 
-;; RAINBOW-MODE
 (use-package rainbow-mode
   :ensure t
   :config (add-hook 'css-mode-hook #'rainbow-mode))
 
-;; Mode line
+(use-package rainbow-delimiters
+  :ensure t
+  :defer t
+  :init (dolist (hook '(text-mode-hook prog-mode-hook))
+          (add-hook hook #'rainbow-delimiters-mode)))
+
+;;; Mode line
 (use-package smart-mode-line
   :ensure t
   :init
