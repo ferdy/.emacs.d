@@ -100,21 +100,11 @@
 	  org-log-done 'time
 	  org-completion-use-ido t
 	  org-export-with-smart-quotes t
-	  ;; Customize agenda view
-	  org-agenda-custom-commands
-	  '(("g" "Agenda and giulia-tagged tasks"
-	     ((agenda "")
-	      (tags-todo "giulia")
-	      (tags "giulia")))
-	    ("m" "Agenda and manuel-tagged tasks"
-	     ((agenda "")
-	      (tags-todo "manuel")
-	      (tags "manuel"))))
-	  ;; Turn off preamble and postamble in HTML export
-	  org-html-preamble nil
-	  org-html-postamble nil
-	  org-export-html-style-default ""
-	  org-export-html-style-include-default nil
+          ;; Turn off preamble and postamble in HTML export
+          org-html-preamble nil
+          org-html-postamble nil
+          org-export-html-style-default ""
+          org-export-html-style-include-default nil
           org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
           org-default-notes-file "~/org/organizer.org")
 
@@ -160,29 +150,17 @@
        "#+STARTUP: showall\n"
        > _ \n \n)))
 
-(use-package org-present
-  :disabled t
-  :load-path "various"
-  :config
-  (progn
-    (add-hook 'org-present-mode-hook
-	      (lambda ()
-		(org-present-big)
-		(org-display-inline-images t t)))
-
-    (add-hook 'org-present-mode-quit-hook
-	      (lambda ()
-		(org-present-small)
-		(org-remove-inline-images)))))
-
 (use-package metaweblog
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package xml-rpc
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package htmlize
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package org2blog
   :ensure t
@@ -199,6 +177,24 @@
 
 	     :url "http://informatica.boccaperta.com/xmlrpc.php"
 	     :username "manuel")))))
+
+(use-package org-tree-slide
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-mode)
+    (define-key org-mode-map (kbd "S-<f8>") 'org-tree-slide-skip-done-toggle)
+    (define-key org-tree-slide-mode-map (kbd "<f9>")
+      'org-tree-slide-move-previous-tree)
+    (define-key org-tree-slide-mode-map (kbd "<f10>")
+      'org-tree-slide-move-next-tree)
+    (define-key org-tree-slide-mode-map (kbd "<f11>")
+      'org-tree-slide-content)
+
+    (setq org-tree-slide-skip-outline-level 4)
+    (org-tree-slide-narrowing-control-profile)
+    (setq org-tree-slide-skip-done nil)))
 
 ;;; Shells
 (use-package eshell
