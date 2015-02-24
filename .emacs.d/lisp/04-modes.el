@@ -60,6 +60,7 @@
 
 (use-package dired+
   :ensure t
+  :defer t
   :config
   (progn
     ;; Reuse buffer for directories
@@ -68,7 +69,8 @@
     (setq diredp-hide-details-propagate-flag nil)))
 
 (use-package bookmark+
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package doc-view
   :defer t
@@ -94,6 +96,7 @@
   :bind (("C-c l" . org-store-link)
 	 ("C-c c" . org-capture)
 	 ("C-c a" . org-agenda))
+  :defer t
   :config
   (progn
     (setq org-src-fontify-natively t
@@ -444,6 +447,7 @@
 ;;; Formatting
 (use-package markdown-mode
   :ensure t
+  :defer t
   :config
   (progn
     ;; Use Pandoc to process Markdown

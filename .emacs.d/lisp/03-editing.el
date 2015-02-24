@@ -86,6 +86,7 @@
 ;; Requires: silversearcher-ag
 (use-package ag
   :ensure t
+  :defer t
   :config
   (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
 	ag-highlight-search t))
@@ -100,11 +101,13 @@
 
 (use-package flx-isearch
   :ensure t
+  :defer t
   :bind (("C-M-s" . flx-isearch-forward)
          ("C-M-r" . flx-isearch-backward)))
 
 (use-package visual-regexp
   :ensure t
+  :defer t
   :bind (("C-c r" . vr/query-replace)
          ("C-c R" . vr/replace)))
 
@@ -135,11 +138,13 @@
 
 (use-package easy-kill
   :ensure t
+  :defer t
   :bind (([remap kill-ring-save] . easy-kill)
 	 ([remap mark-sexp] . easy-mark)))
 
 (use-package iedit
   :ensure t
+  :defer t
   :config
   (progn
     (defun iedit-dwim (arg)
@@ -180,6 +185,7 @@
 ;;; Utilities
 (use-package browse-kill-ring
   :ensure t
+  :defer t
   :bind (("M-y" . browse-kill-ring)))
 
 ;; Better ediff behavior
@@ -191,6 +197,7 @@
 
 (use-package multiple-cursors
   :ensure t
+  :defer t
   :bind (("C-c m e" . mc/mark-more-like-this-extended)
 	 ("C-c m h" . mc/mark-all-like-this-dwim)
 	 ("C-c m l" . mc/edit-lines)
