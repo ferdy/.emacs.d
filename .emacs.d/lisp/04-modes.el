@@ -70,11 +70,6 @@
 (use-package bookmark+
   :ensure t)
 
-(use-package hardhat
-  :ensure t
-  :defer t
-  :idle (global-hardhat-mode))
-
 (use-package doc-view
   :defer t
   :config
@@ -119,16 +114,18 @@
 	  org-html-preamble nil
 	  org-html-postamble nil
 	  org-export-html-style-default ""
-	  org-export-html-style-include-default nil)
+	  org-export-html-style-include-default nil
+          org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
+          org-default-notes-file "~/org/organizer.org")
 
     ;; Update parent nodes when child is removed
     (defun myorg-update-parent-cookie ()
       "Update parent nodes when child is removed."
       (when (equal major-mode 'org-mode)
-	(save-excursion
-	  (ignore-errors
-	    (org-back-to-heading)
-	    (org-update-parent-todo-statistics)))))
+        (save-excursion
+          (ignore-errors
+            (org-back-to-heading)
+            (org-update-parent-todo-statistics)))))
 
     (defadvice org-kill-line (after fix-cookies activate)
       "Update parent node."
@@ -136,7 +133,12 @@
 
     (defadvice kill-whole-line (after fix-cookies activate)
       "Update parent node."
-      (myorg-update-parent-cookie))))
+      (myorg-update-parent-cookie))
+
+    (global-set-key (kbd "C-c o")
+                    (lambda ()
+                      (interactive)
+                      (find-file "~/org/organizer.org")))))
 
 (org-babel-do-load-languages
  'org-babel-load-languages

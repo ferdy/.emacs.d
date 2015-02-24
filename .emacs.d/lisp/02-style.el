@@ -11,19 +11,18 @@
 ;;; Code:
 ;;; Fonts
 (set-face-attribute 'default nil
-		    :family "Source Code Pro"
-		    :height 110
-		    :weight 'normal
-		    :width 'normal)
-
+                    :family "Source Code Pro"
+                    :height 110
+                    :weight 'normal
+                    :width 'normal)
 ;; Set font fallback
 (when (functionp 'set-fontset-font)
   (set-fontset-font "fontset-default"
-		    'unicode
-		    (font-spec :family "DejaVu Sans Mono"
-			       :width 'normal
-			       :size 11.4
-			       :weight 'normal)))
+                    'unicode
+                    (font-spec :family "DejaVu Sans Mono"
+                               :width 'normal
+                               :size 11.4
+                               :weight 'normal)))
 
 (use-package unicode-fonts
   :ensure t
