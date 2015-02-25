@@ -12,7 +12,6 @@
 
 ;;; Files
 (use-package dired
-  :defer t
   :bind (("C-c z" . dired-get-size)
 	 ("C-c C" . copy-file-name-to-clipboard))
   :config
@@ -49,7 +48,6 @@
     (setq dired-dwim-target t)))
 
 (use-package dired-x
-  :defer t
   :config
   (progn
     ;; Omit hidden files by default (C-x M-o to show them)
@@ -60,7 +58,6 @@
 
 (use-package dired+
   :ensure t
-  :defer t
   :config
   (progn
     ;; Reuse buffer for directories
@@ -69,8 +66,7 @@
     (setq diredp-hide-details-propagate-flag nil)))
 
 (use-package bookmark+
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package doc-view
   :defer t
