@@ -371,6 +371,7 @@
 (defvar-local hidden-mode-line-mode nil)
 (defvar-local hide-mode-line nil)
 
+;;;###autoload
 (define-minor-mode hidden-mode-line-mode
   "Minor mode to hide the mode-line in the current buffer."
   :init-value nil
