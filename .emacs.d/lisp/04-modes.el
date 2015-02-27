@@ -460,7 +460,6 @@
 
 ;;; Remote editing
 (use-package tramp
-  :defer t
   :config
   (progn
     (setq tramp-default-method "ssh"
