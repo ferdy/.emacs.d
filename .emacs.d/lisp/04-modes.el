@@ -773,7 +773,7 @@
     (setq scheme-program-name "guile")
     (setq geiser-impl-installed-implementations '(guile))))
 
-;;; Slime
+;;; Common Lisp
 ;; Requires: sbcl, slime, sbcl-doc, cl-clx-sbcl,
 ;; cl-ppcre, autoconf, texinfo, cl-swank
 (use-package slime

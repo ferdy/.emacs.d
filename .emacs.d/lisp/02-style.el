@@ -292,11 +292,6 @@
 ;; Let apropos commands perform more extensive searches than default
 (setq apropos-do-all t)
 
-;; Browse URLs with eww
-(use-package browse-url
-  :defer t
-  :config (setq browse-url-browser-function #'eww-browse-url))
-
 (use-package page-break-lines
   :ensure t
   :init (global-page-break-lines-mode)
