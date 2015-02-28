@@ -150,7 +150,23 @@
 	  (setq ido-default-item nextbuf
 		ido-text-init ido-text
 		ido-exit 'refresh)
-	  (exit-minibuffer))))))
+	  (exit-minibuffer)))
+
+      ;; Find files with sudo
+      (defadvice ido-find-file (after find-file-sudo activate)
+        "Find file as root if necessary."
+        (unless (and buffer-file-name
+                     (file-writable-p buffer-file-name))
+          (find-alternate-file
+           (concat "/sudo:root@localhost:" buffer-file-name))))
+
+      ;; Open recent files with ido
+      (defun ido-recentf-open ()
+        "Use 'ido-completing-read' to \\[find-file] a recent file."
+        (interactive)
+        (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+            (message "Opening file...")
+          (message "Aborting"))))))
 
 (use-package ido-ubiquitous
   :ensure t

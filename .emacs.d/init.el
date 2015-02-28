@@ -94,9 +94,9 @@
   :init (load custom/custom-file 'no-error 'no-message))
 
 ;; The server of `emacsclient'
-(use-package server
-  :defer t
-  :idle (server-start))
+;; (use-package server
+;;   :defer t
+;;   :idle (server-start))
 
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))

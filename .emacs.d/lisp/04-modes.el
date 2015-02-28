@@ -45,7 +45,30 @@
     (define-key dired-mode-map "!" 'sudired)
 
     ;; Use other pane as default destination when copying
-    (setq dired-dwim-target t)))
+    (setq dired-dwim-target t)
+
+    ;; Open directory with sudo in dired
+    (defun sudired ()
+      "Open directory with sudo in dired."
+      (interactive)
+      (require 'tramp)
+      (let ((dir (expand-file-name default-directory)))
+        (if (string-match "^/sudo:" dir)
+            (user-error "Already in sudo")
+          (dired (concat "/sudo::" dir)))))
+
+    ;; Get files size in dired
+    (defun dired-get-size ()
+      "Quick and easy way to get file size in dired."
+      (interactive)
+      (let ((files (dired-get-marked-files)))
+        (with-temp-buffer
+          (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
+          (message
+           "Size of all marked files: %s"
+           (progn
+             (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
+             (match-string 1))))))))
 
 (use-package dired-x
   :config
@@ -201,6 +224,20 @@
   :bind (("<f1>" . eshell-here))
   :config
   (progn
+    ;; Open eshell buffer in the current directory
+    (defun eshell-here ()
+      "Open a new shell in the directory of the buffer's file.
+The eshell is renamed to match that directory to make multiple eshell
+windows easier."
+      (interactive)
+      (let* ((parent (if (buffer-file-name)
+                         (file-name-directory (buffer-file-name))
+                       default-directory))
+             (name   (car (last (split-string parent "/" t)))))
+        (other-window 1)
+        (eshell "new")
+        (rename-buffer (concat "*eshell: " name "*"))))
+
     ;; Clear eshell buffer
     (defun eshell/clear ()
       "Clear the eshell buffer."

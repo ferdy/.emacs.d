@@ -98,25 +98,6 @@ buffer."
         (when (eq (car prop) 'image)
           (add-text-properties left pos (list from nil to prop) object))))))
 
-;; Edit file with root privileges
-(defun open-with-sudo ()
-  "Find file as root if necessary."
-  (unless (and buffer-file-name
-	       (file-writable-p buffer-file-name))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
-
-(add-hook 'find-file-hook 'open-with-sudo)
-
-;; Open directory with sudo in dired
-(defun sudired ()
-  "Open directory with sudo in dired."
-  (interactive)
-  (require 'tramp)
-  (let ((dir (expand-file-name default-directory)))
-    (if (string-match "^/sudo:" dir)
-        (user-error "Already in sudo")
-      (dired (concat "/sudo::" dir)))))
-
 ;; Run a program in a term buffer, if it is already running switch to it
 (defun custom/term-start-or-switch (prg &optional use-existing)
   "Run program PRG in a terminal buffer.
@@ -149,47 +130,12 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 
-;; Open recent files with ido
-(defun ido-recentf-open ()
-  "Use 'ido-completing-read' to \\[find-file] a recent file."
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
-
-;; Get files size in dired
-(defun dired-get-size ()
-  "Quick and easy way to get file size in dired."
-  (interactive)
-  (let ((files (dired-get-marked-files)))
-    (with-temp-buffer
-      (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
-      (message
-       "Size of all marked files: %s"
-       (progn
-         (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
-         (match-string 1))))))
-
 ;; Clear comint buffers
 (defun comint-clear-buffer ()
   "Easily clear comint buffers."
   (interactive)
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
-
-;; Open eshell buffer in the current directory
-(defun eshell-here ()
-  "Open a new shell in the directory of the buffer's file.
-The eshell is renamed to match that directory to make multiple eshell
-windows easier."
-  (interactive)
-  (let* ((parent (if (buffer-file-name)
-                     (file-name-directory (buffer-file-name))
-                   default-directory))
-	 (name   (car (last (split-string parent "/" t)))))
-    (other-window 1)
-    (eshell "new")
-    (rename-buffer (concat "*eshell: " name "*"))))
 
 ;; Kill buffers matching a regular expression with no confirmation
 (defun custom/kill-buffers (regexp)
