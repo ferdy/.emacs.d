@@ -158,15 +158,9 @@
         (unless (and buffer-file-name
                      (file-writable-p buffer-file-name))
           (find-alternate-file
-           (concat "/sudo:root@localhost:" buffer-file-name))))
+           (concat "/sudo:root@localhost:" buffer-file-name)))))))
 
-      ;; Open recent files with ido
-      (defun ido-recentf-open ()
-        "Use 'ido-completing-read' to \\[find-file] a recent file."
-        (interactive)
-        (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-            (message "Opening file...")
-          (message "Aborting"))))))
+
 
 (use-package ido-ubiquitous
   :ensure t
@@ -190,11 +184,20 @@
   :init (recentf-mode)
   :bind (("C-x C-r" . ido-recentf-open))
   :config
-  (setq recentf-max-saved-items 200
-	recentf-max-menu-items 15
-	recentf-auto-cleanup 300
-	recentf-exclude (list "/\\.git/.*\\'"
-			      "/elpa/.*\\'")))
+  (progn
+    ;; Open recent files with ido
+    (defun ido-recentf-open ()
+      "Use 'ido-completing-read' to \\[find-file] a recent file."
+      (interactive)
+      (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+          (message "Opening file...")
+        (message "Aborting")))
+
+    (setq recentf-max-saved-items 200
+          recentf-max-menu-items 15
+          recentf-auto-cleanup 300
+          recentf-exclude (list "/\\.git/.*\\'"
+                                "/elpa/.*\\'"))))
 
 (use-package uniquify
   :config
