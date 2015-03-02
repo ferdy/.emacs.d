@@ -358,6 +358,12 @@
   :init (dolist (hook '(text-mode-hook prog-mode-hook))
           (add-hook hook #'rainbow-delimiters-mode)))
 
+(use-package transpose-frame
+  :ensure t
+  :bind (("C-c t t" . transpose-frame)
+         ("C-c t h" . flop-frame)
+         ("C-c t v" . flip-frame)))
+
 ;;; Mode line
 (use-package smart-mode-line
   :ensure t
