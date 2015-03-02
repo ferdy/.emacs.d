@@ -83,9 +83,6 @@
 	       (and (get-buffer completions)
 		    (kill-buffer completions)))))
 
-;; Turn on visual-line-mode
-(global-visual-line-mode)
-
 ;; Turn on column-number-mode
 (column-number-mode)
 
@@ -316,6 +313,12 @@
   :init (global-page-break-lines-mode)
   :defer page-break-lines-modes)
 
+(use-package transpose-frame
+  :ensure t
+  :bind (("C-c t t" . transpose-frame)
+         ("C-c t h" . flop-frame)
+         ("C-c t v" . flip-frame)))
+
 ;;; Highlightings
 (use-package diff-hl
   :ensure t
@@ -358,11 +361,8 @@
   :init (dolist (hook '(text-mode-hook prog-mode-hook))
           (add-hook hook #'rainbow-delimiters-mode)))
 
-(use-package transpose-frame
-  :ensure t
-  :bind (("C-c t t" . transpose-frame)
-         ("C-c t h" . flop-frame)
-         ("C-c t v" . flip-frame)))
+(use-package hl-line
+  :init (global-hl-line-mode 1))
 
 ;;; Mode line
 (use-package smart-mode-line

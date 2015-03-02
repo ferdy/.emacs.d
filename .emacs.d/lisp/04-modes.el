@@ -130,6 +130,8 @@
           org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
           org-default-notes-file "~/org/organizer.org")
 
+    (add-hook 'org-mode-hook #'visual-line-mode)
+
     ;; Update parent nodes when child is removed
     (defun myorg-update-parent-cookie ()
       "Update parent nodes when child is removed."
@@ -249,7 +251,8 @@ windows easier."
 	  eshell-save-history-on-exit t)
 
     ;; Run scrips from current working on remote system
-    (defadvice eshell-gather-process-output (before absolute-cmd (command args) act)
+    (defadvice eshell-gather-process-output
+        (before absolute-cmd (command args) act)
       "Run scrips from current working on remote system."
       (setq command (file-truename command)))
 
@@ -259,10 +262,16 @@ windows easier."
 			       (lambda ()
 				 (interactive)
 				 (insert
-				  (ido-completing-read "Eshell history: "
-						       (delete-dups
-							(ring-elements eshell-history-ring))))))
-		(local-set-key (kbd "C-c C-h") 'eshell-list-history)))))
+				  (ido-completing-read
+                                   "Eshell history: "
+                                   (delete-dups
+                                    (ring-elements eshell-history-ring))))))
+		(local-set-key (kbd "C-c C-h") 'eshell-list-history)))
+
+    ;; Disable hl-line-mode in eshell
+    (add-hook 'eshell-mode-hook (lambda ()
+                                  (setq-local global-hl-line-mode
+                                              nil)))))
 
 (use-package ansi-term
   :defer t
@@ -285,7 +294,12 @@ windows easier."
             (if (string= event "finished\n")
                 (custom/kill-buffers "^\\*ansi-term"))))))
 
-    (add-hook 'term-exec-hook 'custom/term-exec-hook)))
+    (add-hook 'term-exec-hook 'custom/term-exec-hook)
+
+    ;; Disable hl-line-mode in ansi-term
+    (add-hook 'term-mode-hook (lambda ()
+                                (setq-local global-hl-line-mode
+                                            nil)))))
 
 (use-package shell
   :defer t
@@ -303,7 +317,12 @@ windows easier."
     ;; Shell buffer maximized
     (add-hook 'shell-mode-hook
               (lambda ()
-                (delete-other-windows)))))
+                (delete-other-windows)))
+
+    ;; Disable hl-line-mode in shell
+    (add-hook 'shell-mode-hook (lambda ()
+                                 (setq-local global-hl-line-mode
+                                             nil)))))
 
 ;;; Version control
 (use-package magit
@@ -556,6 +575,16 @@ windows easier."
   :defer t
   ;; Display questions in the same window
   :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
+
+(use-package sx-compose
+  :ensure sx
+  :defer t
+  :config
+  (progn
+    ;; Don't fill in SX questions/answers, and use visual lines instead. Plays
+    ;; more nicely with the website.
+    (add-hook 'sx-compose-mode-hook #'turn-off-auto-fill)
+    (add-hook 'sx-compose-mode-hook #'visual-line-mode)))
 
 ;;; Completion
 (use-package company

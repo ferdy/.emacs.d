@@ -170,7 +170,16 @@
   :bind (("M-2" . er/expand-region)))
 
 (use-package adaptive-wrap
-  :ensure t)
+  :ensure t
+  :defer t
+  :init (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode))
+
+(use-package visual-fill-column
+  :ensure t
+  :defer t
+  :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
+  ;; Keep the fringe
+  :config (setq visual-fill-column-disable-fringe nil))
 
 (use-package aggressive-indent
   :ensure t
