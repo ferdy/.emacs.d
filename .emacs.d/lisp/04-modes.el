@@ -539,8 +539,12 @@ windows easier."
     (setq erc-nick gp-nick)
     (setq erc-prompt-for-nickserv-password nil)
     (setq erc-nickserve-passwords
-          `((freenode (,gp-nick . ,gp-pass))))))
+          `((freenode (,gp-nick . ,gp-pass))))
 
+    ;; Disable hl-line-mode in erc
+    (add-hook 'erc-mode-hook (lambda ()
+                               (setq-local global-hl-line-mode
+                                           nil)))))
 (use-package elfeed
   :ensure t
   :defer t
