@@ -12,7 +12,7 @@
 ;;; Fonts
 (set-face-attribute 'default nil
                     :family "Source Code Pro"
-                    :height 120
+                    :height 130
                     :weight 'normal
                     :width 'normal)
 ;; Set font fallback
@@ -21,7 +21,7 @@
                     'unicode
                     (font-spec :family "DejaVu Sans Mono"
                                :width 'normal
-                               :size 11.4
+                               :size 14
                                :weight 'normal)))
 
 (use-package unicode-fonts
