@@ -719,6 +719,16 @@ windows easier."
       "Find ag on project."
       (call-interactively 'projectile-ag))))
 
+;; Group buffers by VC project and status
+(use-package ibuffer-vc
+  :ensure t
+  :defer t
+  :init (add-hook 'ibuffer-hook
+                  (lambda ()
+                    (ibuffer-vc-set-filter-groups-by-vc-root)
+                    (unless (eq ibuffer-sorting-mode 'alphabetic)
+                      (ibuffer-do-sort-by-alphabetic)))))
+
 ;; Group buffers by Projectile project
 (use-package ibuffer-projectile
   :ensure t
