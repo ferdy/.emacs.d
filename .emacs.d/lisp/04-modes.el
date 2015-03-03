@@ -759,13 +759,7 @@ windows easier."
 ;; Group buffers by Projectile project
 (use-package ibuffer-projectile
   :ensure t
-  :defer t
-  :init
-  (add-hook 'ibuffer-mode-hook
-            (lambda ()
-              (ibuffer-projectile-set-filter-groups)
-              (unless (eq ibuffer-sorting-mode 'alphapbetic)
-                (ibuffer-do-sort-by-alphabetic)))))
+  :defer t)
 
 ;;; Syntax checking
 ;; Requires: chktex
