@@ -152,7 +152,43 @@
     (global-set-key (kbd "C-c o")
                     (lambda ()
                       (interactive)
-                      (find-file "~/org/organizer.org")))))
+                      (find-file "~/org/organizer.org")))
+
+    (define-key org-mode-map "\"" #'custom/round-quotes)
+
+    (defun custom/round-quotes (italicize)
+      "Insert “” and leave point in the middle.
+With prefix argument ITALICIZE, insert /“”/ instead (meant for
+org-mode).
+If inside a code-block, simply calls `self-insert-command'."
+      (interactive "P")
+      (if (and (derived-mode-p 'org-mode) (org-in-src-block-p))
+          (call-interactively 'self-insert-command)
+        (if (looking-at "”[/=_\\*]?")
+            (goto-char (match-end 0))
+          (when italicize
+            (insert "//")
+            (forward-char -1))
+          (insert "“”")
+          (forward-char -1))))
+
+    (define-key org-mode-map "'" #'custom/apostrophe)
+
+    (defun custom/apostrophe (opening)
+      "Insert ’ in prose or `self-insert-command' in code.
+With prefix argument OPENING, insert ‘’ instead and leave
+point in the middle.
+Inside a code-block, simply calls `self-insert-command'."
+      (interactive "P")
+      (if (and (derived-mode-p 'org-mode)
+               (org-in-block-p '("src" "latex" "html")))
+          (call-interactively #'self-insert-command)
+        (if (looking-at "['’][=_/\\*]?")
+            (goto-char (match-end 0))
+          (if (null opening)
+              (insert "’")
+            (insert "‘’")
+            (forward-char -1)))))))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
