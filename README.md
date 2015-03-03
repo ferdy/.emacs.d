@@ -16,7 +16,7 @@ The ```esetup``` script helps to create the right environment *before* starting
 Emacs with this configuration for the first time. The script only works with
 Debian-based systems. If it does not work as you expect, *fix it yourself*.
 
-I mainly use Emacs for **Clojure**, **Elisp** and **LaTeX**, so my setup is
+I mainly use Emacs for **LaTeX**, **Elisp** and **Clojure**, so my setup is
 planned accordingly. Check the ```.emacs.d/lisp``` directory for the gory
 details.
 
