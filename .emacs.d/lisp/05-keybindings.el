@@ -106,9 +106,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 ;; C-z for repeat (usually C-x z)
 (global-set-key (kbd "C-z") 'repeat)
 
-;; C-x C-b for ibuffer
-(global-set-key "\C-x\C-b" 'ibuffer)
-
 ;; Global key for 'multi-occur-in-this-mode'
 (global-set-key "\C-x\C-o" 'multi-occur-in-this-mode)
 
