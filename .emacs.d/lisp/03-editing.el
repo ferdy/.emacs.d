@@ -6,9 +6,11 @@
 ;; Keywords: convenience
 
 ;;; Commentary:
+
 ;; This file stores editing and searching customizations.
 
 ;;; Code:
+
 ;;; Scrolling
 (setq scroll-margin 0
       scroll-conservatively 1000)
@@ -173,13 +175,6 @@
   :ensure t
   :defer t
   :init (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode))
-
-(use-package visual-fill-column
-  :ensure t
-  :defer t
-  :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
-  ;; Keep the fringe
-  :config (setq visual-fill-column-disable-fringe nil))
 
 (use-package aggressive-indent
   :ensure t

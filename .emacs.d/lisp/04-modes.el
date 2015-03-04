@@ -6,6 +6,7 @@
 ;; Keywords: convenience
 
 ;;; Commentary:
+
 ;; This file stores the configurations of every mode I use.
 
 ;;; Code:

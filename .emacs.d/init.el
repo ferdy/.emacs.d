@@ -24,20 +24,19 @@
 ;; USA.
 
 ;;; Commentary:
+
 ;; This file sets up packages, custom file, username and mail address. It also
 ;; loads the different configuration files I have in ~/.emacs.d/lisp.
 
 ;;; Code:
+
+;;; Package setup
 (require 'package)
 (setq package-enable-at-startup nil)
-
-;; Add Melpa
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-
 (package-initialize)
 
-;; Always load newer compiled files
-(setq load-prefer-newer t)
+(setq load-prefer-newer t) ; Always load newer compiled files
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
@@ -46,25 +45,22 @@
 
 (require 'use-package)
 
-;; Add El-Get
+;; Add el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
        "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)))
-
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (el-get 'sync)
 
-;; Initialization
+;;; Initialization
 (when (version< emacs-version "25")
   (warn "This configuration needs Emacs trunk, but this is %s!" emacs-version))
 
-;; Disable the site default settings
-(setq inhibit-default-init t)
+(setq inhibit-default-init t) ; Disable the site default settings
 
 ;; Warn if the current build is more than a week old
 (run-with-idle-timer
@@ -73,10 +69,6 @@
    (let ((time-since-build (time-subtract (current-time) emacs-build-time)))
      (when (> (time-to-number-of-days time-since-build) 7)
        (lwarn 'emacs :warning "Your Emacs build is more than a week old!")))))
-
-;; Personal informations
-(setq user-full-name "Manuel Uberti")
-(setq user-mail-address "manuel@boccaperta.com")
 
 ;; Set separate custom file for the customize interface
 (defconst custom/custom-file (locate-user-emacs-file "custom.el")
@@ -93,6 +85,10 @@
 	custom-unlispify-menu-entries nil)
   :init (load custom/custom-file 'no-error 'no-message))
 
+;; Personal informations
+(setq user-full-name "Manuel Uberti")
+(setq user-mail-address "manuel@boccaperta.com")
+
 ;; The server of `emacsclient'
 ;; (use-package server
 ;;   :defer t
@@ -100,7 +96,6 @@
 
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-
 (require '01-functions)
 (require '02-style)
 (require '03-editing)

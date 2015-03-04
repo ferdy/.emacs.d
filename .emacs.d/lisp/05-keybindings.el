@@ -6,9 +6,11 @@
 ;; Keywords: convenience
 
 ;;; Commentary:
+
 ;; This file stores all the keybindings I use.
 
 ;;; Code:
+
 ;; Better forward and backward paragraph
 (global-set-key "\M-a" 'custom/backward-paragraph)
 (global-set-key "\M-e" 'custom/forward-paragraph)

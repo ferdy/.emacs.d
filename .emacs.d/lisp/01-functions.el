@@ -6,9 +6,11 @@
 ;; Keywords: convenience
 
 ;;; Commentary:
+
 ;; This file contains various useful functions.
 
 ;;; Code:
+
 ;; Replace HTML tags with the ones used by WordPress editor
 (defvar my-oldtags '("<i>" "</i>" "<b>" "</b>"))
 (defvar my-newtags '("<em>" "</em>" "<strong>" "</strong>"))

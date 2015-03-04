@@ -6,9 +6,62 @@
 ;; Keywords: convenience
 
 ;;; Commentary:
+
 ;; This file stores the interface customizations.
 
 ;;; Code:
+
+;;; Mode line
+(use-package smart-mode-line
+  :ensure t
+  :init
+  (progn
+    ;; Hide some modes
+    (require 'rich-minority)
+    (setq rm-blacklist
+          (format "^ \\(%s\\)$"
+                  (mapconcat #'identity
+                             '("FlyC.*"
+                               "Projectile.*"
+                               "PgLn"
+                               "company"
+                               "Undo-Tree"
+                               "Wrap"
+                               "hhat"
+                               "SliNav"
+                               "hl-s")
+                             "\\|"))
+          sml/theme 'automatic)
+    (sml/setup)))
+
+;; Minor mode to hide the mode line
+(defvar-local hidden-mode-line-mode nil)
+(defvar-local hide-mode-line nil)
+
+;;;###autoload
+(define-minor-mode hidden-mode-line-mode
+  "Minor mode to hide the mode-line in the current buffer."
+  :init-value nil
+  :global t
+  :variable hidden-mode-line-mode
+  :group 'editing-basics
+  (if hidden-mode-line-mode
+      (setq hide-mode-line mode-line-format
+            mode-line-format nil)
+    (setq mode-line-format hide-mode-line
+          hide-mode-line nil))
+  (force-mode-line-update)
+  ;; apparently force-mode-line-update is not always enough to
+  ;; redisplay the mode-line
+  (redraw-display)
+  (when (and (called-interactively-p 'interactive)
+             hidden-mode-line-mode)
+    (run-with-idle-timer
+     0 nil 'message "Hidden Mode Line Mode enabled.")))
+
+;; If you want to hide the mode-line in every buffer by default
+;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
+
 ;;; Fonts
 (set-face-attribute 'default nil
                     :family "Source Code Pro"
@@ -363,57 +416,6 @@
 
 (use-package hl-line
   :init (global-hl-line-mode 1))
-
-;;; Mode line
-(use-package smart-mode-line
-  :ensure t
-  :init
-  (progn
-    ;; Hide some modes
-    (require 'rich-minority)
-    (setq rm-blacklist
-	  (format "^ \\(%s\\)$"
-		  (mapconcat #'identity
-			     '("FlyC.*"
-			       "Projectile.*"
-			       "PgLn"
-			       "company"
-			       "Undo-Tree"
-			       "Wrap"
-			       "hhat"
-                               "SliNav"
-                               "hl-s")
-			     "\\|")))
-    (sml/setup)
-    (sml/apply-theme 'automatic)))
-
-;; Minor mode to hide the mode line
-(defvar-local hidden-mode-line-mode nil)
-(defvar-local hide-mode-line nil)
-
-;;;###autoload
-(define-minor-mode hidden-mode-line-mode
-  "Minor mode to hide the mode-line in the current buffer."
-  :init-value nil
-  :global t
-  :variable hidden-mode-line-mode
-  :group 'editing-basics
-  (if hidden-mode-line-mode
-      (setq hide-mode-line mode-line-format
-	    mode-line-format nil)
-    (setq mode-line-format hide-mode-line
-	  hide-mode-line nil))
-  (force-mode-line-update)
-  ;; apparently force-mode-line-update is not always enough to
-  ;; redisplay the mode-line
-  (redraw-display)
-  (when (and (called-interactively-p 'interactive)
-	     hidden-mode-line-mode)
-    (run-with-idle-timer
-     0 nil 'message "Hidden Mode Line Mode enabled.")))
-
-;; If you want to hide the mode-line in every buffer by default
-;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
 (provide '02-style)
 
