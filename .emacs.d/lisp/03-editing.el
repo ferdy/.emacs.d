@@ -176,6 +176,21 @@
   :defer t
   :init (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode))
 
+(use-package aggressive-fill-paragraph
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
+    (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode)))
+
+(use-package visual-fill-column
+  :ensure t
+  :defer t
+  :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
+  ;; Keep the fringe
+  :config (setq visual-fill-column-disable-fringe nil))
+
 (use-package aggressive-indent
   :ensure t
   :init (global-aggressive-indent-mode 1)
