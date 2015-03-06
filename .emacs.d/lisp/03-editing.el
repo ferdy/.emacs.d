@@ -178,7 +178,6 @@
 
 (use-package aggressive-fill-paragraph
   :ensure t
-  :defer t
   :init
   (progn
     (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
@@ -186,7 +185,6 @@
 
 (use-package visual-fill-column
   :ensure t
-  :defer t
   :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
   ;; Keep the fringe
   :config (setq visual-fill-column-disable-fringe nil))
