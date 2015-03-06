@@ -67,20 +67,17 @@
 (define-key toggle-map "s" 'create-scratch-buffer)
 (define-key toggle-map "r" 'revert-this-buffer)
 
-;; Goto line is M-g
-(global-set-key "\M-g" 'goto-line)
+(global-set-key "\M-g" 'goto-line) ; Goto line is M-g
 
+;; Better s-expression navigation
 (global-set-key "\M-9" 'backward-sexp)
 (global-set-key "\M-0" 'forward-sexp)
 
-;; Kill only the current buffer
-(global-set-key "\C-x\C-k" 'kill-this-buffer)
+(global-set-key "\C-x\C-k" 'kill-this-buffer) ; Kill only the current buffer
 
-;; C^n adds new line when at the end of a line
-(setq next-line-add-newlines t)
+(setq next-line-add-newlines t) ; C^n adds new line when at the end of a line
 
-;; Comment-line
-(global-set-key (kbd "C-;") #'comment-line)
+(global-set-key (kbd "C-;") #'comment-line) ; Comment-line
 
 ;; Better mark commands
 (defun push-mark-no-activate ()
@@ -103,16 +100,15 @@ This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (exchange-point-and-mark)
   (deactivate-mark nil))
-(define-key global-map [remap exchange-point-and-mark] 'exchange-point-and-mark-no-activate)
+(define-key global-map [remap exchange-point-and-mark]
+  'exchange-point-and-mark-no-activate)
 
-;; C-z for repeat (usually C-x z)
-(global-set-key (kbd "C-z") 'repeat)
+(global-set-key (kbd "C-z") 'repeat) ; C-z for repeat (usually C-x z)
 
-;; Global key for 'multi-occur-in-this-mode'
-(global-set-key "\C-x\C-o" 'multi-occur-in-this-mode)
+(global-set-key "\C-x\C-o"
+                'multi-occur-in-this-mode) ; Global key for 'multi-occur-in-this-mode'
 
-;; Global key for 'occur-dwim'
-(global-set-key "\C-x\M-o" 'occur-dwim)
+(global-set-key "\C-x\M-o" 'occur-dwim) ; Global key for 'occur-dwim'
 
 ;; Kill entire line with prefix argument
 (defmacro bol-with-prefix (function)
@@ -136,8 +132,8 @@ prefix argument."
 (global-set-key [remap kill-line] (bol-with-prefix kill-line))
 (global-set-key "\C-k" (bol-with-prefix kill-visual-line))
 
-;; Clear comint buffers
-(define-key comint-mode-map "\C-c\M-o" #'comint-clear-buffer)
+(define-key comint-mode-map "\C-c\M-o"
+  #'comint-clear-buffer) ; Clear comint buffers
 
 ;; Better shrink/enlarge windows
 (global-set-key (kbd "C-S-<up>") 'enlarge-window)

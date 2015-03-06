@@ -71,7 +71,7 @@
              (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
              (match-string 1))))))))
 
-(use-package dired-x
+(use-package dired-x ; Enable some nice dired features
   :config
   (progn
     ;; Omit hidden files by default (C-x M-o to show them)
@@ -80,7 +80,7 @@
     ;; Hide omit files messages
     (setq dired-omit-verbose nil)))
 
-(use-package dired+
+(use-package dired+ ; Extend dired
   :ensure t
   :config
   (progn
@@ -89,7 +89,7 @@
     (setq diredp-hide-details-initially-flag nil)
     (setq diredp-hide-details-propagate-flag nil)))
 
-(use-package bookmark+
+(use-package bookmark+ ; Better bookmarks
   :ensure t)
 
 (use-package doc-view
@@ -98,11 +98,10 @@
   (progn
     (setq doc-view-continuous t)))
 
-;; View read-only
-(setq view-read-only t)
+(setq view-read-only t) ; View read-only
 
 ;;; Translation
-(use-package po-mode
+(use-package po-mode ; Manage .po files
   :load-path "el-get/po-mode"
   :defer t
   :init
@@ -191,7 +190,7 @@ Inside a code-block, simply calls `self-insert-command'."
             (insert "‘’")
             (forward-char -1)))))))
 
-(org-babel-do-load-languages
+(org-babel-do-load-languages ; Languages for code snippets
  'org-babel-load-languages
  '((emacs-lisp . t)
    (sh . t)
@@ -211,6 +210,7 @@ Inside a code-block, simply calls `self-insert-command'."
        "#+STARTUP: showall\n"
        > _ \n \n)))
 
+;; Org2blog
 (use-package metaweblog
   :ensure t
   :defer t)
@@ -239,7 +239,7 @@ Inside a code-block, simply calls `self-insert-command'."
 	     :url "http://informatica.boccaperta.com/xmlrpc.php"
 	     :username "manuel")))))
 
-(use-package org-tree-slide
+(use-package org-tree-slide ; Slides via org-mode
   :ensure t
   :defer t
   :config
@@ -565,7 +565,7 @@ windows easier."
 ;; Requires in ~/.ercpass the format
 ;; (setq variable "nickname")
 ;; (setq variable "password")
-(use-package erc
+(use-package erc ; IRC client
   :defer t
   :config
   (progn
@@ -582,7 +582,7 @@ windows easier."
     (add-hook 'erc-mode-hook (lambda ()
                                (setq-local global-hl-line-mode
                                            nil)))))
-(use-package elfeed
+(use-package elfeed ; RSS feed reader
   :ensure t
   :defer t
   :bind (("<f5>" . elfeed))
@@ -607,6 +607,7 @@ windows easier."
 
     (define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)))
 
+;; Browse StackExchange from Emacs
 (use-package sx
   :ensure t
   :defer t)
@@ -663,11 +664,11 @@ windows easier."
     (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
 
 ;;; Utilities
-(use-package undo-tree
+(use-package undo-tree ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode))
 
-(use-package pdf-tools
+(use-package pdf-tools ; Better PDF support
   :defer t
   :init (pdf-tools-install)
   :config
@@ -686,7 +687,7 @@ windows easier."
     ;; No large file warning
     (setq large-file-warning-threshold nil)))
 
-(use-package paradox
+(use-package paradox ; Better package manager interface
   :ensure t
   :defer t
   :bind (("<f4>" . paradox-list-packages)
@@ -710,22 +711,22 @@ windows easier."
   ;; Enable Eldoc for `eval-expression', too
   :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
 
-(use-package emacsshot
+(use-package emacsshot ; Take a screenshot from within Emacs
   :ensure t
   :bind (("<print>" . emacsshot-snap-frame))
   :defer t)
 
-(use-package camcorder
+(use-package camcorder ; Record movements from within Emacs
   :ensure t
   :defer t
   :init (setq camcorder-window-id-offset -2))
 
 (use-package archive-mode
   :defer t
-  :config (add-to-list
+  :config (add-to-list ; Enable .cbr files support
            'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
 
-(use-package proced
+(use-package proced ; Manage processes
   :defer t
   :config
   (progn
@@ -735,7 +736,7 @@ windows easier."
 
     (add-hook 'proced-mode-hook 'proced-settings)))
 
-(use-package csv-mode
+(use-package csv-mode ; Better .csv files editing
   :ensure t
   :defer t)
 
@@ -783,8 +784,7 @@ windows easier."
                   " " filename))
           ibuffer-show-empty-filter-groups nil)))
 
-;; Group buffers by VC project and status
-(use-package ibuffer-vc
+(use-package ibuffer-vc ; Group buffers by VC project and status
   :ensure t
   :defer t
   :init (add-hook 'ibuffer-hook
@@ -793,8 +793,7 @@ windows easier."
                     (unless (eq ibuffer-sorting-mode 'alphabetic)
                       (ibuffer-do-sort-by-alphabetic)))))
 
-;; Group buffers by Projectile project
-(use-package ibuffer-projectile
+(use-package ibuffer-projectile ; Group buffers by Projectile project
   :ensure t
   :defer t)
 
@@ -813,13 +812,13 @@ windows easier."
     ;; Use italic face for checker name
     (set-face-attribute 'flycheck-error-list-checker-name nil :inherit 'italic)))
 
-(use-package flycheck-pos-tip
+(use-package flycheck-pos-tip ; Tooltip at point for flycheck messages
   :ensure t
   :defer t
   :init
   (setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
 
-(use-package flycheck-package
+(use-package flycheck-package ; Flycheck for Emacs package development
   :ensure t
   :defer t
   :init (with-eval-after-load 'flycheck (flycheck-package-setup)))
@@ -897,7 +896,7 @@ windows easier."
           cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
           cider-repl-pop-to-buffer-on-connect nil)))
 
-(use-package latest-clojure-libraries
+(use-package latest-clojure-libraries ; Fetch latest version of library at point
   :ensure t
   :defer t)
 
@@ -932,7 +931,7 @@ windows easier."
   :config
   (setq web-mode-markup-indent-offset 2))
 
-(use-package js2-mode
+(use-package js2-mode ; Better JavaScript support
   :ensure t
   :mode "\\.js\\(?:on\\)?\\'"
   :config (add-hook 'js-mode-hook 'js2-minor-mode))

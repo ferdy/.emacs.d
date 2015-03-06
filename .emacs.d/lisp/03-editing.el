@@ -74,8 +74,8 @@
 (setq auto-save-file-name-transforms
       `((".*" ,backup-dir t)))
 
-;; Delete trailing whitespaces
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace) ; Delete trailing whitespaces
 
 ;;; Search
 ;; Exclude some directories in grep
@@ -86,7 +86,7 @@
 (add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
 
 ;; Requires: silversearcher-ag
-(use-package ag
+(use-package ag ; Fast search engine
   :ensure t
   :defer t
   :config
@@ -101,19 +101,19 @@
   :ensure t
   :defer t)
 
-(use-package flx-isearch
+(use-package flx-isearch ; Flexible search for Isearch
   :ensure t
   :defer t
   :bind (("C-M-s" . flx-isearch-forward)
          ("C-M-r" . flx-isearch-backward)))
 
-(use-package visual-regexp
+(use-package visual-regexp ; Display regular expressions
   :ensure t
   :defer t
   :bind (("C-c r" . vr/query-replace)
          ("C-c R" . vr/replace)))
 
-(use-package anzu
+(use-package anzu ; Show search results number in mode-line
   :ensure t
   :init (global-anzu-mode)
   :config
@@ -123,28 +123,26 @@
     (setcar (cdr (assq 'isearch-mode minor-mode-alist))
             '(:eval (anzu--update-mode-line)))))
 
-(use-package zop-to-char
+(use-package zop-to-char ; Better zap-to-char
   :ensure t
   :bind (("M-z" . zop-to-char)
          ("M-Z" . zop-up-to-char)))
 
 ;;; Editing
-;; Delete the selection instead of insert
-(use-package delsel
+(use-package delsel ; Delete the selection instead of insert
   :defer t
   :init (delete-selection-mode))
 
-;; Subword/superword editing
-(use-package subword
+(use-package subword ; Subword/superword editing
   :defer t)
 
-(use-package easy-kill
+(use-package easy-kill ; Better kill text
   :ensure t
   :defer t
   :bind (([remap kill-ring-save] . easy-kill)
 	 ([remap mark-sexp] . easy-mark)))
 
-(use-package iedit
+(use-package iedit ; Edit multiple occurrences
   :ensure t
   :defer t
   :config
@@ -167,52 +165,51 @@
 
     (global-set-key (kbd "C-,") 'iedit-dwim)))
 
-(use-package expand-region
+(use-package expand-region ; Expand selected region
   :ensure t
   :bind (("M-2" . er/expand-region)))
 
-(use-package adaptive-wrap
+(use-package adaptive-wrap ; Better line wrap
   :ensure t
   :defer t
   :init (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode))
 
-(use-package aggressive-fill-paragraph
+(use-package aggressive-fill-paragraph ; Automatically fill paragrah
   :ensure t
   :init
   (progn
     (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
     (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode)))
 
-(use-package visual-fill-column
+(use-package visual-fill-column ; Wrap at fill column
   :ensure t
   :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
   ;; Keep the fringe
   :config (setq visual-fill-column-disable-fringe nil))
 
-(use-package aggressive-indent
+(use-package aggressive-indent ; Automatically indent code
   :ensure t
   :init (global-aggressive-indent-mode 1)
   :config
   (add-to-list 'aggressive-indent-excluded-modes 'cider-repl-mode))
 
-(use-package hungry-delete
+(use-package hungry-delete ; Delete up to the first non blank character
   :ensure t
   :init (global-hungry-delete-mode))
 
 ;;; Utilities
-(use-package browse-kill-ring
+(use-package browse-kill-ring ; Explore kill-ring
   :ensure t
   :defer t
   :bind (("M-y" . browse-kill-ring)))
 
-;; Better ediff behavior
-(use-package ediff-wind
+(use-package ediff-wind ; Better ediff behavior
   :defer t
   :config
   (setq ediff-window-setup-function #'ediff-setup-windows-plain
 	ediff-split-window-function #'split-window-horizontally))
 
-(use-package multiple-cursors
+(use-package multiple-cursors ; Easily place multiple cursor in a buffer
   :ensure t
   :defer t
   :bind (("C-c m e" . mc/mark-more-like-this-extended)
@@ -230,12 +227,12 @@
 	'(:propertize (:eval (concat " " (number-to-string (mc/num-cursors))))
 		      face font-lock-warning-face)))
 
-(use-package multifiles
+(use-package multifiles ; Edit multiple files at once
   :ensure t
   :defer t
   :bind (("C-!" . mf/mirror-region-in-multifile)))
 
-(use-package macrostep
+(use-package macrostep ; Navigate through macros
   :ensure t
   :defer t
   :init
@@ -243,15 +240,13 @@
     (bind-key "C-c e" #'macrostep-expand emacs-lisp-mode-map)
     (bind-key "C-c e" #'macrostep-expand lisp-interaction-mode-map)))
 
-;; Save point position in files
-(use-package saveplace
+(use-package saveplace ; Save point position in files
   :config (setq-default save-place t))
 
-;; Auto-revert buffers of changed files
-(use-package autorevert
+(use-package autorevert ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode))
 
-(use-package elisp-slime-nav
+(use-package elisp-slime-nav ; Navigate through elisp code with M-. & M-,
   :ensure t
   :defer t
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode))
