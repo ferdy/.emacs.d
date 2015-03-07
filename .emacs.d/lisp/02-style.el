@@ -12,7 +12,7 @@
 ;;; Code:
 
 ;;; Mode line
-(use-package smart-mode-line
+(use-package smart-mode-line ; Better mode-line
   :ensure t
   :init
   (progn
@@ -77,7 +77,7 @@
                                :size 14
                                :weight 'normal)))
 
-(use-package unicode-fonts
+(use-package unicode-fonts ; Better unicode management
   :ensure t
   :init (unicode-fonts-setup))
 
@@ -89,8 +89,7 @@
 ;; Toggle all frames maximized and fullscreen
 (modify-all-frames-parameters '((fullscreen . maximized)))
 
-;; Turn off blinking cursor
-(blink-cursor-mode -1)
+(blink-cursor-mode -1) ; Turn off blinking cursor
 
 ;; Don't let the cursor go into minibuffer prompt
 (setq minibuffer-prompt-properties '(read-only
@@ -100,8 +99,7 @@
 				     face
 				     minibuffer-prompt))
 
-;; Faster echo keystrokes
-(setq echo-keystrokes 0.1)
+(setq echo-keystrokes 0.1) ; Faster echo keystrokes
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -115,15 +113,12 @@
       (remq 'process-kill-buffer-query-function
 	    kill-buffer-query-functions))
 
-;; Disable splash screen
+;; Disable startup messages
 (setq inhibit-startup-message t
-      inhibit-startup-echo-area-message t)
+      inhibit-startup-echo-area-message t
+      initial-scratch-message nil)
 
-;; Disable scratch buffer message
-(setq initial-scratch-message nil)
-
-;; Disable tooltips
-(tooltip-mode -1)
+(tooltip-mode -1) ; Disable tooltips
 
 ;; Remove *Messages* buffer
 (setq-default message-log-max nil)
@@ -136,17 +131,15 @@
 	       (and (get-buffer completions)
 		    (kill-buffer completions)))))
 
-;; Turn on column-number-mode
-(column-number-mode)
+(column-number-mode) ; Turn on column-number-mode
 
-;; Parenthesis and syntax highlighting
+;;; Parenthesis and syntax highlighting
 (use-package paren ; Highlight paired delimiters
   :init (show-paren-mode)
   :config (setq show-paren-when-point-inside-paren t
 		show-paren-when-point-in-periphery t))
 
-;; Linum+ for better line numbers
-(use-package linum+
+(use-package linum+ ; Better line numbers
   :disabled t
   :load-path "various"
   :config
@@ -210,27 +203,25 @@
           (find-alternate-file
            (concat "/sudo:root@localhost:" buffer-file-name)))))))
 
-
-
-(use-package ido-ubiquitous
+(use-package ido-ubiquitous ; Ido nearly everywhere
   :ensure t
   :init (ido-ubiquitous-mode))
 
-(use-package flx-ido
+(use-package flx-ido ; Enable flexible ido
   :ensure t
   :init (flx-ido-mode))
 
-(use-package ido-vertical-mode
+(use-package ido-vertical-mode ; Better looking Ido
   :ensure t
   :init (ido-vertical-mode)
   :config
   (setq flx-ido-use-faces nil))
 
-(use-package ido-load-library
+(use-package ido-load-library ; Use ido to load libraries
   :ensure t
   :bind ("C-c f l" . ido-load-library-find))
 
-(use-package recentf
+(use-package recentf ; Manage recent files
   :init (recentf-mode)
   :bind (("C-x C-r" . ido-recentf-open))
   :config
@@ -249,7 +240,7 @@
           recentf-exclude (list "/\\.git/.*\\'"
                                 "/elpa/.*\\'"))))
 
-(use-package uniquify
+(use-package uniquify ; Unique buffer names
   :config
   (setq uniquify-buffer-name-style 'post-forward uniquify-separator ":"))
 
@@ -290,12 +281,11 @@
     (add-hook 'window-setup-hook 'on-after-init)))
 
 ;;; Utilities
-;; Disable tabs, but given them proper width
+;; Disable tabs, but give them proper width
 (setq-default indent-tabs-mode nil
               tab-width 8)
 
-;; Make Tab complete if the line is indented
-(setq tab-always-indent 'complete)
+(setq tab-always-indent 'complete) ; Make Tab complete if the line is indented
 
 ;; Configure a reasonable fill column, indicate it in the buffer and enable
 ;; automatic filling
@@ -321,7 +311,7 @@
 (use-package elec-pair
   :init (electric-pair-mode))
 
-(use-package smex
+(use-package smex ; Better M-x
   :ensure t
   :bind (([remap execute-extended-command] . smex)
          ("M-X" . smex-major-mode-commands)))
@@ -361,19 +351,19 @@
 ;; Let apropos commands perform more extensive searches than default
 (setq apropos-do-all t)
 
-(use-package page-break-lines
+(use-package page-break-lines ; Better looking break lines
   :ensure t
   :init (global-page-break-lines-mode)
   :defer page-break-lines-modes)
 
-(use-package transpose-frame
+(use-package transpose-frame ; Easily swap frames
   :ensure t
   :bind (("C-c t t" . transpose-frame)
          ("C-c t h" . flop-frame)
          ("C-c t v" . flip-frame)))
 
 ;;; Highlightings
-(use-package diff-hl
+(use-package diff-hl ; Show changes in fringe
   :ensure t
   :defer t
   :init
@@ -386,7 +376,7 @@
     (unless (display-graphic-p)
       (diff-hl-margin-mode))))
 
-(use-package highlight-symbol
+(use-package highlight-symbol ; Highlight and jump to symbols
   :ensure t
   :defer t
   :bind
@@ -404,17 +394,17 @@
   (setq highlight-symbol-idle-delay 0.4 ; Highlight almost immediately
         highlight-symbol-on-navigation-p t)) ; Highlight immediately after navigation
 
-(use-package rainbow-mode
+(use-package rainbow-mode ; Highlight colors
   :ensure t
   :config (add-hook 'css-mode-hook #'rainbow-mode))
 
-(use-package rainbow-delimiters
+(use-package rainbow-delimiters ; Highlight parens
   :ensure t
   :defer t
   :init (dolist (hook '(text-mode-hook prog-mode-hook))
           (add-hook hook #'rainbow-delimiters-mode)))
 
-(use-package hl-line
+(use-package hl-line ; Highlight current line
   :init (global-hl-line-mode 1))
 
 (provide '02-style)
