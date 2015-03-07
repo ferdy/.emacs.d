@@ -687,6 +687,9 @@ windows easier."
     ;; No large file warning
     (setq large-file-warning-threshold nil)))
 
+(use-package interleave ; Take notes in org files while reading PDFs
+  :ensure t)
+
 (use-package paradox ; Better package manager interface
   :ensure t
   :defer t
