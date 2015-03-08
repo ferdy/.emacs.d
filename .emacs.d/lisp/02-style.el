@@ -30,8 +30,7 @@
                                "hhat"
                                "SliNav"
                                "hl-s")
-                             "\\|"))
-          sml/theme 'automatic)
+                             "\\|")))
     (sml/setup)))
 
 ;; Minor mode to hide the mode line

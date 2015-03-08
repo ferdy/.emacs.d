@@ -176,10 +176,7 @@
 
 (use-package aggressive-fill-paragraph ; Automatically fill paragrah
   :ensure t
-  :init
-  (progn
-    (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
-    (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode)))
+  :init (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode))
 
 (use-package visual-fill-column ; Wrap at fill column
   :ensure t
