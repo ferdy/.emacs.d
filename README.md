@@ -30,6 +30,7 @@ Noteworthy details
 - Editing: [iedit](https://github.com/tsdh/iedit), [easy-kill](https://github.com/leoliu/easy-kill), [expand-region](https://github.com/magnars/expand-region.el), [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
+- PDF: [pdf-tools](https://github.com/politza/pdf-tools)
 - Auto-completion: [company-mode](https://github.com/company-mode/company-mode)
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck)
 - Version control: [Magit](https://github.com/magit/magit)
