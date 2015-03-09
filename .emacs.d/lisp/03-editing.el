@@ -144,7 +144,6 @@
 
 (use-package iedit ; Edit multiple occurrences
   :ensure t
-  :defer t
   :config
   (progn
     (defun iedit-dwim (arg)

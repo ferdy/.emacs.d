@@ -148,7 +148,8 @@ prefix argument."
   :config
   (progn
     (define-key my-keys-mode-map (kbd "M-a") 'custom/backward-paragraph)
-    (define-key my-keys-mode-map (kbd "M-e") 'custom/forward-paragraph)))
+    (define-key my-keys-mode-map (kbd "M-e") 'custom/forward-paragraph)
+    (define-key my-keys-mode-map (kbd "C-,") 'iedit-dwim)))
 
 (provide '05-keybindings)
 
