@@ -187,7 +187,9 @@
           recentf-max-menu-items 15
           recentf-auto-cleanup 300
           recentf-exclude (list "/\\.git/.*\\'"
-                                "/elpa/.*\\'"))))
+                                "/elpa/.*\\'"
+                                "/tmp/"
+                                "/ssh:"))))
 
 (use-package uniquify ; Unique buffer names
   :config
