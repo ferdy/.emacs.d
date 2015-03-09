@@ -52,6 +52,7 @@ inspiration from these people:
 - [Sacha Chua](https://github.com/sachac)
 - [Bozhidar Batsov](https://github.com/bbatsov)
 - [Magnar Sveen](https://github.com/magnars)
+- [Steve Purcell](https://github.com/purcell)
 - [Oleh Krehel](https://github.com/abo-abo)
 
 Warranty
