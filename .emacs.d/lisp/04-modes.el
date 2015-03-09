@@ -128,7 +128,10 @@
           org-export-html-style-default ""
           org-export-html-style-include-default nil
           org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
-          org-default-notes-file "~/org/organizer.org")
+          org-default-notes-file "~/org/organizer.org"
+          org-agenda-start-on-weekday nil
+          org-agenda-include-diary t
+          org-agenda-use-time-grid t)
 
     (add-hook 'org-mode-hook #'visual-line-mode)
 
