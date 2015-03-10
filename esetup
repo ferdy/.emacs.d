@@ -43,7 +43,7 @@ clojure_setup()
 {
     echo "
 configuring Clojure..."
-    sudo apt-get -y install --no-install-recommends openjdk-7-jre openjdk-7-jre
+    sudo apt-get -y install --no-install-recommends openjdk-8-jre
     echo "
 getting Lein..."
     if [ ! -d "/home/manuel/bin" ]; then
