@@ -380,6 +380,7 @@ windows easier."
 	  ;; Use IDO for completion
 	  magit-completing-read-function #'magit-ido-completing-read
 	  magit-auto-revert-mode-lighter "")
+
     ;; Auto-revert files after Magit operations
     (magit-auto-revert-mode)
 
@@ -396,7 +397,18 @@ windows easier."
       (custom/kill-buffers "^\\*magit")
       (jump-to-register :magit-fullscreen))
 
-    (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
+    (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+
+    ;; C-u M-x magit-status prompts a list of known repositories
+    (setq magit-repo-dirs
+          (mapcar
+           (lambda (dir)
+             (substring dir 0 -1))
+           (cl-remove-if-not
+            (lambda (project)
+              (unless (file-remote-p project)
+                (file-directory-p (concat project "/.git/"))))
+            (projectile-relevant-known-projects))))))
 
 (use-package git-commit-mode ; Git commit message mode
   :ensure t
