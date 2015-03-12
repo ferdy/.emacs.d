@@ -884,7 +884,7 @@ windows easier."
     (define-key flyspell-mode-map "\M-\t" nil)))
 
 ;; Requires: wordnet
-(use-package synosaurus
+(use-package synosaurus ; An extensible thesaurus
   :ensure t
   :defer t
   :bind (("C-c s l" . synosaurus-lookup)
