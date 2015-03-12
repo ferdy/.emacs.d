@@ -761,6 +761,10 @@ windows easier."
   :ensure t
   :defer t)
 
+(use-package lice ; License and header template
+  :ensure t
+  :defer t)
+
 ;;; Project Management
 (use-package projectile
   :ensure t
