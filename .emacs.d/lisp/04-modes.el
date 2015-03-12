@@ -848,7 +848,7 @@ windows easier."
   :defer t
   :init (with-eval-after-load 'flycheck (flycheck-package-setup)))
 
-;;; Spell checking
+;;; Spell checking and dictionaries
 ;; Requires: aspell, aspell-in, aspell-en
 (use-package ispell
   :defer t
@@ -882,6 +882,13 @@ windows easier."
 
     ;; Free C-M-i for completion
     (define-key flyspell-mode-map "\M-\t" nil)))
+
+;; Requires: wordnet
+(use-package synosaurus
+  :ensure t
+  :defer t
+  :bind (("C-c s l" . synosaurus-lookup)
+         ("C-c s r" . synosaurus-choose-and-replace)))
 
 ;;; Programming
 ;;; Clojure
