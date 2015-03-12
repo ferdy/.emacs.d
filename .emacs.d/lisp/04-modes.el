@@ -555,7 +555,10 @@ windows easier."
   :config
   (progn
     ;; Use Pandoc to process Markdown
-    (setq markdown-command "pandoc -s -f markdown -t html5")))
+    (setq markdown-command "pandoc -s -f markdown -t html5")
+
+    ;; Use visual-line-mode
+    (add-hook 'markdown-mode-hook #'visual-line-mode)))
 
 ;; Requires: pandoc
 (use-package pandoc-mode
