@@ -129,6 +129,10 @@
          ("M-Z" . zop-up-to-char)))
 
 ;;; Editing
+(use-package undo-tree ; Show buffer changes as a tree
+  :ensure t
+  :init (global-undo-tree-mode))
+
 (use-package delsel ; Delete the selection instead of insert
   :defer t
   :init (delete-selection-mode))
@@ -182,9 +186,7 @@
 
 (use-package visual-fill-column ; Wrap at fill column
   :ensure t
-  :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode)
-  ;; Keep the fringe
-  :config (setq visual-fill-column-disable-fringe nil))
+  :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode))
 
 (use-package aggressive-indent ; Automatically indent code
   :ensure t

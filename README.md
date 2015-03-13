@@ -22,11 +22,10 @@ details.
 
 Noteworthy details
 ------------------
-- Theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
-- Font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
+- Default theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
+- Default font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line)
-- Search: [ag](https://github.com/Wilfred/ag.el)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
 - PDF: [pdf-tools](https://github.com/politza/pdf-tools)

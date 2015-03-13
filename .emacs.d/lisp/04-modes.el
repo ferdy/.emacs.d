@@ -133,6 +133,7 @@
           org-agenda-include-diary t
           org-agenda-use-time-grid t)
 
+    ;; Use visual-line-mode
     (add-hook 'org-mode-hook #'visual-line-mode)
 
     ;; Update parent nodes when child is removed
@@ -683,10 +684,6 @@ windows easier."
     (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
 
 ;;; Utilities
-(use-package undo-tree ; Show buffer changes as a tree
-  :ensure t
-  :init (global-undo-tree-mode))
-
 (use-package pdf-tools ; Better PDF support
   :defer t
   :init (pdf-tools-install)
