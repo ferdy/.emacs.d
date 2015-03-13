@@ -313,9 +313,18 @@
          ("C-c t h" . flop-frame)
          ("C-c t v" . flip-frame)))
 
+(use-package random-splash-image ; Pick an image from ~/.emacs.d/splash-images
+  :ensure t
+  :init
+  (progn
+    (setq random-splash-image-dir
+          (concat (getenv "HOME") "/.emacs.d/splash-images"))
+    (random-splash-image-set)))
+
 ;;; Highlightings
 (use-package diff-hl ; Show changes in fringe
   :ensure t
+  :defer t
   :init
   (progn
     ;; Highlight changes to the current file in the fringe
