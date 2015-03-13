@@ -316,7 +316,6 @@
 ;;; Highlightings
 (use-package diff-hl ; Show changes in fringe
   :ensure t
-  :defer t
   :init
   (progn
     ;; Highlight changes to the current file in the fringe

@@ -612,7 +612,8 @@ windows easier."
 	    ("http://feeds.feedburner.com/disclojure?format=xml" clojure)
 	    ("http://flashstrap.blogspot.com/feeds/posts/default" music)
             ("http://jazzfromitaly.blogspot.it/feeds/posts/default" music)
-            ("http://www.wumingfoundation.com/giap/?feed=rss2" book)))
+            ("http://www.wumingfoundation.com/giap/?feed=rss2" book)
+            ("https://cavallette.noblogs.org/feed" security)))
 
     ;; Elfeed: mark all feed as read
     (require 'elfeed-search)
