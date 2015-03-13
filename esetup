@@ -134,6 +134,15 @@ configuring flyspell..."
 ... done"
 }
 
+synosaurus_setup()
+{
+    echo "
+configuring synosaurus..."
+    sudo apt-get -y install --no-install-recommends wordnet
+    echo "
+... done"
+}
+
 font_setup()
 {
     echo "
@@ -174,6 +183,7 @@ latex_setup
 pandoc_setup
 pdftools_setup
 flyspell_setup
+synosaurus_setup
 font_setup
 
 echo "
