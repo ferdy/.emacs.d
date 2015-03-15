@@ -17,6 +17,7 @@
                     :height 130
                     :weight 'normal
                     :width 'normal)
+
 ;; Set font fallback
 (when (functionp 'set-fontset-font)
   (set-fontset-font "fontset-default"
@@ -25,14 +26,6 @@
                                :width 'normal
                                :size 14
                                :weight 'normal)))
-
-(use-package unicode-fonts ; Better unicode management
-  :ensure t
-  :init (unicode-fonts-setup))
-
-(use-package list-unicode-display
-  :ensure t
-  :defer t)
 
 ;;; Interface
 ;; Toggle all frames maximized and fullscreen
@@ -264,7 +257,7 @@
 
 (use-package smex ; Better M-x
   :ensure t
-  :bind (([remap execute-extended-command] . smex)
+  :bind (("M-x" . smex)
          ("M-X" . smex-major-mode-commands)))
 
 (use-package imenu

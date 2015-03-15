@@ -144,12 +144,12 @@ prefix argument."
 ;; Minor mode for 'override' keybindings
 (use-package my-keys-mode
   :load-path "various"
-  :init (global-my-keys-mode 1)
   :config
   (progn
     (define-key my-keys-mode-map (kbd "M-a") 'custom/backward-paragraph)
     (define-key my-keys-mode-map (kbd "M-e") 'custom/forward-paragraph)
-    (define-key my-keys-mode-map (kbd "C-,") 'iedit-dwim)))
+    (define-key my-keys-mode-map (kbd "C-,") 'iedit-dwim)
+    (global-my-keys-mode)))
 
 (provide '05-keybindings)
 

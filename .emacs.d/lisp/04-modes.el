@@ -652,7 +652,6 @@ windows easier."
 (use-package company
   :ensure t
   :defer t
-  :idle (global-company-mode)
   :config
   (progn
     ;; Use Company for completion
@@ -660,7 +659,9 @@ windows easier."
 
     (setq company-tooltip-align-annotations t
 	  ;; Easy navigation to candidates with M-<n>
-	  company-show-numbers t)))
+	  company-show-numbers t)
+
+    (global-company-mode)))
 
 (use-package company-auctex
   :ensure t
@@ -767,9 +768,6 @@ windows easier."
 (use-package projectile
   :ensure t
   :defer t
-  :init (projectile-global-mode)
-  :idle (projectile-cleanup-known-projects)
-  :idle-priority 10
   :config
   (progn
     (setq projectile-completion-system 'ido
@@ -778,7 +776,10 @@ windows easier."
     ;; Replace Ack with Ag in Projectile commander
     (def-projectile-commander-method ?a
       "Find ag on project."
-      (call-interactively 'projectile-ag))))
+      (call-interactively 'projectile-ag))
+
+    (projectile-global-mode)
+    (projectile-cleanup-known-projects)))
 
 (use-package ibuffer
   :bind (("C-x C-b" . ibuffer))
