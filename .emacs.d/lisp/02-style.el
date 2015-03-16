@@ -257,7 +257,7 @@
          ("M-X" . smex-major-mode-commands)))
 
 (use-package imenu
-  :defer t
+  :defer 5
   :bind (("M-i" . imenu)))
 
 (use-package imenu-anywhere
@@ -265,7 +265,7 @@
   :bind (("M-I" . imenu-anywhere)))
 
 (use-package calendar
-  :defer t
+  :defer 5
   :config (setq calendar-week-start-day 1)) ; In Europe we start on Monday
 
 (use-package time
@@ -279,7 +279,7 @@
 				  ("Asia/Tokyo" "Tokyo"))))
 
 (use-package info
-  :defer t
+  :defer 5
   :config
   ;; Fix the stupid `Info-quoted' face. Courier is an abysmal face, so go back
   ;; to the default face.
@@ -291,8 +291,8 @@
 
 (use-package page-break-lines ; Better looking break lines
   :ensure t
-  :init (global-page-break-lines-mode)
-  :defer page-break-lines-modes)
+  :defer 5
+  :init (global-page-break-lines-mode))
 
 (use-package transpose-frame ; Easily swap frames
   :ensure t
@@ -303,7 +303,7 @@
 ;;; Highlightings
 (use-package diff-hl ; Show changes in fringe
   :ensure t
-  :defer t
+  :defer 5
   :init (progn
           ;; Highlight changes to the current file in the fringe
           (global-diff-hl-mode)

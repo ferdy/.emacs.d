@@ -43,7 +43,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
 
 ;; Add el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")

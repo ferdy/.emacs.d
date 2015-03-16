@@ -92,7 +92,7 @@
   :ensure t)
 
 (use-package doc-view
-  :defer t
+  :defer 5
   :config (setq doc-view-continuous t))
 
 (setq view-read-only t) ; View read-only
@@ -100,7 +100,7 @@
 ;;; Translation
 (use-package po-mode ; Manage .po files
   :load-path "el-get/po-mode"
-  :defer t
+  :defer 5
   :init (setq auto-mode-alist
               (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist)))
 
@@ -212,19 +212,19 @@ Inside a code-block, simply calls `self-insert-command'."
 ;; Org2blog
 (use-package metaweblog
   :ensure t
-  :defer t)
+  :defer 5)
 
 (use-package xml-rpc
   :ensure t
-  :defer t)
+  :defer 5)
 
 (use-package htmlize
   :ensure t
-  :defer t)
+  :defer 5)
 
 (use-package org2blog
   :ensure t
-  :defer t
+  :defer 5
   :init (require 'org2blog-autoloads)
   :config (progn
             (setq org2blog/wp-use-sourcecode-shortcode t
@@ -239,7 +239,7 @@ Inside a code-block, simply calls `self-insert-command'."
 
 (use-package org-tree-slide ; Slides via org-mode
   :ensure t
-  :defer t
+  :defer 5
   :config
   (progn
     (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-mode)
@@ -283,7 +283,7 @@ windows easier."
 	(erase-buffer)))
 
     (setq eshell-cmpl-cycle-completions nil
-	  eshell-save-history-on-exit t)
+          eshell-save-history-on-exit t)
 
     ;; Run scrips from current working on remote system
     (defadvice eshell-gather-process-output
@@ -292,16 +292,16 @@ windows easier."
       (setq command (file-truename command)))
 
     (add-hook 'eshell-mode-hook
-	      (lambda ()
-		(local-set-key (kbd "C-c h")
-			       (lambda ()
-				 (interactive)
-				 (insert
-				  (ido-completing-read
+              (lambda ()
+                (local-set-key (kbd "C-c h")
+                               (lambda ()
+                                 (interactive)
+                                 (insert
+                                  (ido-completing-read
                                    "Eshell history: "
                                    (delete-dups
                                     (ring-elements eshell-history-ring))))))
-		(local-set-key (kbd "C-c C-h") 'eshell-list-history)))
+                (local-set-key (kbd "C-c C-h") 'eshell-list-history)))
 
     ;; Disable hl-line-mode in eshell
     (add-hook 'eshell-mode-hook (lambda ()
@@ -554,7 +554,7 @@ windows easier."
 ;; Requires: pandoc
 (use-package pandoc-mode
   :ensure t
-  :defer t
+  :defer 5
   :config (progn
             (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
             (setq org-pandoc-output-format 'odt)))
@@ -574,7 +574,7 @@ windows easier."
 ;; (setq variable "nickname")
 ;; (setq variable "password")
 (use-package erc ; IRC client
-  :defer t
+  :defer 5
   :config
   (progn
     (load "~/.ercpass")
@@ -618,17 +618,17 @@ windows easier."
 ;; Browse StackExchange from Emacs
 (use-package sx
   :ensure t
-  :defer t)
+  :defer 5)
 
 (use-package sx-question-mode
   :ensure sx
-  :defer t
+  :defer 5
   ;; Display questions in the same window
   :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
 
 (use-package sx-compose
   :ensure sx
-  :defer t
+  :defer 5
   :config
   (progn
     ;; Don't fill in SX questions/answers, and use visual lines instead. Plays
@@ -710,7 +710,7 @@ windows easier."
   (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-display-if-noquery))
 
 (use-package bug-reference
-  :defer t
+  :defer 5
   :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
                (add-hook 'text-mode-hook #'bug-reference-mode)))
 
@@ -722,15 +722,15 @@ windows easier."
 (use-package emacsshot ; Take a screenshot from within Emacs
   :ensure t
   :bind (("<print>" . emacsshot-snap-frame))
-  :defer t)
+  :defer 5)
 
 (use-package camcorder ; Record movements from within Emacs
   :ensure t
-  :defer t
+  :defer 5
   :init (setq camcorder-window-id-offset -2))
 
 (use-package archive-mode
-  :defer t
+  :defer 5
   :config (add-to-list ; Enable .cbr files support
            'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
 
@@ -746,11 +746,11 @@ windows easier."
 
 (use-package csv-mode ; Better .csv files editing
   :ensure t
-  :defer t)
+  :defer 5)
 
 (use-package lice ; License and header template
   :ensure t
-  :defer t)
+  :defer 5)
 
 ;;; Project Management
 (use-package projectile
@@ -915,13 +915,13 @@ windows easier."
 
 (use-package latest-clojure-libraries ; Fetch latest version of library at point
   :ensure t
-  :defer t)
+  :defer 5)
 
 ;;; Scheme
 ;; Requires: guile-2.0
 (use-package geiser
   :ensure t
-  :defer t
+  :defer 5
   :init (progn (setq scheme-program-name "guile")
                (setq geiser-impl-installed-implementations '(guile))))
 
@@ -930,13 +930,13 @@ windows easier."
 ;; cl-ppcre, autoconf, texinfo, cl-swank
 (use-package slime
   :ensure t
-  :defer t
+  :defer 5
   :init (setq inferior-lisp-program "/usr/bin/sbcl")
   :config (setq slime-contribs '(slime-fancy)))
 
 (use-package slime-company
   :ensure t
-  :defer t
+  :defer 5
   :init (slime-setup '(slime-company)))
 
 ;;; Web

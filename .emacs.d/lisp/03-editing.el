@@ -202,7 +202,7 @@
   :bind (("M-y" . browse-kill-ring)))
 
 (use-package ediff-wind ; Better ediff behavior
-  :defer t
+  :defer 5
   :config (setq ediff-window-setup-function #'ediff-setup-windows-plain
                 ediff-split-window-function #'split-window-horizontally))
 
@@ -226,12 +226,12 @@
 
 (use-package multifiles ; Edit multiple files at once
   :ensure t
-  :defer t
+  :defer 5
   :bind (("C-!" . mf/mirror-region-in-multifile)))
 
 (use-package macrostep ; Navigate through macros
   :ensure t
-  :defer t
+  :defer 5
   :init (with-eval-after-load 'lisp-mode
           (bind-key "C-c e" #'macrostep-expand emacs-lisp-mode-map)
           (bind-key "C-c e" #'macrostep-expand lisp-interaction-mode-map)))
