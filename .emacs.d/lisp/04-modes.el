@@ -782,7 +782,7 @@ windows easier."
     (projectile-global-mode)))
 
 (use-package ibuffer
-  :bind (("<remap> <list-buffers>" . ibuffer))
+  :bind (([remap list-buffers] . ibuffer))
   :config
   (progn
     (setq ibuffer-formats
