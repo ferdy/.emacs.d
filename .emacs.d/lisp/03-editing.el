@@ -89,9 +89,8 @@
 (use-package ag ; Fast search engine
   :ensure t
   :defer t
-  :config
-  (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
-	ag-highlight-search t))
+  :config (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
+                ag-highlight-search t))
 
 (use-package wgrep
   :ensure t
@@ -116,12 +115,11 @@
 (use-package anzu ; Show search results number in mode-line
   :ensure t
   :init (global-anzu-mode)
-  :config
-  (progn
-    (setq anzu-cons-mode-line-p nil
-          anzu-mode-lighter "")
-    (setcar (cdr (assq 'isearch-mode minor-mode-alist))
-            '(:eval (anzu--update-mode-line)))))
+  :config (progn
+            (setq anzu-cons-mode-line-p nil
+                  anzu-mode-lighter "")
+            (setcar (cdr (assq 'isearch-mode minor-mode-alist))
+                    '(:eval (anzu--update-mode-line)))))
 
 (use-package zop-to-char ; Better zap-to-char
   :ensure t
@@ -179,10 +177,9 @@
 
 (use-package aggressive-fill-paragraph ; Automatically fill paragrah
   :ensure t
-  :init
-  (progn
-    (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
-    (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode)))
+  :init (progn
+          (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
+          (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode)))
 
 (use-package visual-fill-column ; Wrap at fill column
   :ensure t
@@ -191,8 +188,8 @@
 (use-package aggressive-indent ; Automatically indent code
   :ensure t
   :init (global-aggressive-indent-mode 1)
-  :config
-  (add-to-list 'aggressive-indent-excluded-modes 'cider-repl-mode))
+  :config (add-to-list 'aggressive-indent-excluded-modes
+                       'cider-repl-mode))
 
 (use-package hungry-delete ; Delete up to the first non blank character
   :ensure t
@@ -206,9 +203,8 @@
 
 (use-package ediff-wind ; Better ediff behavior
   :defer t
-  :config
-  (setq ediff-window-setup-function #'ediff-setup-windows-plain
-	ediff-split-window-function #'split-window-horizontally))
+  :config (setq ediff-window-setup-function #'ediff-setup-windows-plain
+                ediff-split-window-function #'split-window-horizontally))
 
 (use-package multiple-cursors ; Easily place multiple cursor in a buffer
   :ensure t
@@ -236,10 +232,9 @@
 (use-package macrostep ; Navigate through macros
   :ensure t
   :defer t
-  :init
-  (with-eval-after-load 'lisp-mode
-    (bind-key "C-c e" #'macrostep-expand emacs-lisp-mode-map)
-    (bind-key "C-c e" #'macrostep-expand lisp-interaction-mode-map)))
+  :init (with-eval-after-load 'lisp-mode
+          (bind-key "C-c e" #'macrostep-expand emacs-lisp-mode-map)
+          (bind-key "C-c e" #'macrostep-expand lisp-interaction-mode-map)))
 
 (use-package saveplace ; Save point position in files
   :config (setq-default save-place t))
@@ -253,11 +248,10 @@
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode))
 
 (use-package compile
-  :config
-  (progn
-    (setq compilation-ask-about-save nil
-          compilation-always-kill t
-          compilation-scroll-output 'first-error)))
+  :config (progn
+            (setq compilation-ask-about-save nil
+                  compilation-always-kill t
+                  compilation-scroll-output 'first-error)))
 
 (provide '03-editing)
 

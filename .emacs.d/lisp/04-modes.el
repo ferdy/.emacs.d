@@ -82,21 +82,18 @@
 
 (use-package dired+ ; Extend dired
   :ensure t
-  :config
-  (progn
-    ;; Reuse buffer for directories
-    (diredp-toggle-find-file-reuse-dir 1)
-    (setq diredp-hide-details-initially-flag nil)
-    (setq diredp-hide-details-propagate-flag nil)))
+  :config (progn
+            ;; Reuse buffer for directories
+            (diredp-toggle-find-file-reuse-dir 1)
+            (setq diredp-hide-details-initially-flag nil)
+            (setq diredp-hide-details-propagate-flag nil)))
 
 (use-package bookmark+ ; Better bookmarks
   :ensure t)
 
 (use-package doc-view
   :defer t
-  :config
-  (progn
-    (setq doc-view-continuous t)))
+  :config (setq doc-view-continuous t))
 
 (setq view-read-only t) ; View read-only
 
@@ -104,10 +101,8 @@
 (use-package po-mode ; Manage .po files
   :load-path "el-get/po-mode"
   :defer t
-  :init
-  (progn
-    (setq auto-mode-alist
-	  (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist))))
+  :init (setq auto-mode-alist
+              (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist)))
 
 ;;; Org
 (use-package org
@@ -231,17 +226,16 @@ Inside a code-block, simply calls `self-insert-command'."
   :ensure t
   :defer t
   :init (require 'org2blog-autoloads)
-  :config
-  (progn
-    (setq org2blog/wp-use-sourcecode-shortcode t
-	  org2blog/wp-sourcecode-langs
-	  '("bash" "javascript" "php" "text"
-	    "xml" "sh" "elisp" "lisp" "lua")
-	  org2blog/wp-blog-alist
-	  '(("informatica.boccaperta.com"
+  :config (progn
+            (setq org2blog/wp-use-sourcecode-shortcode t
+                  org2blog/wp-sourcecode-langs
+                  '("bash" "javascript" "php" "text"
+                    "xml" "sh" "elisp" "lisp" "lua")
+                  org2blog/wp-blog-alist
+                  '(("informatica.boccaperta.com"
 
-	     :url "http://informatica.boccaperta.com/xmlrpc.php"
-	     :username "manuel")))))
+                     :url "http://informatica.boccaperta.com/xmlrpc.php"
+                     :username "manuel")))))
 
 (use-package org-tree-slide ; Slides via org-mode
   :ensure t
@@ -473,10 +467,8 @@ windows easier."
 (use-package tex-style
   :ensure auctex
   :defer t
-  :config
-  ;; Enable support for csquotes
-  (setq LaTeX-csquotes-close-quote "}"
-	LaTeX-csquotes-open-quote "\\enquote{"))
+  :config (setq LaTeX-csquotes-close-quote "}" ; Enable support for csquotes
+                LaTeX-csquotes-open-quote "\\enquote{"))
 
 (use-package tex-fold
   :ensure auctex
@@ -518,12 +510,11 @@ windows easier."
 
 (use-package bibtex
   :defer t
-  :config
-  (progn
-    ;; Run prog mode hooks for bibtex
-    (add-hook 'bibtex-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
-    ;; Use a modern BibTeX dialect
-    (bibtex-set-dialect 'biblatex)))
+  :config (progn
+            ;; Run prog mode hooks for bibtex
+            (add-hook 'bibtex-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+            ;; Use a modern BibTeX dialect
+            (bibtex-set-dialect 'biblatex)))
 
 (use-package reftex
   :defer t
@@ -553,22 +544,20 @@ windows easier."
 (use-package markdown-mode
   :ensure t
   :defer t
-  :config
-  (progn
-    ;; Use Pandoc to process Markdown
-    (setq markdown-command "pandoc -s -f markdown -t html5")
+  :config (progn
+            ;; Use Pandoc to process Markdown
+            (setq markdown-command "pandoc -s -f markdown -t html5")
 
-    ;; Use visual-line-mode
-    (add-hook 'markdown-mode-hook #'visual-line-mode)))
+            ;; Use visual-line-mode
+            (add-hook 'markdown-mode-hook #'visual-line-mode)))
 
 ;; Requires: pandoc
 (use-package pandoc-mode
   :ensure t
   :defer t
-  :config
-  (progn
-    (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-    (setq org-pandoc-output-format 'odt)))
+  :config (progn
+            (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+            (setq org-pandoc-output-format 'odt)))
 
 ;;; Remote editing
 (use-package tramp
@@ -592,10 +581,9 @@ windows easier."
     (require 'erc-services)
     (erc-services-mode 1)
 
-    (setq erc-nick gp-nick)
-    (setq erc-prompt-for-nickserv-password nil)
-    (setq erc-nickserve-passwords
-          `((freenode (,gp-nick . ,gp-pass))))
+    (setq erc-nick gp-nick
+          erc-prompt-for-nickserv-password nil
+          erc-nickserve-passwords `((freenode (,gp-nick . ,gp-pass))))
 
     ;; Disable hl-line-mode in erc
     (add-hook 'erc-mode-hook (lambda ()
@@ -839,8 +827,9 @@ windows easier."
 (use-package flycheck-pos-tip ; Tooltip at point for flycheck messages
   :ensure t
   :defer t
-  :init
-  (setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
+  :init (with-eval-after-load 'flycheck
+          (setq flycheck-display-errors-function
+                #'flycheck-pos-tip-error-messages)))
 
 (use-package flycheck-package ; Flycheck for Emacs package development
   :ensure t
@@ -895,16 +884,13 @@ windows easier."
 (use-package cider
   :ensure t
   :defer t
-  :config
-  (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
+  :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
 
 (use-package clojure-mode
   :ensure t
   :defer t
-  :init
-  (progn
-    (add-hook 'clojure-mode-hook #'cider-mode)
-    (add-hook 'clojure-mode-hook #'subword-mode)))
+  :init (progn (add-hook 'clojure-mode-hook #'cider-mode)
+               (add-hook 'clojure-mode-hook #'subword-mode)))
 
 (use-package clojure-mode-extra-font-locking
   :ensure clojure-mode
@@ -936,10 +922,8 @@ windows easier."
 (use-package geiser
   :ensure t
   :defer t
-  :init
-  (progn
-    (setq scheme-program-name "guile")
-    (setq geiser-impl-installed-implementations '(guile))))
+  :init (progn (setq scheme-program-name "guile")
+               (setq geiser-impl-installed-implementations '(guile))))
 
 ;;; Common Lisp
 ;; Requires: sbcl, slime, sbcl-doc, cl-clx-sbcl,
@@ -959,8 +943,7 @@ windows easier."
 (use-package web-mode
   :ensure t
   :defer t
-  :config
-  (setq web-mode-markup-indent-offset 2))
+  :config (setq web-mode-markup-indent-offset 2))
 
 (use-package js2-mode ; Better JavaScript support
   :ensure t
@@ -969,8 +952,8 @@ windows easier."
 
 (use-package css-mode
   :defer t
-  :config
-  (add-hook 'css-mode-hook (lambda () (run-hooks 'prog-mode-hook))))
+  :config (add-hook 'css-mode-hook
+                    (lambda () (run-hooks 'prog-mode-hook))))
 
 (use-package css-eldoc
   :ensure t

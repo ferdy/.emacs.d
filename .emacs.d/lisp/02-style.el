@@ -84,58 +84,55 @@
 (use-package linum+ ; Better line numbers
   :disabled t
   :load-path "various"
-  :config
-  (progn
-    (setq linum+-dynamic-format " %%%dd")
+  :config (progn
+            (setq linum+-dynamic-format " %%%dd")
 
-    ;; Linum+ resets linum-format to "smart" when it's loaded, hence we have to
-    ;; use a eval-after-nload hook to set it to "dynamic".
-    (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))))
+            ;; Linum+ resets linum-format to "smart" when it's loaded, we have
+            ;; to use a eval-after-nload hook to set it to "dynamic".
+            (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))))
 
 ;;; Buffer navigation
 (use-package ido
-  :init (progn
-	  (ido-mode)
-	  (ido-everywhere))
+  :init (progn (ido-mode) (ido-everywhere))
   :config
   (progn
     (setq ido-enable-flex-matching t ; Match characters if string doesn't match
-	  ido-create-new-buffer 'always ; Create a new buffer if nothing matches
-	  ido-use-filename-at-point 'guess
-	  ;; Visit buffers and files in the selected window
-	  ido-default-file-method 'selected-window
-	  ido-default-buffer-method 'selected-window
-	  ido-context-switch-command nil
-	  ido-cur-item nil
-	  ido-default-item nil
-	  ido-cur-list nil)
+          ido-create-new-buffer 'always ; Create a new buffer if nothing matches
+          ido-use-filename-at-point 'guess
+          ;; Visit buffers and files in the selected window
+          ido-default-file-method 'selected-window
+          ido-default-buffer-method 'selected-window
+          ido-context-switch-command nil
+          ido-cur-item nil
+          ido-default-item nil
+          ido-cur-list nil)
 
     ;; Ido bury buffer
     (add-hook
      'ido-setup-hook
      (defun custom/define-ido-bury-key ()
        (define-key ido-completion-map
-	 (kbd "C-b") 'custom/ido-bury-buffer-at-head)))
+         (kbd "C-b") 'custom/ido-bury-buffer-at-head)))
 
     (defun custom/ido-bury-buffer-at-head ()
       "Bury the buffer at the head of 'ido-matches'."
       (interactive)
       (let ((enable-recursive-minibuffers t)
-	    (buf (ido-name (car ido-matches)))
-	    (nextbuf (cadr ido-matches)))
-	(when (get-buffer buf)
-	  ;; If next match names a buffer use the buffer object;
-	  ;; buffer name may be changed by packages such as
-	  ;; uniquify.
-	  (when (and nextbuf (get-buffer nextbuf))
-	    (setq nextbuf (get-buffer nextbuf)))
-	  (bury-buffer buf)
-	  (if (bufferp nextbuf)
-	      (setq nextbuf (buffer-name nextbuf)))
-	  (setq ido-default-item nextbuf
-		ido-text-init ido-text
-		ido-exit 'refresh)
-	  (exit-minibuffer)))
+            (buf (ido-name (car ido-matches)))
+            (nextbuf (cadr ido-matches)))
+        (when (get-buffer buf)
+          ;; If next match names a buffer use the buffer object;
+          ;; buffer name may be changed by packages such as
+          ;; uniquify.
+          (when (and nextbuf (get-buffer nextbuf))
+            (setq nextbuf (get-buffer nextbuf)))
+          (bury-buffer buf)
+          (if (bufferp nextbuf)
+              (setq nextbuf (buffer-name nextbuf)))
+          (setq ido-default-item nextbuf
+                ido-text-init ido-text
+                ido-exit 'refresh)
+          (exit-minibuffer)))
 
       ;; Find files with sudo
       (defadvice ido-find-file (after find-file-sudo activate)
@@ -156,8 +153,7 @@
 (use-package ido-vertical-mode ; Better looking Ido
   :ensure t
   :init (ido-vertical-mode)
-  :config
-  (setq flx-ido-use-faces nil))
+  :config (setq flx-ido-use-faces nil))
 
 (use-package ido-load-library ; Use ido to load libraries
   :ensure t
@@ -185,8 +181,8 @@
                                 "/ssh:"))))
 
 (use-package uniquify ; Unique buffer names
-  :config
-  (setq uniquify-buffer-name-style 'post-forward uniquify-separator ":"))
+  :config (setq uniquify-buffer-name-style
+                'post-forward uniquify-separator ":"))
 
 ;;; Theme
 (use-package solarized
@@ -270,9 +266,7 @@
 
 (use-package calendar
   :defer t
-  :config
-  ;; In Europe we start on Monday
-  (setq calendar-week-start-day 1))
+  :config (setq calendar-week-start-day 1)) ; In Europe we start on Monday
 
 (use-package time
   :bind (("C-c u i" . emacs-init-time)
@@ -310,24 +304,22 @@
 (use-package diff-hl ; Show changes in fringe
   :ensure t
   :defer t
-  :init
-  (progn
-    ;; Highlight changes to the current file in the fringe
-    (global-diff-hl-mode)
-    ;; Highlight changed files in the fringe of Dired
-    (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
-    ;; Fall back to the display margin, if the fringe is unavailable
-    (unless (display-graphic-p)
-      (diff-hl-margin-mode))))
+  :init (progn
+          ;; Highlight changes to the current file in the fringe
+          (global-diff-hl-mode)
+          ;; Highlight changed files in the fringe of Dired
+          (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+          ;; Fall back to the display margin, if the fringe is unavailable
+          (unless (display-graphic-p)
+            (diff-hl-margin-mode))))
 
 (use-package highlight-symbol ; Highlight and jump to symbols
   :ensure t
   :defer t
-  :bind
-  (("C-c s %" . highlight-symbol-query-replace)
-   ("C-c s n" . highlight-symbol-next-in-defun)
-   ("C-c s o" . highlight-symbol-occur)
-   ("C-c s p" . highlight-symbol-prev-in-defun))
+  :bind (("C-c s %" . highlight-symbol-query-replace)
+         ("C-c s n" . highlight-symbol-next-in-defun)
+         ("C-c s o" . highlight-symbol-occur)
+         ("C-c s p" . highlight-symbol-prev-in-defun))
   :init
   (progn
     ;; Navigate occurrences of the symbol under point with M-n and M-p
@@ -354,24 +346,23 @@
 ;;; Mode line
 (use-package smart-mode-line ; Better mode-line
   :ensure t
-  :init
-  (progn
-    ;; Hide some modes
-    (require 'rich-minority)
-    (setq rm-blacklist
-          (format "^ \\(%s\\)$"
-                  (mapconcat #'identity
-                             '("FlyC.*"
-                               "Projectile.*"
-                               "PgLn"
-                               "company"
-                               "Undo-Tree"
-                               "Wrap"
-                               "hhat"
-                               "SliNav"
-                               "hl-s")
-                             "\\|")))
-    (sml/setup)))
+  :init (progn
+          ;; Hide some modes
+          (require 'rich-minority)
+          (setq rm-blacklist
+                (format "^ \\(%s\\)$"
+                        (mapconcat #'identity
+                                   '("FlyC.*"
+                                     "Projectile.*"
+                                     "PgLn"
+                                     "company"
+                                     "Undo-Tree"
+                                     "Wrap"
+                                     "hhat"
+                                     "SliNav"
+                                     "hl-s")
+                                   "\\|")))
+          (sml/setup)))
 
 ;; Minor mode to hide the mode line
 (defvar-local hidden-mode-line-mode nil)
