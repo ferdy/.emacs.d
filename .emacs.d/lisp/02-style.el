@@ -257,7 +257,7 @@
 
 (use-package smex ; Better M-x
   :ensure t
-  :bind (("M-x" . smex)
+  :bind (("<remap> <execute-extend-command>" . smex)
          ("M-X" . smex-major-mode-commands)))
 
 (use-package imenu

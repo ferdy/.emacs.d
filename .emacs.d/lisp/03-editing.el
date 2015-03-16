@@ -143,8 +143,8 @@
 (use-package easy-kill ; Better kill text
   :ensure t
   :defer t
-  :bind (([remap kill-ring-save] . easy-kill)
-	 ([remap mark-sexp] . easy-mark)))
+  :bind (("<remap> <kill-ring-save>" . easy-kill)
+         ("<remap> <mark-sexp>" . easy-mark)))
 
 (use-package iedit ; Edit multiple occurrences
   :ensure t

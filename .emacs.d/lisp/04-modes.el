@@ -655,11 +655,11 @@ windows easier."
   :config
   (progn
     ;; Use Company for completion
-    (bind-key [remap completion-at-point] #'company-complete company-mode-map)
+    (bind-key "<remap> <completion-at-point>" #'company-complete company-mode-map)
 
     (setq company-tooltip-align-annotations t
-	  ;; Easy navigation to candidates with M-<n>
-	  company-show-numbers t)
+          ;; Easy navigation to candidates with M-<n>
+          company-show-numbers t)
 
     (global-company-mode)))
 
@@ -767,7 +767,6 @@ windows easier."
 ;;; Project Management
 (use-package projectile
   :ensure t
-  :defer t
   :config
   (progn
     (setq projectile-completion-system 'ido
@@ -778,11 +777,12 @@ windows easier."
       "Find ag on project."
       (call-interactively 'projectile-ag))
 
-    (projectile-global-mode)
-    (projectile-cleanup-known-projects)))
+    (projectile-cleanup-known-projects)
+
+    (projectile-global-mode)))
 
 (use-package ibuffer
-  :bind (("C-x C-b" . ibuffer))
+  :bind (("<remap> <list-buffers>" . ibuffer))
   :config
   (progn
     (setq ibuffer-formats

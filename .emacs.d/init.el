@@ -92,7 +92,7 @@
 ;; The server of `emacsclient'
 (use-package server
   :defer t
-  :idle (server-start))
+  :init (server-start))
 
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
