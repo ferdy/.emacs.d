@@ -1,7 +1,7 @@
 emacs
 =====
 
-This is my Emacs configuration.
+This is the Emacs configuration I use everyday.
 
 It requires **Emacs trunk** to work. I regularly update my sources from here:
 ```console
