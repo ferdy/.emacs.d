@@ -860,6 +860,17 @@ windows easier."
   :bind (("C-c s l" . synosaurus-lookup)
          ("C-c s r" . synosaurus-choose-and-replace)))
 
+;; Requires: languagetool (https://www.languagetool.org/)
+(use-package langtool
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (setq langtool-language-tool-jar ; Set language tool jar
+          "~/emacs/languagetool-2.8/languagetool-commandline.jar"
+          langtool-java-bin "/usr/bin/java"
+          langtool-mother-tongue "en")))
+
 ;;; Programming
 ;;; Clojure
 ;; Requires: openjdk-7-jre, openjdk-7-jre, lein
