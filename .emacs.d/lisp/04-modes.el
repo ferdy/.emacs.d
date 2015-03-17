@@ -615,31 +615,10 @@ windows easier."
 
     (define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)))
 
-;; Browse StackExchange from Emacs
-(use-package sx
-  :ensure t
-  :defer 5)
-
-(use-package sx-question-mode
-  :ensure sx
-  :defer 5
-  ;; Display questions in the same window
-  :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
-
-(use-package sx-compose
-  :ensure sx
-  :defer 5
-  :config
-  (progn
-    ;; Don't fill in SX questions/answers, and use visual lines instead. Plays
-    ;; more nicely with the website.
-    (add-hook 'sx-compose-mode-hook #'turn-off-auto-fill)
-    (add-hook 'sx-compose-mode-hook #'visual-line-mode)))
-
 ;;; Completion
 (use-package company
   :ensure t
-  :defer t
+  :defer 5
   :config
   (progn
     ;; Use Company for completion
@@ -731,11 +710,10 @@ windows easier."
 
 (use-package archive-mode
   :defer 5
-  :config (add-to-list ; Enable .cbr files support
-           'auto-mode-alist '("\\.\\(cbr\\)\\'" . archive-mode)))
+  :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
 
 (use-package proced ; Manage processes
-  :defer t
+  :defer 5
   :config
   (progn
     ;; Auto-update proced buffer
@@ -751,6 +729,11 @@ windows easier."
 (use-package lice ; License and header template
   :ensure t
   :defer 5)
+
+(use-package unkillable-scratch ; Unkillable Scratch buffer
+  :ensure t
+  :defer 5
+  :init (unkillable-scratch 1))
 
 ;;; Project Management
 (use-package projectile
@@ -921,7 +904,7 @@ windows easier."
 ;; Requires: guile-2.0
 (use-package geiser
   :ensure t
-  :defer 5
+  :disabled t
   :init (progn (setq scheme-program-name "guile")
                (setq geiser-impl-installed-implementations '(guile))))
 
@@ -930,13 +913,13 @@ windows easier."
 ;; cl-ppcre, autoconf, texinfo, cl-swank
 (use-package slime
   :ensure t
-  :defer 5
+  :disabled t
   :init (setq inferior-lisp-program "/usr/bin/sbcl")
   :config (setq slime-contribs '(slime-fancy)))
 
 (use-package slime-company
   :ensure t
-  :defer 5
+  :disabled t
   :init (slime-setup '(slime-company)))
 
 ;;; Web
