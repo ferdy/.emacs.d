@@ -143,6 +143,25 @@ configuring synosaurus..."
 ... done"
 }
 
+langtool_setup()
+{
+    echo "
+configuring langtool..."
+    if [ ! -d "/home/manuel/emacs" ]; then
+	mkdir -p /home/manuel/emacs
+    fi
+    if [ ! -x /usr/bin/unzip ]; then
+        sudo apt-get -y install --no-install-recommends unzip
+    fi
+    cd /home/manuel/emacs
+    wget https://www.languagetool.org/download/LanguageTool-2.8.zip
+    unzip LanguageTool-2.8.zip
+    mv LanguageTool-2.8 languagetool-2.8
+    rm LanguageTool-2.8.zip
+    echo "
+... done"
+}
+
 font_setup()
 {
     echo "
@@ -184,6 +203,7 @@ pandoc_setup
 pdftools_setup
 flyspell_setup
 synosaurus_setup
+langtool_setup
 font_setup
 
 echo "
