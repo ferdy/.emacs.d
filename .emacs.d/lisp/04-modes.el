@@ -91,16 +91,13 @@
 (use-package bookmark+ ; Better bookmarks
   :ensure t)
 
-(use-package doc-view
-  :defer 5
-  :config (setq doc-view-continuous t))
-
 (setq view-read-only t) ; View read-only
 
 ;;; Translation
 (use-package po-mode ; Manage .po files
   :load-path "el-get/po-mode"
-  :defer 5
+  :defer t
+  :mode "\\.po\\'"
   :init (setq auto-mode-alist
               (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist)))
 
@@ -212,19 +209,19 @@ Inside a code-block, simply calls `self-insert-command'."
 ;; Org2blog
 (use-package metaweblog
   :ensure t
-  :defer 5)
+  :defer t)
 
 (use-package xml-rpc
   :ensure t
-  :defer 5)
+  :defer t)
 
 (use-package htmlize
   :ensure t
-  :defer 5)
+  :defer t)
 
 (use-package org2blog
   :ensure t
-  :defer 5
+  :defer t
   :init (require 'org2blog-autoloads)
   :config (progn
             (setq org2blog/wp-use-sourcecode-shortcode t
@@ -239,7 +236,7 @@ Inside a code-block, simply calls `self-insert-command'."
 
 (use-package org-tree-slide ; Slides via org-mode
   :ensure t
-  :defer 5
+  :defer t
   :config
   (progn
     (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-mode)
@@ -574,7 +571,7 @@ windows easier."
 ;; (setq variable "nickname")
 ;; (setq variable "password")
 (use-package erc ; IRC client
-  :defer 5
+  :defer t
   :config
   (progn
     (load "~/.ercpass")
@@ -618,7 +615,7 @@ windows easier."
 ;;; Completion
 (use-package company
   :ensure t
-  :defer 5
+  :defer t
   :config
   (progn
     ;; Use Company for completion
@@ -672,7 +669,8 @@ windows easier."
     (setq large-file-warning-threshold nil)))
 
 (use-package interleave ; Take notes in org files while reading PDFs
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package paradox ; Better package manager interface
   :ensure t
@@ -724,15 +722,16 @@ windows easier."
 
 (use-package csv-mode ; Better .csv files editing
   :ensure t
-  :defer 5)
+  :defer t
+  :mode "\\.csv\\'")
 
 (use-package lice ; License and header template
   :ensure t
-  :defer 5)
+  :defer t)
 
 (use-package unkillable-scratch ; Unkillable Scratch buffer
   :ensure t
-  :defer 5
+  :defer t
   :init (unkillable-scratch 1))
 
 ;;; Project Management
@@ -867,28 +866,33 @@ windows easier."
 (use-package cider
   :ensure t
   :defer t
+  :mode "\\.clj\\(?:on\\)?\\'"
   :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
 
 (use-package clojure-mode
   :ensure t
   :defer t
+  :mode "\\.clj\\(?:on\\)?\\'"
   :init (progn (add-hook 'clojure-mode-hook #'cider-mode)
                (add-hook 'clojure-mode-hook #'subword-mode)))
 
 (use-package clojure-mode-extra-font-locking
   :ensure clojure-mode
   :defer t
+  :mode "\\.clj\\(?:on\\)?\\'"
   :init (with-eval-after-load 'clojure-mode
           (require 'clojure-mode-extra-font-locking)))
 
 (use-package nrepl-client
   :ensure cider
   :defer t
+  :mode "\\.clj\\(?:on\\)?\\'"
   :config (setq nrepl-hide-special-buffers t))
 
 (use-package cider-repl
   :ensure cider
   :defer t
+  :mode "\\.clj\\(?:on\\)?\\'"
   :config
   (progn
     ;; Increase the history size and make it permanent
@@ -898,7 +902,8 @@ windows easier."
 
 (use-package latest-clojure-libraries ; Fetch latest version of library at point
   :ensure t
-  :defer 5)
+  :defer t
+  :mode "\\.clj\\(?:on\\)?\\'")
 
 ;;; Scheme
 ;; Requires: guile-2.0
@@ -935,6 +940,7 @@ windows easier."
 
 (use-package css-mode
   :defer t
+  :mode "\\.css\\'"
   :config (add-hook 'css-mode-hook
                     (lambda () (run-hooks 'prog-mode-hook))))
 
@@ -945,7 +951,8 @@ windows easier."
 
 (use-package php-mode
   :ensure t
-  :defer t)
+  :defer t
+  :mode "\\.php\\'")
 
 (provide '04-modes)
 

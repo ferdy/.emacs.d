@@ -177,7 +177,6 @@
 
 (use-package aggressive-fill-paragraph ; Automatically fill paragrah
   :ensure t
-  :defer t
   :init (progn
           (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
           (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode)))
