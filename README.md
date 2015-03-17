@@ -31,6 +31,7 @@ Noteworthy details
 - PDF: [pdf-tools](https://github.com/politza/pdf-tools)
 - Auto-completion: [company-mode](https://github.com/company-mode/company-mode)
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck)
+- Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus), [langtool](https://github.com/mhayashi1120/Emacs-langtool)
 - Version control: [Magit](https://github.com/magit/magit)
 
 Setup
