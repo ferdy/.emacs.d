@@ -96,8 +96,8 @@
 ;;; Translation
 (use-package po-mode ; Manage .po files
   :load-path "el-get/po-mode"
-  :defer t
   :mode "\\.po\\'"
+  :no-require t
   :init (setq auto-mode-alist
               (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist)))
 
@@ -236,7 +236,7 @@ Inside a code-block, simply calls `self-insert-command'."
 
 (use-package org-tree-slide ; Slides via org-mode
   :ensure t
-  :defer t
+  :no-require t
   :config
   (progn
     (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-mode)
@@ -687,7 +687,7 @@ windows easier."
   (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-display-if-noquery))
 
 (use-package bug-reference
-  :defer 5
+  :no-require t
   :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
                (add-hook 'text-mode-hook #'bug-reference-mode)))
 
@@ -699,19 +699,19 @@ windows easier."
 (use-package emacsshot ; Take a screenshot from within Emacs
   :ensure t
   :bind (("<print>" . emacsshot-snap-frame))
-  :defer 5)
+  :no-require t)
 
 (use-package camcorder ; Record movements from within Emacs
   :ensure t
-  :defer 5
+  :no-require t
   :init (setq camcorder-window-id-offset -2))
 
 (use-package archive-mode
-  :defer 5
+  :defer t
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
 
 (use-package proced ; Manage processes
-  :defer 5
+  :defer t
   :config
   (progn
     ;; Auto-update proced buffer
@@ -722,12 +722,12 @@ windows easier."
 
 (use-package csv-mode ; Better .csv files editing
   :ensure t
-  :defer t
+  :no-require t
   :mode "\\.csv\\'")
 
 (use-package lice ; License and header template
   :ensure t
-  :defer t)
+  :no-require t)
 
 (use-package unkillable-scratch ; Unkillable Scratch buffer
   :ensure t
