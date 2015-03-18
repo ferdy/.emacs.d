@@ -123,6 +123,7 @@
 
 (use-package zop-to-char ; Better zap-to-char
   :ensure t
+  :defer t
   :bind (("M-z" . zop-to-char)
          ("M-Z" . zop-up-to-char)))
 
@@ -168,6 +169,7 @@
 
 (use-package expand-region ; Expand selected region
   :ensure t
+  :defer t
   :bind (("M-2" . er/expand-region)))
 
 (use-package adaptive-wrap ; Better line wrap
@@ -198,7 +200,7 @@
 ;;; Utilities
 (use-package browse-kill-ring ; Explore kill-ring
   :ensure t
-  :defer t
+  :defer 10
   :bind (("M-y" . browse-kill-ring)))
 
 (use-package ediff-wind ; Better ediff behavior
@@ -226,12 +228,12 @@
 
 (use-package multifiles ; Edit multiple files at once
   :ensure t
-  :defer 5
+  :defer t
   :bind (("C-!" . mf/mirror-region-in-multifile)))
 
 (use-package macrostep ; Navigate through macros
   :ensure t
-  :defer 5
+  :defer t
   :init (with-eval-after-load 'lisp-mode
           (bind-key "C-c e" #'macrostep-expand emacs-lisp-mode-map)
           (bind-key "C-c e" #'macrostep-expand lisp-interaction-mode-map)))

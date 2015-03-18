@@ -82,6 +82,7 @@
 
 (use-package dired+ ; Extend dired
   :ensure t
+  :defer 10
   :config (progn
             ;; Reuse buffer for directories
             (diredp-toggle-find-file-reuse-dir 1)
@@ -89,7 +90,8 @@
             (setq diredp-hide-details-propagate-flag nil)))
 
 (use-package bookmark+ ; Better bookmarks
-  :ensure t)
+  :ensure t
+  :defer 10)
 
 (setq view-read-only t) ; View read-only
 
@@ -303,7 +305,12 @@ windows easier."
     ;; Disable hl-line-mode in eshell
     (add-hook 'eshell-mode-hook (lambda ()
                                   (setq-local global-hl-line-mode
-                                              nil)))))
+                                              nil)))
+    ;; Use system su/sudo
+    (eval-after-load "em-unix"
+      '(progn
+         (unintern 'eshell/su nil)
+         (unintern 'eshell/sudo nil)))))
 
 (use-package ansi-term
   :defer t
@@ -429,7 +436,8 @@ windows easier."
 ;; texlive-lang-italian, cjk-latex, latex-cjk-all,
 ;; texlive-lang-cjk, texlive-chinese-lang
 (use-package tex-site
-  :ensure auctex)
+  :ensure auctex
+  :mode ("\\.tex\\'" . TeX-latex-mode))
 
 ;; TeX editing
 (use-package tex
@@ -540,7 +548,8 @@ windows easier."
 ;;; Formatting
 (use-package markdown-mode
   :ensure t
-  :defer t
+  :mode (("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
   :config (progn
             ;; Use Pandoc to process Markdown
             (setq markdown-command "pandoc -s -f markdown -t html5")
@@ -737,6 +746,8 @@ windows easier."
 ;;; Project Management
 (use-package projectile
   :ensure t
+  :commands projectile-global-mode
+  :defer 5
   :config
   (progn
     (setq projectile-completion-system 'ido
@@ -748,11 +759,11 @@ windows easier."
       (call-interactively 'projectile-ag))
 
     (projectile-cleanup-known-projects)
-
     (projectile-global-mode)))
 
 (use-package ibuffer
   :bind (([remap list-buffers] . ibuffer))
+  :defer t
   :config
   (progn
     (setq ibuffer-formats
@@ -795,6 +806,7 @@ windows easier."
 ;; Requires: chktex
 (use-package flycheck
   :ensure t
+  :defer 5
   :init (global-flycheck-mode)
   :config
   (progn

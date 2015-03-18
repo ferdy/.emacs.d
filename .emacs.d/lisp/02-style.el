@@ -157,6 +157,7 @@
 
 (use-package ido-load-library ; Use ido to load libraries
   :ensure t
+  :defer t
   :bind ("C-c f l" . ido-load-library-find))
 
 (use-package recentf ; Manage recent files
@@ -253,6 +254,7 @@
 
 (use-package smex ; Better M-x
   :ensure t
+  :defer t
   :bind (([remap execute-extended-command] . smex)
          ("M-X" . smex-major-mode-commands)))
 
@@ -262,6 +264,7 @@
 
 (use-package imenu-anywhere
   :ensure t
+  :defer t
   :bind (("M-I" . imenu-anywhere)))
 
 (use-package calendar
@@ -332,6 +335,7 @@
 
 (use-package rainbow-mode ; Highlight colors
   :ensure t
+  :defer t
   :config (add-hook 'css-mode-hook #'rainbow-mode))
 
 (use-package rainbow-delimiters ; Highlight parens
