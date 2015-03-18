@@ -141,6 +141,12 @@ prefix argument."
 (global-set-key (kbd "C-S-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "C-S-<right>") 'enlarge-window-horizontally)
 
+;; Default organizer file
+(global-set-key (kbd "C-c o")
+                (lambda ()
+                  (interactive)
+                  (find-file "~/org/organizer.org")))
+
 ;; Minor mode for 'override' keybindings
 (use-package my-keys-mode
   :load-path "various"

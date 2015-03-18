@@ -147,11 +147,6 @@
       "Update parent node."
       (myorg-update-parent-cookie))
 
-    (global-set-key (kbd "C-c o")
-                    (lambda ()
-                      (interactive)
-                      (find-file "~/org/organizer.org")))
-
     (define-key org-mode-map "\"" #'custom/round-quotes)
 
     (defun custom/round-quotes (italicize)
