@@ -88,7 +88,7 @@
 ;; Requires: silversearcher-ag
 (use-package ag ; Fast search engine
   :ensure t
-  :defer t
+  :commands (ag ag-regexp)
   :config (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
                 ag-highlight-search t))
 
