@@ -74,8 +74,10 @@
 (setq auto-save-file-name-transforms
       `((".*" ,backup-dir t)))
 
-(add-hook 'before-save-hook
-          'delete-trailing-whitespace) ; Delete trailing whitespaces
+(use-package whitespace-cleanup-mode ; Cleanup whitespace in buffers
+  :ensure t
+  :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+          (add-hook hook #'whitespace-cleanup-mode)))
 
 ;;; Search
 ;; Exclude some directories in grep

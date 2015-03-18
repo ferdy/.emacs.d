@@ -356,7 +356,8 @@
                                      "Wrap"
                                      "hhat"
                                      "SliNav"
-                                     "hl-s")
+                                     "hl-s"
+                                     "WSC.*")
                                    "\\|")))
           (sml/setup)))
 
