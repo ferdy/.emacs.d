@@ -53,6 +53,7 @@ inspiration from these people:
 - [Magnar Sveen](https://github.com/magnars)
 - [Steve Purcell](https://github.com/purcell)
 - [Oleh Krehel](https://github.com/abo-abo)
+- [John Wiegley](https://github.com/jwiegley)
 
 Warranty
 --------
