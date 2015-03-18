@@ -621,6 +621,29 @@ windows easier."
 
     (define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)))
 
+(use-package sx ; StackExchange client for Emacs
+  :ensure t
+  :defer t
+  :bind (("C-c w s" . sx-tab-frontpage)
+         ("C-c w S" . sx-tab-newest)
+         ("C-c w a" . sx-ask)))
+
+(use-package sx-compose
+  :ensure sx
+  :defer t
+  :config
+  (progn
+    ;; Don't fill in SX questions/answers, and use visual lines instead. Plays
+    ;; more nicely with the website.
+    (add-hook 'sx-compose-mode-hook #'turn-off-auto-fill)
+    (add-hook 'sx-compose-mode-hook #'visual-line-mode)))
+
+(use-package sx-question-mode
+  :ensure sx
+  :defer t
+  ;; Display questions in the same window
+  :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
+
 ;;; Completion
 (use-package company
   :ensure t
@@ -950,7 +973,7 @@ windows easier."
   :disabled t
   :init (slime-setup '(slime-company)))
 
-;;; Web
+;;; Web development
 (use-package web-mode
   :ensure t
   :defer t
