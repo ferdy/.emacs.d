@@ -758,8 +758,6 @@ windows easier."
 ;;; Project Management
 (use-package projectile
   :ensure t
-  :commands projectile-global-mode
-  :defer 5
   :config
   (progn
     (setq projectile-completion-system 'ido
