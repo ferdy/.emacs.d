@@ -188,16 +188,6 @@ Inside a code-block, simply calls `self-insert-command'."
             (insert "‘’")
             (forward-char -1)))))))
 
-(org-babel-do-load-languages ; Languages for code snippets
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (sh . t)
-   (C .t)
-   (awk .t)
-   (lisp .t)
-   (python .t)
-   (scheme .t)))
-
 ;; Auto insert custom text upon opening an org file
 (auto-insert-mode)
 (setq auto-insert-query nil)
@@ -651,19 +641,13 @@ windows easier."
   :config
   (progn
     ;; Use Company for completion
-    (bind-key "<remap> <completion-at-point>" #'company-complete company-mode-map)
+    (bind-key [remap completion-at-point] #'company-complete company-mode-map)
 
     (setq company-tooltip-align-annotations t
           ;; Easy navigation to candidates with M-<n>
           company-show-numbers t)
 
     (global-company-mode)))
-
-(use-package company-auctex
-  :ensure t
-  :defer t
-  :init (company-auctex-init)
-  :config (add-hook 'LaTeX-mode-hook 'company-mode))
 
 (use-package company-math
   :ensure t
@@ -765,6 +749,11 @@ windows easier."
   :ensure t
   :defer t
   :init (unkillable-scratch 1))
+
+(use-package esup ; Emacs Startup Profiler
+  :ensure t
+  :commands esup
+  :disabled t)
 
 ;;; Project Management
 (use-package projectile

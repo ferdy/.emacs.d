@@ -298,7 +298,7 @@
 ;;; Highlightings
 (use-package diff-hl ; Show changes in fringe
   :ensure t
-  :defer t
+  :defer 10
   :init (progn
           ;; Highlight changes to the current file in the fringe
           (global-diff-hl-mode)
