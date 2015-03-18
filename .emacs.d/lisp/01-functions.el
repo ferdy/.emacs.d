@@ -204,6 +204,16 @@ if USE-EXISTING is true, try to switch to an existing buffer"
         (rename-buffer new-name)
         (set-visited-file-name new-name)))))
 
+;; Find files with sudo
+(defun open-with-sudo ()
+  "Find file as root if necessary."
+  (unless (and buffer-file-name
+               (file-writable-p buffer-file-name))
+    (find-alternate-file
+     (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(add-hook 'find-file-hook #'open-with-sudo)
+
 (provide '01-functions)
 
 ;;; 01-functions.el ends here

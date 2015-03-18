@@ -132,15 +132,7 @@
           (setq ido-default-item nextbuf
                 ido-text-init ido-text
                 ido-exit 'refresh)
-          (exit-minibuffer)))
-
-      ;; Find files with sudo
-      (defadvice ido-find-file (after find-file-sudo activate)
-        "Find file as root if necessary."
-        (unless (and buffer-file-name
-                     (file-writable-p buffer-file-name))
-          (find-alternate-file
-           (concat "/sudo:root@localhost:" buffer-file-name)))))))
+          (exit-minibuffer))))))
 
 (use-package ido-ubiquitous ; Ido nearly everywhere
   :ensure t
