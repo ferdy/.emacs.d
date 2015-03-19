@@ -154,6 +154,7 @@
 
 (use-package recentf ; Manage recent files
   :init (recentf-mode)
+  :defer t
   :bind (("C-x C-r" . ido-recentf-open))
   :config
   (progn
@@ -172,6 +173,8 @@
                                 "/elpa/.*\\'"
                                 "/tmp/"
                                 "/ssh:"))))
+
+(setq view-read-only t) ; View read-only
 
 (use-package uniquify ; Unique buffer names
   :config (setq uniquify-buffer-name-style

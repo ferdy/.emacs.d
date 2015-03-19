@@ -93,8 +93,6 @@
   :ensure t
   :defer 10)
 
-(setq view-read-only t) ; View read-only
-
 ;;; Translation
 (use-package po-mode ; Manage .po files
   :load-path "el-get/po-mode"
