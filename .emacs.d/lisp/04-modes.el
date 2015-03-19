@@ -82,7 +82,7 @@
 
 (use-package dired+ ; Extend dired
   :ensure t
-  :defer 10
+  :defer 5
   :config (progn
             ;; Reuse buffer for directories
             (diredp-toggle-find-file-reuse-dir 1)
