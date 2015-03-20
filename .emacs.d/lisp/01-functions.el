@@ -51,7 +51,7 @@
   (if (eq (length a)(length b)) t
     (error "Lists must have same length")))
 
-;; Reverts (reloads from file) the current buffer without asking any questions
+;; Revert (reload from file) the current buffer without asking any questions
 (defun revert-this-buffer ()
   "Revert current buffer."
   (interactive)

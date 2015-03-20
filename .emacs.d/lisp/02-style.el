@@ -75,12 +75,6 @@
 
 (column-number-mode) ; Turn on column-number-mode
 
-;;; Parenthesis and syntax highlighting
-(use-package paren ; Highlight paired delimiters
-  :init (show-paren-mode)
-  :config (setq show-paren-when-point-inside-paren t
-		show-paren-when-point-in-periphery t))
-
 (use-package linum+ ; Better line numbers
   :disabled t
   :load-path "various"
@@ -173,8 +167,6 @@
                                 "/tmp/"
                                 "/ssh:"))))
 
-(setq view-read-only t) ; View read-only
-
 (use-package uniquify ; Unique buffer names
   :config (setq uniquify-buffer-name-style
                 'post-forward uniquify-separator ":"))
@@ -222,8 +214,7 @@
 
 (setq tab-always-indent 'complete) ; Make Tab complete if the line is indented
 
-;; Configure a reasonable fill column, indicate it in the buffer and enable
-;; automatic filling
+;; Configure a reasonable fill column and enable automatic filling
 (setq-default fill-column 80)
 (add-hook 'text-mode-hook #'auto-fill-mode)
 
@@ -278,8 +269,7 @@
 (use-package info
   :defer t
   :config
-  ;; Fix the stupid `Info-quoted' face. Courier is an abysmal face, so go back
-  ;; to the default face.
+  ;; Fix `Info-quoted' face by going back to the default face.
   (set-face-attribute 'Info-quoted nil :family 'unspecified
 		      :inherit font-lock-constant-face))
 
@@ -298,6 +288,11 @@
          ("C-c t v" . flip-frame)))
 
 ;;; Highlightings
+(use-package paren ; Highlight paired delimiters
+  :init (show-paren-mode)
+  :config (setq show-paren-when-point-inside-paren t
+                show-paren-when-point-in-periphery t))
+
 (use-package diff-hl ; Show changes in fringe
   :ensure t
   :defer 10
@@ -324,8 +319,8 @@
     ;; Highlight symbol occurrences
     (add-hook 'prog-mode-hook #'highlight-symbol-mode))
   :config
-  (setq highlight-symbol-idle-delay 0.4 ; Highlight almost immediately
-        highlight-symbol-on-navigation-p t)) ; Highlight immediately after navigation
+  (setq highlight-symbol-idle-delay 0.4 ; Almost immediately
+        highlight-symbol-on-navigation-p t)) ; Immediately after navigation
 
 (use-package rainbow-mode ; Highlight colors
   :ensure t

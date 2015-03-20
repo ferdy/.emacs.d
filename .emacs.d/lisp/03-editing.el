@@ -11,6 +11,8 @@
 
 ;;; Code:
 
+(setq view-read-only t) ; View read-only
+
 ;;; Scrolling
 (setq scroll-margin 0
       scroll-conservatively 1000)
