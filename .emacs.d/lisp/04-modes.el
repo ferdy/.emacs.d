@@ -43,12 +43,12 @@
     (define-key dired-mode-map
       (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
 
-    (define-key dired-mode-map "!" 'sudired)
-
     ;; Use other pane as default destination when copying
     (setq dired-dwim-target t)
 
     ;; Open directory with sudo in dired
+    (define-key dired-mode-map "!" 'sudired)
+
     (defun sudired ()
       "Open directory with sudo in dired."
       (interactive)
