@@ -168,7 +168,6 @@
 
     (setq recentf-max-saved-items 200
           recentf-max-menu-items 15
-          recentf-auto-cleanup 300
           recentf-exclude (list "/\\.git/.*\\'"
                                 "/elpa/.*\\'"
                                 "/tmp/"
