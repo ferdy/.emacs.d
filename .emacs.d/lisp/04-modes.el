@@ -17,12 +17,10 @@
 	 ("C-c C" . copy-file-name-to-clipboard))
   :config
   (progn
-    ;; Always revert Dired buffers on revisiting
-    (setq dired-auto-revert-buffer t
-	  dired-listing-switches "-laGh1v --group-directories-first"
-	  ;; Also auto refresh dired, but be quiet about it
-	  global-auto-revert-non-file-buffers t
-	  auto-revert-verbose nil
+    (setq dired-auto-revert-buffer t ; Always revert Dired buffers on revisiting
+          dired-listing-switches "-laGh1v --group-directories-first"
+	  global-auto-revert-non-file-buffers t ; Also auto refresh dired
+	  auto-revert-verbose nil ; But be quiet about it
 	  ;; Don't ask about recursive copies
 	  dired-recursive-copies 'always)
 
@@ -43,8 +41,7 @@
     (define-key dired-mode-map
       (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
 
-    ;; Use other pane as default destination when copying
-    (setq dired-dwim-target t)
+    (setq dired-dwim-target t) ; Use other pane as destination when copying
 
     ;; Open directory with sudo in dired
     (define-key dired-mode-map "!" 'sudired)
