@@ -625,6 +625,25 @@ windows easier."
   :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
 
 ;;; Completion
+;; In `completion-at-point', do not pop up silly completion buffers for less
+;; than five candidates. Cycle instead.
+(setq completion-cycle-threshold 5)
+
+(use-package hippie-exp ; Powerful expansion and completion
+  :bind (([remap dabbrev-expand] . hippie-expand))
+  :config
+  (setq hippie-expand-try-functions-list
+        '(try-expand-dabbrev
+          try-expand-dabbrev-all-buffers
+          try-expand-dabbrev-from-kill
+          try-complete-file-name-partially
+          try-complete-file-name
+          try-expand-all-abbrevs
+          try-expand-list
+          try-complete-lisp-symbol-partially
+          try-complete-lisp-symbol
+          lunaryorn-try-complete-lisp-symbol-without-namespace)))
+
 (use-package company
   :ensure t
   :defer t
@@ -745,6 +764,11 @@ windows easier."
   :no-require t
   :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
                (add-hook 'text-mode-hook #'bug-reference-mode)))
+
+;; Find bugs in Emacs configuration
+;; (use-package bug-hunter
+;;   :ensure t
+;;   :commands bug-hunter-init-file)
 
 ;;; Project Management
 (use-package projectile
