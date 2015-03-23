@@ -1,4 +1,4 @@
-;;; custom-utilities.el --- Part of my Emacs configuration -*- lexical-binding: t; -*-
+;;; custom-utilities.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
