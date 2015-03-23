@@ -1,4 +1,4 @@
-;;; 02-style.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; custom-style.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -387,6 +387,6 @@
 ;; If you want to hide the mode-line in every buffer by default
 ;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
-(provide '02-style)
+(provide 'custom-style)
 
-;;; 02-style.el ends here
+;;; custom-style.el ends here

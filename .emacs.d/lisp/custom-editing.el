@@ -1,4 +1,4 @@
-;;; 03-editing.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
+;;; custom-editing.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -260,6 +260,6 @@
                   compilation-always-kill t
                   compilation-scroll-output 'first-error)))
 
-(provide '03-editing)
+(provide 'custom-editing)
 
-;;; 03-editing.el ends here
+;;; custom-editing.el ends here

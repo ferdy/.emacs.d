@@ -1,4 +1,4 @@
-;;; 01-functions.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; custom-functions.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -214,6 +214,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 
 (add-hook 'find-file-hook #'open-with-sudo)
 
-(provide '01-functions)
+(provide 'custom-functions)
 
-;;; 01-functions.el ends here
+;;; custom-functions.el ends here

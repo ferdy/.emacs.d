@@ -92,10 +92,21 @@
 
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(require '01-functions)
-(require '02-style)
-(require '03-editing)
-(require '04-modes)
-(require '05-keybindings)
+(require 'custom-functions)
+(require 'custom-style)
+(require 'custom-editing)
+(require 'custom-files)
+(require 'custom-completion)
+(require 'custom-formatting)
+(require 'custom-languages)
+(require 'custom-latex)
+(require 'custom-vers-control)
+(require 'custom-net)
+(require 'custom-org)
+(require 'custom-programming)
+(require 'custom-project)
+(require 'custom-shells)
+(require 'custom-utilities)
+(require 'custom-keybindings)
 
 ;;; init.el ends here

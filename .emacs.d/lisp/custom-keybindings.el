@@ -1,4 +1,4 @@
-;;; 05-keybindings.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; custom-keybindings.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -157,6 +157,6 @@ prefix argument."
     (define-key my-keys-mode-map (kbd "C-,") 'iedit-dwim)
     (global-my-keys-mode)))
 
-(provide '05-keybindings)
+(provide 'custom-keybindings)
 
-;;; 05-keybindings ends here
+;;; custom-keybindings ends here
