@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores my versioning control configuration
+;; This file stores my versioning control configuration.
 
 ;;; Code:
 
