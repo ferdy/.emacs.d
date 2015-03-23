@@ -258,6 +258,7 @@
 
 (use-package time
   :bind (("C-c u i" . emacs-init-time)
+         ("C-c u u" . emacs-uptime)
 	 ("C-c u t" . display-time-world))
   :config
   (setq display-time-world-time-format "%H:%M %Z, %d. %b"
