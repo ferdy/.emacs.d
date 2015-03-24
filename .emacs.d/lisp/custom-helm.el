@@ -60,14 +60,19 @@
           helm-imenu-fuzzy-match t
           helm-apropos-fuzzy-match t
           helm-lisp-fuzzy-completion t
-          ;; Don't show boring files
-          helm-ff-skip-boring-files t
-          helm-boring-file-regexp-list '("\\.$" "\\.\\.$")
           ;; Cleaner Helm interface
           helm-display-header-line nil)
 
+    (require 'helm-files)
+    (setq helm-idle-delay 0.1
+          helm-input-idle-delay 0.1
+          ;; Don't show boring files
+          helm-ff-skip-boring-files t
+          helm-boring-file-regexp-list
+          '("\\.git$" "^\\."  "\\.$" "\\.\\.$" "\\.o$" "~$"  "^#.*"))
+
     ;; Turn off source header line
-    (set-face-attribute 'helm-source-header nil :height 0.1)
+    (set-face-attribute 'helm-source-header nil :height 1.0)
 
     ;; Eshell history
     (require 'helm-eshell)
