@@ -35,7 +35,7 @@
   :config
   (progn
     ;; Use Company for completion
-    (bind-key [remap completion-at-point] #'company-complete company-mode-map)
+    (bind-key [remap completion-at-point] #'helm-company company-mode-map)
 
     (setq company-tooltip-align-annotations t
           ;; Easy navigation to candidates with M-<n>

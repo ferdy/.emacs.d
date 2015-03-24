@@ -156,17 +156,12 @@
 
 (use-package helm-company ; Show Company candidates through Helm interface
   :ensure t
-  :defer t
-  :config
-  (progn
-    (define-key company-mode-map (kbd "C-:") 'helm-company)
-    (define-key company-active-map (kbd "C-:") 'helm-company)))
+  :defer t)
 
 (use-package helm-descbinds ; Describing keybinding through Helm
   :ensure t
   :defer t
-  :bind (("C-h b" . helm-descbinds)
-         ("C-h w" . helm-descbinds)))
+  :bind (("C-c h d" . helm-descbinds)))
 
 (provide 'custom-helm)
 
