@@ -67,12 +67,10 @@
     (setq helm-idle-delay 0.1
           helm-input-idle-delay 0.1
           ;; Don't show boring files
-          helm-ff-skip-boring-files t
-          helm-boring-file-regexp-list
-          '("\\.git$" "^\\."  "\\.$" "\\.\\.$" "\\.o$" "~$"  "^#.*"))
+          helm-ff-skip-boring-files t)
 
     ;; Turn off source header line
-    (set-face-attribute 'helm-source-header nil :height 1.0)
+    (set-face-attribute 'helm-source-header nil :height 0.1)
 
     ;; Eshell history
     (require 'helm-eshell)
