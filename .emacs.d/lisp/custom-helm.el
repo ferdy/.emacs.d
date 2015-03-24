@@ -60,8 +60,6 @@
           ;; Scroll 8 lines other window using M-<next>/M-<prior>
           helm-scroll-amount 8
           helm-ff-file-name-history-use-recentf t
-          ;; Autoresize Helm buffer
-          helm-autoresize-mode t
           ;; Helm buffer only in the window where point is
           helm-split-window-in-side-p t
           ;; Fuzzy match
@@ -75,14 +73,14 @@
           ;; Cleaner Helm interface
           helm-display-header-line nil)
 
+    ;; Autoresize Helm buffer
+    (helm-autoresize-mode 1)
+
     (require 'helm-files)
     (setq helm-idle-delay 0.1
           helm-input-idle-delay 0.1
           ;; Don't show boring files
           helm-ff-skip-boring-files t)
-
-    ;; Turn off source header line
-    (set-face-attribute 'helm-source-header nil :height 0.1)
 
     ;; Eshell history
     (require 'helm-eshell)
