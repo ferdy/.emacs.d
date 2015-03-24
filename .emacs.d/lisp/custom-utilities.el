@@ -14,21 +14,8 @@
 (use-package pdf-tools ; Better PDF support
   :defer t
   :init (pdf-tools-install)
-  :config
-  (progn
-    (defun pdf-outline-imenu-ido ()
-      (interactive)
-      (let* ((outline (pdf-outline-imenu-create-index-flat))
-             (key (ido-completing-read
-                   "Outline: "
-                   (mapcar 'car outline)
-                   nil t nil 'imenu--history-list)))
-        (imenu (assoc key outline))))
-
-    (global-set-key (kbd "C-M-i") 'pdf-outline-imenu-ido)
-
-    ;; No large file warning
-    (setq large-file-warning-threshold nil)))
+  ;; No large file warning
+  :config (setq large-file-warning-threshold nil))
 
 (use-package interleave ; Take notes in org files while reading PDFs
   :ensure t
