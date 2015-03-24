@@ -24,7 +24,8 @@
          ("C-h SPC" . helm-all-mark-rings)
          ("C-c h x" . helm-register)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
-         ("C-x r l" . helm-filtered-bookmarks))
+         ("C-x r l" . helm-filtered-bookmarks)
+         ("C-c h r" . helm-info-emacs))
   :init
   (progn
     (require 'helm-config)
