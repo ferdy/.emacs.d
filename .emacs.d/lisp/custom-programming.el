@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package eldoc
+(use-package eldoc ; Documentation in the echo area
   :defer t
   ;; Enable Eldoc for `eval-expression', too
   :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
