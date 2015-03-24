@@ -34,6 +34,7 @@ Noteworthy details
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck)
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus), [langtool](https://github.com/mhayashi1120/Emacs-langtool)
 - Version control: [Magit](https://github.com/magit/magit)
+- Project management: [Projectile](https://github.com/bbatsov/projectile)
 
 Setup
 -----
