@@ -46,18 +46,6 @@ windows easier."
       "Run scrips from current working on remote system."
       (setq command (file-truename command)))
 
-    (add-hook 'eshell-mode-hook
-              (lambda ()
-                (local-set-key (kbd "C-c h")
-                               (lambda ()
-                                 (interactive)
-                                 (insert
-                                  (ido-completing-read
-                                   "Eshell history: "
-                                   (delete-dups
-                                    (ring-elements eshell-history-ring))))))
-                (local-set-key (kbd "C-c C-h") 'eshell-list-history)))
-
     ;; Disable hl-line-mode in eshell
     (add-hook 'eshell-mode-hook (lambda ()
                                   (setq-local global-hl-line-mode

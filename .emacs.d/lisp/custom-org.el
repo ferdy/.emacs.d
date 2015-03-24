@@ -22,7 +22,6 @@
   (progn
     (setq org-src-fontify-natively t
           org-log-done 'time
-          org-completion-use-ido t
           org-export-with-smart-quotes t
           ;; Turn off preamble and postamble in HTML export
           org-html-preamble nil

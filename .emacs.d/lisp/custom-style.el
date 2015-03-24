@@ -268,7 +268,8 @@
                                      "hhat"
                                      "SliNav"
                                      "hl-s"
-                                     "WSC.*")
+                                     "WSC.*"
+                                     "Helm")
                                    "\\|")))
           (sml/setup)))
 

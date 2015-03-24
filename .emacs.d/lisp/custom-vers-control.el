@@ -21,10 +21,8 @@
     (setq magit-save-some-buffers 'dontask
           magit-stage-all-confirm nil
           magit-unstage-all-confirm nil
-          ;; Except when you ask something useful…
+          ;; Except when you ask something useful
           magit-set-upstream-on-push t
-          ;; Use IDO for completion
-          magit-completing-read-function #'magit-ido-completing-read
           magit-auto-revert-mode-lighter "")
 
     ;; Auto-revert files after Magit operations

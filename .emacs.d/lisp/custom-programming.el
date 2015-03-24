@@ -25,8 +25,7 @@
   :config
   (progn
     (setq-default flycheck-emacs-lisp-load-path 'inherit)
-    (setq flycheck-completion-system 'ido
-          flycheck-display-errors-function
+    (setq flycheck-display-errors-function
           #'flycheck-pos-tip-error-messages)
 
     ;; Use italic face for checker name

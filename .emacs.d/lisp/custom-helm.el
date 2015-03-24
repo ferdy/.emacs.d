@@ -143,6 +143,12 @@
     (define-key company-mode-map (kbd "C-:") 'helm-company)
     (define-key company-active-map (kbd "C-:") 'helm-company)))
 
+(use-package helm-descbinds ; Describing keybinding through Helm
+  :ensure t
+  :defer t
+  :bind (("C-h b" . helm-descbinds)
+         ("C-h w" . helm-descbinds)))
+
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here
