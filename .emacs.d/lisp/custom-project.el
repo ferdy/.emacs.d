@@ -16,7 +16,8 @@
   :ensure t
   :config
   (progn
-    (setq projectile-find-dir-includes-top-level t)
+    (setq projectile-completion-system 'helm
+          projectile-find-dir-includes-top-level t)
 
     ;; Replace Ack with Ag in Projectile commander
     (def-projectile-commander-method ?a
