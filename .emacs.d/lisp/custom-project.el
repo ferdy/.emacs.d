@@ -19,10 +19,10 @@
     (setq projectile-completion-system 'helm
           projectile-find-dir-includes-top-level t)
 
-    ;; Replace Ack with Ag in Projectile commander
+    ;; Replace Ack with helm-ag in Projectile commander
     (def-projectile-commander-method ?a
       "Find ag on project."
-      (call-interactively 'projectile-ag))
+      (call-interactively 'helm-projectile-ag))
 
     (projectile-cleanup-known-projects)
     (projectile-global-mode)))
