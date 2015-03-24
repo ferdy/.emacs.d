@@ -203,11 +203,6 @@
   :init (global-hungry-delete-mode))
 
 ;;; Utilities
-(use-package browse-kill-ring ; Explore kill-ring
-  :ensure t
-  :defer 10
-  :bind (("M-y" . browse-kill-ring)))
-
 (use-package ediff-wind ; Better ediff behavior
   :defer 5
   :config (setq ediff-window-setup-function #'ediff-setup-windows-plain

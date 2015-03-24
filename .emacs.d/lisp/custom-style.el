@@ -85,87 +85,15 @@
             ;; to use a eval-after-nload hook to set it to "dynamic".
             (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))))
 
-;;; Buffer navigation
-(use-package ido
-  :init (progn (ido-mode) (ido-everywhere))
-  :config
-  (progn
-    (setq ido-enable-flex-matching t ; Match characters if string doesn't match
-          ido-create-new-buffer 'always ; Create a new buffer if nothing matches
-          ido-use-filename-at-point 'guess
-          ;; Visit buffers and files in the selected window
-          ido-default-file-method 'selected-window
-          ido-default-buffer-method 'selected-window
-          ido-context-switch-command nil
-          ido-cur-item nil
-          ido-default-item nil
-          ido-cur-list nil)
-
-    ;; Ido bury buffer
-    (add-hook
-     'ido-setup-hook
-     (defun custom/define-ido-bury-key ()
-       (define-key ido-completion-map
-         (kbd "C-b") 'custom/ido-bury-buffer-at-head)))
-
-    (defun custom/ido-bury-buffer-at-head ()
-      "Bury the buffer at the head of 'ido-matches'."
-      (interactive)
-      (let ((enable-recursive-minibuffers t)
-            (buf (ido-name (car ido-matches)))
-            (nextbuf (cadr ido-matches)))
-        (when (get-buffer buf)
-          ;; If next match names a buffer use the buffer object;
-          ;; buffer name may be changed by packages such as
-          ;; uniquify.
-          (when (and nextbuf (get-buffer nextbuf))
-            (setq nextbuf (get-buffer nextbuf)))
-          (bury-buffer buf)
-          (if (bufferp nextbuf)
-              (setq nextbuf (buffer-name nextbuf)))
-          (setq ido-default-item nextbuf
-                ido-text-init ido-text
-                ido-exit 'refresh)
-          (exit-minibuffer))))))
-
-(use-package ido-ubiquitous ; Ido nearly everywhere
-  :ensure t
-  :init (ido-ubiquitous-mode))
-
-(use-package flx-ido ; Enable flexible ido
-  :ensure t
-  :init (flx-ido-mode))
-
-(use-package ido-vertical-mode ; Better looking Ido
-  :ensure t
-  :init (ido-vertical-mode)
-  :config (setq flx-ido-use-faces nil))
-
-(use-package ido-load-library ; Use ido to load libraries
-  :ensure t
-  :defer t
-  :bind ("C-c f l" . ido-load-library-find))
-
 (use-package recentf ; Manage recent files
   :init (recentf-mode)
   :defer t
-  :bind (("C-x C-r" . ido-recentf-open))
-  :config
-  (progn
-    ;; Open recent files with ido
-    (defun ido-recentf-open ()
-      "Use 'ido-completing-read' to \\[find-file] a recent file."
-      (interactive)
-      (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-          (message "Opening file...")
-        (message "Aborting")))
-
-    (setq recentf-max-saved-items 200
-          recentf-max-menu-items 15
-          recentf-exclude (list "/\\.git/.*\\'"
-                                "/elpa/.*\\'"
-                                "/tmp/"
-                                "/ssh:"))))
+  :config (setq recentf-max-saved-items 200
+                recentf-max-menu-items 15
+                recentf-exclude (list "/\\.git/.*\\'"
+                                      "/elpa/.*\\'"
+                                      "/tmp/"
+                                      "/ssh:")))
 
 (use-package uniquify ; Unique buffer names
   :config (setq uniquify-buffer-name-style
@@ -236,21 +164,6 @@
 
 (use-package elec-pair
   :init (electric-pair-mode))
-
-(use-package smex ; Better M-x
-  :ensure t
-  :defer t
-  :bind (([remap execute-extended-command] . smex)
-         ("M-X" . smex-major-mode-commands)))
-
-(use-package imenu
-  :defer t
-  :bind (("M-i" . imenu)))
-
-(use-package imenu-anywhere
-  :ensure t
-  :defer t
-  :bind (("M-I" . imenu-anywhere)))
 
 (use-package calendar
   :defer t
