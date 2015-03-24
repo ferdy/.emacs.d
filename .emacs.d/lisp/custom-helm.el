@@ -20,6 +20,7 @@
          ("C-x b" . helm-mini)
          ("C-x C-f" . helm-find-files)
          ("C-c h o" . helm-occur)
+         ("C-c M-s" . helm-ag-with-prefix-arg)
          ("C-h SPC" . helm-all-mark-rings)
          ("C-c h x" . helm-register)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
@@ -34,6 +35,12 @@
     (helm-mode 1))
   :config
   (progn
+    ;; Call helm-ag with C-u
+    (defun helm-ag-with-prefix-arg ()
+      (interactive)
+      (setq current-prefix-arg '(4)) ; C-u
+      (call-interactively 'helm-ag))
+
     ;; Rebind tab to run persistent action
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
     ;; Make TAB works in terminal
