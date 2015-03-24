@@ -31,7 +31,7 @@
 
 (use-package company
   :ensure t
-  :defer 5
+  :init (global-company-mode)
   :config
   (progn
     ;; Use Company for completion
@@ -39,9 +39,7 @@
 
     (setq company-tooltip-align-annotations t
           ;; Easy navigation to candidates with M-<n>
-          company-show-numbers t)
-
-    (global-company-mode)))
+          company-show-numbers t)))
 
 (use-package company-math
   :ensure t
