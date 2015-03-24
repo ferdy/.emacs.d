@@ -29,7 +29,9 @@
     (require 'helm-config)
 
     (global-set-key (kbd "C-c h") 'helm-command-prefix)
-    (global-unset-key (kbd "C-x c")))
+    (global-unset-key (kbd "C-x c"))
+
+    (helm-mode 1))
   :config
   (progn
     ;; Rebind tab to run persistent action
@@ -86,9 +88,7 @@
     (define-key minibuffer-local-map (kbd "C-c C-l") 'helm-minibuffer-history)
 
     ;; Man pages at point
-    (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
-
-    (helm-mode 1)))
+    (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)))
 
 (use-package helm-projectile ; Helm interface for Projectile
   :ensure t
