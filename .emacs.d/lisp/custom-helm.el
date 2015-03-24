@@ -18,6 +18,7 @@
          ("M-y" . helm-show-kill-ring)
          ("C-x C-r" . helm-recentf)
          ("C-x b" . helm-mini)
+         ("C-x C-b" . helm-buffers-list)
          ("C-x C-f" . helm-find-files)
          ("C-c h o" . helm-occur)
          ("C-c M-s" . helm-ag-with-prefix-arg)
@@ -25,7 +26,8 @@
          ("C-c h x" . helm-register)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
          ("C-x r l" . helm-filtered-bookmarks)
-         ("C-c h r" . helm-info-emacs))
+         ("C-c h r" . helm-info-emacs)
+         ("C-c C-x C-k" . helm-buffer-run-kill-persistent))
   :init
   (progn
     (require 'helm-config)
