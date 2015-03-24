@@ -87,6 +87,7 @@
   :ensure t
   :defer t)
 
+;; Requires: silversearcher-ag
 (use-package helm-ag ; Helm interface for Ag
   :ensure t
   :defer t)

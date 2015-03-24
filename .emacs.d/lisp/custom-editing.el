@@ -89,18 +89,7 @@
      (add-to-list 'grep-find-ignored-directories "elpa")))
 (add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
 
-;; Requires: silversearcher-ag
-(use-package ag ; Fast search engine
-  :ensure t
-  :commands (ag ag-regexp)
-  :config (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
-                ag-highlight-search t))
-
 (use-package wgrep
-  :ensure t
-  :defer t)
-
-(use-package wgrep-ag
   :ensure t
   :defer t)
 
