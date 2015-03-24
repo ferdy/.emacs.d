@@ -24,17 +24,14 @@
          ("C-c h x" . helm-register)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
          ("C-x r l" . helm-filtered-bookmarks))
-  :config
+  :init
   (progn
-    (require 'helm)
     (require 'helm-config)
 
-    ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
-    ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
-    ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
     (global-set-key (kbd "C-c h") 'helm-command-prefix)
-    (global-unset-key (kbd "C-x c"))
-
+    (global-unset-key (kbd "C-x c")))
+  :config
+  (progn
     ;; Rebind tab to run persistent action
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
     ;; Make TAB works in terminal
@@ -42,20 +39,19 @@
     ;; List actions using C-z
     (define-key helm-map (kbd "C-z")  'helm-select-action)
 
-    (when (executable-find "curl")
-      (setq helm-google-suggest-use-curl-p t))
-
     ;; Open helm buffer inside current window, not occupy whole other window
-    (setq helm-split-window-in-side-p           t
+    (setq helm-split-window-in-side-p t
           ;; Move to end or beginning when reaching top or bottom of source
-          helm-move-to-line-cycle-in-source     t
+          helm-move-to-line-cycle-in-source t
           ;; Search for library in `require' and `declare-function' sexp
-          helm-ff-search-library-in-sexp        t
+          helm-ff-search-library-in-sexp t
           ;; Scroll 8 lines other window using M-<next>/M-<prior>
-          helm-scroll-amount                    8
+          helm-scroll-amount 8
           helm-ff-file-name-history-use-recentf t
           ;; Autoresize Helm buffer
           helm-autoresize-mode t
+          ;; Helm buffer only in the window where point is
+          helm-split-window-in-side-p t
           ;; Fuzzy match
           helm-M-x-fuzzy-match t
           helm-buffers-fuzzy-matching t
@@ -63,7 +59,15 @@
           helm-semantic-fuzzy-match t
           helm-imenu-fuzzy-match t
           helm-apropos-fuzzy-match t
-          helm-lisp-fuzzy-completion t)
+          helm-lisp-fuzzy-completion t
+          ;; Don't show boring files
+          helm-ff-skip-boring-files t
+          helm-boring-file-regexp-list '("\\.$" "\\.\\.$")
+          ;; Cleaner Helm interface
+          helm-display-header-line nil)
+
+    ;; Turn off source header line
+    (set-face-attribute 'helm-source-header nil :height 0.1)
 
     ;; Eshell history
     (require 'helm-eshell)
