@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-;; In `completion-at-point', do not pop up silly completion buffers for less
+;; In `completion-at-point', do not pop up completion buffers for less
 ;; than five candidates. Cycle instead.
 (setq completion-cycle-threshold 5)
 
@@ -34,7 +34,7 @@
   :init (global-company-mode)
   :config
   (progn
-    ;; Use Company for completion
+    ;; Use helm-company for completion at point
     (bind-key [remap completion-at-point] #'helm-company company-mode-map)
 
     (setq company-tooltip-align-annotations t
