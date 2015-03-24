@@ -26,6 +26,7 @@ Noteworthy details
 - Default font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line)
+- Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
 - PDF: [pdf-tools](https://github.com/politza/pdf-tools)
