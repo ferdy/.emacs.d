@@ -27,12 +27,11 @@
           try-expand-all-abbrevs
           try-expand-list
           try-complete-lisp-symbol-partially
-          try-complete-lisp-symbol
-          lunaryorn-try-complete-lisp-symbol-without-namespace)))
+          try-complete-lisp-symbol)))
 
 (use-package company
   :ensure t
-  :defer t
+  :defer 5
   :config
   (progn
     ;; Use Company for completion
