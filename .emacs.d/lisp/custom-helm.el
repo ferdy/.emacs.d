@@ -117,11 +117,6 @@
   :defer t
   :config
   (progn
-    (global-set-key (kbd "M-i") 'helm-swoop)
-    (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
-    (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
-    (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
-
     ;; When doing isearch, hand the word over to helm-swoop
     (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
     ;; From helm-swoop to helm-multi-swoop-all
