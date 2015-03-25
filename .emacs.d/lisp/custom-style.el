@@ -201,6 +201,9 @@
          ("C-c t h" . flop-frame)
          ("C-c t v" . flip-frame)))
 
+(use-package winner ; Undo and redo window configurations
+  :init (winner-mode))
+
 ;;; Highlightings
 (use-package paren ; Highlight paired delimiters
   :init (show-paren-mode)
