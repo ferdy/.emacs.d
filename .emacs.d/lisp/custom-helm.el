@@ -57,7 +57,7 @@
           helm-move-to-line-cycle-in-source t
           ;; Search for library in `require' and `declare-function' sexp
           helm-ff-search-library-in-sexp t
-          ;; Scroll 8 lines other window using M-<next>/M-<prior>
+          ;; Scroll 8 lines using M-<next>/M-<prior>
           helm-scroll-amount 8
           helm-ff-file-name-history-use-recentf t
           ;; Helm buffer only in the window where point is
@@ -144,7 +144,6 @@
     (setq helm-swoop-move-to-line-cycle t)
 
     ;; Optional face for line numbers
-    ;; Face name is `helm-swoop-line-number-face`
     (setq helm-swoop-use-line-number-face t)))
 
 (use-package helm-company ; Show Company candidates through Helm interface
