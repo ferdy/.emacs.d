@@ -70,10 +70,8 @@
   :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
                (add-hook 'text-mode-hook #'bug-reference-mode)))
 
-;; Find bugs in Emacs configuration
-;; (use-package bug-hunter
-;;   :ensure t
-;;   :commands bug-hunter-init-file)
+(use-package bug-hunter ; Find bugs in Emacs configuration
+  :ensure t)
 
 (provide 'custom-utilities)
 

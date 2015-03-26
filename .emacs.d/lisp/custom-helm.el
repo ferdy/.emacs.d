@@ -20,6 +20,7 @@
          ("C-x b" . helm-mini)
          ("C-x C-b" . helm-buffers-list)
          ("C-x C-f" . helm-find-files)
+         ("C-c h i" . helm-imenu)
          ("C-c h o" . helm-occur)
          ("C-c M-s" . helm-ag-with-prefix-arg)
          ("C-h SPC" . helm-all-mark-rings)
