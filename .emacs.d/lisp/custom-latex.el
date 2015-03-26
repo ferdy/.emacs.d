@@ -43,7 +43,11 @@
                   TeX-engine 'luatex ; Use luatex
                   TeX-PDF-mode t)
     ;; Move to chktex
-    (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")))
+    (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
+
+    ;; Tell Emacs how to parse TeX files
+    (add-hook 'tex-mode-hook
+              #'(lambda () (setq ispell-parser 'tex)))))
 
 (use-package tex-buf
   :ensure auctex

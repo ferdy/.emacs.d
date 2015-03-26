@@ -206,7 +206,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 
 ;; Find files with sudo
 (defun open-with-sudo ()
-  "Find file as root if necessary."
+  "Find file using `sudo' with TRAMP."
   (unless (and buffer-file-name
                (file-writable-p buffer-file-name))
     (find-alternate-file

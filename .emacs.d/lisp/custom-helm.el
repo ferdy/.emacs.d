@@ -36,7 +36,8 @@
     (global-set-key (kbd "C-c h") 'helm-command-prefix)
     (global-unset-key (kbd "C-x c"))
 
-    (helm-mode 1))
+    (helm-mode 1)
+    (helm-adaptive-mode 1))
   :config
   (progn
     ;; Call helm-ag with C-u
@@ -158,6 +159,7 @@
 
 (use-package helm-flyspell ; Use Flyspell with Helm
   :ensure t
+  :bind (("C-c h f" . helm-flyspell-correct))
   :commands (helm-flyspell-correct))
 
 (provide 'custom-helm)
