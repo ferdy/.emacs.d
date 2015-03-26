@@ -156,6 +156,10 @@
   :defer t
   :bind (("C-c h d" . helm-descbinds)))
 
+(use-package helm-flyspell ; Use Flyspell with Helm
+  :ensure t
+  :commands (helm-flyspell-correct))
+
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here
