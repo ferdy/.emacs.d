@@ -163,7 +163,7 @@
 (use-package expand-region ; Expand selected region
   :ensure t
   :defer t
-  :bind (("M-2" . er/expand-region)))
+  :bind (("M-E" . er/expand-region)))
 
 (use-package adaptive-wrap ; Better line wrap
   :ensure t

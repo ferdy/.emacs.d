@@ -69,10 +69,6 @@
 
 (global-set-key "\M-g" 'goto-line) ; Goto line is M-g
 
-;; Better s-expression navigation
-(global-set-key "\M-9" 'backward-sexp)
-(global-set-key "\M-0" 'forward-sexp)
-
 (global-set-key "\C-x\C-k" 'kill-this-buffer) ; Kill only the current buffer
 
 (setq next-line-add-newlines t) ; C^n adds new line when at the end of a line
