@@ -10,7 +10,7 @@ $ git clone git://git.savannah.gnu.org/emacs.git
 
 I use Emacs on **LinuxBBQ**. This configuration requires some external packages,
 all of which are highlighted in the comments when necessary. The packages can be
-easily installed using ```apt-get``` or build from sources.
+easily installed using ```apt-get``` or built from sources.
 
 The ```esetup``` script helps to create the right environment *before* starting
 Emacs with this configuration for the first time. The script only works with
