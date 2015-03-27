@@ -214,6 +214,17 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 
 (add-hook 'find-file-hook #'open-with-sudo)
 
+;; Replace whitespaces with single spaces
+(defun just-one-space-in-region (beg end)
+  "Replace all whitespace in the region from BEG to END with single spaces."
+  (interactive "r")
+  (save-excursion
+    (save-restriction
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (while (re-search-forward "\\s-+" nil t)
+        (replace-match " ")))))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here
