@@ -13,7 +13,7 @@
 
 ;;; Translation
 (use-package po-mode ; Manage .po files
-  :load-path "el-get/po-mode"
+  :load-path "various"
   :mode "\\.po\\'"
   :no-require t
   :init (setq auto-mode-alist

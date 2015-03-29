@@ -46,12 +46,6 @@
 (eval-when-compile
   (require 'use-package))
 
-;; Add el-get
-(use-package el-get
-  :ensure t
-  :disabled t
-  :init (el-get 'sync))
-
 ;;; Initialization
 (when (version< emacs-version "25")
   (warn "This configuration needs Emacs trunk, but this is %s!" emacs-version))
