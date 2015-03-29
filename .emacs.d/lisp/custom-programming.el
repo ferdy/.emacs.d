@@ -48,44 +48,34 @@
 (use-package cider
   :ensure t
   :defer t
-  :mode "\\.clj\\(?:on\\)?\\'"
   :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
 
 (use-package clojure-mode
   :ensure t
   :defer t
-  :mode "\\.clj\\(?:on\\)?\\'"
   :init (progn (add-hook 'clojure-mode-hook #'cider-mode)
                (add-hook 'clojure-mode-hook #'subword-mode)))
 
 (use-package clojure-mode-extra-font-locking
   :ensure clojure-mode
   :defer t
-  :mode "\\.clj\\(?:on\\)?\\'"
   :init (with-eval-after-load 'clojure-mode
           (require 'clojure-mode-extra-font-locking)))
 
 (use-package nrepl-client
   :ensure cider
   :defer t
-  :mode "\\.clj\\(?:on\\)?\\'"
   :config (setq nrepl-hide-special-buffers t))
 
 (use-package cider-repl
   :ensure cider
   :defer t
-  :mode "\\.clj\\(?:on\\)?\\'"
   :config
   (progn
     ;; Increase the history size and make it permanent
     (setq cider-repl-history-size 1000
           cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
           cider-repl-pop-to-buffer-on-connect nil)))
-
-(use-package latest-clojure-libraries ; Fetch latest version of library at point
-  :ensure t
-  :defer t
-  :mode "\\.clj\\(?:on\\)?\\'")
 
 ;;; Haskell
 ;; Requires:

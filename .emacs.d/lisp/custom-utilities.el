@@ -64,6 +64,10 @@
   :commands esup
   :disabled t)
 
+(use-package bury-successful-compilation ; Bury compilation buffer after
+  :ensure t                              ; successful compilation
+  :defer t)
+
 ;;; Bugs management
 (use-package bug-reference
   :no-require t
