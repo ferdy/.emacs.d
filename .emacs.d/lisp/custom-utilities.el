@@ -66,7 +66,7 @@
 
 (use-package bury-successful-compilation ; Bury compilation buffer after
   :ensure t                              ; successful compilation
-  :defer t)
+  :init (bury-successful-compilation 1))
 
 ;;; Bugs management
 (use-package bug-reference
