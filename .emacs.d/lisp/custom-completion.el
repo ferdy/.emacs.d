@@ -39,7 +39,9 @@
 
     (setq company-tooltip-align-annotations t
           ;; Easy navigation to candidates with M-<n>
-          company-show-numbers t)))
+          company-show-numbers t
+          ;; Don'show completion popup, use helm-company instead
+          company-idle-delay nil)))
 
 (use-package company-math
   :ensure t
