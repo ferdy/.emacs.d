@@ -26,7 +26,7 @@
          ("C-h SPC" . helm-all-mark-rings)
          ("C-c h x" . helm-register)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
-         ("C-x r l" . helm-filtered-bookmarks)
+         ("C-x r l" . helm-bookmarks)
          ("C-c h r" . helm-info-emacs)
          ("C-c C-x C-k" . helm-buffer-run-kill-persistent))
   :init
