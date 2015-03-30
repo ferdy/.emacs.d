@@ -72,6 +72,13 @@
           langtool-java-bin "/usr/bin/java"
           langtool-mother-tongue "en")))
 
+(use-package voca-builder ; Popup dictionary entries
+  :ensure t
+  :defer t
+  :bind (("C-c v s" . voca-builder/search-popup))
+  :config
+  (setq voca-builder/voca-file "~/org/voca_entries.org"))
+
 (provide 'custom-languages)
 
 ;;; custom-languages.el ends here
