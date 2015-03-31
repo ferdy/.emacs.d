@@ -22,6 +22,7 @@
          ("C-x C-f" . helm-find-files)
          ("C-c h i" . helm-imenu)
          ("C-c h o" . helm-occur)
+         ("C-c h /" . helm-find-with-prefix-arg)
          ("C-c M-s" . helm-ag-with-prefix-arg)
          ("C-h SPC" . helm-all-mark-rings)
          ("C-c h x" . helm-register)
@@ -45,6 +46,12 @@
       (interactive)
       (setq current-prefix-arg '(4)) ; C-u
       (call-interactively 'helm-ag))
+
+    ;; Call helm-find with C-u
+    (defun helm-find-with-prefix-arg ()
+      (interactive)
+      (setq current-prefix-arg '(4)) ; C-u
+      (call-interactively 'helm-find))
 
     ;; Rebind tab to run persistent action
     (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
