@@ -77,7 +77,9 @@
   :defer t
   :bind (("C-c v s" . voca-builder/search-popup))
   :config
-  (setq voca-builder/voca-file "~/org/voca_entries.org"))
+  (setq voca-builder/voca-file "~/org/voca_entries.org"
+        ;; Don't record the vocabulary
+        voca-builder/record-new-vocabulary nil))
 
 (provide 'custom-languages)
 
