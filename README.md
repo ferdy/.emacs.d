@@ -17,8 +17,9 @@ Emacs with this configuration for the first time. The script only works with
 **Debian-based** systems.
 
 I mainly use Emacs for **LaTeX**, **Elisp** and **Clojure**, so my setup is
-planned accordingly. Check the ```.emacs.d/lisp``` directory for the gory
-details.
+planned accordingly.
+
+This configuration comes with more than **100 packages** already configured. Check the ```.emacs.d/lisp``` directory for the gory details.
 
 Noteworthy details
 ------------------
