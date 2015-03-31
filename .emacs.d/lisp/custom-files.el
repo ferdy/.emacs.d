@@ -23,6 +23,10 @@
           ;; Don't ask about recursive copies
           dired-recursive-copies 'always)
 
+    ;; Make find-name-dired faster
+    (require 'find-dired)
+    (setq find-ls-option '("-print0 | xargs -0 ls -ld" . "-ld"))
+
     ;; Better M-< and M->
     (defun dired-back-to-top ()
       (interactive)
