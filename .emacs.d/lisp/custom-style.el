@@ -163,7 +163,18 @@
   :init (electric-layout-mode))
 
 (use-package elec-pair
-  :init (electric-pair-mode))
+  :init
+  (progn
+    ;; Enable electric-pair only for certain modes
+    (defvar my-electic-pair-modes '(emacs-lisp-mode
+                                    clojure-mode))
+
+    (defun my-inhibit-electric-pair-mode (char)
+      (not (member major-mode my-electic-pair-modes)))
+
+    (setq electric-pair-inhibit-predicate #'my-inhibit-electric-pair-mode)
+    
+    (electric-pair-mode)))
 
 (use-package calendar
   :defer t
