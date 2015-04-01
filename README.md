@@ -19,7 +19,8 @@ Emacs with this configuration for the first time. The script only works with
 I mainly use Emacs for **LaTeX**, **Elisp** and **Clojure**, so my setup is
 planned accordingly.
 
-This configuration comes with more than **100 packages**. Check the ```.emacs.d/lisp``` directory for the gory details.
+This configuration comes with more than **100 packages** carefully set up for my
+daily usage. It may not be suitable for newbies. Check the ```.emacs.d/lisp``` directory for the gory details.
 
 Noteworthy details
 ------------------
