@@ -83,11 +83,12 @@
 (use-package dired+ ; Extend dired
   :ensure t
   :defer 5
-  :config (progn
-            ;; Reuse buffer for directories
-            (diredp-toggle-find-file-reuse-dir 1)
-            (setq diredp-hide-details-initially-flag nil)
-            (setq diredp-hide-details-propagate-flag nil)))
+  :config
+  (progn
+    ;; Reuse buffer for directories
+    (diredp-toggle-find-file-reuse-dir 1)
+    (setq diredp-hide-details-initially-flag nil)
+    (setq diredp-hide-details-propagate-flag nil)))
 
 (use-package bookmark+ ; Better bookmarks
   :ensure t
