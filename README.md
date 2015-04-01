@@ -28,6 +28,8 @@ Noteworthy details
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
+- Editing: [iedit](https://github.com/victorhge/iedit), [easy-kill](https://github.com/leoliu/easy-kill), [expand-region](https://github.com/magnars/expand-region.el)
+- Filling: [aggressive-fill-paragraph](https://github.com/davidshepherd7/aggressive-fill-paragraph-mode), [visual-fill-column](https://github.com/joostkremers/visual-fill-column)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
 - PDF: [pdf-tools](https://github.com/politza/pdf-tools)
@@ -48,7 +50,6 @@ Acknowledgements
 ----------------
 This configuration would not have been possible without the work of and the
 inspiration from these people:
-- [Joe Brock](https://github.com/DebianJoe)
 - [Mickey Petersen](https://github.com/mickeynp)
 - [Sebastian Wiesner](https://github.com/lunaryorn)
 - [Artur Malabarba](https://github.com/Bruce-Connor)
@@ -58,6 +59,7 @@ inspiration from these people:
 - [Steve Purcell](https://github.com/purcell)
 - [Oleh Krehel](https://github.com/abo-abo)
 - [John Wiegley](https://github.com/jwiegley)
+- [Joe Brock](https://github.com/DebianJoe)
 
 Warranty
 --------
