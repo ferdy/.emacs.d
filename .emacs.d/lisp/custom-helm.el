@@ -115,7 +115,7 @@
 ;; Requires: silversearcher-ag
 (use-package helm-ag ; Helm interface for Ag
   :ensure t
-  :defer t)
+  :commands helm-ag)
 
 (use-package helm-swoop ; List matching lines in another buffer
   :ensure t
@@ -161,13 +161,13 @@
 
 (use-package helm-descbinds ; Describing keybinding through Helm
   :ensure t
-  :defer t
+  :commands helm-descbinds
   :bind (("C-c h d" . helm-descbinds)))
 
 (use-package helm-flyspell ; Use Flyspell with Helm
   :ensure t
   :bind (("C-c h f" . helm-flyspell-correct))
-  :commands (helm-flyspell-correct))
+  :commands helm-flyspell-correct)
 
 (provide 'custom-helm)
 

@@ -86,7 +86,7 @@
 ;; - https://github.com/chrisdone/ghci-ng
 (use-package haskell-mode
   :ensure t
-  :defer t
+  :disabled t
   :config
   (progn
     (add-hook 'haskell-mode-hook #'subword-mode) ; Subword navigation
@@ -119,7 +119,7 @@
 
 (use-package haskell
   :ensure haskell-mode
-  :defer t
+  :disabled t
   :init (dolist (hook '(haskell-mode-hook haskell-cabal-mode-hook))
           (add-hook hook #'interactive-haskell-mode))
   :config
@@ -133,22 +133,22 @@
 
 (use-package haskell-interactive-mode
   :ensure haskell-mode
-  :defer t
+  :disabled t
   :config (add-hook 'haskell-interactive-mode-hook #'subword-mode))
 
 (use-package haskell-simple-indent ; Primitive Haskell indentation
   :ensure haskell-mode
-  :defer t
+  :disabled t
   :init (add-hook 'haskell-mode-hook #'haskell-simple-indent-mode))
 
 (use-package hindent ; Automated Haskell indentation
   :ensure t
-  :defer t
+  :disabled t
   :init (add-hook 'haskell-mode-hook #'hindent-mode))
 
 (use-package flycheck-haskell ; Setup Flycheck from Cabal projects
   :ensure t
-  :defer t
+  :disabled t
   :init (add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
 
 ;;; Scheme
