@@ -94,6 +94,15 @@
   :ensure t
   :defer 10)
 
+;; Set the directory where all backup and autosave files will be saved
+(defvar backup-dir "~/tmp/")
+(setq backup-directory-alist
+      `((".*" . ,backup-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,backup-dir t)))
+
+(setq view-read-only t) ; View read-only
+
 (provide 'custom-files)
 
 ;;; custom-files.el ends here

@@ -11,76 +11,6 @@
 
 ;;; Code:
 
-(setq view-read-only t) ; View read-only
-
-;;; Scrolling
-(setq scroll-margin 0
-      scroll-conservatively 1000)
-
-;; Undo scrolling
-(defvar unscroll-point (make-marker)
-  "Cursor position for next call to 'unscroll'.")
-
-(defvar unscroll-window-start (make-marker)
-  "Window start for next call to 'unscroll'.")
-
-(defvar unscroll-hscroll nil
-  "Hscroll for next call to 'unscroll'.")
-
-(put 'scroll-up 'unscrollable t)
-(put 'scroll-down 'unscrollable t)
-(put 'scroll-left 'unscrollable t)
-(put 'scroll-right 'unscrollable t)
-
-(defun unscroll-maybe-remember ()
-  "Remember where we started scrolling."
-  (if (not (get last-command 'unscrollable))
-      (progn
-	(set-marker unscroll-point (point))
-	(set-marker unscroll-window-start (window-start))
-	(setq unscroll-hscroll (window-hscroll)))))
-
-(defadvice scroll-up (before remember-for-unscroll
-			     activate compile)
-  "Remember where we started from, for 'unscroll'."
-  (unscroll-maybe-remember))
-
-(defadvice scroll-down (before remember-for-unscroll
-			       activate compile)
-  "Remember where we started from, for 'unscroll'."
-  (unscroll-maybe-remember))
-
-(defadvice scroll-left (before remember-for-unscroll
-			       activate compile)
-  "Remember where we started from, for 'unscroll'."
-  (unscroll-maybe-remember))
-
-(defadvice scroll-right (before remember-for-unscroll
-				activate compile)
-  "Remember where we started from, for 'unscroll'."
-  (unscroll-maybe-remember))
-
-(defun unscroll ()
-  "Revert to 'unscroll-point' and 'unscroll-window-start'."
-  (interactive)
-  (if (not unscroll-point)
-      (error "Cannot unscroll yet"))
-  (goto-char unscroll-point)
-  (set-window-start nil unscroll-window-start)
-  (set-window-hscroll nil unscroll-hscroll))
-
-;; Set the directory where all backup and autosave files will be saved
-(defvar backup-dir "~/tmp/")
-(setq backup-directory-alist
-      `((".*" . ,backup-dir)))
-(setq auto-save-file-name-transforms
-      `((".*" ,backup-dir t)))
-
-(use-package whitespace-cleanup-mode ; Cleanup whitespace in buffers
-  :ensure t
-  :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-          (add-hook hook #'whitespace-cleanup-mode)))
-
 ;;; Search
 ;; Exclude some directories in grep
 (eval-after-load 'grep
@@ -121,6 +51,11 @@
          ("M-Z" . zop-up-to-char)))
 
 ;;; Editing
+(use-package whitespace-cleanup-mode ; Cleanup whitespace in buffers
+  :ensure t
+  :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+          (add-hook hook #'whitespace-cleanup-mode)))
+
 (use-package undo-tree ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode))
