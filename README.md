@@ -29,7 +29,10 @@ Noteworthy details
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
-- Editing: [iedit](https://github.com/victorhge/iedit), [easy-kill](https://github.com/leoliu/easy-kill), [expand-region](https://github.com/magnars/expand-region.el)
+- Editing: [iedit](https://github.com/victorhge/iedit),
+  [easy-kill](https://github.com/leoliu/easy-kill),
+  [expand-region](https://github.com/magnars/expand-region.el)
+- Lisp editing: [Paredit](http://mumble.net/%7Ecampbell/emacs/paredit.html)
 - Filling: [aggressive-fill-paragraph](https://github.com/davidshepherd7/aggressive-fill-paragraph-mode), [visual-fill-column](https://github.com/joostkremers/visual-fill-column)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
