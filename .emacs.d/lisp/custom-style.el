@@ -159,9 +159,6 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 
-(use-package electric
-  :init (electric-layout-mode))
-
 (use-package elec-pair
   :init
   (progn
