@@ -102,6 +102,7 @@
       `((".*" ,backup-dir t)))
 
 (setq view-read-only t) ; View read-only
+(setq large-file-warning-threshold nil) ; No large file warning
 
 (provide 'custom-files)
 

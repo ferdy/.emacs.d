@@ -13,9 +13,7 @@
 
 (use-package pdf-tools ; Better PDF support
   :defer t
-  :init (pdf-tools-install)
-  ;; No large file warning
-  :config (setq large-file-warning-threshold nil))
+  :init (pdf-tools-install))
 
 (use-package interleave ; Take notes in org files while reading PDFs
   :ensure t
