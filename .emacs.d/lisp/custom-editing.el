@@ -191,6 +191,21 @@
   :ensure t
   :init (global-hungry-delete-mode))
 
+(use-package paredit ; Balanced sexp editing
+  :ensure t
+  :defer t
+  :init (dolist (hook '(eval-expression-minibuffer-setup-hook
+                        emacs-lisp-mode-hook
+                        inferior-emacs-lisp-mode-hook
+                        clojure-mode-hook))
+          (add-hook hook #'paredit-mode))
+  :config
+  (progn
+    ;; Free M-s. There are some useful bindings in that prefix map.
+    (define-key paredit-mode-map (kbd "M-s") nil)
+    (define-key paredit-mode-map (kbd "M-S-<up>") #'paredit-splice-sexp))
+  :diminish paredit-mode)
+
 ;;; Utilities
 (use-package ediff-wind ; Better ediff behavior
   :defer 5
@@ -243,21 +258,6 @@
             (setq compilation-ask-about-save nil
                   compilation-always-kill t
                   compilation-scroll-output 'first-error)))
-
-(use-package paredit ; Balanced sexp editing
-  :ensure t
-  :defer t
-  :init (dolist (hook '(eval-expression-minibuffer-setup-hook
-                        emacs-lisp-mode-hook
-                        inferior-emacs-lisp-mode-hook
-                        clojure-mode-hook))
-          (add-hook hook #'paredit-mode))
-  :config
-  (progn
-    ;; Free M-s. There are some useful bindings in that prefix map.
-    (define-key paredit-mode-map (kbd "M-s") nil)
-    (define-key paredit-mode-map (kbd "M-S-<up>") #'paredit-splice-sexp))
-  :diminish paredit-mode)
 
 (provide 'custom-editing)
 
