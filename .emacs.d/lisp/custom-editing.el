@@ -7,42 +7,9 @@
 
 ;;; Commentary:
 
-;; This file stores editing and searching customizations.
+;; This file stores editing customizations.
 
 ;;; Code:
-
-;;; Search
-;; Exclude some directories in grep
-(eval-after-load 'grep
-  '(progn
-     (add-to-list 'grep-find-ignored-directories "auto")
-     (add-to-list 'grep-find-ignored-directories "elpa")))
-(add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
-
-(use-package wgrep
-  :ensure t
-  :defer t)
-
-(use-package flx-isearch ; Flexible search for Isearch
-  :ensure t
-  :defer t
-  :bind (("C-M-s" . flx-isearch-forward)
-         ("C-M-r" . flx-isearch-backward)))
-
-(use-package visual-regexp ; Display regular expressions
-  :ensure t
-  :defer t
-  :bind (("C-c r" . vr/query-replace)
-         ("C-c R" . vr/replace)))
-
-(use-package anzu ; Show search results number in mode-line
-  :ensure t
-  :init (global-anzu-mode)
-  :config (progn
-            (setq anzu-cons-mode-line-p nil
-                  anzu-mode-lighter "")
-            (setcar (cdr (assq 'isearch-mode minor-mode-alist))
-                    '(:eval (anzu--update-mode-line)))))
 
 (use-package zop-to-char ; Better zap-to-char
   :ensure t
@@ -50,7 +17,6 @@
   :bind (("M-z" . zop-to-char)
          ("M-Z" . zop-up-to-char)))
 
-;;; Editing
 (use-package whitespace-cleanup-mode ; Cleanup whitespace in buffers
   :ensure t
   :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
@@ -122,10 +88,6 @@
   :config (add-to-list 'aggressive-indent-excluded-modes
                        'cider-repl-mode))
 
-(use-package hungry-delete ; Delete up to the first non blank character
-  :ensure t
-  :init (global-hungry-delete-mode))
-
 (use-package paredit ; Balanced sexp editing
   :ensure t
   :defer t
@@ -141,7 +103,6 @@
     (define-key paredit-mode-map (kbd "M-S-<up>") #'paredit-splice-sexp))
   :diminish paredit-mode)
 
-;;; Utilities
 (use-package ediff-wind ; Better ediff behavior
   :defer 5
   :config (setq ediff-window-setup-function #'ediff-setup-windows-plain
@@ -187,12 +148,6 @@
   :ensure t
   :defer t
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode))
-
-(use-package compile
-  :config (progn
-            (setq compilation-ask-about-save nil
-                  compilation-always-kill t
-                  compilation-scroll-output 'first-error)))
 
 (provide 'custom-editing)
 

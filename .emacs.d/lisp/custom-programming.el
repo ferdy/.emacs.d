@@ -16,6 +16,12 @@
   ;; Enable Eldoc for `eval-expression', too
   :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
 
+(use-package compile
+  :config (progn
+            (setq compilation-ask-about-save nil
+                  compilation-always-kill t
+                  compilation-scroll-output 'first-error)))
+
 ;;; Syntax checking
 ;; Requires: chktex
 (use-package flycheck

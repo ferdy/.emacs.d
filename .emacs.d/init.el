@@ -90,6 +90,7 @@
 (require 'custom-style)
 (require 'custom-helm)
 (require 'custom-editing)
+(require 'custom-search)
 (require 'custom-files)
 (require 'custom-completion)
 (require 'custom-formatting)
