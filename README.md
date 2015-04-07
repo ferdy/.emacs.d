@@ -29,6 +29,7 @@ Overview
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line), [anzu](https://github.com/syohex/emacs-anzu)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
+- Frames: [transpose-frame](https://github.com/emacsmirror/transpose-frame)
 - Files: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus)
 - Editing: [iedit](https://github.com/victorhge/iedit),
   [expand-region](https://github.com/magnars/expand-region.el),
@@ -54,7 +55,7 @@ Overview
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck), [flycheck-pos-tip](https://github.com/flycheck/flycheck-pos-tip)
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
   [langtool](https://github.com/mhayashi1120/Emacs-langtool), [voca-builder](https://github.com/yitang/voca-builder)
-- Version control: [Magit](https://github.com/magit/magit)
+- Version control: [Magit](https://github.com/magit/magit), [diff-hl](https://github.com/dgutov/diff-hl)
 - Project management: [Projectile](https://github.com/bbatsov/projectile),
   [helm-projectile](https://tuhdo.github.io/helm-projectile.html)
 - Utilities: [bug-hunter](https://github.com/Malabarba/elisp-bug-hunter),
