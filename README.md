@@ -29,13 +29,14 @@ Overview
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line), [anzu](https://github.com/syohex/emacs-anzu)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
+- Files: [dired+](http://www.emacswiki.org/emacs/DiredPlus), [bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus)
 - Editing: [iedit](https://github.com/victorhge/iedit),
   [expand-region](https://github.com/magnars/expand-region.el),
   [transpose-mark](https://github.com/AtticHacker/transpose-mark),
   [hungry-delete](https://github.com/nflath/hungry-delete),
   [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
 - Undo: [undo-tree](http://www.dr-qubit.org/emacs.php#undo-tree)
-- Killing: [easy-kill](https://github.com/leoliu/easy-kill)
+- Killing: [easy-kill](https://github.com/leoliu/easy-kill), [helm-show-kill-ring](https://tuhdo.github.io/helm-intro.html#sec-6)
 - Coding: [Paredit](http://mumble.net/%7Ecampbell/emacs/paredit.html),
 [aggressive-indent-mode](https://github.com/Malabarba/aggressive-indent-mode),
 [macrostep](https://github.com/joddie/macrostep)
