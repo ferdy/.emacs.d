@@ -27,22 +27,24 @@ Noteworthy details
 - Default theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
 - Default font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
-- Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line)
+- Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line), [anzu](https://github.com/syohex/emacs-anzu)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
 - Editing: [iedit](https://github.com/victorhge/iedit),
   [easy-kill](https://github.com/leoliu/easy-kill),
-  [expand-region](https://github.com/magnars/expand-region.el)
+  [expand-region](https://github.com/magnars/expand-region.el), [transpose-mark](https://github.com/AtticHacker/transpose-mark)
 - Lisp editing: [Paredit](http://mumble.net/%7Ecampbell/emacs/paredit.html)
-- Filling: [aggressive-fill-paragraph](https://github.com/davidshepherd7/aggressive-fill-paragraph-mode), [visual-fill-column](https://github.com/joostkremers/visual-fill-column)
+- Filling: [aggressive-fill-paragraph](https://github.com/davidshepherd7/aggressive-fill-paragraph-mode),
+  [visual-fill-column](https://github.com/joostkremers/visual-fill-column)
+- Search: [helm-ag](https://github.com/syohex/emacs-helm-ag), [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
 - PDF: [pdf-tools](https://github.com/politza/pdf-tools)
 - Auto-completion: [company-mode](https://github.com/company-mode/company-mode)
-- Syntax checking: [Flycheck](https://github.com/flycheck/flycheck)
+- Syntax checking: [Flycheck](https://github.com/flycheck/flycheck), [flycheck-pos-tip](https://github.com/flycheck/flycheck-pos-tip)
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
   [langtool](https://github.com/mhayashi1120/Emacs-langtool), [voca-builder](https://github.com/yitang/voca-builder)
 - Version control: [Magit](https://github.com/magit/magit)
-- Project management: [Projectile](https://github.com/bbatsov/projectile)
+- Project management: [Projectile](https://github.com/bbatsov/projectile), [helm-projectile](https://tuhdo.github.io/helm-projectile.html)
 
 Setup
 -----
