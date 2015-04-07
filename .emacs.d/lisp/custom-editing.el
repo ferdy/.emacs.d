@@ -88,6 +88,10 @@
   :config (add-to-list 'aggressive-indent-excluded-modes
                        'cider-repl-mode))
 
+(use-package hungry-delete ; Delete up to the first non blank character
+  :ensure t
+  :init (global-hungry-delete-mode))
+
 (use-package paredit ; Balanced sexp editing
   :ensure t
   :defer t
