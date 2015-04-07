@@ -38,8 +38,9 @@ Noteworthy details
 - Search: [helm-ag](https://github.com/syohex/emacs-helm-ag), [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
-- PDF: [pdf-tools](https://github.com/politza/pdf-tools)
-- Auto-completion: [company-mode](https://github.com/company-mode/company-mode)
+- Blogging: [org2blog](https://github.com/punchagan/org2blog)
+- PDF: [pdf-tools](https://github.com/politza/pdf-tools), [interleave](https://github.com/rudolfochrist/interleave)
+- Auto-completion: [company-mode](https://github.com/company-mode/company-mode), [helm-company](https://github.com/yasuyk/helm-company)
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck), [flycheck-pos-tip](https://github.com/flycheck/flycheck-pos-tip)
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
   [langtool](https://github.com/mhayashi1120/Emacs-langtool), [voca-builder](https://github.com/yitang/voca-builder)
