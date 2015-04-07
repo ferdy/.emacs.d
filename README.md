@@ -29,7 +29,7 @@ Overview
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line), [anzu](https://github.com/syohex/emacs-anzu)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
-- Files: [dired+](http://www.emacswiki.org/emacs/DiredPlus), [bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus)
+- Files: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus)
 - Editing: [iedit](https://github.com/victorhge/iedit),
   [expand-region](https://github.com/magnars/expand-region.el),
   [transpose-mark](https://github.com/AtticHacker/transpose-mark),
