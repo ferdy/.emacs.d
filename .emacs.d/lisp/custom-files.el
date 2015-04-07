@@ -80,6 +80,8 @@
     ;; Hide omit files messages
     (setq dired-omit-verbose nil)))
 
+;; Note: to override dired+ faces, customize `font-lock-maximum-decoration'
+;; adding an entry for `dired-mode' and setting decoration to default
 (use-package dired+ ; Extend dired
   :ensure t
   :defer 5
