@@ -118,10 +118,6 @@
 
 (tooltip-mode -1) ; Disable tooltips
 
-;; Remove *Messages* buffer
-(setq-default message-log-max nil)
-(kill-buffer "*Messages*")
-
 ;; Automatically close some buffers on exit
 (add-hook 'minibuffer-exit-hook
 	  '(lambda ()
