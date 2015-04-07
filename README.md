@@ -30,14 +30,20 @@ Overview
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line), [anzu](https://github.com/syohex/emacs-anzu)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
 - Editing: [iedit](https://github.com/victorhge/iedit),
-  [easy-kill](https://github.com/leoliu/easy-kill),
   [expand-region](https://github.com/magnars/expand-region.el),
   [transpose-mark](https://github.com/AtticHacker/transpose-mark),
-  [hungry-delete](https://github.com/nflath/hungry-delete), [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
-- Coding: [Paredit](http://mumble.net/%7Ecampbell/emacs/paredit.html), [aggressive-indent-mode](https://github.com/Malabarba/aggressive-indent-mode)
+  [hungry-delete](https://github.com/nflath/hungry-delete),
+  [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
+- Undo: [undo-tree](http://www.dr-qubit.org/emacs.php#undo-tree)
+- Killing: [easy-kill](https://github.com/leoliu/easy-kill)
+- Coding: [Paredit](http://mumble.net/%7Ecampbell/emacs/paredit.html),
+[aggressive-indent-mode](https://github.com/Malabarba/aggressive-indent-mode),
+[macrostep](https://github.com/joddie/macrostep)
 - Filling: [aggressive-fill-paragraph](https://github.com/davidshepherd7/aggressive-fill-paragraph-mode),
   [visual-fill-column](https://github.com/joostkremers/visual-fill-column)
-- Search: [helm-ag](https://github.com/syohex/emacs-helm-ag), [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
+- Search: [helm-ag](https://github.com/syohex/emacs-helm-ag),
+[helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
+- Highlights: [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters), [highlight-symbol](https://github.com/nschum/highlight-symbol.el)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
 - Web: [SX](https://github.com/vermiculus/sx.el), [Elfeed](https://github.com/skeeto/elfeed)
