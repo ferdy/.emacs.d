@@ -55,7 +55,11 @@ Overview
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
   [langtool](https://github.com/mhayashi1120/Emacs-langtool), [voca-builder](https://github.com/yitang/voca-builder)
 - Version control: [Magit](https://github.com/magit/magit)
-- Project management: [Projectile](https://github.com/bbatsov/projectile), [helm-projectile](https://tuhdo.github.io/helm-projectile.html)
+- Project management: [Projectile](https://github.com/bbatsov/projectile),
+  [helm-projectile](https://tuhdo.github.io/helm-projectile.html)
+- Utilities: [bug-hunter](https://github.com/Malabarba/elisp-bug-hunter),
+  [esup](https://github.com/jschaf/esup),
+  [camcorder](https://github.com/Malabarba/camcorder.el), [unkillable-scratch](https://github.com/EricCrosson/unkillable-scratch)
 
 Setup
 -----
