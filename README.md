@@ -22,8 +22,8 @@ planned accordingly.
 This configuration comes with more than **100 packages** carefully set up for my
 daily usage. It may not be suitable for newbies. Check the ```.emacs.d/lisp``` directory for the gory details.
 
-Noteworthy details
-------------------
+Overview
+--------
 - Default theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
 - Default font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
@@ -62,11 +62,11 @@ inspiration from these people:
 - [Sebastian Wiesner](https://github.com/lunaryorn)
 - [Artur Malabarba](https://github.com/Bruce-Connor)
 - [Sacha Chua](https://github.com/sachac)
+- [John Wiegley](https://github.com/jwiegley)
 - [Bozhidar Batsov](https://github.com/bbatsov)
 - [Magnar Sveen](https://github.com/magnars)
 - [Steve Purcell](https://github.com/purcell)
 - [Oleh Krehel](https://github.com/abo-abo)
-- [John Wiegley](https://github.com/jwiegley)
 - [Joe Brock](https://github.com/DebianJoe)
 
 Warranty
