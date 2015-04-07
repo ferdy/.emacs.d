@@ -38,6 +38,7 @@ Noteworthy details
 - Search: [helm-ag](https://github.com/syohex/emacs-helm-ag), [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
+- Web: [SX](https://github.com/vermiculus/sx.el), [Elfeed](https://github.com/skeeto/elfeed)
 - Blogging: [org2blog](https://github.com/punchagan/org2blog)
 - PDF: [pdf-tools](https://github.com/politza/pdf-tools), [interleave](https://github.com/rudolfochrist/interleave)
 - Auto-completion: [company-mode](https://github.com/company-mode/company-mode), [helm-company](https://github.com/yasuyk/helm-company)
