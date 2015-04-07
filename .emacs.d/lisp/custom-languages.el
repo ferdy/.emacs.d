@@ -34,6 +34,8 @@
 
 (use-package flyspell
   :defer t
+  :bind (("C-c s b" . flyspell-buffer)
+         ("C-c s r" . flyspell-region))
   :config
   (progn
     (setq flyspell-use-meta-tab nil
