@@ -75,7 +75,8 @@
 (use-package voca-builder ; Popup dictionary entries
   :ensure t
   :defer t
-  :bind (("C-c v s" . voca-builder/search-popup))
+  :bind (("C-c v p" . voca-builder/search-popup)
+         ("C-c v s" . voca-builder/search))
   :config
   (setq voca-builder/voca-file "~/org/voca_entries.org"
         ;; Don't record the vocabulary

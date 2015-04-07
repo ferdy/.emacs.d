@@ -149,6 +149,11 @@
   :defer t
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode))
 
+(use-package transpose-mark ; Transpose data by leaving an Emacs mark
+  :ensure t                 ; on the line you want to transpose.
+  :defer t
+  :bind ("C-c t m" . transpose-mark))
+
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here
