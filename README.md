@@ -31,8 +31,10 @@ Overview
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
 - Editing: [iedit](https://github.com/victorhge/iedit),
   [easy-kill](https://github.com/leoliu/easy-kill),
-  [expand-region](https://github.com/magnars/expand-region.el), [transpose-mark](https://github.com/AtticHacker/transpose-mark)
-- Lisp editing: [Paredit](http://mumble.net/%7Ecampbell/emacs/paredit.html)
+  [expand-region](https://github.com/magnars/expand-region.el),
+  [transpose-mark](https://github.com/AtticHacker/transpose-mark),
+  [hungry-delete](https://github.com/nflath/hungry-delete), [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
+- Coding: [Paredit](http://mumble.net/%7Ecampbell/emacs/paredit.html), [aggressive-indent-mode](https://github.com/Malabarba/aggressive-indent-mode)
 - Filling: [aggressive-fill-paragraph](https://github.com/davidshepherd7/aggressive-fill-paragraph-mode),
   [visual-fill-column](https://github.com/joostkremers/visual-fill-column)
 - Search: [helm-ag](https://github.com/syohex/emacs-helm-ag), [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
