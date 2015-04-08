@@ -85,5 +85,6 @@ inspiration from these people:
 
 Warranty
 --------
-This configuration is provided with *absolutely no warranty*, *no guarantee* and
-*no support*.
+This configuration is provided with *no guarantee* and *no support*.
+If it does not work as you expect or it does not suit your needs, fix it and
+treasure the opportunity to learn something new.
