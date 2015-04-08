@@ -70,7 +70,7 @@
 (use-package sx ; StackExchange client for Emacs
   :ensure t
   :defer t
-  :bind (("C-c w s" . sx-tab-frontpage)
+  :bind (("C-c w s" . sx-tab-all-questions)
          ("C-c w S" . sx-tab-newest)
          ("C-c w a" . sx-ask)))
 
