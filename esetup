@@ -66,12 +66,14 @@ configuring LaTeX..."
     sudo apt-get -y install --no-install-recommends texlive-luatex luatex
     sudo apt-get -y install --no-install-recommends texlive-latex-extra
     sudo apt-get -y install --no-install-recommends texlive-fonts-recommended
+    sudo apt-get -y install --no-install-recommends texlive-fonts-extra
     sudo apt-get -y install --no-install-recommends texlive-generic-recommended
     sudo apt-get -y install --no-install-recommends texlive-math-extra
     sudo apt-get -y install --no-install-recommends texlive-lang-italian
     sudo apt-get -y install --no-install-recommends cjk-latex latex-cjk-all
     sudo apt-get -y install --no-install-recommends texlive-lang-cjk
     sudo apt-get -y install --no-install-recommends texlive-chinese-lang
+    sudo apt-get -y install --no-install-recommends latex-xcolor
     echo "
 ... done. Configuring chktex for Flycheck..."
     if [ ! -d "/home/manuel/sources" ]; then
