@@ -73,7 +73,7 @@ configuring LaTeX..."
     sudo apt-get -y install --no-install-recommends cjk-latex latex-cjk-all
     sudo apt-get -y install --no-install-recommends texlive-lang-cjk
     sudo apt-get -y install --no-install-recommends texlive-chinese-lang
-    sudo apt-get -y install --no-install-recommends latex-xcolor
+    sudo apt-get -y install --no-install-recommends latex-xcolor fonts-lmodern lmodern
     echo "
 ... done. Configuring chktex for Flycheck..."
     if [ ! -d "/home/manuel/sources" ]; then
