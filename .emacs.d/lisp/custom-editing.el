@@ -168,7 +168,7 @@
     (paredit-annotate-functions-with-examples))
   :diminish paredit-mode)
 
-(use-package redshank ; Lisp editing extensions
+(use-package redshank ; Lisp editing extension
   :ensure t
   :init (progn
           (setq redshank-prefix-key "C-c C-r") ; Change default prefix
