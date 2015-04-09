@@ -19,9 +19,7 @@
     (setq dired-auto-revert-buffer t ; Always revert Dired buffers on revisiting
           dired-listing-switches "-laGh1v --group-directories-first"
           global-auto-revert-non-file-buffers t ; Also auto refresh dired
-          auto-revert-verbose nil ; But be quiet about it
-          ;; Don't ask about recursive copies
-          dired-recursive-copies 'always)
+          auto-revert-verbose nil) ; But be quiet about it
 
     ;; Make find-name-dired faster
     (require 'find-dired)
