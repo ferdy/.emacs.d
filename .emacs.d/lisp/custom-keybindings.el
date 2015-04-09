@@ -138,12 +138,6 @@ prefix argument."
 (global-set-key (kbd "C-S-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "C-S-<right>") 'enlarge-window-horizontally)
 
-;; Default organizer file
-(global-set-key (kbd "C-c o")
-                (lambda ()
-                  (interactive)
-                  (find-file "~/org/organizer.org")))
-
 ;; Minor mode for 'override' keybindings
 (use-package my-keys-mode
   :load-path "various"
@@ -152,6 +146,9 @@ prefix argument."
     (define-key my-keys-mode-map (kbd "M-a") 'custom/backward-paragraph)
     (define-key my-keys-mode-map (kbd "M-e") 'custom/forward-paragraph)
     (define-key my-keys-mode-map (kbd "C-,") 'iedit-dwim)
+    (define-key my-keys-mode-map (kbd "C-c o") (lambda ()
+                                                 (interactive)
+                                                 (find-file "~/org/organizer.org")))
     (global-my-keys-mode)))
 
 (provide 'custom-keybindings)

@@ -62,9 +62,14 @@
   :commands esup
   :disabled t)
 
-(use-package bury-successful-compilation ; Bury compilation buffer after
-  :ensure t                              ; successful compilation
+;; Bury compilation buffer after successful compilation
+(use-package bury-successful-compilation
+  :ensure t
   :init (bury-successful-compilation 1))
+
+(use-package command-log-mode ; Show event history and command history
+  :ensure t
+  :commands (command-log-mode))
 
 ;;; Bugs management
 (use-package bug-reference
