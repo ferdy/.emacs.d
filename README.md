@@ -35,6 +35,7 @@ Overview
 - Undo: [undo-tree](http://www.dr-qubit.org/emacs.php#undo-tree)
 - Killing: [easy-kill](https://github.com/leoliu/easy-kill), [helm-show-kill-ring](https://tuhdo.github.io/helm-intro.html#sec-6)
 - Coding: [Paredit](http://mumble.net/%7Ecampbell/emacs/paredit.html),
+[Redshank](http://www.foldr.org/~michaelw/emacs/redshank/),
 [aggressive-indent-mode](https://github.com/Malabarba/aggressive-indent-mode),
 [macrostep](https://github.com/joddie/macrostep)
 - Filling: [aggressive-fill-paragraph](https://github.com/davidshepherd7/aggressive-fill-paragraph-mode),
