@@ -107,6 +107,17 @@
     (define-key paredit-mode-map (kbd "M-S-<up>") #'paredit-splice-sexp))
   :diminish paredit-mode)
 
+(use-package redshank ; Lisp editing extensions
+  :ensure t
+  :init (progn
+          (setq redshank-prefix-key "C-c C-r") ; Change default prefix
+          (dolist (hook '(eval-expression-minibuffer-setup-hook
+                          emacs-lisp-mode-hook
+                          inferior-emacs-lisp-mode-hook
+                          clojure-mode-hook))
+            (add-hook hook #'redshank-mode)))
+  :diminish redshank-mode)
+
 (use-package ediff-wind ; Better ediff behavior
   :defer 5
   :config (setq ediff-window-setup-function #'ediff-setup-windows-plain
