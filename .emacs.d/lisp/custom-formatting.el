@@ -22,7 +22,6 @@
             ;; Use visual-line-mode
             (add-hook 'markdown-mode-hook #'visual-line-mode)))
 
-;; Requires: pandoc
 (use-package pandoc-mode
   :ensure t
   :defer 5

@@ -20,7 +20,6 @@
               (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist)))
 
 ;;; Spell checking and dictionaries
-;; Requires: aspell, aspell-in, aspell-en
 (use-package ispell
   :defer t
   :config

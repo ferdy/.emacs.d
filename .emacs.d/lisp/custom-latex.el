@@ -12,11 +12,6 @@
 ;;; Code:
 
 ;;; LaTeX
-;; Requires: texlive-latex-base, texlive-latex-recommended,
-;; latexmk, texlive-latex-extra, texlive-fonts-recommended,
-;; texlive-generic-recommended, texlive-xetex
-;; texlive-lang-italian, cjk-latex, latex-cjk-all,
-;; texlive-lang-cjk, texlive-chinese-lang
 (use-package tex-site
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode))

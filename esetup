@@ -70,6 +70,7 @@ configuring LaTeX..."
     sudo apt-get -y install --no-install-recommends texlive-generic-recommended
     sudo apt-get -y install --no-install-recommends texlive-math-extra
     sudo apt-get -y install --no-install-recommends texlive-lang-italian
+    sudo apt-get -y install --no-install-recommends texlive-lang-english
     sudo apt-get -y install --no-install-recommends cjk-latex latex-cjk-all
     sudo apt-get -y install --no-install-recommends texlive-lang-cjk
     sudo apt-get -y install --no-install-recommends texlive-chinese-lang

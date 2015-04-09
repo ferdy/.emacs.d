@@ -112,7 +112,6 @@
   :defer 10
   :init (helm-projectile-on))
 
-;; Requires: silversearcher-ag
 (use-package helm-ag ; Helm interface for Ag
   :ensure t
   :commands helm-ag)
