@@ -55,6 +55,7 @@ Overview
 - Version control: [Magit](https://github.com/magit/magit), [diff-hl](https://github.com/dgutov/diff-hl)
 - Project management: [Projectile](https://github.com/bbatsov/projectile),
   [helm-projectile](https://tuhdo.github.io/helm-projectile.html)
+- Slides: [org-html-slideshow](https://github.com/relevance/org-html-slideshow)
 - Utilities: [bug-hunter](https://github.com/Malabarba/elisp-bug-hunter),
   [esup](https://github.com/jschaf/esup),
   [camcorder](https://github.com/Malabarba/camcorder.el), [unkillable-scratch](https://github.com/EricCrosson/unkillable-scratch)
