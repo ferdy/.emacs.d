@@ -104,6 +104,13 @@
   (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print)
   (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-display-if-noquery))
 
+(use-package browse-url ; Browse URLs
+  :bind (("C-c w u" . browse-url)))
+
+(use-package eww ; Built-in web browser
+  :bind (("C-c w b" . eww-list-bookmarks)
+         ("C-c w w" . eww)))
+
 (provide 'custom-net)
 
 ;;; custom-net.el ends here
