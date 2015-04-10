@@ -88,7 +88,18 @@ Inside a code-block, simply calls `self-insert-command'."
           (if (null opening)
               (insert "’")
             (insert "‘’")
-            (forward-char -1)))))))
+            (forward-char -1)))))
+
+    ;; Strike out DONE items
+    (defun custom/modify-org-done-face ()
+      (setq org-fontify-done-headline t)
+      (set-face-attribute 'org-done nil :strike-through t)
+      (set-face-attribute 'org-headline-done nil
+                          :strike-through t
+                          :foreground "light gray"))
+
+    (eval-after-load "org"
+      (add-hook 'org-add-hook 'custom/modify-org-done-face))))
 
 ;; Auto insert custom text upon opening an org file
 (auto-insert-mode)
