@@ -50,6 +50,8 @@
 (global-set-key "\C-x\C-n" 'other-window)
 (global-set-key "\C-x\C-p" 'other-window-backward)
 
+(global-set-key (kbd "C-x C-d") 'duplicate-line) ; Duplicate line at point
+
 (defun other-window-backward (&optional n)
   "Select Nth previous window."
   (interactive "P")

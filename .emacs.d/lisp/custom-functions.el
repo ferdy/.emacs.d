@@ -225,6 +225,22 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (while (re-search-forward "\\s-+" nil t)
         (replace-match " ")))))
 
+;; Duplicate the line at point
+(defun duplicate-line ()
+  "Duplicate the line containing point."
+  (interactive)
+  (save-excursion
+    (let (line-text)
+      (goto-char (line-beginning-position))
+      (let ((beg (point)))
+        (goto-char (line-end-position))
+        (setq line-text (buffer-substring beg (point))))
+      (if (eobp)
+          (insert ?\n)
+        (forward-line))
+      (open-line 1)
+      (insert line-text))))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here
