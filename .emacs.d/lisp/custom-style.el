@@ -230,32 +230,6 @@
     
     (electric-pair-mode)))
 
-(use-package calendar
-  :defer t
-  :config (setq calendar-week-start-day 1)) ; In Europe we start on Monday
-
-(use-package time
-  :bind (("C-c u i" . emacs-init-time)
-         ("C-c u u" . emacs-uptime)
-	 ("C-c u t" . display-time-world))
-  :config
-  (setq display-time-world-time-format "%H:%M %Z, %d. %b"
-	display-time-world-list '(("Europe/Rome" "Rome")
-				  ("Europe/London" "London")
-				  ("Asia/Hong_Kong" "Hong Kong")
-				  ("Asia/Tokyo" "Tokyo"))))
-
-(use-package info
-  :defer t
-  :bind ("C-h C-i" . info-lookup-symbol)
-  :config
-  ;; Fix `Info-quoted' face by going back to the default face.
-  (set-face-attribute 'Info-quoted nil :family 'unspecified
-		      :inherit font-lock-constant-face))
-
-;; Let apropos commands perform more extensive searches than default
-(setq apropos-do-all t)
-
 (use-package page-break-lines ; Better looking break lines
   :ensure t
   :defer t
