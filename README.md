@@ -20,15 +20,14 @@ daily usage. It may not be suitable for newbies. Check the ```.emacs.d/lisp``` d
 
 Overview
 --------
-- Default theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
-- Default font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
+- Theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
+- Font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line), [anzu](https://github.com/syohex/emacs-anzu)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
 - Frames: [transpose-frame](https://github.com/emacsmirror/transpose-frame)
 - Files: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus)
 - Editing: [iedit](https://github.com/victorhge/iedit),
-  [expand-region](https://github.com/magnars/expand-region.el),
   [transpose-mark](https://github.com/AtticHacker/transpose-mark),
   [hungry-delete](https://github.com/nflath/hungry-delete),
   [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
