@@ -1,6 +1,6 @@
 ;;; custom-vers-control.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2015  Manuel Uberti
+;; Copyright (C) 2013-2015 Manuel Uberti
 
 ;; Author: Manuel Uberti <manuel@boccaperta.com>
 ;; Keywords:
@@ -15,6 +15,7 @@
   :ensure t
   :defer t
   :bind (("<f3>" . magit-status))
+  :init (setq magit-last-seen-setup-instructions "1.4.0")
   :config
   (progn
     ;; Shut up, Magit!
