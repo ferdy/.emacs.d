@@ -17,7 +17,10 @@
   :config
   (progn
     (setq projectile-completion-system 'helm
-          projectile-find-dir-includes-top-level t)
+          projectile-buffers-filter-function
+          #'projectile-buffers-with-file-or-process
+          projectile-find-dir-includes-top-level t
+          projectile-switch-project-action #'projectile-vc)
 
     ;; Replace Ack with helm-ag in Projectile commander
     (def-projectile-commander-method ?a
