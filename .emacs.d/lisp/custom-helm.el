@@ -168,6 +168,11 @@
   :bind (("C-c h f" . helm-flyspell-correct))
   :commands helm-flyspell-correct)
 
+(use-package helm-flycheck ; Show Flycheck errors with Helm
+  :ensure t
+  :defer t
+  :config (define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
+
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here

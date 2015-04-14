@@ -48,7 +48,9 @@ Overview
 - Blogging: [org2blog](https://github.com/punchagan/org2blog)
 - PDF: [pdf-tools](https://github.com/politza/pdf-tools), [interleave](https://github.com/rudolfochrist/interleave)
 - Auto-completion: [company-mode](https://github.com/company-mode/company-mode), [helm-company](https://github.com/yasuyk/helm-company)
-- Syntax checking: [Flycheck](https://github.com/flycheck/flycheck), [flycheck-pos-tip](https://github.com/flycheck/flycheck-pos-tip)
+- Syntax checking: [Flycheck](https://github.com/flycheck/flycheck),
+[flycheck-pos-tip](https://github.com/flycheck/flycheck-pos-tip),
+[helm-flycheck](https://github.com/yasuyk/helm-flycheck)
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
   [langtool](https://github.com/mhayashi1120/Emacs-langtool), [voca-builder](https://github.com/yitang/voca-builder)
 - Version control: [Magit](https://github.com/magit/magit), [diff-hl](https://github.com/dgutov/diff-hl)
