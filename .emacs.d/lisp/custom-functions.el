@@ -20,7 +20,6 @@
   (interactive)
   (custom/replace-string-matches-recursively my-oldtags my-newtags))
 
-;; Replace OLDTAGS elements with NEWTAGS elements recursively
 (defun custom/replace-string-matches-recursively (oldtags newtags)
   "Replace OLDTAGS elements with NEWTAGS elements recursively."
   (custom/only-strings-p oldtags)
@@ -37,7 +36,6 @@
 	     (custom/replace-string-matches-recursively (cdr oldtags)
 							(cdr newtags)))))))
 
-;; Check if the given list contains only strings
 (defun custom/only-strings-p (list)
   "Check if LIST does contain only strings."
   (and (not (eq (car list) nil))
@@ -45,20 +43,17 @@
 	   (not (custom/only-strings-p (cdr list)))
 	 (error "List must only contain strings"))))
 
-;; Check if two lists have the same length
 (defun custom/lists-same-length-p (a b)
   "Check if lists A and B have the same length."
   (if (eq (length a)(length b)) t
     (error "Lists must have same length")))
 
-;; Revert (reload from file) the current buffer without asking any questions
 (defun revert-this-buffer ()
-  "Revert current buffer."
+  "Revert current buffer without asking for confirmation."
   (interactive)
   (revert-buffer nil t t)
   (message (concat "Reverted buffer " (buffer-name))))
 
-;; Create scratch buffer, useful if I kill it by mistake
 (defun create-scratch-buffer nil
   "Create a scratch buffer."
   (interactive)
@@ -121,7 +116,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 		      (interactive)
 		      (custom/term-start-or-switch ,name ,use-existing))))
 
-;; Copy current file name to clipboard
 (defun copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
@@ -132,14 +126,12 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 
-;; Clear comint buffers
 (defun comint-clear-buffer ()
   "Easily clear comint buffers."
   (interactive)
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
-;; Kill buffers matching a regular expression with no confirmation
 (defun custom/kill-buffers (regexp)
   "Kill buffers matching REGEXP without asking for confirmation."
   (interactive "sKill buffers matching this regular expression: ")
@@ -178,7 +170,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
         regexp-history)
   (call-interactively 'occur))
 
-;; Delete the current file
 (defun delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
@@ -188,7 +179,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
     (delete-file (buffer-file-name))
     (kill-this-buffer)))
 
-;; Rename the current file
 (defun rename-this-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
@@ -204,7 +194,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
         (rename-buffer new-name)
         (set-visited-file-name new-name)))))
 
-;; Find files with sudo
 (defun open-with-sudo ()
   "Find file using `sudo' with TRAMP."
   (unless (and buffer-file-name
@@ -214,7 +203,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 
 (add-hook 'find-file-hook #'open-with-sudo)
 
-;; Replace whitespaces with single spaces
 (defun just-one-space-in-region (beg end)
   "Replace all whitespace in the region from BEG to END with single spaces."
   (interactive "r")
@@ -225,7 +213,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (while (re-search-forward "\\s-+" nil t)
         (replace-match " ")))))
 
-;; Duplicate the line at point
 (defun duplicate-line ()
   "Duplicate the line containing point."
   (interactive)
