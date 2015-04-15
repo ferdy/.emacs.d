@@ -24,11 +24,10 @@
 
 (use-package pandoc-mode
   :ensure t
-  :defer 5
+  :commands pandoc-mode
   :config (progn
             (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
             (setq org-pandoc-output-format 'odt)))
-
 
 (provide 'custom-formatting)
 
