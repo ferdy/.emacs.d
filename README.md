@@ -57,6 +57,7 @@ Overview
 - Project management: [Projectile](https://github.com/bbatsov/projectile),
   [helm-projectile](https://tuhdo.github.io/helm-projectile.html)
 - Slides: [Org-HTML-Slideshow](https://github.com/relevance/org-html-slideshow)
+- Document conversion: [pandoc-mode](https://github.com/joostkremers/pandoc-mode)
 - Utilities: [bug-hunter](https://github.com/Malabarba/elisp-bug-hunter),
   [esup](https://github.com/jschaf/esup),
   [camcorder](https://github.com/Malabarba/camcorder.el), [unkillable-scratch](https://github.com/EricCrosson/unkillable-scratch)
