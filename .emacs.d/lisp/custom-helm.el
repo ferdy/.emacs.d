@@ -41,7 +41,7 @@
                ("C-i" . helm-execute-persistent-action)
                ("C-z" . helm-select-action))
 
-    (helm-adaptive-mode 1)
+    (helm-adaptive-mode 1) ; Adaptive sorting in all sources
 
     ;; Call helm-ag with C-u
     (defun helm-ag-with-prefix-arg ()
@@ -77,8 +77,7 @@
           ;; Cleaner Helm interface
           helm-display-header-line nil)
 
-    ;; Autoresize Helm buffer
-    (helm-autoresize-mode 1)
+    (helm-autoresize-mode 1) ; Autoresize Helm buffer
 
     (require 'helm-files)
     (setq helm-idle-delay 0.1
