@@ -68,6 +68,7 @@
 (define-key toggle-map "u" 'unscroll)
 (define-key toggle-map "s" 'create-scratch-buffer)
 (define-key toggle-map "r" 'revert-this-buffer)
+(define-key toggle-map "w" 'writeroom-mode)
 
 (global-set-key "\M-g" 'goto-line) ; Goto line is M-g
 

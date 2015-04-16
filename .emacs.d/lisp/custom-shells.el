@@ -16,7 +16,6 @@
   :bind (("<f1>" . eshell-here))
   :config
   (progn
-    ;; Open eshell buffer in the current directory
     (defun eshell-here ()
       "Open a new shell in the directory of the buffer's file.
 The eshell is renamed to match that directory to make multiple eshell
@@ -30,7 +29,6 @@ windows easier."
         (eshell "new")
         (rename-buffer (concat "*eshell: " name "*"))))
 
-    ;; Clear eshell buffer
     (defun eshell/clear ()
       "Clear the eshell buffer."
       (interactive)
@@ -40,7 +38,6 @@ windows easier."
     (setq eshell-cmpl-cycle-completions nil
           eshell-save-history-on-exit t)
 
-    ;; Run scrips from current working on remote system
     (defadvice eshell-gather-process-output
         (before absolute-cmd (command args) act)
       "Run scrips from current working on remote system."
@@ -61,7 +58,6 @@ windows easier."
   :bind (("<f2>" . custom/term))
   :init
   (progn
-    ;; Default shell is Zsh
     (defun custom/term ()
       "Wrapper for `ansi-term'."
       (interactive)
@@ -89,7 +85,6 @@ windows easier."
   :bind (("S-<f2>" . shell))
   :config
   (progn
-    ;; Clear shell buffer
     (defun clear-shell ()
       (interactive)
       (let ((comint-buffer-maximum-size 0))

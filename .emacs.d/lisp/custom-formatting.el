@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package markdown-mode
+(use-package markdown-mode ; Edit markdown files
   :ensure t
   :mode (("\\.md\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
@@ -22,7 +22,7 @@
             ;; Use visual-line-mode
             (add-hook 'markdown-mode-hook #'visual-line-mode)))
 
-(use-package pandoc-mode
+(use-package pandoc-mode ; Easily control Pandoc in Emacs
   :ensure t
   :commands pandoc-mode
   :config (progn

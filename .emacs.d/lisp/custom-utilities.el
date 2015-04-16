@@ -88,6 +88,9 @@
   :commands esup
   :disabled t)
 
+(use-package writeroom-mode ; Distraction-free interface
+  :ensure t)
+
 ;; Bury compilation buffer after successful compilation
 (use-package bury-successful-compilation
   :ensure t

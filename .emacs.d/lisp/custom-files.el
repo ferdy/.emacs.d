@@ -20,6 +20,7 @@
           dired-listing-switches "-laGh1v --group-directories-first"
           global-auto-revert-non-file-buffers t ; Also auto refresh dired
           auto-revert-verbose nil ; But be quiet about it
+          dired-dwim-target t ; Use other pane as destination when copying
           dired-recursive-copies 'always)
 
     ;; Make find-name-dired faster
@@ -42,8 +43,6 @@
 
     (define-key dired-mode-map
       (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
-
-    (setq dired-dwim-target t) ; Use other pane as destination when copying
 
     ;; Open directory with sudo in dired
     (define-key dired-mode-map "!" 'sudired)
@@ -75,9 +74,8 @@
   (progn
     ;; Omit hidden files by default (C-x M-o to show them)
     (setq-default dired-omit-files-p t)
-    (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
-    ;; Hide omit files messages
-    (setq dired-omit-verbose nil)))
+    (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$")
+          dired-omit-verbose nil)))
 
 ;; Note: to override dired+ faces, customize `font-lock-maximum-decoration'
 ;; adding an entry for `dired-mode' and setting decoration to default
@@ -88,12 +86,12 @@
   (progn
     ;; Reuse buffer for directories
     (diredp-toggle-find-file-reuse-dir 1)
-    (setq diredp-hide-details-initially-flag nil)
-    (setq diredp-hide-details-propagate-flag nil)))
+    (setq diredp-hide-details-initially-flag nil
+          diredp-hide-details-propagate-flag nil)))
 
 (use-package bookmark+ ; Better bookmarks
   :ensure t
-  :defer 10)
+  :defer 5)
 
 ;; Set the directory where all backup and autosave files will be saved
 (defvar backup-dir "~/tmp/")

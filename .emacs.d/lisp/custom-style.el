@@ -12,6 +12,7 @@
 ;;; Code:
 
 ;;; Fonts
+;; Set default font
 (set-face-attribute 'default nil
                     :family "Source Code Pro"
                     :height 130
@@ -315,34 +316,6 @@
                                      "Helm")
                                    "\\|")))
           (sml/setup)))
-
-;; Minor mode to hide the mode line
-(defvar-local hidden-mode-line-mode nil)
-(defvar-local hide-mode-line nil)
-
-;;;###autoload
-(define-minor-mode hidden-mode-line-mode
-  "Minor mode to hide the mode-line in the current buffer."
-  :init-value nil
-  :global t
-  :variable hidden-mode-line-mode
-  :group 'editing-basics
-  (if hidden-mode-line-mode
-      (setq hide-mode-line mode-line-format
-            mode-line-format nil)
-    (setq mode-line-format hide-mode-line
-          hide-mode-line nil))
-  (force-mode-line-update)
-  ;; apparently force-mode-line-update is not always enough to
-  ;; redisplay the mode-line
-  (redraw-display)
-  (when (and (called-interactively-p 'interactive)
-             hidden-mode-line-mode)
-    (run-with-idle-timer
-     0 nil 'message "Hidden Mode Line Mode enabled.")))
-
-;; If you want to hide the mode-line in every buffer by default
-;; (add-hook 'after-change-major-mode-hook 'hidden-mode-line-mode)
 
 (provide 'custom-style)
 

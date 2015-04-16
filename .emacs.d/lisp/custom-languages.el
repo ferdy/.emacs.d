@@ -55,14 +55,12 @@
     ;; Free C-M-i for completion
     (define-key flyspell-mode-map "\M-\t" nil)))
 
-;; Requires: wordnet
 (use-package synosaurus ; An extensible thesaurus
   :ensure t
   :defer t
   :bind (("C-c s l" . synosaurus-lookup)
          ("C-c s r" . synosaurus-choose-and-replace)))
 
-;; Requires: languagetool (https://www.languagetool.org/)
 (use-package langtool
   :ensure t
   :defer t

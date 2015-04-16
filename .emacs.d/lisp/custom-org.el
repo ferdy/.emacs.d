@@ -37,7 +37,6 @@
     ;; Use visual-line-mode
     (add-hook 'org-mode-hook #'visual-line-mode)
 
-    ;; Update parent nodes when child is removed
     (defun myorg-update-parent-cookie ()
       "Update parent nodes when child is removed."
       (when (equal major-mode 'org-mode)

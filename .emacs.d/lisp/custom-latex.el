@@ -23,20 +23,18 @@
   :config
   (progn
     (setq TeX-parse-self t ; Parse documents to provide completion
-                                        ; for packages, etc.
           TeX-auto-save t ; Automatically save style information
           TeX-electric-sub-and-superscript t ; Automatically insert braces after
                                         ; sub- and superscripts in math mode
-          ;; Don't insert magic quotes right away.
-          TeX-quote-after-quote t
-          ;; Don't ask for confirmation when cleaning
-          TeX-clean-confirm nil
-          ;; Provide forward and inverse search with SyncTeX
-          TeX-source-correlate-mode t
+          TeX-quote-after-quote t ; Don't insert magic quotes right away.
+          TeX-clean-confirm nil ; Don't ask for confirmation when cleaning
+          TeX-source-correlate-mode t ; Forward and inverse search with SyncTeX
           TeX-source-correlate-method 'synctex)
+
     (setq-default TeX-master nil ; Ask for the master file
                   TeX-engine 'luatex ; Use luatex
                   TeX-PDF-mode t)
+
     ;; Move to chktex
     (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
 

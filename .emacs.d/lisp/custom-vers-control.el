@@ -26,7 +26,6 @@
           magit-set-upstream-on-push t
           magit-auto-revert-mode-lighter "")
 
-    ;; Fullscreen magit-status
     (defadvice magit-status (around magit-fullscreen activate)
       "Turn fullscreen on for magit-status."
       (window-configuration-to-register :magit-fullscreen)

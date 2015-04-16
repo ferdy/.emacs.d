@@ -29,7 +29,7 @@
           try-complete-lisp-symbol-partially
           try-complete-lisp-symbol)))
 
-(use-package company
+(use-package company ; Auto-completion
   :ensure t
   :init (global-company-mode)
   :config
@@ -43,12 +43,12 @@
           ;; Don'show completion popup, use helm-company instead
           company-idle-delay nil)))
 
-(use-package company-math
+(use-package company-math ; Company backend for math symbols
   :ensure t
   :defer t
   :config
   (progn
-    ;; local configuration for TeX modes
+    ;; Local configuration for TeX modes
     (defun my-latex-mode-setup ()
       "Add company-math backends."
       (setq-local company-backends
