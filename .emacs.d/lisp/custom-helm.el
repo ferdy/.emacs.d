@@ -33,7 +33,6 @@
   :init
   (progn
     (require 'helm-config)
-
     (global-set-key (kbd "C-c h") 'helm-command-prefix)
     (global-unset-key (kbd "C-x c"))
 

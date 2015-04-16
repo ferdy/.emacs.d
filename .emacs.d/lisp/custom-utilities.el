@@ -89,7 +89,8 @@
   :disabled t)
 
 (use-package writeroom-mode ; Distraction-free interface
-  :ensure t)
+  :ensure t
+  :commands writeroom-mode)
 
 ;; Bury compilation buffer after successful compilation
 (use-package bury-successful-compilation
