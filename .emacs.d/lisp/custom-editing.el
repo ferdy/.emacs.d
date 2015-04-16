@@ -32,8 +32,10 @@
 
 (use-package syntax-subword ; Make operations on words more fine-grained
   :ensure t
-  :init (syntax-subword-mode +1)
-  :config (setq syntax-subword-skip-spaces t))
+  :init
+  (progn
+    (setq syntax-subword-skip-spaces t)
+    (global-syntax-subword-mode +1)))
 
 (use-package easy-kill ; Better kill text
   :ensure t
