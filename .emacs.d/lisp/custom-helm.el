@@ -13,7 +13,6 @@
 
 (use-package helm
   :ensure t
-  :defer t
   :bind (("M-x" . helm-M-x)
          ("M-y" . helm-show-kill-ring)
          ("C-x C-r" . helm-recentf)
@@ -30,16 +29,20 @@
          ("C-x r l" . helm-bookmarks)
          ("C-c h r" . helm-info-emacs)
          ("C-c C-x C-k" . helm-buffer-run-kill-persistent))
-  :init
+  :init (helm-mode 1)
+  :config
   (progn
     (require 'helm-config)
     (global-set-key (kbd "C-c h") 'helm-command-prefix)
     (global-unset-key (kbd "C-x c"))
 
-    (helm-mode 1)
-    (helm-adaptive-mode 1))
-  :config
-  (progn
+    (bind-keys :map helm-map
+               ("<tab>" . helm-execute-persistent-action)
+               ("C-i" . helm-execute-persistent-action)
+               ("C-z" . helm-select-action))
+
+    (helm-adaptive-mode 1)
+
     ;; Call helm-ag with C-u
     (defun helm-ag-with-prefix-arg ()
       (interactive)
@@ -51,13 +54,6 @@
       (interactive)
       (setq current-prefix-arg '(4)) ; C-u
       (call-interactively 'helm-find))
-
-    ;; Rebind tab to run persistent action
-    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-    ;; Make TAB works in terminal
-    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
-    ;; List actions using C-z
-    (define-key helm-map (kbd "C-z")  'helm-select-action)
 
     ;; Open helm buffer inside current window, not occupy whole other window
     (setq helm-split-window-in-side-p t
