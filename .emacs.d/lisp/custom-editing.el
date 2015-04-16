@@ -30,8 +30,10 @@
   :defer t
   :init (delete-selection-mode))
 
-(use-package subword ; Subword/superword editing
-  :defer t)
+(use-package syntax-subword ; Make operations on words more fine-grained
+  :ensure t
+  :init (syntax-subword-mode +1)
+  :config (setq syntax-subword-skip-spaces t))
 
 (use-package easy-kill ; Better kill text
   :ensure t
