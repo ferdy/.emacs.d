@@ -25,6 +25,8 @@ Overview
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line), [anzu](https://github.com/syohex/emacs-anzu)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
+- Buffer navigation:
+  [Ace Jump Mode](https://github.com/winterTTr/ace-jump-mode), [helm-semantic-or-imenu](https://tuhdo.github.io/helm-intro.html#sec-10)
 - Frames: [transpose-frame](https://github.com/emacsmirror/transpose-frame)
 - Files: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus)
 - Editing: [iedit](https://github.com/victorhge/iedit),
@@ -44,8 +46,8 @@ Overview
 - Highlights: [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters), [highlight-symbol](https://github.com/nschum/highlight-symbol.el)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
-- Web: [SX](https://github.com/vermiculus/sx.el), [Elfeed](https://github.com/skeeto/elfeed)
-- Blogging: [org2blog](https://github.com/punchagan/org2blog)
+- Web: [SX](https://github.com/vermiculus/sx.el),
+  [Elfeed](https://github.com/skeeto/elfeed), [org2blog](https://github.com/punchagan/org2blog)
 - PDF: [pdf-tools](https://github.com/politza/pdf-tools), [interleave](https://github.com/rudolfochrist/interleave)
 - Auto-completion: [company-mode](https://github.com/company-mode/company-mode), [helm-company](https://github.com/yasuyk/helm-company)
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck),
