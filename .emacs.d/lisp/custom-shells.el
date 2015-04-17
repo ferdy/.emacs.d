@@ -63,18 +63,6 @@ windows easier."
       (interactive)
       (ansi-term "/bin/zsh"))
 
-    ;; Close buffer on exit
-    (defun custom/term-exec-hook ()
-      (let* ((buff (current-buffer))
-             (proc (get-buffer-process buff)))
-        (set-process-sentinel
-         proc
-         `(lambda (process event)
-            (if (string= event "finished\n")
-                (custom/kill-buffers "^\\*ansi-term"))))))
-
-    (add-hook 'term-exec-hook 'custom/term-exec-hook)
-
     ;; Disable hl-line-mode in ansi-term
     (add-hook 'term-mode-hook (lambda ()
                                 (setq-local global-hl-line-mode
