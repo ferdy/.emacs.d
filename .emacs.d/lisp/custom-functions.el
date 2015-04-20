@@ -228,6 +228,16 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (open-line 1)
       (insert line-text))))
 
+(defun custom/isearch-delete ()
+  "Delete the failed portion of the search string, or the last char if successful."
+  (interactive)
+  (with-isearch-suspended
+   (setq isearch-new-string
+         (substring
+          isearch-string 0 (or (isearch-fail-pos) (1- (length isearch-string))))
+         isearch-new-message
+         (mapconcat 'isearch-text-char-description isearch-new-string ""))))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here
