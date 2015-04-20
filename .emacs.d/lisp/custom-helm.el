@@ -167,11 +167,6 @@
   :defer t
   :config (define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
-(use-package helm-unicode ; Look up unicode characters by name with Helm
-  :ensure t
-  :commands helm-unicode
-  :bind (("C-c h u" . helm-unicode)))
-
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here
