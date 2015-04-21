@@ -24,7 +24,7 @@ Overview
 - Font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line), [anzu](https://github.com/syohex/emacs-anzu)
-- Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm)
+- Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm), [ibuffer-vc](https://github.com/purcell/ibuffer-vc)
 - Buffer navigation:
   [Ace Jump Mode](https://github.com/winterTTr/ace-jump-mode), [helm-semantic-or-imenu](https://tuhdo.github.io/helm-intro.html#sec-10)
 - Frames: [transpose-frame](https://github.com/emacsmirror/transpose-frame)
