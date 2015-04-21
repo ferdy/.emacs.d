@@ -140,7 +140,7 @@ prefix argument."
 (global-set-key (kbd "C-S-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "C-S-<right>") 'enlarge-window-horizontally)
 
-(define-key isearch-mode-map (kbd "<backspace>")
+(define-key isearch-mode-map [remap isearch-delete-char]
   #'custom/isearch-delete) ; Better backspace in isearch
 
 ;; Minor mode for 'override' keybindings
