@@ -27,6 +27,7 @@
 ;; (setq variable "password")
 (use-package erc ; IRC client
   :defer t
+  :bind ("C-c w e" . erc)
   :config
   (progn
     (load "~/.ercpass")
