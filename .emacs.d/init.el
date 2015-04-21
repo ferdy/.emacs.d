@@ -88,6 +88,7 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'custom-functions)
 (require 'custom-style)
+(require 'custom-ibuffer)
 (require 'custom-helm)
 (require 'custom-editing)
 (require 'custom-search)

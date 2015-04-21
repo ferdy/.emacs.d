@@ -17,7 +17,6 @@
          ("M-y" . helm-show-kill-ring)
          ("C-x C-r" . helm-recentf)
          ("C-x b" . helm-mini)
-         ("C-x C-b" . helm-buffers-list)
          ("C-x C-f" . helm-find-files)
          ("C-c h i" . helm-semantic-or-imenu)
          ("C-c h o" . helm-occur)
