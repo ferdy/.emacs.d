@@ -44,7 +44,7 @@ Overview
 - Search: [helm-ag](https://github.com/syohex/emacs-helm-ag),
 [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
 - Highlights: [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters), [highlight-symbol](https://github.com/nschum/highlight-symbol.el)
-- LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html)
+- LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html), [helm-bibtex](https://github.com/tmalsburg/helm-bibtex)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
 - Web: [SX](https://github.com/vermiculus/sx.el),
   [Elfeed](https://github.com/skeeto/elfeed), [org2blog](https://github.com/punchagan/org2blog)

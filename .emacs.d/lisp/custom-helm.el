@@ -167,6 +167,10 @@
   :defer t
   :config (define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
 
+(use-package helm-bibtex ; Managing BibTeX bibliographies with Helm
+  :ensure t
+  :defer t)
+
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here
