@@ -42,8 +42,7 @@
              ("helm" (predicate string-match "Helm" mode-name))
              ("starbuffers" (name . "^\\*.*?\\*$")))))))
 
-;; Group buffers by VC project and status
-(use-package ibuffer-vc
+(use-package ibuffer-vc ; Group buffers by VC project and status
   :ensure t
   :defer t
   :init (add-hook 'ibuffer-hook
@@ -52,8 +51,7 @@
                     (unless (eq ibuffer-sorting-mode 'alphabetic)
                       (ibuffer-do-sort-by-alphabetic)))))
 
-;; Group buffers by Projectile project
-(use-package ibuffer-projectile
+(use-package ibuffer-projectile ; Group buffers by Projectile project
   :ensure t
   :defer t)
 
