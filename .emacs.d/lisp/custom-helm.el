@@ -45,6 +45,19 @@
     (bind-keys :map helm-buffer-map
                ("C-k" . helm-buffer-run-kill-persistent))
 
+    ;; Eshell history
+    (require 'helm-eshell)
+    (add-hook 'eshell-mode-hook
+              #'(lambda ()
+                  (define-key eshell-mode-map (kbd "C-c C-l")
+                    'helm-eshell-history)))
+
+    (bind-keys :map shell-mode-map ; Shell history
+               ("C-c C-l" . helm-comint-input-ring))
+
+    (bind-keys :map minibuffer-local-map ; Mini-buffer history
+               ("C-c C-l" . helm-minibuffer-history))
+
     (helm-adaptive-mode 1) ; Adaptive sorting in all sources
 
     ;; Call helm-ag with C-u
@@ -92,19 +105,6 @@
           helm-input-idle-delay 0.1
           ;; Don't show boring files
           helm-ff-skip-boring-files t)
-
-    ;; Eshell history
-    (require 'helm-eshell)
-    (add-hook 'eshell-mode-hook
-              #'(lambda ()
-                  (define-key eshell-mode-map (kbd "C-c C-l")
-                    'helm-eshell-history)))
-
-    ;; Shell history
-    (define-key shell-mode-map (kbd "C-c C-l") 'helm-comint-input-ring)
-
-    ;; Mini-buffer history
-    (define-key minibuffer-local-map (kbd "C-c C-l") 'helm-minibuffer-history)
 
     ;; Man pages at point
     (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)))
