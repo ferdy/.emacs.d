@@ -73,6 +73,10 @@
           helm-imenu-fuzzy-match t
           helm-apropos-fuzzy-match t
           helm-lisp-fuzzy-completion t
+          ;; Auto-complete in find-files
+          helm-ff-auto-update-initial-value t
+          ;; Sort directories first
+          helm-find-files-sort-directories t
           ;; Cleaner Helm interface
           helm-display-header-line nil)
 
