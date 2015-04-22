@@ -57,9 +57,9 @@ Overview
 [helm-flycheck](https://github.com/yasuyk/helm-flycheck)
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
   [langtool](https://github.com/mhayashi1120/Emacs-langtool), [voca-builder](https://github.com/yitang/voca-builder)
-- Version control: [Magit](https://github.com/magit/magit), [diff-hl](https://github.com/dgutov/diff-hl)
-- Project management: [Projectile](https://github.com/bbatsov/projectile),
-  [helm-projectile](https://tuhdo.github.io/helm-projectile.html)
+- Version control: [Magit](https://github.com/magit/magit),
+[diff-hl](https://github.com/dgutov/diff-hl)
+- Project switching: [Springboard](https://github.com/jwiegley/springboard)
 - Slides: [Org-HTML-Slideshow](https://github.com/relevance/org-html-slideshow)
 - Document conversion: [pandoc-mode](https://github.com/joostkremers/pandoc-mode)
 - Utilities: [bug-hunter](https://github.com/Malabarba/elisp-bug-hunter),
