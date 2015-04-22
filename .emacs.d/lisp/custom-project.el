@@ -28,7 +28,7 @@
     (projectile-cleanup-known-projects)
     (projectile-global-mode)))
 
-(use-package springboard ; Quickly change default directory for next command
+(use-package springboard ; Temporarily change default-directory for one command
   :load-path "various"
   :bind ("C-c s s" . springboard))
 
