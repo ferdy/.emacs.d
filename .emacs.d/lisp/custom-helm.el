@@ -26,8 +26,7 @@
          ("C-c h x" . helm-register)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
          ("C-x r l" . helm-bookmarks)
-         ("C-c h r" . helm-info-emacs)
-         ("C-c C-x C-k" . helm-buffer-run-kill-persistent))
+         ("C-c h r" . helm-info-emacs))
   :init (helm-mode 1)
   :config
   (progn
@@ -39,6 +38,12 @@
                ("<tab>" . helm-execute-persistent-action)
                ("C-i" . helm-execute-persistent-action)
                ("C-z" . helm-select-action))
+
+    (bind-keys :map helm-find-files-map
+               ("C-k" . helm-ff-persistent-delete))
+
+    (bind-keys :map helm-buffer-map
+               ("C-k" . helm-buffer-run-kill-persistent))
 
     (helm-adaptive-mode 1) ; Adaptive sorting in all sources
 
