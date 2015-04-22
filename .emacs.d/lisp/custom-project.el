@@ -30,7 +30,9 @@
 
 (use-package springboard ; Temporarily change default-directory for one command
   :load-path "various"
-  :bind ("C-c s s" . springboard))
+  :bind ("C-c s s" . springboard)
+  :init (setq springboard-directories '("/home/manuel/emacs/emacs"
+                                        "/home/manuel/githubs/manuel-uberti/emacs")))
 
 (provide 'custom-project)
 
