@@ -43,7 +43,9 @@ Overview
   [visual-fill-column](https://github.com/joostkremers/visual-fill-column)
 - Search: [helm-ag](https://github.com/syohex/emacs-helm-ag),
 [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
-- Highlights: [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters), [highlight-symbol](https://github.com/nschum/highlight-symbol.el)
+- Highlights: [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters),
+[highlight-symbol](https://github.com/nschum/highlight-symbol.el)
+- Terms: [multi-term](http://www.emacswiki.org/emacs/download/multi-term.el), [helm-mt](https://github.com/dfdeshom/helm-mt)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html), [helm-bibtex](https://github.com/tmalsburg/helm-bibtex)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider)
 - Web: [SX](https://github.com/vermiculus/sx.el),

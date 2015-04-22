@@ -175,9 +175,14 @@
   :commands helm-flycheck
   :bind (("C-c h h f" . helm-flycheck)))
 
-(use-package helm-bibtex ; Managing BibTeX bibliographies with Helm
+(use-package helm-bibtex ; Manage BibTeX bibliographies with Helm
   :ensure t
   :defer t)
+
+(use-package helm-mt ; Manage multi-term with Helm
+  :ensure t
+  :defer t
+  :bind ("C-c h t" . helm-mt))
 
 (provide 'custom-helm)
 

@@ -55,7 +55,6 @@ windows easier."
 
 (use-package ansi-term
   :defer t
-  :bind (("<f2>" . custom/term))
   :init
   (progn
     (defun custom/term ()
@@ -89,6 +88,11 @@ windows easier."
     (add-hook 'shell-mode-hook (lambda ()
                                  (setq-local global-hl-line-mode
                                              nil)))))
+
+(use-package multi-term ; Manage multiple terminal buffers
+  :ensure t
+  :bind (("<f2>" . multi-term))
+  :init (setq multi-term-program "/bin/zsh"))
 
 (provide 'custom-shells)
 
