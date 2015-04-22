@@ -238,6 +238,78 @@ if USE-EXISTING is true, try to switch to an existing buffer"
          isearch-new-message
          (mapconcat 'isearch-text-char-description isearch-new-string ""))))
 
+(defun custom/forward-paragraph (&optional n)
+  "Advance N times just past next blank line."
+  (interactive "p")
+  (let ((m (use-region-p))
+        (para-commands
+         '(custom/forward-paragraph custom/backward-paragraph)))
+    ;; only push mark if it's not active and we're not repeating.
+    (or m
+        (not (member this-command para-commands))
+        (member last-command para-commands)
+        (push-mark))
+    ;; the actual movement.
+    (dotimes (_ (abs n))
+      (if (> n 0)
+          (skip-chars-forward "\n[:blank:]")
+        (skip-chars-backward "\n[:blank:]"))
+      (if (search-forward-regexp
+           "\n[[:blank:]]*\n[[:blank:]]*" nil t (cl-signum n))
+          (goto-char (match-end 0))
+        (goto-char (if (> n 0) (point-max) (point-min)))))
+    ;; if mark wasn't active, I like to indent the line too.
+    (unless m
+      (indent-according-to-mode)
+      ;; this looks redundant, but it's surprisingly necessary.
+      (back-to-indentation))))
+
+(defun custom/backward-paragraph (&optional n)
+  "Go back up N times to previous blank line."
+  (interactive "p")
+  (custom/forward-paragraph (- n)))
+
+(defun other-window-backward (&optional n)
+  "Select Nth previous window."
+  (interactive "P")
+  (other-window (- (prefix-numeric-value n))))
+
+(defun push-mark-no-activate ()
+  "Pushes 'point' to 'mark-ring' and does not activate the region.
+Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
+  (interactive)
+  (push-mark (point) t nil)
+  (message "Pushed mark to ring"))
+
+(defun jump-to-mark ()
+  "Jumps to the local mark, respecting the mark-ring' order.
+This is the same as using \\[set-mark-command] with the prefix argument."
+  (interactive)
+  (set-mark-command 1))
+
+(defun exchange-point-and-mark-no-activate ()
+  "Identical to \\[exchange-point-and-mark] but will not activate the region."
+  (interactive)
+  (exchange-point-and-mark)
+  (deactivate-mark nil))
+
+(defmacro bol-with-prefix (function)
+  "Define a new function which calls FUNCTION.
+Except it moves to beginning of line before calling FUNCTION when
+called with a prefix argument.  The FUNCTION still receives the
+prefix argument."
+  (let ((name (intern (format "custom/%s-BOL" function))))
+    `(progn
+       (defun ,name (p)
+         ,(format
+           "Call `%s', but move to BOL when called with a prefix argument."
+           function)
+         (interactive "P")
+         (when p
+           (forward-line 0))
+         (call-interactively ',function))
+       ',name)))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here
