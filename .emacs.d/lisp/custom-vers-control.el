@@ -14,7 +14,8 @@
 (use-package magit
   :ensure t
   :defer t
-  :bind (("<f3>" . magit-status))
+  :bind (("<f3>" . magit-status)
+         ("C-c m s" . magit-status))
   :init (setq magit-last-seen-setup-instructions "1.4.0")
   :config
   (progn
@@ -38,18 +39,7 @@
       (custom/kill-buffers "^\\*magit")
       (jump-to-register :magit-fullscreen))
 
-    (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
-
-    ;; C-u M-x magit-status prompts a list of known repositories
-    (setq magit-repo-dirs
-          (mapcar
-           (lambda (dir)
-             (substring dir 0 -1))
-           (cl-remove-if-not
-            (lambda (project)
-              (unless (file-remote-p project)
-                (file-directory-p (concat project "/.git/"))))
-            (projectile-relevant-known-projects))))))
+    (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
 
 (use-package git-commit-mode ; Git commit message mode
   :ensure t

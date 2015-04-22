@@ -112,6 +112,7 @@
 (use-package helm-projectile ; Helm interface for Projectile
   :ensure t
   :defer 10
+  :disabled t
   :init (helm-projectile-on))
 
 (use-package helm-ag ; Helm interface for Ag
