@@ -167,8 +167,8 @@
 
 (use-package helm-flycheck ; Show Flycheck errors with Helm
   :ensure t
-  :defer t
-  :config (define-key flycheck-mode-map (kbd "C-c ! h") 'helm-flycheck))
+  :commands helm-flycheck
+  :bind (("C-c h h f" . helm-flycheck)))
 
 (use-package helm-bibtex ; Managing BibTeX bibliographies with Helm
   :ensure t
