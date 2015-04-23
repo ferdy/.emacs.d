@@ -24,7 +24,8 @@
 
 (use-package undo-tree ; Show buffer changes as a tree
   :ensure t
-  :init (global-undo-tree-mode))
+  :init (global-undo-tree-mode)
+  :diminish undo-tree-mode)
 
 (use-package delsel ; Delete the selection instead of insert
   :defer t
@@ -229,7 +230,8 @@
 (use-package elisp-slime-nav ; Navigate through elisp code with M-. & M-,
   :ensure t
   :defer t
-  :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode))
+  :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
+  :diminish elisp-slime-nav-mode)
 
 (use-package transpose-mark ; Transpose data by leaving an Emacs mark
   :ensure t                 ; on the line you want to transpose.
