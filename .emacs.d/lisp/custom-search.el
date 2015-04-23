@@ -46,9 +46,7 @@
   :ensure t
   :bind (("C-c j" . ace-jump-mode)
          ("C-c J" . ace-jump-mode-pop-mark))
-  :config
-  ;; Sync marks with Emacs built-in commands
-  (ace-jump-mode-enable-mark-sync))
+  :config (ace-jump-mode-enable-mark-sync)) ; Sync marks with built-in commands
 
 (provide 'custom-search)
 

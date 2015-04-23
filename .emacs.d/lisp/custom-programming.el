@@ -28,14 +28,13 @@
   :ensure t
   :defer 5
   :init (global-flycheck-mode)
-  :config
-  (progn
-    (setq-default flycheck-emacs-lisp-load-path 'inherit)
-    (setq flycheck-display-errors-function
-          #'flycheck-pos-tip-error-messages)
+  :config (progn
+            (setq-default flycheck-emacs-lisp-load-path 'inherit)
+            (setq flycheck-display-errors-function
+                  #'flycheck-pos-tip-error-messages)
 
-    ;; Use italic face for checker name
-    (set-face-attribute 'flycheck-error-list-checker-name nil :inherit 'italic)))
+            (set-face-attribute ; Use italic face for checker name
+             'flycheck-error-list-checker-name nil :inherit 'italic)))
 
 (use-package flycheck-pos-tip ; Tooltip at point for flycheck messages
   :ensure t
@@ -75,12 +74,12 @@
 (use-package cider-repl
   :ensure cider
   :defer t
-  :config
-  (progn
-    ;; Increase the history size and make it permanent
-    (setq cider-repl-history-size 1000
-          cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
-          cider-repl-pop-to-buffer-on-connect nil)))
+  :config (progn
+            ;; Increase the history size and make it permanent
+            (setq cider-repl-history-size 1000
+                  cider-repl-history-file
+                  (locate-user-emacs-file "cider-repl-history")
+                  cider-repl-pop-to-buffer-on-connect nil)))
 
 ;;; Scheme
 ;; Requires: guile-2.0

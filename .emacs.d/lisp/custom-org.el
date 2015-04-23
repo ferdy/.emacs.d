@@ -18,87 +18,86 @@
          ("C-c c" . org-capture)
          ("C-c a" . org-agenda))
   :defer t
-  :config
-  (progn
-    (setq org-src-fontify-natively t
-          org-log-done 'time
-          org-export-with-smart-quotes t
-          ;; Turn off preamble and postamble in HTML export
-          org-html-preamble nil
-          org-html-postamble nil
-          org-export-html-style-default ""
-          org-export-html-style-include-default nil
-          org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
-          org-default-notes-file "~/org/organizer.org"
-          org-agenda-start-on-weekday nil
-          org-agenda-include-diary t
-          org-agenda-use-time-grid t)
+  :config (progn
+            (setq org-src-fontify-natively t
+                  org-log-done 'time
+                  org-export-with-smart-quotes t
+                  ;; Turn off preamble and postamble in HTML export
+                  org-html-preamble nil
+                  org-html-postamble nil
+                  org-export-html-style-default ""
+                  org-export-html-style-include-default nil
+                  org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
+                  org-default-notes-file "~/org/organizer.org"
+                  org-agenda-start-on-weekday nil
+                  org-agenda-include-diary t
+                  org-agenda-use-time-grid t)
 
-    ;; Use visual-line-mode
-    (add-hook 'org-mode-hook #'visual-line-mode)
+            ;; Use visual-line-mode
+            (add-hook 'org-mode-hook #'visual-line-mode)
 
-    (defun myorg-update-parent-cookie ()
-      "Update parent nodes when child is removed."
-      (when (equal major-mode 'org-mode)
-        (save-excursion
-          (ignore-errors
-            (org-back-to-heading)
-            (org-update-parent-todo-statistics)))))
+            (defun myorg-update-parent-cookie ()
+              "Update parent nodes when child is removed."
+              (when (equal major-mode 'org-mode)
+                (save-excursion
+                  (ignore-errors
+                    (org-back-to-heading)
+                    (org-update-parent-todo-statistics)))))
 
-    (defadvice org-kill-line (after fix-cookies activate)
-      "Update parent node."
-      (myorg-update-parent-cookie))
+            (defadvice org-kill-line (after fix-cookies activate)
+              "Update parent node."
+              (myorg-update-parent-cookie))
 
-    (defadvice kill-whole-line (after fix-cookies activate)
-      "Update parent node."
-      (myorg-update-parent-cookie))
+            (defadvice kill-whole-line (after fix-cookies activate)
+              "Update parent node."
+              (myorg-update-parent-cookie))
 
-    (define-key org-mode-map "\"" #'custom/round-quotes)
+            (define-key org-mode-map "\"" #'custom/round-quotes)
 
-    (defun custom/round-quotes (italicize)
-      "Insert “” and leave point in the middle.
+            (defun custom/round-quotes (italicize)
+              "Insert “” and leave point in the middle.
 With prefix argument ITALICIZE, insert /“”/ instead (meant for
 org-mode).
 If inside a code-block, simply calls `self-insert-command'."
-      (interactive "P")
-      (if (and (derived-mode-p 'org-mode) (org-in-src-block-p))
-          (call-interactively 'self-insert-command)
-        (if (looking-at "”[/=_\\*]?")
-            (goto-char (match-end 0))
-          (when italicize
-            (insert "//")
-            (forward-char -1))
-          (insert "“”")
-          (forward-char -1))))
+              (interactive "P")
+              (if (and (derived-mode-p 'org-mode) (org-in-src-block-p))
+                  (call-interactively 'self-insert-command)
+                (if (looking-at "”[/=_\\*]?")
+                    (goto-char (match-end 0))
+                  (when italicize
+                    (insert "//")
+                    (forward-char -1))
+                  (insert "“”")
+                  (forward-char -1))))
 
-    (define-key org-mode-map "'" #'custom/apostrophe)
+            (define-key org-mode-map "'" #'custom/apostrophe)
 
-    (defun custom/apostrophe (opening)
-      "Insert ’ in prose or `self-insert-command' in code.
+            (defun custom/apostrophe (opening)
+              "Insert ’ in prose or `self-insert-command' in code.
 With prefix argument OPENING, insert ‘’ instead and leave
 point in the middle.
 Inside a code-block, simply calls `self-insert-command'."
-      (interactive "P")
-      (if (and (derived-mode-p 'org-mode)
-               (org-in-block-p '("src" "latex" "html")))
-          (call-interactively #'self-insert-command)
-        (if (looking-at "['’][=_/\\*]?")
-            (goto-char (match-end 0))
-          (if (null opening)
-              (insert "’")
-            (insert "‘’")
-            (forward-char -1)))))
+              (interactive "P")
+              (if (and (derived-mode-p 'org-mode)
+                       (org-in-block-p '("src" "latex" "html")))
+                  (call-interactively #'self-insert-command)
+                (if (looking-at "['’][=_/\\*]?")
+                    (goto-char (match-end 0))
+                  (if (null opening)
+                      (insert "’")
+                    (insert "‘’")
+                    (forward-char -1)))))
 
-    ;; Strike out DONE items
-    (defun custom/modify-org-done-face ()
-      (setq org-fontify-done-headline t)
-      (set-face-attribute 'org-done nil :strike-through t)
-      (set-face-attribute 'org-headline-done nil
-                          :strike-through t
-                          :foreground "light gray"))
+            ;; Strike out DONE items
+            (defun custom/modify-org-done-face ()
+              (setq org-fontify-done-headline t)
+              (set-face-attribute 'org-done nil :strike-through t)
+              (set-face-attribute 'org-headline-done nil
+                                  :strike-through t
+                                  :foreground "light gray"))
 
-    (eval-after-load "org"
-      (add-hook 'org-add-hook 'custom/modify-org-done-face))))
+            (eval-after-load "org"
+              (add-hook 'org-add-hook 'custom/modify-org-done-face))))
 
 ;; Auto insert custom text upon opening an org file
 (auto-insert-mode)
@@ -142,20 +141,20 @@ Inside a code-block, simply calls `self-insert-command'."
 (use-package org-tree-slide ; Slides via org-mode
   :ensure t
   :no-require t
-  :config
-  (progn
-    (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-mode)
-    (define-key org-mode-map (kbd "S-<f8>") 'org-tree-slide-skip-done-toggle)
-    (define-key org-tree-slide-mode-map (kbd "<f9>")
-      'org-tree-slide-move-previous-tree)
-    (define-key org-tree-slide-mode-map (kbd "<f10>")
-      'org-tree-slide-move-next-tree)
-    (define-key org-tree-slide-mode-map (kbd "<f11>")
-      'org-tree-slide-content)
+  :config (progn
+            (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-mode)
+            (define-key org-mode-map (kbd "S-<f8>")
+              'org-tree-slide-skip-done-toggle)
+            (define-key org-tree-slide-mode-map (kbd "<f9>")
+              'org-tree-slide-move-previous-tree)
+            (define-key org-tree-slide-mode-map (kbd "<f10>")
+              'org-tree-slide-move-next-tree)
+            (define-key org-tree-slide-mode-map (kbd "<f11>")
+              'org-tree-slide-content)
 
-    (setq org-tree-slide-skip-outline-level 4)
-    (org-tree-slide-narrowing-control-profile)
-    (setq org-tree-slide-skip-done nil)))
+            (setq org-tree-slide-skip-outline-level 4)
+            (org-tree-slide-narrowing-control-profile)
+            (setq org-tree-slide-skip-done nil)))
 
 (provide 'custom-org)
 

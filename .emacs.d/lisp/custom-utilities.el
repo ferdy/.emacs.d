@@ -61,13 +61,12 @@
 
 (use-package proced ; Manage processes
   :defer t
-  :config
-  (progn
-    ;; Auto-update proced buffer
-    (defun proced-settings ()
-      (proced-toggle-auto-update 1))
+  :config (progn
+            ;; Auto-update proced buffer
+            (defun proced-settings ()
+              (proced-toggle-auto-update 1))
 
-    (add-hook 'proced-mode-hook 'proced-settings)))
+            (add-hook 'proced-mode-hook 'proced-settings)))
 
 (use-package csv-mode ; Better .csv files editing
   :ensure t

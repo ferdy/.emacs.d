@@ -32,10 +32,9 @@
 
 (use-package syntax-subword ; Make operations on words more fine-grained
   :ensure t
-  :init
-  (progn
-    (setq syntax-subword-skip-spaces t)
-    (global-syntax-subword-mode +1)))
+  :init (progn
+          (setq syntax-subword-skip-spaces t)
+          (global-syntax-subword-mode +1)))
 
 (use-package easy-kill ; Better kill text
   :ensure t
@@ -45,25 +44,24 @@
 
 (use-package iedit ; Edit multiple occurrences
   :ensure t
-  :config
-  (progn
-    (defun iedit-dwim (arg)
-      "Starts iedit but uses \\[narrow-to-defun] to limit its scope."
-      (interactive "P")
-      (if arg
-	  (iedit-mode)
-	(save-excursion
-	  (save-restriction
-	    (widen)
-	    ;; this function determines the scope of `iedit-start'.
-	    (if iedit-mode
-		(iedit-done)
-	      ;; `current-word' can of course be replaced by other
-	      ;; functions.
-	      (narrow-to-defun)
-	      (iedit-start (current-word) (point-min) (point-max)))))))
+  :config (progn
+            (defun iedit-dwim (arg)
+              "Starts iedit but uses \\[narrow-to-defun] to limit its scope."
+              (interactive "P")
+              (if arg
+                  (iedit-mode)
+                (save-excursion
+                  (save-restriction
+                    (widen)
+                    ;; this function determines the scope of `iedit-start'.
+                    (if iedit-mode
+                        (iedit-done)
+                      ;; `current-word' can of course be replaced by other
+                      ;; functions.
+                      (narrow-to-defun)
+                      (iedit-start (current-word) (point-min) (point-max)))))))
 
-    (global-set-key (kbd "C-,") 'iedit-dwim)))
+            (global-set-key (kbd "C-,") 'iedit-dwim)))
 
 (use-package expand-region ; Expand selected region
   :ensure t
@@ -104,72 +102,72 @@
                         inferior-emacs-lisp-mode-hook
                         clojure-mode-hook))
           (add-hook hook #'paredit-mode))
-  :config
-  (progn
-    ;; Free M-s. There are some useful bindings in that prefix map.
-    (define-key paredit-mode-map (kbd "M-s") nil)
-    (define-key paredit-mode-map (kbd "M-S-<up>") #'paredit-splice-sexp)
+  :config (progn
+            ;; Free M-s. There are some useful bindings in that prefix map.
+            (define-key paredit-mode-map (kbd "M-s") nil)
+            (define-key paredit-mode-map (kbd "M-S-<up>")
+              #'paredit-splice-sexp)
 
-    ;; Extreme barfarge and slurpage
-    (defun paredit-barf-all-the-way-backward ()
-      (interactive)
-      (paredit-split-sexp)
-      (paredit-backward-down)
-      (paredit-splice-sexp))
+            ;; Extreme barfarge and slurpage
+            (defun paredit-barf-all-the-way-backward ()
+              (interactive)
+              (paredit-split-sexp)
+              (paredit-backward-down)
+              (paredit-splice-sexp))
 
-    (defun paredit-barf-all-the-way-forward ()
-      (interactive)
-      (paredit-split-sexp)
-      (paredit-forward-down)
-      (paredit-splice-sexp)
-      (if (eolp) (delete-horizontal-space)))
+            (defun paredit-barf-all-the-way-forward ()
+              (interactive)
+              (paredit-split-sexp)
+              (paredit-forward-down)
+              (paredit-splice-sexp)
+              (if (eolp) (delete-horizontal-space)))
 
-    (defun paredit-slurp-all-the-way-backward ()
-      (interactive)
-      (catch 'done
-        (while (not (bobp))
-          (save-excursion
-            (paredit-backward-up)
-            (if (eq (char-before) ?\()
-                (throw 'done t)))
-          (paredit-backward-slurp-sexp))))
+            (defun paredit-slurp-all-the-way-backward ()
+              (interactive)
+              (catch 'done
+                (while (not (bobp))
+                  (save-excursion
+                    (paredit-backward-up)
+                    (if (eq (char-before) ?\()
+                        (throw 'done t)))
+                  (paredit-backward-slurp-sexp))))
 
-    (defun paredit-slurp-all-the-way-forward ()
-      (interactive)
-      (catch 'done
-        (while (not (eobp))
-          (save-excursion
-            (paredit-forward-up)
-            (if (eq (char-after) ?\))
-                (throw 'done t)))
-          (paredit-forward-slurp-sexp))))
+            (defun paredit-slurp-all-the-way-forward ()
+              (interactive)
+              (catch 'done
+                (while (not (eobp))
+                  (save-excursion
+                    (paredit-forward-up)
+                    (if (eq (char-after) ?\))
+                        (throw 'done t)))
+                  (paredit-forward-slurp-sexp))))
 
-    (nconc paredit-commands
-           '("Extreme Barfage & Slurpage"
-             (("C-M-)" "M-N")
-              paredit-slurp-all-the-way-forward
-              ("(foo (bar |baz) quux zot)"
-               "(foo (bar |baz quux zot))")
-              ("(a b ((c| d)) e f)"
-               "(a b ((c| d)) e f)"))
-             (("C-M-}" "M-F")
-              paredit-barf-all-the-way-forward
-              ("(foo (bar |baz quux) zot)"
-               "(foo (bar|) baz quux zot)"))
-             (("C-M-(" "M-P")
-              paredit-slurp-all-the-way-backward
-              ("(foo bar (baz| quux) zot)"
-               "((foo bar baz| quux) zot)")
-              ("(a b ((c| d)) e f)"
-               "(a b ((c| d)) e f)"))
-             (("C-M-{" "M-B")
-              paredit-barf-all-the-way-backward
-              ("(foo (bar baz |quux) zot)"
-               "(foo bar baz (|quux) zot)"))))
+            (nconc paredit-commands
+                   '("Extreme Barfage & Slurpage"
+                     (("C-M-)" "M-N")
+                      paredit-slurp-all-the-way-forward
+                      ("(foo (bar |baz) quux zot)"
+                       "(foo (bar |baz quux zot))")
+                      ("(a b ((c| d)) e f)"
+                       "(a b ((c| d)) e f)"))
+                     (("C-M-}" "M-F")
+                      paredit-barf-all-the-way-forward
+                      ("(foo (bar |baz quux) zot)"
+                       "(foo (bar|) baz quux zot)"))
+                     (("C-M-(" "M-P")
+                      paredit-slurp-all-the-way-backward
+                      ("(foo bar (baz| quux) zot)"
+                       "((foo bar baz| quux) zot)")
+                      ("(a b ((c| d)) e f)"
+                       "(a b ((c| d)) e f)"))
+                     (("C-M-{" "M-B")
+                      paredit-barf-all-the-way-backward
+                      ("(foo (bar baz |quux) zot)"
+                       "(foo bar baz (|quux) zot)"))))
 
-    (paredit-define-keys)
-    (paredit-annotate-mode-with-examples)
-    (paredit-annotate-functions-with-examples))
+            (paredit-define-keys)
+            (paredit-annotate-mode-with-examples)
+            (paredit-annotate-functions-with-examples))
   :diminish paredit-mode)
 
 (use-package redshank ; Lisp editing extension
@@ -203,11 +201,11 @@
 	 ("C-c m C-a" . mc/edit-beginnings-of-lines)
 	 ("C-c m C-e" . mc/edit-ends-of-lines)
 	 ("C-c m C-s" . mc/mark-all-in-region))
-  :config
-  (setq mc/mode-line
-	;; Simplify the MC mode line indicator
-	'(:propertize (:eval (concat " " (number-to-string (mc/num-cursors))))
-		      face font-lock-warning-face)))
+  :config (setq mc/mode-line
+                ;; Simplify the MC mode line indicator
+                '(:propertize (:eval (concat " " (number-to-string
+                                                  (mc/num-cursors))))
+                              face font-lock-warning-face)))
 
 (use-package multifiles ; Edit multiple files at once
   :ensure t

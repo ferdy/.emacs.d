@@ -76,16 +76,15 @@
 ;; Minor mode for 'override' keybindings
 (use-package my-keys-mode
   :load-path "various"
-  :config
-  (progn
-    (bind-keys :map my-keys-mode-map
-               ("M-a" . custom/backward-paragraph)
-               ("M-e" . custom/forward-paragraph)
-               ("C-," . iedit-dwim)
-               ("C-c o" . (lambda ()
-                            (interactive)
-                            (find-file "~/org/organizer.org"))))
-    (global-my-keys-mode)))
+  :config (progn
+            (bind-keys :map my-keys-mode-map
+                       ("M-a" . custom/backward-paragraph)
+                       ("M-e" . custom/forward-paragraph)
+                       ("C-," . iedit-dwim)
+                       ("C-c o" . (lambda ()
+                                    (interactive)
+                                    (find-file "~/org/organizer.org"))))
+            (global-my-keys-mode)))
 
 (provide 'custom-keybindings)
 

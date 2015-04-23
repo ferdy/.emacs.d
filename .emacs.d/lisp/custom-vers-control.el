@@ -17,29 +17,28 @@
   :bind (("<f3>" . magit-status)
          ("C-c m s" . magit-status))
   :init (setq magit-last-seen-setup-instructions "1.4.0")
-  :config
-  (progn
-    ;; Shut up, Magit!
-    (setq magit-save-some-buffers 'dontask
-          magit-stage-all-confirm nil
-          magit-unstage-all-confirm nil
-          ;; Except when you ask something useful
-          magit-set-upstream-on-push t
-          magit-auto-revert-mode-lighter "")
+  :config (progn
+            ;; Shut up, Magit!
+            (setq magit-save-some-buffers 'dontask
+                  magit-stage-all-confirm nil
+                  magit-unstage-all-confirm nil
+                  ;; Except when you ask something useful
+                  magit-set-upstream-on-push t
+                  magit-auto-revert-mode-lighter "")
 
-    (defadvice magit-status (around magit-fullscreen activate)
-      "Turn fullscreen on for magit-status."
-      (window-configuration-to-register :magit-fullscreen)
-      ad-do-it
-      (delete-other-windows))
+            (defadvice magit-status (around magit-fullscreen activate)
+              "Turn fullscreen on for magit-status."
+              (window-configuration-to-register :magit-fullscreen)
+              ad-do-it
+              (delete-other-windows))
 
-    (defun magit-quit-session ()
-      "Restore the previous window configuration and kill the magit buffer."
-      (interactive)
-      (custom/kill-buffers "^\\*magit")
-      (jump-to-register :magit-fullscreen))
+            (defun magit-quit-session ()
+              "Restore previous window configuration and kill magit buffer."
+              (interactive)
+              (custom/kill-buffers "^\\*magit")
+              (jump-to-register :magit-fullscreen))
 
-    (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
+            (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
 
 (use-package git-commit-mode ; Git commit message mode
   :ensure t

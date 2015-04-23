@@ -20,27 +20,26 @@
 (use-package tex
   :ensure auctex
   :defer t
-  :config
-  (progn
-    (setq TeX-parse-self t ; Parse documents to provide completion
-          TeX-auto-save t ; Automatically save style information
-          TeX-electric-sub-and-superscript t ; Automatically insert braces after
+  :config (progn
+            (setq TeX-parse-self t ; Parse documents to provide completion
+                  TeX-auto-save t ; Automatically save style information
+                  TeX-electric-sub-and-superscript t ; Insert braces after
                                         ; sub- and superscripts in math mode
-          TeX-quote-after-quote t ; Don't insert magic quotes right away.
-          TeX-clean-confirm nil ; Don't ask for confirmation when cleaning
-          TeX-source-correlate-mode t ; Forward and inverse search with SyncTeX
-          TeX-source-correlate-method 'synctex)
+                  TeX-quote-after-quote t ; Don't insert magic quotes right away
+                  TeX-clean-confirm nil ; No confirmation when cleaning
+                  TeX-source-correlate-mode t ; Search with SyncTeX
+                  TeX-source-correlate-method 'synctex)
 
-    (setq-default TeX-master nil ; Ask for the master file
-                  TeX-engine 'luatex ; Use luatex
-                  TeX-PDF-mode t)
+            (setq-default TeX-master nil ; Ask for the master file
+                          TeX-engine 'luatex ; Use luatex
+                          TeX-PDF-mode t)
 
-    ;; Move to chktex
-    (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
+            ;; Move to chktex
+            (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
 
-    ;; Tell Emacs how to parse TeX files
-    (add-hook 'tex-mode-hook
-              #'(lambda () (setq ispell-parser 'tex)))))
+            ;; Tell Emacs how to parse TeX files
+            (add-hook 'tex-mode-hook
+                      #'(lambda () (setq ispell-parser 'tex)))))
 
 (use-package tex-buf
   :ensure auctex
@@ -62,24 +61,24 @@
 (use-package tex-mode
   :ensure auctex
   :defer t
-  :config
-  (font-lock-add-keywords 'latex-mode
-                          `((,(rx "\\"
-                                  symbol-start
-                                  "fx" (1+ (or (syntax word) (syntax symbol)))
-                                  symbol-end)
-                             . font-lock-warning-face))))
+  :config (font-lock-add-keywords 'latex-mode
+                                  `((,(rx "\\"
+                                          symbol-start
+                                          "fx" (1+ (or (syntax word)
+                                                       (syntax symbol)))
+                                          symbol-end)
+                                     . font-lock-warning-face))))
 
 (use-package latex
   :ensure auctex
   :defer t
-  :config
-  (progn
-    ;; No language-specific hyphens please
-    (setq LaTeX-babel-hyphen nil
-          LaTeX-command-style '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
+  :config (progn
+            ;; No language-specific hyphens please
+            (setq LaTeX-babel-hyphen nil
+                  LaTeX-command-style
+                  '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
 
-    (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode))) ; Easy math input
+            (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode))) ; Easy math input
 
 (use-package latex-extra
   :ensure t

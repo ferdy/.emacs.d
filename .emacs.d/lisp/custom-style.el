@@ -161,37 +161,37 @@
 (use-package solarized
   :ensure solarized-theme
   :defer t
-  :init
-  (progn
-    (setq solarized-use-variable-pitch nil ; Avoid all font-size changes
-          ;; Don't add too much colours to the fringe
-          solarized-emphasize-indicators nil
-          ;; Don't change size of org-mode headlines (but keep other size-changes)
-          solarized-scale-org-headlines nil
-          ;; Underline below the font bottomline instead of the baseline
-          x-underline-at-descent-line t)
-    (if (daemonp)
-        (add-hook 'after-make-frame-functions
-                  '(lambda (f)
-                     (with-selected-frame f
-                       (when (window-system f) (load-theme 'solarized-light t)))))
-      (load-theme 'solarized-light t))
+  :init (progn
+          (setq solarized-use-variable-pitch nil ; Avoid all font-size changes
+                ;; Don't add too much colours to the fringe
+                solarized-emphasize-indicators nil
+                ;; Don't change size of org-mode headlines
+                solarized-scale-org-headlines nil
+                ;; Underline below the font bottomline instead of the baseline
+                x-underline-at-descent-line t)
+          (if (daemonp)
+              (add-hook 'after-make-frame-functions
+                        '(lambda (f)
+                           (with-selected-frame f
+                             (when (window-system f)
+                               (load-theme 'solarized-light t)))))
+            (load-theme 'solarized-light t))
 
-    ;; Functions to remove background when on terminals
-    (defun on-frame-open (frame)
-      "Remove background for FRAME on terminals."
-      (if (not (display-graphic-p frame))
-          (set-face-background 'default "unspecified-bg" frame)))
-    (on-frame-open (selected-frame))
+          ;; Functions to remove background when on terminals
+          (defun on-frame-open (frame)
+            "Remove background for FRAME on terminals."
+            (if (not (display-graphic-p frame))
+                (set-face-background 'default "unspecified-bg" frame)))
+          (on-frame-open (selected-frame))
 
-    (add-hook 'after-make-frame-functions 'on-frame-open)
+          (add-hook 'after-make-frame-functions 'on-frame-open)
 
-    (defun on-after-init ()
-      "Remove background after init on terminals."
-      (unless (display-graphic-p (selected-frame))
-        (set-face-background 'default "unspecified-bg" (selected-frame))))
+          (defun on-after-init ()
+            "Remove background after init on terminals."
+            (unless (display-graphic-p (selected-frame))
+              (set-face-background 'default "unspecified-bg" (selected-frame))))
 
-    (add-hook 'window-setup-hook 'on-after-init)))
+          (add-hook 'window-setup-hook 'on-after-init)))
 
 ;;; Utilities
 ;; Disable tabs, but give them proper width
@@ -218,18 +218,17 @@
       c-basic-offset 4)
 
 (use-package elec-pair
-  :init
-  (progn
-    ;; Enable electric-pair only for certain modes
-    (defvar my-electic-pair-modes '(emacs-lisp-mode
-                                    clojure-mode))
+  :init (progn
+          ;; Enable electric-pair only for certain modes
+          (defvar my-electic-pair-modes '(emacs-lisp-mode
+                                          clojure-mode))
 
-    (defun my-inhibit-electric-pair-mode (char)
-      (not (member major-mode my-electic-pair-modes)))
+          (defun my-inhibit-electric-pair-mode (char)
+            (not (member major-mode my-electic-pair-modes)))
 
-    (setq electric-pair-inhibit-predicate #'my-inhibit-electric-pair-mode)
-    
-    (electric-pair-mode)))
+          (setq electric-pair-inhibit-predicate #'my-inhibit-electric-pair-mode)
+          
+          (electric-pair-mode)))
 
 (use-package page-break-lines ; Better looking break lines
   :ensure t
@@ -270,15 +269,14 @@
          ("C-c s n" . highlight-symbol-next-in-defun)
          ("C-c s o" . highlight-symbol-occur)
          ("C-c s p" . highlight-symbol-prev-in-defun))
-  :init
-  (progn
-    ;; Navigate occurrences of the symbol under point with M-n and M-p
-    (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
-    ;; Highlight symbol occurrences
-    (add-hook 'prog-mode-hook #'highlight-symbol-mode))
-  :config
-  (setq highlight-symbol-idle-delay 0.4 ; Almost immediately
-        highlight-symbol-on-navigation-p t)) ; Immediately after navigation
+  :init (progn
+          ;; Navigate occurrences of the symbol under point with M-n and M-p
+          (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
+          ;; Highlight symbol occurrences
+          (add-hook 'prog-mode-hook #'highlight-symbol-mode))
+  :config (setq highlight-symbol-idle-delay 0.4 ; Almost immediately
+                ;; Immediately after navigation
+                highlight-symbol-on-navigation-p t))
 
 (use-package rainbow-mode ; Highlight colors
   :ensure t

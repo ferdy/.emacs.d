@@ -32,31 +32,30 @@
 (use-package company ; Auto-completion
   :ensure t
   :init (global-company-mode)
-  :config
-  (progn
-    ;; Use helm-company for completion at point
-    (bind-key [remap completion-at-point] #'helm-company company-mode-map)
+  :config (progn
+            ;; Use helm-company for completion at point
+            (bind-key [remap completion-at-point]
+                      #'helm-company company-mode-map)
 
-    (setq company-tooltip-align-annotations t
-          ;; Easy navigation to candidates with M-<n>
-          company-show-numbers t
-          ;; Don'show completion popup, use helm-company instead
-          company-idle-delay nil)))
+            (setq company-tooltip-align-annotations t
+                  ;; Easy navigation to candidates with M-<n>
+                  company-show-numbers t
+                  ;; Don'show completion popup, use helm-company instead
+                  company-idle-delay nil)))
 
 (use-package company-math ; Company backend for math symbols
   :ensure t
   :defer t
-  :config
-  (progn
-    ;; Local configuration for TeX modes
-    (defun my-latex-mode-setup ()
-      "Add company-math backends."
-      (setq-local company-backends
-                  (append '(company-math-symbols-latex
-                            company-math-symbols-unicode
-                            company-latex-commands)
-                          company-backends)))
-    (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
+  :config (progn
+            ;; Local configuration for TeX modes
+            (defun my-latex-mode-setup ()
+              "Add company-math backends."
+              (setq-local company-backends
+                          (append '(company-math-symbols-latex
+                                    company-math-symbols-unicode
+                                    company-latex-commands)
+                                  company-backends)))
+            (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
 
 (provide 'custom-completion)
 

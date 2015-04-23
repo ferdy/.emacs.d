@@ -16,23 +16,23 @@
   :ensure t
   :disabled t
   :config
-  (progn
-    (setq projectile-completion-system 'helm
-          projectile-find-dir-includes-top-level t)
+  (progn (setq projectile-completion-system 'helm
+               projectile-find-dir-includes-top-level t)
 
-    ;; Replace Ack with helm-ag in Projectile commander
-    (def-projectile-commander-method ?a
-      "Find ag on project."
-      (call-interactively 'helm-projectile-ag))
+         ;; Replace Ack with helm-ag in Projectile commander
+         (def-projectile-commander-method ?a
+           "Find ag on project."
+           (call-interactively 'helm-projectile-ag))
 
-    (projectile-cleanup-known-projects)
-    (projectile-global-mode)))
+         (projectile-cleanup-known-projects)
+         (projectile-global-mode)))
 
 (use-package springboard ; Temporarily change default-directory for one command
   :load-path "various"
   :bind ("C-c s s" . springboard)
-  :init (setq springboard-directories '("/home/manuel/emacs/emacs"
-                                        "/home/manuel/githubs/manuel-uberti/emacs")))
+  :init (setq springboard-directories
+              '("/home/manuel/emacs/emacs"
+                "/home/manuel/githubs/manuel-uberti/emacs")))
 
 (provide 'custom-project)
 
