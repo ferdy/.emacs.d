@@ -89,7 +89,10 @@ windows easier."
 (use-package multi-term ; Manage multiple terminal buffers
   :ensure t
   :bind (("<f2>" . multi-term))
-  :init (setq multi-term-program "/bin/zsh"))
+  :init (progn
+          (setq multi-term-program "/bin/zsh")
+          ;; Wrap long lines
+          (add-hook 'term-mode-hook #'toggle-word-wrap)))
 
 (provide 'custom-shells)
 
