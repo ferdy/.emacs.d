@@ -169,29 +169,8 @@
                 solarized-scale-org-headlines nil
                 ;; Underline below the font bottomline instead of the baseline
                 x-underline-at-descent-line t)
-          (if (daemonp)
-              (add-hook 'after-make-frame-functions
-                        '(lambda (f)
-                           (with-selected-frame f
-                             (when (window-system f)
-                               (load-theme 'solarized-light t)))))
-            (load-theme 'solarized-light t))
-
-          ;; Functions to remove background when on terminals
-          (defun on-frame-open (frame)
-            "Remove background for FRAME on terminals."
-            (if (not (display-graphic-p frame))
-                (set-face-background 'default "unspecified-bg" frame)))
-          (on-frame-open (selected-frame))
-
-          (add-hook 'after-make-frame-functions 'on-frame-open)
-
-          (defun on-after-init ()
-            "Remove background after init on terminals."
-            (unless (display-graphic-p (selected-frame))
-              (set-face-background 'default "unspecified-bg" (selected-frame))))
-
-          (add-hook 'window-setup-hook 'on-after-init)))
+          
+          (load-theme 'solarized-light 'no-confirm)))
 
 ;;; Utilities
 ;; Disable tabs, but give them proper width
@@ -304,7 +283,6 @@
                                    '("FlyC.*"
                                      "Projectile.*"
                                      "PgLn"
-                                     "company"
                                      "Undo-Tree"
                                      "Wrap"
                                      "hhat"
