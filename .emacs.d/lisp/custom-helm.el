@@ -107,7 +107,7 @@
             ;; Man pages at point
             (add-to-list 'helm-sources-using-default-as-input
                          'helm-source-man-pages)))
-
+  
 (use-package helm-projectile ; Helm interface for Projectile
   :ensure t
   :defer 10

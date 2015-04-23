@@ -34,7 +34,8 @@
                   #'flycheck-pos-tip-error-messages)
 
             (set-face-attribute ; Use italic face for checker name
-             'flycheck-error-list-checker-name nil :inherit 'italic)))
+             'flycheck-error-list-checker-name nil :inherit 'italic))
+  :diminish flycheck-mode)
 
 (use-package flycheck-pos-tip ; Tooltip at point for flycheck messages
   :ensure t
