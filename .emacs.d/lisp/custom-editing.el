@@ -172,6 +172,7 @@
 
 (use-package redshank ; Lisp editing extension
   :ensure t
+  :defer t
   :init (progn
           (setq redshank-prefix-key "C-c C-r") ; Change default prefix
           (dolist (hook '(eval-expression-minibuffer-setup-hook
