@@ -95,15 +95,15 @@
   :bind (("<f4>" . paradox-list-packages)
          ("S-<f4>" . paradox-upgrade-packages))
   :config (progn
-            ((setq paradox-github-token t ; Don't ask for a token, please
-                   ;; No async for now
-                   paradox-execute-asynchronously nil)
+            (setq paradox-github-token t ; Don't ask for a token, please
+                  ;; No async for now
+                  paradox-execute-asynchronously nil)
 
-             ;; Don't need paradox report
-             (remove-hook 'paradox-after-execute-functions
-                          #'paradox--report-buffer-print)
-             (remove-hook 'paradox-after-execute-functions
-                          #'paradox--report-buffer-display-if-noquery))))
+            ;; Don't need paradox report
+            (remove-hook 'paradox-after-execute-functions
+                         #'paradox--report-buffer-print)
+            (remove-hook 'paradox-after-execute-functions
+                         #'paradox--report-buffer-display-if-noquery)))
 
 (use-package browse-url ; Browse URLs
   :bind (("C-c w u" . browse-url)))
