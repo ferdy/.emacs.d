@@ -28,7 +28,7 @@
          (projectile-global-mode)))
 
 (use-package springboard ; Temporarily change default-directory for one command
-  :load-path "various"
+  :ensure t
   :bind ("C-c s s" . springboard)
   :init (setq springboard-directories
               '("/home/manuel/emacs/emacs"
