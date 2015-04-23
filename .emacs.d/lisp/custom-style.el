@@ -212,7 +212,8 @@
 (use-package page-break-lines ; Better looking break lines
   :ensure t
   :defer t
-  :init (global-page-break-lines-mode))
+  :init (global-page-break-lines-mode)
+  :diminish page-break-lines-mode)
 
 (use-package transpose-frame ; Easily swap frames
   :ensure t
@@ -255,7 +256,8 @@
           (add-hook 'prog-mode-hook #'highlight-symbol-mode))
   :config (setq highlight-symbol-idle-delay 0.4 ; Almost immediately
                 ;; Immediately after navigation
-                highlight-symbol-on-navigation-p t))
+                highlight-symbol-on-navigation-p t)
+  :diminish highlight-symbol-mode)
 
 (use-package rainbow-mode ; Highlight colors
   :ensure t
@@ -280,14 +282,8 @@
           (setq rm-blacklist
                 (format "^ \\(%s\\)$"
                         (mapconcat #'identity
-                                   '("FlyC.*"
-                                     "Projectile.*"
-                                     "PgLn"
-                                     "Undo-Tree"
+                                   '("Projectile.*"
                                      "Wrap"
-                                     "hhat"
-                                     "SliNav"
-                                     "hl-s"
                                      "WSC.*"
                                      "Helm")
                                    "\\|")))
