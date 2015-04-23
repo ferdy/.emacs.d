@@ -122,6 +122,11 @@ Version number of this version of po-mode.el.")
   :type 'boolean
   :group 'po)
 
+(defcustom po-keep-mo-file nil
+  "*Set whether MO file should be kept or discarded after validation."
+  :type 'boolean
+  :group 'po)
+
 (defcustom po-auto-replace-revision-date t
   "*Automatically revise date in headers.  Value is nil, t, or ask."
   :type '(choice (const nil)
@@ -3239,10 +3244,14 @@ Leave point after marked string."
          (compilation-buffer-name-function
           (function (lambda (mode-name)
                       (concat "*" mode-name " validation*"))))
-         (compile-command (concat po-msgfmt-program
-                                  " --statistics -c -v -o "
-                                  (substring buffer-file-name 0 -2) "mo "
-                                  (shell-quote-argument buffer-file-name))))
+         (compile-command (if po-keep-mo-file
+                              (concat po-msgfmt-program
+                                      " --statistics -c -v -o "
+                                      (substring buffer-file-name 0 -2) "mo "
+                                      (shell-quote-argument buffer-file-name))
+                            (concat po-msgfmt-program
+                                    " --statistics -c -v -o " dev-null " "
+                                    (shell-quote-argument buffer-file-name)))))
     (po-msgfmt-version-check)
     (compile compile-command)))
 
