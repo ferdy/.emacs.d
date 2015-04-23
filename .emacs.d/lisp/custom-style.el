@@ -283,8 +283,7 @@
                         (mapconcat #'identity
                                    '("Projectile.*"
                                      "Wrap"
-                                     "WSC.*"
-                                     "Helm")
+                                     "WSC.*")
                                    "\\|")))
           (sml/setup)))
 

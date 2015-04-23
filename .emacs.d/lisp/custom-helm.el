@@ -106,7 +106,8 @@
 
             ;; Man pages at point
             (add-to-list 'helm-sources-using-default-as-input
-                         'helm-source-man-pages)))
+                         'helm-source-man-pages))
+  :diminish helm-mode)
   
 (use-package helm-projectile ; Helm interface for Projectile
   :ensure t
