@@ -41,7 +41,8 @@
                   ;; Easy navigation to candidates with M-<n>
                   company-show-numbers t
                   ;; Don'show completion popup, use helm-company instead
-                  company-idle-delay nil)))
+                  company-idle-delay nil))
+  :diminish company-mode)
 
 (use-package company-math ; Company backend for math symbols
   :ensure t
