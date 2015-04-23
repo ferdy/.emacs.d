@@ -169,7 +169,6 @@
                 solarized-scale-org-headlines nil
                 ;; Underline below the font bottomline instead of the baseline
                 x-underline-at-descent-line t)
-          
           (load-theme 'solarized-light 'no-confirm)))
 
 ;;; Utilities
