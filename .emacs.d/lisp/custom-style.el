@@ -284,7 +284,9 @@
                                    '("Projectile.*"
                                      "Wrap"
                                      "WSC.*")
-                                   "\\|")))
+                                   "\\|"))
+                sml/theme 'automatic
+                sml/no-confirm-load-theme t)
           (sml/setup)))
 
 (provide 'custom-style)
