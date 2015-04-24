@@ -287,7 +287,12 @@
                                    "\\|"))
                 sml/theme 'automatic
                 sml/no-confirm-load-theme t)
-          (sml/setup)))
+          (sml/setup))
+  :config (progn
+            ;; More abbreviations
+            (add-to-list 'sml/replacer-regexp-list '("^~/githubs/" ":Git:") t)
+            (add-to-list 'sml/replacer-regexp-list
+                         '("^:Doc:boccaperta/" ":Boccaperta:") t)))
 
 (provide 'custom-style)
 
