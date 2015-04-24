@@ -292,7 +292,7 @@
             ;; More abbreviations
             (add-to-list 'sml/replacer-regexp-list '("^~/githubs/" ":Git:") t)
             (add-to-list 'sml/replacer-regexp-list
-                         '("^:Doc:boccaperta/" ":Boccaperta:") t)))
+                         '("^:Doc:boccaperta/" ":Ba:") t)))
 
 (provide 'custom-style)
 
