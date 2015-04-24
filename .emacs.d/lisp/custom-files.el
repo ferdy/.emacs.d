@@ -90,13 +90,6 @@
   :ensure t
   :defer 5)
 
-;; Set the directory where all backup and autosave files will be saved
-(defvar backup-dir "~/tmp/")
-(setq backup-directory-alist
-      `((".*" . ,backup-dir)))
-(setq auto-save-file-name-transforms
-      `((".*" ,backup-dir t)))
-
 (setq view-read-only t) ; View read-only
 (setq large-file-warning-threshold nil) ; No large file warning
 

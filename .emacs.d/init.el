@@ -75,6 +75,13 @@
 	custom-unlispify-menu-entries nil)
   :init (load custom/custom-file 'no-error 'no-message))
 
+;; Set the directory where all backup and autosave files will be saved
+(defvar backup-dir "~/tmp/")
+(setq backup-directory-alist
+      `((".*" . ,backup-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,backup-dir t)))
+
 ;; Personal informations
 (setq user-full-name "Manuel Uberti")
 (setq user-mail-address "manuel@boccaperta.com")
