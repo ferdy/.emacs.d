@@ -91,6 +91,10 @@
   :ensure t
   :commands writeroom-mode)
 
+(use-package speed-type ; Practice touch-typing
+  :ensure t
+  :commands speed-type-text)
+
 ;; Bury compilation buffer after successful compilation
 (use-package bury-successful-compilation
   :ensure t
