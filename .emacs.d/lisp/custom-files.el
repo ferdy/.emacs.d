@@ -20,7 +20,10 @@
                   global-auto-revert-non-file-buffers t ; Auto refresh dired
                   auto-revert-verbose nil ; But be quiet about it
                   dired-dwim-target t ; Use other pane as target when copying
-                  dired-recursive-copies 'always)
+                  dired-recursive-copies 'always ; Copy dirs recursively
+                  dired-guess-shell-alist-user ; Use LibreOffice when needed
+                  '(("\\.ods\\'\\|\\.xls?\\'\\|\\.xlsx?\\'" "libreoffice")
+                    ("\\.odt\\'\\|\\.doc?\\'\\|\\.docx?\\'" "libreoffice")))
 
             ;; Make find-name-dired faster
             (require 'find-dired)
