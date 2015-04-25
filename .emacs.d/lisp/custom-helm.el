@@ -79,6 +79,7 @@
                   ;; Scroll 8 lines using M-<next>/M-<prior>
                   helm-scroll-amount 8
                   helm-ff-file-name-history-use-recentf t
+                  helm-ff-newfile-prompt-p nil ; Don't prompt for new buffer
                   ;; Helm buffer only in the window where point is
                   helm-split-window-in-side-p t
                   ;; Fuzzy match
