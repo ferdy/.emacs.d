@@ -14,8 +14,8 @@
 (use-package helm
   :ensure t
   :bind (("M-x" . helm-M-x)
-         ("M-y" . helm-show-kill-ring)
          ("C-x b" . helm-mini)
+         ("M-y" . helm-show-kill-ring)
          ("C-c h i" . helm-semantic-or-imenu)
          ("C-c h o" . helm-occur)
          ("C-c h /" . helm-find-with-prefix-arg)
@@ -35,12 +35,6 @@
                        ("C-i" . helm-execute-persistent-action)
                        ("C-z" . helm-select-action))
 
-            (bind-keys :map helm-find-files-map
-                       ("C-k" . helm-ff-persistent-delete))
-
-            (bind-keys :map helm-buffer-map
-                       ("C-k" . helm-buffer-run-kill-persistent))
-
             (helm-adaptive-mode 1) ; Adaptive sorting in all sources
 
             ;; Call helm-find with C-u
@@ -54,9 +48,8 @@
                   helm-move-to-line-cycle-in-source t
                   ;; Scroll 8 lines using M-<next>/M-<prior>
                   helm-scroll-amount 8
-                  ;; Fuzzy match
+                  ;; Fuzzy matching
                   helm-M-x-fuzzy-match t
-                  helm-buffers-fuzzy-matching t
                   helm-semantic-fuzzy-match t
                   helm-imenu-fuzzy-match t
                   helm-apropos-fuzzy-match t
@@ -77,6 +70,9 @@
   :bind (("C-x C-f" . helm-find-files)
          ("C-x C-r" . helm-recentf))
   :config (progn
+            (bind-keys :map helm-find-files-map
+                       ("C-k" . helm-ff-persistent-delete))
+            
             (setq helm-ff-file-name-history-use-recentf t
                   helm-ff-newfile-prompt-p nil ; Don't prompt for new buffer
                   helm-idle-delay 0.1
@@ -85,12 +81,22 @@
                   helm-ff-skip-boring-files t
                   ;; Search for library in `require' and `declare-function' sexp
                   helm-ff-search-library-in-sexp t
-                  ;; Fuzzy match
+                  ;; Fuzzy matching
                   helm-recentf-fuzzy-match t
                   ;; Auto-complete in find-files
                   helm-ff-auto-update-initial-value t
                   ;; Sort directories first
                   helm-find-files-sort-directories t)))
+
+(use-package helm-buffers ; Manage buffers with Helm
+  :ensure helm
+  :defer t
+  :config (progn
+            (bind-keys :map helm-buffer-map
+                       ("C-k" . helm-buffer-run-kill-persistent))
+
+            ;; Fuzzy matching
+            (setq helm-buffers-fuzzy-matching t)))
 
 (use-package helm-shell ; Manage shells/terms with Helm
   :ensure helm
@@ -116,7 +122,7 @@
 (use-package helm-ag ; Helm interface for Ag
   :ensure t
   :commands helm-ag
-  :bind ("C-c M-s" . helm-ag-with-prefix-arg)
+  :bind (("C-c M-s" . helm-ag-with-prefix-arg))
   :config (progn
             ;; Call helm-ag with C-u
             (defun helm-ag-with-prefix-arg ()
