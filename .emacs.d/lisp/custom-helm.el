@@ -10,18 +10,15 @@
 ;; This file stores my Helm configuration.
 
 ;;; Code:
-
+ 
 (use-package helm
   :ensure t
   :bind (("M-x" . helm-M-x)
          ("M-y" . helm-show-kill-ring)
-         ("C-x C-r" . helm-recentf)
          ("C-x b" . helm-mini)
-         ("C-x C-f" . helm-find-files)
          ("C-c h i" . helm-semantic-or-imenu)
          ("C-c h o" . helm-occur)
          ("C-c h /" . helm-find-with-prefix-arg)
-         ("C-c M-s" . helm-ag-with-prefix-arg)
          ("C-h SPC" . helm-all-mark-rings)
          ("C-c h x" . helm-register)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
@@ -44,26 +41,7 @@
             (bind-keys :map helm-buffer-map
                        ("C-k" . helm-buffer-run-kill-persistent))
 
-            ;; Eshell history
-            (require 'helm-eshell)
-            (add-hook 'eshell-mode-hook
-                      #'(lambda ()
-                          (define-key eshell-mode-map (kbd "C-c C-l")
-                            'helm-eshell-history)))
-
-            (bind-keys :map shell-mode-map ; Shell history
-                       ("C-c C-l" . helm-comint-input-ring))
-
-            (bind-keys :map minibuffer-local-map ; Mini-buffer history
-                       ("C-c C-l" . helm-minibuffer-history))
-
             (helm-adaptive-mode 1) ; Adaptive sorting in all sources
-
-            ;; Call helm-ag with C-u
-            (defun helm-ag-with-prefix-arg ()
-              (interactive)
-              (setq current-prefix-arg '(4)) ; C-u
-              (call-interactively 'helm-ag))
 
             ;; Call helm-find with C-u
             (defun helm-find-with-prefix-arg ()
@@ -74,42 +52,61 @@
             (setq helm-split-window-in-side-p t ; Open buffer in current window
                   ;; Move to end/beginning when reaching top/bottom of source
                   helm-move-to-line-cycle-in-source t
-                  ;; Search for library in `require' and `declare-function' sexp
-                  helm-ff-search-library-in-sexp t
                   ;; Scroll 8 lines using M-<next>/M-<prior>
                   helm-scroll-amount 8
-                  helm-ff-file-name-history-use-recentf t
-                  helm-ff-newfile-prompt-p nil ; Don't prompt for new buffer
-                  ;; Helm buffer only in the window where point is
-                  helm-split-window-in-side-p t
                   ;; Fuzzy match
                   helm-M-x-fuzzy-match t
                   helm-buffers-fuzzy-matching t
-                  helm-recentf-fuzzy-match t
                   helm-semantic-fuzzy-match t
                   helm-imenu-fuzzy-match t
                   helm-apropos-fuzzy-match t
                   helm-lisp-fuzzy-completion t
-                  ;; Auto-complete in find-files
-                  helm-ff-auto-update-initial-value t
-                  ;; Sort directories first
-                  helm-find-files-sort-directories t
                   ;; Cleaner Helm interface
                   helm-display-header-line nil)
 
             (helm-autoresize-mode 1) ; Autoresize Helm buffer
 
-            (require 'helm-files)
-            (setq helm-idle-delay 0.1
-                  helm-input-idle-delay 0.1
-                  ;; Don't show boring files
-                  helm-ff-skip-boring-files t)
-
             ;; Man pages at point
             (add-to-list 'helm-sources-using-default-as-input
                          'helm-source-man-pages))
   :diminish helm-mode)
-  
+
+(use-package helm-files ; Find files with Helm
+  :ensure helm
+  :defer t
+  :bind (("C-x C-f" . helm-find-files)
+         ("C-x C-r" . helm-recentf))
+  :config (progn
+            (setq helm-ff-file-name-history-use-recentf t
+                  helm-ff-newfile-prompt-p nil ; Don't prompt for new buffer
+                  helm-idle-delay 0.1
+                  helm-input-idle-delay 0.1
+                  ;; Don't show boring files
+                  helm-ff-skip-boring-files t
+                  ;; Search for library in `require' and `declare-function' sexp
+                  helm-ff-search-library-in-sexp t
+                  ;; Fuzzy match
+                  helm-recentf-fuzzy-match t
+                  ;; Auto-complete in find-files
+                  helm-ff-auto-update-initial-value t
+                  ;; Sort directories first
+                  helm-find-files-sort-directories t)))
+
+(use-package helm-shell ; Manage shells/terms with Helm
+  :ensure helm
+  :defer t
+  :config (progn
+            (add-hook 'eshell-mode-hook
+                      #'(lambda ()
+                          (define-key eshell-mode-map (kbd "C-c C-l")
+                            'helm-eshell-history)))
+
+            (bind-keys :map shell-mode-map ; Shell history
+                       ("C-c C-l" . helm-comint-input-ring))
+
+            (bind-keys :map minibuffer-local-map ; Mini-buffer history
+                       ("C-c C-l" . helm-minibuffer-history))))
+
 (use-package helm-projectile ; Helm interface for Projectile
   :ensure t
   :defer 10
@@ -118,7 +115,14 @@
 
 (use-package helm-ag ; Helm interface for Ag
   :ensure t
-  :commands helm-ag)
+  :commands helm-ag
+  :bind ("C-c M-s" . helm-ag-with-prefix-arg)
+  :config (progn
+            ;; Call helm-ag with C-u
+            (defun helm-ag-with-prefix-arg ()
+              (interactive)
+              (setq current-prefix-arg '(4)) ; C-u
+              (call-interactively 'helm-ag))))
 
 (use-package helm-swoop ; List matching lines in another buffer
   :ensure t
@@ -126,7 +130,6 @@
          ("M-I" . helm-swoop-back-to-last-point)
          ("C-c M-i" . helm-multi-swoop)
          ("C-x M-i" . helm-multi-swoop-all))
-  :defer t
   :config (progn
             ;; When doing isearch, hand the word over to helm-swoop
             (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
