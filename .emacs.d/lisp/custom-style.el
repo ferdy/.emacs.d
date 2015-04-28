@@ -150,6 +150,7 @@
                 recentf-max-menu-items 15
                 recentf-exclude (list "/\\.git/.*\\'"
                                       "/elpa/.*\\'"
+                                      "/itsalltext/" ; It's all text temp files
                                       "/tmp/"
                                       "/ssh:")))
 

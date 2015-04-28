@@ -13,14 +13,15 @@
 
 (use-package markdown-mode ; Edit markdown files
   :ensure t
-  :mode (("\\.md\\'" . markdown-mode)
-         ("\\.markdown\\'" . markdown-mode))
+  :mode ("/itsalltext/.*\\.md\\'" . gfm-mode)
   :config (progn
             ;; Use Pandoc to process Markdown
             (setq markdown-command "pandoc -s -f markdown -t html5")
 
-            ;; Use visual-line-mode
-            (add-hook 'markdown-mode-hook #'visual-line-mode)))
+            ;; No filling in GFM, because line breaks are significant.
+            (add-hook 'gfm-mode-hook #'turn-off-auto-fill)
+            ;; Use visual lines instead
+            (add-hook 'gfm-mode-hook #'visual-line-mode)))
 
 (use-package pandoc-mode ; Easily control Pandoc in Emacs
   :ensure t
