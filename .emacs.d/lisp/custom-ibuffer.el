@@ -52,6 +52,7 @@
 
 (use-package ibuffer-projectile ; Group buffers by Projectile project
   :ensure t
+  :disabled t
   :defer t)
 
 (provide 'custom-ibuffer)
