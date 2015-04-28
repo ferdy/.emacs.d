@@ -33,10 +33,6 @@
   :ensure t
   :init (global-company-mode)
   :config (progn
-            ;; Use helm-company for completion at point
-            (bind-key [remap completion-at-point]
-                      #'helm-company company-mode-map)
-
             (setq company-tooltip-align-annotations t
                   ;; Easy navigation to candidates with M-<n>
                   company-show-numbers t

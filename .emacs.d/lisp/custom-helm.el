@@ -170,7 +170,12 @@
 
 (use-package helm-company ; Show Company candidates through Helm interface
   :ensure t
-  :defer t)
+  :defer t
+  :init (with-eval-after-load 'company
+          ;; Use Company for completion
+          (bind-key [remap completion-at-point] #'helm-company company-mode-map)
+          (bind-key "C-:" #'helm-company company-mode-map)
+          (bind-key "C-:" #'helm-company company-active-map)))
 
 (use-package helm-descbinds ; Describing keybinding through Helm
   :ensure t
