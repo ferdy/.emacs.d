@@ -33,9 +33,10 @@
               (delete-other-windows))
 
             (defun magit-quit-session ()
-              "Restore previous window configuration and kill magit buffer."
+              "Restore previous window configuration and cleanup buffers."
               (interactive)
               (custom/kill-buffers "^\\*magit")
+              (custom/kill-buffers "^\\*Springboard")
               (tramp-cleanup-all-buffers)
               (tramp-cleanup-all-connections)
               (jump-to-register :magit-fullscreen))
