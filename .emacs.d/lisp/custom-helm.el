@@ -194,11 +194,12 @@
 
 (use-package helm-bibtex ; Manage BibTeX bibliographies with Helm
   :ensure t
-  :defer t)
+  :commands helm-bibtex
+  :bind (("C-c h h b" . helm-bibtex)))
 
 (use-package helm-mt ; Manage multi-term with Helm
   :ensure t
-  :defer t
+  :commands helm-mt
   :bind ("C-c h t" . helm-mt))
 
 (provide 'custom-helm)
