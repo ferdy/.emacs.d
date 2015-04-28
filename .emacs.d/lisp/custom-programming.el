@@ -37,13 +37,6 @@
              'flycheck-error-list-checker-name nil :inherit 'italic))
   :diminish flycheck-mode)
 
-(use-package flycheck-pos-tip ; Tooltip at point for flycheck messages
-  :ensure t
-  :defer t
-  :init (with-eval-after-load 'flycheck
-          (setq flycheck-display-errors-function
-                #'flycheck-pos-tip-error-messages)))
-
 (use-package flycheck-package ; Flycheck for Emacs package development
   :ensure t
   :defer t
