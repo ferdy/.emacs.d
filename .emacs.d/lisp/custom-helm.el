@@ -23,7 +23,8 @@
          ("C-c h x" . helm-register)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
          ("C-x r l" . helm-bookmarks)
-         ("C-c h r" . helm-info-emacs))
+         ("C-c h r" . helm-info-emacs)
+         ("C-c h l" . helm-locate-library))
   :init (helm-mode 1)
   :config (progn
             (require 'helm-config)
@@ -101,17 +102,17 @@
 (use-package helm-shell ; Manage shells/terms with Helm
   :ensure helm
   :defer t
-  :config (progn
-            (add-hook 'eshell-mode-hook
-                      #'(lambda ()
-                          (define-key eshell-mode-map (kbd "C-c C-l")
-                            'helm-eshell-history)))
+  :init (progn
+          (add-hook 'eshell-mode-hook
+                    #'(lambda ()
+                        (define-key eshell-mode-map (kbd "C-c C-l")
+                          'helm-eshell-history)))
 
-            (bind-keys :map shell-mode-map ; Shell history
-                       ("C-c C-l" . helm-comint-input-ring))
+          (bind-keys :map shell-mode-map ; Shell history
+                     ("C-c C-l" . helm-comint-input-ring))
 
-            (bind-keys :map minibuffer-local-map ; Mini-buffer history
-                       ("C-c C-l" . helm-minibuffer-history))))
+          (bind-keys :map minibuffer-local-map ; Mini-buffer history
+                     ("C-c C-l" . helm-minibuffer-history))))
 
 (use-package helm-projectile ; Helm interface for Projectile
   :ensure t
