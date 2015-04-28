@@ -21,12 +21,6 @@
   :ensure t
   :defer t)
 
-(use-package flx-isearch ; Flexible search for Isearch
-  :ensure t
-  :defer t
-  :bind (("C-M-s" . flx-isearch-forward)
-         ("C-M-r" . flx-isearch-backward)))
-
 (use-package visual-regexp ; Display regular expressions
   :ensure t
   :defer t
