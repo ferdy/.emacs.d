@@ -57,6 +57,7 @@ Overview
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
   [langtool](https://github.com/mhayashi1120/Emacs-langtool), [voca-builder](https://github.com/yitang/voca-builder)
 - Version control: [Magit](https://github.com/magit/magit),
+[magit-gh-pulls](https://github.com/sigma/magit-gh-pulls),
 [diff-hl](https://github.com/dgutov/diff-hl)
 - Project switching: [Springboard](https://github.com/jwiegley/springboard)
 - Slides: [Org-HTML-Slideshow](https://github.com/relevance/org-html-slideshow)
