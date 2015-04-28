@@ -36,6 +36,8 @@
               "Restore previous window configuration and kill magit buffer."
               (interactive)
               (custom/kill-buffers "^\\*magit")
+              (tramp-cleanup-all-buffers)
+              (tramp-cleanup-all-connections)
               (jump-to-register :magit-fullscreen))
 
             (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
