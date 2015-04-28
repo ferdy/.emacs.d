@@ -15,7 +15,8 @@
   :ensure t
   :defer t
   :bind (("<f3>" . magit-status)
-         ("C-c m s" . magit-status))
+         ("C-c m s" . magit-status)
+         ("C-c m l" . magit-file-log))
   :init (setq magit-last-seen-setup-instructions "1.4.0")
   :config (progn
             ;; Shut up, Magit!
@@ -42,6 +43,11 @@
               (jump-to-register :magit-fullscreen))
 
             (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
+
+(use-package magit-gh-pulls ; Manage git pull requests from Magit
+  :ensure t
+  :defer t
+  :init (add-hook 'magit-mode-hook #'turn-on-magit-gh-pulls))
 
 (use-package git-commit-mode ; Git commit message mode
   :ensure t
