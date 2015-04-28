@@ -184,8 +184,8 @@
 
 (use-package helm-flyspell ; Use Flyspell with Helm
   :ensure t
-  :bind (("C-c h f" . helm-flyspell-correct))
-  :commands helm-flyspell-correct)
+  :commands helm-flyspell-correct
+  :bind (("C-c h f" . helm-flyspell-correct)))
 
 (use-package helm-flycheck ; Show Flycheck errors with Helm
   :ensure t
