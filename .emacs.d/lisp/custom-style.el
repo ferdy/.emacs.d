@@ -227,7 +227,8 @@
   :ensure t
   :init (shackle-mode)
   :config (setq shackle-rules
-                '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4)))
+                '((compilation-mode :noselect t)
+                  ("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4)))
   :diminish shackle-mode)
 
 ;;; Highlightings
