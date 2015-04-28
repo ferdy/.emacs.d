@@ -223,6 +223,13 @@
 (use-package winner ; Undo and redo window configurations
   :init (winner-mode))
 
+(use-package shackle ; Set rules for popup buffers
+  :ensure t
+  :init (shackle-mode)
+  :config (setq shackle-rules
+                '(("\\`\\*helm.*?\\*\\'" :regexp t :align t :ratio 0.4)))
+  :diminish shackle-mode)
+
 ;;; Highlightings
 (use-package paren ; Highlight paired delimiters
   :init (show-paren-mode)

@@ -27,7 +27,7 @@ Overview
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm), [ibuffer-vc](https://github.com/purcell/ibuffer-vc)
 - Buffer navigation:
   [Ace Jump Mode](https://github.com/winterTTr/ace-jump-mode), [helm-semantic-or-imenu](https://tuhdo.github.io/helm-intro.html#sec-10)
-- Frames: [transpose-frame](https://github.com/emacsmirror/transpose-frame)
+- Frames: [transpose-frame](https://github.com/emacsmirror/transpose-frame), [shackle](https://github.com/wasamasa/shackle)
 - Files: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus)
 - Editing: [iedit](https://github.com/victorhge/iedit),
   [transpose-mark](https://github.com/AtticHacker/transpose-mark),
