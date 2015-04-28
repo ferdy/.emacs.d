@@ -13,7 +13,9 @@
 
 (use-package markdown-mode ; Edit markdown files
   :ensure t
-  :mode ("/itsalltext/.*\\.md\\'" . gfm-mode)
+  :mode (("\\.md\\'" . gfm-mode)
+         ("\\.markdown\\'" . gfm-mode)
+         ("/itsalltext/.*" . gfm-mode))
   :config (progn
             ;; Use Pandoc to process Markdown
             (setq markdown-command "pandoc -s -f markdown -t html5")
