@@ -121,7 +121,8 @@
                                (?F . "\\fullcite[]{%l}")
                                (?x . "[]{%l}")
                                (?X . "{%l}"))))
-      (setq reftex-cite-format 'biblatex))))
+      (setq reftex-cite-format 'biblatex)))
+  :diminish reftex-mode)
 
 (provide 'custom-latex)
 
