@@ -42,7 +42,8 @@
               (tramp-cleanup-all-connections)
               (jump-to-register :magit-fullscreen))
 
-            (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)))
+            (define-key magit-status-mode-map (kbd "q") 'magit-quit-session))
+  :diminish magit-auto-revert-mode)
 
 (use-package magit-gh-pulls ; Manage git pull requests from Magit
   :ensure t
