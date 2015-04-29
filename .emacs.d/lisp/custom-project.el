@@ -25,7 +25,8 @@
            (call-interactively 'helm-projectile-ag))
 
          (projectile-cleanup-known-projects)
-         (projectile-global-mode)))
+         (projectile-global-mode))
+  :diminish projectile-mode)
 
 (use-package springboard ; Temporarily change default-directory for one command
   :load-path "various"

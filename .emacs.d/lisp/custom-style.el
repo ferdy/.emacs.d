@@ -282,8 +282,7 @@
           (setq rm-blacklist
                 (format "^ \\(%s\\)$"
                         (mapconcat #'identity
-                                   '("Projectile.*"
-                                     "Wrap"
+                                   '("Wrap"
                                      "WSC.*")
                                    "\\|"))
                 sml/theme 'automatic
