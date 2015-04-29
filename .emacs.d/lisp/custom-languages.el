@@ -60,7 +60,7 @@
   :bind (("C-c s l" . synosaurus-lookup)
          ("C-c s r" . synosaurus-choose-and-replace)))
 
-(use-package langtool
+(use-package langtool ; Interact with LanguageTool
   :ensure t
   :defer t
   :config (progn
