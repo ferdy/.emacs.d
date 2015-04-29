@@ -60,13 +60,6 @@
 
             (helm-autoresize-mode 1) ; Autoresize Helm buffer
 
-            ;; Better Helm buffer management
-            (add-to-list 'display-buffer-alist
-                         `(,(rx bos "*helm" (* not-newline) "*" eos)
-                           (display-buffer-in-side-window)
-                           (inhibit-same-window . t)
-                           (window-height . 0.4)))
-            
             ;; Man pages at point
             (add-to-list 'helm-sources-using-default-as-input
                          'helm-source-man-pages))
