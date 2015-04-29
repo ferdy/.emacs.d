@@ -20,7 +20,8 @@
 (use-package whitespace-cleanup-mode ; Cleanup whitespace in buffers
   :ensure t
   :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-          (add-hook hook #'whitespace-cleanup-mode)))
+          (add-hook hook #'whitespace-cleanup-mode))
+  :diminish whitespace-cleanup-mode)
 
 (use-package undo-tree ; Show buffer changes as a tree
   :ensure t
