@@ -52,7 +52,8 @@
                               (flyspell-buffer)))
 
             ;; Free C-M-i for completion
-            (define-key flyspell-mode-map "\M-\t" nil)))
+            (define-key flyspell-mode-map "\M-\t" nil))
+  :diminish flyspell-mode)
 
 (use-package synosaurus ; An extensible thesaurus
   :ensure t
