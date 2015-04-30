@@ -40,9 +40,9 @@
                          `(,(rx bos "*Flycheck errors*" eos)
                            (display-buffer-reuse-window
                             display-buffer-in-side-window)
-                           (side            . bottom)
+                           (side . bottom)
                            (reusable-frames . visible)
-                           (window-height   . 0.4))))
+                           (window-height . 0.4))))
   :diminish flycheck-mode)
 
 (use-package flycheck-package ; Flycheck for Emacs package development
