@@ -15,8 +15,8 @@
   :ensure t
   :defer t
   :bind (("<f3>" . magit-status)
-         ("C-c m s" . magit-status)
-         ("C-c m l" . magit-file-log))
+         ("C-c v s" . magit-status)
+         ("C-c v l" . magit-file-log))
   :init (setq magit-last-seen-setup-instructions "1.4.0")
   :config (progn
             ;; Shut up, Magit!
