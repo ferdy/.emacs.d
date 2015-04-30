@@ -29,12 +29,20 @@
   :defer 5
   :init (global-flycheck-mode)
   :config (progn
-            (setq-default flycheck-emacs-lisp-load-path 'inherit)
             (setq flycheck-display-errors-function
-                  #'flycheck-pos-tip-error-messages)
+                  #'flycheck-display-error-messages-unless-error-list)
 
-            (set-face-attribute ; Use italic face for checker name
-             'flycheck-error-list-checker-name nil :inherit 'italic))
+            ;; Use italic face for checker name
+            (set-face-attribute 'flycheck-error-list-checker-name nil
+                                :inherit 'italic)
+
+            (add-to-list 'display-buffer-alist
+                         `(,(rx bos "*Flycheck errors*" eos)
+                           (display-buffer-reuse-window
+                            display-buffer-in-side-window)
+                           (side            . bottom)
+                           (reusable-frames . visible)
+                           (window-height   . 0.4))))
   :diminish flycheck-mode)
 
 (use-package flycheck-package ; Flycheck for Emacs package development
