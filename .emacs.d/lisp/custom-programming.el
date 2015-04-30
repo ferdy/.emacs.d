@@ -27,11 +27,7 @@
 (use-package flycheck
   :ensure t
   :defer 5
-  :init (global-flycheck-mode)
   :config (progn
-            (setq flycheck-display-errors-function
-                  #'flycheck-display-error-messages-unless-error-list)
-
             ;; Use italic face for checker name
             (set-face-attribute 'flycheck-error-list-checker-name nil
                                 :inherit 'italic)
