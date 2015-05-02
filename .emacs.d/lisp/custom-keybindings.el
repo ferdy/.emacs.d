@@ -21,6 +21,9 @@
 
 (global-set-key (kbd "C-x C-d") 'duplicate-line) ; Duplicate line at point
 
+(global-set-key (kbd "C-c q")
+                #'custom/quit-bottom-side-windows) ; Close side frames
+
 ;; Custom keybindings activated with C^x t
 (define-prefix-command 'toggle-map)
 ;; The manual recommends C-c for user keys, but C-x t is

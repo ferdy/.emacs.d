@@ -310,6 +310,12 @@ prefix argument."
          (call-interactively ',function))
        ',name)))
 
+(defun custom/quit-bottom-side-windows ()
+  "Quit side windows of the current frame."
+  (interactive)
+  (dolist (window (window-at-side-list))
+    (quit-window nil window)))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here
