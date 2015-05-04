@@ -174,7 +174,7 @@
                   ;; If this value is t, split window inside the current window
                   helm-swoop-split-with-multiple-windows nil
                   ;; Split direction
-                  helm-swoop-split-direction 'split-window-horizontally
+                  helm-swoop-split-direction 'split-window-vertically
                   ;; If nil, boost invoke speed in exchange for text color
                   helm-swoop-speed-or-color nil
                   ;; Go to the opposite side from the end or beginning of line
