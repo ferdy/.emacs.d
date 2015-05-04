@@ -59,8 +59,7 @@
   :bind (("C-x C-f" . helm-find-files)
          ("C-x C-r" . helm-recentf))
   :config (progn
-            (bind-keys :map helm-find-files-map
-                       ("C-k" . helm-ff-persistent-delete))
+            (bind-key "C-k" #'helm-ff-persistent-delete helm-find-files-map)
             
             (setq helm-ff-file-name-history-use-recentf t
                   helm-ff-newfile-prompt-p nil ; Don't prompt for new buffer
@@ -81,8 +80,7 @@
   :ensure helm
   :defer t
   :config (progn
-            (bind-keys :map helm-buffer-map
-                       ("C-k" . helm-buffer-run-kill-persistent))
+            (bind-key "C-k" #'helm-buffer-run-kill-persistent helm-buffer-map)
 
             ;; Fuzzy matching
             (setq helm-buffers-fuzzy-matching t)))
@@ -111,11 +109,11 @@
                         (define-key eshell-mode-map (kbd "C-c C-l")
                           'helm-eshell-history)))
 
-          (bind-keys :map shell-mode-map ; Shell history
-                     ("C-c C-l" . helm-comint-input-ring))
+          ;; Shell history
+          (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)
 
-          (bind-keys :map minibuffer-local-map ; Mini-buffer history
-                     ("C-c C-l" . helm-minibuffer-history))))
+          ;; Mini-buffer history
+          (bind-key "C-c C-l" #'helm-minibuffer-history minibuffer-local-map)))
 
 (use-package helm-projectile ; Helm interface for Projectile
   :ensure t
