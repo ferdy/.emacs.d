@@ -101,10 +101,7 @@
 (use-package helm-imenu ; Imenu through Helm
   :ensure helm
   :defer t
-  :bind (("C-c h i" . helm-semantic-or-imenu))
-  :config (add-to-list 'imenu-generic-expression
-                       '("Used Packages" ; Move between use-package snippets
-                         "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2)))
+  :bind (("C-c h i" . helm-semantic-or-imenu)))
 
 (use-package helm-shell ; Manage shells/terms with Helm
   :ensure helm
