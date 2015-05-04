@@ -215,6 +215,7 @@
   :init (global-page-break-lines-mode)
   :diminish page-break-lines-mode)
 
+;;; Windows and frames
 (use-package transpose-frame ; Easily swap frames
   :ensure t
   :bind (("C-c t t" . transpose-frame)
@@ -223,6 +224,12 @@
 
 (use-package winner ; Undo and redo window configurations
   :init (winner-mode))
+
+(use-package ace-window ; Better movements between windows
+  :ensure t
+  :commands ace-window
+  :bind ("C-x o" . ace-window)
+  :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))) ; Use home row
 
 ;;; Highlightings
 (use-package paren ; Highlight paired delimiters
