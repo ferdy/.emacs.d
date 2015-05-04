@@ -30,8 +30,9 @@
   :bind ("C-c w e" . erc)
   :config (progn
             (load "~/.ercpass")
-            (require 'erc-services)
-            (erc-services-mode 1)
+            (use-package erc-services
+              :defer t
+              :config (erc-services-mode 1))
 
             (setq erc-nick gp-nick
                   erc-prompt-for-nickserv-password nil
@@ -58,7 +59,7 @@
                     ("https://cavallette.noblogs.org/feed" security)))
 
             ;; Elfeed: mark all feed as read
-            (require 'elfeed-search)
+            (use-package elfeed-search)
 
             (defun elfeed-mark-all-as-read ()
               "Mark all fees as read."

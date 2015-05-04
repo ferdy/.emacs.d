@@ -285,7 +285,7 @@
   :ensure t
   :init (progn
           ;; Hide some modes
-          (require 'rich-minority)
+          (use-package rich-minority)
           (setq rm-blacklist
                 (format "^ \\(%s\\)$"
                         (mapconcat #'identity
