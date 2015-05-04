@@ -22,9 +22,10 @@
          ("C-c h l" . helm-locate-library))
   :init (helm-mode 1)
   :config (progn
-            (require 'helm-config)
-            (global-set-key (kbd "C-c h") 'helm-command-prefix)
-            (global-unset-key (kbd "C-x c"))
+            (use-package helm-config
+              :config (progn
+                        (global-set-key (kbd "C-c h") 'helm-command-prefix)
+                        (global-unset-key (kbd "C-x c"))))
 
             (bind-keys :map helm-map
                        ("<tab>" . helm-execute-persistent-action)
