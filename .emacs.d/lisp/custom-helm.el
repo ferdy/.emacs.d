@@ -10,18 +10,14 @@
 ;; This file stores my Helm configuration.
 
 ;;; Code:
- 
+
 (use-package helm
   :ensure t
   :bind (("M-x" . helm-M-x)
          ("C-x b" . helm-mini)
          ("M-y" . helm-show-kill-ring)
-         ("C-c h o" . helm-occur)
-         ("C-c h /" . helm-find-with-prefix-arg)
          ("C-h SPC" . helm-all-mark-rings)
-         ("C-c h x" . helm-register)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
-         ("C-x r l" . helm-bookmarks)
          ("C-c h r" . helm-info-emacs)
          ("C-c h l" . helm-locate-library))
   :init (helm-mode 1)
@@ -34,14 +30,6 @@
                        ("<tab>" . helm-execute-persistent-action)
                        ("C-i" . helm-execute-persistent-action)
                        ("C-z" . helm-select-action))
-
-            (helm-adaptive-mode 1) ; Adaptive sorting in all sources
-
-            ;; Call helm-find with C-u
-            (defun helm-find-with-prefix-arg ()
-              (interactive)
-              (setq current-prefix-arg '(4)) ; C-u
-              (call-interactively 'helm-find))
 
             (setq helm-split-window-in-side-p t ; Open buffer in current window
                   ;; Move to end/beginning when reaching top/bottom of source
@@ -57,6 +45,7 @@
                   ;; Cleaner Helm interface
                   helm-display-header-line nil)
 
+            (helm-adaptive-mode 1) ; Adaptive sorting in all sources
             (helm-autoresize-mode 1) ; Autoresize Helm buffer
 
             ;; Man pages at point
@@ -103,6 +92,16 @@
   :defer t
   :bind (("C-c h i" . helm-semantic-or-imenu)))
 
+(use-package helm-register ; Display registers with Helm
+  :ensure helm
+  :defer t
+  :bind (("C-c h x" . helm-register)))
+
+(use-package helm-bookmarks ; List bookmarks with Helm
+  :ensure helm
+  :defer t
+  :bind (("C-x r l" . helm-bookmarks)))
+
 (use-package helm-shell ; Manage shells/terms with Helm
   :ensure helm
   :defer t
@@ -123,6 +122,22 @@
   :defer 10
   :disabled t
   :init (helm-projectile-on))
+
+(use-package helm-occur ; Occur with Helm
+  :ensure helm
+  :defer t
+  :bind (("C-c h o" . helm-occur)))
+
+(use-package helm-find ; Find with Helm
+  :ensure helm
+  :defer t
+  :bind ("C-c h /" . helm-find-with-prefix-arg)
+  :config (progn
+            ;; Call helm-find with C-u
+            (defun helm-find-with-prefix-arg ()
+              (interactive)
+              (setq current-prefix-arg '(4)) ; C-u
+              (call-interactively 'helm-find))))
 
 (use-package helm-ag ; Helm interface for Ag
   :ensure t
