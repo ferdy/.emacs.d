@@ -16,7 +16,6 @@
   :bind (("M-x" . helm-M-x)
          ("C-x b" . helm-mini)
          ("M-y" . helm-show-kill-ring)
-         ("C-c h i" . helm-semantic-or-imenu)
          ("C-c h o" . helm-occur)
          ("C-c h /" . helm-find-with-prefix-arg)
          ("C-h SPC" . helm-all-mark-rings)
@@ -98,6 +97,14 @@
 
             ;; Fuzzy matching
             (setq helm-buffers-fuzzy-matching t)))
+
+(use-package helm-imenu ; Imenu through Helm
+  :ensure helm
+  :defer t
+  :bind (("C-c h i" . helm-semantic-or-imenu))
+  :config (add-to-list 'imenu-generic-expression
+                       '("Used Packages" ; Move between use-package snippets
+                         "\\(^\\s-*(use-package +\\)\\(\\_<.+\\_>\\)" 2)))
 
 (use-package helm-shell ; Manage shells/terms with Helm
   :ensure helm
