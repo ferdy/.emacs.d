@@ -156,17 +156,20 @@
          ("C-x M-i" . helm-multi-swoop-all))
   :config (progn
             ;; When doing isearch, hand the word over to helm-swoop
-            (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)
+            (bind-key "M-i" #'helm-swoop-from-isearch isearch-mode-map)
             ;; From helm-swoop to helm-multi-swoop-all
-            (define-key helm-swoop-map (kbd "M-i")
-              'helm-multi-swoop-all-from-helm-swoop)
+            (bind-key "M-i" #'helm-multi-swoop-all-from-helm-swoop
+                      helm-swoop-map)
 
             ;; Move up and down like isearch
-            (define-key helm-swoop-map (kbd "C-r") 'helm-previous-line)
-            (define-key helm-swoop-map (kbd "C-s") 'helm-next-line)
-            (define-key helm-multi-swoop-map (kbd "C-r") 'helm-previous-line)
-            (define-key helm-multi-swoop-map (kbd "C-s") 'helm-next-line)
-
+            (bind-keys :map helm-swoop-map
+                       ("C-r" . helm-previous-line)
+                       ("C-s" . helm-next-line))
+            
+            (bind-keys :map helm-multi-swoop-map
+                       ("C-r" . helm-previous-line)
+                       ("C-s" . helm-next-line))
+            
             ;; Save buffer when helm-multi-swoop-edit complete
             (setq helm-multi-swoop-edit-save t
                   ;; If this value is t, split window inside the current window
