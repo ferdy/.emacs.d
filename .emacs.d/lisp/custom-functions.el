@@ -15,11 +15,13 @@
 (defvar my-oldtags '("<i>" "</i>" "<b>" "</b>"))
 (defvar my-newtags '("<em>" "</em>" "<strong>" "</strong>"))
 
+;;;###autoload
 (defun custom/replace-html-tags ()
   "Replace HTML tags with the ones used by WordPress editor."
   (interactive)
   (custom/replace-string-matches-recursively my-oldtags my-newtags))
 
+;;;###autoload
 (defun custom/replace-string-matches-recursively (oldtags newtags)
   "Replace OLDTAGS elements with NEWTAGS elements recursively."
   (custom/only-strings-p oldtags)
@@ -36,6 +38,7 @@
 	     (custom/replace-string-matches-recursively (cdr oldtags)
 							(cdr newtags)))))))
 
+;;;###autoload
 (defun custom/only-strings-p (list)
   "Check if LIST does contain only strings."
   (and (not (eq (car list) nil))
@@ -43,17 +46,20 @@
 	   (not (custom/only-strings-p (cdr list)))
 	 (error "List must only contain strings"))))
 
+;;;###autoload
 (defun custom/lists-same-length-p (a b)
   "Check if lists A and B have the same length."
   (if (eq (length a)(length b)) t
     (error "Lists must have same length")))
 
+;;;###autoload
 (defun revert-this-buffer ()
   "Revert current buffer without asking for confirmation."
   (interactive)
   (revert-buffer nil t t)
   (message (concat "Reverted buffer " (buffer-name))))
 
+;;;###autoload
 (defun create-scratch-buffer nil
   "Create a scratch buffer."
   (interactive)
@@ -64,6 +70,7 @@
 ;; Toggle image display on/off, especially useful in eww
 (defvar-local custom/display-images t)
 
+;;;###autoload
 (defun custom/toggle-image-display ()
   "Toggle images display on current buffer."
   (interactive)
@@ -71,6 +78,7 @@
         (null custom/display-images))
   (custom/backup-display-property custom/display-images))
 
+;;;###autoload
 (defun custom/backup-display-property (invert &optional object)
   "Move the 'display property at POS to 'display-backup.
 Only applies if display property is an image.
@@ -96,6 +104,7 @@ buffer."
           (add-text-properties left pos (list from nil to prop) object))))))
 
 ;; Run a program in a term buffer, if it is already running switch to it
+;;;###autoload
 (defun custom/term-start-or-switch (prg &optional use-existing)
   "Run program PRG in a terminal buffer.
 If USE-EXISTING is non-nil and PRG is already running,
@@ -116,6 +125,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 		      (interactive)
 		      (custom/term-start-or-switch ,name ,use-existing))))
 
+;;;###autoload
 (defun copy-file-name-to-clipboard ()
   "Copy the current buffer file name to the clipboard."
   (interactive)
@@ -126,12 +136,14 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 
+;;;###autoload
 (defun comint-clear-buffer ()
   "Easily clear comint buffers."
   (interactive)
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
+;;;###autoload
 (defun custom/kill-buffers (regexp)
   "Kill buffers matching REGEXP without asking for confirmation."
   (interactive "sKill buffers matching this regular expression: ")
@@ -143,6 +155,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 (eval-when-compile
   (require 'cl))
 
+;;;###autoload
 (defun get-buffers-matching-mode (mode)
   "Return a list of buffers where their MAJOR-MODE is equal to MODE."
   (let ((buffer-mode-matches '()))
@@ -152,6 +165,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
             (push buf buffer-mode-matches))))
     buffer-mode-matches))
 
+;;;###autoload
 (defun multi-occur-in-this-mode ()
   "Show all lines matching REGEXP in buffers with this major mode."
   (interactive)
@@ -159,6 +173,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
    (get-buffers-matching-mode major-mode)
    (car (occur-read-primary-args))))
 
+;;;###autoload
 (defun occur-dwim ()
   "Call `occur' with a sane default."
   (interactive)
@@ -170,6 +185,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
         regexp-history)
   (call-interactively 'occur))
 
+;;;###autoload
 (defun delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
@@ -179,6 +195,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
     (delete-file (buffer-file-name))
     (kill-this-buffer)))
 
+;;;###autoload
 (defun rename-this-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
@@ -194,6 +211,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
         (rename-buffer new-name)
         (set-visited-file-name new-name)))))
 
+;;;###autoload
 (defun open-with-sudo ()
   "Find file using `sudo' with TRAMP."
   (unless (and buffer-file-name
@@ -203,6 +221,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 
 (add-hook 'find-file-hook #'open-with-sudo)
 
+;;;###autoload
 (defun just-one-space-in-region (beg end)
   "Replace all whitespace in the region from BEG to END with single spaces."
   (interactive "r")
@@ -213,6 +232,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (while (re-search-forward "\\s-+" nil t)
         (replace-match " ")))))
 
+;;;###autoload
 (defun duplicate-line ()
   "Duplicate the line containing point."
   (interactive)
@@ -228,6 +248,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       (open-line 1)
       (insert line-text))))
 
+;;;###autoload
 (defun custom/isearch-delete ()
   "Delete the failed portion of the search string, or the last char if successful."
   (interactive)
@@ -238,6 +259,7 @@ if USE-EXISTING is true, try to switch to an existing buffer"
          isearch-new-message
          (mapconcat 'isearch-text-char-description isearch-new-string ""))))
 
+;;;###autoload
 (defun custom/forward-paragraph (&optional n)
   "Advance N times just past next blank line."
   (interactive "p")
@@ -264,16 +286,19 @@ if USE-EXISTING is true, try to switch to an existing buffer"
       ;; this looks redundant, but it's surprisingly necessary.
       (back-to-indentation))))
 
+;;;###autoload
 (defun custom/backward-paragraph (&optional n)
   "Go back up N times to previous blank line."
   (interactive "p")
   (custom/forward-paragraph (- n)))
 
+;;;###autoload
 (defun other-window-backward (&optional n)
   "Select Nth previous window."
   (interactive "P")
   (other-window (- (prefix-numeric-value n))))
 
+;;;###autoload
 (defun push-mark-no-activate ()
   "Pushes 'point' to 'mark-ring' and does not activate the region.
 Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
@@ -281,12 +306,14 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
   (push-mark (point) t nil)
   (message "Pushed mark to ring"))
 
+;;;###autoload
 (defun jump-to-mark ()
   "Jumps to the local mark, respecting the mark-ring' order.
 This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (set-mark-command 1))
 
+;;;###autoload
 (defun exchange-point-and-mark-no-activate ()
   "Identical to \\[exchange-point-and-mark] but will not activate the region."
   (interactive)
@@ -310,6 +337,7 @@ prefix argument."
          (call-interactively ',function))
        ',name)))
 
+;;;###autoload
 (defun custom/quit-bottom-side-windows ()
   "Quit side windows of the current frame."
   (interactive)
