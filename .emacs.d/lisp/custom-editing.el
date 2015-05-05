@@ -239,6 +239,25 @@
   :defer t
   :bind ("C-c t m" . transpose-mark))
 
+;;; Windows and frames
+(use-package transpose-frame ; Easily swap frames
+  :ensure t
+  :bind (("C-c t t" . transpose-frame)
+         ("C-c t h" . flop-frame)
+         ("C-c t v" . flip-frame)))
+
+(use-package winner ; Undo and redo window configurations
+  :init (winner-mode))
+
+(use-package ace-window ; Better movements between windows and characters
+  :ensure t
+  :commands ace-window
+  :bind (("C-x o" . ace-window)
+         ("C-c j" . avi-goto-word-1))
+  :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l) ; Use home row
+                avi-keys ; Use home row here too
+                '(?a ?s ?d ?e ?f ?h ?j ?k ?l ?n ?m ?v ?r ?u)))
+
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here
