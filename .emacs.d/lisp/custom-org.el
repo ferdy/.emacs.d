@@ -156,6 +156,15 @@ Inside a code-block, simply calls `self-insert-command'."
             (org-tree-slide-narrowing-control-profile)
             (setq org-tree-slide-skip-done nil)))
 
+(use-package org-magit ; Magit links in Org buffers
+  :ensure t
+  :defer t)
+
+(use-package org-bullets ; Prettify bullets with UTF-8 characters
+  :ensure t
+  :defer t
+  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
 (provide 'custom-org)
 
 ;;; custom-org.el ends here
