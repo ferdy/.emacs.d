@@ -36,12 +36,6 @@
             (setcar (cdr (assq 'isearch-mode minor-mode-alist))
                     '(:eval (anzu--update-mode-line)))))
 
-(use-package ace-jump-mode ; Jump to characters in buffers
-  :ensure t
-  :bind (("C-c j" . ace-jump-mode)
-         ("C-c J" . ace-jump-mode-pop-mark))
-  :config (ace-jump-mode-enable-mark-sync)) ; Sync marks with built-in commands
-
 (provide 'custom-search)
 
 ;;; custom-search.el ends here
