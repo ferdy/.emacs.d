@@ -253,7 +253,8 @@
   :ensure t
   :commands ace-window
   :bind (("C-x o" . ace-window)
-         ("C-c j" . avi-goto-word-1))
+         ("C-c j" . avi-goto-word-1)
+         ("C-c J" . avi-goto-char-2))
   :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l) ; Use home row
                 avi-keys ; Use home row here too
                 '(?a ?s ?d ?e ?f ?h ?j ?k ?l ?n ?m ?v ?r ?u)))
