@@ -28,11 +28,6 @@
                                :size 14
                                :weight 'normal)))
 
-(use-package unicode-fonts ; Map Unicode blocks to fonts
-  :ensure t
-  :disabled t
-  :init (unicode-fonts-setup))
-
 ;;; Scrolling
 (setq scroll-margin 0
       scroll-conservatively 1000)
