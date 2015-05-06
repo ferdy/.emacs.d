@@ -88,8 +88,6 @@
 ;; Toggle all frames maximized and fullscreen
 (modify-all-frames-parameters '((fullscreen . maximized)))
 
-(blink-cursor-mode -1) ; Turn off blinking cursor
-
 ;; Don't let the cursor go into minibuffer prompt
 (setq minibuffer-prompt-properties '(read-only
 				     t
@@ -106,6 +104,10 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
 
+;; Turn off annoying settings
+(blink-cursor-mode -1)
+(tooltip-mode -1)
+
 ;; Disable annoying prompts
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq kill-buffer-query-functions
@@ -116,8 +118,6 @@
 (setq inhibit-startup-message t
       inhibit-startup-echo-area-message t
       initial-scratch-message nil)
-
-(tooltip-mode -1) ; Disable tooltips
 
 ;; Automatically close some buffers on exit
 (add-hook 'minibuffer-exit-hook
