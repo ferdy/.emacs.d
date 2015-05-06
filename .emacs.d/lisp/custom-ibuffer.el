@@ -50,11 +50,6 @@
                     (unless (eq ibuffer-sorting-mode 'alphabetic)
                       (ibuffer-do-sort-by-alphabetic)))))
 
-(use-package ibuffer-projectile ; Group buffers by Projectile project
-  :ensure t
-  :disabled t
-  :defer t)
-
 (provide 'custom-ibuffer)
 
 ;;; custom-ibuffer.el ends here
