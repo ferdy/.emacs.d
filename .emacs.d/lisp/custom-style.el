@@ -133,16 +133,6 @@
 
 (column-number-mode) ; Turn on column-number-mode
 
-(use-package linum+ ; Better line numbers
-  :disabled t
-  :load-path "various"
-  :config (progn
-            (setq linum+-dynamic-format " %%%dd")
-
-            ;; Linum+ resets linum-format to "smart" when it's loaded, we have
-            ;; to use a eval-after-nload hook to set it to "dynamic".
-            (eval-after-load "linum+" '(progn (setq linum-format 'dynamic)))))
-
 (use-package recentf ; Manage recent files
   :init (recentf-mode)
   :defer t
