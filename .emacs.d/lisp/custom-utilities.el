@@ -84,8 +84,7 @@
 
 (use-package esup ; Emacs Startup Profiler
   :ensure t
-  :commands esup
-  :disabled t)
+  :commands esup)
 
 (use-package writeroom-mode ; Distraction-free interface
   :ensure t
