@@ -12,22 +12,6 @@
 ;;; Code:
 
 ;;; Project Management
-(use-package projectile
-  :ensure t
-  :disabled t
-  :config
-  (progn (setq projectile-completion-system 'helm
-               projectile-find-dir-includes-top-level t)
-
-         ;; Replace Ack with helm-ag in Projectile commander
-         (def-projectile-commander-method ?a
-           "Find ag on project."
-           (call-interactively 'helm-projectile-ag))
-
-         (projectile-cleanup-known-projects)
-         (projectile-global-mode))
-  :diminish projectile-mode)
-
 (use-package springboard ; Temporarily change default-directory for one command
   :ensure t
   :bind ("C-c p s" . springboard)
