@@ -116,12 +116,6 @@
           ;; Mini-buffer history
           (bind-key "C-c C-l" #'helm-minibuffer-history minibuffer-local-map)))
 
-(use-package helm-projectile ; Helm interface for Projectile
-  :ensure t
-  :defer 10
-  :disabled t
-  :init (helm-projectile-on))
-
 (use-package helm-occur ; Occur with Helm
   :ensure helm
   :defer t
