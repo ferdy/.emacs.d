@@ -79,26 +79,6 @@
                   (locate-user-emacs-file "cider-repl-history")
                   cider-repl-pop-to-buffer-on-connect nil)))
 
-;;; Scheme
-;; Requires: guile-2.0
-(use-package geiser
-  :ensure t
-  :disabled t
-  :init (progn (setq scheme-program-name "guile")
-               (setq geiser-impl-installed-implementations '(guile))))
-
-;;; Common Lisp
-(use-package slime
-  :ensure t
-  :disabled t
-  :init (setq inferior-lisp-program "/usr/bin/sbcl")
-  :config (setq slime-contribs '(slime-fancy)))
-
-(use-package slime-company
-  :ensure t
-  :disabled t
-  :init (slime-setup '(slime-company)))
-
 ;;; Web development
 (use-package web-mode
   :ensure t
