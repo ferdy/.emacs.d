@@ -110,7 +110,7 @@
             (define-key paredit-mode-map (kbd "M-S-<up>")
               #'paredit-splice-sexp)
 
-            ;; Extreme barfarge and slurpage
+            ;; Extreme barfage and slurpage
             (defun paredit-barf-all-the-way-backward ()
               (interactive)
               (paredit-split-sexp)
