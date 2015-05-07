@@ -202,6 +202,10 @@
   :commands helm-flycheck
   :bind (("C-c h h f" . helm-flycheck)))
 
+(use-package helm-make ; Select Makefile targets with Helm
+  :ensure t
+  :commands helm-make)
+
 (use-package helm-bibtex ; Manage BibTeX bibliographies with Helm
   :ensure t
   :commands helm-bibtex
