@@ -97,7 +97,10 @@ Inside a code-block, simply calls `self-insert-command'."
                                   :foreground "light gray"))
 
             (eval-after-load "org"
-              (add-hook 'org-add-hook 'custom/modify-org-done-face))))
+              (add-hook 'org-add-hook 'custom/modify-org-done-face))
+
+            (use-package org-pdfview ; Support for org links from pdfview buffers
+              :ensure t)))
 
 ;; Auto insert custom text upon opening an org file
 (auto-insert-mode)
