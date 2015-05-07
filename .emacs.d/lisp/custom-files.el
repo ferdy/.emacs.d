@@ -16,11 +16,12 @@
          ("C-c C" . copy-file-name-to-clipboard))
   :config (progn
             (setq dired-auto-revert-buffer t ; Revert buffers on revisiting
-                  dired-listing-switches "-laGh1v --group-directories-first"
+                  dired-listing-switches "-lFaGh1v --group-directories-first"
                   global-auto-revert-non-file-buffers t ; Auto refresh dired
                   auto-revert-verbose nil ; But be quiet about it
                   dired-dwim-target t ; Use other pane as target when copying
                   dired-recursive-copies 'always ; Copy dirs recursively
+                  dired-ls-F-marks-symlinks t ; -F marks links with @
                   dired-guess-shell-alist-user ; Use LibreOffice when needed
                   '(("\\.ods\\'\\|\\.xls?\\'\\|\\.xlsx?\\'" "libreoffice")
                     ("\\.odt\\'\\|\\.doc?\\'\\|\\.docx?\\'" "libreoffice")))
