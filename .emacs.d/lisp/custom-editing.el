@@ -223,7 +223,7 @@
           (bind-key "C-c e" #'macrostep-expand lisp-interaction-mode-map)))
 
 (use-package saveplace ; Save point position in files
-  :config (setq-default save-place t))
+  :init (save-place-mode))
 
 (use-package autorevert ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode))
@@ -249,14 +249,20 @@
 (use-package winner ; Undo and redo window configurations
   :init (winner-mode))
 
-(use-package ace-window ; Better movements between windows and characters
+(use-package ace-window ; Better movements between windows
   :ensure t
   :commands ace-window
-  :bind (("C-x o" . ace-window)
-         ("C-c j" . avi-goto-word-1)
-         ("C-c J" . avi-goto-char))
-  :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l) ; Use home row
-                avi-keys ; Use home row here too
+  :bind (("C-x o" . ace-window))
+  :config (setq aw-keys ; Use home row
+                '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+
+(use-package avy-jump ; Jump to characters in buffers
+  :ensure ace-window
+  :bind (("C-c j s" . avi-isearch)
+         ("C-c j j" . avi-goto-word-1)
+         ("C-c j c" . avi-goto-char-1)
+         ("C-c j 2" . avi-goto-char-2))
+  :config (setq avi-keys ; Use home row
                 '(?a ?s ?d ?e ?f ?h ?j ?k ?l ?n ?m ?v ?r ?u)))
 
 (provide 'custom-editing)
