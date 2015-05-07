@@ -98,7 +98,8 @@
   :config (progn
             (setq paradox-github-token t ; Don't ask for a token, please
                   ;; No async for now
-                  paradox-execute-asynchronously nil)
+                  paradox-execute-asynchronously nil
+                  paradox-spinner-type 'rotating-line)
 
             ;; Don't need paradox report
             (remove-hook 'paradox-after-execute-functions
