@@ -204,7 +204,8 @@
 
 (use-package helm-make ; Select Makefile targets with Helm
   :ensure t
-  :commands helm-make)
+  :commands helm-make
+  :config (setq helm-make-do-save t)) ; Save files in Makefile's directory
 
 (use-package helm-bibtex ; Manage BibTeX bibliographies with Helm
   :ensure t
