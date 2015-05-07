@@ -15,7 +15,7 @@ time. The script only works with **Debian-based** systems.
 I mainly use Emacs for **LaTeX**, **Elisp** and **Clojure**, so my setup is
 planned accordingly.
 
-This configuration comes with more than **130 packages** carefully set up for my
+This configuration comes with more than **100 packages** carefully set up for my
 daily usage. It may not be suitable for newbies. Check the ```.emacs.d/lisp``` directory for the gory details.
 
 Overview
