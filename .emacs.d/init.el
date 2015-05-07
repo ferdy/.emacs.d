@@ -66,13 +66,12 @@
 
 (use-package cus-edit
   :defer t
-  :config
-  (setq custom-file custom/custom-file
-	custom-buffer-done-kill nil ; Kill when existing
-	custom-buffer-verbose-help nil ; Remove redundant help text
-	;; Show me the real variable name
-	custom-unlispify-tag-names nil
-	custom-unlispify-menu-entries nil)
+  :config (setq custom-file custom/custom-file
+                custom-buffer-done-kill nil ; Kill when existing
+                custom-buffer-verbose-help nil ; Remove redundant help text
+                ;; Show me the real variable name
+                custom-unlispify-tag-names nil
+                custom-unlispify-menu-entries nil)
   :init (load custom/custom-file 'no-error 'no-message))
 
 ;; Set the directory where all backup and autosave files will be saved
