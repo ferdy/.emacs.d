@@ -249,15 +249,8 @@
 (use-package winner ; Undo and redo window configurations
   :init (winner-mode))
 
-(use-package ace-window ; Better movements between windows
-  :ensure t
-  :commands ace-window
-  :bind (("C-x o" . ace-window))
-  :config (setq aw-keys ; Use home row
-                '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
-
-(use-package avy ; Jump to characters in buffers
-  :ensure t
+(use-package avy-jump ; Jump to characters in buffers
+  :ensure avy
   :bind (("C-c j s" . avy-isearch)
          ("C-c j w" . avy-goto-word-1)
          ("C-c j j" . avy-goto-char-2))
@@ -272,6 +265,13 @@
                (with-eval-after-load 'help-mode
                  (defvar help-mode-map) ; Silence the byte compiler
                  (bind-key "C-c j l" #'ace-link-help help-mode-map))))
+
+(use-package ace-window ; Better movements between windows
+  :ensure t
+  :commands ace-window
+  :bind (("C-x o" . ace-window))
+  :config (setq aw-keys ; Use home row
+                '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 (provide 'custom-editing)
 
