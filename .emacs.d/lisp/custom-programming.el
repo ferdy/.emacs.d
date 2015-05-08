@@ -59,7 +59,7 @@
                (add-hook 'clojure-mode-hook #'subword-mode)))
 
 (use-package clojure-mode-extra-font-locking
-  :ensure clojure-mode
+  :ensure t
   :defer t
   :init (with-eval-after-load 'clojure-mode
           (require 'clojure-mode-extra-font-locking)))
