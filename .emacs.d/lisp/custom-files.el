@@ -21,6 +21,7 @@
                   auto-revert-verbose nil ; But be quiet about it
                   dired-dwim-target t ; Use other pane as target when copying
                   dired-recursive-copies 'always ; Copy dirs recursively
+                  dired-recursive-deletes ' always ; Delete dirs recursively
                   dired-ls-F-marks-symlinks t ; -F marks links with @
                   dired-guess-shell-alist-user ; Use LibreOffice when needed
                   '(("\\.ods\\'\\|\\.xls?\\'\\|\\.xlsx?\\'" "libreoffice")
