@@ -256,12 +256,12 @@
   :config (setq aw-keys ; Use home row
                 '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
-(use-package avy-jump ; Jump to characters in buffers
-  :ensure ace-window
-  :bind (("C-c j s" . avi-isearch)
-         ("C-c j j" . avi-goto-word-1)
-         ("C-c j c" . avi-goto-char-1)
-         ("C-c j 2" . avi-goto-char-2))
+(use-package avy ; Jump to characters in buffers
+  :ensure t
+  :bind (("C-c j s" . avy-isearch)
+         ("C-c j j" . avy-goto-word-1)
+         ("C-c j c" . avy-goto-char-1)
+         ("C-c j 2" . avy-goto-char-2))
   :config (setq avi-keys ; Use home row
                 '(?a ?s ?d ?e ?f ?h ?j ?k ?l ?n ?m ?v ?r ?u)))
 
