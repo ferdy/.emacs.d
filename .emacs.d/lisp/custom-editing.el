@@ -268,7 +268,6 @@
 
 (use-package ace-window ; Better movements between windows
   :ensure t
-  :commands ace-window
   :bind (("C-x o" . ace-window))
   :config (setq aw-keys ; Use home row
                 '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
