@@ -259,12 +259,23 @@
 (use-package avy ; Jump to characters in buffers
   :ensure t
   :bind (("C-c j s" . avy-isearch)
-         ("C-c j j" . avy-goto-word-1)
-         ("C-c j c" . avy-goto-char-1)
-         ("C-c j 2" . avy-goto-char-2))
+         ("C-c j w" . avy-goto-word-1)
+         ("C-c j j" . avy-goto-char-2))
   :config (setq avi-keys ; Use home row
                 '(?a ?s ?d ?e ?f ?h ?j ?k ?l ?n ?m ?v ?r ?u)))
+
+(use-package ace-link ; Jump to links
+  :ensure t
+  :defer t
+  :init (progn (with-eval-after-load 'info
+                 (bind-key "C-c j l" #'ace-link-info Info-mode-map))
+               (with-eval-after-load 'help-mode
+                 (defvar help-mode-map) ; Silence the byte compiler
+                 (bind-key "C-c j l" #'ace-link-help help-mode-map))))
 
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here
+
+
+
