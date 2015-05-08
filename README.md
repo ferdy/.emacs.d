@@ -28,7 +28,7 @@ Overview
 - Frames and windows:
   [transpose-frame](https://github.com/emacsmirror/transpose-frame),
   [ace-window](https://github.com/abo-abo/ace-window)
-- Navigation: [avy](https://github.com/abo-abo/avy)
+- Navigation: [Avy](https://github.com/abo-abo/avy)
 - Files: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus)
 - Editing: [iedit](https://github.com/victorhge/iedit),
   [transpose-mark](https://github.com/AtticHacker/transpose-mark),
