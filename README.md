@@ -30,7 +30,8 @@ Overview
 - Jumps: [avy-jump](https://github.com/abo-abo/avy),
 [ace-window](https://github.com/abo-abo/ace-window),
 [ace-link](https://github.com/abo-abo/ace-link)
-- Files: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus)
+- Files and directories: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus),
+[ztree](https://github.com/fourier/ztree)
 - Editing: [iedit](https://github.com/victorhge/iedit),
   [transpose-mark](https://github.com/AtticHacker/transpose-mark),
   [hungry-delete](https://github.com/nflath/hungry-delete),

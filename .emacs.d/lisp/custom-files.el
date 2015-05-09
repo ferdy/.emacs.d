@@ -96,6 +96,11 @@
   :ensure t
   :defer 5)
 
+(use-package ztree ; Text-tree utilities for directories
+  :ensure t
+  :bind (("C-c f z" . ztree-dir)
+         ("C-c f d " . ztree-diff)))
+
 (setq view-read-only t) ; View read-only
 (setq large-file-warning-threshold nil) ; No large file warning
 
