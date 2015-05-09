@@ -27,7 +27,7 @@ Overview
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm), [ibuffer-vc](https://github.com/purcell/ibuffer-vc)
 - Frames:
 [transpose-frame](https://github.com/emacsmirror/transpose-frame)
-- Jumps: [avy-jump](https://github.com/abo-abo/avy),
+- Navigation: [avy-jump](https://github.com/abo-abo/avy),
 [ace-window](https://github.com/abo-abo/ace-window),
 [ace-link](https://github.com/abo-abo/ace-link)
 - Files and directories: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus),
