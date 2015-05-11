@@ -103,6 +103,10 @@
   :ensure t
   :commands (command-log-mode))
 
+(use-package systemd ; Major mode for editing systemd units
+  :ensure t
+  :mode "\\.service\\'")
+
 ;;; Bugs management
 (use-package bug-reference
   :no-require t
