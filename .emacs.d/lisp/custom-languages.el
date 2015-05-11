@@ -31,6 +31,7 @@
             (unless ispell-program-name
               (warn "No spell checker available. Install aspell."))
 
+            ;; Ispell with Abbrev for auto-correcting spelling mistakes
             (define-key ctl-x-map "\C-i" 'custom/ispell-word-then-abbrev)
 
             (defun custom/ispell-word-then-abbrev (p)
@@ -46,9 +47,6 @@ With prefix P, create local abbrev. Otherwise it will be global."
                   (define-abbrev
                     (if p local-abbrev-table global-abbrev-table)
                     bef aft))))
-
-            (setq save-abbrevs t)
-            (setq-default abbrev-mode t)
 
             ;; Tell ispell.el that ’ can be part of a word.
             (setq ispell-local-dictionary-alist
