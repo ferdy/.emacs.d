@@ -11,6 +11,11 @@
 
 ;;; Code:
 
+(use-package abbrev ; Save abbreviations
+  :init (abbrev-mode)
+  :config (setq save-abbrevs t)
+  :diminish abbrev-mode)
+
 (use-package zop-to-char ; Better zap-to-char
   :ensure t
   :defer t
