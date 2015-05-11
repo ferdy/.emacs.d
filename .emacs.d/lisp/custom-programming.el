@@ -50,7 +50,8 @@
 (use-package cider
   :ensure t
   :defer t
-  :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
+  :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+  :diminish cider-mode)
 
 (use-package clojure-mode
   :ensure t
