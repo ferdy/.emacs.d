@@ -29,7 +29,50 @@
                   ispell-choices-win-default-height 5)
 
             (unless ispell-program-name
-              (warn "No spell checker available. Install aspell."))))
+              (warn "No spell checker available. Install aspell."))
+
+            (define-key ctl-x-map "\C-i" 'custom/ispell-word-then-abbrev)
+
+            (defun custom/ispell-word-then-abbrev (p)
+              "Call `ispell-word'. Then create an abbrev for the correction made.
+With prefix P, create local abbrev. Otherwise it will be global."
+              (interactive "P")
+              (let ((bef (downcase (or (thing-at-point 'word) ""))) aft)
+                (call-interactively 'ispell-word)
+                (setq aft (downcase (or (thing-at-point 'word) "")))
+                (unless (string= aft bef)
+                  (message "\"%s\" now expands to \"%s\" %sally"
+                           bef aft (if p "loc" "glob"))
+                  (define-abbrev
+                    (if p local-abbrev-table global-abbrev-table)
+                    bef aft))))
+
+            (setq save-abbrevs t)
+            (setq-default abbrev-mode t)
+
+            ;; Tell ispell.el that ’ can be part of a word.
+            (setq ispell-local-dictionary-alist
+                  `((nil "[[:alpha:]]" "[^[:alpha:]]"
+                         ,(rx (not (any alnum space)))
+                         nil ("-B") nil utf-8)))
+
+            ;; Don't send ’ to the subprocess.
+            (defun custom/replace-apostrophe (args)
+              (cons (replace-regexp-in-string
+                     "’" "'" (car args))
+                    (cdr args)))
+            (advice-add #'ispell-send-string :filter-args
+                        #'custom/replace-apostrophe)
+
+            ;; Convert ' back to ’ from the subprocess.
+            (defun custom/replace-quote (args)
+              (if (not (derived-mode-p 'org-mode))
+                  args
+                (cons (replace-regexp-in-string
+                       "'" "’" (car args))
+                      (cdr args))))
+            (advice-add #'ispell-parse-output :filter-args
+                        #'custom/replace-quote)))
 
 (use-package flyspell
   :defer t
