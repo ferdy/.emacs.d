@@ -1,4 +1,4 @@
-emacs
+.emacs.d
 =====
 
 This is the Emacs configuration I use everyday.
