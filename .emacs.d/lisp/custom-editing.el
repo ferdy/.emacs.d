@@ -245,12 +245,6 @@
   :bind ("C-c t m" . transpose-mark))
 
 ;;; Windows and frames
-(use-package transpose-frame ; Easily swap frames
-  :ensure t
-  :bind (("C-c t t" . transpose-frame)
-         ("C-c t h" . flop-frame)
-         ("C-c t v" . flip-frame)))
-
 (use-package winner ; Undo and redo window configurations
   :init (winner-mode))
 
@@ -259,7 +253,7 @@
   :bind (("C-c j s" . avy-isearch)
          ("C-c j w" . avy-goto-word-1)
          ("C-c j j" . avy-goto-char-2))
-  :config (setq avi-keys ; Use home row
+  :config (setq avy-keys ; Use home row
                 '(?a ?s ?d ?e ?f ?h ?j ?k ?l ?n ?m ?v ?r ?u)))
 
 (use-package ace-link ; Jump to links
@@ -275,7 +269,8 @@
   :ensure t
   :bind (("C-x o" . ace-window))
   :config (setq aw-keys ; Use home row
-                '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+                '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
+                aw-dispatch-always t))
 
 (provide 'custom-editing)
 
