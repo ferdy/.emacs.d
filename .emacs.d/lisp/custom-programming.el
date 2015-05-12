@@ -46,6 +46,13 @@
   :defer t
   :init (with-eval-after-load 'flycheck (flycheck-package-setup)))
 
+(use-package flycheck-clojure ; Backend for Clojure
+  :ensure t
+  :defer t
+  :init (progn
+          (eval-after-load 'flycheck '(flycheck-clojure-setup))
+          (add-hook 'after-init-hook #'flycheck-mode)))
+
 ;;; Clojure
 (use-package cider
   :ensure t
