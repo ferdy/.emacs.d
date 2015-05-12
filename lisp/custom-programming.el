@@ -1,0 +1,119 @@
+;;; custom-programming.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+
+;; Copyright (C) 2013-2015  Manuel Uberti
+
+;; Author: Manuel Uberti <manuel@boccaperta.com>
+;; Keywords: convenience
+
+;;; Commentary:
+
+;; This file stores the configuration for programming utilities.
+
+;;; Code:
+
+(use-package eldoc ; Documentation in the echo area
+  :defer t
+  ;; Enable Eldoc for `eval-expression', too
+  :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
+
+(use-package compile
+  :config (progn
+            (setq compilation-ask-about-save nil
+                  compilation-always-kill t
+                  compilation-scroll-output 'first-error)))
+
+;;; Syntax checking
+;; Requires: chktex
+(use-package flycheck
+  :ensure t
+  :defer 5
+  :config (progn
+            ;; Use italic face for checker name
+            (set-face-attribute 'flycheck-error-list-checker-name nil
+                                :inherit 'italic)
+
+            (add-to-list 'display-buffer-alist
+                         `(,(rx bos "*Flycheck errors*" eos)
+                           (display-buffer-reuse-window
+                            display-buffer-in-side-window)
+                           (side . bottom)
+                           (reusable-frames . visible)
+                           (window-height . 0.4))))
+  :diminish flycheck-mode)
+
+(use-package flycheck-package ; Flycheck for Emacs package development
+  :ensure t
+  :defer t
+  :init (with-eval-after-load 'flycheck (flycheck-package-setup)))
+
+(use-package flycheck-clojure ; Backend for Clojure
+  :ensure t
+  :defer t
+  :init (progn
+          (eval-after-load 'flycheck '(flycheck-clojure-setup))
+          (add-hook 'after-init-hook #'flycheck-mode)))
+
+;;; Clojure
+(use-package cider
+  :ensure t
+  :defer t
+  :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
+  :diminish cider-mode)
+
+(use-package clojure-mode
+  :ensure t
+  :defer t
+  :init (progn (add-hook 'clojure-mode-hook #'cider-mode)
+               (add-hook 'clojure-mode-hook #'subword-mode)))
+
+(use-package clojure-mode-extra-font-locking
+  :ensure t
+  :defer t
+  :init (with-eval-after-load 'clojure-mode
+          (require 'clojure-mode-extra-font-locking)))
+
+(use-package nrepl-client
+  :ensure cider
+  :defer t
+  :config (setq nrepl-hide-special-buffers t))
+
+(use-package cider-repl
+  :ensure cider
+  :defer t
+  :config (progn
+            ;; Increase the history size and make it permanent
+            (setq cider-repl-history-size 1000
+                  cider-repl-history-file
+                  (locate-user-emacs-file "cider-repl-history")
+                  cider-repl-pop-to-buffer-on-connect nil)))
+
+;;; Web development
+(use-package web-mode
+  :ensure t
+  :defer t
+  :config (setq web-mode-markup-indent-offset 2))
+
+(use-package js2-mode ; Better JavaScript support
+  :ensure t
+  :mode "\\.js\\(?:on\\)?\\'"
+  :config (add-hook 'js-mode-hook 'js2-minor-mode))
+
+(use-package css-mode ; Better CSS support
+  :defer t
+  :mode "\\.css\\'"
+  :config (add-hook 'css-mode-hook
+                    (lambda () (run-hooks 'prog-mode-hook))))
+
+(use-package css-eldoc ; Eldoc for CSS
+  :ensure t
+  :commands (turn-on-css-eldoc)
+  :init (add-hook 'css-mode-hook #'turn-on-css-eldoc))
+
+(use-package php-mode ; Better PHP support
+  :ensure t
+  :defer t
+  :mode "\\.php\\'")
+
+(provide 'custom-programming)
+
+;;; custom-programming.el ends here
