@@ -11,6 +11,11 @@
 
 ;;; Code:
 
+(use-package abbrev ; Save abbreviations
+  :init (abbrev-mode)
+  :config (setq save-abbrevs t)
+  :diminish abbrev-mode)
+
 ;; In `completion-at-point', do not pop up completion buffers for less
 ;; than five candidates. Cycle instead.
 (setq completion-cycle-threshold 5)
