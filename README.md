@@ -71,6 +71,7 @@ Setup
 -----
 - clone Emacs trunk and build it
 - run ```esetup``` script
+- clone this repo in your home directory
 - run Emacs
 
 Acknowledgements
