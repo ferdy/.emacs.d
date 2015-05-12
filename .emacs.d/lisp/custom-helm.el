@@ -212,6 +212,12 @@
   :commands helm-mt
   :bind ("C-c h t" . helm-mt))
 
+(use-package helm-projectile ; Projectile through Helm
+  :ensure t
+  :defer t
+  :init (with-eval-after-load 'projectile (helm-projectile-on))
+  :config (setq projectile-switch-project-action #'helm-projectile))
+
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here
