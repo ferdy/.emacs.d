@@ -25,9 +25,7 @@ Overview
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line), [anzu](https://github.com/syohex/emacs-anzu)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm), [ibuffer-vc](https://github.com/purcell/ibuffer-vc)
-- Frames:
-[transpose-frame](https://github.com/emacsmirror/transpose-frame)
-- Navigation: [avy-jump](https://github.com/abo-abo/avy),
+- Navigation: [Avy](https://github.com/abo-abo/avy),
 [ace-window](https://github.com/abo-abo/ace-window),
 [ace-link](https://github.com/abo-abo/ace-link)
 - Files and directories: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus),
