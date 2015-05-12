@@ -12,12 +12,17 @@
 ;;; Code:
 
 ;;; Project Management
-(use-package springboard ; Temporarily change default-directory for one command
+(use-package projectile
   :ensure t
-  :bind ("C-c p s" . springboard)
-  :init (setq springboard-directories
-              '("/home/manuel/emacs/emacs/"
-                "/home/manuel/githubs/manuel-uberti/emacs/")))
+  :init (projectile-global-mode)
+  :config
+  (progn
+    ;; Remove dead projects when Emacs is idle
+    (run-with-idle-timer 10 nil #'projectile-cleanup-known-projects)
+
+    (setq projectile-completion-system 'helm
+          projectile-find-dir-includes-top-level t))
+  :diminish projectile-mode)
 
 (provide 'custom-project)
 
