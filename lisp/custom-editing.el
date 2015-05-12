@@ -11,11 +11,6 @@
 
 ;;; Code:
 
-(use-package abbrev ; Save abbreviations
-  :init (abbrev-mode)
-  :config (setq save-abbrevs t)
-  :diminish abbrev-mode)
-
 (use-package zop-to-char ; Better zap-to-char
   :ensure t
   :defer t
@@ -96,10 +91,6 @@
   :init (global-aggressive-indent-mode 1)
   :config (add-to-list 'aggressive-indent-excluded-modes
                        'cider-repl-mode))
-
-(use-package hungry-delete ; Delete up to the first non blank character
-  :ensure t
-  :init (global-hungry-delete-mode))
 
 (use-package paredit ; Balanced sexp editing
   :ensure t

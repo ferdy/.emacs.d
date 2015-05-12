@@ -32,7 +32,6 @@ Overview
 [ztree](https://github.com/fourier/ztree)
 - Editing: [iedit](https://github.com/victorhge/iedit),
   [transpose-mark](https://github.com/AtticHacker/transpose-mark),
-  [hungry-delete](https://github.com/nflath/hungry-delete),
   [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
 - Undo: [undo-tree](http://www.dr-qubit.org/emacs.php#undo-tree)
 - Killing: [easy-kill](https://github.com/leoliu/easy-kill), [helm-show-kill-ring](https://tuhdo.github.io/helm-intro.html#sec-6)
