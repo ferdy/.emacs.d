@@ -42,7 +42,25 @@
               (tramp-cleanup-all-connections)
               (jump-to-register :magit-fullscreen))
 
-            (define-key magit-status-mode-map (kbd "q") 'magit-quit-session))
+            (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+
+            ;; Set Magit's repo dirs for `magit-status' from Projectile's known
+            ;; projects. Initialize the `magit-repo-dirs' immediately after Projectile
+            ;; was loaded, and update it every time we switched projects, because the
+            ;; new project might have been unknown before
+            (defun custom/magit-set-repo-dirs-from-projectile ()
+              "Set `magit-repo-dirs' from known Projectile projects."
+              (let ((project-dirs (bound-and-true-p projectile-known-projects)))
+                ;; Remove trailing slashes from project directories, because Magit adds
+                ;; trailing slashes again, which breaks the presentation in the Magit
+                ;; prompt.
+                (setq magit-repo-dirs (mapcar #'directory-file-name project-dirs))))
+
+            (with-eval-after-load 'projectile
+              (custom/magit-set-repo-dirs-from-projectile))
+
+            (add-hook 'projectile-switch-project-hook
+                      #'custom/magit-set-repo-dirs-from-projectile))
   :diminish magit-auto-revert-mode)
 
 (use-package magit-gh-pulls ; Manage git pull requests from Magit
