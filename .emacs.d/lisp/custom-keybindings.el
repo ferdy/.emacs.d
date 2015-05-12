@@ -53,9 +53,6 @@
 
 (global-set-key (kbd "C-z") 'repeat) ; C-z for repeat (usually C-x z)
 
-(global-set-key "\C-x\C-o"
-                'multi-occur-in-this-mode) ; Global key for 'multi-occur-in-this-mode'
-
 (global-set-key "\C-x\M-o" 'occur-dwim) ; Global key for 'occur-dwim'
 
 ;; Kill entire line with prefix argument
