@@ -60,7 +60,7 @@ Overview
 - Version control: [Magit](https://github.com/magit/magit),
 [magit-gh-pulls](https://github.com/sigma/magit-gh-pulls),
 [diff-hl](https://github.com/dgutov/diff-hl)
-- Project switching: [Springboard](https://github.com/jwiegley/springboard)
+- Project management: [Projectile](https://github.com/bbatsov/projectile)
 - Slides: [Org-HTML-Slideshow](https://github.com/relevance/org-html-slideshow)
 - Document conversion: [pandoc-mode](https://github.com/joostkremers/pandoc-mode)
 - Utilities: [bug-hunter](https://github.com/Malabarba/elisp-bug-hunter),
