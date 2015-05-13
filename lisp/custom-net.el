@@ -57,7 +57,8 @@
                     ("http://jazzfromitaly.blogspot.it/feeds/posts/default"
                      music)
                     ("http://www.wumingfoundation.com/giap/?feed=rss2" book)
-                    ("https://cavallette.noblogs.org/feed" security)))
+                    ("https://cavallette.noblogs.org/feed" security))
+                  url-queue-timeout 30)
 
             ;; Elfeed: mark all feed as read
             (use-package elfeed-search)
