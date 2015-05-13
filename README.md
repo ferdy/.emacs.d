@@ -16,7 +16,7 @@ I mainly use Emacs for **LaTeX**, **Elisp** and **Clojure**, so my setup is
 planned accordingly.
 
 This configuration comes with more than **120 packages** carefully set up for my
-daily usage. It may not be suitable for newbies. Check the ```.emacs.d/lisp``` directory for the gory details.
+daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 
 Overview
 --------
