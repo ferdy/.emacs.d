@@ -39,6 +39,7 @@
 
 (use-package pdf-tools ; Better PDF support
   :defer t
+  :bind (("C-c M-g" . pdf-view-goto-page))
   :init (pdf-tools-install))
 
 (use-package interleave ; Take notes in org files while reading PDFs
