@@ -168,6 +168,11 @@ Inside a code-block, simply calls `self-insert-command'."
   :defer t
   :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
+(use-package toc-org ; Table of contents for Org files
+  :ensure t
+  :defer t
+  :init (add-hook 'org-mode-hook 'toc-org-enable))
+
 (provide 'custom-org)
 
 ;;; custom-org.el ends here
