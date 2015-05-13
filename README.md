@@ -46,10 +46,11 @@ Overview
 - Highlights: [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters),
 [highlight-symbol](https://github.com/nschum/highlight-symbol.el)
 - Terms: [multi-term](http://www.emacswiki.org/emacs/download/multi-term.el), [helm-mt](https://github.com/dfdeshom/helm-mt)
+- Org-mode: [org-magit](https://github.com/magit/org-magit), [org-bullets](https://github.com/sabof/org-bullets), [toc-org](https://github.com/snosov1/toc-org), [org2blog](https://github.com/punchagan/org2blog)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html), [helm-bibtex](https://github.com/tmalsburg/helm-bibtex)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider), [flycheck-clojure](https://github.com/clojure-emacs/squiggly-clojure)
 - Web: [SX](https://github.com/vermiculus/sx.el),
-  [Elfeed](https://github.com/skeeto/elfeed), [org2blog](https://github.com/punchagan/org2blog)
+  [Elfeed](https://github.com/skeeto/elfeed)
 - PDF: [PDF Tools](https://github.com/politza/pdf-tools), [interleave](https://github.com/rudolfochrist/interleave)
 - Auto-completion: [company-mode](https://github.com/company-mode/company-mode), [helm-company](https://github.com/yasuyk/helm-company)
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck),
