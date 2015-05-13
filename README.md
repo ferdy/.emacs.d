@@ -30,10 +30,10 @@ Overview
 [ace-link](https://github.com/abo-abo/ace-link)
 - Files and directories: [Dired+](http://www.emacswiki.org/emacs/DiredPlus), [Bookmark+](http://www.emacswiki.org/emacs/BookmarkPlus),
 [ztree](https://github.com/fourier/ztree)
-- Editing: [iedit](https://github.com/victorhge/iedit),
+- Editing: [Iedit](https://github.com/victorhge/iedit),
   [transpose-mark](https://github.com/AtticHacker/transpose-mark),
   [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
-- Undo: [undo-tree](http://www.dr-qubit.org/emacs.php#undo-tree)
+- Undo: [Undo Tree](http://www.dr-qubit.org/emacs.php#undo-tree)
 - Killing: [easy-kill](https://github.com/leoliu/easy-kill), [helm-show-kill-ring](https://tuhdo.github.io/helm-intro.html#sec-6)
 - Coding: [Paredit](http://mumble.net/%7Ecampbell/emacs/paredit.html),
 [Redshank](http://www.foldr.org/~michaelw/emacs/redshank/),
@@ -50,7 +50,7 @@ Overview
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider), [flycheck-clojure](https://github.com/clojure-emacs/squiggly-clojure)
 - Web: [SX](https://github.com/vermiculus/sx.el),
   [Elfeed](https://github.com/skeeto/elfeed), [org2blog](https://github.com/punchagan/org2blog)
-- PDF: [pdf-tools](https://github.com/politza/pdf-tools), [interleave](https://github.com/rudolfochrist/interleave)
+- PDF: [PDF Tools](https://github.com/politza/pdf-tools), [interleave](https://github.com/rudolfochrist/interleave)
 - Auto-completion: [company-mode](https://github.com/company-mode/company-mode), [helm-company](https://github.com/yasuyk/helm-company)
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck),
 [helm-flycheck](https://github.com/yasuyk/helm-flycheck)
@@ -62,8 +62,8 @@ Overview
 - Project management: [Projectile](https://github.com/bbatsov/projectile)
 - Slides: [Org-HTML-Slideshow](https://github.com/relevance/org-html-slideshow)
 - Document conversion: [pandoc-mode](https://github.com/joostkremers/pandoc-mode)
-- Utilities: [bug-hunter](https://github.com/Malabarba/elisp-bug-hunter),
-  [esup](https://github.com/jschaf/esup),
+- Utilities: [The Bug Hunter](https://github.com/Malabarba/elisp-bug-hunter),
+  [ESUP](https://github.com/jschaf/esup),
   [camcorder](https://github.com/Malabarba/camcorder.el), [unkillable-scratch](https://github.com/EricCrosson/unkillable-scratch)
 
 Setup
