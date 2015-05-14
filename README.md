@@ -71,11 +71,11 @@ Setup
 -----
 - clone Emacs trunk and build it
 ```
-sudo apt-get build-dep emacs24
-./configure --with-x-toolkit=gtk3
-make
-sudo make install
-make clean
+$ sudo apt-get build-dep emacs24
+$ ./configure --with-x-toolkit=gtk3
+$ make
+$ sudo make install
+$ make clean
 ```
 - run ```esetup``` script
 - clone this repo in your home directory
