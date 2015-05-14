@@ -1,5 +1,4 @@
-.emacs.d
-========
+#.emacs.d
 
 ##Table of Contents
 - [Preface](https://github.com/manuel-uberti/.emacs.d#preface)
@@ -8,8 +7,7 @@
 - [Acknowledgements](https://github.com/manuel-uberti/.emacs.d#acknowledgements)
 - [Warranty](https://github.com/manuel-uberti/.emacs.d#warranty)
 
-Preface
--------
+##Preface
 This is the Emacs configuration I use everyday.
 
 It requires **Emacs trunk** to work. I regularly update my sources from here:
@@ -27,8 +25,7 @@ planned accordingly.
 This configuration comes with more than **120 packages** carefully set up for my
 daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 
-Overview
---------
+##Overview
 - Theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
 - Font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
@@ -76,8 +73,7 @@ Overview
   [ESUP](https://github.com/jschaf/esup),
   [camcorder](https://github.com/Malabarba/camcorder.el), [unkillable-scratch](https://github.com/EricCrosson/unkillable-scratch)
 
-Setup
------
+##Setup
 - clone Emacs trunk:
 ```console
 $ git clone git://git.savannah.gnu.org/emacs.git
@@ -102,8 +98,7 @@ $ ./esetup
 ```
 - run Emacs
 
-Acknowledgements
-----------------
+##Acknowledgements
 This configuration would not have been possible without the work of and the
 inspiration from these people:
 - [Mickey Petersen](https://github.com/mickeynp)
@@ -117,6 +112,5 @@ inspiration from these people:
 - [Oleh Krehel](https://github.com/abo-abo)
 - [Joe Brock](https://github.com/DebianJoe)
 
-Warranty
---------
+##Warranty
 This configuration is provided with no guarantee and no support.
