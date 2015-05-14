@@ -1,6 +1,15 @@
 .emacs.d
-=====
+========
 
+##Table of Contents
+- [Preface](https://github.com/manuel-uberti/.emacs.d#preface)
+- [Overview](https://github.com/manuel-uberti/.emacs.d#overview)
+- [Setup](https://github.com/manuel-uberti/.emacs.d#setup)
+- [Acknowledgements](https://github.com/manuel-uberti/.emacs.d#acknowledgements)
+- [Warranty](https://github.com/manuel-uberti/.emacs.d#warranty)
+
+Preface
+-------
 This is the Emacs configuration I use everyday.
 
 It requires **Emacs trunk** to work. I regularly update my sources from here:
