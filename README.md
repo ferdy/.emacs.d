@@ -69,16 +69,28 @@ Overview
 
 Setup
 -----
-- clone Emacs trunk and build it
+- clone Emacs trunk:
+```console
+$ git clone git://git.savannah.gnu.org/emacs.git
 ```
+- build Emacs trunk:
+```console
 $ sudo apt-get build-dep emacs24
 $ ./configure --with-x-toolkit=gtk3
 $ make
 $ sudo make install
 $ make clean
 ```
-- run ```esetup``` script
-- clone this repo in your home directory
+- clone this repo in your home directory:
+```console
+$ git clone https://github.com/manuel-uberti/.emacs.d
+```
+- run ```esetup```:
+```console
+$ cd .emacs.d
+$ chmod +x esetup
+$ ./esetup
+```
 - run Emacs
 
 Acknowledgements
