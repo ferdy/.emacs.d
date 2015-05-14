@@ -81,7 +81,7 @@ $ make
 $ sudo make install
 $ make clean
 ```
-- clone this repo in your home directory:
+- clone this repo to your home directory:
 ```console
 $ git clone https://github.com/manuel-uberti/.emacs.d
 ```
