@@ -21,7 +21,7 @@
                   dynamic-fonts-preferred-monospace-point-size 13
                   dynamic-fonts-preferred-proportional-fonts
                   '("Fira Sans Book"
-                    "DejaVu Sans")
+                    "DejaVu Sans Book")
                   dynamic-fonts-preferred-proportional-point-size 13)
 
             (dynamic-fonts-setup)))
