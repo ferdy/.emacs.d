@@ -14,8 +14,7 @@
 ;;; Org
 (use-package org
   :ensure t
-  :bind (("C-c l" . org-store-link)
-         ("C-c c" . org-capture)
+  :bind (("C-c c" . org-capture)
          ("C-c a" . org-agenda))
   :defer t
   :config (progn
