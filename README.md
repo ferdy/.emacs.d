@@ -89,6 +89,7 @@ $ make clean
 ```
 - clone this repo to your home directory:
 ```console
+$ cd
 $ git clone https://github.com/manuel-uberti/.emacs.d
 ```
 - run ```esetup```:
