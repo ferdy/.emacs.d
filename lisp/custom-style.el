@@ -14,21 +14,20 @@
 ;;; Fonts
 (use-package dynamic-fonts ; Select best available font
   :ensure t
-  :config
-  (progn
-    (setq dynamic-fonts-preferred-monospace-fonts
-          '("Source Code Pro"
-            "Anonymous Pro"
-            "Inconsolata"
-            "Consolas"
-            "DejaVu Sans Mono")
-          dynamic-fonts-preferred-monospace-point-size 13
-          dynamic-fonts-preferred-proportional-fonts
-          '("Fira Sans"
-            "DejaVu Sans")
-          dynamic-fonts-preferred-proportional-point-size 13)
+  :config (progn
+            (setq dynamic-fonts-preferred-monospace-fonts
+                  '("Source Code Pro"
+                    "Anonymous Pro"
+                    "Inconsolata"
+                    "Consolas"
+                    "DejaVu Sans Mono")
+                  dynamic-fonts-preferred-monospace-point-size 13
+                  dynamic-fonts-preferred-proportional-fonts
+                  '("Fira Sans"
+                    "DejaVu Sans")
+                  dynamic-fonts-preferred-proportional-point-size 13)
 
-    (dynamic-fonts-setup)))
+            (dynamic-fonts-setup)))
 
 ;;; Scrolling
 (setq scroll-margin 0
