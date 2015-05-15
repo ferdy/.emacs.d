@@ -74,6 +74,8 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
   [camcorder](https://github.com/Malabarba/camcorder.el), [unkillable-scratch](https://github.com/EricCrosson/unkillable-scratch)
 
 ##Setup
+On your **Debian-based** machine:
+
 - clone Emacs trunk:
 ```console
 $ git clone git://git.savannah.gnu.org/emacs.git
