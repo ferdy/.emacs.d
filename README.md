@@ -80,6 +80,7 @@ $ git clone git://git.savannah.gnu.org/emacs.git
 ```
 - build Emacs trunk:
 ```console
+$ cd emacs
 $ sudo apt-get build-dep emacs24
 $ ./configure --with-x-toolkit=gtk3
 $ make
