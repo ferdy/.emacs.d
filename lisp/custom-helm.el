@@ -18,7 +18,8 @@
          ([remap yank-pop] . helm-show-kill-ring)
          ("C-h SPC" . helm-all-mark-rings)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
-         ("C-c h r" . helm-info-emacs)
+         ("C-c h e" . helm-info-emacs)
+         ("C-c h i" . helm-info-at-point)
          ("C-c h l" . helm-locate-library))
   :init (helm-mode 1)
   :config (progn
@@ -89,7 +90,7 @@
 (use-package helm-imenu ; Imenu through Helm
   :ensure helm
   :defer t
-  :bind (("C-c h i" . helm-semantic-or-imenu)))
+  :bind (("C-c i" . helm-semantic-or-imenu)))
 
 (use-package helm-register ; Display registers with Helm
   :ensure helm
