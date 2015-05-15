@@ -13,9 +13,9 @@
 
 (use-package helm
   :ensure t
-  :bind (("M-x" . helm-M-x)
-         ("C-x b" . helm-mini)
-         ("M-y" . helm-show-kill-ring)
+  :bind (([remap execute-extended-command] . helm-M-x)
+         ([remap switch-to-buffer] . helm-mini)
+         ([remap yank-pop] . helm-show-kill-ring)
          ("C-h SPC" . helm-all-mark-rings)
          ("C-c h M-:" . helm-eval-expression-with-eldoc)
          ("C-c h r" . helm-info-emacs)
@@ -57,7 +57,7 @@
 (use-package helm-files ; Find files with Helm
   :ensure helm
   :defer t
-  :bind (("C-x C-f" . helm-find-files)
+  :bind (([remap find-file] . helm-find-files)
          ("C-x C-r" . helm-recentf))
   :config (progn
             (bind-key "C-k" #'helm-ff-persistent-delete helm-find-files-map)
@@ -94,7 +94,7 @@
 (use-package helm-register ; Display registers with Helm
   :ensure helm
   :defer t
-  :bind (("C-c h x" . helm-register)))
+  :bind (([remap insert-register] . helm-register)))
 
 (use-package helm-bookmarks ; List bookmarks with Helm
   :ensure helm
