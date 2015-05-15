@@ -12,7 +12,7 @@ This is the Emacs configuration I use everyday.
 
 It requires **Emacs trunk** to work. I regularly update my sources from here:
 ```console
-$ git clone git://git.savannah.gnu.org/emacs.git
+git://git.savannah.gnu.org/emacs.git
 ```
 
 I use Emacs on **LinuxBBQ**. The ```esetup``` script helps to create the right
