@@ -59,6 +59,11 @@
                                   company-backends)))
             (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
 
+(use-package company-statistics ; Show likelier candidates on top
+  :ensure t
+  :defer t
+  :init (company-statistics-mode))
+
 (provide 'custom-completion)
 
 ;;; custom-completion.el ends here

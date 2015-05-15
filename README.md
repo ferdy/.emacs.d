@@ -58,7 +58,7 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 - Web: [SX](https://github.com/vermiculus/sx.el),
   [Elfeed](https://github.com/skeeto/elfeed)
 - PDF: [PDF Tools](https://github.com/politza/pdf-tools), [interleave](https://github.com/rudolfochrist/interleave)
-- Auto-completion: [company-mode](https://github.com/company-mode/company-mode), [helm-company](https://github.com/yasuyk/helm-company)
+- Auto-completion: [company-mode](https://github.com/company-mode/company-mode), [company-statistics](https://github.com/company-mode/company-statistics), [helm-company](https://github.com/yasuyk/helm-company)
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck),
 [helm-flycheck](https://github.com/yasuyk/helm-flycheck)
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
