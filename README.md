@@ -27,7 +27,7 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 
 ##Overview
 - Theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
-- Font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
+- Font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro), [dynamic-fonts](https://github.com/rolandwalker/dynamic-fonts)
 - Package management: [use-package](https://github.com/jwiegley/use-package), [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line), [anzu](https://github.com/syohex/emacs-anzu)
 - Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm), [ibuffer-vc](https://github.com/purcell/ibuffer-vc)

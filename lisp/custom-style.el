@@ -12,21 +12,23 @@
 ;;; Code:
 
 ;;; Fonts
-;; Set default font
-(set-face-attribute 'default nil
-                    :family "Source Code Pro"
-                    :height 140
-                    :weight 'normal
-                    :width 'normal)
+(use-package dynamic-fonts ; Select best available font
+  :ensure t
+  :config
+  (progn
+    (setq dynamic-fonts-preferred-monospace-fonts
+          '("Source Code Pro"
+            "Anonymous Pro"
+            "Inconsolata"
+            "Consolas"
+            "DejaVu Sans Mono")
+          dynamic-fonts-preferred-monospace-point-size 13
+          dynamic-fonts-preferred-proportional-fonts
+          '("Fira Sans"
+            "DejaVu Sans")
+          dynamic-fonts-preferred-proportional-point-size 13)
 
-;; Set font fallback
-(when (functionp 'set-fontset-font)
-  (set-fontset-font "fontset-default"
-                    'unicode
-                    (font-spec :family "DejaVu Sans Mono"
-                               :width 'normal
-                               :size 14
-                               :weight 'normal)))
+    (dynamic-fonts-setup)))
 
 ;;; Scrolling
 (setq scroll-margin 0
