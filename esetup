@@ -198,8 +198,6 @@ sudo -v # gets user password for next sudos
 cd /home/manuel
 prerequisites
 ag_setup
-scheme_setup
-commonlisp_setup
 clojure_setup
 latex_setup
 pandoc_setup
@@ -208,6 +206,8 @@ flyspell_setup
 synosaurus_setup
 langtool_setup
 font_setup
+#scheme_setup
+#commonlisp_setup
 
 echo "
 environment ready, now fire up Emacs!
