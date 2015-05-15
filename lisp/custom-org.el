@@ -162,11 +162,6 @@ Inside a code-block, simply calls `self-insert-command'."
   :ensure t
   :defer t)
 
-(use-package org-bullets ; Prettify bullets with UTF-8 characters
-  :ensure t
-  :defer t
-  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
 (use-package toc-org ; Table of contents for Org files
   :ensure t
   :defer t
