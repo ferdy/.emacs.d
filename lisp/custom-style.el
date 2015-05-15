@@ -17,9 +17,6 @@
   :config (progn
             (setq dynamic-fonts-preferred-monospace-fonts
                   '("Source Code Pro"
-                    "Anonymous Pro"
-                    "Inconsolata"
-                    "Consolas"
                     "DejaVu Sans Mono")
                   dynamic-fonts-preferred-monospace-point-size 13
                   dynamic-fonts-preferred-proportional-fonts
