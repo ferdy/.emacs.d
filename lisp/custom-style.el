@@ -28,59 +28,9 @@
 
 ;;; Scrolling
 (setq scroll-margin 0
-      scroll-conservatively 1000)
-
-;; Undo scrolling
-(defvar unscroll-point (make-marker)
-  "Cursor position for next call to 'unscroll'.")
-
-(defvar unscroll-window-start (make-marker)
-  "Window start for next call to 'unscroll'.")
-
-(defvar unscroll-hscroll nil
-  "Hscroll for next call to 'unscroll'.")
-
-(put 'scroll-up 'unscrollable t)
-(put 'scroll-down 'unscrollable t)
-(put 'scroll-left 'unscrollable t)
-(put 'scroll-right 'unscrollable t)
-
-(defun unscroll-maybe-remember ()
-  "Remember where we started scrolling."
-  (if (not (get last-command 'unscrollable))
-      (progn
-	(set-marker unscroll-point (point))
-	(set-marker unscroll-window-start (window-start))
-	(setq unscroll-hscroll (window-hscroll)))))
-
-(defadvice scroll-up (before remember-for-unscroll
-			     activate compile)
-  "Remember where we started from, for 'unscroll'."
-  (unscroll-maybe-remember))
-
-(defadvice scroll-down (before remember-for-unscroll
-			       activate compile)
-  "Remember where we started from, for 'unscroll'."
-  (unscroll-maybe-remember))
-
-(defadvice scroll-left (before remember-for-unscroll
-			       activate compile)
-  "Remember where we started from, for 'unscroll'."
-  (unscroll-maybe-remember))
-
-(defadvice scroll-right (before remember-for-unscroll
-				activate compile)
-  "Remember where we started from, for 'unscroll'."
-  (unscroll-maybe-remember))
-
-(defun unscroll ()
-  "Revert to 'unscroll-point' and 'unscroll-window-start'."
-  (interactive)
-  (if (not unscroll-point)
-      (error "Cannot unscroll yet"))
-  (goto-char unscroll-point)
-  (set-window-start nil unscroll-window-start)
-  (set-window-hscroll nil unscroll-hscroll))
+      scroll-conservatively 1000
+      ;; Ensure M-v always undoes C-v
+      scroll-preserve-screen-position 'always)
 
 ;;; Interface
 ;; Toggle all frames maximized and fullscreen

@@ -32,7 +32,6 @@
 (bind-keys :map toggle-map
            ("v" . visual-line-mode)
            ("l" . linum-mode)
-           ("u" . unscroll)
            ("s" . create-scratch-buffer)
            ("r" . revert-this-buffer)
            ("w" . writeroom-mode))
