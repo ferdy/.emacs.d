@@ -266,12 +266,12 @@ if USE-EXISTING is true, try to switch to an existing buffer"
   (let ((m (use-region-p))
         (para-commands
          '(custom/forward-paragraph custom/backward-paragraph)))
-    ;; only push mark if it's not active and we're not repeating.
+    ;; Only push mark if it's not active and we're not repeating.
     (or m
         (not (member this-command para-commands))
         (member last-command para-commands)
         (push-mark))
-    ;; the actual movement.
+    ;; The actual movement.
     (dotimes (_ (abs n))
       (if (> n 0)
           (skip-chars-forward "\n[:blank:]")
@@ -280,10 +280,10 @@ if USE-EXISTING is true, try to switch to an existing buffer"
            "\n[[:blank:]]*\n[[:blank:]]*" nil t (cl-signum n))
           (goto-char (match-end 0))
         (goto-char (if (> n 0) (point-max) (point-min)))))
-    ;; if mark wasn't active, I like to indent the line too.
+    ;; If mark wasn't active, I like to indent the line too.
     (unless m
       (indent-according-to-mode)
-      ;; this looks redundant, but it's surprisingly necessary.
+      ;; This looks redundant, but it's surprisingly necessary.
       (back-to-indentation))))
 
 ;;;###autoload

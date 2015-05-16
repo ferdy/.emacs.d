@@ -127,7 +127,7 @@ Inside a code-block, simply calls `self-insert-command'."
 (use-package org2blog
   :ensure t
   :defer t
-  :bind (("C-c w o" . org2blog/wp-new-entry))
+  :bind ("C-c w o" . org2blog/wp-new-entry)
   :init (use-package org2blog-autoloads)
   :config (progn
             (setq org2blog/wp-use-sourcecode-shortcode t

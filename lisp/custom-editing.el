@@ -68,7 +68,7 @@
 (use-package expand-region ; Expand selected region
   :ensure t
   :defer t
-  :bind (("M-E" . er/expand-region)))
+  :bind ("M-E" . er/expand-region))
 
 (use-package adaptive-wrap ; Better line wrap
   :ensure t
@@ -191,12 +191,12 @@
 (use-package multiple-cursors ; Easily place multiple cursor in a buffer
   :ensure t
   :defer t
-  :bind (("C-c m e" . mc/mark-more-like-this-extended)
-	 ("C-c m h" . mc/mark-all-like-this-dwim)
-	 ("C-c m l" . mc/edit-lines)
-	 ("C-c m n" . mc/mark-next-like-this)
-	 ("C-c m p" . mc/mark-previous-like-this)
-	 ("C-c m r" . vr/mc-mark)
+  :bind (("C-c m e"   . mc/mark-more-like-this-extended)
+	 ("C-c m h"   . mc/mark-all-like-this-dwim)
+	 ("C-c m l"   . mc/edit-lines)
+	 ("C-c m n"   . mc/mark-next-like-this)
+	 ("C-c m p"   . mc/mark-previous-like-this)
+	 ("C-c m r"   . vr/mc-mark)
 	 ("C-c m C-a" . mc/edit-beginnings-of-lines)
 	 ("C-c m C-e" . mc/edit-ends-of-lines)
 	 ("C-c m C-s" . mc/mark-all-in-region))
@@ -209,7 +209,7 @@
 (use-package multifiles ; Edit multiple files at once
   :ensure t
   :defer t
-  :bind (("C-!" . mf/mirror-region-in-multifile)))
+  :bind ("C-!" . mf/mirror-region-in-multifile))
 
 (use-package macrostep ; Navigate through macros
   :ensure t
@@ -258,7 +258,7 @@
 
 (use-package ace-window ; Better movements between windows
   :ensure t
-  :bind (("C-x o" . ace-window))
+  :bind ("C-x o" . ace-window)
   :config (setq aw-keys ; Use home row
                 '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
                 aw-dispatch-always t))

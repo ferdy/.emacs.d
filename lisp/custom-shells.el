@@ -12,8 +12,7 @@
 ;;; Code:
 
 (use-package eshell
-  :defer t
-  :bind (("<f1>" . eshell-here))
+  :bind ("<f1>" . eshell-here)
   :config (progn
             (defun eshell-here ()
               "Open a new shell in the directory of the buffer's file.
@@ -46,6 +45,7 @@ windows easier."
             (add-hook 'eshell-mode-hook (lambda ()
                                           (setq-local global-hl-line-mode
                                                       nil)))
+
             ;; Use system su/sudo
             (eval-after-load "em-unix"
               '(progn
@@ -66,8 +66,7 @@ windows easier."
                                                   nil)))))
 
 (use-package shell
-  :defer t
-  :bind (("S-<f2>" . shell))
+  :bind ("S-<f2>" . shell)
   :config (progn
             (defun clear-shell ()
               (interactive)

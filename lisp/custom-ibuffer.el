@@ -12,7 +12,7 @@
 ;;; Code:
 
 (use-package ibuffer
-  :bind (("C-x C-b" . ibuffer))
+  :bind ("C-x C-b" . ibuffer)
   :config (progn
             (setq ibuffer-formats
                   '((mark modified read-only vc-status-mini " "
@@ -50,7 +50,7 @@
                     (unless (eq ibuffer-sorting-mode 'alphabetic)
                       (ibuffer-do-sort-by-alphabetic)))))
 
-(use-package ibuffer-projectile         ; Group buffers by Projectile project
+(use-package ibuffer-projectile ; Group buffers by Projectile project
   :ensure t
   :defer t)
 

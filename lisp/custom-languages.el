@@ -73,7 +73,6 @@ With prefix P, create local abbrev. Otherwise it will be global."
                         #'custom/replace-quote)))
 
 (use-package flyspell
-  :defer t
   :bind (("C-c s b" . flyspell-buffer)
          ("C-c s r" . flyspell-region))
   :config (progn
@@ -98,7 +97,6 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
 (use-package synosaurus ; An extensible thesaurus
   :ensure t
-  :defer t
   :bind (("C-c s l" . synosaurus-lookup)
          ("C-c s r" . synosaurus-choose-and-replace)))
 
@@ -113,7 +111,6 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
 (use-package voca-builder ; Popup dictionary entries
   :ensure t
-  :defer t
   :bind (("C-c s p" . voca-builder/search-popup)
          ("C-c s s" . voca-builder/search))
   :config (setq voca-builder/voca-file "~/org/voca_entries.org"

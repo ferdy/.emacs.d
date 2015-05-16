@@ -21,16 +21,20 @@
   :ensure auctex
   :defer t
   :config (progn
-            (setq TeX-parse-self t ; Parse documents to provide completion
-                  TeX-auto-save t ; Automatically save style information
-                  TeX-electric-sub-and-superscript t ; Insert braces after
-                                        ; sub- and superscripts in math mode
-                  TeX-quote-after-quote t ; Don't insert magic quotes right away
-                  TeX-clean-confirm nil ; No confirmation when cleaning
-                  TeX-source-correlate-mode t ; Search with SyncTeX
+            (setq TeX-clean-confirm nil ; No confirmation when cleaning
+                  ;; Parse documents to provide completion
+                  TeX-parse-self t
+                  ;; Automatically save style information
+                  TeX-auto-save t
+                  ;; Insert braces after sub- and superscripts in math mode
+                  TeX-electric-sub-and-superscript t
+                  ;; Don't insert magic quotes right away
+                  TeX-quote-after-quote t
+                  ;; Provide forward and inverse search with SyncTeX
+                  TeX-source-correlate-mode t
                   TeX-source-correlate-method 'synctex)
 
-            (setq-default TeX-master nil ; Ask for the master file
+            (setq-default TeX-master nil     ; Ask for the master file
                           TeX-engine 'luatex ; Use luatex
                           TeX-PDF-mode t)
 
@@ -114,13 +118,13 @@
       (add-to-list 'reftex-cite-format-builtin
                    '(biblatex "The biblatex package"
                               ((?\C-m . "\\cite[]{%l}")
-                               (?t . "\\textcite{%l}")
-                               (?a . "\\autocite[]{%l}")
-                               (?p . "\\parencite{%l}")
-                               (?f . "\\footcite[][]{%l}")
-                               (?F . "\\fullcite[]{%l}")
-                               (?x . "[]{%l}")
-                               (?X . "{%l}"))))
+                               (?t    . "\\textcite{%l}")
+                               (?a    . "\\autocite[]{%l}")
+                               (?p    . "\\parencite{%l}")
+                               (?f    . "\\footcite[][]{%l}")
+                               (?F    . "\\fullcite[]{%l}")
+                               (?x    . "[]{%l}")
+                               (?X    . "{%l}"))))
       (setq reftex-cite-format 'biblatex)))
   :diminish reftex-mode)
 

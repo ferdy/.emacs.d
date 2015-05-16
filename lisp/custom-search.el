@@ -23,7 +23,6 @@
 
 (use-package visual-regexp ; Display regular expressions
   :ensure t
-  :defer t
   :bind (("C-c r" . vr/query-replace)
          ("C-c R" . vr/replace)))
 

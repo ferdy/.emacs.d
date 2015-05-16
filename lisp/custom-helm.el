@@ -14,13 +14,13 @@
 (use-package helm
   :ensure t
   :bind (([remap execute-extended-command] . helm-M-x)
-         ([remap switch-to-buffer] . helm-mini)
-         ([remap yank-pop] . helm-show-kill-ring)
-         ("C-h SPC" . helm-all-mark-rings)
-         ("C-c h M-:" . helm-eval-expression-with-eldoc)
-         ("C-c h e" . helm-info-emacs)
-         ("C-c h i" . helm-info-at-point)
-         ("C-c h l" . helm-locate-library))
+         ([remap switch-to-buffer]         . helm-mini)
+         ([remap yank-pop]                 . helm-show-kill-ring)
+         ("C-h SPC"                        . helm-all-mark-rings)
+         ("C-c h M-:"                      . helm-eval-expression-with-eldoc)
+         ("C-c h e"                        . helm-info-emacs)
+         ("C-c h i"                        . helm-info-at-point)
+         ("C-c h l"                        . helm-locate-library))
   :init (helm-mode 1)
   :config (progn
             (use-package helm-config
@@ -30,8 +30,8 @@
 
             (bind-keys :map helm-map
                        ("<tab>" . helm-execute-persistent-action)
-                       ("C-i" . helm-execute-persistent-action)
-                       ("C-z" . helm-select-action))
+                       ("C-i"   . helm-execute-persistent-action)
+                       ("C-z"   . helm-select-action))
 
             (setq helm-split-window-in-side-p t ; Open buffer in current window
                   ;; Move to end/beginning when reaching top/bottom of source
@@ -47,7 +47,7 @@
                   ;; Cleaner Helm interface
                   helm-display-header-line nil)
 
-            (helm-adaptive-mode 1) ; Adaptive sorting in all sources
+            (helm-adaptive-mode 1)   ; Adaptive sorting in all sources
             (helm-autoresize-mode 1) ; Autoresize Helm buffer
 
             ;; Man pages at point
@@ -59,7 +59,7 @@
   :ensure helm
   :defer t
   :bind (([remap find-file] . helm-find-files)
-         ("C-x C-r" . helm-recentf))
+         ("C-x C-r"         . helm-recentf))
   :config (progn
             (bind-key "C-k" #'helm-ff-persistent-delete helm-find-files-map)
             
@@ -90,17 +90,17 @@
 (use-package helm-imenu ; Imenu through Helm
   :ensure helm
   :defer t
-  :bind (("C-c i" . helm-semantic-or-imenu)))
+  :bind ("C-c i" . helm-semantic-or-imenu))
 
 (use-package helm-register ; Display registers with Helm
   :ensure helm
   :defer t
-  :bind (([remap insert-register] . helm-register)))
+  :bind ([remap insert-register] . helm-register))
 
 (use-package helm-bookmarks ; List bookmarks with Helm
   :ensure helm
   :defer t
-  :bind (("C-x r l" . helm-bookmarks)))
+  :bind ("C-x r l" . helm-bookmarks))
 
 (use-package helm-shell ; Manage shells/terms with Helm
   :ensure helm
@@ -120,7 +120,7 @@
 (use-package helm-occur ; Occur with Helm
   :ensure helm
   :defer t
-  :bind (("C-c h o" . helm-occur)))
+  :bind ("C-c h o" . helm-occur))
 
 (use-package helm-find ; Find with Helm
   :ensure helm
@@ -136,7 +136,7 @@
 (use-package helm-ag ; Helm interface for Ag
   :ensure t
   :commands helm-ag
-  :bind (("C-c M-s" . helm-ag-with-prefix-arg))
+  :bind ("C-c M-s" . helm-ag-with-prefix-arg)
   :config (progn
             ;; Call helm-ag with C-u
             (defun helm-ag-with-prefix-arg ()
@@ -146,8 +146,8 @@
 
 (use-package helm-swoop ; List matching lines in another buffer
   :ensure t
-  :bind (("M-i" . helm-swoop)
-         ("M-I" . helm-swoop-back-to-last-point)
+  :bind (("M-i"     . helm-swoop)
+         ("M-I"     . helm-swoop-back-to-last-point)
          ("C-c M-i" . helm-multi-swoop)
          ("C-x M-i" . helm-multi-swoop-all))
   :config (progn
@@ -191,22 +191,22 @@
 (use-package helm-descbinds ; Describing keybinding through Helm
   :ensure t
   :commands helm-descbinds
-  :bind (("C-c h d" . helm-descbinds)))
+  :bind ("C-c h d" . helm-descbinds))
 
 (use-package helm-flyspell ; Use Flyspell with Helm
   :ensure t
   :commands helm-flyspell-correct
-  :bind (("C-c h f" . helm-flyspell-correct)))
+  :bind ("C-c h f" . helm-flyspell-correct))
 
 (use-package helm-flycheck ; Show Flycheck errors with Helm
   :ensure t
   :commands helm-flycheck
-  :bind (("C-c h h f" . helm-flycheck)))
+  :bind ("C-c h h f" . helm-flycheck))
 
 (use-package helm-bibtex ; Manage BibTeX bibliographies with Helm
   :ensure t
   :commands helm-bibtex
-  :bind (("C-c h h b" . helm-bibtex)))
+  :bind ("C-c h h b" . helm-bibtex))
 
 (use-package helm-mt ; Manage multi-term with Helm
   :ensure t

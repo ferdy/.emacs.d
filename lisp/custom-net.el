@@ -45,7 +45,7 @@
 (use-package elfeed ; RSS feed reader
   :ensure t
   :defer t
-  :bind (("<f5>" . elfeed))
+  :bind ("<f5>" . elfeed)
   :config (progn
             (setq elfeed-feeds
                   '(("http://planet.emacsen.org/atom.xml" emacs)
@@ -57,8 +57,9 @@
                     ("http://jazzfromitaly.blogspot.it/feeds/posts/default"
                      music)
                     ("http://www.wumingfoundation.com/giap/?feed=rss2" book)
-                    ("https://cavallette.noblogs.org/feed" security))
-                  url-queue-timeout 30)
+                    ("https://cavallette.noblogs.org/feed" security)))
+
+            (setf url-queue-timeout 30) ; Increase url-queue timeout
 
             ;; Elfeed: mark all feed as read
             (use-package elfeed-search)
@@ -95,7 +96,7 @@
 (use-package paradox ; Better package manager interface
   :ensure t
   :defer t
-  :bind (("<f4>" . paradox-list-packages)
+  :bind (("<f4>"   . paradox-list-packages)
          ("S-<f4>" . paradox-upgrade-packages))
   :config (progn
             (setq paradox-github-token t ; Don't ask for a token, please
@@ -110,7 +111,7 @@
                          #'paradox--report-buffer-display-if-noquery)))
 
 (use-package browse-url ; Browse URLs
-  :bind (("C-c w u" . browse-url)))
+  :bind ("C-c w u" . browse-url))
 
 (use-package eww ; Built-in web browser
   :bind (("C-c w b" . eww-list-bookmarks)
