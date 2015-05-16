@@ -26,7 +26,6 @@
 ;; (setq variable "nickname")
 ;; (setq variable "password")
 (use-package erc ; IRC client
-  :defer t
   :bind ("C-c w e" . erc)
   :config (progn
             (load "~/.ercpass")
@@ -74,7 +73,6 @@
 
 (use-package sx ; StackExchange client for Emacs
   :ensure t
-  :defer t
   :bind (("C-c w s" . sx-tab-all-questions)
          ("C-c w S" . sx-tab-newest)
          ("C-c w a" . sx-ask)))
@@ -95,7 +93,6 @@
 
 (use-package paradox ; Better package manager interface
   :ensure t
-  :defer t
   :bind (("<f4>"   . paradox-list-packages)
          ("S-<f4>" . paradox-upgrade-packages))
   :config (progn

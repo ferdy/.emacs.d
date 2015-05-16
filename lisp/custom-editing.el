@@ -13,7 +13,6 @@
 
 (use-package zop-to-char ; Better zap-to-char
   :ensure t
-  :defer t
   :bind (("M-z" . zop-to-char)
          ("M-Z" . zop-up-to-char)))
 
@@ -40,7 +39,6 @@
 
 (use-package easy-kill ; Better kill text
   :ensure t
-  :defer t
   :bind (([remap kill-ring-save] . easy-kill)
          ([remap mark-sexp] . easy-mark)))
 
@@ -67,7 +65,6 @@
 
 (use-package expand-region ; Expand selected region
   :ensure t
-  :defer t
   :bind ("M-E" . er/expand-region))
 
 (use-package adaptive-wrap ; Better line wrap
@@ -190,7 +187,6 @@
 
 (use-package multiple-cursors ; Easily place multiple cursor in a buffer
   :ensure t
-  :defer t
   :bind (("C-c m e"   . mc/mark-more-like-this-extended)
 	 ("C-c m h"   . mc/mark-all-like-this-dwim)
 	 ("C-c m l"   . mc/edit-lines)
@@ -208,12 +204,10 @@
 
 (use-package multifiles ; Edit multiple files at once
   :ensure t
-  :defer t
   :bind ("C-!" . mf/mirror-region-in-multifile))
 
 (use-package macrostep ; Navigate through macros
   :ensure t
-  :defer t
   :init (with-eval-after-load 'lisp-mode
           (bind-key "C-c e" #'macrostep-expand emacs-lisp-mode-map)
           (bind-key "C-c e" #'macrostep-expand lisp-interaction-mode-map)))
@@ -226,13 +220,11 @@
 
 (use-package elisp-slime-nav ; Navigate through elisp code with M-. & M-,
   :ensure t
-  :defer t
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
   :diminish elisp-slime-nav-mode)
 
 (use-package transpose-mark ; Transpose data by leaving an Emacs mark
   :ensure t                 ; on the line you want to transpose.
-  :defer t
   :bind ("C-c t m" . transpose-mark))
 
 ;;; Windows and frames

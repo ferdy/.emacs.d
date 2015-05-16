@@ -12,7 +12,6 @@
 ;;; Code:
 
 (use-package info
-  :defer t
   :bind ("C-h C-i" . info-lookup-symbol)
   :config
   ;; Fix `Info-quoted' face by going back to the default face.
@@ -56,7 +55,6 @@
   :init (setq camcorder-window-id-offset -2))
 
 (use-package archive-mode
-  :defer t
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
 
 (use-package proced ; Manage processes
@@ -79,7 +77,6 @@
 
 (use-package unkillable-scratch ; Unkillable Scratch buffer
   :ensure t
-  :defer t
   :init (unkillable-scratch 1))
 
 (use-package esup ; Emacs Startup Profiler
