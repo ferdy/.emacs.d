@@ -115,6 +115,7 @@ inspiration from these people:
 - [Steve Purcell](https://github.com/purcell)
 - [Oleh Krehel](https://github.com/abo-abo)
 - [Joe Brock](https://github.com/DebianJoe)
+- [Wilfred Hughes](https://github.com/Wilfred)
 
 ##Warranty
 This configuration is provided with no guarantee and no support.
