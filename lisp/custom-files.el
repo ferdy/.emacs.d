@@ -31,6 +31,14 @@
             ;; 'a' reuses the current buffer, 'RET' opens a new one
             (put 'dired-find-alternate-file 'disabled nil)
 
+            ;; '^' reuses the current buffer
+            (add-hook 'dired-mode-hook
+                      (lambda ()
+                        (define-key dired-mode-map (kbd "^")
+                          (lambda ()
+                            (interactive)
+                            (find-alternate-file "..")))))
+
             ;; Make find-name-dired faster
             (use-package find-dired
               :config (setq find-ls-option
