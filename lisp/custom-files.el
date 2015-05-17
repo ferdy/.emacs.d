@@ -88,7 +88,10 @@
 
 (use-package dired-x ; Enable some nice dired features
   :bind ("C-x C-j" . dired-jump)
-  :config (setq dired-omit-verbose nil)) ; Be less verbose, Dired
+  :config (setq
+           dired-omit-verbose nil ; Be less verbose, Dired
+           ;; Omit dotfiles with C-x M-o
+           dired-omit-files (concat dired-omit-files "\\|^\\..+$")))
 
 (use-package ztree ; Text-tree utilities for directories
   :ensure t
