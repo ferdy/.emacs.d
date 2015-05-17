@@ -120,7 +120,7 @@
 (use-package helm-occur ; Occur with Helm
   :ensure helm
   :defer t
-  :bind ("C-c h o" . helm-occur))
+  :bind ("M-o" . helm-occur))
 
 (use-package helm-find ; Find with Helm
   :ensure helm
