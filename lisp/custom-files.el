@@ -82,21 +82,6 @@
             (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$")
                   dired-omit-verbose nil)))
 
-;; Note: to override dired+ faces, customize `font-lock-maximum-decoration'
-;; adding an entry for `dired-mode' and setting decoration to default
-(use-package dired+ ; Extend dired
-  :ensure t
-  :defer 5
-  :config (progn
-            ;; Reuse buffer for directories
-            (diredp-toggle-find-file-reuse-dir 1)
-            (setq diredp-hide-details-initially-flag nil
-                  diredp-hide-details-propagate-flag nil)))
-
-(use-package bookmark+ ; Better bookmarks
-  :ensure t
-  :defer 5)
-
 (use-package ztree ; Text-tree utilities for directories
   :ensure t
   :bind (("C-c f z" . ztree-dir)
