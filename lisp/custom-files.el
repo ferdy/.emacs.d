@@ -87,11 +87,8 @@
                      (match-string 1))))))))
 
 (use-package dired-x ; Enable some nice dired features
-  :config (progn
-            ;; Omit hidden files by default (C-x M-o to show them)
-            (setq-default dired-omit-files-p t)
-            (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$")
-                  dired-omit-verbose nil)))
+  :bind ("C-x C-j" . dired-jump)
+  :config (setq dired-omit-verbose nil)) ; Be less verbose, Dired
 
 (use-package ztree ; Text-tree utilities for directories
   :ensure t
