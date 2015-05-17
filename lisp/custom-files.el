@@ -28,6 +28,9 @@
                   '(("\\.ods\\'\\|\\.xls?\\'\\|\\.xlsx?\\'" "libreoffice")
                     ("\\.odt\\'\\|\\.doc?\\'\\|\\.docx?\\'" "libreoffice")))
 
+            ;; 'a' reuses the current buffer, 'RET' opens a new one
+            (put 'dired-find-alternate-file 'disabled nil)
+
             ;; Make find-name-dired faster
             (use-package find-dired
               :config (setq find-ls-option
