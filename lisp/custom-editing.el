@@ -40,7 +40,7 @@
 (use-package easy-kill ; Better kill text
   :ensure t
   :bind (([remap kill-ring-save] . easy-kill)
-         ([remap mark-sexp] . easy-mark)))
+         ("C-c e m" . easy-mark)))
 
 (use-package iedit ; Edit multiple occurrences
   :ensure t
@@ -62,10 +62,6 @@
                       (iedit-start (current-word) (point-min) (point-max)))))))
 
             (global-set-key (kbd "C-,") 'iedit-dwim)))
-
-(use-package expand-region ; Expand selected region
-  :ensure t
-  :bind ("M-E" . er/expand-region))
 
 (use-package adaptive-wrap ; Better line wrap
   :ensure t
@@ -214,8 +210,8 @@
 (use-package macrostep ; Navigate through macros
   :ensure t
   :init (with-eval-after-load 'lisp-mode
-          (bind-key "C-c e m" #'macrostep-expand emacs-lisp-mode-map)
-          (bind-key "C-c e m" #'macrostep-expand lisp-interaction-mode-map)))
+          (bind-key "C-c e e" #'macrostep-expand emacs-lisp-mode-map)
+          (bind-key "C-c e e" #'macrostep-expand lisp-interaction-mode-map)))
 
 (use-package saveplace ; Save point position in files
   :init (save-place-mode))
