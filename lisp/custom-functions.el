@@ -174,18 +174,6 @@ if USE-EXISTING is true, try to switch to an existing buffer"
    (car (occur-read-primary-args))))
 
 ;;;###autoload
-(defun occur-dwim ()
-  "Call `occur' with a sane default."
-  (interactive)
-  (push (if (region-active-p)
-            (buffer-substring-no-properties
-             (region-beginning)
-             (region-end))
-          (thing-at-point 'symbol))
-        regexp-history)
-  (call-interactively 'occur))
-
-;;;###autoload
 (defun delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)

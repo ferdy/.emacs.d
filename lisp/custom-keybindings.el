@@ -52,8 +52,6 @@
 
 (global-set-key (kbd "C-z") 'repeat) ; C-z for repeat (usually C-x z)
 
-(global-set-key "\C-x\M-o" 'occur-dwim) ; Global key for 'occur-dwim'
-
 ;; Kill entire line with prefix argument
 (global-set-key [remap paredit-kill] (bol-with-prefix paredit-kill))
 (global-set-key [remap org-kill-line] (bol-with-prefix org-kill-line))
