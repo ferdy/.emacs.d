@@ -89,6 +89,11 @@
   :config (add-to-list 'aggressive-indent-excluded-modes
                        'cider-repl-mode))
 
+(use-package align ; Align text in buffers
+  :bind (("C-c e a" . align)
+         ("C-c e c" . align-current)
+         ("C-c e r" . align-regexp)))
+
 (use-package paredit ; Balanced sexp editing
   :ensure t
   :defer t
@@ -209,8 +214,8 @@
 (use-package macrostep ; Navigate through macros
   :ensure t
   :init (with-eval-after-load 'lisp-mode
-          (bind-key "C-c e" #'macrostep-expand emacs-lisp-mode-map)
-          (bind-key "C-c e" #'macrostep-expand lisp-interaction-mode-map)))
+          (bind-key "C-c e m" #'macrostep-expand emacs-lisp-mode-map)
+          (bind-key "C-c e m" #'macrostep-expand lisp-interaction-mode-map)))
 
 (use-package saveplace ; Save point position in files
   :init (save-place-mode))
