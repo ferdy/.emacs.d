@@ -53,12 +53,13 @@ windows easier."
                  (unintern 'eshell/sudo nil)))))
 
 (use-package ansi-term
-  :bind ("<f2>" . custom/term)
+  :bind ("<f2>" . ansi-term)
   :init (progn
-          (defun custom/term ()
-            "Wrapper for `ansi-term'."
-            (interactive)
-            (ansi-term "/bin/zsh"))
+          ;; Always use Zsh
+          (defvar my-term-shell "/usr/bin/zsh")
+          (defadvice ansi-term (before force-bash)
+            (interactive (list my-term-shell)))
+          (ad-activate 'ansi-term)
 
           ;; Disable hl-line-mode in ansi-term
           (add-hook 'term-mode-hook (lambda ()
