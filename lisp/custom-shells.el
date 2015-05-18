@@ -53,7 +53,7 @@ windows easier."
                  (unintern 'eshell/sudo nil)))))
 
 (use-package ansi-term
-  :defer t
+  :bind ("<f2>" . custom/term)
   :init (progn
           (defun custom/term ()
             "Wrapper for `ansi-term'."
@@ -63,7 +63,33 @@ windows easier."
           ;; Disable hl-line-mode in ansi-term
           (add-hook 'term-mode-hook (lambda ()
                                       (setq-local global-hl-line-mode
-                                                  nil)))))
+                                                  nil)))
+
+          ;; Close buffer with 'exit'
+          (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+            (if (memq (process-status proc) '(signal exit))
+                (let ((buffer (process-buffer proc)))
+                  ad-do-it
+                  (kill-buffer buffer))
+              ad-do-it))
+          (ad-activate 'term-sentinel)
+
+          ;; Always use UTF-8
+          (defun my-term-use-utf8 ()
+            (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+          (add-hook 'term-exec-hook 'my-term-use-utf8)
+
+          ;; Paste with C-y
+          (defun my-term-paste (&optional string)
+            (interactive)
+            (process-send-string
+             (get-buffer-process (current-buffer))
+             (if string string (current-kill 0))))
+
+          (defun my-term-hook ()
+            (goto-address-mode) ; Clickable URLs
+            (define-key term-raw-map "\C-y" 'my-term-paste))
+          (add-hook 'term-mode-hook 'my-term-hook)))
 
 (use-package shell
   :bind ("S-<f2>" . shell)
@@ -84,14 +110,6 @@ windows easier."
             (add-hook 'shell-mode-hook (lambda ()
                                          (setq-local global-hl-line-mode
                                                      nil)))))
-
-(use-package multi-term ; Manage multiple terminal buffers
-  :ensure t
-  :bind (("<f2>" . multi-term))
-  :init (progn
-          (setq multi-term-program "/bin/zsh")
-          ;; Wrap long lines
-          (add-hook 'term-mode-hook #'toggle-word-wrap)))
 
 (provide 'custom-shells)
 

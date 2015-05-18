@@ -50,7 +50,6 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 [helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
 - Highlights: [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters),
 [highlight-symbol](https://github.com/nschum/highlight-symbol.el)
-- Terms: [multi-term](http://www.emacswiki.org/emacs/download/multi-term.el), [helm-mt](https://github.com/dfdeshom/helm-mt)
 - Org-mode: [org-magit](https://github.com/magit/org-magit), [toc-org](https://github.com/snosov1/toc-org), [org2blog](https://github.com/punchagan/org2blog)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html), [helm-bibtex](https://github.com/tmalsburg/helm-bibtex)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider), [flycheck-clojure](https://github.com/clojure-emacs/squiggly-clojure)
