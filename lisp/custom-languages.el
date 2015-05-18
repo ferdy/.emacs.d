@@ -16,8 +16,6 @@
   :load-path "various"
   :mode "\\.po\\'"
   :no-require t
-  :init (setq auto-mode-alist
-              (cons '("\\.po\\'\\|\\.po\\." . po-mode) auto-mode-alist))
   :config (setq po-keep-mo-file t))
 
 ;;; Spell checking and dictionaries
