@@ -48,16 +48,10 @@
 (use-package company-math ; Company backend for math symbols
   :ensure t
   :defer t
-  :config (progn
-            ;; Local configuration for TeX modes
-            (defun my-latex-mode-setup ()
-              "Add company-math backends."
-              (setq-local company-backends
-                          (append '(company-math-symbols-latex
-                                    company-math-symbols-unicode
-                                    company-latex-commands)
-                                  company-backends)))
-            (add-hook 'TeX-mode-hook 'my-latex-mode-setup)))
+  :init (with-eval-after-load 'company
+          ;; Add backends for math characters
+          (add-to-list 'company-backends 'company-math-symbols-unicode)
+          (add-to-list 'company-backends 'company-math-symbols-latex)))
 
 (use-package company-statistics ; Show likelier candidates on top
   :ensure t
