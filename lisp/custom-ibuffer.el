@@ -34,8 +34,9 @@
                           " " filename-and-process)
                     (mark " "
                           (name 16 -1)
-                          " " filename))
-                  ibuffer-show-empty-filter-groups nil)))
+                          " " filename)))
+
+            (setq ibuffer-show-empty-filter-groups nil)))
 
 (use-package ibuffer-vc ; Group buffers by VC project and status
   :ensure t
