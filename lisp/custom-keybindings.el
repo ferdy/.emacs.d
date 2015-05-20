@@ -12,17 +12,16 @@
 ;;; Code:
 
 ;; Better forward and backward paragraph
-(global-set-key "\M-a" 'custom/backward-paragraph)
-(global-set-key "\M-e" 'custom/forward-paragraph)
+(bind-key "M-a" 'custom/backward-paragraph)
+(bind-key "M-e" 'custom/forward-paragraph)
 
 ;; Better window movings
-(global-set-key "\C-x\C-n" 'other-window)
-(global-set-key "\C-x\C-p" 'other-window-backward)
+(bind-key "C-x C-n" 'other-window)
+(bind-key "C-x C-p" 'other-window-backward)
 
-(global-set-key (kbd "C-x C-d") 'duplicate-line) ; Duplicate line at point
+(bind-key "C-x C-d" 'duplicate-line) ; Duplicate line at point
 
-(global-set-key (kbd "C-c q")
-                #'custom/quit-bottom-side-windows) ; Close side frames
+(bind-key "C-c q" #'custom/quit-bottom-side-windows) ; Close side frames
 
 ;; Custom keybindings activated with C^x t
 (define-prefix-command 'toggle-map)
@@ -36,39 +35,38 @@
            ("r" . revert-this-buffer)
            ("w" . writeroom-mode))
 
-(global-set-key "\M-g" 'goto-line) ; Goto line is M-g
+(bind-key "M-g" 'goto-line) ; Goto line is M-g
 
-(global-set-key "\C-x\C-k" 'kill-this-buffer) ; Kill only the current buffer
+(bind-key "C-x C-k" 'kill-this-buffer) ; Kill only the current buffer
 
 (setq next-line-add-newlines t) ; C^n adds new line when at the end of a line
 
-(global-set-key (kbd "C-;") #'comment-line) ; Comment-line
+(bind-key "C-;" #'comment-line) ; Comment-line
 
 ;; Better mark commands
-(global-set-key (kbd "C-+") 'push-mark-no-activate)
-(global-set-key (kbd "M-+") 'jump-to-mark)
-(define-key global-map [remap exchange-point-and-mark]
-  'exchange-point-and-mark-no-activate)
+(bind-key "C-+" 'push-mark-no-activate)
+(bind-key "M-+" 'jump-to-mark)
+(bind-key [remap exchange-point-and-mark]
+          'exchange-point-and-mark-no-activate global-map)
 
-(global-set-key (kbd "C-z") 'repeat) ; C-z for repeat (usually C-x z)
+(bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
 
 ;; Kill entire line with prefix argument
-(global-set-key [remap paredit-kill] (bol-with-prefix paredit-kill))
-(global-set-key [remap org-kill-line] (bol-with-prefix org-kill-line))
-(global-set-key [remap kill-line] (bol-with-prefix kill-line))
-(global-set-key "\C-k" (bol-with-prefix kill-visual-line))
+(bind-key [remap paredit-kill] (bol-with-prefix paredit-kill))
+(bind-key [remap org-kill-line] (bol-with-prefix org-kill-line))
+(bind-key [remap kill-line] (bol-with-prefix kill-line))
+(bind-key "C-k" (bol-with-prefix kill-visual-line))
 
-(define-key comint-mode-map "\C-c\M-o"
-  #'comint-clear-buffer) ; Clear comint buffers
+(bind-key "C-c M-o" #'comint-clear-buffer comint-mode-map) ; Clear comint buffer
 
 ;; Better shrink/enlarge windows
-(global-set-key (kbd "C-S-<up>") 'enlarge-window)
-(global-set-key (kbd "C-S-<down>") 'shrink-window)
-(global-set-key (kbd "C-S-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "C-S-<right>") 'enlarge-window-horizontally)
+(bind-key "C-S-<up>" 'enlarge-window)
+(bind-key "C-S-<down>" 'shrink-window)
+(bind-key "C-S-<left>" 'shrink-window-horizontally)
+(bind-key "C-S-<right>" 'enlarge-window-horizontally)
 
-(define-key isearch-mode-map [remap isearch-delete-char]
-  #'custom/isearch-delete) ; Better backspace in isearch
+(bind-key [remap isearch-delete-char]
+          #'custom/isearch-delete isearch-mode-map) ; Better backspace in isearch
 
 ;; Minor mode for 'override' keybindings
 (use-package my-keys-mode
