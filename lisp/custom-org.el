@@ -51,7 +51,7 @@
               "Update parent node."
               (myorg-update-parent-cookie))
 
-            (define-key org-mode-map "\"" #'custom/round-quotes)
+            (bind-key "\"" #'custom/round-quotes org-mode-map)
 
             (defun custom/round-quotes (italicize)
               "Insert “” and leave point in the middle.
@@ -69,7 +69,7 @@ If inside a code-block, simply calls `self-insert-command'."
                   (insert "“”")
                   (forward-char -1))))
 
-            (define-key org-mode-map "'" #'custom/apostrophe)
+            (bind-key "'" #'custom/apostrophe org-mode-map)
 
             (defun custom/apostrophe (opening)
               "Insert ’ in prose or `self-insert-command' in code.
@@ -144,15 +144,13 @@ Inside a code-block, simply calls `self-insert-command'."
   :ensure t
   :no-require t
   :config (progn
-            (define-key org-mode-map (kbd "<f8>") 'org-tree-slide-mode)
-            (define-key org-mode-map (kbd "S-<f8>")
-              'org-tree-slide-skip-done-toggle)
-            (define-key org-tree-slide-mode-map (kbd "<f9>")
-              'org-tree-slide-move-previous-tree)
-            (define-key org-tree-slide-mode-map (kbd "<f10>")
-              'org-tree-slide-move-next-tree)
-            (define-key org-tree-slide-mode-map (kbd "<f11>")
-              'org-tree-slide-content)
+            (bind-keys :map org-mode-map
+                       ("<f8>"   . org-tree-slide-mode)
+                       ("S-<f8>" . org-tree-slide-skip-done-toggle))
+            (bind-keys :map org-tree-slide-mode-map
+                       ("<f9>"  . org-tree-slide-move-previous-tree)
+                       ("<f10>" . org-tree-slide-move-next-tree)
+                       ("<f11>" . org-tree-slide-content))
 
             (setq org-tree-slide-skip-outline-level 4)
             (org-tree-slide-narrowing-control-profile)

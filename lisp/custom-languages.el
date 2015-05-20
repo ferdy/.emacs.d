@@ -30,7 +30,7 @@
               (warn "No spell checker available. Install aspell."))
 
             ;; Ispell with Abbrev for auto-correcting spelling mistakes
-            (define-key ctl-x-map "\C-i" 'custom/ispell-word-then-abbrev)
+            (bind-key "C-i" #'custom/ispell-word-then-abbrev ctl-x-map)
 
             (defun custom/ispell-word-then-abbrev (p)
               "Call `ispell-word'. Then create an abbrev for the correction made.
@@ -90,7 +90,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
                               (flyspell-buffer)))
 
             ;; Free C-M-i for completion
-            (define-key flyspell-mode-map "\M-\t" nil))
+            (unbind-key "M-t" flyspell-mode-map))
   :diminish flyspell-mode)
 
 (use-package synosaurus ; An extensible thesaurus

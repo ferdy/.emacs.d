@@ -108,8 +108,8 @@
   :init (progn
           (add-hook 'eshell-mode-hook
                     #'(lambda ()
-                        (define-key eshell-mode-map (kbd "C-c C-l")
-                          'helm-eshell-history)))
+                        (bind-key "C-c C-l"
+                                  'helm-eshell-history eshell-mode-map)))
 
           ;; Shell history
           (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)

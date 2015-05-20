@@ -69,7 +69,7 @@
               (call-interactively 'mark-whole-buffer)
               (elfeed-search-untag-all-unread))
 
-            (define-key elfeed-search-mode-map (kbd "R") 'elfeed-mark-all-as-read)))
+            (bind-key "R" #'elfeed-mark-all-as-read elfeed-search-mode-map)))
 
 (use-package sx ; StackExchange client for Emacs
   :ensure t

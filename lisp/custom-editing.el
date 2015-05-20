@@ -100,9 +100,8 @@
           (add-hook hook #'paredit-mode))
   :config (progn
             ;; Free M-s. There are some useful bindings in that prefix map.
-            (define-key paredit-mode-map (kbd "M-s") nil)
-            (define-key paredit-mode-map (kbd "M-S-<up>")
-              #'paredit-splice-sexp)
+            (unbind-key "M-s" paredit-mode-map)
+            (bind-key "M-S-<up>" #'paredit-splice-sexp paredit-mode-map)
 
             ;; Extreme barfage and slurpage
             (defun paredit-barf-all-the-way-backward ()

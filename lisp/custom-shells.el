@@ -89,7 +89,7 @@ windows easier."
 
           (defun my-term-hook ()
             (goto-address-mode) ; Clickable URLs
-            (define-key term-raw-map "\C-y" 'my-term-paste))
+            (bind-key "C-y" #'my-term-paste term-raw-map))
           (add-hook 'term-mode-hook 'my-term-hook)))
 
 (use-package shell
@@ -100,7 +100,7 @@ windows easier."
               (let ((comint-buffer-maximum-size 0))
                 (comint-truncate-buffer)))
 
-            (define-key shell-mode-map (kbd "C-l") 'clear-shell)
+            (bind-key "C-l" #'clear-shell shell-mode-map)
 
             ;; Shell buffer maximized
             (add-hook 'shell-mode-hook

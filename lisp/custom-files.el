@@ -63,16 +63,16 @@
               (beginning-of-buffer)
               (dired-next-line 2))
 
-            (define-key dired-mode-map
-              (vector 'remap 'beginning-of-buffer) 'dired-back-to-top)
+            (bind-key (vector 'remap 'beginning-of-buffer) 'dired-back-to-top
+                      dired-mode-map)
 
             (defun dired-jump-to-bottom ()
               (interactive)
               (end-of-buffer)
               (dired-next-line -1))
 
-            (define-key dired-mode-map
-              (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
+            (bind-key (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom
+                      dired-mode-map)
 
             ;; Open directory with sudo in dired
             (defun sudired ()

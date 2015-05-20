@@ -36,7 +36,7 @@
               (custom/kill-buffers "^\\*magit")
               (jump-to-register :magit-fullscreen))
 
-            (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
+            (bind-key "q" #'magit-quit-session magit-status-mode-map)
 
             ;; Set Magit's repo dirs for `magit-status' from Projectile's known
             ;; projects. Initialize the `magit-repo-dirs' immediately after Projectile
