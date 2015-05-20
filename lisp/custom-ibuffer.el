@@ -35,15 +35,12 @@
                     (mark " "
                           (name 16 -1)
                           " " filename))
-                  ibuffer-show-empty-filter-groups nil
-                  ibuffer-saved-filter-groups
-                  '(("default"
-                     ("helm" (predicate string-match "Helm" mode-name))
-                     ("starbuffers" (name . "^\\*.*?\\*$")))))))
+                  ibuffer-show-empty-filter-groups nil)))
 
 (use-package ibuffer-vc ; Group buffers by VC project and status
   :ensure t
   :defer t
+  :disabled t
   :init (add-hook 'ibuffer-hook
                   (lambda ()
                     (ibuffer-vc-set-filter-groups-by-vc-root)
@@ -52,7 +49,12 @@
 
 (use-package ibuffer-projectile ; Group buffers by Projectile project
   :ensure t
-  :defer t)
+  :defer t
+  :init (add-hook 'ibuffer-hook
+                  (lambda ()
+                    (ibuffer-projectile-set-filter-groups)
+                    (unless (eq ibuffer-sorting-mode 'alphabetic)
+                      (ibuffer-do-sort-by-alphabetic)))))
 
 (provide 'custom-ibuffer)
 
