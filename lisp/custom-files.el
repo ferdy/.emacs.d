@@ -75,8 +75,6 @@
               (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom)
 
             ;; Open directory with sudo in dired
-            (define-key dired-mode-map "!" 'sudired)
-
             (defun sudired ()
               "Open directory with sudo in dired."
               (interactive)
@@ -85,6 +83,8 @@
                 (if (string-match "^/sudo:" dir)
                     (user-error "Already in sudo")
                   (dired (concat "/sudo::" dir)))))
+
+            (bind-key "!" #'sudired dired-mode-map)
 
             ;; Get files size in dired
             (defun dired-get-size ()
