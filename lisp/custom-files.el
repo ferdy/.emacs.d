@@ -28,8 +28,13 @@
                   '(("\\.ods\\'\\|\\.xls?\\'\\|\\.xlsx?\\'" "libreoffice")
                     ("\\.odt\\'\\|\\.doc?\\'\\|\\.docx?\\'" "libreoffice")))
 
-            ;; 'a' reuses the current buffer, 'RET' opens a new one
+            ;; Reuses the current buffer
             (put 'dired-find-alternate-file 'disabled nil)
+
+            ;; Switch 'a' with 'RET'
+            (bind-keys :map dired-mode-map
+                       ("RET" . dired-find-alternate-file)
+                       ("a" . dired-find-file))
 
             ;; '^' reuses the current buffer
             (add-hook 'dired-mode-hook
