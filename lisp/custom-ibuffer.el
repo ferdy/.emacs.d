@@ -12,7 +12,7 @@
 ;;; Code:
 
 (use-package ibuffer
-  :bind ("C-x C-b" . ibuffer)
+  :bind ([remap list-buffers] . ibuffer)
   :config (progn
             (setq ibuffer-formats
                   '((mark modified read-only vc-status-mini " "
@@ -36,6 +36,7 @@
                           (name 16 -1)
                           " " filename)))
 
+            ;; Hide empty groups
             (setq ibuffer-show-empty-filter-groups nil)))
 
 (use-package ibuffer-vc ; Group buffers by VC project and status
