@@ -28,13 +28,18 @@
                   '(("\\.ods\\'\\|\\.xls?\\'\\|\\.xlsx?\\'" "libreoffice")
                     ("\\.odt\\'\\|\\.doc?\\'\\|\\.docx?\\'" "libreoffice")))
 
-            ;; Reuses the current buffer
+            ;; Enable dired-find-alternate-file
             (put 'dired-find-alternate-file 'disabled nil)
 
-            ;; Switch 'a' with 'RET'
-            (bind-keys :map dired-mode-map
-                       ("RET" . dired-find-alternate-file)
-                       ("a" . dired-find-file))
+            ;; 'RET' reuses buffers if they are directories
+            (defun find-file-reuse-dir-buffer ()
+              "Like `dired-find-file', but reuse Dired buffers."
+              (interactive)
+              (set-buffer-modified-p nil)
+              (let ((file  (dired-get-file-for-visit)))
+                (if (file-directory-p file) (find-alternate-file file) (find-file file))))
+
+            (bind-key "RET" #'find-file-reuse-dir-buffer dired-mode-map)
 
             ;; '^' reuses the current buffer
             (add-hook 'dired-mode-hook
