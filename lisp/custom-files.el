@@ -37,7 +37,9 @@
               (interactive)
               (set-buffer-modified-p nil)
               (let ((file  (dired-get-file-for-visit)))
-                (if (file-directory-p file) (find-alternate-file file) (find-file file))))
+                (if (file-directory-p file)
+                    (find-alternate-file file)
+                  (find-file file))))
 
             (bind-key "RET" #'find-file-reuse-dir-buffer dired-mode-map)
 
