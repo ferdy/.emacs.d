@@ -42,19 +42,9 @@
 (use-package ibuffer-vc ; Group buffers by VC project and status
   :ensure t
   :defer t
-  :disabled t
   :init (add-hook 'ibuffer-hook
                   (lambda ()
                     (ibuffer-vc-set-filter-groups-by-vc-root)
-                    (unless (eq ibuffer-sorting-mode 'alphabetic)
-                      (ibuffer-do-sort-by-alphabetic)))))
-
-(use-package ibuffer-projectile ; Group buffers by Projectile project
-  :ensure t
-  :defer t
-  :init (add-hook 'ibuffer-hook
-                  (lambda ()
-                    (ibuffer-projectile-set-filter-groups)
                     (unless (eq ibuffer-sorting-mode 'alphabetic)
                       (ibuffer-do-sort-by-alphabetic)))))
 
