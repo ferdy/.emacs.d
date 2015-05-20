@@ -36,7 +36,7 @@
               "Like `dired-find-file', but reuse Dired buffers."
               (interactive)
               (set-buffer-modified-p nil)
-              (let ((file  (dired-get-file-for-visit)))
+              (let ((file (dired-get-file-for-visit)))
                 (if (file-directory-p file)
                     (find-alternate-file file)
                   (find-file file))))
@@ -44,12 +44,13 @@
             (bind-key "RET" #'find-file-reuse-dir-buffer dired-mode-map)
 
             ;; '^' reuses the current buffer
-            (add-hook 'dired-mode-hook
-                      (lambda ()
-                        (define-key dired-mode-map (kbd "^")
-                          (lambda ()
-                            (interactive)
-                            (find-alternate-file "..")))))
+            (defun up-directory ()
+              "Change to parent directory."
+              (interactive)
+              (set-buffer-modified-p nil)
+              (find-alternate-file ".."))
+
+            (bind-key "^" #'up-directory dired-mode-map)
 
             ;; Make find-name-dired faster
             (use-package find-dired
