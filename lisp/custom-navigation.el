@@ -8,9 +8,15 @@
 ;;; Commentary:
 
 ;; This file stores the configuration for in-buffer, frames and windows
-;; navigation
+;; navigation.
 
 ;;; Code:
+;;; Scrolling
+(setq scroll-margin 0
+      scroll-conservatively 1000
+      ;; Ensure M-v always undoes C-v
+      scroll-preserve-screen-position 'always)
+
 (use-package winner ; Undo and redo window configurations
   :init (winner-mode))
 
