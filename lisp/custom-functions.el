@@ -38,7 +38,6 @@
 	     (custom/replace-string-matches-recursively (cdr oldtags)
 							(cdr newtags)))))))
 
-;;;###autoload
 (defun custom/only-strings-p (list)
   "Check if LIST does contain only strings."
   (and (not (eq (car list) nil))
@@ -46,7 +45,6 @@
 	   (not (custom/only-strings-p (cdr list)))
 	 (error "List must only contain strings"))))
 
-;;;###autoload
 (defun custom/lists-same-length-p (a b)
   "Check if lists A and B have the same length."
   (if (eq (length a)(length b)) t
@@ -125,16 +123,37 @@ if USE-EXISTING is true, try to switch to an existing buffer"
 		      (interactive)
 		      (custom/term-start-or-switch ,name ,use-existing))))
 
+(defun custom/current-file ()
+  "Gets the \"file\" of the current buffer.
+The file is the buffer's file name, or the `default-directory' in
+`dired-mode'."
+  (if (derived-mode-p 'dired-mode)
+      default-directory
+    (buffer-file-name)))
+
 ;;;###autoload
-(defun copy-file-name-to-clipboard ()
-  "Copy the current buffer file name to the clipboard."
-  (interactive)
-  (let ((filename (if (equal major-mode 'dired-mode)
-                      default-directory
-                    (buffer-file-name))))
-    (when filename
-      (kill-new filename)
-      (message "Copied buffer file name '%s' to the clipboard." filename))))
+(defun custom/copy-filename-as-kill (&optional arg)
+  "Copy the name of the currently visited file to kill ring.
+With a zero prefix arg, copy the absolute file name.  With
+\\[universal-argument], copy the file name relative to the
+current Projectile project, or to the current buffer's
+`default-directory', if the file is not part of any project.
+Otherwise copy the non-directory part only."
+  (interactive "P")
+  (if-let ((file-name (lunaryorn-current-file))
+           (name-to-copy
+            (cond
+             ((zerop (prefix-numeric-value arg)) file-name)
+             ((consp arg)
+              (let* ((projectile-require-project-root nil)
+                     (directory (and (fboundp 'projectile-project-root)
+                                     (projectile-project-root))))
+                (file-relative-name file-name directory)))
+             (t (file-name-nondirectory file-name)))))
+      (progn
+        (kill-new name-to-copy)
+        (message "%s" name-to-copy))
+    (user-error "This buffer is not visiting a file")))
 
 ;;;###autoload
 (defun comint-clear-buffer ()
@@ -331,6 +350,23 @@ prefix argument."
   (interactive)
   (dolist (window (window-at-side-list))
     (quit-window nil window)))
+
+;; Don't kill the important buffers
+(defconst custom/do-not-kill-buffer-names '("*scratch*" "*Messages*")
+  "Names of buffers that should not be killed.")
+
+(defun custom/do-not-kill-important-buffers ()
+  "Inhibit killing of important buffers.
+Add this to `kill-buffer-query-functions'."
+  (if (not (member (buffer-name) custom/do-not-kill-buffer-names))
+      t
+    (message "Not allowed to kill %s, burying instead" (buffer-name))
+    (bury-buffer)
+    nil))
+
+(defun custom/force-save-some-buffers ()
+  "Save all modified buffers, without prompts."
+  (save-some-buffers 'dont-ask))
 
 (provide 'custom-functions)
 

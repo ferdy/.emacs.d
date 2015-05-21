@@ -10,10 +10,15 @@
 ;; This file stores dired and file settings.
 
 ;;; Code:
+;; Assert the byte compiler that dired functions are defined, because we never
+;; call them for non-dired buffers, so we can be sure that dired is always
+;; loaded first.
+(declare-function dired-get-marked-files "dired")
+(declare-function dired-current-directory "dired")
 
 (use-package dired
   :bind (("C-c z" . dired-get-size)
-         ("C-c C" . copy-file-name-to-clipboard))
+         ("C-c C" . custom/copy-filename-as-kill))
   :config (progn
             (setq dired-auto-revert-buffer t            ; Revert buffers on revisiting
                   dired-listing-switches
@@ -113,6 +118,13 @@
 
 (setq view-read-only t) ; View read-only
 (setq large-file-warning-threshold nil) ; No large file warning
+
+;; Don't kill important buffers
+(add-hook 'kill-buffer-query-functions
+          #'custom/do-not-kill-important-buffers)
+
+;; Autosave buffers when focus is lost
+(add-hook 'focus-out-hook #'custom/force-save-some-buffers)
 
 (provide 'custom-files)
 
