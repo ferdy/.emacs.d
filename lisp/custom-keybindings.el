@@ -52,7 +52,7 @@
 (bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
 
 ;; Kill entire line with prefix argument
-(bind-key [remap paredit-kill] (bol-with-prefix paredit-kill))
+(bind-key [remap sp-kill-hybrid-sexp] (bol-with-prefix sp-kill-hybrid-sexp))
 (bind-key [remap org-kill-line] (bol-with-prefix org-kill-line))
 (bind-key [remap kill-line] (bol-with-prefix kill-line))
 (bind-key "C-k" (bol-with-prefix kill-visual-line))
