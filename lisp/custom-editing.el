@@ -139,6 +139,15 @@
   :ensure t                 ; on the line you want to transpose.
   :bind ("C-c t m" . transpose-mark))
 
+(use-package copyright ; Deal with copyright notices
+  :defer t
+  :bind (("C-c e C" . copyright-update))
+  ;; Update copyright when visiting files
+  :init (add-hook 'find-file-hook #'copyright-update)
+  ;; Use ranges to denote consecutive years
+  :config (setq copyright-year-ranges t
+                copyright-names-regexp (regexp-quote user-full-name)))
+
 ;;; Windows and frames
 (use-package winner ; Undo and redo window configurations
   :init (winner-mode))
