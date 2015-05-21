@@ -68,7 +68,7 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 - Document conversion: [pandoc-mode](https://github.com/joostkremers/pandoc-mode)
 - Utilities: [The Bug Hunter](https://github.com/Malabarba/elisp-bug-hunter),
   [ESUP](https://github.com/jschaf/esup),
-  [camcorder](https://github.com/Malabarba/camcorder.el), [unkillable-scratch](https://github.com/EricCrosson/unkillable-scratch)
+  [camcorder](https://github.com/Malabarba/camcorder.el)
 
 ##Setup
 On your **Debian-based** machine:
