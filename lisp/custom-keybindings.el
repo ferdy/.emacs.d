@@ -79,7 +79,8 @@
                        ("C-c o" . (lambda ()
                                     (interactive)
                                     (find-file "~/org/organizer.org"))))
-            (global-my-keys-mode)))
+            (global-my-keys-mode))
+  :diminish my-keys-mode)
 
 (provide 'custom-keybindings)
 
