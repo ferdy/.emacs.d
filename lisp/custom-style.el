@@ -128,19 +128,6 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 
-(use-package elec-pair
-  :init (progn
-          ;; Enable electric-pair only for certain modes
-          (defvar my-electic-pair-modes '(emacs-lisp-mode
-                                          clojure-mode))
-
-          (defun my-inhibit-electric-pair-mode (char)
-            (not (member major-mode my-electic-pair-modes)))
-
-          (setq electric-pair-inhibit-predicate #'my-inhibit-electric-pair-mode)
-          
-          (electric-pair-mode)))
-
 (use-package page-break-lines ; Better looking break lines
   :ensure t
   :defer t
