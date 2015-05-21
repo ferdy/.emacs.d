@@ -98,6 +98,7 @@
 (require 'custom-helm)
 (require 'custom-editing)
 (require 'custom-pairs)
+(require 'custom-navigation)
 (require 'custom-search)
 (require 'custom-files)
 (require 'custom-completion)
