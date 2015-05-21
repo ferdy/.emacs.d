@@ -26,12 +26,6 @@
 
             (dynamic-fonts-setup)))
 
-;;; Scrolling
-(setq scroll-margin 0
-      scroll-conservatively 1000
-      ;; Ensure M-v always undoes C-v
-      scroll-preserve-screen-position 'always)
-
 ;;; Interface
 ;; Toggle all frames maximized and fullscreen
 (modify-all-frames-parameters '((fullscreen . maximized)))
@@ -75,16 +69,6 @@
 		    (kill-buffer completions)))))
 
 (column-number-mode) ; Turn on column-number-mode
-
-(use-package recentf ; Manage recent files
-  :init (recentf-mode)
-  :defer t
-  :config (setq recentf-max-saved-items 200
-                recentf-max-menu-items 15
-                recentf-exclude (list "/\\.git/.*\\'"
-                                      "/elpa/.*\\'"
-                                      "/tmp/"
-                                      "/ssh:")))
 
 (use-package uniquify ; Unique buffer names
   :config (setq uniquify-buffer-name-style
@@ -133,60 +117,6 @@
   :defer t
   :init (global-page-break-lines-mode)
   :diminish page-break-lines-mode)
-
-;;; Highlightings
-(use-package paren ; Highlight paired delimiters
-  :init (show-paren-mode)
-  :config (setq show-paren-when-point-inside-paren t
-                show-paren-when-point-in-periphery t))
-
-(use-package diff-hl ; Show changes in fringe
-  :ensure t
-  :defer 10
-  :init (progn
-          ;; Highlight changes to the current file in the fringe
-          (global-diff-hl-mode)
-          ;; Highlight changed files in the fringe of Dired
-          (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
-          ;; Fall back to the display margin, if the fringe is unavailable
-          (unless (display-graphic-p)
-            (diff-hl-margin-mode))))
-
-(use-package highlight-symbol ; Highlight and jump to symbols
-  :ensure t
-  :defer t
-  :bind (("C-c s %" . highlight-symbol-query-replace)
-         ("C-c s n" . highlight-symbol-next-in-defun)
-         ("C-c s o" . highlight-symbol-occur)
-         ("C-c s p" . highlight-symbol-prev-in-defun))
-  :init (progn
-          ;; Navigate occurrences of the symbol under point with M-n and M-p
-          (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
-          ;; Highlight symbol occurrences
-          (add-hook 'prog-mode-hook #'highlight-symbol-mode))
-  :config (setq highlight-symbol-idle-delay 0.4 ; Almost immediately
-                ;; Immediately after navigation
-                highlight-symbol-on-navigation-p t)
-  :diminish highlight-symbol-mode)
-
-(use-package highlight-numbers          ; Fontify number literals
-  :ensure t
-  :defer t
-  :init (add-hook 'prog-mode-hook #'highlight-numbers-mode))
-
-(use-package rainbow-mode ; Highlight colors
-  :ensure t
-  :defer t
-  :config (add-hook 'css-mode-hook #'rainbow-mode))
-
-(use-package rainbow-delimiters ; Highlight parens
-  :ensure t
-  :defer t
-  :init (dolist (hook '(text-mode-hook prog-mode-hook))
-          (add-hook hook #'rainbow-delimiters-mode)))
-
-(use-package hl-line ; Highlight current line
-  :init (global-hl-line-mode 1))
 
 ;;; Mode line
 (use-package smart-mode-line ; Better mode-line
