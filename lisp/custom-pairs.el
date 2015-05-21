@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores pair balancing configuration
+;; This file stores pairs balancing configuration
 
 ;;; Code:
 (use-package smartparens ; Parenthesis editing and balancing
