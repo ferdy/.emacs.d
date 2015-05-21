@@ -16,7 +16,17 @@
 (declare-function dired-get-marked-files "dired")
 (declare-function dired-current-directory "dired")
 
-(use-package dired
+(use-package recentf ; Manage recent files
+  :init (recentf-mode)
+  :defer t
+  :config (setq recentf-max-saved-items 200
+                recentf-max-menu-items 15
+                recentf-exclude (list "/\\.git/.*\\'"
+                                      "/elpa/.*\\'"
+                                      "/tmp/"
+                                      "/ssh:")))
+
+(use-package dired ; File manager
   :bind (("C-c z" . dired-get-size)
          ("C-c C" . custom/copy-filename-as-kill))
   :config (progn
