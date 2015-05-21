@@ -141,18 +141,6 @@
             (paredit-annotate-functions-with-examples))
   :diminish paredit-mode)
 
-(use-package redshank ; Lisp editing extension
-  :ensure t
-  :defer t
-  :init (progn
-          (setq redshank-prefix-key "C-c C-r") ; Change default prefix
-          (dolist (hook '(eval-expression-minibuffer-setup-hook
-                          emacs-lisp-mode-hook
-                          inferior-emacs-lisp-mode-hook
-                          clojure-mode-hook))
-            (add-hook hook #'redshank-mode)))
-  :diminish redshank-mode)
-
 (add-hook 'after-save-hook ; Look for unbalanced parens when saving
           'check-parens nil t)
 

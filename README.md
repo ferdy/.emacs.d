@@ -40,8 +40,7 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
   [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
 - Undo: [Undo Tree](http://www.dr-qubit.org/emacs.php#undo-tree)
 - Killing: [easy-kill](https://github.com/leoliu/easy-kill), [helm-show-kill-ring](https://tuhdo.github.io/helm-intro.html#sec-6)
-- Coding: [Smartparens](https://github.com/Fuco1/smartparens), [Redshank](http://www.foldr.org/~michaelw/emacs/redshank/),
-[aggressive-indent-mode](https://github.com/Malabarba/aggressive-indent-mode),
+- Coding: [Smartparens](https://github.com/Fuco1/smartparens), [aggressive-indent-mode](https://github.com/Malabarba/aggressive-indent-mode),
 [macrostep](https://github.com/joddie/macrostep)
 - Filling: [aggressive-fill-paragraph](https://github.com/davidshepherd7/aggressive-fill-paragraph-mode),
   [visual-fill-column](https://github.com/joostkremers/visual-fill-column)
