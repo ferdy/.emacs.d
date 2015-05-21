@@ -37,6 +37,11 @@
 /cider-repl-history
 /eww-bookmarks
 /.sx
+/eshell/
+/company-statistics-cache.el
+/fixes/
+/helm-adaptive-history
+/el-get/
 
 # Cache file from marmalade-upload tool
 /marmalade-upload.json
