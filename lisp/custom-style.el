@@ -182,6 +182,11 @@
                 highlight-symbol-on-navigation-p t)
   :diminish highlight-symbol-mode)
 
+(use-package highlight-numbers          ; Fontify number literals
+  :ensure t
+  :defer t
+  :init (add-hook 'prog-mode-hook #'highlight-numbers-mode))
+
 (use-package rainbow-mode ; Highlight colors
   :ensure t
   :defer t
