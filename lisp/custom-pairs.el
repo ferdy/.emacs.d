@@ -29,7 +29,8 @@
               :config (progn
                         (sp-local-pair '(emacs-lisp-mode
                                          lisp-interaction-mode
-                                         inferior-emacs-lisp-mode)
+                                         inferior-emacs-lisp-mode
+                                         clojure-mode)
                                        "(" nil :bind "M-(")
 
                         (bind-keys
