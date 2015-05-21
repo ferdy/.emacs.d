@@ -36,8 +36,9 @@
                           (name 16 -1)
                           " " filename)))
 
-            ;; Hide empty groups
-            (setq ibuffer-show-empty-filter-groups nil)))
+            (setq ibuffer-show-empty-filter-groups nil ; Hide empty groups
+                  ibuffer-never-show-predicates ; Hide Helm buffers
+                  '("*helm"))))
 
 (use-package ibuffer-vc ; Group buffers by VC project and status
   :ensure t
