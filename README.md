@@ -58,8 +58,7 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 - Auto-completion: [company-mode](https://github.com/company-mode/company-mode), [company-statistics](https://github.com/company-mode/company-statistics), [helm-company](https://github.com/yasuyk/helm-company)
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck),
 [helm-flycheck](https://github.com/yasuyk/helm-flycheck)
-- Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
-  [langtool](https://github.com/mhayashi1120/Emacs-langtool), [voca-builder](https://github.com/yitang/voca-builder)
+- Language tools: [define-word](https://github.com/abo-abo/define-word), [voca-builder](https://github.com/yitang/voca-builder), [Synosaurus](https://github.com/rootzlevel/synosaurus), [langtool](https://github.com/mhayashi1120/Emacs-langtool)
 - Version control: [Magit](https://github.com/magit/magit),
 [magit-gh-pulls](https://github.com/sigma/magit-gh-pulls),
 [diff-hl](https://github.com/dgutov/diff-hl)
