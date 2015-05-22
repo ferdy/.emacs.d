@@ -115,6 +115,10 @@ With prefix P, create local abbrev. Otherwise it will be global."
                 ;; Don't record the vocabulary
                 voca-builder/record-new-vocabulary nil))
 
+(use-package define-word ; Lookup word definition
+  :ensure t
+  :bind ("C-c s d" . define-word-at-point))
+
 (provide 'custom-languages)
 
 ;;; custom-languages.el ends here
