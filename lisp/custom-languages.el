@@ -117,7 +117,8 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
 (use-package define-word ; Lookup word definition
   :ensure t
-  :bind ("C-c s d" . define-word-at-point))
+  :bind (("C-c s d" . define-word-at-point)
+         ("C-c s D" . define-word)))
 
 (provide 'custom-languages)
 
