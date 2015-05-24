@@ -53,7 +53,7 @@ windows easier."
                  (unintern 'eshell/sudo nil)))))
 
 (use-package ansi-term
-  :bind ("<f2>" . ansi-term)
+  :bind ("<S-f2>" . ansi-term)
   :init (progn
           ;; Always use Zsh
           (defvar my-term-shell "/usr/bin/zsh")
@@ -93,7 +93,7 @@ windows easier."
           (add-hook 'term-mode-hook 'my-term-hook)))
 
 (use-package shell
-  :bind ("S-<f2>" . shell)
+  :bind ("<f2>" . shell)
   :config (progn
             (defun clear-shell ()
               (interactive)
