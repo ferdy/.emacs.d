@@ -4,6 +4,7 @@
 - [Preface](https://github.com/manuel-uberti/.emacs.d#preface)
 - [Overview](https://github.com/manuel-uberti/.emacs.d#overview)
 - [Setup](https://github.com/manuel-uberti/.emacs.d#setup)
+- [Updates](https://github.com/manuel-uberti/.emacs.d#updates)
 - [Acknowledgements](https://github.com/manuel-uberti/.emacs.d#acknowledgements)
 - [Warranty](https://github.com/manuel-uberti/.emacs.d#warranty)
 
@@ -97,6 +98,13 @@ $ chmod +x esetup
 $ ./esetup
 ```
 - run Emacs
+
+##Updates
+This configuration tracks latest Emacs developments. If you intend to use it, I highly recommend you update and re-build your sources once a week.
+
+That is why every seven days after your latest build, a warning will show up in the minibuffer reminding you to update the sources.
+
+With the help of some tools such as [Magit](https://github.com/magit/magit), [Paradox](https://github.com/Bruce-Connor/paradox) and your preferred shell, maintenance is not that hard.
 
 ##Acknowledgements
 This configuration would not have been possible without the work of and the
