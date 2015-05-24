@@ -81,7 +81,7 @@ $ git clone git://git.savannah.gnu.org/emacs.git
 ```console
 $ cd emacs
 $ sudo apt-get build-dep emacs24
-$ ./configure --with-x-toolkit=gtk3
+$ ./configure
 $ make
 $ sudo make install
 $ make clean
