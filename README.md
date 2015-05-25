@@ -103,14 +103,12 @@ This configuration tracks latest Emacs developments. If you intend to use it, I 
 
 That is why if your build is more than seven days old, a warning will show up reminding you to update the sources.
 
-You can do it using the command line:
-
+You can do it using the command line (I prefer [Magit](https://github.com/magit/magit), but that is up to you):
 - enter the directory with Emacs sources and pull the latest commits:
 ```console
 $ cd emacs
 $ git pull
 ```
-I prefer [Magit](https://github.com/magit/magit), but that is up to you
 - build Emacs:
 ```console
 $ ./configure
