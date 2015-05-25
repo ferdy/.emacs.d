@@ -99,9 +99,9 @@ $ ./esetup
 - run Emacs
 
 ##Updates
-This configuration tracks latest Emacs developments. If you intend to use it, I highly recommend you update and re-build your sources once a week.
+This configuration tracks latest Emacs developments. If you intend to use it, I highly recommend you update and re-build your sources at least once a week.
 
-That is why if your build is more than seven days old, a warning will show up in the minibuffer reminding you to update the sources.
+That is why if your build is more than seven days old, a warning will show up reminding you to update the sources.
 
 I would also recommend you upgrade every package installed regularly.
 
