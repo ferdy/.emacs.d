@@ -6,7 +6,6 @@
 - [Setup](https://github.com/manuel-uberti/.emacs.d#setup)
 - [Updates](https://github.com/manuel-uberti/.emacs.d#updates)
 - [Acknowledgements](https://github.com/manuel-uberti/.emacs.d#acknowledgements)
-- [Warranty](https://github.com/manuel-uberti/.emacs.d#warranty)
 
 ##Preface
 This is the Emacs configuration I use everyday.
@@ -120,6 +119,3 @@ inspiration from these people:
 - [Oleh Krehel](https://github.com/abo-abo)
 - [Joe Brock](https://github.com/DebianJoe)
 - [Wilfred Hughes](https://github.com/Wilfred)
-
-##Warranty
-This configuration is provided with no guarantee and no support.
