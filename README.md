@@ -105,7 +105,9 @@ That is why if your build is more than seven days old, a warning will show up in
 
 I would also recommend you upgrade every package installed regularly.
 
-With the help of some tools such as [Magit](https://github.com/magit/magit), [Paradox](https://github.com/Bruce-Connor/paradox) and your preferred shell, maintenance is fairly simple.
+With the help of tools such as [Magit](https://github.com/magit/magit),
+[Paradox](https://github.com/Bruce-Connor/paradox) and your preferred shell,
+maintenance is fairly simple.
 
 ##Acknowledgements
 This configuration would not have been possible without the work of and the
