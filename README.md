@@ -103,7 +103,7 @@ This configuration tracks latest Emacs developments. If you intend to use it, I 
 
 That is why if your build is more than seven days old, a warning will show up reminding you to update the sources.
 
-You can do it using the command line (I prefer [Magit](https://github.com/magit/magit), but that is up to you):
+You can use [Magit](https://github.com/magit/magit), which is bound to ```<f3>```, to update the sources. Or you can do it using the command line:
 - enter the directory with Emacs sources and pull the latest commits:
 ```console
 $ cd emacs
@@ -116,7 +116,7 @@ $ make
 $ sudo make install
 $ make clean
 ```
-I would also recommend you upgrade every package installed regularly.
+I would also recommend you upgrade every package installed regularly. You could easily do it with [Paradox](https://github.com/Bruce-Connor/paradox), which is bound to ```<f4>```.
 
 If sources do not build correctly, or you find errors while using the latest commit, you can still revert to a working commit and re-build:
 ```console
