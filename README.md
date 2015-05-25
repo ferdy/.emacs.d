@@ -108,7 +108,7 @@ You can use [Magit](https://github.com/magit/magit), which is bound to ```<f3>``
 $ cd emacs
 $ git pull
 ```
-- now you can build Emacs:
+Now you can build Emacs:
 ```console
 $ ./configure
 $ make
