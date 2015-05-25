@@ -99,7 +99,9 @@
             (setq paradox-github-token t ; Don't ask for a token, please
                   ;; No async for now
                   paradox-execute-asynchronously nil
-                  paradox-spinner-type 'rotating-line)
+                  paradox-spinner-type 'rotating-line
+                  ;; Hide packages from Emacs Wiki
+                  paradox-hide-wiki-packages t)
 
             ;; Don't need paradox report
             (remove-hook 'paradox-after-execute-functions
