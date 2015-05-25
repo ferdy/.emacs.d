@@ -118,9 +118,13 @@ $ make clean
 ```
 I would also recommend you upgrade every package installed regularly.
 
-If sources do not build correctly, or you find errors while using the latest commit, you can still revert to a working commit:
+If sources do not build correctly, or you find errors while using the latest commit, you can still revert to a working commit and re-build:
 ```console
 $ git reset --hard <commit>
+$ ./configure
+$ make
+$ sudo make install
+$ make clean
 ```
 With the help of tools such as [Magit](https://github.com/magit/magit),
 [Paradox](https://github.com/Bruce-Connor/paradox) and your preferred shell,
