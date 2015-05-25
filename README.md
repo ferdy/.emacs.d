@@ -103,7 +103,7 @@ This configuration tracks latest Emacs developments. If you intend to use it, I 
 
 That is why if your build is more than seven days old, a warning will show up in the minibuffer reminding you to update the sources.
 
-With the help of some tools such as [Magit](https://github.com/magit/magit), [Paradox](https://github.com/Bruce-Connor/paradox) and your preferred shell, maintenance is not that hard.
+With the help of some tools such as [Magit](https://github.com/magit/magit), [Paradox](https://github.com/Bruce-Connor/paradox) and your preferred shell, maintenance is fairly simple.
 
 ##Acknowledgements
 This configuration would not have been possible without the work of and the
