@@ -98,28 +98,6 @@ With prefix P, create local abbrev. Otherwise it will be global."
   :bind (("C-c s l" . synosaurus-lookup)
          ("C-c s r" . synosaurus-choose-and-replace)))
 
-(use-package langtool ; Interact with LanguageTool
-  :ensure t
-  :defer t
-  :config (progn
-            (setq langtool-language-tool-jar ; Set language tool jar
-                  "~/emacs/languagetool-2.8/languagetool-commandline.jar"
-                  langtool-java-bin "/usr/bin/java"
-                  langtool-mother-tongue "en")))
-
-(use-package voca-builder ; Popup dictionary entries
-  :ensure t
-  :bind (("C-c s p" . voca-builder/search-popup)
-         ("C-c s s" . voca-builder/search))
-  :config (setq voca-builder/voca-file "~/org/voca_entries.org"
-                ;; Don't record the vocabulary
-                voca-builder/record-new-vocabulary nil))
-
-(use-package define-word ; Lookup word definition
-  :ensure t
-  :bind (("C-c s d" . define-word-at-point)
-         ("C-c s D" . define-word)))
-
 (provide 'custom-languages)
 
 ;;; custom-languages.el ends here
