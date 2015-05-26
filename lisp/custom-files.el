@@ -116,10 +116,11 @@
 
 (use-package dired-x ; Enable some nice dired features
   :bind ("C-x C-j" . dired-jump)
-  :config (setq
-           dired-omit-verbose nil ; Be less verbose, Dired
-           ;; Omit dotfiles with C-x M-o
-           dired-omit-files (concat dired-omit-files "\\|^\\..+$")))
+  :config (progn
+            (setq dired-omit-verbose nil ; Be less verbose, Dired
+                  ;; Omit dotfiles with C-x M-o
+                  dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+            (add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))))
 
 (use-package ztree ; Text-tree utilities for directories
   :ensure t
