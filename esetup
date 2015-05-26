@@ -204,8 +204,8 @@ pandoc_setup
 pdftools_setup
 flyspell_setup
 synosaurus_setup
-langtool_setup
 font_setup
+#langtool_setup
 #scheme_setup
 #commonlisp_setup
 
