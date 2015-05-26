@@ -142,7 +142,11 @@
             (defun helm-ag-with-prefix-arg ()
               (interactive)
               (setq current-prefix-arg '(4)) ; C-u
-              (call-interactively 'helm-ag))))
+              (call-interactively 'helm-ag))
+
+            (setq helm-ag-fuzzy-match t
+                  helm-ag-insert-at-point 'symbol
+                  helm-ag-source-type 'file-line)))
 
 (use-package helm-swoop ; List matching lines in another buffer
   :ensure t
