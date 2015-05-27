@@ -37,6 +37,7 @@
                                   ("Asia/Tokyo" "Tokyo"))))
 
 (use-package pdf-tools ; Better PDF support
+  :ensure t
   :bind ("C-c M-g" . pdf-view-goto-page)
   :init (pdf-tools-install))
 
