@@ -36,6 +36,12 @@
           (setq syntax-subword-skip-spaces t)
           (global-syntax-subword-mode +1)))
 
+(use-package fix-word ; Transform words intelligently
+  :ensure t
+  :bind (("M-u" . fix-word-upcase)
+         ("M-l" . fix-word-downcase)
+         ("M-c" . fix-word-capitalize)))
+
 (use-package easy-kill ; Better kill text
   :ensure t
   :bind (([remap kill-ring-save] . easy-kill)
