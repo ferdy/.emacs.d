@@ -114,7 +114,18 @@
 
 (use-package eww ; Built-in web browser
   :bind (("C-c w b" . eww-list-bookmarks)
-         ("C-c w w" . eww)))
+         ("C-c w w" . eww))
+  :config (progn
+            (defun custom/eww-keep-lines (regexp)
+              "Show only the lines matching regexp in the web page.
+Call `eww-reload' to undo the filtering."
+              (interactive (list (read-from-minibuffer
+                                  "Keep only lines matching regexp: ")))
+              (save-excursion
+                (read-only-mode -1)
+                (goto-char (point-min))
+                (keep-lines regexp)
+                (read-only-mode 1)))))
 
 (provide 'custom-net)
 
