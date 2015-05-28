@@ -36,7 +36,7 @@
           (setq syntax-subword-skip-spaces t)
           (global-syntax-subword-mode +1)))
 
-(use-package fix-word ; Transform words intelligently
+(use-package fix-word ; Convenient word transformation
   :ensure t
   :bind (("M-u" . fix-word-upcase)
          ("M-l" . fix-word-downcase)
