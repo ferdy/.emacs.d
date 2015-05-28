@@ -59,7 +59,8 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck),
 [helm-flycheck](https://github.com/yasuyk/helm-flycheck)
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
-[helm-wordnet](https://github.com/raghavgautam/helm-wordnet)
+[helm-wordnet](https://github.com/raghavgautam/helm-wordnet),
+[define-word](https://github.com/abo-abo/define-word)
 - Version control: [Magit](https://github.com/magit/magit),
 [magit-gh-pulls](https://github.com/sigma/magit-gh-pulls),
 [diff-hl](https://github.com/dgutov/diff-hl)
