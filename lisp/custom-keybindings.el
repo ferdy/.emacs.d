@@ -78,7 +78,8 @@
                        ("C-," . iedit-dwim)
                        ("C-c o" . (lambda ()
                                     (interactive)
-                                    (find-file "~/org/organizer.org"))))
+                                    (find-file "~/org/organizer.org")))
+                       ("C-c M-s" . helm-ag-with-prefix-arg))
             (global-my-keys-mode))
   :diminish my-keys-mode)
 
