@@ -45,11 +45,6 @@
   :ensure t
   :defer t)
 
-(use-package emacsshot ; Take a screenshot from within Emacs
-  :ensure t
-  :bind (("<print>" . emacsshot-snap-frame))
-  :no-require t)
-
 (use-package camcorder ; Record movements from within Emacs
   :ensure t
   :no-require t
