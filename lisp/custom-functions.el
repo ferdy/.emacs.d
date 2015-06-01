@@ -140,7 +140,7 @@ current Projectile project, or to the current buffer's
 `default-directory', if the file is not part of any project.
 Otherwise copy the non-directory part only."
   (interactive "P")
-  (if-let ((file-name (lunaryorn-current-file))
+  (if-let ((file-name (custom/current-file))
            (name-to-copy
             (cond
              ((zerop (prefix-numeric-value arg)) file-name)
