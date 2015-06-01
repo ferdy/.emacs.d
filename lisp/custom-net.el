@@ -24,7 +24,6 @@
 ;;; Web
 ;; Requires in ~/.ercpass the format
 ;; (setq variable "nickname")
-;; (setq variable "password")
 (use-package erc ; IRC client
   :bind ("C-c w e" . erc)
   :config (progn
@@ -33,9 +32,7 @@
               :defer t
               :config (erc-services-mode 1))
 
-            (setq erc-nick gp-nick
-                  erc-prompt-for-nickserv-password nil
-                  erc-nickserve-passwords `((freenode (,gp-nick . ,gp-pass))))
+            (setq erc-nick gp-nick) ; Set nickname
 
             ;; Disable hl-line-mode in erc
             (add-hook 'erc-mode-hook (lambda ()
