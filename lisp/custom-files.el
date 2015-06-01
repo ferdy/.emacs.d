@@ -10,12 +10,6 @@
 ;; This file stores dired and file settings.
 
 ;;; Code:
-;; Assert the byte compiler that dired functions are defined, because we never
-;; call them for non-dired buffers, so we can be sure that dired is always
-;; loaded first.
-(declare-function dired-get-marked-files "dired")
-(declare-function dired-current-directory "dired")
-
 (use-package recentf ; Manage recent files
   :init (recentf-mode)
   :defer t
