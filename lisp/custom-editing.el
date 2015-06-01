@@ -133,7 +133,10 @@
   :init (save-place-mode))
 
 (use-package autorevert ; Auto-revert buffers of changed files
-  :init (global-auto-revert-mode))
+  :init (global-auto-revert-mode)
+  :config (setq auto-revert-verbose nil
+                ;; Revert Dired buffers, too
+                global-auto-revert-non-file-buffers t))
 
 (use-package elisp-slime-nav ; Navigate through elisp code with M-. & M-,
   :ensure t
