@@ -134,7 +134,7 @@
 
 (use-package autorevert ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
-  :config (setq auto-revert-verbose nil ; No messages
+  :config (setq auto-revert-verbose nil
                 ;; Revert Dired buffers, too
                 global-auto-revert-non-file-buffers t))
 
