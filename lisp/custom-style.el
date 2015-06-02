@@ -26,6 +26,10 @@
 
             (dynamic-fonts-setup)))
 
+(use-package unicode-fonts ; Map Unicode blocks to fonts
+  :ensure t
+  :init (unicode-fonts-setup))
+
 ;;; Interface
 ;; Toggle all frames maximized and fullscreen
 (modify-all-frames-parameters '((fullscreen . maximized)))
