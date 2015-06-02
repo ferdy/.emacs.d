@@ -122,31 +122,13 @@
   :defer t
   :bind ("M-o" . helm-occur))
 
-(use-package helm-find ; Find with Helm
-  :ensure helm
-  :defer t
-  :bind ("C-c h /" . helm-find-with-prefix-arg)
-  :config (progn
-            ;; Call helm-find with C-u
-            (defun helm-find-with-prefix-arg ()
-              (interactive)
-              (setq current-prefix-arg '(4)) ; C-u
-              (call-interactively 'helm-find))))
-
 (use-package helm-ag ; Helm interface for Ag
   :ensure t
-  :commands helm-ag
-  :bind ("C-c M-s" . helm-ag-with-prefix-arg)
-  :config (progn
-            ;; Call helm-ag with C-u
-            (defun helm-ag-with-prefix-arg ()
-              (interactive)
-              (setq current-prefix-arg '(4)) ; C-u
-              (call-interactively 'helm-ag))
-
-            (setq helm-ag-fuzzy-match t
-                  helm-ag-insert-at-point 'symbol
-                  helm-ag-source-type 'file-line)))
+  :commands helm-do-ag
+  :bind ("C-c M-s" . helm-do-ag)
+  :config (setq helm-ag-fuzzy-match t
+                helm-ag-insert-at-point 'symbol
+                helm-ag-source-type 'file-line))
 
 (use-package helm-swoop ; List matching lines in another buffer
   :ensure t

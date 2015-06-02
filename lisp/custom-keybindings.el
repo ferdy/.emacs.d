@@ -79,7 +79,7 @@
                        ("C-c o" . (lambda ()
                                     (interactive)
                                     (find-file "~/org/organizer.org")))
-                       ("C-c M-s" . helm-ag-with-prefix-arg))
+                       ("C-c M-s" . helm-do-ag))
             (global-my-keys-mode))
   :diminish my-keys-mode)
 
