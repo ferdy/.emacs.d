@@ -101,7 +101,7 @@ Inside a code-block, simply calls `self-insert-command'."
             (use-package org-pdfview ; Support for org links from pdfview buffers
               :ensure t)
 
-            ;; Use org mode for eml files (useful for thunderbird plugin)
+            ;; Use org mode for .eml files (useful for Thunderbird plugin)
             (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))))
 
 ;; Auto insert custom text upon opening an org file
