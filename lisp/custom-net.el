@@ -45,10 +45,7 @@
   :config (progn
             (setq elfeed-feeds
                   '(("http://planet.emacsen.org/atom.xml" emacs)
-                    ("http://pragmaticemacs.com/feed/" emacs)
                     ("http://planet.clojure.in/atom.xml" clojure)
-                    ("http://feeds.feedburner.com/disclojure?format=xml"
-                     clojure)
                     ("http://flashstrap.blogspot.com/feeds/posts/default" music)
                     ("http://jazzfromitaly.blogspot.it/feeds/posts/default"
                      music)
