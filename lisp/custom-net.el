@@ -109,7 +109,7 @@
 (use-package browse-url ; Browse URLs
   :bind ("C-c w u" . browse-url)
   :config (setq browse-url-browser-function 'browse-url-generic
-                browse-url-generic-program "/home/manuel/firefox/firefox"))
+                browse-url-generic-program "~/firefox/firefox"))
 
 (use-package eww ; Built-in web browser
   :bind (("C-c w b" . eww-list-bookmarks)
