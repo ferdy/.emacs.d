@@ -35,13 +35,16 @@
            ("r" . revert-this-buffer)
            ("w" . writeroom-mode))
 
-(bind-key "M-g" 'goto-line) ; Goto line is M-g
-
-(bind-key "C-x C-k" 'kill-this-buffer) ; Kill only the current buffer
-
 (setq next-line-add-newlines t) ; C^n adds new line when at the end of a line
 
+(bind-key "M-g" 'goto-line) ; Goto line is M-g
+(bind-key "M-=" 'count-words) ; Use count-words instead of count-words-region
+(bind-key "C-x C-k" 'kill-this-buffer) ; Kill only the current buffer
 (bind-key "C-;" #'comment-line) ; Comment-line
+(bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
+(bind-key "C-c M-o" #'comint-clear-buffer comint-mode-map) ; Clear comint buffer
+(bind-key [remap isearch-delete-char]
+          #'custom/isearch-delete isearch-mode-map) ; Better backspace in isearch
 
 ;; Better mark commands
 (bind-key "C-+" 'push-mark-no-activate)
@@ -49,24 +52,17 @@
 (bind-key [remap exchange-point-and-mark]
           'exchange-point-and-mark-no-activate global-map)
 
-(bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
-
 ;; Kill entire line with prefix argument
 (bind-key [remap sp-kill-hybrid-sexp] (bol-with-prefix sp-kill-hybrid-sexp))
 (bind-key [remap org-kill-line] (bol-with-prefix org-kill-line))
 (bind-key [remap kill-line] (bol-with-prefix kill-line))
 (bind-key "C-k" (bol-with-prefix kill-visual-line))
 
-(bind-key "C-c M-o" #'comint-clear-buffer comint-mode-map) ; Clear comint buffer
-
 ;; Better shrink/enlarge windows
 (bind-key "C-S-<up>" 'enlarge-window)
 (bind-key "C-S-<down>" 'shrink-window)
 (bind-key "C-S-<left>" 'shrink-window-horizontally)
 (bind-key "C-S-<right>" 'enlarge-window-horizontally)
-
-(bind-key [remap isearch-delete-char]
-          #'custom/isearch-delete isearch-mode-map) ; Better backspace in isearch
 
 ;; Minor mode for 'override' keybindings
 (use-package my-keys-mode
