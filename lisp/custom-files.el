@@ -21,8 +21,9 @@
                                       "/ssh:")))
 
 (use-package dired ; File manager
-  :bind (("C-c z" . dired-get-size)
-         ("C-c C" . custom/copy-filename-as-kill))
+  :bind (("C-c z"      . dired-get-size)
+         ("C-c C"      . custom/copy-filename-as-kill)
+         ("<C-return>" . custom/open-in-external-app))
   :config (progn
             (setq dired-auto-revert-buffer t            ; Revert buffers on revisiting
                   dired-listing-switches
@@ -32,10 +33,8 @@
                   dired-dwim-target t                   ; Use other pane as target
                   dired-recursive-copies 'always        ; Copy dirs recursively
                   dired-recursive-deletes ' always      ; Delete dirs recursively
-                  dired-ls-F-marks-symlinks t           ; -F marks links with @
-                  dired-guess-shell-alist-user          ; Use LibreOffice when needed
-                  '(("\\.ods\\'\\|\\.xls?\\'\\|\\.xlsx?\\'" "libreoffice")
-                    ("\\.odt\\'\\|\\.doc?\\'\\|\\.docx?\\'" "libreoffice")))
+                  ;; -F marks links with @
+                  dired-ls-F-marks-symlinks t)
 
             ;; Enable dired-find-alternate-file
             (put 'dired-find-alternate-file 'disabled nil)
