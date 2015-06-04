@@ -368,6 +368,23 @@ Add this to `kill-buffer-query-functions'."
   "Save all modified buffers, without prompts."
   (save-some-buffers 'dont-ask))
 
+(defun custom/open-in-external-app ()
+  "Open the current file or dired marked files in external app.
+The app is chosen from your OS's preference."
+  (interactive)
+  (let* ((file-list
+          (if (string-equal major-mode "dired-mode")
+              (dired-get-marked-files)
+            (list (buffer-file-name))))
+         (do-it-p (if (<= (length file-list) 5)
+                      t
+                    (y-or-n-p "Open more than 5 files? "))))
+    (when do-it-p
+      (mapc
+       (lambda (fPath)
+         (let ((process-connection-type nil))
+           (start-process "" nil "xdg-open" fPath))) file-list))))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here
