@@ -26,15 +26,6 @@
   :bind (("C-c r" . vr/query-replace)
          ("C-c R" . vr/replace)))
 
-(use-package anzu ; Show search results number in mode-line
-  :ensure t
-  :init (global-anzu-mode)
-  :config (progn
-            (setq anzu-cons-mode-line-p nil
-                  anzu-mode-lighter "")
-            (setcar (cdr (assq 'isearch-mode minor-mode-alist))
-                    '(:eval (anzu--update-mode-line)))))
-
 (provide 'custom-search)
 
 ;;; custom-search.el ends here
