@@ -28,7 +28,7 @@
 
 (use-package unicode-fonts ; Map Unicode blocks to fonts
   :ensure t
-  :init (unicode-fonts-setup))
+  :config (unicode-fonts-setup))
 
 ;;; Interface
 ;; Toggle all frames maximized and fullscreen
