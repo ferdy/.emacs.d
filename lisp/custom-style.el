@@ -28,7 +28,10 @@
 
 (use-package unicode-fonts ; Map Unicode blocks to fonts
   :ensure t
-  :config (unicode-fonts-setup))
+  :config (progn
+            (setq unicode-fonts-skip-font-groups '(low-quality-glyphs)
+                  unicode-fonts-use-prepend t)
+            (unicode-fonts-setup)))
 
 ;;; Interface
 ;; Toggle all frames maximized and fullscreen
