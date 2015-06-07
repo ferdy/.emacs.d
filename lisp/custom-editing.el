@@ -100,7 +100,7 @@
   :config (setq ediff-window-setup-function #'ediff-setup-windows-plain
                 ediff-split-window-function #'split-window-horizontally))
 
-(use-package multiple-cursors ; Easily place multiple cursor in a buffer
+(use-package multiple-cursors ; Easily place multiple cursors in a buffer
   :ensure t
   :bind (("C-c m <SPC>" . mc/vertical-align-with-space)
          ("C-c m a"     . mc/vertical-align)
