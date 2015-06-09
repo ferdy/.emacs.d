@@ -50,9 +50,7 @@
                     ("http://jazzfromitaly.blogspot.it/feeds/posts/default"
                      music)
                     ("http://www.wumingfoundation.com/giap/?feed=rss2" book)
-                    ("https://cavallette.noblogs.org/feed" security)
-                    ("http://feeds.feedburner.com/disinfo/oMPh" news)
-                    ("https://firstlook.org/theintercept/feed/?rss" news)))
+                    ("https://cavallette.noblogs.org/feed" security)))
 
             (setf url-queue-timeout 30) ; Increase url-queue timeout
 
