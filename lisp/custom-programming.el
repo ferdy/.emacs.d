@@ -41,11 +41,6 @@
                            (window-height . 0.4))))
   :diminish flycheck-mode)
 
-(use-package flycheck-package ; Flycheck for Emacs package development
-  :ensure t
-  :defer t
-  :init (with-eval-after-load 'flycheck (flycheck-package-setup)))
-
 (use-package flycheck-clojure ; Backend for Clojure
   :ensure t
   :defer t
