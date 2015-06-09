@@ -1,7 +1,6 @@
 #!/bin/bash
 
-prerequisites()
-{
+prerequisites() {
     echo "
 configuring prerequisites..."
     sudo apt-get -y install --no-install-recommends make gcc automake autoconf
@@ -10,8 +9,7 @@ configuring prerequisites..."
 ... done"
 }
 
-ag_setup()
-{
+ag_setup() {
     echo "
 configuring ag..."
     sudo apt-get -y install --no-install-recommends silversearcher-ag
@@ -19,8 +17,7 @@ configuring ag..."
 ... done"
 }
 
-scheme_setup()
-{
+scheme_setup() {
     echo "
 configuring Scheme..."
     sudo apt-get -y install --no-install-recommends guile-2.0
@@ -28,8 +25,7 @@ configuring Scheme..."
 ... done"
 }
 
-commonlisp_setup()
-{
+commonlisp_setup() {
     echo "
 configuring Common Lisp..."
     sudo apt-get -y install --no-install-recommends sbcl slime sbcl-doc
@@ -39,25 +35,23 @@ configuring Common Lisp..."
 ... done"
 }
 
-clojure_setup()
-{
+clojure_setup() {
     echo "
 configuring Clojure..."
     sudo apt-get -y install --no-install-recommends openjdk-8-jre
     echo "
 getting Lein..."
-    if [ ! -d "/home/manuel/bin" ]; then
-	mkdir -p /home/manuel/bin
-	export PATH=$PATH:/home/manuel/bin
+    if [ ! -d "$HOME/bin" ]; then
+	mkdir -p $HOME/bin
+	export PATH=$PATH:$HOME/bin
     fi
-    wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O /home/manuel/bin/lein
-    chmod 755 /home/manuel/bin/lein
+    wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O $HOME/bin/lein
+    chmod 755 $HOME/bin/lein
     echo "
 ... done"
 }
 
-latex_setup()
-{
+latex_setup() {
     echo "
 configuring LaTeX..."
     sudo apt-get -y install --no-install-recommends texlive-latex-base
@@ -77,24 +71,23 @@ configuring LaTeX..."
     sudo apt-get -y install --no-install-recommends latex-xcolor fonts-lmodern lmodern
     echo "
 ... done. Configuring chktex for Flycheck..."
-    if [ ! -d "/home/manuel/sources" ]; then
-	mkdir -p /home/manuel/sources
+    if [ ! -d "$HOME/sources" ]; then
+	mkdir -p $HOME/sources
     fi
-    cd /home/manuel/sources
+    cd $HOME/sources
     wget http://download.savannah.gnu.org/releases/chktex/chktex-1.7.2.tar.gz
     tar xzf chktex-1.7.2.tar.gz
     rm chktex-1.7.2.tar.gz
     cd chktex-1.7.2
     ./configure --enable-lacheck-replace && make
     sudo make install
-    cp /usr/local/etc/chktexrc /home/manuel/.chktexrc
+    cp /usr/local/etc/chktexrc $HOME/.chktexrc
     echo "
 ... done"
-    cd /home/manuel
+    cd $HOME
 }
 
-pandoc_setup()
-{
+pandoc_setup() {
     echo "
 configuring Pandoc..."
     sudo apt-get -y install --no-install-recommends pandoc
@@ -102,8 +95,7 @@ configuring Pandoc..."
 ... done"
 }
 
-pdftools_setup()
-{
+pdftools_setup() {
     echo "
 configuring pdf-tools..."
     echo "
@@ -114,10 +106,10 @@ configuring dependencies..."
     sudo apt-get -y install --no-install-recommends imagemagick
     echo "
 ... done. Building pdf-tools..."
-    if [ ! -d "/home/manuel/githubs" ]; then
-	mkdir -p /home/manuel/githubs
+    if [ ! -d "$HOME/githubs" ]; then
+	mkdir -p $HOME/githubs
     fi
-    cd /home/manuel/githubs
+    cd $HOME/githubs
     git clone https://github.com/politza/pdf-tools
     cd pdf-tools
     ./autogen.sh
@@ -125,11 +117,10 @@ configuring dependencies..."
     make install-package
     echo "
 ... done"
-    cd /home/manuel
+    cd $HOME
 }
 
-flyspell_setup()
-{
+flyspell_setup() {
     echo "
 configuring flyspell..."
     sudo apt-get -y install --no-install-recommends aspell aspell-en aspell-it
@@ -137,8 +128,7 @@ configuring flyspell..."
 ... done"
 }
 
-synosaurus_setup()
-{
+synosaurus_setup() {
     echo "
 configuring synosaurus..."
     sudo apt-get -y install --no-install-recommends wordnet
@@ -146,17 +136,16 @@ configuring synosaurus..."
 ... done"
 }
 
-langtool_setup()
-{
+langtool_setup() {
     echo "
 configuring langtool..."
-    if [ ! -d "/home/manuel/emacs" ]; then
-	mkdir -p /home/manuel/emacs
+    if [ ! -d "$HOME/emacs" ]; then
+	mkdir -p $HOME/emacs
     fi
     if [ ! -x /usr/bin/unzip ]; then
         sudo apt-get -y install --no-install-recommends unzip
     fi
-    cd /home/manuel/emacs
+    cd $HOME/emacs
     wget https://www.languagetool.org/download/LanguageTool-2.8.zip
     unzip LanguageTool-2.8.zip
     mv LanguageTool-2.8 languagetool-2.8
@@ -165,25 +154,30 @@ configuring langtool..."
 ... done"
 }
 
-font_setup()
-{
+font_setup() {
     echo "
 configuring DejaVu fonts..."
     sudo apt-get -y install --no-install-recommends fonts-dejavu fonts-dejavu-extra
     echo "
 configuring Souce Code Pro..."
-    if [ ! -d "/home/manuel/.fonts" ]; then
-	mkdir -p /home/manuel/.fonts
+    if [ ! -d "$HOME/.fonts" ]; then
+	mkdir -p $HOME/.fonts
     fi
-    cd /home/manuel
+    cd $HOME
     wget https://github.com/adobe-fonts/source-code-pro/archive/1.017R.tar.gz
     tar xzf 1.017R.tar.gz
     cd source-code-pro-1.017R
-    cp -r /home/manuel/source-code-pro-1.017R/TTF /home/manuel/.fonts/souce-code-pro
+    cp -r $HOME/source-code-pro-1.017R/TTF $HOME/.fonts/souce-code-pro
     rm -rf source-code-pro-1.017R 1.017R.tar.gz
     fc-cache -fv
     echo "
 ... done"
+}
+
+camcorder_setup() {
+    echo "
+configuring camcorder dependencies..."
+    sudo apt-get -y install --no-install-recommends recordmydesktop
 }
 
 echo "
@@ -195,7 +189,7 @@ echo "
 
 sudo -v # gets user password for next sudos
 
-cd /home/manuel
+cd $HOME
 prerequisites
 ag_setup
 clojure_setup
@@ -205,6 +199,7 @@ pdftools_setup
 flyspell_setup
 synosaurus_setup
 font_setup
+camcorder_setup
 #langtool_setup
 #scheme_setup
 #commonlisp_setup
