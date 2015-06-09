@@ -136,24 +136,6 @@ configuring synosaurus..."
 ... done"
 }
 
-langtool_setup() {
-    echo "
-configuring langtool..."
-    if [ ! -d "$HOME/emacs" ]; then
-	mkdir -p $HOME/emacs
-    fi
-    if [ ! -x /usr/bin/unzip ]; then
-        sudo apt-get -y install --no-install-recommends unzip
-    fi
-    cd $HOME/emacs
-    wget https://www.languagetool.org/download/LanguageTool-2.8.zip
-    unzip LanguageTool-2.8.zip
-    mv LanguageTool-2.8 languagetool-2.8
-    rm LanguageTool-2.8.zip
-    echo "
-... done"
-}
-
 font_setup() {
     echo "
 configuring DejaVu fonts..."
@@ -200,7 +182,6 @@ flyspell_setup
 synosaurus_setup
 font_setup
 camcorder_setup
-#langtool_setup
 #scheme_setup
 #commonlisp_setup
 
