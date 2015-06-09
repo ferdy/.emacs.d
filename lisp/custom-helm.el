@@ -179,6 +179,10 @@
   :commands helm-descbinds
   :bind ("C-c h d" . helm-descbinds))
 
+(use-package helm-unicode ; Browse Unicode characters by name
+  :ensure t
+  :bind ("C-c h 8" . helm-unicode))
+
 (use-package helm-flyspell ; Use Flyspell with Helm
   :ensure t
   :commands helm-flyspell-correct
