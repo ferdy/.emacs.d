@@ -168,6 +168,14 @@ Inside a code-block, simply calls `self-insert-command'."
   :defer t
   :init (add-hook 'org-mode-hook 'toc-org-enable))
 
+(use-package ox-pandoc ; Export Org documents via Pandoc
+  :ensure t
+  :defer t
+  :config (setq org-pandoc-options '((standalone . t)) ; default options
+                ;; special settings for beamer-pdf and latex-pdf exporters
+                org-pandoc-options-for-beamer-pdf '((latex-engine . "luatex"))
+                org-pandoc-options-for-latex-pdf '((latex-engine . "luatex"))))
+
 (provide 'custom-org)
 
 ;;; custom-org.el ends here

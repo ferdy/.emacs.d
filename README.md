@@ -58,6 +58,9 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
   [org-pdfview](https://github.com/markus1189/org-pdfview),
   [toc-org](https://github.com/snosov1/toc-org),
   [org2blog](https://github.com/punchagan/org2blog)
+- Documents formatting:
+  [pandoc-mode](https://github.com/joostkremers/pandoc-mode),
+  [ox-pandoc](https://github.com/kawabata/ox-pandoc)
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html),
   [helm-bibtex](https://github.com/tmalsburg/helm-bibtex)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider),
