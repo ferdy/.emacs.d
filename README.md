@@ -37,7 +37,6 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 - Navigation: [Avy](https://github.com/abo-abo/avy),
 [ace-window](https://github.com/abo-abo/ace-window),
 [ace-link](https://github.com/abo-abo/ace-link)
-- File and directories: [ztree](https://github.com/fourier/ztree)
 - Editing: [Iedit](https://github.com/victorhge/iedit),
   [transpose-mark](https://github.com/AtticHacker/transpose-mark),
   [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
