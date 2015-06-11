@@ -143,22 +143,6 @@ Inside a code-block, simply calls `self-insert-command'."
                      :url "http://informatica.boccaperta.com/xmlrpc.php"
                      :username "manuel")))))
 
-(use-package org-tree-slide ; Slides via org-mode
-  :ensure t
-  :no-require t
-  :config (progn
-            (bind-keys :map org-mode-map
-                       ("<f8>"   . org-tree-slide-mode)
-                       ("S-<f8>" . org-tree-slide-skip-done-toggle))
-            (bind-keys :map org-tree-slide-mode-map
-                       ("<f9>"  . org-tree-slide-move-previous-tree)
-                       ("<f10>" . org-tree-slide-move-next-tree)
-                       ("<f11>" . org-tree-slide-content))
-
-            (setq org-tree-slide-skip-outline-level 4)
-            (org-tree-slide-narrowing-control-profile)
-            (setq org-tree-slide-skip-done nil)))
-
 (use-package org-magit ; Magit links in Org buffers
   :ensure t
   :defer t)
