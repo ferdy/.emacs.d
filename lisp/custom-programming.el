@@ -109,14 +109,6 @@
   :defer t
   :mode "\\.php\\'")
 
-(use-package json-mode ; JSON files
-  :ensure t
-  :defer t)
-
-(use-package json-reformat ; Reformat JSON
-  :ensure t
-  :defer t)
-
 (provide 'custom-programming)
 
 ;;; custom-programming.el ends here
