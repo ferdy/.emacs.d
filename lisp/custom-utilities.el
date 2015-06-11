@@ -71,10 +71,6 @@
   :ensure t
   :no-require t)
 
-(use-package unkillable-scratch ; Unkillable Scratch buffer
-  :ensure t
-  :init (unkillable-scratch 1))
-
 (use-package esup ; Emacs Startup Profiler
   :ensure t
   :commands esup)
@@ -82,10 +78,6 @@
 (use-package writeroom-mode ; Distraction-free interface
   :ensure t
   :commands writeroom-mode)
-
-(use-package speed-type ; Practice touch-typing
-  :ensure t
-  :commands speed-type-text)
 
 (use-package command-log-mode ; Show event history and command history
   :ensure t
