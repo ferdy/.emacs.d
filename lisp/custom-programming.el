@@ -90,8 +90,10 @@
 
 (use-package js2-mode ; Better JavaScript support
   :ensure t
-  :mode "\\.js\\(?:on\\)?\\'"
-  :config (add-hook 'js-mode-hook 'js2-minor-mode))
+  :mode "\\.js\\'"
+  :config (progn
+            (setq-default js2-basic-offset 2)
+            (add-hook 'js2-mode-hook #'js2-highlight-unused-variables-mode)))
 
 (use-package css-mode ; Better CSS support
   :defer t
