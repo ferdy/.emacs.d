@@ -155,12 +155,17 @@ Inside a code-block, simply calls `self-insert-command'."
 (use-package ox-pandoc ; Export Org documents via Pandoc
   :ensure t
   :defer t
-  :config (setq org-pandoc-options '((standalone . t)) ; default options
-                ;; special settings for beamer-pdf and latex-pdf exporters
-                org-pandoc-options-for-beamer-pdf
-                '((latex-engine . "lualatex"))
-                org-pandoc-options-for-latex-pdf
-                '((latex-engine . "lualatex"))))
+  :config (progn
+            (setq org-pandoc-options '((standalone . t)) ; default options
+                  ;; special settings for beamer-pdf and latex-pdf exporters
+                  org-pandoc-options-for-beamer-pdf
+                  '((latex-engine . "lualatex"))
+                  org-pandoc-options-for-latex-pdf
+                  '((latex-engine . "lualatex")))
+            (let ((stylesheet (expand-file-name
+                               (locate-user-emacs-file "etc/pandoc.css"))))
+              (setq org-pandoc-options-for-html5
+                    `((css . ,(concat "file://" stylesheet)))))))
 
 (provide 'custom-org)
 
