@@ -162,6 +162,8 @@ Inside a code-block, simply calls `self-insert-command'."
                   '((latex-engine . "lualatex"))
                   org-pandoc-options-for-latex-pdf
                   '((latex-engine . "lualatex")))
+
+            ;; Use external css for html5
             (let ((stylesheet (expand-file-name
                                (locate-user-emacs-file "etc/pandoc.css"))))
               (setq org-pandoc-options-for-html5
