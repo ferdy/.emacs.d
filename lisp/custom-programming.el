@@ -82,6 +82,12 @@
                   (locate-user-emacs-file "cider-repl-history")
                   cider-repl-pop-to-buffer-on-connect nil)))
 
+;;; Scheme
+(use-package geiser ; Collection of modes for Scheme interpreters
+  :ensure t
+  :commands run-geiser
+  :init (setq geiser-active-implementations '(chicken guile)))
+
 ;;; Web development
 (use-package web-mode
   :ensure t

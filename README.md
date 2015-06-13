@@ -64,7 +64,8 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 - LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html),
   [helm-bibtex](https://github.com/tmalsburg/helm-bibtex)
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider),
-  [flycheck-clojure](https://github.com/clojure-emacs/squiggly-clojure)
+[flycheck-clojure](https://github.com/clojure-emacs/squiggly-clojure)
+- Scheme: [Geiser](https://github.com/jaor/geiser)
 - Web: [SX](https://github.com/vermiculus/sx.el),
   [Elfeed](https://github.com/skeeto/elfeed)
 - PDF: [PDF Tools](https://github.com/politza/pdf-tools),
