@@ -21,6 +21,11 @@ scheme_setup() {
     echo "
 configuring Scheme..."
     sudo apt-get -y install --no-install-recommends guile-2.0
+    sudo apt-get -y install --no-install-recommends chicken-bin libchicken7 libchicken-dev
+    chicken-install -s apropos chicken-doc
+    cd `csi -p '(chicken-home)'`
+    curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
+    cd $HOME
     echo "
 ... done"
 }
@@ -175,6 +180,7 @@ cd $HOME
 prerequisites
 ag_setup
 clojure_setup
+scheme_setup
 latex_setup
 pandoc_setup
 pdftools_setup
@@ -182,7 +188,6 @@ flyspell_setup
 synosaurus_setup
 font_setup
 camcorder_setup
-#scheme_setup
 #commonlisp_setup
 
 echo "
