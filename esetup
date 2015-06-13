@@ -33,7 +33,7 @@ configuring Scheme..."
 commonlisp_setup() {
     echo "
 configuring Common Lisp..."
-    sudo apt-get -y install --no-install-recommends sbcl slime sbcl-doc
+    sudo apt-get -y install --no-install-recommends sbcl sbcl-doc
     sudo apt-get -y install --no-install-recommends cl-clx-sbcl cl-ppcre
     sudo apt-get -y install --no-install-recommends texinfo cl-swank
     echo "
@@ -181,6 +181,7 @@ prerequisites
 ag_setup
 clojure_setup
 scheme_setup
+#commonlisp_setup
 latex_setup
 pandoc_setup
 pdftools_setup
@@ -188,7 +189,6 @@ flyspell_setup
 synosaurus_setup
 font_setup
 camcorder_setup
-#commonlisp_setup
 
 echo "
 environment ready, now fire up Emacs!
