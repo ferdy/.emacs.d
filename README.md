@@ -15,9 +15,9 @@ It requires **Emacs trunk** to work. I regularly update my sources from here:
 git://git.savannah.gnu.org/emacs.git
 ```
 
-I use Emacs on [LinuxBBQ](http://linuxbbq.org/). The ```esetup``` script helps to create the right
-environment *before* starting Emacs with this configuration for the first
-time. The script only works with **Debian-based** systems.
+I use Emacs on [LinuxBBQ](http://linuxbbq.org/). The ```esetup``` script helps
+to create the right environment *before* starting Emacs with this configuration
+for the first time. The script only works with **Debian-based** systems.
 
 I mainly use Emacs for **LaTeX**, **Elisp** and **Clojure**, so my setup is
 planned accordingly.
