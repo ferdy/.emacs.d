@@ -13,14 +13,6 @@
 
 (use-package helm
   :ensure t
-  :bind (([remap execute-extended-command] . helm-M-x)
-         ([remap switch-to-buffer]         . helm-mini)
-         ([remap yank-pop]                 . helm-show-kill-ring)
-         ("C-h SPC"                        . helm-all-mark-rings)
-         ("C-c h M-:"                      . helm-eval-expression-with-eldoc)
-         ("C-c h e"                        . helm-info-emacs)
-         ("C-c h i"                        . helm-info-at-point)
-         ("C-c h l"                        . helm-locate-library))
   :init (helm-mode 1)
   :config (progn
             (use-package helm-config
@@ -55,9 +47,12 @@
                          'helm-source-man-pages))
   :diminish helm-mode)
 
+(use-package helm-command ; M-x in Helm
+  :ensure helm
+  :bind ([remap execute-extended-command] . helm-M-x))
+
 (use-package helm-files ; Find files with Helm
   :ensure helm
-  :defer t
   :bind (([remap find-file] . helm-find-files)
          ("C-x C-r"         . helm-recentf))
   :config (progn
@@ -78,6 +73,10 @@
                   ;; Sort directories first
                   helm-find-files-sort-directories t)))
 
+(use-package helm-misc ; Misc Helm commands
+  :ensure helm
+  :bind ([remap switch-to-buffer] . helm-mini))
+
 (use-package helm-buffers ; Manage buffers with Helm
   :ensure helm
   :defer t
@@ -87,20 +86,46 @@
             ;; Fuzzy matching
             (setq helm-buffers-fuzzy-matching t)))
 
+(use-package helm-ring ; Helm commands for rings
+  :ensure helm
+  :bind (([remap yank-pop]        . helm-show-kill-ring)
+         ([remap insert-register] . helm-register)
+         ("C-h SPC"                        . helm-all-mark-rings)))
+
 (use-package helm-imenu ; Imenu through Helm
   :ensure helm
-  :defer t
   :bind ("C-c i" . helm-semantic-or-imenu))
 
 (use-package helm-register ; Display registers with Helm
   :ensure helm
-  :defer t
   :bind ([remap insert-register] . helm-register))
 
 (use-package helm-bookmarks ; List bookmarks with Helm
   :ensure helm
-  :defer t
   :bind ("C-x r l" . helm-bookmarks))
+
+(use-package helm-eval ; Evaluate expressions with Helm
+  :ensure helm
+  :bind (("C-c h M-:" . helm-eval-expression-with-eldoc)
+         ("C-c h *"   . helm-calcul-expression)))
+
+(use-package helm-elisp ; Helm commands for Emacs Lisp
+  :ensure helm
+  :bind (("C-c h a" . helm-apropos)
+         ("C-c h l" . helm-locate-library)))
+
+(use-package helm-info ; Helm tools for Info
+  :ensure helm
+  :bind (("C-c h e" . helm-info-emacs)
+         ("C-c h i" . helm-info-at-point)))
+
+(use-package helm-man
+  :ensure helm
+  :bind ("C-c h m" . helm-man-woman))
+
+(use-package helm-color ; Input colors with Helm
+  :ensure helm
+  :bind ("C-c h c" . helm-colors))
 
 (use-package helm-shell ; Manage shells/terms with Helm
   :ensure helm
@@ -119,8 +144,8 @@
 
 (use-package helm-occur ; Occur with Helm
   :ensure helm
-  :defer t
-  :bind ("M-o" . helm-occur))
+  :bind (([remap occur] . helm-occur)
+         ("C-c h o"     . helm-multi-occur)))
 
 (use-package helm-ag ; Helm interface for Ag
   :ensure t
