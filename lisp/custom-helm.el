@@ -10,7 +10,6 @@
 ;; This file stores my Helm configuration.
 
 ;;; Code:
-
 (use-package helm
   :ensure t
   :init (helm-mode 1)
