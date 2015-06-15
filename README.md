@@ -27,8 +27,12 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 
 ##Overview
 - Theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
-- Font: [Source Code Pro](https://github.com/adobe-fonts/source-code-pro),
-  [dynamic-fonts](https://github.com/rolandwalker/dynamic-fonts)
+- Default font:
+[Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
+- Fonts utilities:
+  [unicode-fonts](https://github.com/rolandwalker/unicode-fonts),
+  [dynamic-fonts](https://github.com/rolandwalker/dynamic-fonts),
+  [helm-unicode](https://github.com/shosti/helm-unicode)
 - Package management: [use-package](https://github.com/jwiegley/use-package),
   [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line)
