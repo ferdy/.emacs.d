@@ -94,7 +94,7 @@
 
 (use-package helm-imenu ; Imenu through Helm
   :ensure helm
-  :bind ("C-c i" . helm-semantic-or-imenu))
+  :bind ("C-c i" . helm-imenu-in-all-buffers))
 
 (use-package helm-register ; Display registers with Helm
   :ensure helm
