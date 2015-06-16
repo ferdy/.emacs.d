@@ -81,9 +81,10 @@
   :defer t
   :config (progn
             (bind-key "C-k" #'helm-buffer-run-kill-persistent helm-buffer-map)
-
             ;; Fuzzy matching
-            (setq helm-buffers-fuzzy-matching t)))
+            (setq helm-buffers-fuzzy-matching t)
+            ;; Mini-buffer history
+            (bind-key "C-c C-l" #'helm-minibuffer-history minibuffer-local-map)))
 
 (use-package helm-ring ; Helm commands for rings
   :ensure helm
@@ -134,12 +135,8 @@
                     #'(lambda ()
                         (bind-key "C-c C-l"
                                   'helm-eshell-history eshell-mode-map)))
-
           ;; Shell history
-          (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)
-
-          ;; Mini-buffer history
-          (bind-key "C-c C-l" #'helm-minibuffer-history minibuffer-local-map)))
+          (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)))
 
 (use-package helm-occur ; Occur with Helm
   :ensure helm
