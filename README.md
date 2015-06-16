@@ -31,8 +31,7 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 - Fonts utilities:
   [unicode-fonts](https://github.com/rolandwalker/unicode-fonts),
-  [dynamic-fonts](https://github.com/rolandwalker/dynamic-fonts),
-  [helm-unicode](https://github.com/shosti/helm-unicode)
+  [dynamic-fonts](https://github.com/rolandwalker/dynamic-fonts)
 - Package management: [use-package](https://github.com/jwiegley/use-package),
   [Paradox](https://github.com/Bruce-Connor/paradox)
 - Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line)
