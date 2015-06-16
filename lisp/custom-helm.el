@@ -89,7 +89,7 @@
   :ensure helm
   :bind (([remap yank-pop]        . helm-show-kill-ring)
          ([remap insert-register] . helm-register)
-         ("C-h SPC"                        . helm-all-mark-rings)))
+         ("C-h SPC"               . helm-all-mark-rings)))
 
 (use-package helm-imenu ; Imenu through Helm
   :ensure helm
