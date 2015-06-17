@@ -100,6 +100,8 @@
 (setq-default indent-tabs-mode nil
               tab-width 8)
 
+(setq-default line-spacing 0.1) ; Increase line-spacing (default 0)
+
 (setq tab-always-indent 'complete) ; Make Tab complete if the line is indented
 
 ;; Configure a reasonable fill column and enable automatic filling
