@@ -141,7 +141,8 @@
 
 (use-package easy-escape ; Improve escape backslashes readability
   :ensure t
-  :config (add-hook 'prog-mode-hook 'easy-escape-minor-mode))
+  :config (add-hook 'prog-mode-hook 'easy-escape-minor-mode)
+  :diminish easy-escape-minor-mode)
 
 (provide 'custom-editing)
 
