@@ -139,6 +139,10 @@
   :config (setq copyright-year-ranges t
                 copyright-names-regexp (regexp-quote user-full-name)))
 
+(use-package easy-escape ; Improve escape backslashes readability
+  :ensure t
+  :config (add-hook 'prog-mode-hook 'easy-escape-minor-mode))
+
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here
