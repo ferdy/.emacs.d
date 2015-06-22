@@ -17,6 +17,11 @@
      (add-to-list 'grep-find-ignored-directories "elpa")))
 (add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
 
+(use-package anzu ; Position/matches count for isearch
+  :ensure t
+  :init (global-anzu-mode)
+  :diminish anzu-mode)
+
 (use-package wgrep
   :ensure t
   :defer t)
