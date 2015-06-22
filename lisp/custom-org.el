@@ -98,9 +98,6 @@ Inside a code-block, simply calls `self-insert-command'."
             (eval-after-load "org"
               (add-hook 'org-add-hook 'custom/modify-org-done-face))
 
-            (use-package org-pdfview ; Support for org links from pdfview buffers
-              :ensure t)
-
             ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
             (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))))
 
@@ -168,6 +165,11 @@ Inside a code-block, simply calls `self-insert-command'."
                                (locate-user-emacs-file "etc/pandoc.css"))))
               (setq org-pandoc-options-for-html5
                     `((css . ,(concat "file://" stylesheet)))))))
+
+(use-package ox-reveal ;
+  :ensure t
+  :defer t
+  :config (setq org-reveal-root "file:///home/manuel/reveal.js"))
 
 (provide 'custom-org)
 

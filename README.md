@@ -86,7 +86,8 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 [diff-hl](https://github.com/dgutov/diff-hl)
 - Project management: [Projectile](https://github.com/bbatsov/projectile),
   [helm-projectile](https://github.com/bbatsov/projectile/blob/master/helm-projectile.el)
-- Slides: [Org-HTML-Slideshow](https://github.com/relevance/org-html-slideshow)
+- Slides: [Org-HTML-Slideshow](https://github.com/relevance/org-html-slideshow),
+  [org-reveal](https://github.com/yjwen/org-reveal)
 - Document conversion: [pandoc-mode](https://github.com/joostkremers/pandoc-mode)
 - Utilities: [The Bug Hunter](https://github.com/Malabarba/elisp-bug-hunter),
   [ESUP](https://github.com/jschaf/esup),
