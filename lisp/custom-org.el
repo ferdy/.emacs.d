@@ -151,7 +151,6 @@ Inside a code-block, simply calls `self-insert-command'."
 
 (use-package ox-pandoc ; Export Org documents via Pandoc
   :ensure t
-  :defer t
   :config (progn
             (setq org-pandoc-options '((standalone . t)) ; default options
                   ;; special settings for beamer-pdf and latex-pdf exporters
@@ -166,9 +165,8 @@ Inside a code-block, simply calls `self-insert-command'."
               (setq org-pandoc-options-for-html5
                     `((css . ,(concat "file://" stylesheet)))))))
 
-(use-package ox-reveal ;
+(use-package ox-reveal ; Slideshows with Reveal.js
   :ensure t
-  :defer t
   :config (setq org-reveal-root "file:///home/manuel/reveal.js"))
 
 (provide 'custom-org)
