@@ -39,16 +39,13 @@
             (bind-key "q" #'magit-quit-session magit-status-mode-map)
 
             ;; Set Magit's repo dirs for `magit-status' from Projectile's known
-            ;; projects. Initialize the `magit-repo-dirs' immediately after Projectile
-            ;; was loaded, and update it every time we switched projects, because the
-            ;; new project might have been unknown before
+            ;; projects.
             (defun custom/magit-set-repo-dirs-from-projectile ()
               "Set `magit-repo-dirs' from known Projectile projects."
               (let ((project-dirs (bound-and-true-p projectile-known-projects)))
-                ;; Remove trailing slashes from project directories, because Magit adds
-                ;; trailing slashes again, which breaks the presentation in the Magit
-                ;; prompt.
-                (setq magit-repo-dirs (mapcar #'directory-file-name project-dirs))))
+                ;; Remove trailing slashes from project directories
+                (setq magit-repo-dirs
+                      (mapcar #'directory-file-name project-dirs))))
 
             (with-eval-after-load 'projectile
               (custom/magit-set-repo-dirs-from-projectile))
@@ -71,7 +68,24 @@
                      "config" "--add" "remote.origin.fetch"
                      fetch-address)))))
 
-            (add-hook 'magit-mode-hook #'custom/add-PR-fetch))
+            (add-hook 'magit-mode-hook #'custom/add-PR-fetch)
+
+            ;; Create Github PRs from Magit
+            (defun custom/visit-pull-request-url ()
+              "Visit the current branch's PR on Github."
+              (interactive)
+              (browse-url
+               (format "https://github.com/%s/pull/new/%s"
+                       (replace-regexp-in-string
+                        "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
+                        (magit-get "remote"
+                                   (magit-get-remote)
+                                   "url"))
+                       (cdr (magit-get-remote-branch)))))
+
+            (eval-after-load 'magit
+              '(define-key magit-mode-map "v"
+                 #'custom/visit-pull-request-url)))
   :diminish magit-auto-revert-mode)
 
 (use-package git-commit-mode ; Git commit message mode
