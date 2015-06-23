@@ -54,25 +54,25 @@
               (custom/magit-set-repo-dirs-from-projectile))
 
             (add-hook 'projectile-switch-project-hook
-                      #'custom/magit-set-repo-dirs-from-projectile))
+                      #'custom/magit-set-repo-dirs-from-projectile)
+
+            ;; Automatically access Github PRs
+            (defun custom/add-PR-fetch ()
+              "If refs/pull is not defined on a GH repo, define it."
+              (let ((fetch-address
+                     "+refs/pull/*/head:refs/pull/origin/*")
+                    (magit-remotes
+                     (magit-get-all "remote" "origin" "fetch")))
+                (unless (or (not magit-remotes)
+                            (member fetch-address magit-remotes))
+                  (when (string-match
+                         "github" (magit-get "remote" "origin" "url"))
+                    (magit-git-string
+                     "config" "--add" "remote.origin.fetch"
+                     fetch-address)))))
+
+            (add-hook 'magit-mode-hook #'custom/add-PR-fetch))
   :diminish magit-auto-revert-mode)
-
-(use-package magit-gh-pulls ; Manage git pull requests from Magit
-  :ensure t
-  :defer t
-  :init (progn
-          (when (fboundp 'magit-gh-pulls-mode)
-            (eval-after-load 'magit
-              '(define-key magit-mode-map "#gg"
-                 #'custom/load-gh-pulls-mode))
-
-            (defun custom/load-gh-pulls-mode ()
-              "Start `magit-gh-pulls-mode' only after a manual request."
-              (interactive)
-              (require 'magit-gh-pulls)
-              (add-hook 'magit-mode-hook #'turn-on-magit-gh-pulls)
-              (magit-gh-pulls-mode 1)
-              (magit-gh-pulls-reload)))))
 
 (use-package git-commit-mode ; Git commit message mode
   :ensure t
