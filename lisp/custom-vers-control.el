@@ -60,7 +60,19 @@
 (use-package magit-gh-pulls ; Manage git pull requests from Magit
   :ensure t
   :defer t
-  :init (add-hook 'magit-mode-hook #'turn-on-magit-gh-pulls))
+  :init (progn
+          (when (fboundp 'magit-gh-pulls-mode)
+            (eval-after-load 'magit
+              '(define-key magit-mode-map "#gg"
+                 #'custom/load-gh-pulls-mode))
+
+            (defun custom/load-gh-pulls-mode ()
+              "Start `magit-gh-pulls-mode' only after a manual request."
+              (interactive)
+              (require 'magit-gh-pulls)
+              (add-hook 'magit-mode-hook #'turn-on-magit-gh-pulls)
+              (magit-gh-pulls-mode 1)
+              (magit-gh-pulls-reload)))))
 
 (use-package git-commit-mode ; Git commit message mode
   :ensure t
