@@ -58,7 +58,6 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 [highlight-symbol](https://github.com/nschum/highlight-symbol.el),
 [highlight-numbers](https://github.com/Fanael/highlight-numbers)
 - Org-mode: [org-magit](https://github.com/magit/org-magit),
-  [org-pdfview](https://github.com/markus1189/org-pdfview),
   [toc-org](https://github.com/snosov1/toc-org),
   [org2blog](https://github.com/punchagan/org2blog)
 - Documents formatting:
