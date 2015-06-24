@@ -68,6 +68,9 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 - Clojure: [CIDER](https://github.com/clojure-emacs/cider),
 [flycheck-clojure](https://github.com/clojure-emacs/squiggly-clojure)
 - Scheme: [Geiser](https://github.com/jaor/geiser)
+- Web development: [web-mode](http://web-mode.org/),
+  [js2-mode](https://github.com/mooz/js2-mode),
+  [php-mode](https://github.com/ejmr/php-mode)
 - Web: [SX](https://github.com/vermiculus/sx.el),
   [Elfeed](https://github.com/skeeto/elfeed)
 - PDF: [PDF Tools](https://github.com/politza/pdf-tools),
