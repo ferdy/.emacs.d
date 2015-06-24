@@ -9,7 +9,6 @@
 
 # Installed packages
 /elpa/
-/.cask/
 
 # Recovery and backup directories
 /auto-save-list/
@@ -42,6 +41,4 @@
 /fixes/
 /helm-adaptive-history
 /el-get/
-
-# Cache file from marmalade-upload tool
-/marmalade-upload.json
+/site-lisp/
