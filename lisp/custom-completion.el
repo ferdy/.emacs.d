@@ -58,6 +58,11 @@
   :defer t
   :init (company-statistics-mode))
 
+(use-package company-web ; Backend for web development
+  :ensure t
+  :defer t
+  :config (bind-key "C-." #'company-web-html web-mode-map))
+
 (provide 'custom-completion)
 
 ;;; custom-completion.el ends here
