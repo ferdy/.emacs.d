@@ -15,14 +15,6 @@
   :load-path "site-lisp/magit/lisp"
   :bind ("<f3>" . magit-status)
   :config (progn
-            ;; Shut up, Magit!
-            (setq magit-save-some-buffers 'dontask
-                  magit-stage-all-confirm nil
-                  magit-unstage-all-confirm nil
-                  ;; Except when you ask something useful
-                  magit-set-upstream-on-push t
-                  magit-auto-revert-mode-lighter "")
-
             (defadvice magit-status (around magit-fullscreen activate)
               "Turn fullscreen on for magit-status."
               (window-configuration-to-register :magit-fullscreen)
