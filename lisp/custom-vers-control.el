@@ -74,7 +74,12 @@
                        (cdr (magit-get-remote-branch)))))
 
             (bind-key "v" #'custom/visit-pull-request-url
-                      magit-mode-map)))
+                      magit-mode-map)
+
+            (with-eval-after-load 'info
+              (info-initialize)
+              (add-to-list 'Info-directory-list
+                           "~/.emacs.d/site-lisp/magit/Documentation/"))))
 
 (use-package gitconfig-mode ; Git configuration mode
   :ensure t
