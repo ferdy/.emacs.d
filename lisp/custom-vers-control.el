@@ -32,9 +32,8 @@
             ;; Set Magit's repo dirs for `magit-status' from Projectile's known
             ;; projects.
             (defun custom/magit-set-repo-dirs-from-projectile ()
-              "Set `magit-repo-dirs' from known Projectile projects."
+              "Set `magit-repository-directories' with known Projectile projects."
               (let ((project-dirs (bound-and-true-p projectile-known-projects)))
-                ;; Remove trailing slashes from project directories
                 (setq magit-repository-directories
                       (mapcar #'directory-file-name project-dirs))))
 
