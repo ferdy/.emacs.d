@@ -43,7 +43,7 @@
               "Set `magit-repo-dirs' from known Projectile projects."
               (let ((project-dirs (bound-and-true-p projectile-known-projects)))
                 ;; Remove trailing slashes from project directories
-                (setq magit-repo-dirs
+                (setq magit-repository-directories
                       (mapcar #'directory-file-name project-dirs))))
 
             (with-eval-after-load 'projectile
