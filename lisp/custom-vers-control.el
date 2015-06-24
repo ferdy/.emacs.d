@@ -73,9 +73,8 @@
                                    "url"))
                        (cdr (magit-get-remote-branch)))))
 
-            (eval-after-load 'magit
-              '(define-key magit-mode-map "v"
-                 #'custom/visit-pull-request-url))))
+            (bind-key "v" #'custom/visit-pull-request-url
+                      magit-mode-map)))
 
 (use-package gitconfig-mode ; Git configuration mode
   :ensure t
