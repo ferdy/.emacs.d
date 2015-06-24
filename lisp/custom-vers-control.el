@@ -3,7 +3,7 @@
 ;; Copyright (C) 2013-2015 Manuel Uberti
 
 ;; Author: Manuel Uberti <manuel@boccaperta.com>
-;; Keywords:
+;; Keywords: convenience
 
 ;;; Commentary:
 
@@ -12,9 +12,8 @@
 ;;; Code:
 
 (use-package magit
-  :ensure t
+  :load-path "site-lisp/magit/lisp"
   :bind ("<f3>" . magit-status)
-  :init (setq magit-last-seen-setup-instructions "1.4.0")
   :config (progn
             ;; Shut up, Magit!
             (setq magit-save-some-buffers 'dontask
@@ -85,12 +84,7 @@
 
             (eval-after-load 'magit
               '(define-key magit-mode-map "v"
-                 #'custom/visit-pull-request-url)))
-  :diminish magit-auto-revert-mode)
-
-(use-package git-commit-mode ; Git commit message mode
-  :ensure t
-  :defer t)
+                 #'custom/visit-pull-request-url))))
 
 (use-package gitconfig-mode ; Git configuration mode
   :ensure t
@@ -101,10 +95,6 @@
   :defer t)
 
 (use-package gitattributes-mode ; Git attributes mode
-  :ensure t
-  :defer t)
-
-(use-package git-rebase-mode ; Mode for git rebase -i
   :ensure t
   :defer t)
 

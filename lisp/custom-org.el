@@ -140,10 +140,6 @@ Inside a code-block, simply calls `self-insert-command'."
                      :url "http://informatica.boccaperta.com/xmlrpc.php"
                      :username "manuel")))))
 
-(use-package org-magit ; Magit links in Org buffers
-  :ensure t
-  :defer t)
-
 (use-package toc-org ; Table of contents for Org files
   :ensure t
   :defer t
