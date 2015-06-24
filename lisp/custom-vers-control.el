@@ -12,7 +12,7 @@
 ;;; Code:
 
 (use-package magit
-  :load-path "site-lisp/magit/lisp"
+  :load-path "site-lisp/magit/lisp" ; Temporarily using Magit's next branch
   :bind ("<f3>" . magit-status)
   :config (progn
             (defadvice magit-status (around magit-fullscreen activate)
