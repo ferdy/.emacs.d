@@ -91,7 +91,7 @@
 ;;; Web development
 (use-package web-mode
   :ensure t
-  :defer t
+  :mode "\\.html\\'"
   :config (setq web-mode-markup-indent-offset 2))
 
 (use-package js2-mode ; Better JavaScript support
