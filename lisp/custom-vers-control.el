@@ -29,8 +29,7 @@
 
             (bind-key "q" #'magit-quit-session magit-status-mode-map)
 
-            ;; Set Magit's repo dirs for `magit-status' from Projectile's known
-            ;; projects.
+            ;; Set `magit-repository-directories' for `magit-status'
             (defun custom/magit-set-repo-dirs-from-projectile ()
               "Set `magit-repository-directories' with known Projectile projects."
               (let ((project-dirs (bound-and-true-p projectile-known-projects)))
