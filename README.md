@@ -22,7 +22,7 @@ for the first time. The script only works with **Debian-based** systems.
 I mainly use Emacs for **LaTeX**, **Elisp** and **Clojure**, so my setup is
 planned accordingly.
 
-This configuration comes with more than **120 packages** carefully set up for my
+This configuration comes with about **120 packages** carefully set up for my
 daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 
 ##Overview
@@ -81,8 +81,7 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 - Syntax checking: [Flycheck](https://github.com/flycheck/flycheck),
 [helm-flycheck](https://github.com/yasuyk/helm-flycheck)
 - Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
-[helm-wordnet](https://github.com/raghavgautam/helm-wordnet),
-[define-word](https://github.com/abo-abo/define-word)
+[helm-wordnet](https://github.com/raghavgautam/helm-wordnet)
 - Version control: [Magit](https://github.com/magit/magit),
 [diff-hl](https://github.com/dgutov/diff-hl)
 - Project management: [Projectile](https://github.com/bbatsov/projectile),
