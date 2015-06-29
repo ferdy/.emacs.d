@@ -31,7 +31,7 @@
 (bind-keys :map toggle-map
            ("v" . visual-line-mode)
            ("l" . linum-mode)
-           ("s" . create-scratch-buffer)
+           ("s" . scratch)
            ("r" . revert-this-buffer)
            ("w" . writeroom-mode))
 

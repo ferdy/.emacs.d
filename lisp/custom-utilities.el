@@ -81,11 +81,15 @@
 
 (use-package command-log-mode ; Show event history and command history
   :ensure t
-  :commands (command-log-mode))
+  :commands command-log-mode)
 
 (use-package systemd ; Major mode for editing systemd units
   :ensure t
   :mode "\\.service\\'")
+
+(use-package scratch ; Mode-specific scratch buffers
+  :ensure t
+  :commands scratch)
 
 ;;; Bugs management
 (use-package bug-reference
