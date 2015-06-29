@@ -98,15 +98,6 @@ With prefix P, create local abbrev. Otherwise it will be global."
   :bind (("C-c s l" . synosaurus-lookup)
          ("C-c s r" . synosaurus-choose-and-replace)))
 
-(use-package define-word ; Lookup word definition
-  :ensure t
-  :bind (("C-c s d" . define-word-at-point)
-         ("C-c s D" . define-word)))
-
-(use-package writegood-mode ; Find common writing problems
-  :ensure t
-  :bind ("C-c s g" . writegood-mode))
-
 (provide 'custom-languages)
 
 ;;; custom-languages.el ends here
