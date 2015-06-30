@@ -45,6 +45,8 @@
 
 (eval-when-compile
   (require 'use-package))
+(require 'diminish)
+(require 'bind-key)
 
 ;;; Initialization
 (when (version< emacs-version "25")
