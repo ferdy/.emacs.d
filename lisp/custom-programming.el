@@ -82,6 +82,17 @@
                   (locate-user-emacs-file "cider-repl-history")
                   cider-repl-pop-to-buffer-on-connect nil)))
 
+(use-package clj-refactor ; Refactoring utils
+  :ensure t
+  :defer t
+  :init (progn
+          (defun custom/clojure-mode-hook ()
+            (clj-refactor-mode 1)
+            (yas-minor-mode 1) ; For adding require/use/import
+            (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+          (add-hook 'clojure-mode-hook #'custom/clojure-mode-hook)))
+
 ;;; Scheme
 (use-package geiser ; Collection of modes for Scheme interpreters
   :ensure t
