@@ -165,6 +165,12 @@ Inside a code-block, simply calls `self-insert-command'."
   :ensure t
   :config (setq org-reveal-root "file:///home/manuel/reveal.js"))
 
+(use-package org-bullets ; Bullets as UTF-8 characters
+  :ensure t
+  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  :config (setq org-bullets-bullet-list
+                '("◉" "○" "●" "▶")))
+
 (provide 'custom-org)
 
 ;;; custom-org.el ends here
