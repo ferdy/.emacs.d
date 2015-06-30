@@ -91,7 +91,8 @@
             (yas-minor-mode 1) ; For adding require/use/import
             (cljr-add-keybindings-with-prefix "C-c C-m"))
 
-          (add-hook 'clojure-mode-hook #'custom/clojure-mode-hook)))
+          (add-hook 'clojure-mode-hook #'custom/clojure-mode-hook))
+  :diminish clj-refactor-mode)
 
 ;;; Scheme
 (use-package geiser ; Collection of modes for Scheme interpreters
