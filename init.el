@@ -118,7 +118,7 @@
 (require 'custom-utilities)
 (require 'custom-keybindings)
 
-;; Automatically visit organizer.org
+;; Immediately visit organizer.org
 (find-file "~/org/organizer.org")
 
 ;;; init.el ends here
