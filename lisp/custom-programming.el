@@ -14,7 +14,8 @@
 (use-package eldoc ; Documentation in the echo area
   :defer t
   ;; Enable Eldoc for `eval-expression', too
-  :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode))
+  :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
+  :diminish eldoc-mode)
 
 (use-package compile
   :config (progn
