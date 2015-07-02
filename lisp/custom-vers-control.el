@@ -47,24 +47,7 @@
             (add-hook 'projectile-switch-project-hook
                       #'custom/magit-set-repo-dirs-from-projectile)
 
-            ;; Automatically access Github PRs
-            (defun custom/add-PR-fetch ()
-              "If refs/pull is not defined on a GH repo, define it."
-              (let ((fetch-address
-                     "+refs/pull/*/head:refs/pull/origin/*")
-                    (magit-remotes
-                     (magit-get-all "remote" "origin" "fetch")))
-                (unless (or (not magit-remotes)
-                            (member fetch-address magit-remotes))
-                  (when (string-match
-                         "github" (magit-get "remote" "origin" "url"))
-                    (magit-git-string
-                     "config" "--add" "remote.origin.fetch"
-                     fetch-address)))))
-
-            (add-hook 'magit-mode-hook #'custom/add-PR-fetch)
-
-            ;; Create Github PRs from Magit
+            ;; Visit Github PRs from Magit
             (defun custom/visit-pull-request-url ()
               "Visit the current branch's PR on Github."
               (interactive)
