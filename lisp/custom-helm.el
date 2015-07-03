@@ -230,6 +230,10 @@
   :bind ("C-c h w" . helm-wordnet)
   :config (setq helm-wordnet-wordnet-location "/usr/share/wordnet"))
 
+(use-package cljr-helm ; Helm interface for clj-refactor
+  :ensure t
+  :bind ("C-c h h c" . cljr-helm))
+
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here
