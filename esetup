@@ -74,6 +74,7 @@ configuring LaTeX..."
     sudo apt-get -y install --no-install-recommends texlive-lang-cjk
     sudo apt-get -y install --no-install-recommends texlive-chinese-lang
     sudo apt-get -y install --no-install-recommends latex-xcolor fonts-lmodern lmodern
+    sudo apt-get -y install --no-install-recommends texlive-pstricks
     echo "
 ... done. Configuring chktex for Flycheck..."
     if [ ! -d "$HOME/sources" ]; then
