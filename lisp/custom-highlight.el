@@ -1,6 +1,6 @@
 ;;; custom-highlight.el --- Part of my Emacs setup   -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2015  Manuel Uberti
+;; Copyright (C) 2013-2015  Manuel Uberti
 
 ;; Author: Manuel Uberti <manuel@boccaperta.com>
 ;; Keywords: convenience
