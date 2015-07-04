@@ -381,6 +381,19 @@ The app is chosen from your OS's preference."
        (let ((process-connection-type nil))
          (start-process "" nil "xdg-open" file-path))) file-list)))
 
+(defun flush-kill-lines (regex)
+  "Flush lines matching REGEX and append to kill ring.  Restrict to \
+region if active."
+  (interactive "sFlush kill regex: ")
+  (save-excursion
+    (save-restriction
+      (when (use-region-p)
+        (narrow-to-region (point) (mark))
+        (goto-char 0))
+      (while (search-forward-regexp regex nil t)
+        (move-beginning-of-line nil)
+        (kill-whole-line)))))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here
