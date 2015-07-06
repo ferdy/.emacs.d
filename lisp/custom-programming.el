@@ -17,11 +17,38 @@
   :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
   :diminish eldoc-mode)
 
-(use-package compile
+(use-package compile ; Compile from Emacs
   :config (progn
             (setq compilation-ask-about-save nil
+                  ;; Kill old compilation processes before starting new ones,
                   compilation-always-kill t
-                  compilation-scroll-output 'first-error)))
+                  ;; Automatically scroll and jump to the first error
+                  compilation-scroll-output 'first-error
+                  compilation-auto-jump-to-first-error t
+                  ;; Skip over warnings and info messages in compilation
+                  compilation-skip-threshold 2
+                  ;; Don't freeze when process reads from stdin
+                  compilation-disable-input t
+                  ;; Show three lines of context around the current message
+                  compilation-context-lines 3)
+
+            (add-to-list 'display-buffer-alist
+                         `(,(rx bos "*compilation")
+                           (display-buffer-reuse-window
+                            display-buffer-in-side-window)
+                           (side            . bottom)
+                           (reusable-frames . visible)
+                           (window-height   . 0.4)))
+
+            (defun custom/colorize-compilation-buffer ()
+              "Colorize a compilation mode buffer."
+              (interactive)
+              (when (eq major-mode 'compilation-mode)
+                (let ((inhibit-read-only t))
+                  (ansi-color-apply-on-region (point-min) (point-max)))))
+
+            (add-hook 'compilation-filter-hook
+                      #'custom/colorize-compilation-buffer)))
 
 ;;; Syntax checking
 ;; Requires: chktex
