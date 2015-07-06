@@ -20,7 +20,7 @@
 (use-package compile ; Compile from Emacs
   :config (progn
             (setq compilation-ask-about-save nil
-                  ;; Kill old compilation processes before starting new ones,
+                  ;; Kill old compilation processes before starting new ones
                   compilation-always-kill t
                   ;; Automatically scroll and jump to the first error
                   compilation-scroll-output 'first-error
