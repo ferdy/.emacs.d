@@ -10,6 +10,7 @@
 ;; This file stores my Helm configuration.
 
 ;;; Code:
+
 (use-package helm
   :ensure t
   :init (helm-mode 1)
@@ -186,7 +187,7 @@
                   ;; Optional face for line numbers
                   helm-swoop-use-line-number-face t)))
 
-(use-package helm-company ; Show Company candidates through Helm interface
+(use-package helm-company ; Show Company candidates through Helm
   :ensure t
   :defer t
   :init (with-eval-after-load 'company

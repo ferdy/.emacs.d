@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package magit
+(use-package magit ; Git porcelain
   :ensure t
   :bind ("<f3>" . magit-status)
   :config (progn

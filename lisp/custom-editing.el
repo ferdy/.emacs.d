@@ -10,6 +10,7 @@
 ;; This file stores editing customizations.
 
 ;;; Code:
+
 (use-package zop-to-char ; Better zap-to-char
   :ensure t
   :bind (("M-z" . zop-to-char)

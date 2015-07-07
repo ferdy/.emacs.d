@@ -10,6 +10,7 @@
 ;; This file stores dired and file settings.
 
 ;;; Code:
+
 (use-package recentf ; Manage recent files
   :init (recentf-mode)
   :defer t

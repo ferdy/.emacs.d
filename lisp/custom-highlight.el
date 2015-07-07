@@ -10,6 +10,7 @@
 ;; This file stores the configuration for highlighting utilites.
 
 ;;; Code:
+
 (use-package paren ; Highlight paired delimiters
   :init (show-paren-mode)
   :config (setq show-paren-when-point-inside-paren t

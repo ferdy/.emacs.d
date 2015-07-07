@@ -10,6 +10,7 @@
 ;; This file stores pairs balancing configuration
 
 ;;; Code:
+
 (use-package smartparens ; Parenthesis editing and balancing
   :ensure t
   :init (progn

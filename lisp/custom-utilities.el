@@ -50,7 +50,7 @@
   :no-require t
   :init (setq camcorder-window-id-offset -2))
 
-(use-package archive-mode
+(use-package archive-mode ; Browse archive files
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
 
 (use-package proced ; Manage processes

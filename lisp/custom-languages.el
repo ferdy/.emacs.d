@@ -12,6 +12,7 @@
 ;;; Code:
 
 ;;; Translation
+
 (use-package po-mode ; Manage .po files
   :load-path "various"
   :mode "\\.po\\'"
@@ -19,7 +20,7 @@
   :config (setq po-keep-mo-file t))
 
 ;;; Spell checking and dictionaries
-(use-package ispell
+(use-package ispell ; Word correction
   :defer t
   :config (progn
             (setq ispell-program-name (executable-find "aspell")
@@ -70,7 +71,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
             (advice-add #'ispell-parse-output :filter-args
                         #'custom/replace-quote)))
 
-(use-package flyspell
+(use-package flyspell ; Spell checking on-the-fly
   :bind (("C-c s b" . flyspell-buffer)
          ("C-c s r" . flyspell-region))
   :config (progn

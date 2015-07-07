@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package ibuffer
+(use-package ibuffer ; Buffer management
   :bind ([remap list-buffers] . ibuffer)
   :config (progn
             (setq ibuffer-formats

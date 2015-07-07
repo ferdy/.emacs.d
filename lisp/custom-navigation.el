@@ -11,6 +11,7 @@
 ;; navigation.
 
 ;;; Code:
+
 ;;; Scrolling
 (setq scroll-margin 0
       scroll-conservatively 1000

@@ -24,7 +24,7 @@
   :init (global-anzu-mode)
   :diminish anzu-mode)
 
-(use-package wgrep
+(use-package wgrep ; Editable grep buffer
   :ensure t
   :defer t)
 
