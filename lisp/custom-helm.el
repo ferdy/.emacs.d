@@ -119,7 +119,7 @@
   :bind (("C-c h e" . helm-info-emacs)
          ("C-c h i" . helm-info-at-point)))
 
-(use-package helm-man
+(use-package helm-man ; Manual pages through Helm
   :ensure helm
   :bind ("C-c h m" . helm-man-woman))
 
