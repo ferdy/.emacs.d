@@ -101,6 +101,7 @@ $ git clone git://git.savannah.gnu.org/emacs.git
 ```console
 $ cd emacs
 $ sudo apt-get build-dep emacs24
+$ ./autogen.sh
 $ ./configure
 $ make
 $ sudo make install
