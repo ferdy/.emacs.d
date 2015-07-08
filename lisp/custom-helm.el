@@ -220,12 +220,6 @@
   :commands helm-bibtex
   :bind ("C-c h h b" . helm-bibtex))
 
-(use-package helm-projectile ; Projectile through Helm
-  :ensure t
-  :defer t
-  :init (with-eval-after-load 'projectile (helm-projectile-on))
-  :config (setq projectile-switch-project-action #'helm-projectile))
-
 (use-package helm-wordnet ; Helm interface for Wordnet dictionary
   :ensure t
   :bind ("C-c h w" . helm-wordnet)

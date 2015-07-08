@@ -82,8 +82,7 @@ daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 [helm-wordnet](https://github.com/raghavgautam/helm-wordnet)
 - Version control: [Magit](https://github.com/magit/magit),
 [diff-hl](https://github.com/dgutov/diff-hl)
-- Project management: [Projectile](https://github.com/bbatsov/projectile),
-  [helm-projectile](https://github.com/bbatsov/projectile/blob/master/helm-projectile.el)
+- Project management: [Projectile](https://github.com/bbatsov/projectile)
 - Slides: [Org-HTML-Slideshow](https://github.com/relevance/org-html-slideshow),
   [org-reveal](https://github.com/yjwen/org-reveal)
 - Utilities: [The Bug Hunter](https://github.com/Malabarba/elisp-bug-hunter),
