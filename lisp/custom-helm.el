@@ -139,7 +139,7 @@
           ;; Shell history
           (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)))
 
-(use-package helm-occur ; Occur with Helm
+(use-package helm-regex ; Helm regex tools
   :ensure helm
   :bind (([remap occur] . helm-occur)
          ("C-c h o"     . helm-multi-occur)))
