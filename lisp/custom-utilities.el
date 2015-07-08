@@ -91,6 +91,13 @@
   :ensure t
   :commands scratch)
 
+(use-package image+ ; Better image management
+  :ensure t
+  :init (with-eval-after-load 'image
+          (imagex-global-sticky-mode 1)
+          (imagex-auto-adjust-mode 1))
+  :config (setq imagex-quiet-error t))
+
 ;;; Bugs management
 (use-package bug-reference
   :no-require t
