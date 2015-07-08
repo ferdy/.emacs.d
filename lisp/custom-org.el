@@ -17,6 +17,12 @@
   :bind (("C-c c" . org-capture)
          ("C-c a" . org-agenda))
   :defer t
+  :init (setq org-emphasis-regexp-components ; Fix markup for ' and "
+              '("     ('\"{“”"
+                "-   .,!?;''“”\")}/\\“”"
+                "    \r\n,"
+                "."
+                1))
   :config (progn
             (setq org-src-fontify-natively t
                   org-log-done 'time
