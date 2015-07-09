@@ -107,15 +107,16 @@ Inside a code-block, simply calls `self-insert-command'."
             ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
             (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))))
 
-;; Auto insert custom text upon opening an org file
-(auto-insert-mode)
-(setq auto-insert-query nil)
-(eval-after-load 'autoinsert
-  '(define-auto-insert '("\\.org\\'" . "Org skeleton")
-     '(
-       "Short description: "
-       "#+STARTUP: showall\n"
-       > _ \n \n)))
+(use-package autoinsert
+  :init (progn
+          (auto-insert-mode)
+          ;; Auto insert custom text upon opening an org file
+          (define-auto-insert '("\\.org\\'" . "Org skeleton")
+            '(
+              "Short description: "
+              "#+STARTUP: showall\n"
+              > _ \n \n)))
+  :config (setq auto-insert-query nil))
 
 ;; Org2blog
 (use-package metaweblog
