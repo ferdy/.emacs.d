@@ -107,10 +107,9 @@ Inside a code-block, simply calls `self-insert-command'."
             ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
             (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))))
 
-(use-package autoinsert
+(use-package autoinsert ; Auto insert custom text
   :init (progn
           (auto-insert-mode)
-          ;; Auto insert custom text upon opening an org file
           (define-auto-insert '("\\.org\\'" . "Org skeleton")
             '(
               "Short description: "
