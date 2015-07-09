@@ -118,19 +118,19 @@ Inside a code-block, simply calls `self-insert-command'."
   :config (setq auto-insert-query nil))
 
 ;; Org2blog
-(use-package metaweblog
+(use-package metaweblog ; Access metaweblog based weblogs
   :ensure t
   :defer t)
 
-(use-package xml-rpc
+(use-package xml-rpc ; Clientside XML-RPC
   :ensure t
   :defer t)
 
-(use-package htmlize
+(use-package htmlize ; Convert buffer text and decorations to HTML
   :ensure t
   :defer t)
 
-(use-package org2blog
+(use-package org2blog ; Blog from Org mode to Wordpress
   :ensure t
   :defer t
   :bind ("C-c w o" . org2blog/wp-new-entry)
