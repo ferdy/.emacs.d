@@ -58,27 +58,6 @@ buffer."
         (when (eq (car prop) 'image)
           (add-text-properties left pos (list from nil to prop) object))))))
 
-;; Run a program in a term buffer, if it is already running switch to it
-(defun custom/term-start-or-switch (prg &optional use-existing)
-  "Run program PRG in a terminal buffer.
-If USE-EXISTING is non-nil and PRG is already running,
-switch to that buffer instead of starting a new instance."
-  (interactive)
-  (let ((bufname (concat "*" prg "*")))
-    (unless (and use-existing
-		 (let ((buf (get-buffer bufname)))
-		   (and buf (buffer-name (switch-to-buffer bufname))))))
-    (ansi-term prg prg)))
-
-;; Create a keybinding to start some terminal program
-(defmacro custom/program-shortcut (name key &optional use-existing)
-  "Macro to start some terminal program NAME with 'key-binding' KEY;
-if USE-EXISTING is true, try to switch to an existing buffer"
-  `(global-set-key ,key
-		   '(lambda()
-		      (interactive)
-		      (custom/term-start-or-switch ,name ,use-existing))))
-
 (defun custom/current-file ()
   "Gets the \"file\" of the current buffer.
 The file is the buffer's file name, or the `default-directory' in
@@ -122,26 +101,6 @@ Otherwise copy the non-directory part only."
   (cl-letf (((symbol-function 'kill-buffer-ask)
 	     (lambda (buffer) (kill-buffer buffer))))
     (kill-matching-buffers regexp)))
-
-;; Searching buffers with occur mode
-(eval-when-compile
-  (require 'cl))
-
-(defun get-buffers-matching-mode (mode)
-  "Return a list of buffers where their MAJOR-MODE is equal to MODE."
-  (let ((buffer-mode-matches '()))
-    (dolist (buf (buffer-list))
-      (with-current-buffer buf
-        (if (eq mode major-mode)
-            (push buf buffer-mode-matches))))
-    buffer-mode-matches))
-
-(defun multi-occur-in-this-mode ()
-  "Show all lines matching REGEXP in buffers with this major mode."
-  (interactive)
-  (multi-occur
-   (get-buffers-matching-mode major-mode)
-   (car (occur-read-primary-args))))
 
 (defun delete-this-file ()
   "Delete the current file, and kill the buffer."
