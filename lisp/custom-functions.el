@@ -302,10 +302,6 @@ Add this to `kill-buffer-query-functions'."
     (bury-buffer)
     nil))
 
-(defun custom/force-save-some-buffers ()
-  "Save all modified buffers, without prompts."
-  (save-some-buffers 'dont-ask))
-
 (defun custom/open-in-external-app ()
   "Open the current file or dired marked files in external app.
 The app is chosen from your OS's preference."

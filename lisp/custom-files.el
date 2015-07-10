@@ -123,8 +123,10 @@
 (add-hook 'kill-buffer-query-functions
           #'custom/do-not-kill-important-buffers)
 
-;; Autosave buffers when focus is lost
-(add-hook 'focus-out-hook #'custom/force-save-some-buffers)
+(use-package focus-autosave-mode ; Autosave buffers when focus is lost
+  :ensure t
+  :init (focus-autosave-mode)
+  :diminish focus-autosave-mode)
 
 (provide 'custom-files)
 
