@@ -120,6 +120,7 @@
             (cljr-add-keybindings-with-prefix "C-c C-m"))
 
           (add-hook 'clojure-mode-hook #'custom/clojure-mode-hook))
+  :config (setq cljr-suppress-middleware-warnings t)
   :diminish clj-refactor-mode)
 
 ;;; Scheme
