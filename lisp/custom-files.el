@@ -128,6 +128,10 @@
   :init (focus-autosave-mode)
   :diminish focus-autosave-mode)
 
+(use-package ffap ; Find files at point
+  :defer t
+  :config (setq ffap-machine-p-known 'reject)) ;; Do not ping random hosts
+
 (provide 'custom-files)
 
 ;;; custom-files.el ends here
