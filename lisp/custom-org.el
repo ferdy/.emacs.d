@@ -7,12 +7,11 @@
 
 ;;; Commentary:
 
-;; This file stores the configuration for everything org-mode related.
+;; This file stores the configuration for everything Org mode related.
 
 ;;; Code:
 
-;;; Org
-(use-package org
+(use-package org ; The almighty Org
   :ensure t
   :bind (("C-c c" . org-capture)
          ("C-c a" . org-agenda))
@@ -117,7 +116,6 @@ Inside a code-block, simply calls `self-insert-command'."
               > _ \n \n)))
   :config (setq auto-insert-query nil))
 
-;; Org2blog
 (use-package metaweblog ; Access metaweblog based weblogs
   :ensure t
   :defer t)
