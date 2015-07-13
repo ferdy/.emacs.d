@@ -21,7 +21,11 @@
     (run-with-idle-timer 10 nil #'projectile-cleanup-known-projects)
 
     (setq projectile-completion-system 'helm
-          projectile-find-dir-includes-top-level t))
+          projectile-find-dir-includes-top-level t)
+
+    (projectile-register-project-type 'lein-cljs '("project.clj")
+                                      "lein cljsbuild once"
+                                      "lein cljsbuild test"))
   :diminish projectile-mode)
 
 (provide 'custom-project)
