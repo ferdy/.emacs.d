@@ -20,7 +20,6 @@
 (bind-key "C-x C-p" 'other-window-backward)
 
 (bind-key "C-x C-d" 'duplicate-line) ; Duplicate line at point
-
 (bind-key "C-c q" #'custom/quit-bottom-side-windows) ; Close side frames
 
 ;; Custom keybindings activated with C^x t

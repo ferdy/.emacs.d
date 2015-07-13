@@ -12,7 +12,6 @@
 ;;; Code:
 
 ;;; Translation
-
 (use-package po-mode ; Manage .po files
   :load-path "various"
   :mode "\\.po\\'"
@@ -94,6 +93,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
             (unbind-key "M-t" flyspell-mode-map))
   :diminish flyspell-mode)
 
+;;; Language tools
 (use-package synosaurus ; An extensible thesaurus
   :ensure t
   :bind (("C-c s l" . synosaurus-lookup)

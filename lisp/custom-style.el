@@ -91,7 +91,7 @@
                 'post-forward uniquify-separator ":"))
 
 ;;; Theme
-(use-package solarized
+(use-package solarized ; Default theme
   :ensure solarized-theme
   :defer t
   :init (progn

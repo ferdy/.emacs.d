@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package eshell
+(use-package eshell ; Emacs command shell
   :bind ("<f1>" . eshell-here)
   :config (progn
             (defun eshell-here ()
@@ -52,7 +52,7 @@ windows easier."
                  (unintern 'eshell/su nil)
                  (unintern 'eshell/sudo nil)))))
 
-(use-package ansi-term
+(use-package ansi-term ; Powerful terminal emulator
   :bind ("<S-f2>" . ansi-term)
   :init (progn
           ;; Always use Zsh
@@ -92,7 +92,7 @@ windows easier."
             (bind-key "C-y" #'my-term-paste term-raw-map))
           (add-hook 'term-mode-hook 'my-term-hook)))
 
-(use-package shell
+(use-package shell ; Specialized comint.el for running the shell
   :bind ("<f2>" . shell)
   :config (progn
             (defun clear-shell ()

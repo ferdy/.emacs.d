@@ -11,10 +11,13 @@
 
 ;;; Code:
 
+;; Ignore directories during grep
 (eval-after-load 'grep
   '(progn
      (add-to-list 'grep-find-ignored-directories "auto")
      (add-to-list 'grep-find-ignored-directories "elpa")))
+
+;; Truncate lines during grep
 (add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
 
 (use-package isearch ; Search buffers

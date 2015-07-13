@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package info
+(use-package info ; Info, the documentation browser
   :bind ("C-h C-i" . info-lookup-symbol)
   :config
   ;; Fix `Info-quoted' face by going back to the default face.
@@ -21,11 +21,11 @@
 ;; Let apropos commands perform more extensive searches than default
 (setq apropos-do-all t)
 
-(use-package calendar
+(use-package calendar ; Display a calendar
   :defer t
   :config (setq calendar-week-start-day 1)); Start on Monday
 
-(use-package time
+(use-package time ; Display time
   :bind (("C-c u i" . emacs-init-time)
          ("C-c u u" . emacs-uptime)
          ("C-c u t" . display-time-world))
@@ -99,7 +99,7 @@
   :config (setq imagex-quiet-error t))
 
 ;;; Bugs management
-(use-package bug-reference
+(use-package bug-reference ; Buttonize bug references
   :no-require t
   :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
                (add-hook 'text-mode-hook #'bug-reference-mode)))

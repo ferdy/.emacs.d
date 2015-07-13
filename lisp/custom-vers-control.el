@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package magit ; Git porcelain
+(use-package magit ; The best Git client out there
   :ensure t
   :bind ("<f3>" . magit-status)
   :config (progn

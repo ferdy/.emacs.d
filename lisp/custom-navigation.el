@@ -12,7 +12,7 @@
 
 ;;; Code:
 
-;;; Scrolling
+;; Scrolling
 (setq scroll-margin 0
       scroll-conservatively 1000
       ;; Ensure M-v always undoes C-v

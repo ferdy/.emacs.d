@@ -11,8 +11,7 @@
 
 ;;; Code:
 
-;;; Remote editing
-(use-package tramp
+(use-package tramp ; Remote editing
   :config (progn
             (setq tramp-default-method "ssh"
                   tramp-shell-prompt-pattern
@@ -21,7 +20,6 @@
             (add-to-list 'backup-directory-alist
                          (cons tramp-file-name-regexp nil))))
 
-;;; Web
 ;; Requires in ~/.ercpass the format
 ;; (setq variable "nickname")
 (use-package erc ; IRC client
@@ -71,7 +69,7 @@
          ("C-c w S" . sx-tab-newest)
          ("C-c w a" . sx-ask)))
 
-(use-package sx-compose
+(use-package sx-compose ; Compose questions and answers
   :ensure sx
   :defer t
   :config (progn
@@ -79,7 +77,7 @@
             (add-hook 'sx-compose-mode-hook #'turn-off-auto-fill)
             (add-hook 'sx-compose-mode-hook #'visual-line-mode)))
 
-(use-package sx-question-mode
+(use-package sx-question-mode ; Display questions
   :ensure sx
   :defer t
   ;; Display questions in the same window

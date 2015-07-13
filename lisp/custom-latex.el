@@ -11,13 +11,11 @@
 
 ;;; Code:
 
-;;; LaTeX
-(use-package tex-site
+(use-package tex-site ; Startup LaTeX mode
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode))
 
-;; TeX editing
-(use-package tex
+(use-package tex ; TeX editing
   :ensure auctex
   :defer t
   :config (progn
@@ -45,24 +43,24 @@
             (add-hook 'tex-mode-hook
                       #'(lambda () (setq ispell-parser 'tex)))))
 
-(use-package tex-buf
+(use-package tex-buf ; External commands for AUCTeX
   :ensure auctex
   :defer t
   ;; Don't ask for confirmation when saving before processing
   :config (setq TeX-save-query nil))
 
-(use-package tex-style
+(use-package tex-style ; Customizable variables for AUCTeX style files
   :ensure auctex
   :defer t
   :config (setq LaTeX-csquotes-close-quote "}" ; Enable support for csquotes
                 LaTeX-csquotes-open-quote "\\enquote{"))
 
-(use-package tex-fold
+(use-package tex-fold ; Fold TeX macros
   :ensure auctex
   :defer t
   :init (add-hook 'TeX-mode-hook #'TeX-fold-mode))
 
-(use-package tex-mode
+(use-package tex-mode ; Major mode for TeX files
   :ensure auctex
   :defer t
   :config (font-lock-add-keywords 'latex-mode
@@ -73,7 +71,7 @@
                                           symbol-end)
                                      . font-lock-warning-face))))
 
-(use-package latex
+(use-package latex ; Support for LaTeX documents
   :ensure auctex
   :defer t
   :config (progn
@@ -84,18 +82,18 @@
 
             (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode))) ; Easy math input
 
-(use-package latex-extra
+(use-package latex-extra ; Useful functionalities to LaTeX-mode
   :ensure t
   :defer t
   :config (add-hook 'LaTeX-mode-hook #'latex-extra-mode))
 
-(use-package auctex-latexmk
+(use-package auctex-latexmk ; Add LatexMk support to AUCTeX
   :ensure t
   :defer t
   :init (with-eval-after-load 'latex
           (auctex-latexmk-setup)))
 
-(use-package bibtex
+(use-package bibtex ; Edit and validate BibTeX files
   :defer t
   :config (progn
             ;; Run prog mode hooks for bibtex
@@ -103,7 +101,7 @@
             ;; Use a modern BibTeX dialect
             (bibtex-set-dialect 'biblatex)))
 
-(use-package reftex
+(use-package reftex ; Minor mode for \label, \ref, \cite, \index in LaTeX
   :defer t
   :init (add-hook 'LaTeX-mode-hook #'reftex-mode)
   :config

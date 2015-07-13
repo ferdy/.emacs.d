@@ -52,7 +52,7 @@
 
 ;;; Syntax checking
 ;; Requires: chktex
-(use-package flycheck
+(use-package flycheck ; On-the-fly syntax checker
   :ensure t
   :defer 5
   :config (progn
@@ -77,30 +77,30 @@
           (add-hook 'after-init-hook #'flycheck-mode)))
 
 ;;; Clojure
-(use-package cider
+(use-package cider ; Clojure development environment
   :ensure t
   :defer t
   :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
   :diminish cider-mode)
 
-(use-package clojure-mode
+(use-package clojure-mode ; Major mode for Clojure files
   :ensure t
   :defer t
   :init (progn (add-hook 'clojure-mode-hook #'cider-mode)
                (add-hook 'clojure-mode-hook #'subword-mode)))
 
-(use-package clojure-mode-extra-font-locking
+(use-package clojure-mode-extra-font-locking ; Font-locking for Clojure mode
   :ensure t
   :defer t
   :init (with-eval-after-load 'clojure-mode
           (require 'clojure-mode-extra-font-locking)))
 
-(use-package nrepl-client
+(use-package nrepl-client ; Client for Clojure nREPL
   :ensure cider
   :defer t
   :config (setq nrepl-hide-special-buffers t))
 
-(use-package cider-repl
+(use-package cider-repl ; REPL interactions with CIDER
   :ensure cider
   :defer t
   :config (progn
@@ -110,7 +110,7 @@
                   (locate-user-emacs-file "cider-repl-history")
                   cider-repl-pop-to-buffer-on-connect nil)))
 
-(use-package clj-refactor ; Refactoring utils
+(use-package clj-refactor ; Refactoring utilities
   :ensure t
   :defer t
   :init (progn
@@ -130,7 +130,7 @@
   :init (setq geiser-active-implementations '(chicken guile)))
 
 ;;; Web development
-(use-package web-mode
+(use-package web-mode ; Major mode for editing web templates
   :ensure t
   :mode "\\.html\\'"
   :config (setq web-mode-markup-indent-offset 2))
