@@ -11,8 +11,7 @@
 
 ;;; Code:
 
-;;; Project Management
-(use-package projectile
+(use-package projectile ; Project management
   :ensure t
   :init (projectile-global-mode)
   :config
