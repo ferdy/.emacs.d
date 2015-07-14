@@ -12,7 +12,7 @@
 ;;; Code:
 
 ;;; Fonts setup
-(set-frame-font "Source Code Pro-13") ; Default font
+(set-frame-font "Source Code Pro-16") ; Default font
 
 ;; Additional fonts for special characters and fallbacks
 (set-fontset-font t 'symbol (font-spec :family "Symbola") nil 'append)
@@ -156,7 +156,9 @@
             ;; More abbreviations
             (add-to-list 'sml/replacer-regexp-list '("^~/githubs/" ":Git:") t)
             (add-to-list 'sml/replacer-regexp-list
-                         '("^:Doc:boccaperta/" ":Ba:") t)))
+                         '("^:Doc:boccaperta/" ":Ba:") t)
+            (add-to-list 'sml/replacer-regexp-list
+                         '("^:Doc:books/" ":Books:") t)))
 
 (provide 'custom-style)
 
