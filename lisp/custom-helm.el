@@ -123,6 +123,10 @@
   :ensure helm
   :bind ("C-c h m" . helm-man-woman))
 
+(use-package helm-external ; Run external commands through Helm
+  :ensure helm
+  :bind ("C-c h x" . helm-run-external-command))
+
 (use-package helm-color ; Input colors with Helm
   :ensure helm
   :bind ("C-c h c" . helm-colors))
