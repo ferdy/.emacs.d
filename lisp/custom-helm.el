@@ -21,7 +21,6 @@
                         (global-unset-key (kbd "C-x c"))))
 
             (bind-keys :map helm-map
-                       ("<tab>" . helm-execute-persistent-action)
                        ("C-i"   . helm-execute-persistent-action)
                        ("C-z"   . helm-select-action))
 
