@@ -154,11 +154,14 @@
           (sml/setup))
   :config (progn
             ;; More abbreviations
-            (add-to-list 'sml/replacer-regexp-list '("^~/githubs/" ":Git:") t)
+            (add-to-list 'sml/replacer-regexp-list
+                         '("^~/githubs/" ":Git:") t)
             (add-to-list 'sml/replacer-regexp-list
                          '("^:Doc:boccaperta/" ":Ba:") t)
             (add-to-list 'sml/replacer-regexp-list
-                         '("^:Doc:books/" ":Books:") t)))
+                         '("^:Doc:books/" ":Bks:") t)
+            (add-to-list 'sml/replacer-regexp-list
+                         '("^~/projects/" ":Prj:") t)))
 
 (provide 'custom-style)
 
