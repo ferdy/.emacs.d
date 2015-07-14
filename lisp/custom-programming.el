@@ -123,6 +123,10 @@
   :config (setq cljr-suppress-middleware-warnings t)
   :diminish clj-refactor-mode)
 
+(use-package clojure-cheatsheet ; Explore Clojure Cheatsheet from Emacs
+  :ensure t
+  :commands clojure-cheatsheet)
+
 ;;; Scheme
 (use-package geiser ; Collection of modes for Scheme interpreters
   :ensure t
