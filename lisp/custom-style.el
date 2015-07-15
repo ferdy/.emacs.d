@@ -12,7 +12,7 @@
 ;;; Code:
 
 ;;; Fonts setup
-(set-frame-font "Source Code Pro-13") ; Default font
+(set-frame-font "Source Code Pro-13" nil t) ; Default font
 
 ;; Additional fonts for special characters and fallbacks
 (set-fontset-font t 'symbol (font-spec :family "Symbola") nil 'append)
