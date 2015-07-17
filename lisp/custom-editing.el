@@ -145,6 +145,11 @@
   :config (add-hook 'prog-mode-hook 'easy-escape-minor-mode)
   :diminish easy-escape-minor-mode)
 
+(use-package dubcaps-mode ; DOuble CApitals to Single Capitals
+  :load-path "various"
+  :init (dubcaps-mode +1)
+  :diminish dubcaps-mode)
+
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here
