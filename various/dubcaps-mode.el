@@ -1,4 +1,4 @@
-;;; dubcaps-mode.el ---                              -*- lexical-binding: t; -*-
+;;; dubcaps-mode.el --- Part of my Emacs setup       -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2015  Manuel Uberti
 
