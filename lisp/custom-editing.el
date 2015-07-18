@@ -43,6 +43,10 @@
          ("M-l" . fix-word-downcase)
          ("M-c" . fix-word-capitalize)))
 
+(use-package expand-region ; Increases the selected region by semantic units
+  :ensure t
+  :bind ("C-=" . er/expand-region))
+
 (use-package easy-kill ; Better kill text
   :ensure t
   :bind (([remap kill-ring-save] . easy-kill)
