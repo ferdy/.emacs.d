@@ -147,7 +147,7 @@
 
 (use-package dubcaps-mode ; DOuble CApitals to Single Capitals
   :load-path "various"
-  :init (dubcaps-mode +1)
+  :init (add-hook 'text-mode-hook #'dubcaps-mode)
   :diminish dubcaps-mode)
 
 (provide 'custom-editing)
