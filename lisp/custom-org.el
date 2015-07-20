@@ -109,7 +109,7 @@ Inside a code-block, simply calls `self-insert-command'."
             ;; Defines TODO workflow states and different faces
             (setq org-todo-keywords
                   '("TODO(t)" "INVIO DOCS(i)" "STAMPE(s)" "FATTURE(f)"
-                    "PHONE(p)" "MEETING(m)" "INFORMAZIONI(n)"
+                    "PHONE(p)" "MEETING(m)" "INFORMAZIONI(n)" "PREVENTIVO(v)"
                     "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))))
 
 (use-package autoinsert ; Auto insert custom text
