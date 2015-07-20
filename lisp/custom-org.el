@@ -113,14 +113,14 @@ Inside a code-block, simply calls `self-insert-command'."
                     "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))
 
             (setq org-todo-keyword-faces
-                  '(("INVIO DOCS" :foreground "light red" :weight bold)
-                    ("PHONE" :foreground "red" :weight bold)
-                    ("MEETING" :foreground "green" :weight bold)
+                  '(("INVIO DOCS" :background "magenta" :foreground "black")
+                    ("PHONE" :background "red" :foreground "black")
+                    ("MEETING" :foreground "dark green" :weight bold)
                     ("STAMPE" :foreground "orange" :weight bold)
-                    ("FATTURE" :foreground "light blue" :weight bold)
-                    ("INFORMAZIONI" :foreground "blue" :weight bold)
+                    ("FATTURE" :background "orange" :foreground "black")
+                    ("INFORMAZIONI" :foreground "red" :weight bold)
                     ("RINVIO LEZIONI" :foreground "dark red" :weight bold)
-                    ("CANCELLED" :foreground "dark grey" :weight bold)))))
+                    ("CANCELLED" :foreground "grey" :weight bold)))))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn
