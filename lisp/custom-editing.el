@@ -126,11 +126,6 @@
                 ;; Revert Dired buffers, too
                 global-auto-revert-non-file-buffers t))
 
-(use-package elisp-slime-nav ; Navigate through elisp code with M-. & M-,
-  :ensure t
-  :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
-  :diminish elisp-slime-nav-mode)
-
 (use-package transpose-mark ; Transpose data by leaving an Emacs mark
   :ensure t                 ; on the line you want to transpose.
   :bind ("C-c t m" . transpose-mark))

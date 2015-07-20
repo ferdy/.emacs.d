@@ -46,6 +46,11 @@
                 '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
                 aw-dispatch-always t))
 
+(use-package elisp-slime-nav ; Navigate through elisp code with M-. & M-,
+  :ensure t
+  :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
+  :diminish elisp-slime-nav-mode)
+
 (provide 'custom-navigation)
 
 ;;; custom-navigation.el ends here
