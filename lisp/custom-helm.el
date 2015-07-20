@@ -237,6 +237,10 @@
   :ensure t
   :bind ("C-c h h c" . cljr-helm))
 
+(use-package helm-cider-history ; Integrate cider-input-history with Helm
+  :ensure t
+  :commands helm-cider-history)
+
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here
