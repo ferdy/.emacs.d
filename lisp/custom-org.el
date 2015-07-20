@@ -92,6 +92,9 @@ Inside a code-block, simply calls `self-insert-command'."
                     (insert "‘’")
                     (forward-char -1)))))
 
+            ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
+            (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
+
             ;; Strike out DONE items
             (defun custom/modify-org-done-face ()
               (setq org-fontify-done-headline t)
@@ -103,8 +106,21 @@ Inside a code-block, simply calls `self-insert-command'."
             (eval-after-load "org"
               (add-hook 'org-add-hook 'custom/modify-org-done-face))
 
-            ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
-            (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))))
+            ;; Defines TODO workflow states and different faces
+            (setq org-todo-keywords
+                  '("TODO(t)" "INVIO DOCS(i)" "STAMPE(s)" "FATTURE(f)"
+                    "PHONE(p)" "MEETING(m)" "INFORMAZIONI(n)"
+                    "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))
+
+            (setq org-todo-keyword-faces
+                  '(("INVIO DOCS" :foreground "light red" :weight bold)
+                    ("PHONE" :foreground "red" :weight bold)
+                    ("MEETING" :foreground "green" :weight bold)
+                    ("STAMPE" :foreground "orange" :weight bold)
+                    ("FATTURE" :foreground "light blue" :weight bold)
+                    ("INFORMAZIONI" :foreground "blue" :weight bold)
+                    ("RINVIO LEZIONI" :foreground "dark red" :weight bold)
+                    ("CANCELLED" :foreground "dark grey" :weight bold)))))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn
