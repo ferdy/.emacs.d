@@ -110,17 +110,7 @@ Inside a code-block, simply calls `self-insert-command'."
             (setq org-todo-keywords
                   '("TODO(t)" "INVIO DOCS(i)" "STAMPE(s)" "FATTURE(f)"
                     "PHONE(p)" "MEETING(m)" "INFORMAZIONI(n)"
-                    "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))
-
-            (setq org-todo-keyword-faces
-                  '(("INVIO DOCS" :background "magenta" :foreground "black")
-                    ("PHONE" :background "red" :foreground "black")
-                    ("MEETING" :foreground "dark green" :weight bold)
-                    ("STAMPE" :foreground "orange" :weight bold)
-                    ("FATTURE" :background "orange" :foreground "black")
-                    ("INFORMAZIONI" :foreground "red" :weight bold)
-                    ("RINVIO LEZIONI" :foreground "dark red" :weight bold)
-                    ("CANCELLED" :foreground "grey" :weight bold)))))
+                    "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn
