@@ -154,7 +154,7 @@ configuring Souce Code Pro..."
     cd $HOME
     wget https://github.com/adobe-fonts/source-code-pro/archive/2.010R-ro/1.030R-it.tar.gz
     tar xzf 1.030R-it.tar.gz
-    cp -r $HOME/source-code-pro-2.010R-ro-1.030R-it $HOME/.fonts/souce-code-pro
+    cp -r $HOME/source-code-pro-2.010R-ro-1.030R-it $HOME/.fonts/source-code-pro
     rm -rf source-code-pro-2.010R-ro-1.030R-it 1.030R-it.tar.gz
     fc-cache -fv
     echo "
