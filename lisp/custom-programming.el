@@ -54,7 +54,7 @@
 ;; Requires: chktex
 (use-package flycheck ; On-the-fly syntax checker
   :ensure t
-  :defer 5
+  :bind ("C-c f" . flycheck-mode)
   :config (progn
             ;; Use italic face for checker name
             (set-face-attribute 'flycheck-error-list-checker-name nil
