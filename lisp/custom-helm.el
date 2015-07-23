@@ -21,8 +21,8 @@
                         (global-unset-key (kbd "C-x c"))))
 
             (bind-keys :map helm-map
-                       ("C-i"   . helm-execute-persistent-action)
-                       ("C-z"   . helm-select-action))
+                       ("C-i" . helm-execute-persistent-action)
+                       ("C-z" . helm-select-action))
 
             (setq helm-split-window-in-side-p t ; Open buffer in current window
                   ;; Move to end/beginning when reaching top/bottom of source
