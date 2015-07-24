@@ -15,9 +15,11 @@
   :ensure t
   :bind ("<f3>" . magit-status)
   :config (progn
+            ;; Be quiet
             (setq magit-revert-buffers 'silent
                   magit-save-repository-buffers 'dontask
-                  magit-refs-show-commit-count 'all)
+                  magit-refs-show-commit-count 'all
+                  magit-push-always-verify 'nil)
 
             (defadvice magit-status (around magit-fullscreen activate)
               "Turn fullscreen on for magit-status."
