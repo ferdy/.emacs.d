@@ -12,35 +12,18 @@
 ;;; Code:
 
 ;;; Fonts setup
-(set-frame-font "Source Code Pro-13" nil t) ; Default font
+;; Dinamically change font size based upon screen resolution
+(if window-system
+    (progn
+      (if (> (x-display-pixel-width) 1800)
+          (set-frame-font "Source Code Pro-16" nil t)
+        (set-frame-font "Source Code Pro-13" nil t))))
 
 ;; Additional fonts for special characters and fallbacks
 (set-fontset-font t 'symbol (font-spec :family "Symbola") nil 'append)
 (set-fontset-font t 'mathematical (font-spec :family "XITS Math") nil 'append)
 (set-fontset-font t 'greek (font-spec :family "Gentium Plus") nil 'append)
 (set-fontset-font t nil (font-spec :family "Symbola") nil 'append)
-
-(use-package dynamic-fonts ; Select best available font
-  :ensure t
-  :disabled t
-  :config (progn
-            (setq dynamic-fonts-preferred-monospace-fonts
-                  '("Source Code Pro"
-                    "DejaVu Sans Mono")
-                  dynamic-fonts-preferred-monospace-point-size 13
-                  dynamic-fonts-preferred-proportional-fonts
-                  '("Fira Sans Book"
-                    "DejaVu Sans Book")
-                  dynamic-fonts-preferred-proportional-point-size 13)
-            (dynamic-fonts-setup)))
-
-(use-package unicode-fonts ; Map Unicode blocks to fonts
-  :ensure t
-  :disabled t
-  :config (progn
-            (setq unicode-fonts-skip-font-groups '(low-quality-glyphs)
-                  unicode-fonts-use-prepend t)
-            (unicode-fonts-setup)))
 
 ;;; Interface
 ;; Toggle all frames maximized and fullscreen
