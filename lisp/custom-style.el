@@ -87,7 +87,7 @@
                 x-underline-at-descent-line t)
           (load-theme 'solarized-light 'no-confirm)))
 
-(use-package darktooth-theme ; Dark theme
+(use-package darktooth-theme ; Preferred dark theme
   :ensure t
   :disabled t
   :init (load-theme 'darktooth 'no-confirm))
