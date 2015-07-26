@@ -76,6 +76,7 @@
 ;;; Theme
 (use-package solarized ; Default theme
   :ensure solarized-theme
+  :disabled t
   :defer t
   :init (progn
           (setq solarized-use-variable-pitch nil ; Avoid all font-size changes
@@ -89,7 +90,6 @@
 
 (use-package darktooth-theme ; Preferred dark theme
   :ensure t
-  :disabled t
   :init (load-theme 'darktooth 'no-confirm))
 
 ;;; Utilities
@@ -137,7 +137,7 @@
                                      "WSC.*"
                                      "yas")
                                    "\\|"))
-                sml/theme 'automatic
+                sml/theme 'respectful
                 sml/no-confirm-load-theme t)
           (sml/setup))
   :config (progn
