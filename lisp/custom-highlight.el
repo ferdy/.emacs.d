@@ -71,6 +71,9 @@
 
             (setq hl-line-range-function 'highlight-visual-line)))
 
+(use-package hi-lock ; Custom regexp highlights
+  :init (global-hi-lock-mode))
+
 (provide 'custom-highlight)
 
 ;;; custom-highlight.el ends here
