@@ -241,6 +241,10 @@
   :ensure t
   :commands helm-cider-history)
 
+(use-package helm-themes ; Switch between themes using Helm
+  :ensure t
+  :commands helm-themes)
+
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here
