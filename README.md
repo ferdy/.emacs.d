@@ -26,7 +26,7 @@ This configuration comes with more than **130 packages** carefully set up for my
 daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
 
 ##Overview
-- Theme: [Darktooth](https://github.com/emacsfodder/emacs-theme-darktooth)
+- Theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
 - Default font:
 [Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
 - Package management: [use-package](https://github.com/jwiegley/use-package),
