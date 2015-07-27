@@ -243,7 +243,7 @@
 
 (use-package helm-themes ; Switch between themes using Helm
   :ensure t
-  :commands helm-themes)
+  :bind (("C-c h h t" . helm-themes)))
 
 (provide 'custom-helm)
 
