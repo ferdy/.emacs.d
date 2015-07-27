@@ -21,6 +21,7 @@
 
 (bind-key "C-x C-d" 'duplicate-line) ; Duplicate line at point
 (bind-key "C-c q" #'custom/quit-bottom-side-windows) ; Close side frames
+(bind-key "M-Q" #'unfill-paragraph) ; The opposite of fill-paragraph
 
 ;; Custom keybindings activated with C^x t
 (define-prefix-command 'toggle-map)

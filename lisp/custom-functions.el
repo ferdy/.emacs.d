@@ -287,6 +287,12 @@ region if active."
         (move-beginning-of-line nil)
         (kill-whole-line)))))
 
+(defun unfill-paragraph (&optional region)
+  "Turn a multi-line paragraph into a single line of text."
+  (interactive (progn (barf-if-buffer-read-only) '(t)))
+  (let ((fill-column (point-max)))
+    (fill-paragraph nil region)))
+
 (provide 'custom-functions)
 
 ;;; custom-functions.el ends here
