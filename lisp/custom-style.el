@@ -82,8 +82,15 @@
                 solarized-distinct-doc-face t ; Make doc faces stand out more
                 ;; Don't change size of org-mode headlines
                 solarized-scale-org-headlines nil
+                ;; Don't change size, ever
+                solarized-height-minus-1 1.0
+                solarized-height-plus-1 1.0
+                solarized-height-plus-2 1.0
+                solarized-height-plus-3 1.0
+                solarized-height-plus-4 1.0
                 ;; Underline below the font bottomline instead of the baseline
                 x-underline-at-descent-line t)
+
           (load-theme 'solarized-light 'no-confirm)))
 
 (use-package darktooth-theme ; Preferred dark theme
