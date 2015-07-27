@@ -80,13 +80,7 @@
   :init (progn
           (setq solarized-use-variable-pitch nil ; Avoid all font-size changes
                 solarized-distinct-doc-face t ; Make doc faces stand out more
-                solarized-scale-org-headlines nil ; Don't change org headlines
-                ;; Don't change size, ever
-                solarized-height-minus-1 1.0
-                solarized-height-plus-1 1.0
-                solarized-height-plus-2 1.0
-                solarized-height-plus-3 1.0
-                solarized-height-plus-4 1.0
+                solarized-scale-org-headlines nil ; Don't scale Org headlines
                 ;; Underline below the font bottomline instead of the baseline
                 x-underline-at-descent-line t)
           (load-theme 'solarized-light 'no-confirm)))
