@@ -23,8 +23,7 @@
 
 (use-package avy-jump ; Jump to characters in buffers
   :ensure avy
-  :bind (("C-c j s" . avy-isearch)
-         ("C-c j w" . avy-goto-word-1)
+  :bind (("C-c j w" . avy-goto-word-1)
          ("C-c j j" . avy-goto-char-2))
   :config (setq avy-keys ; Use home row
                 '(?a ?s ?d ?e ?f ?h ?j ?k ?l ?n ?m ?v ?r ?u)))
