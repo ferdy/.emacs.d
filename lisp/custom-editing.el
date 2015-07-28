@@ -118,7 +118,7 @@
           (bind-key "C-c e e" #'macrostep-expand lisp-interaction-mode-map)))
 
 (use-package saveplace ; Save point position in files
-  :init (save-place-mode))
+  :init (save-place-mode 1))
 
 (use-package autorevert ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)

@@ -241,6 +241,10 @@
   :ensure t
   :commands helm-cider-history)
 
+(use-package helm-make ; Select a Makefile target with Helm
+  :ensure t
+  :commands helm-make)
+
 (use-package helm-themes ; Switch between themes using Helm
   :ensure t
   :bind (("C-c h h t" . helm-themes)))
