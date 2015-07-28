@@ -110,7 +110,20 @@ Inside a code-block, simply calls `self-insert-command'."
             (setq org-todo-keywords
                   '("TODO(t)" "INVIO DOCS(i)" "STAMPE(s)" "FATTURE(f)"
                     "PHONE(p)" "MEETING(m)" "INFORMAZIONI(n)" "PREVENTIVO(v)"
-                    "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))))
+                    "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))
+
+            ;; Embed Youtube videos
+            (org-add-link-type
+             "yt"
+             (lambda (handle)
+               (browse-url (concat "https://www.youtube.com/embed/" handle)))
+             (lambda (path desc backend)
+               (cl-case backend
+                 (html (format "<iframe width=\"440\" height=\"335\"
+src=\"https://www.youtube.com/embed/%s\" frameborder=\"0\"
+allowfullscreen>%s</iframe>"
+                               path (or desc "")))
+                 (latex (format "\href{%s}{%s}" path (or desc "video"))))))))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn
