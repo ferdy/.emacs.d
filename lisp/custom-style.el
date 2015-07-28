@@ -76,14 +76,13 @@
 ;;; Theme
 (use-package solarized ; Default theme
   :ensure solarized-theme
-  :defer t
-  :init (progn
-          (setq solarized-use-variable-pitch nil ; Avoid all font-size changes
-                solarized-distinct-doc-face t ; Make doc faces stand out more
-                solarized-scale-org-headlines nil ; Don't scale Org headlines
-                ;; Underline below the font bottomline instead of the baseline
-                x-underline-at-descent-line t)
-          (load-theme 'solarized-light 'no-confirm)))
+  :config (progn
+            (setq solarized-use-variable-pitch nil ; Avoid all font-size changes
+                  solarized-distinct-doc-face t ; Make doc faces stand out more
+                  solarized-scale-org-headlines nil ; Don't scale Org headlines
+                  ;; Underline below the font bottomline instead of the baseline
+                  x-underline-at-descent-line t)
+            (load-theme 'solarized-light 'no-confirm)))
 
 (use-package darktooth-theme ; Preferred dark theme
   :ensure t
