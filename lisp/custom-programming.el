@@ -17,6 +17,12 @@
   :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
   :diminish eldoc-mode)
 
+(use-package macrostep ; Navigate through macros
+  :ensure t
+  :init (with-eval-after-load 'lisp-mode
+          (bind-key "C-c e e" #'macrostep-expand emacs-lisp-mode-map)
+          (bind-key "C-c e e" #'macrostep-expand lisp-interaction-mode-map)))
+
 (use-package compile ; Compile from Emacs
   :config (progn
             (setq compilation-ask-about-save nil

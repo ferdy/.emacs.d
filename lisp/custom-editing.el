@@ -111,12 +111,6 @@
   :ensure t
   :bind ("C-!" . mf/mirror-region-in-multifile))
 
-(use-package macrostep ; Navigate through macros
-  :ensure t
-  :init (with-eval-after-load 'lisp-mode
-          (bind-key "C-c e e" #'macrostep-expand emacs-lisp-mode-map)
-          (bind-key "C-c e e" #'macrostep-expand lisp-interaction-mode-map)))
-
 (use-package saveplace ; Save point position in files
   :init (save-place-mode 1))
 
