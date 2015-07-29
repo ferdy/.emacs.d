@@ -47,7 +47,6 @@
 
 (use-package company-math ; Company backend for math symbols
   :ensure t
-  :defer t
   :init (with-eval-after-load 'company
           ;; Add backends for math characters
           (add-to-list 'company-backends 'company-math-symbols-unicode)
@@ -60,8 +59,8 @@
 
 (use-package company-web ; Backend for web development
   :ensure t
-  :defer t
-  :config (bind-key "C-." #'company-web-html web-mode-map))
+  :init (with-eval-after-load 'company
+          (add-to-list 'company-backends 'company-web-html)))
 
 (provide 'custom-completion)
 
