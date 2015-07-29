@@ -90,6 +90,10 @@
   :init (load-theme 'darktooth 'no-confirm))
 
 ;;; Utilities
+(setq history-length 1000) ; Store more history
+
+(setq use-dialog-box nil) ; Never use dialogs for minibuffer input
+
 ;; Disable tabs, but give them proper width
 (setq-default indent-tabs-mode nil
               tab-width 8)
