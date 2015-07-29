@@ -45,8 +45,13 @@
 
 (eval-when-compile
   (require 'use-package))
+
 (require 'diminish)
 (require 'bind-key)
+(require 'grep)
+(require 'subr-x)
+(require 'rx)
+(require 'time-date)
 
 ;;; Initialization
 (when (version< emacs-version "25")
