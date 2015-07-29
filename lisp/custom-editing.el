@@ -31,12 +31,6 @@
   :defer t
   :init (delete-selection-mode))
 
-(use-package syntax-subword ; Make operations on words more fine-grained
-  :ensure t
-  :init (progn
-          (setq syntax-subword-skip-spaces t)
-          (global-syntax-subword-mode +1)))
-
 (use-package fix-word ; Convenient word transformation
   :ensure t
   :bind (("M-u" . fix-word-upcase)
