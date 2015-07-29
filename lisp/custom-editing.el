@@ -143,6 +143,16 @@
   :init (add-hook 'text-mode-hook #'dubcaps-mode)
   :diminish dubcaps-mode)
 
+(use-package typo ; Automatically use typographic quotes
+  :ensure t
+  :init (progn
+          (typo-global-mode)
+
+          (dolist (hook '(markdown-mode-hook
+                          rst-mode-hook))
+            (add-hook hook 'typo-mode)))
+  :diminish typo-mode)
+
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here
