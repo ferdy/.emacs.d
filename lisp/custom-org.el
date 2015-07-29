@@ -106,11 +106,19 @@ Inside a code-block, simply calls `self-insert-command'."
             (eval-after-load "org"
               (add-hook 'org-add-hook 'custom/modify-org-done-face))
 
-            ;; Defines TODO workflow states and different faces
+            ;; Define TODO workflow states and different faces
             (setq org-todo-keywords
                   '("TODO(t)" "INVIO DOCS(i)" "STAMPE(s)" "FATTURE(f)"
                     "PHONE(p)" "MEETING(m)" "INFORMAZIONI(n)" "PREVENTIVO(v)"
                     "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))
+
+            ;; Define custom commands
+            (setq org-agenda-custom-commands
+                  '(("P" "Project List" ((tags "PROJECT")))
+                    ("B" "Boccaperta" ((agenda)
+                                       (tags-todo "BOCCAPERTA")))
+                    ("F" "FAV" ((agenda)
+                                (tags-todo "FAV")))))
 
             ;; Embed Youtube videos
             (org-add-link-type
