@@ -32,8 +32,6 @@
                   ;; Fuzzy matching
                   helm-M-x-fuzzy-match t
                   helm-semantic-fuzzy-match t
-                  helm-imenu-fuzzy-match t
-                  helm-apropos-fuzzy-match t
                   helm-lisp-fuzzy-completion t
                   ;; Cleaner Helm interface
                   helm-display-header-line nil)
@@ -94,7 +92,9 @@
 
 (use-package helm-imenu ; Imenu through Helm
   :ensure helm
-  :bind ("C-c i" . helm-imenu-in-all-buffers))
+  :bind ("C-c i" . helm-imenu-in-all-buffers)
+  :config (setq helm-imenu-fuzzy-match t
+                helm-imenu-execute-action-at-once-if-one nil))
 
 (use-package helm-register ; Display registers with Helm
   :ensure helm
@@ -112,7 +112,8 @@
 (use-package helm-elisp ; Helm commands for Emacs Lisp
   :ensure helm
   :bind (("C-c h a" . helm-apropos)
-         ("C-c h l" . helm-locate-library)))
+         ("C-c h l" . helm-locate-library))
+  :config (setq helm-apropos-fuzzy-match t))
 
 (use-package helm-info ; Helm tools for Info
   :ensure helm
