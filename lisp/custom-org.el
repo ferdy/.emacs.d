@@ -202,6 +202,10 @@ allowfullscreen>%s</iframe>"
   :config (setq org-bullets-bullet-list
                 '("◉" "○" "●" "▶")))
 
+(use-package org-pdfview ; Link to PDF files
+  :ensure t
+  :init (with-eval-after-load 'org '(require org-pdfview)))
+
 (provide 'custom-org)
 
 ;;; custom-org.el ends here
