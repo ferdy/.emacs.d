@@ -14,7 +14,8 @@
 (use-package org ; The almighty Org
   :ensure t
   :bind (("C-c c" . org-capture)
-         ("C-c a" . org-agenda))
+         ("C-c a" . org-agenda)
+         ("C-c l" . org-store-link))
   :defer t
   :init (setq org-emphasis-regexp-components ; Fix markup for ' and "
               '("     ('\"{“”"
