@@ -136,7 +136,9 @@
                         (mapconcat #'identity
                                    '("Wrap"
                                      "WSC.*"
-                                     "yas")
+                                     "yas"
+                                     "cWip"
+                                     "sWip")
                                    "\\|"))
                 sml/theme 'automatic
                 sml/no-confirm-load-theme t)
