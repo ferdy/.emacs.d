@@ -2,7 +2,6 @@
 
 ##Table of Contents
 - [Preface](https://github.com/manuel-uberti/.emacs.d#preface)
-- [Overview](https://github.com/manuel-uberti/.emacs.d#overview)
 - [Setup](https://github.com/manuel-uberti/.emacs.d#setup)
 - [Updates](https://github.com/manuel-uberti/.emacs.d#updates)
 - [Acknowledgements](https://github.com/manuel-uberti/.emacs.d#acknowledgements)
@@ -24,70 +23,6 @@ planned accordingly.
 
 This configuration comes with more than **130 packages** carefully set up for my
 daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
-
-##Overview
-- Theme: [Solarized Light](https://github.com/bbatsov/solarized-emacs)
-- Default font:
-[Source Code Pro](https://github.com/adobe-fonts/source-code-pro)
-- Package management: [use-package](https://github.com/jwiegley/use-package),
-  [Paradox](https://github.com/Bruce-Connor/paradox)
-- Mode-line: [smart-mode-line](https://github.com/Bruce-Connor/smart-mode-line)
-- Buffers selection and completion: [Helm](https://github.com/emacs-helm/helm),
-  [ibuffer-vc](https://github.com/purcell/ibuffer-vc)
-- Navigation: [Avy](https://github.com/abo-abo/avy),
-[ace-window](https://github.com/abo-abo/ace-window),
-[ace-link](https://github.com/abo-abo/ace-link)
-- Editing: [Iedit](https://github.com/victorhge/iedit),
-  [transpose-mark](https://github.com/AtticHacker/transpose-mark),
-  [multiple-cursors](https://github.com/magnars/multiple-cursors.el)
-- Undo: [Undo Tree](http://www.dr-qubit.org/emacs.php#undo-tree)
-- Killing: [easy-kill](https://github.com/leoliu/easy-kill),
-  [helm-show-kill-ring](https://tuhdo.github.io/helm-intro.html#sec-6)
-- Coding: [Smartparens](https://github.com/Fuco1/smartparens),
-[aggressive-indent-mode](https://github.com/Malabarba/aggressive-indent-mode),
-[macrostep](https://github.com/joddie/macrostep)
-- Filling:
-  [aggressive-fill-paragraph](https://github.com/davidshepherd7/aggressive-fill-paragraph-mode),
-  [visual-fill-column](https://github.com/joostkremers/visual-fill-column)
-- Search: [helm-ag](https://github.com/syohex/emacs-helm-ag),
-[helm-swoop](https://github.com/ShingoFukuyama/helm-swoop)
-- Highlights: [rainbow-delimiters](https://github.com/jlr/rainbow-delimiters),
-[highlight-symbol](https://github.com/nschum/highlight-symbol.el),
-[highlight-numbers](https://github.com/Fanael/highlight-numbers)
-- Org-mode: [org-bullets](https://github.com/sabof/org-bullets),
-  [toc-org](https://github.com/snosov1/toc-org),
-  [org2blog](https://github.com/punchagan/org2blog)
-- Documents formatting:
-  [pandoc-mode](https://github.com/joostkremers/pandoc-mode),
-  [ox-pandoc](https://github.com/kawabata/ox-pandoc)
-- LaTeX: [AUCTeX](http://www.gnu.org/software/auctex/index.html),
-  [helm-bibtex](https://github.com/tmalsburg/helm-bibtex)
-- Clojure: [CIDER](https://github.com/clojure-emacs/cider),
-[flycheck-clojure](https://github.com/clojure-emacs/squiggly-clojure),
-[clj-refactor](https://github.com/clojure-emacs/clj-refactor.el)
-- Scheme: [Geiser](https://github.com/jaor/geiser)
-- Web development: [web-mode](http://web-mode.org/),
-  [js2-mode](https://github.com/mooz/js2-mode),
-  [php-mode](https://github.com/ejmr/php-mode)
-- Web: [SX](https://github.com/vermiculus/sx.el),
-  [Elfeed](https://github.com/skeeto/elfeed)
-- PDF: [PDF Tools](https://github.com/politza/pdf-tools),
-  [interleave](https://github.com/rudolfochrist/interleave)
-- Auto-completion: [company-mode](https://github.com/company-mode/company-mode),
-  [company-statistics](https://github.com/company-mode/company-statistics),
-  [helm-company](https://github.com/yasuyk/helm-company)
-- Syntax checking: [Flycheck](https://github.com/flycheck/flycheck),
-[helm-flycheck](https://github.com/yasuyk/helm-flycheck)
-- Language tools: [Synosaurus](https://github.com/rootzlevel/synosaurus),
-[helm-wordnet](https://github.com/raghavgautam/helm-wordnet)
-- Version control: [Magit](https://github.com/magit/magit),
-[diff-hl](https://github.com/dgutov/diff-hl)
-- Project management: [Projectile](https://github.com/bbatsov/projectile)
-- Slides: [Org-HTML-Slideshow](https://github.com/relevance/org-html-slideshow),
-  [org-reveal](https://github.com/yjwen/org-reveal)
-- Utilities: [The Bug Hunter](https://github.com/Malabarba/elisp-bug-hunter),
-  [ESUP](https://github.com/jschaf/esup),
-  [camcorder](https://github.com/Malabarba/camcorder.el)
 
 ##Setup
 On your **Debian-based** machine:
