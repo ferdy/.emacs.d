@@ -57,8 +57,6 @@ $ ./esetup
 ##Updates
 This configuration tracks latest Emacs developments. If you intend to use it, I highly recommend you update and re-build your sources at least once a week.
 
-That is why if your build is more than seven days old, a warning will show up reminding you to update the sources.
-
 You can use [Magit](https://github.com/magit/magit), which is bound to
 ```<f3>```. Or you can do it with the command line:
 ```console
