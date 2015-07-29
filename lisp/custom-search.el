@@ -35,6 +35,10 @@
   :ensure t
   :defer t)
 
+(use-package wgrep-ag ; Wgrep for ag
+  :ensure t
+  :defer t)
+
 (use-package visual-regexp ; Display regular expressions
   :ensure t
   :bind (("C-c r" . vr/query-replace)
