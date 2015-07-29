@@ -12,7 +12,8 @@ This is the Emacs configuration I use everyday.
 It requires Emacs built from development sources to work. I regularly update my
 sources from here:
 
-```console git://git.savannah.gnu.org/emacs.git ```
+```console
+git://git.savannah.gnu.org/emacs.git ```
 
 I use Emacs on [LinuxBBQ](http://linuxbbq.org/). The ```esetup``` script helps
 to create the right environment *before* starting Emacs with this configuration
