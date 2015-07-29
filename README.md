@@ -21,10 +21,8 @@ to create the right environment *before* starting Emacs with this configuration
 for the first time. The script only works with **Debian-based** systems.
 
 I mainly use Emacs for **LaTeX**, **Elisp** and **Clojure**, so my setup is
-planned accordingly.
-
-This configuration comes with more than **130 packages** carefully set up for my
-daily usage. Check the ```.emacs.d/lisp``` directory for the gory details.
+planned accordingly. Check the ```.emacs.d/lisp``` directory for the gory
+details.
 
 ##Setup
 On your **Debian-based** machine:
