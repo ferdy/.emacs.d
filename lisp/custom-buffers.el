@@ -39,7 +39,7 @@
         (,(rx bos (or "*Flycheck errors*" ; Flycheck error list
                       "*compilation"      ; Compilation buffers
                       "*Warnings*"        ; Emacs warnings
-                      "*cider"            ; SBT REPL and compilation buffer
+                      "*cider"            ; CIDER buffers
                       "*SQL"              ; SQL REPL
                       "*shell"            ; Shell window
                       ))
