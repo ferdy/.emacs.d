@@ -29,14 +29,6 @@
 ;; Toggle all frames maximized and fullscreen
 (modify-all-frames-parameters '((fullscreen . maximized)))
 
-;; Don't let the cursor go into minibuffer prompt
-(setq minibuffer-prompt-properties '(read-only
-				     t
-				     point-entered
-				     minibuffer-avoid-prompt
-				     face
-				     minibuffer-prompt))
-
 (setq echo-keystrokes 0.1) ; Faster echo keystrokes
 
 ;; Turn off mouse interface early in startup to avoid momentary display
@@ -60,18 +52,7 @@
       inhibit-startup-echo-area-message t
       initial-scratch-message nil)
 
-;; Automatically close some buffers on exit
-(add-hook 'minibuffer-exit-hook
-	  '(lambda ()
-	     (let ((completions "*Completions*"))
-	       (and (get-buffer completions)
-		    (kill-buffer completions)))))
-
 (column-number-mode) ; Turn on column-number-mode
-
-(use-package uniquify ; Unique buffer names
-  :config (setq uniquify-buffer-name-style
-                'post-forward uniquify-separator ":"))
 
 ;;; Theme
 (use-package solarized ; Default theme
@@ -91,8 +72,6 @@
 
 ;;; Utilities
 (setq history-length 1000) ; Store more history
-
-(setq use-dialog-box nil) ; Never use dialogs for minibuffer input
 
 ;; Disable tabs, but give them proper width
 (setq-default indent-tabs-mode nil

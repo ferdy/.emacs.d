@@ -103,7 +103,7 @@
 (require 'custom-functions)
 (require 'custom-style)
 (require 'custom-highlight)
-(require 'custom-ibuffer)
+(require 'custom-buffers)
 (require 'custom-helm)
 (require 'custom-editing)
 (require 'custom-pairs)
