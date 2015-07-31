@@ -132,7 +132,11 @@ Inside a code-block, simply calls `self-insert-command'."
 src=\"https://www.youtube.com/embed/%s\" frameborder=\"0\"
 allowfullscreen>%s</iframe>"
                                path (or desc "")))
-                 (latex (format "\href{%s}{%s}" path (or desc "video"))))))))
+                 (latex (format "\href{%s}{%s}" path (or desc "video"))))))
+
+            (setq org-latex-pdf-process ; Use LuaTex for PDF export
+                  "latexmk -pdflatex='lualatex -shell-escape
+-interaction nonstopmode' -pdf -f  %f")))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn
