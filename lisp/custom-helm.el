@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package helm ; The almighty Helm
+(use-package helm ; The ubiquitous Helm
   :ensure t
   :init (helm-mode 1)
   :config (progn

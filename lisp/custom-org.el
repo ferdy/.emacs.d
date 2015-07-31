@@ -211,6 +211,10 @@ allowfullscreen>%s</iframe>"
   :ensure t
   :init (with-eval-after-load 'org '(require org-pdfview)))
 
+(use-package org-download ; Easily drag and drop images in Org files
+  :ensure t
+  :init (with-eval-after-load 'org '(require org-download)))
+
 (provide 'custom-org)
 
 ;;; custom-org.el ends here
