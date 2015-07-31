@@ -26,7 +26,7 @@
 (setq completion-cycle-threshold 5)
 
 (use-package hippie-exp ; Powerful expansion and completion
-  :bind (([remap dabbrev-expand] . hippie-expand))
+  :bind ([remap dabbrev-expand] . hippie-expand)
   :config
   (setq hippie-expand-try-functions-list
         '(try-expand-dabbrev
@@ -50,17 +50,17 @@
                   company-idle-delay nil))
   :diminish company-mode)
 
-(use-package company-math ; Company backend for math symbols
+(use-package company-statistics ; Show likelier candidates on top
+  :ensure t
+  :defer t
+  :init (company-statistics-mode))
+
+(use-package company-math ; Backend for math symbols
   :ensure t
   :init (with-eval-after-load 'company
           ;; Add backends for math characters
           (add-to-list 'company-backends 'company-math-symbols-unicode)
           (add-to-list 'company-backends 'company-math-symbols-latex)))
-
-(use-package company-statistics ; Show likelier candidates on top
-  :ensure t
-  :defer t
-  :init (company-statistics-mode))
 
 (use-package company-web ; Backend for web development
   :ensure t
