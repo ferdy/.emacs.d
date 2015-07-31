@@ -142,6 +142,21 @@ configuring synosaurus..."
 ... done"
 }
 
+langtool_setup() {
+    echo "
+configuring langtool..."
+    if [ ! -x /usr/bin/unzip ]; then
+        sudo apt-get -y install --no-install-recommends unzip
+    fi
+    cd $HOME
+    wget https://languagetool.org/download/LanguageTool-3.0.zip
+    unzip LanguageTool-3.0.zip
+    mv LanguageTool-3.0 languagetool-3.0
+    rm LanguageTool-3.0.zip
+    echo "
+... done"
+}
+
 font_setup() {
     echo "
 configuring DejaVu fonts..."
