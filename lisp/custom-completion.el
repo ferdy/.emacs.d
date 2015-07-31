@@ -11,6 +11,11 @@
 
 ;;; Code:
 
+(use-package yasnippet ; Snippets
+  :ensure t
+  :defer t
+  :diminish yas-minor-mode)
+
 (use-package abbrev ; Save abbreviations
   :init (abbrev-mode)
   :config (setq save-abbrevs t)
@@ -61,6 +66,13 @@
   :ensure t
   :init (with-eval-after-load 'company
           (add-to-list 'company-backends 'company-web-html)))
+
+(use-package company-auctex ; Backend for AUCTeX
+  :ensure t
+  :init (progn
+          (add-hook 'company-mode-hook
+                    (lambda () (yas-minor-mode 1)))
+          (company-auctex-init)))
 
 (provide 'custom-completion)
 
