@@ -99,6 +99,18 @@ With prefix P, create local abbrev. Otherwise it will be global."
   :bind (("C-c s l" . synosaurus-lookup)
          ("C-c s r" . synosaurus-choose-and-replace)))
 
+(use-package langtool ; LanguageTool for Emacs
+  :ensure t
+  :bind (("C-c L w" . langtool-check)
+         ("C-c L W" . langtool-check-done)
+         ("C-c L l" . langtool-switch-default-language)
+         ("C-c L m" . langtool-show-message-at-point)
+         ("C-c L c" . langtool-correct-buffer))
+  :init (setq langtool-language-tool-jar
+              "~/languagetool-3.0/languagetool-commandline.jar"
+              langtool-default-language "en-GB"
+              langtool-java-bin "/usr/bin/java"))
+
 (provide 'custom-languages)
 
 ;;; custom-languages.el ends here
