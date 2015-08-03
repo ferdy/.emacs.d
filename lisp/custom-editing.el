@@ -147,6 +147,11 @@
             (add-hook hook 'typo-mode)))
   :diminish typo-mode)
 
+(use-package goto-addr ; Make links clickable
+  :defer t
+  :init (progn (add-hook 'prog-mode-hook #'goto-address-prog-mode)
+               (add-hook 'text-mode-hook #'goto-address-mode)))
+
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here
