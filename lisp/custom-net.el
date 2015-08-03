@@ -85,8 +85,7 @@
 
 (use-package paradox ; Better package manager interface
   :ensure t
-  :bind (("<f4>"   . paradox-list-packages)
-         ("S-<f4>" . paradox-upgrade-packages))
+  :bind ("<f4>" . paradox-list-packages)
   :config (progn
             (setq paradox-github-token t ; Don't ask for a token, please
                   ;; No async for now
