@@ -123,9 +123,4 @@
 (require 'custom-utilities)
 (require 'custom-keybindings)
 
-;; Immediately visit organizer.org, if it exists
-(defvar organizer "~/org/organizer.org")
-(when (file-exists-p organizer)
-  (find-file organizer))
-
 ;;; init.el ends here
