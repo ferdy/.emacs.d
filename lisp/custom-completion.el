@@ -53,7 +53,8 @@
 (use-package company-statistics ; Show likelier candidates on top
   :ensure t
   :defer t
-  :init (company-statistics-mode))
+  :init (with-eval-after-load 'company
+          (company-statistics-mode)))
 
 (use-package company-math ; Backend for math symbols
   :ensure t
