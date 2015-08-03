@@ -67,10 +67,6 @@
   :no-require t
   :mode "\\.csv\\'")
 
-(use-package lice ; License and header template
-  :ensure t
-  :no-require t)
-
 (use-package esup ; Emacs Startup Profiler
   :ensure t
   :commands esup)
