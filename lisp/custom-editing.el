@@ -150,7 +150,9 @@
 (use-package goto-addr ; Make links clickable
   :defer t
   :init (progn (add-hook 'prog-mode-hook #'goto-address-prog-mode)
-               (add-hook 'text-mode-hook #'goto-address-mode)))
+               (add-hook 'text-mode-hook #'goto-address-mode)
+               (add-hook 'org-mode-hook (lambda ()
+                                          (goto-address-mode -1)))))
 
 (provide 'custom-editing)
 
