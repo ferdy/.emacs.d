@@ -51,23 +51,7 @@
               (custom/magit-set-repo-dirs-from-projectile))
 
             (add-hook 'projectile-switch-project-hook
-                      #'custom/magit-set-repo-dirs-from-projectile)
-
-            ;; Visit Github PRs from Magit
-            (defun custom/visit-pull-request-url ()
-              "Visit the current branch's PR on Github."
-              (interactive)
-              (browse-url
-               (format "https://github.com/%s/pull/new/%s"
-                       (replace-regexp-in-string
-                        "\\`.+github\\.com:\\(.+\\)\\.git\\'" "\\1"
-                        (magit-get "remote"
-                                   (magit-get-remote)
-                                   "url"))
-                       (cdr (magit-get-remote-branch)))))
-
-            (bind-key "v" #'custom/visit-pull-request-url
-                      magit-mode-map)))
+                      #'custom/magit-set-repo-dirs-from-projectile)))
 
 (use-package git-commit ; Git commit message mode
   :ensure t
