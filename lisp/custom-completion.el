@@ -48,7 +48,8 @@
                   ;; Easy navigation to candidates with M-<n>
                   company-show-numbers t
                   ;; Don'show completion popup, use helm-company instead
-                  company-idle-delay nil))
+                  ;; company-idle-delay nil
+                  ))
   :diminish company-mode)
 
 (use-package company-statistics ; Show likelier candidates on top
@@ -56,6 +57,12 @@
   :defer t
   :init (with-eval-after-load 'company
           (company-statistics-mode)))
+
+(use-package company-quickhelp ; Show help in tooltip
+  :ensure t
+  :defer t
+  :init (with-eval-after-load 'company
+          (company-quickhelp-mode)))
 
 (use-package company-math ; Backend for math symbols
   :ensure t
