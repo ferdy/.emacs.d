@@ -44,6 +44,7 @@
   :init (global-company-mode)
   :config (progn
             (setq company-tooltip-align-annotations t
+                  company-tooltip-flip-when-above t
                   ;; Easy navigation to candidates with M-<n>
                   company-show-numbers t
                   ;; Don'show completion popup, use helm-company instead
