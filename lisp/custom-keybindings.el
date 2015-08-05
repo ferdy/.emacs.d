@@ -65,8 +65,7 @@
 (bind-key "C-S-<left>" 'shrink-window-horizontally)
 (bind-key "C-S-<right>" 'enlarge-window-horizontally)
 
-;; Keybindings I do not want to be overridden by a majore mode
-(bind-keys*
+(bind-keys* ; Keybindings I do not want to be overridden by a majore mode
  ("M-a"     . custom/backward-paragraph)
  ("M-e"     . custom/forward-paragraph)
  ("C-,"     . iedit-dwim)
