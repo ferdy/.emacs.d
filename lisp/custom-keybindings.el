@@ -7,7 +7,8 @@
 
 ;;; Commentary:
 
-;; This file stores all the keybindings I use.
+;; This file stores all the keybindings I use which are not strictly related to
+;; a specific mode already configured with use-package.
 
 ;;; Code:
 
