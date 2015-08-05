@@ -64,20 +64,15 @@
 (bind-key "C-S-<left>" 'shrink-window-horizontally)
 (bind-key "C-S-<right>" 'enlarge-window-horizontally)
 
-;; Minor mode for 'override' keybindings
-(use-package my-keys-mode
-  :load-path "various"
-  :config (progn
-            (bind-keys :map my-keys-mode-map
-                       ("M-a" . custom/backward-paragraph)
-                       ("M-e" . custom/forward-paragraph)
-                       ("C-," . iedit-dwim)
-                       ("C-c o" . (lambda ()
-                                    (interactive)
-                                    (find-file "~/org/organizer.org")))
-                       ("C-c M-s" . helm-do-ag))
-            (global-my-keys-mode))
-  :diminish my-keys-mode)
+;; Keybindings I do not want to be overridden by a majore mode
+(bind-keys*
+ ("M-a"     . custom/backward-paragraph)
+ ("M-e"     . custom/forward-paragraph)
+ ("C-,"     . iedit-dwim)
+ ("C-c o"   . (lambda ()
+                (interactive)
+                (find-file "~/org/organizer.org")))
+ ("C-c M-s" . helm-do-ag))
 
 (provide 'custom-keybindings)
 
