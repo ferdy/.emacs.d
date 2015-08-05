@@ -12,6 +12,8 @@
 
 ;;; Code:
 
+(bind-key "C-x C-e" 'pp-eval-last-sexp) ; Pretty-print evaluated expression
+
 ;; Better forward and backward paragraph
 (bind-key "M-a" 'custom/backward-paragraph)
 (bind-key "M-e" 'custom/forward-paragraph)
