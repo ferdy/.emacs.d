@@ -49,7 +49,16 @@
                   company-show-numbers t
                   ;; Don'show completion popup, use helm-company instead
                   ;; company-idle-delay nil
-                  ))
+                  )
+
+            ;; Don't complete numbers
+            (push (apply-partially #'cl-remove-if
+                                   (lambda (c)
+                                     (or (string-match-p "[^\x00-\x7F]+" c)
+                                         (string-match-p "[0-9]+" c)
+                                         (if (equal major-mode "org")
+                                             (>= (length c) 15)))))
+                  company-transformers))
   :diminish company-mode)
 
 (use-package company-statistics ; Show likelier candidates on top
