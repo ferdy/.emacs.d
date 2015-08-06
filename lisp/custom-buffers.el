@@ -28,6 +28,9 @@
 
 (setq use-dialog-box nil) ; Never use dialogs for minibuffer input
 
+(setq kill-buffer-query-functions ; Don't ask for confirmation
+      (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
+
 (setq frame-resize-pixelwise t ; Resize by pixels
       frame-title-format
       '(:eval (if (buffer-file-name)
