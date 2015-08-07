@@ -63,8 +63,7 @@
 
             ;; Make find-name-dired faster
             (use-package find-dired
-              :config (setq find-ls-option
-                            '("-print0 | xargs -0 ls -ld" . "-ld")))
+              :config (setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
 
             ;; Better M-< and M->
             (defun dired-back-to-top ()
