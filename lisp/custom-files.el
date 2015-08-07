@@ -23,8 +23,8 @@
 
 (use-package dired ; File manager
   :bind (("C-c z"      . dired-get-size)
-         ("C-c C"      . custom/copy-filename-as-kill)
-         ("<C-return>" . custom/open-in-external-app))
+         ("<C-return>" . custom/open-in-external-app)
+         ("C-c C-F"    . find-name-dired))
   :config (progn
             (setq dired-auto-revert-buffer t            ; Revert buffers on revisiting
                   dired-listing-switches
