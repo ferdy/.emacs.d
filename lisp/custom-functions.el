@@ -11,12 +11,14 @@
 
 ;;; Code:
 
+;;;###autoload
 (defun revert-this-buffer ()
   "Revert current buffer without asking for confirmation."
   (interactive)
   (revert-buffer nil t t)
   (message (concat "Reverted buffer " (buffer-name))))
 
+;;;###autoload
 (defun create-scratch-buffer nil
   "Create a scratch buffer."
   (interactive)
@@ -27,6 +29,7 @@
 ;; Toggle image display on/off, especially useful in eww
 (defvar-local custom/display-images t)
 
+;;;###autoload
 (defun custom/toggle-image-display ()
   "Toggle images display on current buffer."
   (interactive)
@@ -58,6 +61,7 @@ buffer."
         (when (eq (car prop) 'image)
           (add-text-properties left pos (list from nil to prop) object))))))
 
+;;;###autoload
 (defun custom/current-file ()
   "Gets the \"file\" of the current buffer.
 The file is the buffer's file name, or the `default-directory' in
@@ -66,6 +70,7 @@ The file is the buffer's file name, or the `default-directory' in
       default-directory
     (buffer-file-name)))
 
+;;;###autoload
 (defun custom/copy-filename-as-kill (&optional arg)
   "Copy the name of the currently visited file to kill ring.
 With a zero prefix arg, copy the absolute file name.  With
@@ -89,12 +94,14 @@ Otherwise copy the non-directory part only."
         (message "%s" name-to-copy))
     (user-error "This buffer is not visiting a file")))
 
+;;;###autoload
 (defun comint-clear-buffer ()
   "Easily clear comint buffers."
   (interactive)
   (let ((comint-buffer-maximum-size 0))
     (comint-truncate-buffer)))
 
+;;;###autoload
 (defun custom/kill-buffers (regexp)
   "Kill buffers matching REGEXP without asking for confirmation."
   (interactive "sKill buffers matching this regular expression: ")
@@ -102,6 +109,7 @@ Otherwise copy the non-directory part only."
 	     (lambda (buffer) (kill-buffer buffer))))
     (kill-matching-buffers regexp)))
 
+;;;###autoload
 (defun delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
@@ -111,6 +119,7 @@ Otherwise copy the non-directory part only."
     (delete-file (buffer-file-name))
     (kill-this-buffer)))
 
+;;;###autoload
 (defun rename-this-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
@@ -126,6 +135,7 @@ Otherwise copy the non-directory part only."
         (rename-buffer new-name)
         (set-visited-file-name new-name)))))
 
+;;;###autoload
 (defun open-with-sudo ()
   "Find file using `sudo' with TRAMP."
   (unless (and buffer-file-name
@@ -135,6 +145,7 @@ Otherwise copy the non-directory part only."
 
 (add-hook 'find-file-hook #'open-with-sudo)
 
+;;;###autoload
 (defun just-one-space-in-region (beg end)
   "Replace all whitespace in the region from BEG to END with single spaces."
   (interactive "r")
@@ -145,6 +156,7 @@ Otherwise copy the non-directory part only."
       (while (re-search-forward "\\s-+" nil t)
         (replace-match " ")))))
 
+;;;###autoload
 (defun duplicate-line ()
   "Duplicate the line containing point."
   (interactive)
@@ -160,6 +172,7 @@ Otherwise copy the non-directory part only."
       (open-line 1)
       (insert line-text))))
 
+;;;###autoload
 (defun custom/isearch-delete ()
   "Delete the failed portion of the search string, or the last char if successful."
   (interactive)
@@ -170,6 +183,7 @@ Otherwise copy the non-directory part only."
          isearch-new-message
          (mapconcat 'isearch-text-char-description isearch-new-string ""))))
 
+;;;###autoload
 (defun custom/forward-paragraph (&optional n)
   "Advance N times just past next blank line."
   (interactive "p")
@@ -196,16 +210,19 @@ Otherwise copy the non-directory part only."
       ;; This looks redundant, but it's surprisingly necessary.
       (back-to-indentation))))
 
+;;;###autoload
 (defun custom/backward-paragraph (&optional n)
   "Go back up N times to previous blank line."
   (interactive "p")
   (custom/forward-paragraph (- n)))
 
+;;;###autoload
 (defun other-window-backward (&optional n)
   "Select Nth previous window."
   (interactive "P")
   (other-window (- (prefix-numeric-value n))))
 
+;;;###autoload
 (defun push-mark-no-activate ()
   "Pushes 'point' to 'mark-ring' and does not activate the region.
 Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
@@ -213,12 +230,14 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
   (push-mark (point) t nil)
   (message "Pushed mark to ring"))
 
+;;;###autoload
 (defun jump-to-mark ()
   "Jumps to the local mark, respecting the mark-ring' order.
 This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (set-mark-command 1))
 
+;;;###autoload
 (defun exchange-point-and-mark-no-activate ()
   "Identical to \\[exchange-point-and-mark] but will not activate the region."
   (interactive)
@@ -242,6 +261,7 @@ prefix argument."
          (call-interactively ',function))
        ',name)))
 
+;;;###autoload
 (defun custom/quit-bottom-side-windows ()
   "Quit side windows of the current frame."
   (interactive)
@@ -252,6 +272,7 @@ prefix argument."
 (defconst custom/do-not-kill-buffer-names '("*scratch*" "*Messages*")
   "Names of buffers that should not be killed.")
 
+;;;###autoload
 (defun custom/do-not-kill-important-buffers ()
   "Inhibit killing of important buffers.
 Add this to `kill-buffer-query-functions'."
@@ -261,6 +282,7 @@ Add this to `kill-buffer-query-functions'."
     (bury-buffer)
     nil))
 
+;;;###autoload
 (defun custom/open-in-external-app ()
   "Open the current file or dired marked files in external app.
 The app is chosen from your OS's preference."
@@ -274,6 +296,7 @@ The app is chosen from your OS's preference."
        (let ((process-connection-type nil))
          (start-process "" nil "xdg-open" file-path))) file-list)))
 
+;;;###autoload
 (defun flush-kill-lines (regex)
   "Flush lines matching REGEX and append to kill ring.  Restrict to \
 region if active."
@@ -287,6 +310,7 @@ region if active."
         (move-beginning-of-line nil)
         (kill-whole-line)))))
 
+;;;###autoload
 (defun unfill-paragraph (&optional region)
   "Turn a multi-line paragraph into a single line of text."
   (interactive (progn (barf-if-buffer-read-only) '(t)))
