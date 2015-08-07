@@ -12,8 +12,6 @@
 
 ;;; Code:
 
-(bind-key "C-x C-e" 'pp-eval-last-sexp) ; Pretty-print evaluated expression
-
 ;; Better forward and backward paragraph
 (bind-key "M-a" 'custom/backward-paragraph)
 (bind-key "M-e" 'custom/forward-paragraph)
@@ -22,9 +20,11 @@
 (bind-key "C-x C-n" 'other-window)
 (bind-key "C-x C-p" 'other-window-backward)
 
+(bind-key "C-x C-e" 'pp-eval-last-sexp) ; Pretty-print evaluated expression
 (bind-key "C-x C-d" 'duplicate-line) ; Duplicate line at point
 (bind-key "C-c q" #'custom/quit-bottom-side-windows) ; Close side frames
 (bind-key "M-Q" #'unfill-paragraph) ; The opposite of fill-paragraph
+(bind-key "C-c C" #'custom/copy-filename-as-kill) ; Copy current file name
 
 ;; Custom keybindings activated with C^x t
 (define-prefix-command 'toggle-map)
