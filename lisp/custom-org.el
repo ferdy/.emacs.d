@@ -27,6 +27,7 @@
             (setq org-src-fontify-natively t
                   org-log-done 'time
                   org-export-with-smart-quotes t
+                  org-hide-emphasis-markers t
                   ;; Turn off preamble and postamble in HTML export
                   org-html-preamble nil
                   org-html-postamble nil
