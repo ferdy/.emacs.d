@@ -15,6 +15,7 @@
 /.backup/
 
 # Cache files and settings for packages
+.#*
 /tutorial/
 /.emacs.desktop*
 /.mc-lists.el
