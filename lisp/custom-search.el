@@ -44,16 +44,6 @@
   :bind (("C-c r" . vr/query-replace)
          ("C-c R" . vr/replace)))
 
-(use-package el-search ; Expression-based incremental search for Elisp
-  :ensure t
-  :config (progn
-            (bind-keys :map emacs-lisp-mode-map
-                       ("C-S" . el-search-pattern)
-                       ("C-%" . el-search-query-replace))
-            (bind-keys :map isearch-mode-map
-                       ("C-S" . el-search-search-from-isearch)
-                       ("C-%" . el-search-replace-from-isearch))))
-
 (provide 'custom-search)
 
 ;;; custom-search.el ends here
