@@ -137,14 +137,24 @@ allowfullscreen>%s</iframe>"
 
             (setq org-latex-pdf-process ; Use LuaTex for PDF export
                   "latexmk -pdflatex='lualatex -shell-escape
--interaction nonstopmode' -pdf -f  %f")))
+-interaction nonstopmode' -pdf -f  %f")
+
+            ;; Surround current symbol with emphasize markers
+            (defun org-emphasize-dwim (&optional char)
+              (interactive)
+              (unless (region-active-p)
+                (backward-word)
+                (mark-word))
+              (org-emphasize char))
+
+            (bind-key [remap org-emphasize] #'org-emphasize-dwim
+                      org-mode-map)))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn
           (auto-insert-mode)
           (define-auto-insert '("\\.org\\'" . "Org skeleton")
-            '(
-              "Short description: "
+            '("Short description: "
               "#+STARTUP: showall\n"
               > _ \n \n)))
   :config (setq auto-insert-query nil))
