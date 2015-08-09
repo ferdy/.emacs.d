@@ -154,6 +154,10 @@
                (add-hook 'org-mode-hook (lambda ()
                                           (goto-address-mode -1)))))
 
+(use-package string-edit ; Edit strings in a separate buffer
+  :ensure t
+  :commands string-edit-at-point)
+
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here
