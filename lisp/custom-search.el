@@ -12,7 +12,7 @@
 ;;; Code:
 
 ;; Ignore directories during grep
-(eval-after-load 'grep
+(with-eval-after-load 'grep
   '(progn
      (add-to-list 'grep-find-ignored-directories "auto")
      (add-to-list 'grep-find-ignored-directories "elpa")))

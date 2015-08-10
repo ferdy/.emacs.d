@@ -47,7 +47,7 @@ windows easier."
                                                       nil)))
 
             ;; Use system su/sudo
-            (eval-after-load "em-unix"
+            (with-eval-after-load "em-unix"
               '(progn
                  (unintern 'eshell/su nil)
                  (unintern 'eshell/sudo nil)))))

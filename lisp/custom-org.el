@@ -105,7 +105,7 @@ Inside a code-block, simply calls `self-insert-command'."
                                   :strike-through t
                                   :foreground "light gray"))
 
-            (eval-after-load "org"
+            (with-eval-after-load "org"
               (add-hook 'org-add-hook 'custom/modify-org-done-face))
 
             ;; Define TODO workflow states and different faces
