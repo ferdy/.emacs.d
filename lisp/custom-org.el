@@ -16,7 +16,6 @@
   :bind (("C-c c" . org-capture)
          ("C-c a" . org-agenda)
          ("C-c l" . org-store-link))
-  :defer t
   :init (setq org-emphasis-regexp-components ; Fix markup for ' and "
               '("     ('\"{“”"
                 "-   .,!?;''“”\")}/\\“”"
@@ -34,10 +33,13 @@
                   org-export-html-style-default ""
                   org-export-html-style-include-default nil
                   org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
-                  org-default-notes-file "~/org/organizer.org"
                   org-agenda-start-on-weekday nil
                   org-agenda-include-diary t
                   org-agenda-use-time-grid t)
+
+            (setq org-directory (expand-file-name "~/org/")
+                  org-default-notes-file
+                  (expand-file-name "organizer.org" org-directory))
 
             ;; Use visual-line-mode
             (add-hook 'org-mode-hook #'visual-line-mode)
