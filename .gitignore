@@ -16,6 +16,8 @@
 
 # Cache files and settings for packages
 .#*
+.org-id-locations
+network-security.data
 /tutorial/
 /.emacs.desktop*
 /.mc-lists.el
