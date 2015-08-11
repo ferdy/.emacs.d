@@ -146,7 +146,8 @@
 
 (use-package helm-regex ; Helm regex tools
   :ensure helm
-  :bind (([remap occur] . helm-occur)
+  :bind (("C-c M-o"     . helm-occur)
+         ([remap occur] . helm-occur)
          ("C-c h o"     . helm-multi-occur)))
 
 (use-package helm-ag ; Helm interface for Ag
