@@ -150,13 +150,6 @@
          ([remap occur] . helm-occur)
          ("C-c h o"     . helm-multi-occur)))
 
-(use-package helm-ag ; Helm interface for Ag
-  :ensure t
-  :commands helm-do-ag
-  :config (setq helm-ag-fuzzy-match t
-                helm-ag-insert-at-point 'symbol
-                helm-ag-source-type 'file-line))
-
 (use-package helm-swoop ; List matching lines in another buffer
   :ensure t
   :bind (("M-i"     . helm-swoop)
