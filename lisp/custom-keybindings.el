@@ -73,7 +73,7 @@
  ("C-c o"   . (lambda ()
                 (interactive)
                 (find-file "~/org/organizer.org")))
- ("C-c M-s" . ag-files))
+ ("C-c M-s" . ag))
 
 (provide 'custom-keybindings)
 
