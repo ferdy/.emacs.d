@@ -70,11 +70,10 @@
 (bind-keys* ; Keybindings I do not want to be overridden by a majore mode
  ("M-a"     . custom/backward-paragraph)
  ("M-e"     . custom/forward-paragraph)
- ("C-,"     . iedit-dwim)
  ("C-c o"   . (lambda ()
                 (interactive)
                 (find-file "~/org/organizer.org")))
- ("C-c M-s" . helm-do-ag))
+ ("C-c M-s" . ag-files))
 
 (provide 'custom-keybindings)
 

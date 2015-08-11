@@ -44,6 +44,16 @@
   :bind (("C-c r" . vr/query-replace)
          ("C-c R" . vr/replace)))
 
+(use-package ag ; Search code in files/projects
+  :ensure t
+  :bind ("C-c M-s" . ag-files)
+  :config
+  (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
+        ag-highlight-search t ; A little fanciness
+        ;; Use Projectile to find the project root
+        ag-project-root-function (lambda (d) (let ((default-directory d))
+                                               (projectile-project-root)))))
+
 (provide 'custom-search)
 
 ;;; custom-search.el ends here
