@@ -46,8 +46,9 @@
 
 (use-package ag ; Search code in files/projects
   :ensure t
-  :bind (("C-c M-s" . ag)
-         ("C-x M-s" . ag-files))
+  :bind (("C-c M-s"     . ag)
+         ("C-x M-s"     . ag-files)
+         ("C-c C-x M-s" . ag-project))
   :config
   (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
         ag-highlight-search t ; Highlight results
