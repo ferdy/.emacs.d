@@ -14,6 +14,10 @@
 (use-package magit ; The best Git client out there
   :ensure t
   :bind ("<f3>" . magit-status)
+  ;; Aggressively commit to WIP refs on any change
+  :init (progn (magit-wip-after-save-mode)
+               (magit-wip-after-apply-mode)
+               (magit-wip-before-change-mode))
   :config (progn
             ;; Be quiet
             (setq magit-revert-buffers 'silent
@@ -47,7 +51,9 @@
               (custom/magit-set-repo-dirs-from-projectile))
 
             (add-hook 'projectile-switch-project-hook
-                      #'custom/magit-set-repo-dirs-from-projectile)))
+                      #'custom/magit-set-repo-dirs-from-projectile))
+  :diminish (magit-wip-after-save-local-mode
+             magit-wip-before-change-mode))
 
 (use-package git-commit ; Git commit message mode
   :ensure t
