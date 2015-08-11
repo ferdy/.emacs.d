@@ -12,6 +12,21 @@
 
 ;;; Code:
 
+(use-package which-key ; Show help popups for prefix keys
+  :ensure t
+  :init (which-key-mode)
+  :config (setq which-key-idle-delay 0.5
+                which-key-key-replacement-alist
+                '(("<\\([[:alnum:]-]+\\)>" . "\\1")
+                  ("up"                  . "↑")
+                  ("right"               . "→")
+                  ("down"                . "↓")
+                  ("left"                . "←")
+                  ("DEL"                 . "⌫")
+                  ("deletechar"          . "⌦")
+                  ("RET"                 . "⏎")))
+  :diminish which-key-mode)
+
 ;; Better forward and backward paragraph
 (bind-key "M-a" 'custom/backward-paragraph)
 (bind-key "M-e" 'custom/forward-paragraph)
