@@ -49,7 +49,7 @@
   :bind ("C-c M-s" . ag-files)
   :config
   (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
-        ag-highlight-search t ; A little fanciness
+        ag-highlight-search t ; Highlight results
         ;; Use Projectile to find the project root
         ag-project-root-function (lambda (d) (let ((default-directory d))
                                                (projectile-project-root)))))
