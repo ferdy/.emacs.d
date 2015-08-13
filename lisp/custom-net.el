@@ -77,7 +77,7 @@
             (add-hook 'sx-compose-mode-hook #'turn-off-auto-fill)
             (add-hook 'sx-compose-mode-hook #'visual-line-mode)
             (add-hook 'sx-compose-mode-hook
-                      #'lunaryorn-whitespace-style-no-long-lines)
+                      #'custom/whitespace-style-no-long-lines)
 
             ;; Clean up whitespace before sending questions
             (add-hook 'sx-compose-before-send-hook
