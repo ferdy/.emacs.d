@@ -150,7 +150,11 @@ allowfullscreen>%s</iframe>"
               (org-emphasize char))
 
             (bind-key [remap org-emphasize] #'org-emphasize-dwim
-                      org-mode-map)))
+                      org-mode-map)
+
+            ;; Disable whitespace highlighting of overlong lines in Org Mode
+            (add-hook 'org-mode-hook
+                      #'custom/whitespace-style-no-long-lines)))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn

@@ -75,7 +75,15 @@
   :config (progn
             ;; Don't fill in SX questions/answers, and use visual lines instead.
             (add-hook 'sx-compose-mode-hook #'turn-off-auto-fill)
-            (add-hook 'sx-compose-mode-hook #'visual-line-mode)))
+            (add-hook 'sx-compose-mode-hook #'visual-line-mode)
+            (add-hook 'sx-compose-mode-hook
+                      #'lunaryorn-whitespace-style-no-long-lines)
+
+            ;; Clean up whitespace before sending questions
+            (add-hook 'sx-compose-before-send-hook
+                      (lambda ()
+                        (whitespace-cleanup)
+                        t))))
 
 (use-package sx-question-mode ; Display questions
   :ensure sx
