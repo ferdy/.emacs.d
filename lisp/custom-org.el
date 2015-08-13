@@ -189,7 +189,6 @@ allowfullscreen>%s</iframe>"
                     "xml" "sh" "elisp" "lisp" "lua")
                   org2blog/wp-blog-alist
                   '(("informatica.boccaperta.com"
-
                      :url "http://informatica.boccaperta.com/xmlrpc.php"
                      :username "manuel")))))
 

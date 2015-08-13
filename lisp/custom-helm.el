@@ -54,7 +54,7 @@
          ("C-x C-r"         . helm-recentf))
   :config (progn
             (bind-key "C-k" #'helm-ff-persistent-delete helm-find-files-map)
-            
+
             (setq helm-ff-file-name-history-use-recentf t
                   helm-ff-newfile-prompt-p nil ; Don't prompt for new buffer
                   helm-idle-delay 0.1
@@ -167,11 +167,11 @@
             (bind-keys :map helm-swoop-map
                        ("C-r" . helm-previous-line)
                        ("C-s" . helm-next-line))
-            
+
             (bind-keys :map helm-multi-swoop-map
                        ("C-r" . helm-previous-line)
                        ("C-s" . helm-next-line))
-            
+
             ;; Save buffer when helm-multi-swoop-edit complete
             (setq helm-multi-swoop-edit-save t
                   ;; If this value is t, split window inside the current window

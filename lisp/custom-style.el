@@ -45,7 +45,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq kill-buffer-query-functions
       (remq 'process-kill-buffer-query-function
-	    kill-buffer-query-functions))
+            kill-buffer-query-functions))
 
 ;; Disable startup messages
 (setq inhibit-startup-message t

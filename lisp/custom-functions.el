@@ -106,7 +106,7 @@ Otherwise copy the non-directory part only."
   "Kill buffers matching REGEXP without asking for confirmation."
   (interactive "sKill buffers matching this regular expression: ")
   (cl-letf (((symbol-function 'kill-buffer-ask)
-	     (lambda (buffer) (kill-buffer buffer))))
+             (lambda (buffer) (kill-buffer buffer))))
     (kill-matching-buffers regexp)))
 
 ;;;###autoload
