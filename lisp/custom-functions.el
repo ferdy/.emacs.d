@@ -284,13 +284,11 @@ Add this to `kill-buffer-query-functions'."
 
 ;;;###autoload
 (defun custom/open-in-external-app ()
-  "Open the current file or dired marked files in external app.
-The app is chosen from your OS's preference."
+  "Open the file where point is or the marked files in Dired in external
+app. The app is chosen from your OS's preference."
   (interactive)
   (let* ((file-list
-          (if (string-equal major-mode "dired-mode")
-              (dired-get-marked-files)
-            (list (buffer-file-name)))))
+          (dired-get-marked-files)))
     (mapc
      (lambda (file-path)
        (let ((process-connection-type nil))
