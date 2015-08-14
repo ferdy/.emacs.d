@@ -154,7 +154,12 @@ allowfullscreen>%s</iframe>"
 
             ;; Disable whitespace highlighting of overlong lines in Org Mode
             (add-hook 'org-mode-hook
-                      #'custom/whitespace-style-no-long-lines)))
+                      #'custom/whitespace-style-no-long-lines)
+
+            ;; Use F12 to toggle image visualizazion
+            (bind-key "<f12>"
+                      (lambda () (interactive) (org-toggle-inline-images t))
+                      org-mode-map)))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn
