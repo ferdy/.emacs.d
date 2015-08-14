@@ -142,7 +142,14 @@
                         (bind-key "C-c C-l"
                                   'helm-eshell-history eshell-mode-map)))
           ;; Shell history
-          (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)))
+          (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)
+
+          ;; Completion with helm
+          (add-hook 'eshell-mode-hook
+                    #'(lambda ()
+                        (define-key eshell-mode-map
+                          [remap eshell-pcomplete]
+                          'helm-esh-pcomplete)))))
 
 (use-package helm-regex ; Helm regex tools
   :ensure helm
