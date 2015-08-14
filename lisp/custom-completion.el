@@ -39,6 +39,10 @@
           try-complete-lisp-symbol-partially
           try-complete-lisp-symbol)))
 
+(use-package pcomplete-extension ; Enhanced completion in (e)shell buffers
+  :ensure t
+  :init (with-eval-after-load 'eshell '(require pcomplete-extension)))
+
 (use-package company ; Auto-completion
   :ensure t
   :init (global-company-mode)
