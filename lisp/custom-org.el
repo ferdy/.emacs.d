@@ -156,7 +156,7 @@ allowfullscreen>%s</iframe>"
             (add-hook 'org-mode-hook
                       #'custom/whitespace-style-no-long-lines)
 
-            ;; Use F12 to toggle image visualizazion
+            ;; Use F12 to toggle image visualization
             (bind-key "<f12>"
                       (lambda () (interactive) (org-toggle-inline-images t))
                       org-mode-map)))
