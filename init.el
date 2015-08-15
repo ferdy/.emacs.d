@@ -95,7 +95,8 @@
 ;; The server of `emacsclient'
 (use-package server
   :defer t
-  :config (progn ; Start server only if it is not already running
+  ;; Start server only if it is not already running
+  :config (progn
             (if (server-running-p server-name)
                 nil
               (server-mode)))
