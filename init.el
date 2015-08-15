@@ -95,7 +95,10 @@
 ;; The server of `emacsclient'
 (use-package server
   :defer t
-  :init (server-mode)
+  :config (progn ; Start server only if it is not already running
+            (if (server-running-p server-name)
+                nil
+              (server-mode)))
   :diminish server-buffer-clients)
 
 ;; Require files under ~/.emacs.d/lisp
