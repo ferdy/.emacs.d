@@ -62,6 +62,16 @@
 
             (add-hook 'proced-mode-hook 'proced-settings)))
 
+(use-package vkill ; Visually kill programs and processes
+  :ensure t
+  :commands vkill
+  :bind ("C-x L" . vkill-and-helm-occur)
+  :init
+  (defun vkill-and-helm-occur ()
+    (interactive)
+    (vkill)
+    (call-interactively #'helm-occur)))
+
 (use-package csv-mode ; Better .csv files editing
   :ensure t
   :no-require t
