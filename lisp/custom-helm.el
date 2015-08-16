@@ -79,10 +79,8 @@
   :defer t
   :config (progn
             (setq helm-buffers-fuzzy-matching t)
-
-            (bind-key "C-k" #'helm-buffer-run-kill-persistent helm-buffer-map)
-            ;; Mini-buffer history
-            (bind-key "C-c C-l" #'helm-minibuffer-history minibuffer-local-map)))
+            (bind-key "C-k" #'helm-buffer-run-kill-persistent
+                      helm-buffer-map)))
 
 (use-package helm-ring ; Helm commands for rings
   :ensure helm
