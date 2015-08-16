@@ -35,7 +35,9 @@
                   org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
                   org-agenda-start-on-weekday nil
                   org-agenda-include-diary t
-                  org-agenda-use-time-grid t)
+                  org-agenda-use-time-grid t
+                  ;; Follow links by pressing ENTER on them
+                  org-return-follows-link t)
 
             (setq org-directory (expand-file-name "~/org/")
                   org-default-notes-file
