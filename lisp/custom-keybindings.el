@@ -53,16 +53,13 @@
            ("r" . revert-this-buffer)
            ("w" . writeroom-mode))
 
-(setq next-line-add-newlines t) ; C^n adds new line when at the end of a line
+(setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
 
 (bind-key "M-g" 'goto-line) ; Goto line is M-g
 (bind-key "M-=" 'count-words) ; Use count-words instead of count-words-region
 (bind-key "C-x C-k" 'kill-this-buffer) ; Kill only the current buffer
 (bind-key "C-;" #'comment-line) ; Comment-line
 (bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
-(bind-key "C-c M-o" #'comint-clear-buffer comint-mode-map) ; Clear comint buffer
-(bind-key [remap isearch-delete-char]
-          #'custom/isearch-delete isearch-mode-map) ; Better backspace in isearch
 
 ;; Better mark commands
 (bind-key "C-+" 'push-mark-no-activate)

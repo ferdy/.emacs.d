@@ -22,7 +22,11 @@
 
 (use-package isearch ; Search buffers
   :defer t
-  :config (setq isearch-allow-scroll t))
+  :config (progn
+            (setq isearch-allow-scroll t)
+            ;; Better backspace in isearch
+            (bind-key [remap isearch-delete-char]
+                      #'custom/isearch-delete isearch-mode-map)))
 
 (use-package anzu ; Position/matches count for isearch
   :ensure t

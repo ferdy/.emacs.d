@@ -20,6 +20,8 @@
  '(comint-completion-addsuffix t)         ; insert space/slash after completion
  )
 
+(bind-key "C-c M-o" #'comint-clear-buffer comint-mode-map) ; Clear comint buffer
+
 ;; Truncate buffers continuously
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
 
