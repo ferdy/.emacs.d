@@ -11,46 +11,64 @@
 
 ;;; Code:
 
+;; Settings for all shells
+(custom-set-variables
+ '(comint-scroll-to-bottom-on-input t)    ; always insert at the bottom
+ '(comint-scroll-to-bottom-on-output nil) ; always add output at the bottom
+ '(comint-scroll-show-maximum-output t)   ; scroll to show max possible output
+ '(comint-input-ignoredups t)             ; no duplicates in command history
+ '(comint-completion-addsuffix t)         ; insert space/slash after completion
+ )
+
+;; Truncate buffers continuously
+(add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
+
 (use-package eshell ; Emacs command shell
   :bind ("<f1>" . eshell-here)
-  :config (progn
-            (defun eshell-here ()
-              "Open a new shell in the directory of the buffer's file.
+  :config
+  (progn
+    ;; Handy aliases
+    (defalias 'ff 'find-file)
+    (defun eshell/l (&rest args) "Same as `ls -lah'"
+           (apply #'eshell/ls "-lah" args))
+
+    (defun eshell-here ()
+      "Open a new shell in the directory of the buffer's file.
 The eshell is renamed to match that directory to make multiple eshell
 windows easier."
-              (interactive)
-              (let* ((parent (if (buffer-file-name)
-                                 (file-name-directory (buffer-file-name))
-                               default-directory))
-                     (name   (car (last (split-string parent "/" t)))))
-                (other-window 1)
-                (eshell "new")
-                (rename-buffer (concat "*eshell: " name "*"))))
+      (interactive)
+      (let* ((parent (if (buffer-file-name)
+                         (file-name-directory (buffer-file-name))
+                       default-directory))
+             (name   (car (last (split-string parent "/" t)))))
+        (other-window 1)
+        (eshell "new")
+        (rename-buffer (concat "*eshell: " name "*"))))
 
-            (defun eshell/clear ()
-              "Clear the eshell buffer."
-              (interactive)
-              (let ((inhibit-read-only t))
-                (erase-buffer)))
+    (defun eshell/clear ()
+      "Clear the eshell buffer."
+      (interactive)
+      (let ((inhibit-read-only t))
+        (erase-buffer)))
 
-            (setq eshell-cmpl-cycle-completions nil
-                  eshell-save-history-on-exit t)
+    (setq eshell-cmpl-cycle-completions nil
+          eshell-save-history-on-exit t)
 
-            (defadvice eshell-gather-process-output
-                (before absolute-cmd (command args) act)
-              "Run scrips from current working on remote system."
-              (setq command (file-truename command)))
+    (defadvice eshell-gather-process-output
+        (before absolute-cmd (command args) act)
+      "Run scrips from current working on remote system."
+      (setq command (file-truename command)))
 
-            ;; Disable hl-line-mode in eshell
-            (add-hook 'eshell-mode-hook (lambda ()
-                                          (setq-local global-hl-line-mode
-                                                      nil)))
+    ;; Disable hl-line-mode in eshell
+    (add-hook 'eshell-mode-hook (lambda ()
+                                  (setq-local global-hl-line-mode
+                                              nil)))
 
-            ;; Use system su/sudo
-            (with-eval-after-load "em-unix"
-              '(progn
-                 (unintern 'eshell/su nil)
-                 (unintern 'eshell/sudo nil)))))
+    ;; Use system su/sudo
+    (with-eval-after-load "em-unix"
+      '(progn
+         (unintern 'eshell/su nil)
+         (unintern 'eshell/sudo nil)))))
 
 (use-package ansi-term ; Powerful terminal emulator
   :bind ("<S-f2>" . ansi-term)
