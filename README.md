@@ -55,7 +55,8 @@ $ ./esetup
 - run Emacs
 
 ##Updates
-This configuration tracks latest Emacs developments. If you intend to use it, I highly recommend you update and re-build your sources at least once a week.
+This configuration tracks latest Emacs developments. If you intend to use it, I
+highly recommend you update and re-build your sources at least once a week.
 
 You can use [Magit](https://github.com/magit/magit), which is bound to
 ```<f3>```. Or you can do it with the command line:
@@ -70,9 +71,12 @@ $ make
 $ sudo make install
 $ make clean
 ```
-I would also recommend you upgrade every package installed regularly. You can easily do it with [Paradox](https://github.com/Bruce-Connor/paradox), which is bound to ```<f4>```.
+I would also recommend you upgrade every package installed regularly. You can
+easily do it with [Paradox](https://github.com/Bruce-Connor/paradox), which is
+bound to ```<f4>```.
 
-If sources do not build correctly, or you find errors while using the latest commit, you can still revert to a working commit and re-build:
+If sources do not build correctly, or you find errors while using the latest
+commit, you can still revert to a working commit and re-build:
 ```console
 $ git reset --hard <commit>
 $ ./configure
