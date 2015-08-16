@@ -145,9 +145,9 @@
           ;; Completion with helm
           (add-hook 'eshell-mode-hook
                     #'(lambda ()
-                        (define-key eshell-mode-map
-                          [remap eshell-pcomplete]
-                          'helm-esh-pcomplete)))))
+                        (bind-key [remap eshell-pcomplete]
+                                  'helm-esh-pcomplete
+                                  eshell-mode-map)))))
 
 (use-package helm-regex ; Helm regex tools
   :ensure helm
