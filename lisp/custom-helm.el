@@ -201,7 +201,6 @@
 
 (use-package helm-descbinds ; Describing keybinding through Helm
   :ensure t
-  :commands helm-descbinds
   :bind ("C-c h d" . helm-descbinds))
 
 (use-package helm-unicode ; Browse Unicode characters by name
@@ -210,17 +209,14 @@
 
 (use-package helm-flyspell ; Use Flyspell with Helm
   :ensure t
-  :commands helm-flyspell-correct
   :bind ("C-c h f" . helm-flyspell-correct))
 
 (use-package helm-flycheck ; Show Flycheck errors with Helm
   :ensure t
-  :commands helm-flycheck
   :bind ("C-c h h f" . helm-flycheck))
 
 (use-package helm-bibtex ; Manage BibTeX bibliographies with Helm
   :ensure t
-  :commands helm-bibtex
   :bind ("C-c h h b" . helm-bibtex))
 
 (use-package helm-projectile ; Projectile through Helm
@@ -244,10 +240,6 @@
 (use-package helm-make ; Select a Makefile target with Helm
   :ensure t
   :commands helm-make)
-
-(use-package helm-themes ; Switch between themes using Helm
-  :ensure t
-  :bind (("C-c h h t" . helm-themes)))
 
 (provide 'custom-helm)
 
