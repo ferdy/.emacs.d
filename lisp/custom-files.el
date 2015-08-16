@@ -105,7 +105,12 @@
                    "Size of all marked files: %s"
                    (progn
                      (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
-                     (match-string 1))))))))
+                     (match-string 1))))))
+
+            ;; Handle long file names
+            (add-hook 'dired-mode-hook (lambda ()
+                                         (interactive)
+                                         (toggle-truncate-lines 1)))))
 
 (use-package dired-x ; Enable some nice dired features
   :bind ("C-x C-j" . dired-jump)
