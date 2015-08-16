@@ -41,10 +41,6 @@
   :bind ("C-c M-g" . pdf-view-goto-page)
   :init (pdf-tools-install))
 
-(use-package interleave ; Take notes in org files while reading PDFs
-  :ensure t
-  :defer t)
-
 (use-package camcorder ; Record movements from within Emacs
   :ensure t
   :no-require t
@@ -76,10 +72,6 @@
   :ensure t
   :no-require t
   :mode "\\.csv\\'")
-
-(use-package esup ; Emacs Startup Profiler
-  :ensure t
-  :commands esup)
 
 (use-package writeroom-mode ; Distraction-free interface
   :ensure t

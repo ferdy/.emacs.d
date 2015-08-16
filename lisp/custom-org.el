@@ -234,6 +234,10 @@ allowfullscreen>%s</iframe>"
   :ensure t
   :init (with-eval-after-load 'org '(require org-pdfview)))
 
+(use-package interleave ; Take notes in org files while reading PDFs
+  :ensure t
+  :defer t)
+
 (provide 'custom-org)
 
 ;;; custom-org.el ends here
