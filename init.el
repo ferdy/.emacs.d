@@ -3,7 +3,7 @@
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
 ;; Author: Manuel Uberti <manuel@boccaperta.com>
-;; URL: https://gihub.com/boccaperta-it/emacs
+;; URL: https://github.com/manuel-uberti/.emacs.d
 ;; Keywords: convenience
 
 ;; This file is not part of GNU Emacs.
