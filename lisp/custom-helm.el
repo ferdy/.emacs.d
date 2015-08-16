@@ -17,8 +17,8 @@
   :config (progn
             (use-package helm-config
               :config (progn
-                        (global-set-key (kbd "C-c h") 'helm-command-prefix)
-                        (global-unset-key (kbd "C-x c"))))
+                        (bind-key "C-c h" helm-command-prefix)
+                        (unbind-key "C-x c")))
 
             (bind-keys :map helm-map
                        ("C-i" . helm-execute-persistent-action)

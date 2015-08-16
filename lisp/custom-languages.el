@@ -79,15 +79,17 @@ With prefix P, create local abbrev. Otherwise it will be global."
                   flyspell-issue-welcome-flag nil
                   flyspell-issue-message-flag nil)
 
-            (global-set-key (kbd "C-c I")
-                            (lambda()(interactive)
-                              (ispell-change-dictionary "italiano")
-                              (flyspell-buffer)))
+            (bind-key "C-c I"
+                      (lambda()
+                        (interactive)
+                        (ispell-change-dictionary "italiano")
+                        (flyspell-buffer)))
 
-            (global-set-key (kbd "C-c E")
-                            (lambda()(interactive)
-                              (ispell-change-dictionary "british")
-                              (flyspell-buffer)))
+            (bind-key "C-c E"
+                      (lambda()
+                        (interactive)
+                        (ispell-change-dictionary "british")
+                        (flyspell-buffer)))
 
             ;; Free C-M-i for completion
             (unbind-key "M-t" flyspell-mode-map))
