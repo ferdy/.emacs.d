@@ -222,7 +222,12 @@ allowfullscreen>%s</iframe>"
 
 (use-package ox-reveal ; Slideshows with Reveal.js
   :ensure t
-  :config (setq org-reveal-root "file:///home/manuel/reveal.js"))
+  :config (setq org-reveal-root "file:///home/manuel/reveal.js"
+                ;; Hide some controls
+                org-reveal-control nil
+                org-reveal-progress nil
+                org-reveal-overview nil
+                org-reveal-slide-number nil))
 
 (use-package org-bullets ; Bullets as UTF-8 characters
   :ensure t
