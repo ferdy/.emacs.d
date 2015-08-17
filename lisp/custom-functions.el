@@ -216,58 +216,6 @@ Otherwise copy the non-directory part only."
   (interactive "p")
   (custom/forward-paragraph (- n)))
 
-;;;###autoload
-(defun other-window-backward (&optional n)
-  "Select Nth previous window."
-  (interactive "P")
-  (other-window (- (prefix-numeric-value n))))
-
-;;;###autoload
-(defun push-mark-no-activate ()
-  "Pushes 'point' to 'mark-ring' and does not activate the region.
-Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
-  (interactive)
-  (push-mark (point) t nil)
-  (message "Pushed mark to ring"))
-
-;;;###autoload
-(defun jump-to-mark ()
-  "Jumps to the local mark, respecting the mark-ring' order.
-This is the same as using \\[set-mark-command] with the prefix argument."
-  (interactive)
-  (set-mark-command 1))
-
-;;;###autoload
-(defun exchange-point-and-mark-no-activate ()
-  "Identical to \\[exchange-point-and-mark] but will not activate the region."
-  (interactive)
-  (exchange-point-and-mark)
-  (deactivate-mark nil))
-
-(defmacro bol-with-prefix (function)
-  "Define a new function which calls FUNCTION.
-Except it moves to beginning of line before calling FUNCTION when
-called with a prefix argument.  The FUNCTION still receives the
-prefix argument."
-  (let ((name (intern (format "custom/%s-BOL" function))))
-    `(progn
-       (defun ,name (p)
-         ,(format
-           "Call `%s', but move to BOL when called with a prefix argument."
-           function)
-         (interactive "P")
-         (when p
-           (forward-line 0))
-         (call-interactively ',function))
-       ',name)))
-
-;;;###autoload
-(defun custom/quit-bottom-side-windows ()
-  "Quit side windows of the current frame."
-  (interactive)
-  (dolist (window (window-at-side-list))
-    (quit-window nil window)))
-
 ;; Don't kill the important buffers
 (defconst custom/do-not-kill-buffer-names '("*scratch*" "*Messages*")
   "Names of buffers that should not be killed.")

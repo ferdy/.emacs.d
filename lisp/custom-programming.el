@@ -174,7 +174,7 @@
   :defer t
   :mode "\\.php\\'")
 
-;;; Utilities
+;;; Utilities and keybindings
 (defun uncomment-sexp (&optional n)
   "Uncomment a sexp around point."
   (interactive "P")
@@ -256,9 +256,11 @@ With a prefix argument N, comment that many sexps."
     (dotimes (_ n)
       (comment-sexp--raw))))
 
-(bind-key "C-M-;" #'comment-or-uncomment-sexp emacs-lisp-mode-map)
 (eval-after-load 'clojure-mode
   '(bind-key "C-M-;" #'comment-or-uncomment-sexp clojure-mode-map))
+(bind-key "C-M-;" #'comment-or-uncomment-sexp emacs-lisp-mode-map)
+(bind-key "C-;" #'comment-line)
+(bind-key "C-x C-e" 'pp-eval-last-sexp) ; Pretty-print evaluated expression
 
 (provide 'custom-programming)
 

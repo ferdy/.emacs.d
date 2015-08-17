@@ -136,6 +136,9 @@
   :defer t
   :config (setq ffap-machine-p-known 'reject)) ;; Do not ping random hosts
 
+;;; Keybindings
+(bind-key "C-c C" #'custom/copy-filename-as-kill) ; Copy current file name
+
 (provide 'custom-files)
 
 ;;; custom-files.el ends here

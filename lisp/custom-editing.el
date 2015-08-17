@@ -158,6 +158,35 @@
   :ensure t
   :commands string-edit-at-point)
 
+;;; Keybindings
+(setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
+
+(bind-key "M-Q" #'unfill-paragraph) ; The opposite of fill-paragraph
+(bind-key "C-x C-d" 'duplicate-line) ; Duplicate line at point
+
+;; Kill entire line with prefix argument
+(defmacro bol-with-prefix (function)
+  "Define a new function which calls FUNCTION.
+Except it moves to beginning of line before calling FUNCTION when
+called with a prefix argument.  The FUNCTION still receives the
+prefix argument."
+  (let ((name (intern (format "custom/%s-BOL" function))))
+    `(progn
+       (defun ,name (p)
+         ,(format
+           "Call `%s', but move to BOL when called with a prefix argument."
+           function)
+         (interactive "P")
+         (when p
+           (forward-line 0))
+         (call-interactively ',function))
+       ',name)))
+
+(bind-key [remap sp-kill-hybrid-sexp] (bol-with-prefix sp-kill-hybrid-sexp))
+(bind-key [remap org-kill-line] (bol-with-prefix org-kill-line))
+(bind-key [remap kill-line] (bol-with-prefix kill-line))
+(bind-key "C-k" (bol-with-prefix kill-visual-line))
+
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here

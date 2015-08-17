@@ -50,6 +50,55 @@
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
   :diminish elisp-slime-nav-mode)
 
+;;; Keybindings
+;; Better forward and backward paragraph
+(bind-key "M-a" 'custom/backward-paragraph)
+(bind-key "M-e" 'custom/forward-paragraph)
+
+;; Better window movings
+(defun other-window-backward (&optional n)
+  "Select Nth previous window."
+  (interactive "P")
+  (other-window (- (prefix-numeric-value n))))
+
+(bind-key "C-x C-n" 'other-window)
+(bind-key "C-x C-p" 'other-window-backward)
+
+(bind-key "M-g" 'goto-line) ; Goto line is M-g
+
+(defun custom/quit-bottom-side-windows ()
+  "Quit side windows of the current frame."
+  (interactive)
+  (dolist (window (window-at-side-list))
+    (quit-window nil window)))
+
+(bind-key "C-c q" #'custom/quit-bottom-side-windows) ; Close side frames
+
+;; Better mark commands
+(defun push-mark-no-activate ()
+  "Pushes 'point' to 'mark-ring' and does not activate the region.
+Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
+  (interactive)
+  (push-mark (point) t nil)
+  (message "Pushed mark to ring"))
+
+(defun jump-to-mark ()
+  "Jumps to the local mark, respecting the mark-ring' order.
+This is the same as using \\[set-mark-command] with the prefix argument."
+  (interactive)
+  (set-mark-command 1))
+
+(defun exchange-point-and-mark-no-activate ()
+  "Identical to \\[exchange-point-and-mark] but will not activate the region."
+  (interactive)
+  (exchange-point-and-mark)
+  (deactivate-mark nil))
+
+(bind-key "C-+" 'push-mark-no-activate)
+(bind-key "M-+" 'jump-to-mark)
+(bind-key [remap exchange-point-and-mark]
+          'exchange-point-and-mark-no-activate global-map)
+
 (provide 'custom-navigation)
 
 ;;; custom-navigation.el ends here
