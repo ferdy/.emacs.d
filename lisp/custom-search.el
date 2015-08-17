@@ -20,7 +20,7 @@
 ;; Truncate lines during grep
 (add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
 
-(use-package isearch ; Search buffers
+(use-package "isearch" ; Search buffers
   :defer t
   :config (progn
             (setq isearch-allow-scroll t)
