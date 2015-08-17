@@ -123,10 +123,6 @@
 (setq view-read-only t) ; View read-only
 (setq large-file-warning-threshold nil) ; No large file warning
 
-;; Don't kill important buffers
-(add-hook 'kill-buffer-query-functions
-          #'custom/do-not-kill-important-buffers)
-
 (use-package focus-autosave-mode ; Autosave buffers when focus is lost
   :ensure t
   :init (focus-autosave-mode)
@@ -136,8 +132,83 @@
   :defer t
   :config (setq ffap-machine-p-known 'reject)) ;; Do not ping random hosts
 
-;;; Keybindings
+;;; Utilities and keybindings
+(defun custom/current-file ()
+  "Gets the \"file\" of the current buffer.
+The file is the buffer's file name, or the `default-directory' in
+`dired-mode'."
+  (if (derived-mode-p 'dired-mode)
+      default-directory
+    (buffer-file-name)))
+
+(defun custom/copy-filename-as-kill (&optional arg)
+  "Copy the name of the currently visited file to kill ring.
+With a zero prefix arg, copy the absolute file name.  With
+\\[universal-argument], copy the file name relative to the
+current Projectile project, or to the current buffer's
+`default-directory', if the file is not part of any project.
+Otherwise copy the non-directory part only."
+  (interactive "P")
+  (if-let ((file-name (custom/current-file))
+           (name-to-copy
+            (cond
+             ((zerop (prefix-numeric-value arg)) file-name)
+             ((consp arg)
+              (let* ((projectile-require-project-root nil)
+                     (directory (and (fboundp 'projectile-project-root)
+                                     (projectile-project-root))))
+                (file-relative-name file-name directory)))
+             (t (file-name-nondirectory file-name)))))
+      (progn
+        (kill-new name-to-copy)
+        (message "%s" name-to-copy))
+    (user-error "This buffer is not visiting a file")))
+
 (bind-key "C-c C" #'custom/copy-filename-as-kill) ; Copy current file name
+
+(defun delete-this-file ()
+  "Delete the current file, and kill the buffer."
+  (interactive)
+  (or (buffer-file-name) (error "No file is currently being edited"))
+  (when (yes-or-no-p (format "Really delete '%s'?"
+                             (file-name-nondirectory buffer-file-name)))
+    (delete-file (buffer-file-name))
+    (kill-this-buffer)))
+
+(defun rename-this-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (unless filename
+      (error "Buffer '%s' is not visiting a file!" name))
+    (if (get-buffer new-name)
+        (message "A buffer named '%s' already exists!" new-name)
+      (progn
+        (when (file-exists-p filename)
+          (rename-file filename new-name 1))
+        (rename-buffer new-name)
+        (set-visited-file-name new-name)))))
+
+(defun open-with-sudo ()
+  "Find file using `sudo' with TRAMP."
+  (unless (and buffer-file-name
+               (file-writable-p buffer-file-name))
+    (find-alternate-file
+     (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(add-hook 'find-file-hook #'open-with-sudo)
+
+(defun custom/open-in-external-app ()
+  "Open the file where point is or the marked files in Dired in external
+app. The app is chosen from your OS's preference."
+  (interactive)
+  (let* ((file-list
+          (dired-get-marked-files)))
+    (mapc
+     (lambda (file-path)
+       (let ((process-connection-type nil))
+         (start-process "" nil "xdg-open" file-path))) file-list)))
 
 (provide 'custom-files)
 

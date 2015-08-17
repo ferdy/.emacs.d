@@ -129,6 +129,42 @@ Call `eww-reload' to undo the filtering."
                 (keep-lines regexp)
                 (read-only-mode 1)))))
 
+;;; Utilities and keybindings
+;; Toggle image display on/off, especially useful in eww
+(defvar-local custom/display-images t)
+
+;;;###autoload
+(defun custom/toggle-image-display ()
+  "Toggle images display on current buffer."
+  (interactive)
+  (setq custom/display-images
+        (null custom/display-images))
+  (custom/backup-display-property custom/display-images))
+
+(defun custom/backup-display-property (invert &optional object)
+  "Move the 'display property at POS to 'display-backup.
+Only applies if display property is an image.
+If INVERT is non-nil, move from 'display-backup to 'display
+instead.
+Optional OBJECT specifies the string or buffer.  Nil means current
+buffer."
+  (let* ((inhibit-read-only t)
+         (from (if invert 'display-backup 'display))
+         (to (if invert 'display 'display-backup))
+         (pos (point-min))
+         left prop)
+    (while (and pos (/= pos (point-max)))
+      (if (get-text-property pos from object)
+          (setq left pos)
+        (setq left (next-single-property-change pos from object)))
+      (if (or (null left) (= left (point-max)))
+          (setq pos nil)
+        (setq prop (get-text-property left from object))
+        (setq pos (or (next-single-property-change left from object)
+                      (point-max)))
+        (when (eq (car prop) 'image)
+          (add-text-properties left pos (list from nil to prop) object))))))
+
 (provide 'custom-net)
 
 ;;; custom-net.el ends here

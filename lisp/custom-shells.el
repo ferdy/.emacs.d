@@ -11,20 +11,6 @@
 
 ;;; Code:
 
-;; Settings for all shells
-(custom-set-variables
- '(comint-scroll-to-bottom-on-input t)    ; always insert at the bottom
- '(comint-scroll-to-bottom-on-output nil) ; always add output at the bottom
- '(comint-scroll-show-maximum-output t)   ; scroll to show max possible output
- '(comint-input-ignoredups t)             ; no duplicates in command history
- '(comint-completion-addsuffix t)         ; insert space/slash after completion
- )
-
-(bind-key "C-c M-o" #'comint-clear-buffer comint-mode-map) ; Clear comint buffer
-
-;; Truncate buffers continuously
-(add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
-
 (use-package eshell ; Emacs command shell
   :bind ("<f1>" . eshell-here)
   :config
@@ -131,6 +117,26 @@ windows easier."
             (add-hook 'shell-mode-hook (lambda ()
                                          (setq-local global-hl-line-mode
                                                      nil)))))
+
+;;; Utilities and keybindings
+(custom-set-variables
+ '(comint-scroll-to-bottom-on-input t)    ; always insert at the bottom
+ '(comint-scroll-to-bottom-on-output nil) ; always add output at the bottom
+ '(comint-scroll-show-maximum-output t)   ; scroll to show max possible output
+ '(comint-input-ignoredups t)             ; no duplicates in command history
+ '(comint-completion-addsuffix t)         ; insert space/slash after completion
+ )
+
+(defun comint-clear-buffer ()
+  "Easily clear comint buffers."
+  (interactive)
+  (let ((comint-buffer-maximum-size 0))
+    (comint-truncate-buffer)))
+
+(bind-key "C-c M-o" #'comint-clear-buffer comint-mode-map) ; Clear comint buffer
+
+;; Truncate buffers continuously
+(add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
 
 (provide 'custom-shells)
 

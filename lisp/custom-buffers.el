@@ -91,6 +91,33 @@
   :defer t
   :init (add-hook 'ibuffer-hook #'ibuffer-projectile-set-filter-groups))
 
+;;; Utilities and keybindings
+(defun custom/kill-buffers (regexp)
+  "Kill buffers matching REGEXP without asking for confirmation."
+  (interactive "sKill buffers matching this regular expression: ")
+  (cl-letf (((symbol-function 'kill-buffer-ask)
+             (lambda (buffer) (kill-buffer buffer))))
+    (kill-matching-buffers regexp)))
+
+;; Don't kill the important buffers
+(defconst custom/do-not-kill-buffer-names '("*scratch*" "*Messages*")
+  "Names of buffers that should not be killed.")
+
+(defun custom/do-not-kill-important-buffers ()
+  "Inhibit killing of important buffers.
+Add this to `kill-buffer-query-functions'."
+  (if (not (member (buffer-name) custom/do-not-kill-buffer-names))
+      t
+    (message "Not allowed to kill %s, burying instead" (buffer-name))
+    (bury-buffer)
+    nil))
+
+;; Don't kill important buffers
+(add-hook 'kill-buffer-query-functions
+          #'custom/do-not-kill-important-buffers)
+
+(bind-key "C-x C-k" 'kill-this-buffer) ; Kill only the current buffer
+
 (provide 'custom-buffers)
 
 ;;; custom-ibuffer.el ends here

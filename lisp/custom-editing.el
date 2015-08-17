@@ -158,11 +158,8 @@
   :ensure t
   :commands string-edit-at-point)
 
-;;; Keybindings
+;;; Utilities and keybindings
 (setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
-
-(bind-key "M-Q" #'unfill-paragraph) ; The opposite of fill-paragraph
-(bind-key "C-x C-d" 'duplicate-line) ; Duplicate line at point
 
 ;; Kill entire line with prefix argument
 (defmacro bol-with-prefix (function)
@@ -186,6 +183,54 @@ prefix argument."
 (bind-key [remap org-kill-line] (bol-with-prefix org-kill-line))
 (bind-key [remap kill-line] (bol-with-prefix kill-line))
 (bind-key "C-k" (bol-with-prefix kill-visual-line))
+
+(defun just-one-space-in-region (beg end)
+  "Replace all whitespace in the region from BEG to END with single spaces."
+  (interactive "r")
+  (save-excursion
+    (save-restriction
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (while (re-search-forward "\\s-+" nil t)
+        (replace-match " ")))))
+
+(defun duplicate-line ()
+  "Duplicate the line containing point."
+  (interactive)
+  (save-excursion
+    (let (line-text)
+      (goto-char (line-beginning-position))
+      (let ((beg (point)))
+        (goto-char (line-end-position))
+        (setq line-text (buffer-substring beg (point))))
+      (if (eobp)
+          (insert ?\n)
+        (forward-line))
+      (open-line 1)
+      (insert line-text))))
+
+(bind-key "C-x C-d" 'duplicate-line) ; Duplicate line at point
+
+(defun flush-kill-lines (regex)
+  "Flush lines matching REGEX and append to kill ring.  Restrict to \
+region if active."
+  (interactive "sFlush kill regex: ")
+  (save-excursion
+    (save-restriction
+      (when (use-region-p)
+        (narrow-to-region (point) (mark))
+        (goto-char 0))
+      (while (search-forward-regexp regex nil t)
+        (move-beginning-of-line nil)
+        (kill-whole-line)))))
+
+(defun unfill-paragraph (&optional region)
+  "Turn a multi-line paragraph into a single line of text."
+  (interactive (progn (barf-if-buffer-read-only) '(t)))
+  (let ((fill-column (point-max)))
+    (fill-paragraph nil region)))
+
+(bind-key "M-Q" #'unfill-paragraph) ; The opposite of fill-paragraph
 
 (provide 'custom-editing)
 

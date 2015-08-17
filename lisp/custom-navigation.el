@@ -50,8 +50,39 @@
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
   :diminish elisp-slime-nav-mode)
 
-;;; Keybindings
+;;; Utilities and keybindings
 ;; Better forward and backward paragraph
+(defun custom/forward-paragraph (&optional n)
+  "Advance N times just past next blank line."
+  (interactive "p")
+  (let ((m (use-region-p))
+        (para-commands
+         '(custom/forward-paragraph custom/backward-paragraph)))
+    ;; Only push mark if it's not active and we're not repeating.
+    (or m
+        (not (member this-command para-commands))
+        (member last-command para-commands)
+        (push-mark))
+    ;; The actual movement.
+    (dotimes (_ (abs n))
+      (if (> n 0)
+          (skip-chars-forward "\n[:blank:]")
+        (skip-chars-backward "\n[:blank:]"))
+      (if (search-forward-regexp
+           "\n[[:blank:]]*\n[[:blank:]]*" nil t (cl-signum n))
+          (goto-char (match-end 0))
+        (goto-char (if (> n 0) (point-max) (point-min)))))
+    ;; If mark wasn't active, I like to indent the line too.
+    (unless m
+      (indent-according-to-mode)
+      ;; This looks redundant, but it's surprisingly necessary.
+      (back-to-indentation))))
+
+(defun custom/backward-paragraph (&optional n)
+  "Go back up N times to previous blank line."
+  (interactive "p")
+  (custom/forward-paragraph (- n)))
+
 (bind-key "M-a" 'custom/backward-paragraph)
 (bind-key "M-e" 'custom/forward-paragraph)
 

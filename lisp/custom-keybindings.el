@@ -28,6 +28,12 @@
                   ("RET"                 . "⏎")))
   :diminish which-key-mode)
 
+(defun revert-this-buffer ()
+  "Revert current buffer without asking for confirmation."
+  (interactive)
+  (revert-buffer nil t t)
+  (message (concat "Reverted buffer " (buffer-name))))
+
 ;; Custom keybindings activated with C^x t
 (define-prefix-command 'toggle-map)
 ;; The manual recommends C-c for user keys, but C-x t is
@@ -41,7 +47,6 @@
            ("w" . writeroom-mode))
 
 (bind-key "M-=" 'count-words) ; Use count-words instead of count-words-region
-(bind-key "C-x C-k" 'kill-this-buffer) ; Kill only the current buffer
 (bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
 
 ;; Better shrink/enlarge windows
