@@ -145,6 +145,18 @@
   :commands run-geiser
   :init (setq geiser-active-implementations '(chicken guile)))
 
+;;; Common Lisp
+(use-package sly ; Sylvester the Cat's Common Lisp IDE
+  :ensure t
+  :commands sly
+  :init (setq inferior-lisp-program "/usr/bin/sbcl")
+  :config
+  (progn
+    (bind-keys :map sly-mode-map
+               ("C-c C-q" . sly-quit-lisp)
+               ("M-h"     . sly-documentation-lookup))
+    (bind-key "C-c C-k" 'sly-mrepl-clear-recent-output sly-mrepl-mode-map)))
+
 ;;; Web development
 (use-package web-mode ; Major mode for editing web templates
   :ensure t
