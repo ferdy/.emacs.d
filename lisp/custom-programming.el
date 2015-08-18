@@ -89,6 +89,10 @@
           (add-hook 'after-init-hook #'flycheck-mode)))
 
 ;;; Emacs Lisp
+(use-package ielm ; Emacs Lisp REPL
+  :commands ielm
+  :config (bind-key "C-c C-q" #'comint-send-eof inferior-emacs-lisp-mode-map))
+
 (use-package elisp-mode ; Emacs Lisp editing
   :defer t
   :interpreter ("emacs" . emacs-lisp-mode)
