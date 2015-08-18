@@ -22,6 +22,7 @@
                                       "/ssh:")))
 
 (use-package dired ; File manager
+  :defer t
   :bind (("C-c z"      . dired-get-size)
          ("<C-return>" . custom/open-in-external-app)
          ("C-c M-f"    . find-name-dired))
@@ -144,6 +145,7 @@
   :mode "\\.csv\\'")
 
 (use-package image+ ; Better image management
+  :defer t
   :ensure t
   :init (with-eval-after-load 'image
           (imagex-global-sticky-mode 1)
