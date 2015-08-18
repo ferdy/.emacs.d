@@ -13,6 +13,7 @@
 
 (use-package magit ; The best Git client out there
   :ensure t
+  :defer t
   :bind ("<f3>" . magit-status)
   ;; Aggressively commit to WIP refs on any change
   :init (progn (magit-wip-after-save-mode)
