@@ -88,6 +88,27 @@
           (with-eval-after-load 'flycheck '(flycheck-clojure-setup))
           (add-hook 'after-init-hook #'flycheck-mode)))
 
+;;; Emacs Lisp
+(use-package elisp-mode ; Emacs Lisp editing
+  :defer t
+  :interpreter ("emacs" . emacs-lisp-mode)
+  :config
+  (progn
+    (defconst custom/use-package-imenu-expression
+      `("Use Package" ,(rx "(use-package" (optional "-with-elapsed-timer")
+                           symbol-end (1+ (syntax whitespace)) symbol-start
+                           (group-n 1 (1+ (or (syntax word) (syntax symbol))))
+                           symbol-end) 1)
+      "IMenu expression for `use-package' declarations.")
+
+    (defun custom/add-use-package-to-imenu ()
+      "Add `use-package' declarations to `imenu'."
+      (add-to-list 'imenu-generic-expression
+                   custom/use-package-imenu-expression))
+
+    (add-hook 'emacs-lisp-mode-hook
+              #'custom/add-use-package-to-imenu)))
+
 ;;; Clojure
 (use-package cider ; Clojure development environment
   :ensure t
