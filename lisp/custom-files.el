@@ -108,9 +108,7 @@
                      (match-string 1))))))
 
             ;; Handle long file names
-            (add-hook 'dired-mode-hook (lambda ()
-                                         (interactive)
-                                         (toggle-truncate-lines 1)))))
+            (add-hook 'dired-mode-hook #'toggle-truncate-lines)))
 
 (use-package dired-x ; Enable some nice dired features
   :bind ("C-x C-j" . dired-jump)
@@ -118,7 +116,7 @@
             (setq dired-omit-verbose nil ; Be less verbose, Dired
                   ;; Omit dotfiles with C-x M-o
                   dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
-            (add-hook 'dired-mode-hook (lambda () (dired-omit-mode)))))
+            (add-hook 'dired-mode-hook #'dired-omit-mode)))
 
 (setq view-read-only t) ; View read-only
 (setq large-file-warning-threshold nil) ; No large file warning

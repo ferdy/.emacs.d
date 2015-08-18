@@ -231,7 +231,7 @@ allowfullscreen>%s</iframe>"
 
 (use-package org-bullets ; Bullets as UTF-8 characters
   :ensure t
-  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  :init (add-hook 'org-mode-hook #'org-bullets-mode)
   :config (setq org-bullets-bullet-list
                 '("◉" "○" "●" "▶")))
 

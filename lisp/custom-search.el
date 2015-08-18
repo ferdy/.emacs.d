@@ -18,7 +18,7 @@
      (add-to-list 'grep-find-ignored-directories "elpa")))
 
 ;; Truncate lines during grep
-(add-hook 'grep-mode-hook (lambda () (toggle-truncate-lines 1)))
+(add-hook 'grep-mode-hook #'toggle-truncate-lines)
 
 (use-package "isearch" ; Search buffers
   :defer t

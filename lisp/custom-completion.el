@@ -92,8 +92,7 @@
 (use-package company-auctex ; Backend for AUCTeX
   :ensure t
   :init (progn
-          (add-hook 'company-mode-hook
-                    (lambda () (yas-minor-mode 1)))
+          (add-hook 'company-mode-hook #'yas-minor-mode)
           (company-auctex-init)))
 
 (provide 'custom-completion)
