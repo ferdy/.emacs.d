@@ -19,11 +19,33 @@
           (set-frame-font "Source Code Pro-16" nil t)
         (set-frame-font "Source Code Pro-13" nil t))))
 
-;; Additional fonts for special characters and fallbacks
-(set-fontset-font t 'symbol (font-spec :family "Symbola") nil 'append)
-(set-fontset-font t 'mathematical (font-spec :family "XITS Math") nil 'append)
-(set-fontset-font t 'greek (font-spec :family "Gentium Plus") nil 'append)
-(set-fontset-font t nil (font-spec :family "Symbola") nil 'append)
+(defun custom/configure-fonts (frame)
+  "Set up fonts for FRAME.
+Set the default font, and configure various overrides for
+symbols, greek letters, as well as fall backs for."
+
+  (dolist (script '(symbol mathematical))
+    (set-fontset-font t script (font-spec :family "XITS Math")
+                      frame 'prepend))
+
+  ;; Define a font set stack for symbols, greek and math characters
+  (dolist (script '(symbol greek mathematical))
+    (set-fontset-font t script (font-spec :family "Symbola")
+                      frame 'prepend)
+    (set-fontset-font t script (font-spec :family "XITS Math")
+                      frame 'prepend)
+    (set-fontset-font t script (font-spec :family "Gentium Plus")
+                      frame 'prepend)
+    (set-fontset-font t script (font-spec :family "Source Code Pro")
+                      frame 'prepend))
+
+  ;; Fallbacks for math and generic symbols
+  (set-fontset-font t nil (font-spec :family "Symbola")
+                    frame 'append))
+
+(when-let (frame (selected-frame))
+  (custom/configure-fonts frame))
+(add-hook 'after-make-frame-functions #'custom/configure-fonts)
 
 ;;; Interface
 ;; Toggle all frames maximized and fullscreen
