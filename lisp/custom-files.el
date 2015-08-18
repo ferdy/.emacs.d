@@ -132,6 +132,30 @@
   :defer t
   :config (setq ffap-machine-p-known 'reject)) ;; Do not ping random hosts
 
+(use-package pdf-tools ; Better PDF support
+  :ensure t
+  :bind ("C-c M-g" . pdf-view-goto-page)
+  :init (pdf-tools-install))
+
+(use-package archive-mode ; Browse archive files
+  :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
+
+(use-package csv-mode ; Better .csv files editing
+  :ensure t
+  :no-require t
+  :mode "\\.csv\\'")
+
+(use-package image+ ; Better image management
+  :ensure t
+  :init (with-eval-after-load 'image
+          (imagex-global-sticky-mode 1)
+          (imagex-auto-adjust-mode 1))
+  :config (setq imagex-quiet-error t))
+
+(use-package systemd ; Major mode for editing systemd units
+  :ensure t
+  :mode "\\.service\\'")
+
 ;;; Utilities and keybindings
 (defun custom/current-file ()
   "Gets the \"file\" of the current buffer.

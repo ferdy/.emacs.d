@@ -55,13 +55,13 @@
 (bind-key "C-S-<left>" 'shrink-window-horizontally)
 (bind-key "C-S-<right>" 'enlarge-window-horizontally)
 
-(bind-keys* ; Keybindings I do not want to be overridden by a majore mode
- ("M-a"     . custom/backward-paragraph)
- ("M-e"     . custom/forward-paragraph)
- ("C-c o"   . (lambda ()
-                (interactive)
-                (find-file "~/org/organizer.org")))
- ("C-c M-s" . ag))
+;; Keybindings I do not want to be overridden by a majore mode
+(bind-keys* ("M-a"     . custom/backward-paragraph)
+            ("M-e"     . custom/forward-paragraph)
+            ("C-c o"   . (lambda ()
+                           (interactive)
+                           (find-file "~/org/organizer.org")))
+            ("C-c M-s" . ag))
 
 (provide 'custom-keybindings)
 

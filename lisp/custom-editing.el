@@ -158,9 +158,13 @@
   :ensure t
   :commands string-edit-at-point)
 
-;;; Utilities and keybindings
+(use-package writeroom-mode ; Distraction-free interface
+  :ensure t
+  :commands writeroom-mode)
+
 (setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
 
+;;; Utilities and keybindings
 ;; Kill entire line with prefix argument
 (defmacro bol-with-prefix (function)
   "Define a new function which calls FUNCTION.

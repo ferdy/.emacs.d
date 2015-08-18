@@ -36,18 +36,10 @@
                                   ("Asia/Hong_Kong" "Hong Kong")
                                   ("Asia/Tokyo" "Tokyo"))))
 
-(use-package pdf-tools ; Better PDF support
-  :ensure t
-  :bind ("C-c M-g" . pdf-view-goto-page)
-  :init (pdf-tools-install))
-
 (use-package camcorder ; Record movements from within Emacs
   :ensure t
   :no-require t
   :init (setq camcorder-window-id-offset -2))
-
-(use-package archive-mode ; Browse archive files
-  :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
 
 (use-package proced ; Manage processes
   :defer t
@@ -68,33 +60,9 @@
     (vkill)
     (call-interactively #'helm-occur)))
 
-(use-package csv-mode ; Better .csv files editing
-  :ensure t
-  :no-require t
-  :mode "\\.csv\\'")
-
-(use-package writeroom-mode ; Distraction-free interface
-  :ensure t
-  :commands writeroom-mode)
-
 (use-package command-log-mode ; Show event history and command history
   :ensure t
   :commands command-log-mode)
-
-(use-package systemd ; Major mode for editing systemd units
-  :ensure t
-  :mode "\\.service\\'")
-
-(use-package scratch ; Mode-specific scratch buffers
-  :ensure t
-  :commands scratch)
-
-(use-package image+ ; Better image management
-  :ensure t
-  :init (with-eval-after-load 'image
-          (imagex-global-sticky-mode 1)
-          (imagex-auto-adjust-mode 1))
-  :config (setq imagex-quiet-error t))
 
 ;;; Bugs management
 (use-package bug-reference ; Buttonize bug references
@@ -104,7 +72,7 @@
 
 (use-package bug-hunter ; Find bugs in Emacs configuration
   :ensure t
-  :commands (bug-hunter-file))
+  :commands bug-hunter-file)
 
 (provide 'custom-utilities)
 

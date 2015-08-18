@@ -74,16 +74,6 @@
 (use-package hi-lock ; Custom regexp highlights
   :init (global-hi-lock-mode))
 
-(defun custom/whitespace-style-no-long-lines ()
-  "Configure `whitespace-mode' for Org.
-Disable the highlighting of overlong lines."
-  (setq-local whitespace-style (-difference whitespace-style
-                                            '(lines lines-tail))))
-
-(defun custom/whitespace-mode-local ()
-  "Enable `whitespace-mode' after local variables where set up."
-  (add-hook 'hack-local-variables-hook #'whitespace-mode nil 'local))
-
 (use-package whitespace ; Highlight bad whitespace
   :commands whitespace-mode
   :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
@@ -95,6 +85,17 @@ Disable the highlighting of overlong lines."
                                 tab-mark empty trailing lines-tail)
         whitespace-line-column nil) ; Use `fill-column' for overlong lines
   :diminish whitespace-mode)
+
+;;; Utilities and keybindings
+(defun custom/whitespace-style-no-long-lines ()
+  "Configure `whitespace-mode' for Org.
+Disable the highlighting of overlong lines."
+  (setq-local whitespace-style (-difference whitespace-style
+                                            '(lines lines-tail))))
+
+(defun custom/whitespace-mode-local ()
+  "Enable `whitespace-mode' after local variables where set up."
+  (add-hook 'hack-local-variables-hook #'whitespace-mode nil 'local))
 
 (provide 'custom-highlight)
 

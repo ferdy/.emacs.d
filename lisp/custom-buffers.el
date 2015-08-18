@@ -91,6 +91,10 @@
   :defer t
   :init (add-hook 'ibuffer-hook #'ibuffer-projectile-set-filter-groups))
 
+(use-package scratch ; Mode-specific scratch buffers
+  :ensure t
+  :commands scratch)
+
 ;;; Utilities and keybindings
 (defun custom/kill-buffers (regexp)
   "Kill buffers matching REGEXP without asking for confirmation."
