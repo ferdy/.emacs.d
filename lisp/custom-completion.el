@@ -95,6 +95,10 @@
           (add-hook 'company-mode-hook #'yas-minor-mode)
           (company-auctex-init)))
 
+(use-package sly-company ; Backend for Sly
+  :ensure t
+  :init (add-hook 'sly-mode-hook 'sly-company-mode))
+
 (provide 'custom-completion)
 
 ;;; custom-completion.el ends here
