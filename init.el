@@ -112,7 +112,7 @@
 (use-package custom-pairs)
 (use-package custom-navigation)
 (use-package custom-search)
-(use-package custom-files)
+(use-package custom-files :defer 5)
 (use-package custom-completion :defer 5)
 (use-package custom-formatting)
 (use-package custom-languages)
