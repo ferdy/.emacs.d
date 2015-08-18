@@ -135,11 +135,9 @@
   :ensure helm
   :defer t
   :init (progn
-          (add-hook 'eshell-mode-hook
-                    #'(lambda ()
-                        (bind-key "C-c C-l"
-                                  'helm-eshell-history eshell-mode-map)))
           ;; Shell history
+          (eval-after-load 'eshell-mode
+            '(bind-key "C-c C-l" #'helm-eshell-history eshell-mode-map))
           (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)
 
           ;; Completion with helm
