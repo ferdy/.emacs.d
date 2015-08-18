@@ -196,7 +196,7 @@ prerequisites
 ag_setup
 clojure_setup
 scheme_setup
-#commonlisp_setup
+commonlisp_setup
 latex_setup
 pandoc_setup
 pdftools_setup
