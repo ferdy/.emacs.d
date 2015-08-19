@@ -165,6 +165,46 @@
   :commands clojure-cheatsheet)
 
 ;;; Scheme
+(use-package scheme ; Configuration for Scheme
+  :config
+  (progn
+    (require 'cmuscheme)
+
+    (bind-key "C-c C-l" #'scheme-load-current-file scheme-mode-map)
+    (bind-key "C-c C-f" #'scheme-compile-current-file scheme-mode-map)
+
+    (defun scheme-load-current-file (&optional switch)
+      (interactive "P")
+      (let ((file-name (buffer-file-name)))
+        (comint-check-source file-name)
+        (setq scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
+                                             (file-name-nondirectory file-name)))
+        (comint-send-string (scheme-proc) (concat "(load \""
+                                                  file-name
+                                                  "\"\)\n"))
+        (if switch
+            (switch-to-scheme t)
+          (message "\"%s\" loaded." file-name) ) ) )
+
+    (defun scheme-compile-current-file (&optional switch)
+      (interactive "P")
+      (let ((file-name (buffer-file-name)))
+        (comint-check-source file-name)
+        (setq scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
+                                             (file-name-nondirectory file-name)))
+        (message "compiling \"%s\" ..." file-name)
+        (comint-send-string (scheme-proc) (concat "(compile-file \""
+                                                  file-name
+                                                  "\"\)\n"))
+        (if switch
+            (switch-to-scheme t)
+          (message "\"%s\" compiled and loaded." file-name))))
+
+    (setq auto-insert-alist
+          '(("\\.scm" .
+             (insert
+              "#!/bin/sh\n#| -*- scheme -*-\nexec csi -s $0 \"$@\"\n|#\n"))))))
+
 (use-package geiser ; Collection of modes for Scheme interpreters
   :ensure t
   :commands run-geiser
