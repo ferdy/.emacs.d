@@ -22,6 +22,10 @@
           (add-hook hook #'whitespace-cleanup-mode))
   :diminish whitespace-cleanup-mode)
 
+(use-package shrink-whitespace ; Better whitespace removal
+  :ensure t
+  :bind ("M-SPC" . shrink-whitespace))
+
 (use-package undo-tree ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode)
