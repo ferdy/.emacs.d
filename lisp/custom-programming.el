@@ -333,10 +333,15 @@ With a prefix argument N, comment that many sexps."
     (dotimes (_ n)
       (comment-sexp--raw))))
 
+(bind-key "C-M-;" 'comment-dwim) ; Use C-M-; instead of M-;
+
 (eval-after-load 'clojure-mode
-  '(bind-key "C-M-;" #'comment-or-uncomment-sexp clojure-mode-map))
-(bind-key "C-M-;" #'comment-or-uncomment-sexp emacs-lisp-mode-map)
+  '(bind-key "M-;" #'comment-or-uncomment-sexp clojure-mode-map))
+(bind-key "M-;" #'comment-or-uncomment-sexp emacs-lisp-mode-map)
+(bind-key "M-;" #'comment-or-uncomment-sexp scheme-mode-map)
+
 (bind-key "C-;" #'comment-line)
+
 (bind-key "C-x C-e" 'pp-eval-last-sexp) ; Pretty-print evaluated expression
 
 (provide 'custom-programming)
