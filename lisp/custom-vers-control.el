@@ -11,6 +11,12 @@
 
 ;;; Code:
 
+(use-package vc-hooks ; Simple version control
+  :defer t
+  :config
+  ;; Always follow symlinks to files in VCS repos
+  (setq vc-follow-symlinks t))
+
 (use-package magit ; The best Git client out there
   :ensure t
   :defer t
