@@ -96,10 +96,8 @@
 (use-package server
   :defer t
   ;; Start server only if it is not already running
-  :config (progn
-            (if (server-running-p server-name)
-                nil
-              (server-mode)))
+  :config (unless (server-running-p)
+            (server-mode))
   :diminish server-buffer-clients)
 
 ;; Require files under ~/.emacs.d/lisp
