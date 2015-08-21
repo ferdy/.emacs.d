@@ -200,6 +200,13 @@
           (bind-key "C-:" #'helm-company company-mode-map)
           (bind-key "C-:" #'helm-company company-active-map)))
 
+(use-package helm-c-yasnippet ; Helm source for Yasnippet
+  :ensure t
+  :defer t
+  :init (with-eval-after-load 'yasnippet
+          (bind-key "C-c y" #'helm-yas-complete))
+  :config (setq helm-yas-space-match-any-greedy t))
+
 (use-package helm-descbinds ; Describing keybinding through Helm
   :ensure t
   :bind ("C-c h d" . helm-descbinds))
