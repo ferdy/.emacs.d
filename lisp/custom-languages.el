@@ -92,8 +92,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
                         (flyspell-buffer)))
 
             ;; Free C-M-i for completion
-            (unbind-key "M-t" flyspell-mode-map))
-  :diminish flyspell-mode)
+            (unbind-key "M-t" flyspell-mode-map)))
 
 ;;; Language tools
 (use-package synosaurus ; An extensible thesaurus

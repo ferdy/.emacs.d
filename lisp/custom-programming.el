@@ -73,8 +73,7 @@
                             display-buffer-in-side-window)
                            (side . bottom)
                            (reusable-frames . visible)
-                           (window-height . 0.4))))
-  :diminish flycheck-mode)
+                           (window-height . 0.4)))))
 
 (use-package flycheck-package ; Check package conventions with Flycheck
   :ensure t
@@ -117,8 +116,7 @@
 (use-package cider ; Clojure development environment
   :ensure t
   :defer t
-  :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-  :diminish cider-mode)
+  :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode))
 
 (use-package clojure-mode ; Major mode for Clojure files
   :ensure t
