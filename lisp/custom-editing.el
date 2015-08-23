@@ -29,7 +29,8 @@
 (use-package electric-spacing ; Automatically add space around operators
   :ensure t
   :defer t
-  :init (add-hook 'prog-mode-hook #'electric-spacing-mode))
+  :init (add-hook 'prog-mode-hook #'electric-spacing-mode)
+  :diminish electric-spacing-mode)
 
 (use-package undo-tree ; Show buffer changes as a tree
   :ensure t
