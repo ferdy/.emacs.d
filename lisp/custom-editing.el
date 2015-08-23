@@ -57,10 +57,6 @@
   :bind (([remap kill-ring-save] . easy-kill)
          ("C-c e m" . easy-mark)))
 
-(use-package iedit ; Edit multiple occurrences
-  :ensure t
-  :bind ("C-," . iedit-mode))
-
 (use-package adaptive-wrap ; Better line wrap
   :ensure t
   :defer t
