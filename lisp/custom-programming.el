@@ -251,6 +251,10 @@
   :defer t
   :mode "\\.php\\'")
 
+(use-package zencoding-mode ; Unfold CSS-selector-like expressions to markup
+  :ensure t
+  :init (add-hook 'web-mode-hook #'zencoding-mode))
+
 ;;; Utilities and keybindings
 (defun uncomment-sexp (&optional n)
   "Uncomment a sexp around point."

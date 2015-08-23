@@ -26,13 +26,6 @@
   :ensure t
   :bind ("M-SPC" . shrink-whitespace))
 
-(use-package electric-spacing ; Automatically add space around operators
-  :ensure t
-  :defer t
-  :init (dolist (hook '(js2-mode-hook c-mode-hook))
-          (add-hook hook #'electric-spacing-mode))
-  :diminish electric-spacing-mode)
-
 (use-package undo-tree ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode)
