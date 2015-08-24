@@ -114,7 +114,13 @@ windows easier."
             ;; Disable hl-line-mode in shell
             (add-hook 'shell-mode-hook (lambda ()
                                          (setq-local global-hl-line-mode
-                                                     nil)))))
+                                                     nil)))
+
+            ;; Do not echo input back at me
+            (defun custom/shell-turn-echo-off ()
+              (setq comint-process-echoes t))
+
+            (add-hook 'shell-mode-hook 'custom/shell-turn-echo-off)))
 
 ;;; Utilities and keybindings
 (custom-set-variables
