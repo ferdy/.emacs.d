@@ -161,7 +161,18 @@ allowfullscreen>%s</iframe>"
             ;; Use F12 to toggle image visualization
             (bind-key "<f12>"
                       (lambda () (interactive) (org-toggle-inline-images t))
-                      org-mode-map)))
+                      org-mode-map)
+
+            (defun custom/org-ispell ()
+              "Configure `ispell-skip-region-alist' for `org-mode'."
+              (make-local-variable 'ispell-skip-region-alist)
+              (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
+              (add-to-list 'ispell-skip-region-alist '("~" "~"))
+              (add-to-list 'ispell-skip-region-alist '("=" "="))
+              (add-to-list 'ispell-skip-region-alist
+                           '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
+
+            (add-hook 'org-mode-hook #'custom/org-ispell)))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn
