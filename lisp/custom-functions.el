@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file contains various useful functions.
+;; This file contains various useful functions and macros.
 
 ;;; Code:
 
@@ -44,6 +44,17 @@ into the count."
         (goto-char (point-min))
         (apply #'call-process cloc nil t t "--quiet" files))
       (pop-to-buffer (current-buffer)))))
+
+(defmacro with-timer (&rest forms)
+  "Run the given FORMS, counting and displaying the elapsed time."
+  (declare (indent 0))
+  (let ((nowvar (make-symbol "now"))
+        (body `(progn ,@forms)))
+    `(let ((,nowvar (current-time)))
+       (prog1 ,body
+         (let ((elapsed (float-time (time-subtract (current-time) ,nowvar))))
+           (when (> elapsed 0.001)
+             (message "spent (%.3fs)" elapsed)))))))
 
 (provide 'custom-functions)
 
