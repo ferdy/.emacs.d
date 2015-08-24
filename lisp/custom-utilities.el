@@ -74,6 +74,10 @@
   :ensure t
   :commands bug-hunter-file)
 
+(use-package debbugs ; Access the GNU bug tracker
+  :ensure t
+  :defer t)
+
 (provide 'custom-utilities)
 
 ;;; custom-utilities.el ends here
