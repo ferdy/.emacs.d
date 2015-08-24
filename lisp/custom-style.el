@@ -142,6 +142,7 @@ symbols, greek letters, as well as fall backs for."
                                      "sWip")
                                    "\\|"))
                 sml/theme 'automatic
+                sml/mode-width 'full
                 sml/no-confirm-load-theme t)
           (sml/setup))
   :config (progn
