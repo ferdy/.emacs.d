@@ -168,6 +168,17 @@
   (progn
     (require 'cmuscheme)
 
+    ;; Use CHICKEN Scheme
+    (setq scheme-program-name "csi")
+    (add-to-list 'interpreter-mode-alist '("chicken-scheme" . scheme-mode))
+
+    ;; Add custom header to .scm files
+    (setq auto-insert-alist
+          '(("\\.scm" .
+             (insert
+              "#!/bin/sh\n#| -*- scheme -*-\nexec csi -s $0 \"$@\"\n|#\n"))))
+
+    (bind-key "C-c C-s" #'run-scheme scheme-mode-map)
     (bind-key "C-c C-l" #'scheme-load-current-file scheme-mode-map)
     (bind-key "C-c C-f" #'scheme-compile-current-file scheme-mode-map)
 
@@ -196,17 +207,7 @@
                                                   "\"\)\n"))
         (if switch
             (switch-to-scheme t)
-          (message "\"%s\" compiled and loaded." file-name))))
-
-    (setq auto-insert-alist
-          '(("\\.scm" .
-             (insert
-              "#!/bin/sh\n#| -*- scheme -*-\nexec csi -s $0 \"$@\"\n|#\n"))))))
-
-(use-package geiser ; Collection of modes for Scheme interpreters
-  :ensure t
-  :commands run-geiser
-  :init (setq geiser-active-implementations '(chicken guile)))
+          (message "\"%s\" compiled and loaded." file-name))))))
 
 ;;; Common Lisp
 (use-package sly ; Sylvester the Cat's Common Lisp IDE
