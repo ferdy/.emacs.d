@@ -21,8 +21,8 @@ to create the right environment *before* starting Emacs with this configuration
 for the first time. The script only works with **Debian-based** systems.
 
 I mainly use Emacs for **LaTeX**, **Elisp** and **Clojure**, so my setup is
-planned accordingly. It all starts in `init.el`, which requires all the needed
-files from ```.emacs.d/lisp```.
+planned accordingly. It all starts in `init.el`, which requires the needed files
+from ```.emacs.d/lisp```.
 
 ##Setup
 On your **Debian-based** machine:
