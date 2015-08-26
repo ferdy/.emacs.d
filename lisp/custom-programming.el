@@ -239,8 +239,7 @@
   (progn
     (bind-keys :map sly-mode-map
                ("C-c m q" . sly-quit-lisp)
-               ("C-c m h"     . sly-documentation-lookup))
-    (bind-key "C-c C-k" 'sly-mrepl-clear-recent-output sly-mrepl-mode-map)))
+               ("C-c m h" . sly-documentation-lookup))))
 
 ;;; Databases
 (use-package sql ; SQL editing and REPL
