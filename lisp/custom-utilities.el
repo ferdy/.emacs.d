@@ -62,6 +62,17 @@
   :ensure t
   :commands command-log-mode)
 
+(use-package alert ; Display alert messages
+  :ensure t
+  :config
+  (progn
+    (defun take-a-break ()
+      "Sage wisdom, from a computer"
+      (interactive)
+      (alert "Time to take a break, dude!" :severity 'high))
+
+    (run-with-idle-timer 7200 t #'take-a-break)))
+
 ;;; Bugs management
 (use-package bug-reference ; Buttonize bug references
   :no-require t
