@@ -54,16 +54,19 @@
   :ensure t
   :defer t)
 
-(use-package visual-regexp ; Display regular expressions
+(use-package visual-regexp ; Regexp replace with in-buffer display
   :ensure t
-  :bind (("C-c r" . vr/query-replace)
-         ("C-c R" . vr/replace)))
+  :bind (("C-c s r" . vr/query-replace)
+         ("C-c s R" . vr/replace)))
 
 (use-package ag ; Search code in files/projects
   :ensure t
-  :bind (("C-c M-s"     . ag)
-         ("C-x M-s"     . ag-files)
-         ("C-c C-x M-s" . ag-project))
+  :bind (("C-c s a" . ag)
+         ("C-c s d" . ag-dired-regexp)
+         ("C-c s D" . ag-dired)
+         ("C-c s f" . ag-files)
+         ("C-c s k" . ag-kill-other-buffers)
+         ("C-c s K" . ag-kill-buffers))
   :config
   (setq ag-reuse-buffers t ; Don't spam buffer list with ag buffers
         ag-highlight-search t ; Highlight results

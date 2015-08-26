@@ -13,6 +13,36 @@
 
 ;;; Code:
 
+;; Define prefix commands for my personal key binding groups.  Not specifically
+;; important, but plays better with which-key, as it shows the names of prefix
+;; commands in its popup
+(defmacro custom/define-group (prefix name &optional map)
+  "Define a group at PREFIX with NAME in MAP."
+  (let ((command (intern (format "group:%s" name))))
+    `(progn
+       (define-prefix-command ',command)
+       (bind-key ,prefix #',command ,map))))
+
+(custom/define-group "C-c a" applications)
+(custom/define-group "C-c a o" org)
+(custom/define-group "C-c a S" stackexchange)
+(custom/define-group "C-c a w" eww)
+(custom/define-group "C-c c" compile-and-comments)
+(custom/define-group "C-c e" errors)
+(custom/define-group "C-c f" files)
+(custom/define-group "C-c h" helm)
+(custom/define-group "C-c i" insertion)
+(custom/define-group "C-c m" major-mode)
+(custom/define-group "C-c n" navigation)
+(custom/define-group "C-c o" multiple-cursors)
+(custom/define-group "C-c p" projects)
+(custom/define-group "C-c s" search-and-symbols)
+(custom/define-group "C-c t" toggles)
+(custom/define-group "C-c v" version-control)
+(custom/define-group "C-c w" windows-and-frames)
+(custom/define-group "C-c x" text)
+(custom/define-group "C-c x a" align)
+
 (use-package which-key ; Show help popups for prefix keys
   :ensure t
   :init (which-key-mode)
@@ -28,24 +58,6 @@
                   ("RET"                 . "⏎")))
   :diminish which-key-mode)
 
-(defun revert-this-buffer ()
-  "Revert current buffer without asking for confirmation."
-  (interactive)
-  (revert-buffer nil t t)
-  (message (concat "Reverted buffer " (buffer-name))))
-
-;; Custom keybindings activated with C^x t
-(define-prefix-command 'toggle-map)
-;; The manual recommends C-c for user keys, but C-x t is
-;; always free, whereas C-c t is used by some modes.
-(bind-keys :map ctl-x-map ("t" . toggle-map))
-(bind-keys :map toggle-map
-           ("v" . visual-line-mode)
-           ("l" . linum-mode)
-           ("s" . scratch)
-           ("r" . revert-this-buffer)
-           ("w" . writeroom-mode))
-
 (bind-key "M-=" 'count-words) ; Use count-words instead of count-words-region
 (bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
 
@@ -60,8 +72,7 @@
             ("M-e"     . custom/forward-paragraph)
             ("C-c o"   . (lambda ()
                            (interactive)
-                           (find-file "~/org/organizer.org")))
-            ("C-c M-s" . ag))
+                           (find-file "~/org/organizer.org"))))
 
 (provide 'custom-keybindings)
 

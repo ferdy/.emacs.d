@@ -18,6 +18,8 @@
 
 (use-package whitespace-cleanup-mode ; Cleanup whitespace in buffers
   :ensure t
+  :bind (("C-c t c" . whitespace-cleanup-mode)
+         ("C-c x w" . whitespace-cleanup))
   :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
           (add-hook hook #'whitespace-cleanup-mode))
   :diminish whitespace-cleanup-mode)
@@ -48,7 +50,7 @@
 (use-package easy-kill ; Better kill text
   :ensure t
   :bind (([remap kill-ring-save] . easy-kill)
-         ("C-c e m" . easy-mark)))
+         ("C-c e k" . easy-mark)))
 
 (use-package adaptive-wrap ; Better line wrap
   :ensure t
@@ -73,9 +75,7 @@
                        'cider-repl-mode))
 
 (use-package align ; Align text in buffers
-  :bind (("C-c e a" . align)
-         ("C-c e c" . align-current)
-         ("C-c e r" . align-regexp)))
+  :bind ("C-c x a a" . align))
 
 (use-package ediff-wind ; Better ediff behavior
   :defer 5
@@ -84,17 +84,17 @@
 
 (use-package multiple-cursors ; Easily place multiple cursors in a buffer
   :ensure t
-  :bind (("C-c m <SPC>" . mc/vertical-align-with-space)
-         ("C-c m a"     . mc/vertical-align)
-         ("C-c m e"     . mc/mark-more-like-this-extended)
-         ("C-c m h"     . mc/mark-all-like-this-dwim)
-         ("C-c m l"     . mc/edit-lines)
-         ("C-c m n"     . mc/mark-next-like-this)
-         ("C-c m p"     . mc/mark-previous-like-this)
-         ("C-c m r"     . vr/mc-mark)
-         ("C-c m C-a"   . mc/edit-beginnings-of-lines)
-         ("C-c m C-e"   . mc/edit-ends-of-lines)
-         ("C-c m C-s"   . mc/mark-all-in-region))
+  :bind (("C-c o <SPC>" . mc/vertical-align-with-space)
+         ("C-c o a"     . mc/vertical-align)
+         ("C-c o e"     . mc/mark-more-like-this-extended)
+         ("C-c o h"     . mc/mark-all-like-this-dwim)
+         ("C-c o l"     . mc/edit-lines)
+         ("C-c o n"     . mc/mark-next-like-this)
+         ("C-c o p"     . mc/mark-previous-like-this)
+         ("C-c o r"     . vr/mc-mark)
+         ("C-c o C-a"   . mc/edit-beginnings-of-lines)
+         ("C-c o C-e"   . mc/edit-ends-of-lines)
+         ("C-c o C-s"   . mc/mark-all-in-region))
   :config (setq mc/mode-line
                 ;; Simplify the MC mode line indicator
                 '(:propertize (:eval (concat " " (number-to-string
@@ -118,9 +118,13 @@
   :ensure t                 ; on the line you want to transpose.
   :bind ("C-c t m" . transpose-mark))
 
+(use-package auto-insert ; Automatic insertion into new files
+  :defer t
+  :bind ("C-c i a" . auto-insert))
+
 (use-package copyright ; Deal with copyright notices
   :defer t
-  :bind ("C-c e C" . copyright-update)
+  :bind ("C-c i c" . copyright-update)
   ;; Update copyright when visiting files
   :init (add-hook 'find-file-hook #'copyright-update)
   ;; Use ranges to denote consecutive years
@@ -160,7 +164,10 @@
 
 (use-package writeroom-mode ; Distraction-free interface
   :ensure t
-  :commands writeroom-mode)
+  :bind ("C-c t r" . writeroom-mode))
+
+(use-package indent ; Built-in indentation
+  :bind ("C-c x i" . indent-region))
 
 (setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
 
@@ -235,6 +242,60 @@ region if active."
     (fill-paragraph nil region)))
 
 (bind-key "M-Q" #'unfill-paragraph) ; The opposite of fill-paragraph
+
+(defun custom/align-repeat (start end regexp &optional justify-right after)
+  "Repeat alignment with respect to the given regular expression.
+If JUSTIFY-RIGHT is non nil justify to the right instead of the
+left. If AFTER is non-nil, add whitespace to the left instead of
+the right."
+  (interactive "r\nsAlign regexp: ")
+  (let ((complete-regexp (if after
+                             (concat regexp "\\([ \t]*\\)")
+                           (concat "\\([ \t]*\\)" regexp)))
+        (group (if justify-right -1 1)))
+    (align-regexp start end complete-regexp group 1 t)))
+
+(defun custom/align-repeat-decimal (start end)
+  "Align a table of numbers on decimal points and dollar signs (both optional)."
+  (interactive "r")
+  (require 'align)
+  (align-region start end nil
+                '((nil (regexp . "\\([\t ]*\\)\\$?\\([\t ]+[0-9]+\\)\\.?")
+                       (repeat . t)
+                       (group 1 2)
+                       (spacing 1 1)
+                       (justify nil t)))
+                nil))
+
+(defmacro custom/create-align-repeat-x
+    (name regexp &optional justify-right default-after)
+  (let ((new-func (intern (concat "custom/align-repeat-" name))))
+    `(defun ,new-func (start end switch)
+       (interactive "r\nP")
+       (let ((after (not (eq (if switch t nil) (if ,default-after t nil)))))
+         (custom/align-repeat start end ,regexp ,justify-right after)))))
+
+(custom/create-align-repeat-x "comma" "," nil t)
+(custom/create-align-repeat-x "semicolon" ";" nil t)
+(custom/create-align-repeat-x "colon" ":" nil t)
+(custom/create-align-repeat-x "equal" "=")
+(custom/create-align-repeat-x "math-oper" "[+\\-*/]")
+(custom/create-align-repeat-x "ampersand" "&")
+(custom/create-align-repeat-x "bar" "|")
+(custom/create-align-repeat-x "left-paren" "(")
+(custom/create-align-repeat-x "right-paren" ")" t)
+
+(bind-key "C-c x a r" #'custom/align-repeat)
+(bind-key "C-c x a m" #'custom/align-repeat-math-oper)
+(bind-key "C-c x a ." #'custom/align-repeat-decimal)
+(bind-key "C-c x a ," #'custom/align-repeat-comma)
+(bind-key "C-c x a ;" #'custom/align-repeat-semicolon)
+(bind-key "C-c x a :" #'custom/align-repeat-colon)
+(bind-key "C-c x a =" #'custom/align-repeat-equal)
+(bind-key "C-c x a &" #'custom/align-repeat-ampersand)
+(bind-key "C-c x a |" #'custom/align-repeat-bar)
+(bind-key "C-c x a (" #'custom/align-repeat-left-paren)
+(bind-key "C-c x a )" #'custom/align-repeat-right-paren)
 
 (provide 'custom-editing)
 

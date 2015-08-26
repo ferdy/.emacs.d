@@ -7,8 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configuration for in-buffer, frames and windows
-;; navigation.
+;; This file stores the configuration for in-buffer navigation.
 
 ;;; Code:
 
@@ -23,10 +22,12 @@
 
 (use-package avy-jump ; Jump to characters in buffers
   :ensure avy
-  :bind (("C-c j w" . avy-goto-word-1)
-         ("C-c j j" . avy-goto-char-2))
-  :config (setq avy-keys ; Use home row
-                '(?a ?s ?d ?e ?f ?h ?j ?k ?l ?n ?m ?v ?r ?u)))
+  :bind (("C-c s s" . avy-isearch)
+         ("C-c j" . avy-goto-word-1)
+         ("C-c l" . avy-goto-line)
+         ("C-c n b" . avy-pop-mark)
+         ("C-c n j" . avy-goto-char-2)
+         ("C-c n w" . avy-goto-word-1)))
 
 (use-package ace-link ; Jump to links
   :ensure t
@@ -36,14 +37,6 @@
                (with-eval-after-load 'help-mode
                  (defvar help-mode-map) ; Silence the byte compiler
                  (bind-key "C-c j l" #'ace-link-help help-mode-map))))
-
-(use-package ace-window ; Better movements between windows
-  :ensure t
-  :bind (("C-x o"   . ace-window)
-         ("C-c n s" . ace-swap-window))
-  :config (setq aw-keys ; Use home row
-                '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
-                aw-dispatch-always t))
 
 (use-package elisp-slime-nav ; Navigate through elisp code with M-. & M-,
   :ensure t
@@ -96,14 +89,6 @@
 (bind-key "C-x C-p" 'other-window-backward)
 
 (bind-key "M-g" 'goto-line) ; Goto line is M-g
-
-(defun custom/quit-bottom-side-windows ()
-  "Quit side windows of the current frame."
-  (interactive)
-  (dolist (window (window-at-side-list))
-    (quit-window nil window)))
-
-(bind-key "C-c q" #'custom/quit-bottom-side-windows) ; Close side frames
 
 ;; Better mark commands
 (defun push-mark-no-activate ()

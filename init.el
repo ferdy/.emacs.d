@@ -105,8 +105,11 @@
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (use-package custom-style)
+(use-package custom-keybindings)
+(use-package custom-functions)
 (use-package custom-highlight)
 (use-package custom-buffers)
+(use-package custom-windows)
 (use-package custom-helm)
 (use-package custom-editing)
 (use-package custom-pairs)
@@ -124,7 +127,5 @@
 (use-package custom-project)
 (use-package custom-shells)
 (use-package custom-utilities)
-(use-package custom-keybindings)
-(use-package custom-functions)
 
 ;;; init.el ends here

@@ -12,7 +12,7 @@
 ;;; Code:
 
 (use-package eshell ; Emacs command shell
-  :bind ("<f1>" . eshell-here)
+  :bind ("C-c a e" . eshell-here)
   :config
   (progn
     ;; Handy aliases
@@ -58,8 +58,32 @@ windows easier."
          (unintern 'eshell/su nil)
          (unintern 'eshell/sudo nil)))))
 
+(use-package shell ; Specialized comint.el for running the shell
+  :bind ("C-c a t" . shell)
+  :config (progn
+            (defun clear-shell ()
+              (interactive)
+              (let ((comint-buffer-maximum-size 0))
+                (comint-truncate-buffer)))
+
+            (bind-key "C-l" #'clear-shell shell-mode-map)
+
+            ;; Shell buffer maximized
+            (add-hook 'shell-mode-hook #'delete-other-windows)
+
+            ;; Disable hl-line-mode in shell
+            (add-hook 'shell-mode-hook (lambda ()
+                                         (setq-local global-hl-line-mode
+                                                     nil)))
+
+            ;; Do not echo input back at me
+            (defun custom/shell-turn-echo-off ()
+              (setq comint-process-echoes t))
+
+            (add-hook 'shell-mode-hook 'custom/shell-turn-echo-off)))
+
 (use-package ansi-term ; Powerful terminal emulator
-  :bind ("<S-f2>" . ansi-term)
+  :bind ("C-c a T" . ansi-term)
   :init (progn
           ;; Always use Zsh
           (defvar my-term-shell "/usr/bin/zsh")
@@ -97,30 +121,6 @@ windows easier."
             (goto-address-mode) ; Clickable URLs
             (bind-key "C-y" #'my-term-paste term-raw-map))
           (add-hook 'term-mode-hook 'my-term-hook)))
-
-(use-package shell ; Specialized comint.el for running the shell
-  :bind ("<f2>" . shell)
-  :config (progn
-            (defun clear-shell ()
-              (interactive)
-              (let ((comint-buffer-maximum-size 0))
-                (comint-truncate-buffer)))
-
-            (bind-key "C-l" #'clear-shell shell-mode-map)
-
-            ;; Shell buffer maximized
-            (add-hook 'shell-mode-hook #'delete-other-windows)
-
-            ;; Disable hl-line-mode in shell
-            (add-hook 'shell-mode-hook (lambda ()
-                                         (setq-local global-hl-line-mode
-                                                     nil)))
-
-            ;; Do not echo input back at me
-            (defun custom/shell-turn-echo-off ()
-              (setq comint-process-echoes t))
-
-            (add-hook 'shell-mode-hook 'custom/shell-turn-echo-off)))
 
 ;;; Utilities and keybindings
 (custom-set-variables

@@ -71,8 +71,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
                         #'custom/replace-quote)))
 
 (use-package flyspell ; Spell checking on-the-fly
-  :bind (("C-c s b" . flyspell-buffer)
-         ("C-c s r" . flyspell-region))
+  :bind ("C-c t s" . flyspell-mode)
   :config (progn
             (setq flyspell-use-meta-tab nil
                   ;; Make Flyspell less chatty

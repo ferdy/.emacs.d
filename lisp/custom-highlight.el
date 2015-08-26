@@ -32,9 +32,8 @@
   :ensure t
   :defer t
   :bind (("C-c s %" . highlight-symbol-query-replace)
-         ("C-c s n" . highlight-symbol-next-in-defun)
-         ("C-c s o" . highlight-symbol-occur)
-         ("C-c s p" . highlight-symbol-prev-in-defun))
+         ("C-c n n" . highlight-symbol-next-in-defun)
+         ("C-c n p" . highlight-symbol-prev-in-defun))
   :init (progn
           ;; Navigate occurrences of the symbol under point with M-n and M-p
           (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
@@ -52,7 +51,7 @@
 
 (use-package rainbow-mode ; Highlight colors
   :ensure t
-  :defer t
+  :bind ("C-c t r" . rainbow-mode)
   :config (add-hook 'css-mode-hook #'rainbow-mode))
 
 (use-package rainbow-delimiters ; Highlight parens

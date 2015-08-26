@@ -90,8 +90,8 @@
 
 (use-package helm-imenu ; Imenu through Helm
   :ensure helm
-  :bind (("C-c i" . helm-imenu)
-         ("C-c I" . helm-imenu-in-all-buffers))
+  :bind (("C-c n i" . helm-imenu-in-all-buffers)
+         ("C-c n t" . helm-imenu))
   :config (setq helm-imenu-fuzzy-match t
                 helm-imenu-execute-action-at-once-if-one nil))
 

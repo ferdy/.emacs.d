@@ -66,9 +66,9 @@
 
 (use-package sx ; StackExchange client for Emacs
   :ensure t
-  :bind (("C-c w s" . sx-tab-all-questions)
-         ("C-c w S" . sx-tab-newest)
-         ("C-c w a" . sx-ask)))
+  :bind (("C-c a S a" . sx-ask)
+         ("C-c a S q" . sx-tab-all-questions)
+         ("C-c a S n" . sx-tab-newest)))
 
 (use-package sx-compose ; Compose questions and answers
   :ensure sx
@@ -94,7 +94,8 @@
 
 (use-package paradox ; Better package manager interface
   :ensure t
-  :bind ("<f4>" . paradox-list-packages)
+  :bind (("C-c a p" . paradox-list-packages)
+         ("C-c a P" . paradox-list-packages-no-fetch))
   :config (progn
             (setq paradox-github-token t ; Don't ask for a token, please
                   ;; No async for now
@@ -110,7 +111,9 @@
                          #'paradox--report-buffer-display-if-noquery)))
 
 (use-package browse-url ; Browse URLs
-  :bind ("C-c w u" . browse-url)
+  :bind (("C-c a w b" . eww-list-bookmarks)
+         ("C-c a w w" . eww)
+         ("C-c a w u" . eww-browse-url))
   :config (setq browse-url-browser-function 'browse-url-generic
                 browse-url-generic-program "~/firefox/firefox"))
 

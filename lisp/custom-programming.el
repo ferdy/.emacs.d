@@ -11,6 +11,9 @@
 
 ;;; Code:
 
+(use-package prog-mode ; Prog Mode
+  :bind ("C-c t p" . prettify-symbols-mode))
+
 (use-package eldoc ; Documentation in the echo area
   :defer t
   ;; Enable Eldoc for `eval-expression', too
@@ -21,10 +24,12 @@
 (use-package macrostep ; Navigate through macros
   :ensure t
   :init (with-eval-after-load 'lisp-mode
-          (bind-key "C-c e e" #'macrostep-expand emacs-lisp-mode-map)
-          (bind-key "C-c e e" #'macrostep-expand lisp-interaction-mode-map)))
+          (bind-key "C-c m m e" #'macrostep-expand emacs-lisp-mode-map)
+          (bind-key "C-c m m e" #'macrostep-expand lisp-interaction-mode-map)))
 
 (use-package compile ; Compile from Emacs
+  :bind (("C-c c C" . compile)
+         ("C-c c r" . recompile))
   :config (progn
             (setq compilation-ask-about-save nil
                   ;; Kill old compilation processes before starting new ones
@@ -61,7 +66,14 @@
 ;; Requires: chktex
 (use-package flycheck ; On-the-fly syntax checker
   :ensure t
-  :bind ("C-c f" . flycheck-mode)
+  :bind (("C-c e l" . list-flycheck-errors)
+         ("C-c e n" . flycheck-next-error)
+         ("C-c e p" . flycheck-previous-error)
+         ("C-c e c" . flycheck-buffer)
+         ("C-c e C" . flycheck-clear)
+         ("C-c e f" . flycheck-first-error)
+         ("C-c e w" . flycheck-copy-errors-as-kill)
+         ("C-c t f" . flycheck-mode))
   :config (progn
             ;; Use italic face for checker name
             (set-face-attribute 'flycheck-error-list-checker-name nil
@@ -89,7 +101,7 @@
 
 ;;; Emacs Lisp
 (use-package ielm ; Emacs Lisp REPL
-  :commands ielm
+  :bind ("C-c a z" . ielm)
   :config (bind-key "C-c C-q" #'comint-send-eof inferior-emacs-lisp-mode-map))
 
 (use-package elisp-mode ; Emacs Lisp editing
@@ -97,6 +109,13 @@
   :interpreter ("emacs" . emacs-lisp-mode)
   :config
   (progn
+    (use-package ert)
+
+    (bind-key "C-c m e r" #'eval-region emacs-lisp-mode-map)
+    (bind-key "C-c m e b" #'eval-buffer emacs-lisp-mode-map)
+    (bind-key "C-c m e e" #'eval-last-sexp emacs-lisp-mode-map)
+    (bind-key "C-c m e f" #'eval-defun emacs-lisp-mode-map)
+
     (defconst custom/use-package-imenu-expression
       `("Use Package" ,(rx "(use-package" (optional "-with-elapsed-timer")
                            symbol-end (1+ (syntax whitespace)) symbol-start
@@ -152,7 +171,7 @@
           (defun custom/clojure-mode-hook ()
             (clj-refactor-mode 1)
             (yas-minor-mode 1) ; For adding require/use/import
-            (cljr-add-keybindings-with-prefix "C-c C-m"))
+            (cljr-add-keybindings-with-prefix "C-c m c r"))
 
           (add-hook 'clojure-mode-hook #'custom/clojure-mode-hook))
   :config (setq cljr-suppress-middleware-warnings t)
@@ -180,9 +199,9 @@
              (insert
               "#!/bin/sh\n#| -*- scheme -*-\nexec csi -s $0 \"$@\"\n|#\n"))))
 
-    (bind-key "C-c C-s" #'run-scheme scheme-mode-map)
-    (bind-key "C-c C-l" #'scheme-load-current-file scheme-mode-map)
-    (bind-key "C-c C-f" #'scheme-compile-current-file scheme-mode-map)
+    (bind-key "C-c m s" #'run-scheme scheme-mode-map)
+    (bind-key "C-c m l" #'scheme-load-current-file scheme-mode-map)
+    (bind-key "C-c m f" #'scheme-compile-current-file scheme-mode-map)
 
     (defun scheme-load-current-file (&optional switch)
       (interactive "P")
@@ -219,9 +238,13 @@
   :config
   (progn
     (bind-keys :map sly-mode-map
-               ("C-c C-q" . sly-quit-lisp)
-               ("M-h"     . sly-documentation-lookup))
+               ("C-c m q" . sly-quit-lisp)
+               ("C-c m h"     . sly-documentation-lookup))
     (bind-key "C-c C-k" 'sly-mrepl-clear-recent-output sly-mrepl-mode-map)))
+
+;;; Databases
+(use-package sql ; SQL editing and REPL
+  :bind ("C-c a s" . sql-connect))
 
 ;;; Web development
 (use-package web-mode ; Major mode for editing web templates
@@ -348,6 +371,8 @@ With a prefix argument N, comment that many sexps."
 (bind-key "C-;" #'comment-line)
 
 (bind-key "C-x C-e" 'pp-eval-last-sexp) ; Pretty-print evaluated expression
+
+(bind-key "C-c t d" #'toggle-debug-on-error)
 
 (provide 'custom-programming)
 

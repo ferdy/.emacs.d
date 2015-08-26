@@ -48,8 +48,9 @@ symbols, greek letters, as well as fall backs for."
 (add-hook 'after-make-frame-functions #'custom/configure-fonts)
 
 ;;; Interface
-;; Toggle all frames maximized and fullscreen
-(modify-all-frames-parameters '((fullscreen . maximized)))
+(use-package frame ; Frames
+  :bind ("C-c w f" . toggle-frame-fullscreen)
+  :config (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
 
 (setq echo-keystrokes 0.1) ; Faster echo keystrokes
 
@@ -125,6 +126,10 @@ symbols, greek letters, as well as fall backs for."
   :defer t
   :init (global-page-break-lines-mode)
   :diminish page-break-lines-mode)
+
+(use-package nlinum ; Line numbers in display margin
+  :ensure t
+  :bind ("C-c t l" . nlinum-mode))
 
 ;;; Mode line
 (use-package smart-mode-line ; Better mode-line

@@ -11,6 +11,10 @@
 
 ;;; Code:
 
+(use-package files ; Core commands for files
+  :bind (("C-c f z" . revert-buffer)
+         ("C-c f /" . revert-buffer)))
+
 (use-package recentf ; Manage recent files
   :init (recentf-mode)
   :defer t
