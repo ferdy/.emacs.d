@@ -158,9 +158,11 @@
   :config (setq cljr-suppress-middleware-warnings t)
   :diminish clj-refactor-mode)
 
-(use-package clojure-cheatsheet ; Explore Clojure Cheatsheet from Emacs
+(use-package yesql-ghosts ; Display ghostly yesql queries inline
   :ensure t
-  :commands clojure-cheatsheet)
+  :commands yesql-ghosts-display-query-ghosts
+  ;; Do not show defqueries by default
+  :config (setq yesql-ghosts-show-ghosts-automatically nil))
 
 ;;; Scheme
 (use-package scheme ; Configuration for Scheme
