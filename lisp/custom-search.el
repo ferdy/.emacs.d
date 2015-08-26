@@ -21,23 +21,15 @@
 (add-hook 'grep-mode-hook #'toggle-truncate-lines)
 
 (use-package "isearch" ; Search buffers
+  ;; Defer because `isearch' is not a feature and we don't want to `require' it
   :defer t
-  :config (progn
-            (setq isearch-allow-scroll t)
-
-            ;; Better backspace in isearch
-            (defun custom/isearch-delete ()
-              "Delete the failed portion of the search string, or the last char if successful."
-              (interactive)
-              (with-isearch-suspended
-               (setq isearch-new-string
-                     (substring
-                      isearch-string 0 (or (isearch-fail-pos) (1- (length isearch-string))))
-                     isearch-new-message
-                     (mapconcat 'isearch-text-char-description isearch-new-string ""))))
-
-            (bind-key [remap isearch-delete-char]
-                      #'custom/isearch-delete isearch-mode-map)))
+  ;; `:diminish' doesn't work for isearch, because it uses eval-after-load on
+  ;; the feature name, but isearch.el does not provide any feature.  For the
+  ;; same reason we have to use `:init', but isearch is always loaded anyways.
+  :init (progn
+          (diminish 'isearch-mode)
+          ;; Scroll during search
+          (setq isearch-allow-scroll t)))
 
 (use-package anzu ; Position/matches count for isearch
   :ensure t
