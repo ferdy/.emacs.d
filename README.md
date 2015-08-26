@@ -24,8 +24,8 @@ for the first time. The script only works with **Debian-based** systems.
 ##Highlights
 In this Emacs configuration you will find:
 
-- **use-package** for package management;
-- **Helm** enabled by default with various extensions;
+- [use-package](https://github.com/jwiegley/use-package) for package management;
+- [Helm](https://github.com/emacs-helm/helm) enabled by default with various extensions;
 - a fine-tuned setup to get you ready to work with **LaTeX**;
 - a reasonable setup to develop with **Clojure** and Lisp-family languages
 (Emacs Lisp, Scheme and Common Lisp);
