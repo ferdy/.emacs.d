@@ -128,7 +128,7 @@ configuring dependencies..."
 
 flyspell_setup() {
     echo "
-configuring flyspell..."
+configuring spell checker..."
     sudo apt-get -y install --no-install-recommends aspell aspell-en aspell-it
     echo "
 ... done"
