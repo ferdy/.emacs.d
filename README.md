@@ -2,6 +2,7 @@
 
 ##Table of Contents
 - [Preface](https://github.com/manuel-uberti/.emacs.d#preface)
+- [Highlights](https://github.com/manuel-uberti/.emacs.d#highlights)
 - [Setup](https://github.com/manuel-uberti/.emacs.d#setup)
 - [Updates](https://github.com/manuel-uberti/.emacs.d#updates)
 - [Acknowledgements](https://github.com/manuel-uberti/.emacs.d#acknowledgements)
