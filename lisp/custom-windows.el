@@ -70,6 +70,12 @@
 (bind-key "C-c w d" #'custom/toggle-current-window-dedication)
 (bind-key "C-c w b" #'custom/switch-to-minibuffer-window)
 
+;; Better shrink/enlarge windows
+(bind-key "C-S-<up>" 'enlarge-window)
+(bind-key "C-S-<down>" 'shrink-window)
+(bind-key "C-S-<left>" 'shrink-window-horizontally)
+(bind-key "C-S-<right>" 'enlarge-window-horizontally)
+
 (provide 'custom-windows)
 
 ;;; custom-windows.el ends here

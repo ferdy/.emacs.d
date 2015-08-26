@@ -61,12 +61,6 @@
 (bind-key "M-=" 'count-words) ; Use count-words instead of count-words-region
 (bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
 
-;; Better shrink/enlarge windows
-(bind-key "C-S-<up>" 'enlarge-window)
-(bind-key "C-S-<down>" 'shrink-window)
-(bind-key "C-S-<left>" 'shrink-window-horizontally)
-(bind-key "C-S-<right>" 'enlarge-window-horizontally)
-
 ;; Keybindings I do not want to be overridden by a majore mode
 (bind-keys* ("M-a"     . custom/backward-paragraph)
             ("M-e"     . custom/forward-paragraph)
