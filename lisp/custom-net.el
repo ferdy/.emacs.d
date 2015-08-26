@@ -39,7 +39,7 @@
 (use-package elfeed ; RSS feed reader
   :ensure t
   :defer t
-  :bind ("<f5>" . elfeed)
+  :bind ("C-c w f" . elfeed)
   :config (progn
             (setq elfeed-feeds
                   '(("http://planet.emacsen.org/atom.xml" emacs)
