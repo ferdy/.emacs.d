@@ -48,9 +48,8 @@ symbols, greek letters, as well as fall backs for."
 (add-hook 'after-make-frame-functions #'custom/configure-fonts)
 
 ;;; Interface
-(use-package frame ; Frames
-  :bind ("C-c w f" . toggle-frame-fullscreen)
-  :config (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
+;;Toggle all frames maximized and fullscreen
+(modify-all-frames-parameters '((fullscreen . maximized)))
 
 (setq echo-keystrokes 0.1) ; Faster echo keystrokes
 
