@@ -23,7 +23,7 @@
 ;; Requires in ~/.ercpass the format
 ;; (setq variable "nickname")
 (use-package erc ; IRC client
-  :bind ("C-c w e" . erc)
+  :bind ("C-c a i" . erc)
   :config (progn
             (load "~/.ercpass")
             (use-package erc-services
@@ -39,7 +39,7 @@
 (use-package elfeed ; RSS feed reader
   :ensure t
   :defer t
-  :bind ("C-c w f" . elfeed)
+  :bind ("C-c a f" . elfeed)
   :config (progn
             (setq elfeed-feeds
                   '(("http://planet.emacsen.org/atom.xml" emacs)
