@@ -96,16 +96,16 @@ With prefix P, create local abbrev. Otherwise it will be global."
 ;;; Language tools
 (use-package synosaurus ; An extensible thesaurus
   :ensure t
-  :bind (("C-c s l" . synosaurus-lookup)
-         ("C-c s r" . synosaurus-choose-and-replace)))
+  :bind (("C-c a L s" . synosaurus-lookup)
+         ("C-c a L r" . synosaurus-choose-and-replace)))
 
 (use-package langtool ; LanguageTool for Emacs
   :ensure t
-  :bind (("C-c L w" . langtool-check)
-         ("C-c L W" . langtool-check-done)
-         ("C-c L l" . langtool-switch-default-language)
-         ("C-c L m" . langtool-show-message-at-point)
-         ("C-c L c" . langtool-correct-buffer))
+  :bind (("C-c a L w" . langtool-check)
+         ("C-c a L W" . langtool-check-done)
+         ("C-c a L l" . langtool-switch-default-language)
+         ("C-c a L m" . langtool-show-message-at-point)
+         ("C-c a L c" . langtool-correct-buffer))
   :init (setq langtool-language-tool-jar
               "~/languagetool-3.0/languagetool-commandline.jar"
               langtool-default-language "en-GB"
