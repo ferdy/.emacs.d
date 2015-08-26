@@ -20,9 +20,15 @@ I use Emacs on [LinuxBBQ](http://linuxbbq.org/). The ```esetup``` script helps
 to create the right environment *before* starting Emacs with this configuration
 for the first time. The script only works with **Debian-based** systems.
 
-I mainly use Emacs for **LaTeX**, **Elisp** and **Clojure**, so my setup is
-planned accordingly. It all starts in `init.el`, which requires the needed files
-from ```.emacs.d/lisp```.
+##Highlights
+In this Emacs configuration you will find:
+
+- **use-package** for package management;
+- **Helm** enabled by default with various extensions;
+- a fine-tuned setup to get you ready to work with **LaTeX**;
+- a reasonable setup to develop with **Clojure** and Lisp-family languages
+(Emacs Lisp, Scheme and Common Lisp);
+- latest **Org-mode** heavily customized.
 
 ##Setup
 On your **Debian-based** machine:
