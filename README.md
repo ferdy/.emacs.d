@@ -21,15 +21,11 @@ I use Emacs on [LinuxBBQ](http://linuxbbq.org/). The ```esetup``` script helps
 to create the right environment *before* starting Emacs with this configuration
 for the first time. The script only works with **Debian-based** systems.
 
-##Highlights
-In this Emacs configuration you will find:
-
-- [use-package](https://github.com/jwiegley/use-package) for package management;
-- [Helm](https://github.com/emacs-helm/helm) enabled by default with various extensions;
-- a fine-tuned setup to get you ready to work with **LaTeX**;
-- a reasonable setup to develop with **Clojure** and Lisp-family languages
-(Emacs Lisp, Scheme and Common Lisp);
-- latest **Org-mode** heavily customized.
+This configuration uses
+[use-package](https://github.com/jwiegley/use-package). I rely heavily upon
+[Helm](https://github.com/emacs-helm/helm). I mainly work **LaTeX**, **Clojure**
+and other Lisp-family languages (Emacs Lisp, Scheme and Common Lisp) and
+**Org-mode**.
 
 ##Setup
 On your **Debian-based** machine:
