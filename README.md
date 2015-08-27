@@ -23,9 +23,8 @@ for the first time. The script only works with **Debian-based** systems.
 
 This configuration uses
 [use-package](https://github.com/jwiegley/use-package). I rely heavily upon
-[Helm](https://github.com/emacs-helm/helm). I mainly work **LaTeX**, **Clojure**
-and other Lisp-family languages (Emacs Lisp, Scheme and Common Lisp) and
-**Org-mode**.
+[Helm](https://github.com/emacs-helm/helm). I mainly work with **LaTeX**,
+**Clojure** and **Org-mode**.
 
 ##Setup
 On your **Debian-based** machine:
