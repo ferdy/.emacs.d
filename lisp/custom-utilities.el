@@ -66,10 +66,15 @@
   :ensure t
   :config
   (progn
+    ;; Use notifications library via D-Bus
+    (setq alert-default-style 'notifications)
+
     (defun take-a-break ()
       "Sage wisdom, from a computer"
       (interactive)
-      (alert "Time to take a break, dude!" :severity 'high))
+      (alert "Time to take a break, dude!"
+             :severity 'high
+             :title "Break"))
 
     (run-with-idle-timer 7200 t #'take-a-break)))
 
