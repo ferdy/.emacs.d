@@ -26,6 +26,7 @@
 (custom/define-group "C-c a" applications)
 (custom/define-group "C-c a o" org)
 (custom/define-group "C-c a S" stackexchange)
+(custom/define-group "C-c a L" language)
 (custom/define-group "C-c a w" eww)
 (custom/define-group "C-c c" compile-and-comments)
 (custom/define-group "C-c e" errors)
