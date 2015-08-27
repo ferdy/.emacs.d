@@ -44,6 +44,7 @@
             (setq elfeed-feeds
                   '(("http://planet.emacsen.org/atom.xml" emacs)
                     ("http://emacshorrors.com/feed.atom" emacs)
+                    ("http://emacsninja.com/feed.atom" emacs)
                     ("http://planet.clojure.in/atom.xml" clojure)
                     ("http://flashstrap.blogspot.com/feeds/posts/default" music)
                     ("http://jazzfromitaly.blogspot.it/feeds/posts/default"
