@@ -50,7 +50,7 @@
 (use-package easy-kill ; Better kill text
   :ensure t
   :bind (([remap kill-ring-save] . easy-kill)
-         ("C-c e k" . easy-mark)))
+         ([remap mark-sexp]      . easy-mark)))
 
 (use-package adaptive-wrap ; Better line wrap
   :ensure t
