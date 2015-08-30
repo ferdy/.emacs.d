@@ -47,8 +47,8 @@ configuring Clojure..."
     echo "
 getting Lein..."
     if [ ! -d "$HOME/bin" ]; then
-	mkdir -p $HOME/bin
-	export PATH=$PATH:$HOME/bin
+        mkdir -p $HOME/bin
+        export PATH=$PATH:$HOME/bin
     fi
     wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O $HOME/bin/lein
     chmod 755 $HOME/bin/lein
@@ -78,7 +78,7 @@ configuring LaTeX..."
     echo "
 ... done. Configuring chktex for Flycheck..."
     if [ ! -d "$HOME/sources" ]; then
-	mkdir -p $HOME/sources
+        mkdir -p $HOME/sources
     fi
     cd $HOME/sources
     wget http://download.savannah.gnu.org/releases/chktex/chktex-1.7.2.tar.gz
@@ -113,7 +113,7 @@ configuring dependencies..."
     echo "
 ... done. Building pdf-tools..."
     if [ ! -d "$HOME/githubs" ]; then
-	mkdir -p $HOME/githubs
+        mkdir -p $HOME/githubs
     fi
     cd $HOME/githubs
     git clone https://github.com/politza/pdf-tools
@@ -164,7 +164,7 @@ configuring DejaVu fonts..."
     echo "
 configuring Souce Code Pro..."
     if [ ! -d "$HOME/.fonts" ]; then
-	mkdir -p $HOME/.fonts
+        mkdir -p $HOME/.fonts
     fi
     cd $HOME
     wget https://github.com/adobe-fonts/source-code-pro/archive/2.010R-ro/1.030R-it.tar.gz
