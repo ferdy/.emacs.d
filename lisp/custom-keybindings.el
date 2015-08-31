@@ -65,6 +65,8 @@
 ;; These keybindings make it easier to type curly braces and square brackets
 ;; with an Italian keyboard layout
 (defun custom/insert-pair (pair)
+  "Insert PAIR.
+If PAIR is an opening pair, the closing pair will be inserted as well."
   (insert pair)
   (sp-insert-pair))
 
