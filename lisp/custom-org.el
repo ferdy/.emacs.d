@@ -201,7 +201,8 @@ allowfullscreen>%s</iframe>"
 (use-package org2blog ; Blog from Org mode to Wordpress
   :ensure t
   :defer t
-  :bind ("C-c a o w" . org2blog/wp-new-entry)
+  :bind (("C-c a o w" . org2blog/wp-new-entry)
+         ("C-c a o p" . org2blog/wp-post-buffer))
   :init (use-package org2blog-autoloads)
   :config (progn
             (setq org2blog/wp-use-sourcecode-shortcode t
