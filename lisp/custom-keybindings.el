@@ -72,8 +72,8 @@ If PAIR is an opening pair, the closing pair will be inserted as well."
 
 (bind-key "C-è" (lambda () (interactive) (custom/insert-pair "[")))
 (bind-key "C-é" (lambda () (interactive) (custom/insert-pair "]")))
-(bind-key "C-ù" (lambda () (interactive) (custom/insert-pair "{")))
-(bind-key "C-§" (lambda () (interactive) (custom/insert-pair "}")))
+(bind-key "C-à" (lambda () (interactive) (custom/insert-pair "{")))
+(bind-key "C-°" (lambda () (interactive) (custom/insert-pair "}")))
 
 ;; Keybindings I do not want to be overridden by a majore mode
 (bind-keys* ("M-a"   . custom/backward-paragraph)
