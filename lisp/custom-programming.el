@@ -369,8 +369,6 @@ With a prefix argument N, comment that many sexps."
 
 (bind-key "C-;" #'comment-line)
 
-(bind-key "C-x C-e" 'pp-eval-last-sexp) ; Pretty-print evaluated expression
-
 (bind-key "C-c t d" #'toggle-debug-on-error)
 
 (provide 'custom-programming)
