@@ -62,12 +62,23 @@
 (bind-key "M-=" 'count-words) ; Use count-words instead of count-words-region
 (bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
 
+;; These keybindings make it easier to type curly braces and square brackets
+;; with an Italian keyboard layout
+(defun custom/insert-pair (pair)
+  (insert pair)
+  (sp-insert-pair))
+
+(bind-key "C-è" (lambda () (interactive) (custom/insert-pair "[")))
+(bind-key "C-é" (lambda () (interactive) (custom/insert-pair "]")))
+(bind-key "C-ù" (lambda () (interactive) (custom/insert-pair "{")))
+(bind-key "C-§" (lambda () (interactive) (custom/insert-pair "}")))
+
 ;; Keybindings I do not want to be overridden by a majore mode
-(bind-keys* ("M-a"     . custom/backward-paragraph)
-            ("M-e"     . custom/forward-paragraph)
-            ("C-c o"   . (lambda ()
-                           (interactive)
-                           (find-file "~/org/organizer.org"))))
+(bind-keys* ("M-a"   . custom/backward-paragraph)
+            ("M-e"   . custom/forward-paragraph)
+            ("C-c o" . (lambda ()
+                         (interactive)
+                         (find-file "~/org/organizer.org"))))
 
 (provide 'custom-keybindings)
 

@@ -105,7 +105,6 @@
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (use-package custom-style)
-(use-package custom-keybindings)
 (use-package custom-functions)
 (use-package custom-highlight)
 (use-package custom-buffers)
@@ -113,6 +112,7 @@
 (use-package custom-helm)
 (use-package custom-editing)
 (use-package custom-pairs)
+(use-package custom-keybindings)
 (use-package custom-navigation)
 (use-package custom-search)
 (use-package custom-files :defer 5)
