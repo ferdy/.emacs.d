@@ -258,6 +258,10 @@ allowfullscreen>%s</iframe>"
   :ensure t
   :defer t)
 
+;;; Utilities and keybindings
+(bind-key "<f4>" ; Open organizer file
+          (lambda () (interactive) (find-file "~/org/organizer.org")))
+
 (provide 'custom-org)
 
 ;;; custom-org.el ends here
