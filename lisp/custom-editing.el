@@ -75,7 +75,8 @@
                        'cider-repl-mode))
 
 (use-package align ; Align text in buffers
-  :bind ("C-c x a a" . align))
+  :bind (("C-c x a a" . align)
+         ("C-c x a c" . align-current)))
 
 (use-package ediff-wind ; Better ediff behavior
   :defer 5
