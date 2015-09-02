@@ -170,6 +170,26 @@
 (use-package indent ; Built-in indentation
   :bind ("C-c x i" . indent-region))
 
+(use-package tildify ; Insert non-breaking spaces on the fly
+  :bind ("C-c x t" . tildify-region)
+  :init (dolist (hook '(markdown-mode-hook
+                        latex-mode-hook
+                        rst-mode-hook))
+          (add-hook hook #'tildify-mode))
+  ;; Use the right space for LaTeX
+  :config (add-hook 'latex-mode-hook
+                    (lambda () (setq-local tildify-space-string "~"))))
+
+(use-package typo ; Automatically use typographic quotes
+  :ensure t
+  :init (progn
+          (typo-global-mode)
+
+          (dolist (hook '(markdown-mode-hook
+                          rst-mode-hook))
+            (add-hook hook 'typo-mode)))
+  :diminish typo-mode)
+
 (setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
 
 ;;; Utilities and keybindings
