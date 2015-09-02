@@ -251,12 +251,12 @@
   :mode "\\.html\\'"
   :config (setq web-mode-markup-indent-offset 2))
 
-(use-package js3-mode ; Better JavaScript support
+(use-package js2-mode ; Better JavaScript support
   :ensure t
   :mode "\\.js\\'"
-  :config (setq js3-auto-indent-p t
-                js3-enter-indents-newline t
-                js3-indent-on-enter-key t))
+  :config (progn
+            (setq-default js2-basic-offset 2)
+            (add-hook 'js2-mode-hook #'js2-highlight-unused-variables-mode)))
 
 (use-package css-mode ; Better CSS support
   :defer t
