@@ -100,13 +100,7 @@ symbols, greek letters, as well as fall backs for."
 ;;; Utilities
 (setq history-length 1000) ; Store more history
 
-;; Disable tabs, but give them proper width
-(setq-default indent-tabs-mode nil
-              tab-width 8)
-
 (setq-default line-spacing 0.1) ; Increase line-spacing (default 0)
-
-(setq tab-always-indent 'complete) ; Make Tab complete if the line is indented
 
 ;; Configure a reasonable fill column and enable automatic filling
 (setq-default fill-column 80)

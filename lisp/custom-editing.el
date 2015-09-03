@@ -193,6 +193,22 @@
 
 (setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
 
+;; Disable tabs, but given them proper width
+(setq-default indent-tabs-mode nil
+              tab-width 8)
+
+;; Make Tab complete if the line is indented
+(setq tab-always-indent 'complete)
+
+;; Indicate empty lines at the end of a buffer in the fringe, but require a
+;; final new line
+(setq indicate-empty-lines t
+      require-final-newline t)
+
+(setq kill-ring-max 200 ; More killed items
+      ;; Save the contents of the clipboard to kill ring before killing
+      save-interprogram-paste-before-kill t)
+
 ;;; Utilities and keybindings
 ;; Kill entire line with prefix argument
 (defmacro bol-with-prefix (function)
