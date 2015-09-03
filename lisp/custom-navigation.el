@@ -43,6 +43,12 @@
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
   :diminish elisp-slime-nav-mode)
 
+(use-package outline ; Navigate outlines in buffers
+  :defer t
+  :init (dolist (hook '(text-mode-hook prog-mode-hook))
+          (add-hook hook #'outline-minor-mode))
+  :diminish outline-minor-mode)
+
 ;;; Utilities and keybindings
 ;; Better forward and backward paragraph
 (defun custom/forward-paragraph (&optional n)
