@@ -36,7 +36,7 @@
       '(:eval (if (buffer-file-name)
                   (abbreviate-file-name (buffer-file-name)) "%b")))
 
-;; Configure `display-buffer' behaviour for some special buffers.
+;; Configure `display-buffer' behaviour for some special buffers
 (setq display-buffer-alist
       `(;; Put REPLs and error lists into the bottom side window
         (,(rx bos (or "*Flycheck errors*" ; Flycheck error list

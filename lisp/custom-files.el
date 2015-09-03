@@ -160,6 +160,10 @@
   :ensure t
   :mode "\\.service\\'")
 
+(use-package bookmarks ; Bookmarks for Emacs buffers
+  ;; Save bookmarks immediately after a bookmark is added
+  :config (setq bookmark-save-flag 1))
+
 ;;; Utilities and keybindings
 (defun custom/current-file ()
   "Gets the \"file\" of the current buffer.
