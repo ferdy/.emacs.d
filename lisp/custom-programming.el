@@ -44,14 +44,6 @@
                   ;; Show three lines of context around the current message
                   compilation-context-lines 3)
 
-            (add-to-list 'display-buffer-alist
-                         `(,(rx bos "*compilation")
-                           (display-buffer-reuse-window
-                            display-buffer-in-side-window)
-                           (side            . bottom)
-                           (reusable-frames . visible)
-                           (window-height   . 0.4)))
-
             (defun custom/colorize-compilation-buffer ()
               "Colorize a compilation mode buffer."
               (interactive)
@@ -277,6 +269,12 @@
 (use-package zencoding-mode ; Unfold CSS-selector-like expressions to markup
   :ensure t
   :init (add-hook 'web-mode-hook #'zencoding-mode))
+
+(use-package nxml-mode ; XML editing
+  :defer t
+  ;; Complete closing tags, and insert XML declarations into empty files
+  :config (setq nxml-slash-auto-complete-flag t
+                nxml-auto-insert-xml-declaration-flag t))
 
 ;;; Utilities and keybindings
 (defun uncomment-sexp (&optional n)
