@@ -185,7 +185,8 @@
   :init (progn
           (typo-global-mode)
 
-          (dolist (hook '(markdown-mode-hook
+          (dolist (hook '(org-mode-hook
+                          markdown-mode-hook
                           rst-mode-hook))
             (add-hook hook 'typo-mode)))
   :diminish typo-mode)
