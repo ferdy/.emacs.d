@@ -65,42 +65,6 @@
               "Update parent node."
               (myorg-update-parent-cookie))
 
-            (bind-key "\"" #'custom/round-quotes org-mode-map)
-
-            (defun custom/round-quotes (italicize)
-              "Insert “” and leave point in the middle.
-With prefix argument ITALICIZE, insert /“”/ instead (meant for
-org-mode).
-If inside a code-block, simply calls `self-insert-command'."
-              (interactive "P")
-              (if (and (derived-mode-p 'org-mode) (org-in-src-block-p))
-                  (call-interactively 'self-insert-command)
-                (if (looking-at "”[/=_\\*]?")
-                    (goto-char (match-end 0))
-                  (when italicize
-                    (insert "//")
-                    (forward-char -1))
-                  (insert "“”")
-                  (forward-char -1))))
-
-            (bind-key "'" #'custom/apostrophe org-mode-map)
-
-            (defun custom/apostrophe (opening)
-              "Insert ’ in prose or `self-insert-command' in code.
-With prefix argument OPENING, insert ‘’ instead and leave
-point in the middle.
-Inside a code-block, simply calls `self-insert-command'."
-              (interactive "P")
-              (if (and (derived-mode-p 'org-mode)
-                       (org-in-block-p '("src" "latex" "html")))
-                  (call-interactively #'self-insert-command)
-                (if (looking-at "['’][=_/\\*]?")
-                    (goto-char (match-end 0))
-                  (if (null opening)
-                      (insert "’")
-                    (insert "‘’")
-                    (forward-char -1)))))
-
             ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
             (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
