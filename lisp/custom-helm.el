@@ -232,6 +232,12 @@
   :init (with-eval-after-load 'projectile (helm-projectile-on))
   :config (setq projectile-switch-project-action #'helm-projectile))
 
+(use-package helm-ag ; Helm frontend for Ag
+  :ensure t
+  :config (setq helm-ag-fuzzy-match t
+                helm-ag-insert-at-point 'symbol
+                helm-ag-source-type 'file-line))
+
 (use-package helm-wordnet ; Helm interface for Wordnet dictionary
   :ensure t
   :bind ("C-c h w" . helm-wordnet)
