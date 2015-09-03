@@ -69,7 +69,7 @@ symbols, greek letters, as well as fall backs for."
 (tooltip-mode -1)
 
 ;; Disable annoying prompts
-(fset 'yes-or-no-p 'y-or-n-p)
+;; (fset 'yes-or-no-p 'y-or-n-p)
 (setq kill-buffer-query-functions
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
