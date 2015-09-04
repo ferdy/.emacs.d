@@ -60,7 +60,8 @@
                 'post-forward uniquify-separator ":"))
 
 (use-package ibuffer ; Buffer management
-  :bind ([remap list-buffers] . ibuffer)
+  :bind (([remap list-buffers] . ibuffer)
+         ("C-c b i"            . ibuffer))
   :config (progn
             (setq ibuffer-formats
                   '((mark modified read-only " "
@@ -93,7 +94,7 @@
 
 (use-package scratch ; Mode-specific scratch buffers
   :ensure t
-  :commands scratch)
+  :bind ("C-c b s" . scratch))
 
 ;;; Utilities and keybindings
 (defun custom/kill-buffers (regexp)
