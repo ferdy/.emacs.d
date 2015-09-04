@@ -40,7 +40,7 @@
   :init (setq camcorder-window-id-offset -2))
 
 (use-package proced ; Manage processes
-  :defer t
+  :bind ("C-c a a p" . proced)
   :config (progn
             ;; Auto-update proced buffer
             (defun proced-settings ()
@@ -50,17 +50,16 @@
 
 (use-package vkill ; Visually kill programs and processes
   :ensure t
-  :commands vkill
-  :bind ("C-x L" . vkill-and-helm-occur)
-  :init
-  (defun vkill-and-helm-occur ()
-    (interactive)
-    (vkill)
-    (call-interactively #'helm-occur)))
+  :bind (("C-c a a k" . vkill)
+         ("C-c a a h" . vkill-and-helm-occur))
+  :init (defun vkill-and-helm-occur ()
+          (interactive)
+          (vkill)
+          (call-interactively #'helm-occur)))
 
 (use-package command-log-mode ; Show event history and command history
   :ensure t
-  :commands command-log-mode)
+  :bind ("C-c t l" . command-log-mode))
 
 ;;; Bugs management
 (use-package bug-reference ; Buttonize bug references
