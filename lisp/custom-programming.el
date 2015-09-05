@@ -67,17 +67,13 @@
          ("C-c e w" . flycheck-copy-errors-as-kill)
          ("C-c t f" . flycheck-mode))
   :config (progn
+            (setq flycheck-standard-error-navigation nil
+                  flycheck-display-errors-function
+                  #'flycheck-display-error-messages-unless-error-list)
+
             ;; Use italic face for checker name
             (set-face-attribute 'flycheck-error-list-checker-name nil
-                                :inherit 'italic)
-
-            (add-to-list 'display-buffer-alist
-                         `(,(rx bos "*Flycheck errors*" eos)
-                           (display-buffer-reuse-window
-                            display-buffer-in-side-window)
-                           (side . bottom)
-                           (reusable-frames . visible)
-                           (window-height . 0.4)))))
+                                :inherit 'italic)))
 
 (use-package flycheck-package ; Check package conventions with Flycheck
   :ensure t
