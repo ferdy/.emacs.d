@@ -145,6 +145,8 @@
 (use-package typo ; Automatically use typographic quotes
   :ensure t
   :init (progn
+          (setq typo-language "English")
+
           (typo-global-mode)
 
           (dolist (hook '(markdown-mode-hook
