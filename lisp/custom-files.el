@@ -27,9 +27,9 @@
 
 (use-package dired ; File manager
   :defer t
-  :bind (("C-c z"      . dired-get-size)
+  :bind (("C-c f s"    . dired-get-size)
          ("<C-return>" . custom/open-in-external-app)
-         ("C-c M-f"    . find-name-dired))
+         ("C-c f f"    . find-name-dired))
   :config (progn
             (setq dired-auto-revert-buffer t            ; Revert buffers on revisiting
                   dired-listing-switches
