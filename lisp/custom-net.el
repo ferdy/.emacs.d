@@ -95,8 +95,7 @@
 
 (use-package paradox ; Better package manager interface
   :ensure t
-  :bind (("C-c a p" . paradox-list-packages)
-         ("C-c a P" . paradox-list-packages-no-fetch))
+  :bind ("C-c a p" . paradox-list-packages)
   :config (progn
             (setq paradox-github-token t ; Don't ask for a token, please
                   ;; No async for now
