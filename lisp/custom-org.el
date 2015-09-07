@@ -87,7 +87,7 @@
 
             ;; Define custom commands
             (setq org-agenda-custom-commands
-                  '(("P" "Project List" ((tags "PROJECT")))
+                  '(("P" "Personal Projects" ((Tags "PERSONAL")))
                     ("B" "Boccaperta" ((agenda)
                                        (tags-todo "BOCCAPERTA")))
                     ("F" "FAV" ((agenda)
