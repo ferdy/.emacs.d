@@ -12,6 +12,7 @@
 ;;; Code:
 
 (use-package tramp ; Remote editing
+  :bind ("C-c a r c" . tramp-cleanup-all-connections)
   :config (progn
             (setq tramp-default-method "ssh"
                   tramp-shell-prompt-pattern
