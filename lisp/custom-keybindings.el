@@ -27,6 +27,7 @@
 (custom/define-group "C-c a a" admin)
 (custom/define-group "C-c a o" org)
 (custom/define-group "C-c a L" language)
+(custom/define-group "C-c a r" remote)
 (custom/define-group "C-c a S" stackexchange)
 (custom/define-group "C-c a w" eww)
 (custom/define-group "C-c b" buffers)
