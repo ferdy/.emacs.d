@@ -22,17 +22,21 @@
 (setq apropos-do-all t)
 
 (use-package calendar ; Display a calendar
-  :bind ("C-c a c" . calendar)
+  :bind ("C-c a c c" . calendar)
   :config (setq calendar-week-start-day 1)); Start on Monday
 
 (use-package time ; Display time
-  :bind ("C-c a c" . display-time-world)
+  :bind ("C-c a c t" . display-time-world)
   :config
   (setq display-time-world-time-format "%H:%M %Z, %d. %b"
         display-time-world-list '(("Europe/Rome" "Rome")
                                   ("Europe/London" "London")
                                   ("Asia/Hong_Kong" "Hong Kong")
                                   ("Asia/Tokyo" "Tokyo"))))
+
+(use-package calc ; Calculator
+  :bind (("C-c a m q" . quick-calc)
+         ("C-c a m c" . calc)))
 
 (use-package camcorder ; Record movements from within Emacs
   :ensure t
