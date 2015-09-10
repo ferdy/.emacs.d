@@ -111,17 +111,6 @@ configuring dependencies..."
     sudo apt-get -y install --no-install-recommends -t experimental libpoppler-private-dev
     sudo apt-get -y install --no-install-recommends imagemagick
     echo "
-... done. Building pdf-tools..."
-    if [ ! -d "$HOME/githubs" ]; then
-        mkdir -p $HOME/githubs
-    fi
-    cd $HOME/githubs
-    git clone https://github.com/politza/pdf-tools
-    cd pdf-tools
-    ./autogen.sh
-    ./configure && make
-    make install-package
-    echo "
 ... done"
     cd $HOME
 }
