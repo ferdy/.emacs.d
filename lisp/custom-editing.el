@@ -154,13 +154,6 @@
             (add-hook hook 'typo-mode)))
   :diminish typo-mode)
 
-(use-package goto-addr ; Make links clickable
-  :defer t
-  :init (progn (add-hook 'prog-mode-hook #'goto-address-prog-mode)
-               (add-hook 'text-mode-hook #'goto-address-mode)
-               (add-hook 'org-mode-hook (lambda ()
-                                          (goto-address-mode -1)))))
-
 (use-package string-edit ; Edit strings in a separate buffer
   :ensure t
   :commands string-edit-at-point)
