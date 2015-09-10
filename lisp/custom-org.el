@@ -110,17 +110,6 @@ allowfullscreen>%s</iframe>"
                   "latexmk -pdflatex='lualatex -shell-escape
 -interaction nonstopmode' -pdf -f  %f")
 
-            ;; Surround current symbol with emphasize markers
-            (defun org-emphasize-dwim (&optional char)
-              (interactive)
-              (unless (region-active-p)
-                (backward-word)
-                (mark-word))
-              (org-emphasize char))
-
-            (bind-key [remap org-emphasize] #'org-emphasize-dwim
-                      org-mode-map)
-
             ;; Disable whitespace highlighting of overlong lines in Org Mode
             (add-hook 'org-mode-hook
                       #'custom/whitespace-style-no-long-lines)
