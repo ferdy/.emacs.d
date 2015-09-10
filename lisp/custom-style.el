@@ -16,8 +16,24 @@
 (if window-system
     (progn
       (if (> (x-display-pixel-width) 1800)
-          (set-frame-font "Source Code Pro-16" nil t)
-        (set-frame-font "Source Code Pro-13" nil t))))
+          (progn
+            (set-face-attribute 'default nil
+                                :family "Source Code Pro"
+                                :height 140
+                                :weight 'regular)
+            (set-face-attribute 'variable-pitch nil
+                                :family "Fira Sans"
+                                :height 140
+                                :weight 'regular))
+        (progn
+          (set-face-attribute 'default nil
+                              :family "Source Code Pro"
+                              :height 125
+                              :weight 'regular)
+          (set-face-attribute 'variable-pitch nil
+                              :family "Fira Sans"
+                              :height 125
+                              :weight 'regular)))))
 
 (defun custom/configure-fonts (frame)
   "Set up fonts for FRAME.
@@ -100,7 +116,7 @@ symbols, greek letters, as well as fall backs for."
 ;;; Utilities
 (setq history-length 1000) ; Store more history
 
-(setq-default line-spacing 0.1) ; Increase line-spacing (default 0)
+(setq-default line-spacing 0.2) ; Increase line-spacing (default 0)
 
 ;; Configure a reasonable fill column and enable automatic filling
 (setq-default fill-column 80)
