@@ -19,7 +19,7 @@
           (progn
             (set-face-attribute 'default nil
                                 :family "Source Code Pro"
-                                :height 140
+                                :height 150
                                 :weight 'regular)
             (set-face-attribute 'variable-pitch nil
                                 :family "Fira Sans"
