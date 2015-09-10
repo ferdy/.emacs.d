@@ -144,6 +144,7 @@
 
 (use-package typo ; Automatically use typographic quotes
   :ensure t
+  :bind ("C-c i t" . typo-change-language)
   :init (progn
           (setq typo-language "English")
 
