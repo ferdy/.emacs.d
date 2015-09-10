@@ -175,17 +175,6 @@
   :config (add-hook 'latex-mode-hook
                     (lambda () (setq-local tildify-space-string "~"))))
 
-(use-package typo ; Automatically use typographic quotes
-  :ensure t
-  :init (progn
-          (typo-global-mode)
-
-          (dolist (hook '(org-mode-hook
-                          markdown-mode-hook
-                          rst-mode-hook))
-            (add-hook hook 'typo-mode)))
-  :diminish typo-mode)
-
 (setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
 
 ;; Disable tabs, but given them proper width
