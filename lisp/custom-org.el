@@ -128,7 +128,10 @@ allowfullscreen>%s</iframe>"
               (add-to-list 'ispell-skip-region-alist
                            '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
 
-            (add-hook 'org-mode-hook #'custom/org-ispell)))
+            (add-hook 'org-mode-hook #'custom/org-ispell)
+
+            (add-hook 'org-mode-hook (lambda ()
+                                       (diminish 'org-indent-mode " ⓘ")))))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn
