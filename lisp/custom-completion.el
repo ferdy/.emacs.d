@@ -41,7 +41,7 @@
 
     (bind-key "C-e" #'yas/goto-end-of-active-field yas-keymap)
     (bind-key "C-a" #'yas/goto-start-of-active-field yas-keymap))
-  :diminish yas-minor-mode)
+  :diminish (yas-minor-mode . " Ⓨ"))
 
 (use-package abbrev ; Save abbreviations
   :init (abbrev-mode)

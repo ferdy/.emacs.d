@@ -83,7 +83,7 @@
   (setq whitespace-style '(face indentation space-after-tab space-before-tab
                                 tab-mark empty trailing lines-tail)
         whitespace-line-column nil) ; Use `fill-column' for overlong lines
-  :diminish whitespace-mode)
+  :diminish (whitespace-mode . " ⓦ"))
 
 ;;; Utilities and keybindings
 (defun custom/whitespace-style-no-long-lines ()

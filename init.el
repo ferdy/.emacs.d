@@ -100,7 +100,7 @@
   ;; Start server only if it is not already running
   :config (unless (server-running-p)
             (server-mode))
-  :diminish server-buffer-clients)
+  :diminish (server-buffer-clients . " ⓒ"))
 
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))

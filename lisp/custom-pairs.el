@@ -66,7 +66,7 @@
 
                 (bind-key "M-q" #'sp-indent-defun
                           smartparens-strict-mode-map))))
-  :diminish smartparens-mode)
+  :diminish (smartparens-mode . " ⓟ"))
 
 (add-hook 'after-save-hook ; Look for unbalanced parens when saving
           'check-parens nil t)

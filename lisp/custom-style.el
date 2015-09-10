@@ -121,6 +121,7 @@ symbols, greek letters, as well as fall backs for."
 ;; Configure a reasonable fill column and enable automatic filling
 (setq-default fill-column 80)
 (add-hook 'text-mode-hook #'auto-fill-mode)
+(diminish 'auto-fill-function " Ⓕ")
 
 ;; Give us narrowing back!
 (put 'narrow-to-region 'disabled nil)

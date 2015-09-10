@@ -62,7 +62,7 @@
                   ("DEL"                 . "⌫")
                   ("deletechar"          . "⌦")
                   ("RET"                 . "⏎")))
-  :diminish which-key-mode)
+  :diminish (which-key-mode . " Ⓚ"))
 
 (bind-key "M-=" 'count-words) ; Use count-words instead of count-words-region
 (bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
