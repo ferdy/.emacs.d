@@ -224,15 +224,16 @@
   :ensure t
   :commands sly
   :init (setq inferior-lisp-program "/usr/bin/sbcl")
-  :config
-  (progn
-    (bind-keys :map sly-mode-map
-               ("C-c m q" . sly-quit-lisp)
-               ("C-c m h" . sly-documentation-lookup))))
+  :config (bind-keys :map sly-mode-map
+                     ("C-c m q" . sly-quit-lisp)
+                     ("C-c m h" . sly-documentation-lookup)))
 
 ;;; Databases
 (use-package sql ; SQL editing and REPL
-  :bind ("C-c a s" . sql-connect))
+  :bind ("C-c a s" . sql-connect)
+  :config (add-hook 'sql-interactive-mode-hook
+                    (lambda ()
+                      (toggle-truncate-lines t))))
 
 ;;; Web development
 (use-package web-mode ; Major mode for editing web templates
