@@ -231,9 +231,7 @@
 ;;; Databases
 (use-package sql ; SQL editing and REPL
   :bind ("C-c a s" . sql-connect)
-  :config (add-hook 'sql-interactive-mode-hook
-                    (lambda ()
-                      (toggle-truncate-lines t))))
+  :config (add-hook 'sql-interactive-mode-hook #'toggle-truncate-lines))
 
 ;;; Web development
 (use-package web-mode ; Major mode for editing web templates
