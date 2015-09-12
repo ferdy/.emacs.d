@@ -68,9 +68,6 @@ windows easier."
 
             (bind-key "C-l" #'clear-shell shell-mode-map)
 
-            ;; Shell buffer maximized
-            (add-hook 'shell-mode-hook #'delete-other-windows)
-
             ;; Disable hl-line-mode in shell
             (add-hook 'shell-mode-hook (lambda ()
                                          (setq-local global-hl-line-mode
