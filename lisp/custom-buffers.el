@@ -42,7 +42,8 @@
         (,(rx bos (or "*Flycheck errors*" ; Flycheck error list
                       "*compilation"      ; Compilation buffers
                       "*Warnings*"        ; Emacs warnings
-                      "*cider"            ; CIDER buffers
+                      "*shell"            ; Shell window
+                      "*cider-repl"       ; CIDER buffers
                       "*SQL"              ; SQL REPL
                       ))
          (display-buffer-reuse-window
