@@ -37,12 +37,6 @@
                   magit-push-always-verify nil
                   magit-revision-show-gravatars nil)
 
-            (defadvice magit-status (around magit-fullscreen activate)
-              "Turn fullscreen on for magit-status."
-              (window-configuration-to-register :magit-fullscreen)
-              ad-do-it
-              (delete-other-windows))
-
             ;; Set `magit-repository-directories' for `magit-status'
             (defun custom/magit-set-repo-dirs-from-projectile ()
               "Set `magit-repository-directories' with known Projectile projects."
