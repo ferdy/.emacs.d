@@ -37,7 +37,7 @@
 (package-initialize)
 
 (setq load-prefer-newer t)        ; Always load newer compiled files
-(setq gc-cons-threshold 50000000) ; Allow more than 800Kb cache
+(setq gc-cons-threshold 100000000) ; Allow more than 800Kb cache
 (setq gnutls-min-prime-bits 4096) ; Avoid GnuTLS warnings
 
 ;; Bootstrap `use-package'
