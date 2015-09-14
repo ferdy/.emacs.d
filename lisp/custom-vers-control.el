@@ -37,6 +37,13 @@
                   magit-push-always-verify nil
                   magit-revision-show-gravatars nil)
 
+            (defun magit-quit-session ()
+              "Kill every Magit buffer."
+              (interactive)
+              (custom/kill-buffers "^\\*magit"))
+
+            (bind-key "q" #'magit-quit-session magit-status-mode-map)
+
             ;; Set `magit-repository-directories' for `magit-status'
             (defun custom/magit-set-repo-dirs-from-projectile ()
               "Set `magit-repository-directories' with known Projectile projects."
