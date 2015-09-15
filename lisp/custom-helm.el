@@ -103,6 +103,10 @@
   :ensure helm
   :bind ("C-x r l" . helm-bookmarks))
 
+(use-package helm-pages ; Move between pages in current buffer with Helm
+  :ensure t
+  :bind ("C-c n P" . helm-pages))
+
 (use-package helm-eval ; Evaluate expressions with Helm
   :ensure helm
   :bind (("C-c h M-:" . helm-eval-expression-with-eldoc)
