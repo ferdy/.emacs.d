@@ -18,7 +18,7 @@
       (if (> (x-display-pixel-width) 1800)
           (progn
             (set-face-attribute 'default nil
-                                :family "Source Code Pro"
+                                :family "Hack"
                                 :height 150
                                 :weight 'regular)
             (set-face-attribute 'variable-pitch nil
@@ -27,7 +27,7 @@
                                 :weight 'regular))
         (progn
           (set-face-attribute 'default nil
-                              :family "Source Code Pro"
+                              :family "Hack"
                               :height 125
                               :weight 'regular)
           (set-face-attribute 'variable-pitch nil
