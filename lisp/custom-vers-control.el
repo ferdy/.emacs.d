@@ -37,10 +37,17 @@
                   magit-push-always-verify nil
                   magit-revision-show-gravatars nil)
 
+            (defadvice magit-status (around magit-fullscreen activate)
+              "Turn fullscreen on for magit-status."
+              (window-configuration-to-register :magit-fullscreen)
+              ad-do-it
+              (delete-other-windows))
+
             (defun magit-quit-session ()
-              "Kill every Magit buffer."
+              "Restore previous window configuration and cleanup buffers."
               (interactive)
-              (custom/kill-buffers "^\\*magit"))
+              (custom/kill-buffers "^\\*magit")
+              (jump-to-register :magit-fullscreen))
 
             (bind-key "q" #'magit-quit-session magit-status-mode-map)
 
