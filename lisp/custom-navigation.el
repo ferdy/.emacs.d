@@ -85,15 +85,6 @@
 (bind-key "M-a" 'custom/backward-paragraph)
 (bind-key "M-e" 'custom/forward-paragraph)
 
-;; Better window movings
-(defun other-window-backward (&optional n)
-  "Select Nth previous window."
-  (interactive "P")
-  (other-window (- (prefix-numeric-value n))))
-
-(bind-key "C-x C-n" 'other-window)
-(bind-key "C-x C-p" 'other-window-backward)
-
 (bind-key "M-g" 'goto-line) ; Goto line is M-g
 
 ;; Better mark commands
