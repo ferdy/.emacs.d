@@ -12,7 +12,6 @@
 ;;; Code:
 
 ;;; Fonts setup
-
 ;; These are the fonts in use:
 ;; - Hack (https://github.com/chrissimpkins/Hack)
 ;; - Fira Sans (https://github.com/mozilla/Fira)
