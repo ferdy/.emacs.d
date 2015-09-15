@@ -59,8 +59,8 @@ $ ./esetup
 This configuration tracks latest Emacs developments. If you intend to use it, I
 highly recommend you update and re-build your sources at least once a week.
 
-You can use [Magit](https://github.com/magit/magit), which is bound to
-```<f3>```. Or you can do it with the command line:
+You can use [Magit](https://github.com/magit/magit), ```magit-status``` is bound
+to ```C-c v v```. Or you can do it with the command line:
 ```console
 $ cd emacs
 $ git pull
@@ -74,7 +74,7 @@ $ make clean
 ```
 I would also recommend you upgrade every package installed regularly. You can
 easily do it with [Paradox](https://github.com/Bruce-Connor/paradox), which is
-bound to ```<f4>```.
+bound to ```C-c a p```.
 
 If sources do not build correctly, or you find errors while using the latest
 commit, you can still revert to a working commit and re-build:
