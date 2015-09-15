@@ -12,6 +12,14 @@
 ;;; Code:
 
 ;;; Fonts setup
+
+;; These are the fonts in use:
+;; - Hack (https://github.com/chrissimpkins/Hack)
+;; - Fira Sans (https://github.com/mozilla/Fira)
+;; - Symbola (https://packages.debian.org/sid/ttf-ancient-fonts)
+;; - XITS Math (https://github.com/khaledhosny/xits-math)
+;; - Gentium Plus (http://scripts.sil.org/cms/scripts/page.php?item_id=Gentium)
+
 ;; Dinamically change font size based upon screen resolution
 (if window-system
     (progn
@@ -52,7 +60,7 @@ symbols, greek letters, as well as fall backs for."
                       frame 'prepend)
     (set-fontset-font t script (font-spec :family "Gentium Plus")
                       frame 'prepend)
-    (set-fontset-font t script (font-spec :family "Source Code Pro")
+    (set-fontset-font t script (font-spec :family "Hack")
                       frame 'prepend))
 
   ;; Fallbacks for math and generic symbols
