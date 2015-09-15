@@ -72,7 +72,7 @@ $ make
 $ sudo make install
 $ make clean
 ```
-I would also recommend you upgrade every package installed regularly. You can
+I would also recommend you regularly upgrade every package installed. You can
 easily do it with [Paradox](https://github.com/Bruce-Connor/paradox), which is
 bound to ```C-c a p```.
 
