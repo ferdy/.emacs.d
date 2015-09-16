@@ -29,7 +29,28 @@
   :init (progn
           (diminish 'isearch-mode)
           ;; Scroll during search
-          (setq isearch-allow-scroll t)))
+          (setq isearch-allow-scroll t)
+
+          ;; Better backspace during isearch
+          (defun custom/isearch-delete ()
+            "Delete non-matching text or the last character."
+            (interactive)
+            (if (= 0 (length isearch-string))
+                (ding)
+              (setq isearch-string
+                    (substring isearch-string
+                               0
+                               (or (isearch-fail-pos)
+                                   (1- (length isearch-string)))))
+              (setq isearch-message
+                    (mapconcat #'isearch-text-char-description
+                               isearch-string "")))
+            (if isearch-other-end (goto-char isearch-other-end))
+            (isearch-search)
+            (isearch-push-state)
+            (isearch-update))
+
+          (bind-key [remap isearch-delete-char] #'custom/isearch-delete)))
 
 (use-package anzu ; Position/matches count for isearch
   :ensure t
