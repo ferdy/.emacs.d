@@ -77,10 +77,7 @@
             (setq company-tooltip-align-annotations t
                   company-tooltip-flip-when-above t
                   ;; Easy navigation to candidates with M-<n>
-                  company-show-numbers t
-                  ;; Don'show completion popup, use helm-company instead
-                  ;; company-idle-delay nil
-                  )
+                  company-show-numbers t)
 
             ;; Don't complete numbers
             (push (apply-partially #'cl-remove-if
