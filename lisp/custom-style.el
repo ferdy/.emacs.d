@@ -153,19 +153,6 @@ symbols, greek letters, as well as fall backs for."
   :ensure t
   :bind ("C-c t l" . nlinum-mode))
 
-(use-package which-func ; Current function name in header line
-  :init (which-function-mode)
-  :config
-  (setq which-func-unknown "⊥ "
-        which-func-format
-        `((:propertize (" ➤ " which-func-current " ")
-                       local-map ,which-func-keymap
-                       face which-func
-                       mouse-face mode-line-highlight
-                       help-echo "mouse-1: go to beginning\n\
-mouse-2: toggle rest visibility\n\
-mouse-3: go to end"))))
-
 ;;; Mode line
 (use-package smart-mode-line ; Better mode-line
   :ensure t
