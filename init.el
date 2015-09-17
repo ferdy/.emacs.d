@@ -36,9 +36,10 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
-(setq load-prefer-newer t)        ; Always load newer compiled files
+(setq load-prefer-newer t)         ; Always load newer compiled files
 (setq gc-cons-threshold 100000000) ; Allow more than 800Kb cache
-(setq gnutls-min-prime-bits 4096) ; Avoid GnuTLS warnings
+(setq gnutls-min-prime-bits 4096)  ; Avoid GnuTLS warnings
+(setq message-log-max 10000)       ; Debugging
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
