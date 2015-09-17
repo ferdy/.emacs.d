@@ -13,7 +13,7 @@
 
 ;;; Fonts setup
 ;; These are the fonts in use:
-;; - Hack (https://github.com/chrissimpkins/Hack)
+;; - DejaVu Sans Mono (http://dejavu-fonts.org/wiki/Main_Page)
 ;; - Fira Sans (https://github.com/mozilla/Fira)
 ;; - Symbola (https://packages.debian.org/sid/ttf-ancient-fonts)
 ;; - XITS Math (https://github.com/khaledhosny/xits-math)
@@ -25,7 +25,7 @@
       (if (> (x-display-pixel-width) 1800)
           (progn
             (set-face-attribute 'default nil
-                                :family "Hack"
+                                :family "DejaVu Sans Mono"
                                 :height 150
                                 :weight 'regular)
             (set-face-attribute 'variable-pitch nil
@@ -34,7 +34,7 @@
                                 :weight 'regular))
         (progn
           (set-face-attribute 'default nil
-                              :family "Hack"
+                              :family "DejaVu Sans Mono"
                               :height 125
                               :weight 'regular)
           (set-face-attribute 'variable-pitch nil
@@ -59,7 +59,7 @@ symbols, greek letters, as well as fall backs for."
                       frame 'prepend)
     (set-fontset-font t script (font-spec :family "Gentium Plus")
                       frame 'prepend)
-    (set-fontset-font t script (font-spec :family "Hack")
+    (set-fontset-font t script (font-spec :family "DejaVu Sans Mono")
                       frame 'prepend))
 
   ;; Fallbacks for math and generic symbols
