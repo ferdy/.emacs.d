@@ -210,9 +210,7 @@ Otherwise copy the non-directory part only."
         (message "%s" name-to-copy))
     (user-error "This buffer is not visiting a file")))
 
-(bind-key "C-c C" #'custom/copy-filename-as-kill) ; Copy current file name
-
-(defun delete-this-file ()
+(defun custom/delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
   (or (buffer-file-name) (error "No file is currently being edited"))
@@ -221,7 +219,7 @@ Otherwise copy the non-directory part only."
     (delete-file (buffer-file-name))
     (kill-this-buffer)))
 
-(defun rename-this-file-and-buffer (new-name)
+(defun custom/rename-this-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
   (let ((name (buffer-name))
@@ -255,6 +253,15 @@ app. The app is chosen from your OS's preference."
      (lambda (file-path)
        (let ((process-connection-type nil))
          (start-process "" nil "xdg-open" file-path))) file-list)))
+
+(bind-key "C-c f D" #'custom/delete-this-file)
+(bind-key "C-c f R" #'custom/rename-this-file-and-buffer)
+(bind-key "C-c f w" #'custom/copy-filename-as-kill)
+
+;;; Additional bindings for built-ins
+(bind-key "C-c f v d" #'add-dir-local-variable)
+(bind-key "C-c f v l" #'add-file-local-variable)
+(bind-key "C-c f v p" #'add-file-local-variable-prop-line)
 
 (provide 'custom-files)
 
