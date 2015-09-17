@@ -151,26 +151,6 @@ font_setup() {
 configuring DejaVu fonts..."
     sudo apt-get -y install --no-install-recommends fonts-dejavu fonts-dejavu-extra
     echo "
-configuring Souce Code Pro..."
-    if [ ! -d "$HOME/.fonts" ]; then
-        mkdir -p $HOME/.fonts
-    fi
-    cd $HOME
-    wget https://github.com/adobe-fonts/source-code-pro/archive/2.010R-ro/1.030R-it.tar.gz
-    tar xzf 1.030R-it.tar.gz
-    cp -r $HOME/source-code-pro-2.010R-ro-1.030R-it $HOME/.fonts/source-code-pro
-    rm -rf source-code-pro-2.010R-ro-1.030R-it 1.030R-it.tar.gz
-    echo "
-configuring Hack..."
-    mkdir $HOME/hack
-    cd $HOME/hack
-    wget https://github.com/chrissimpkins/Hack/releases/download/v2.013/Hack-v2_013-ttf.zip
-    unzip Hack-v2_013-ttf.zip
-    rm Hack-v2_013-ttf.zip
-    cd $HOME
-    mv $HOME/hack $HOME/.fonts
-    fc-cache -fv
-    echo "
     ... done"
 }
 
@@ -181,29 +161,29 @@ camcorder_setup() {
 }
 
 echo "
-    ##########################################
-    # esetup                                 #
-    # Script for creating the right          #
-    # environment for my Emacs configuration #
-    ##########################################"
+##########################################
+# esetup                                 #
+# Script for creating the right          #
+# environment for my Emacs configuration #
+##########################################"
 
-    sudo -v # gets user password for next sudos
+sudo -v # gets user password for next sudos
 
-    cd $HOME
-    prerequisites
-    ag_setup
-    clojure_setup
-    scheme_setup
-    commonlisp_setup
-    latex_setup
-    pandoc_setup
-    pdftools_setup
-    flyspell_setup
-    synosaurus_setup
-    langtool_setup
-    font_setup
-    camcorder_setup
+cd $HOME
+prerequisites
+ag_setup
+clojure_setup
+scheme_setup
+commonlisp_setup
+latex_setup
+pandoc_setup
+pdftools_setup
+flyspell_setup
+synosaurus_setup
+langtool_setup
+font_setup
+camcorder_setup
 
-    echo "
+echo "
 environment ready, now fire up Emacs!
 "
