@@ -156,7 +156,7 @@ symbols, greek letters, as well as fall backs for."
 (use-package which-func ; Current function name in header line
   :init (which-function-mode)
   :config
-  (setq which-func-unknown "⊥"
+  (setq which-func-unknown "⊥ "
         which-func-format
         `((:propertize (" ➤ " which-func-current " ")
                        local-map ,which-func-keymap
