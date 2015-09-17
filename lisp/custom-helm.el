@@ -196,8 +196,7 @@
                   helm-swoop-use-line-number-face t)))
 
 (use-package helm-company ; Show Company candidates through Helm
-  :ensure t
-  :defer t
+  :load-path "various"
   :init (with-eval-after-load 'company
           ;; Use Company for completion
           (bind-key [remap completion-at-point] #'helm-company company-mode-map)
