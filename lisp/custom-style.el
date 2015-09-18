@@ -73,10 +73,11 @@ symbols, greek letters, as well as fall backs for."
 ;;; Interface
 (use-package frame ; Frames
   :bind ("C-c w f" . toggle-frame-fullscreen)
-  :init (progn
-          ;; Kill `suspend-frame'
-          (global-set-key (kbd "C-z") nil)
-          (global-set-key (kbd "C-x C-z") nil))
+  :init
+  (progn
+    ;; Kill `suspend-frame'
+    (global-set-key (kbd "C-z") nil)
+    (global-set-key (kbd "C-x C-z") nil))
   :config (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
 
 (setq echo-keystrokes 0.1) ; Faster echo keystrokes
@@ -159,22 +160,23 @@ symbols, greek letters, as well as fall backs for."
 ;;; Mode line
 (use-package smart-mode-line ; Better mode-line
   :ensure t
-  :init (progn
-          ;; Hide some modes
-          (use-package rich-minority)
-          (setq rm-blacklist
-                (format "^ \\(%s\\)$"
-                        (mapconcat #'identity
-                                   '("Wrap"
-                                     "WSC.*"
-                                     "yas"
-                                     "cWip"
-                                     "sWip")
-                                   "\\|"))
-                sml/theme 'automatic
-                sml/mode-width 'full
-                sml/no-confirm-load-theme t)
-          (sml/setup))
+  :init
+  (progn
+    ;; Hide some modes
+    (use-package rich-minority)
+    (setq rm-blacklist
+          (format "^ \\(%s\\)$"
+                  (mapconcat #'identity
+                             '("Wrap"
+                               "WSC.*"
+                               "yas"
+                               "cWip"
+                               "sWip")
+                             "\\|"))
+          sml/theme 'automatic
+          sml/mode-width 'full
+          sml/no-confirm-load-theme t)
+    (sml/setup))
   :config
   (progn
     ;; More abbreviations

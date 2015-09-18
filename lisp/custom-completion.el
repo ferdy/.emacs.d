@@ -116,9 +116,10 @@
 
 (use-package company-auctex ; Backend for AUCTeX
   :ensure t
-  :init (progn
-          (add-hook 'company-mode-hook #'yas-minor-mode)
-          (company-auctex-init)))
+  :init
+  (progn
+    (add-hook 'company-mode-hook #'yas-minor-mode)
+    (company-auctex-init)))
 
 (use-package sly-company ; Backend for Sly
   :ensure t

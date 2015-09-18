@@ -86,9 +86,10 @@
 (use-package flycheck-clojure ; Backend for Clojure
   :ensure t
   :defer t
-  :init (progn
-          (with-eval-after-load 'flycheck '(flycheck-clojure-setup))
-          (add-hook 'after-init-hook #'flycheck-mode)))
+  :init
+  (progn
+    (with-eval-after-load 'flycheck '(flycheck-clojure-setup))
+    (add-hook 'after-init-hook #'flycheck-mode)))
 
 ;;; Emacs Lisp
 (use-package ielm ; Emacs Lisp REPL
@@ -131,8 +132,9 @@
 (use-package clojure-mode ; Major mode for Clojure files
   :ensure t
   :defer t
-  :init (progn (add-hook 'clojure-mode-hook #'cider-mode)
-               (add-hook 'clojure-mode-hook #'subword-mode)))
+  :init
+  (progn (add-hook 'clojure-mode-hook #'cider-mode)
+         (add-hook 'clojure-mode-hook #'subword-mode)))
 
 (use-package clojure-mode-extra-font-locking ; Font-locking for Clojure mode
   :ensure t
@@ -159,13 +161,14 @@
 (use-package clj-refactor ; Refactoring utilities
   :ensure t
   :defer t
-  :init (progn
-          (defun custom/clojure-mode-hook ()
-            (clj-refactor-mode 1)
-            (yas-minor-mode 1) ; For adding require/use/import
-            (cljr-add-keybindings-with-prefix "C-c m r"))
+  :init
+  (progn
+    (defun custom/clojure-mode-hook ()
+      (clj-refactor-mode 1)
+      (yas-minor-mode 1) ; For adding require/use/import
+      (cljr-add-keybindings-with-prefix "C-c m r"))
 
-          (add-hook 'clojure-mode-hook #'custom/clojure-mode-hook))
+    (add-hook 'clojure-mode-hook #'custom/clojure-mode-hook))
   :config (setq cljr-suppress-middleware-warnings t)
   :diminish clj-refactor-mode)
 

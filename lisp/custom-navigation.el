@@ -32,11 +32,12 @@
 (use-package ace-link ; Jump to links
   :ensure t
   :defer t
-  :init (progn (with-eval-after-load 'info
-                 (bind-key "C-c j l" #'ace-link-info Info-mode-map))
-               (with-eval-after-load 'help-mode
-                 (defvar help-mode-map) ; Silence the byte compiler
-                 (bind-key "C-c j l" #'ace-link-help help-mode-map))))
+  :init
+  (progn (with-eval-after-load 'info
+           (bind-key "C-c j l" #'ace-link-info Info-mode-map))
+         (with-eval-after-load 'help-mode
+           (defvar help-mode-map) ; Silence the byte compiler
+           (bind-key "C-c j l" #'ace-link-help help-mode-map))))
 
 (use-package elisp-slime-nav ; Navigate through elisp code with M-. & M-,
   :ensure t

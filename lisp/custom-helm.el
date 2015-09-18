@@ -141,21 +141,22 @@
 (use-package helm-shell ; Manage shells/terms with Helm
   :ensure helm
   :defer t
-  :init (progn
-          ;; Shell history
-          (add-hook 'eshell-mode-hook
-                    #'(lambda ()
-                        (bind-key "C-c C-l"
-                                  #'helm-eshell-history
-                                  eshell-mode-map)))
-          (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)
+  :init
+  (progn
+    ;; Shell history
+    (add-hook 'eshell-mode-hook
+              #'(lambda ()
+                  (bind-key "C-c C-l"
+                            #'helm-eshell-history
+                            eshell-mode-map)))
+    (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)
 
-          ;; Completion with helm
-          (add-hook 'eshell-mode-hook
-                    #'(lambda ()
-                        (bind-key [remap eshell-pcomplete]
-                                  'helm-esh-pcomplete
-                                  eshell-mode-map)))))
+    ;; Completion with helm
+    (add-hook 'eshell-mode-hook
+              #'(lambda ()
+                  (bind-key [remap eshell-pcomplete]
+                            'helm-esh-pcomplete
+                            eshell-mode-map)))))
 
 (use-package helm-regex ; Helm regex tools
   :ensure helm

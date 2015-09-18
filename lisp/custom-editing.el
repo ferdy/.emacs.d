@@ -147,15 +147,16 @@
 (use-package typo ; Automatically use typographic quotes
   :ensure t
   :bind ("C-c i t" . typo-change-language)
-  :init (progn
-          (setq typo-language "English")
+  :init
+  (progn
+    (setq typo-language "English")
 
-          (typo-global-mode)
+    (typo-global-mode)
 
-          (dolist (hook '(org-mode-hook
-                          markdown-mode-hook
-                          rst-mode-hook))
-            (add-hook hook 'typo-mode)))
+    (dolist (hook '(org-mode-hook
+                    markdown-mode-hook
+                    rst-mode-hook))
+      (add-hook hook 'typo-mode)))
   :diminish (typo-mode . " Ⓣ"))
 
 (use-package string-edit ; Edit strings in a separate buffer

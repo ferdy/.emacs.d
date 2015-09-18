@@ -13,14 +13,15 @@
 
 (use-package smartparens ; Parenthesis editing and balancing
   :ensure t
-  :init (progn
-          (smartparens-global-mode)
-          (show-smartparens-global-mode)
+  :init
+  (progn
+    (smartparens-global-mode)
+    (show-smartparens-global-mode)
 
-          (dolist (hook '(inferior-emacs-lisp-mode-hook
-                          emacs-lisp-mode-hook
-                          clojure-mode-hook))
-            (add-hook hook #'smartparens-strict-mode)))
+    (dolist (hook '(inferior-emacs-lisp-mode-hook
+                    emacs-lisp-mode-hook
+                    clojure-mode-hook))
+      (add-hook hook #'smartparens-strict-mode)))
   :config
   (progn
     (setq sp-autoskip-closing-pair 'always

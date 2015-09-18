@@ -135,12 +135,13 @@ allowfullscreen>%s</iframe>"
                                (diminish 'org-indent-mode " ⓘ")))))
 
 (use-package autoinsert ; Auto insert custom text
-  :init (progn
-          (auto-insert-mode)
-          (define-auto-insert '("\\.org\\'" . "Org skeleton")
-            '("Short description: "
-              "#+STARTUP: showall\n"
-              > _ \n \n)))
+  :init
+  (progn
+    (auto-insert-mode)
+    (define-auto-insert '("\\.org\\'" . "Org skeleton")
+      '("Short description: "
+        "#+STARTUP: showall\n"
+        > _ \n \n)))
   :config (setq auto-insert-query nil))
 
 (use-package metaweblog ; Access metaweblog based weblogs

@@ -19,14 +19,15 @@
 (use-package diff-hl ; Show changes in fringe
   :ensure t
   :defer 10
-  :init (progn
-          ;; Highlight changes to the current file in the fringe
-          (global-diff-hl-mode)
-          ;; Highlight changed files in the fringe of Dired
-          (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
-          ;; Fall back to the display margin, if the fringe is unavailable
-          (unless (display-graphic-p)
-            (diff-hl-margin-mode))))
+  :init
+  (progn
+    ;; Highlight changes to the current file in the fringe
+    (global-diff-hl-mode)
+    ;; Highlight changed files in the fringe of Dired
+    (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+    ;; Fall back to the display margin, if the fringe is unavailable
+    (unless (display-graphic-p)
+      (diff-hl-margin-mode))))
 
 (use-package highlight-symbol ; Highlight and jump to symbols
   :ensure t
@@ -34,11 +35,12 @@
   :bind (("C-c s %" . highlight-symbol-query-replace)
          ("C-c n n" . highlight-symbol-next-in-defun)
          ("C-c n p" . highlight-symbol-prev-in-defun))
-  :init (progn
-          ;; Navigate occurrences of the symbol under point with M-n and M-p
-          (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
-          ;; Highlight symbol occurrences
-          (add-hook 'prog-mode-hook #'highlight-symbol-mode))
+  :init
+  (progn
+    ;; Navigate occurrences of the symbol under point with M-n and M-p
+    (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
+    ;; Highlight symbol occurrences
+    (add-hook 'prog-mode-hook #'highlight-symbol-mode))
   :config (setq highlight-symbol-idle-delay 0.4 ; Almost immediately
                 ;; Immediately after navigation
                 highlight-symbol-on-navigation-p t)

@@ -69,8 +69,9 @@
 ;;; Bugs management
 (use-package bug-reference ; Buttonize bug references
   :no-require t
-  :init (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
-               (add-hook 'text-mode-hook #'bug-reference-mode)))
+  :init
+  (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
+         (add-hook 'text-mode-hook #'bug-reference-mode)))
 
 (use-package bug-hunter ; Find bugs in Emacs configuration
   :ensure t

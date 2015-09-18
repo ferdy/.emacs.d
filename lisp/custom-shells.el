@@ -82,43 +82,44 @@ windows easier."
 
 (use-package ansi-term ; Powerful terminal emulator
   :bind ("C-c a T" . ansi-term)
-  :init (progn
-          ;; Always use Zsh
-          (defvar my-term-shell "/usr/bin/zsh")
-          (defadvice ansi-term (before force-bash)
-            (interactive (list my-term-shell)))
-          (ad-activate 'ansi-term)
+  :init
+  (progn
+    ;; Always use Zsh
+    (defvar my-term-shell "/usr/bin/zsh")
+    (defadvice ansi-term (before force-bash)
+      (interactive (list my-term-shell)))
+    (ad-activate 'ansi-term)
 
-          ;; Disable hl-line-mode in ansi-term
-          (add-hook 'term-mode-hook (lambda ()
-                                      (setq-local global-hl-line-mode
-                                                  nil)))
+    ;; Disable hl-line-mode in ansi-term
+    (add-hook 'term-mode-hook (lambda ()
+                                (setq-local global-hl-line-mode
+                                            nil)))
 
-          ;; Close buffer with 'exit'
-          (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
-            (if (memq (process-status proc) '(signal exit))
-                (let ((buffer (process-buffer proc)))
-                  ad-do-it
-                  (kill-buffer buffer))
-              ad-do-it))
-          (ad-activate 'term-sentinel)
+    ;; Close buffer with 'exit'
+    (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+      (if (memq (process-status proc) '(signal exit))
+          (let ((buffer (process-buffer proc)))
+            ad-do-it
+            (kill-buffer buffer))
+        ad-do-it))
+    (ad-activate 'term-sentinel)
 
-          ;; Always use UTF-8
-          (defun my-term-use-utf8 ()
-            (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-          (add-hook 'term-exec-hook 'my-term-use-utf8)
+    ;; Always use UTF-8
+    (defun my-term-use-utf8 ()
+      (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+    (add-hook 'term-exec-hook 'my-term-use-utf8)
 
-          ;; Paste with C-y
-          (defun my-term-paste (&optional string)
-            (interactive)
-            (process-send-string
-             (get-buffer-process (current-buffer))
-             (if string string (current-kill 0))))
+    ;; Paste with C-y
+    (defun my-term-paste (&optional string)
+      (interactive)
+      (process-send-string
+       (get-buffer-process (current-buffer))
+       (if string string (current-kill 0))))
 
-          (defun my-term-hook ()
-            (goto-address-mode) ; Clickable URLs
-            (bind-key "C-y" #'my-term-paste term-raw-map))
-          (add-hook 'term-mode-hook 'my-term-hook)))
+    (defun my-term-hook ()
+      (goto-address-mode) ; Clickable URLs
+      (bind-key "C-y" #'my-term-paste term-raw-map))
+    (add-hook 'term-mode-hook 'my-term-hook)))
 
 ;;; Utilities and keybindings
 (custom-set-variables
