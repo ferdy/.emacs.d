@@ -30,29 +30,30 @@
 (use-package compile ; Compile from Emacs
   :bind (("C-c c C" . compile)
          ("C-c c r" . recompile))
-  :config (progn
-            (setq compilation-ask-about-save nil
-                  ;; Kill old compilation processes before starting new ones
-                  compilation-always-kill t
-                  ;; Automatically scroll and jump to the first error
-                  compilation-scroll-output 'first-error
-                  compilation-auto-jump-to-first-error t
-                  ;; Skip over warnings and info messages in compilation
-                  compilation-skip-threshold 2
-                  ;; Don't freeze when process reads from stdin
-                  compilation-disable-input t
-                  ;; Show three lines of context around the current message
-                  compilation-context-lines 3)
+  :config
+  (progn
+    (setq compilation-ask-about-save nil
+          ;; Kill old compilation processes before starting new ones
+          compilation-always-kill t
+          ;; Automatically scroll and jump to the first error
+          compilation-scroll-output 'first-error
+          compilation-auto-jump-to-first-error t
+          ;; Skip over warnings and info messages in compilation
+          compilation-skip-threshold 2
+          ;; Don't freeze when process reads from stdin
+          compilation-disable-input t
+          ;; Show three lines of context around the current message
+          compilation-context-lines 3)
 
-            (defun custom/colorize-compilation-buffer ()
-              "Colorize a compilation mode buffer."
-              (interactive)
-              (when (eq major-mode 'compilation-mode)
-                (let ((inhibit-read-only t))
-                  (ansi-color-apply-on-region (point-min) (point-max)))))
+    (defun custom/colorize-compilation-buffer ()
+      "Colorize a compilation mode buffer."
+      (interactive)
+      (when (eq major-mode 'compilation-mode)
+        (let ((inhibit-read-only t))
+          (ansi-color-apply-on-region (point-min) (point-max)))))
 
-            (add-hook 'compilation-filter-hook
-                      #'custom/colorize-compilation-buffer)))
+    (add-hook 'compilation-filter-hook
+              #'custom/colorize-compilation-buffer)))
 
 ;;; Syntax checking
 ;; Requires: chktex
@@ -66,14 +67,15 @@
          ("C-c e f" . flycheck-first-error)
          ("C-c e w" . flycheck-copy-errors-as-kill)
          ("C-c t f" . flycheck-mode))
-  :config (progn
-            (setq flycheck-standard-error-navigation nil
-                  flycheck-display-errors-function
-                  #'flycheck-display-error-messages-unless-error-list)
+  :config
+  (progn
+    (setq flycheck-standard-error-navigation nil
+          flycheck-display-errors-function
+          #'flycheck-display-error-messages-unless-error-list)
 
-            ;; Use italic face for checker name
-            (set-face-attribute 'flycheck-error-list-checker-name nil
-                                :inherit 'italic))
+    ;; Use italic face for checker name
+    (set-face-attribute 'flycheck-error-list-checker-name nil
+                        :inherit 'italic))
   :diminish (flycheck-mode . " Ⓢ"))
 
 (use-package flycheck-package ; Check package conventions with Flycheck
@@ -146,12 +148,13 @@
 (use-package cider-repl ; REPL interactions with CIDER
   :ensure cider
   :defer t
-  :config (progn
-            ;; Increase the history size and make it permanent
-            (setq cider-repl-history-size 1000
-                  cider-repl-history-file
-                  (locate-user-emacs-file "cider-repl-history")
-                  cider-repl-pop-to-buffer-on-connect nil)))
+  :config
+  (progn
+    ;; Increase the history size and make it permanent
+    (setq cider-repl-history-size 1000
+          cider-repl-history-file
+          (locate-user-emacs-file "cider-repl-history")
+          cider-repl-pop-to-buffer-on-connect nil)))
 
 (use-package clj-refactor ; Refactoring utilities
   :ensure t
@@ -247,9 +250,10 @@
 (use-package js2-mode ; Better JavaScript support
   :ensure t
   :mode "\\.js\\'"
-  :config (progn
-            (setq-default js2-basic-offset 2)
-            (add-hook 'js2-mode-hook #'js2-highlight-unused-variables-mode)))
+  :config
+  (progn
+    (setq-default js2-basic-offset 2)
+    (add-hook 'js2-mode-hook #'js2-highlight-unused-variables-mode)))
 
 (use-package css-mode ; Better CSS support
   :defer t

@@ -72,26 +72,27 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
 (use-package flyspell ; Spell checking on-the-fly
   :bind ("C-c t s" . flyspell-mode)
-  :config (progn
-            (setq flyspell-use-meta-tab nil
-                  ;; Make Flyspell less chatty
-                  flyspell-issue-welcome-flag nil
-                  flyspell-issue-message-flag nil)
+  :config
+  (progn
+    (setq flyspell-use-meta-tab nil
+          ;; Make Flyspell less chatty
+          flyspell-issue-welcome-flag nil
+          flyspell-issue-message-flag nil)
 
-            (bind-key "C-c I"
-                      (lambda()
-                        (interactive)
-                        (ispell-change-dictionary "italiano")
-                        (flyspell-buffer)))
+    (bind-key "C-c I"
+              (lambda()
+                (interactive)
+                (ispell-change-dictionary "italiano")
+                (flyspell-buffer)))
 
-            (bind-key "C-c E"
-                      (lambda()
-                        (interactive)
-                        (ispell-change-dictionary "british")
-                        (flyspell-buffer)))
+    (bind-key "C-c E"
+              (lambda()
+                (interactive)
+                (ispell-change-dictionary "british")
+                (flyspell-buffer)))
 
-            ;; Free C-M-i for completion
-            (unbind-key "M-t" flyspell-mode-map))
+    ;; Free C-M-i for completion
+    (unbind-key "M-t" flyspell-mode-map))
   :diminish (flyspell-mode . " ⓢ"))
 
 ;;; Language tools

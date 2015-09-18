@@ -45,12 +45,13 @@
 
 (use-package proced ; Manage processes
   :bind ("C-c a a p" . proced)
-  :config (progn
-            ;; Auto-update proced buffer
-            (defun proced-settings ()
-              (proced-toggle-auto-update 1))
+  :config
+  (progn
+    ;; Auto-update proced buffer
+    (defun proced-settings ()
+      (proced-toggle-auto-update 1))
 
-            (add-hook 'proced-mode-hook 'proced-settings)))
+    (add-hook 'proced-mode-hook 'proced-settings)))
 
 (use-package vkill ; Visually kill programs and processes
   :ensure t

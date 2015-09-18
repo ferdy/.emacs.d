@@ -18,30 +18,31 @@
 (use-package tex ; TeX editing
   :ensure auctex
   :defer t
-  :config (progn
-            (setq TeX-clean-confirm nil ; No confirmation when cleaning
-                  ;; Parse documents to provide completion
-                  TeX-parse-self t
-                  ;; Automatically save style information
-                  TeX-auto-save t
-                  ;; Insert braces after sub- and superscripts in math mode
-                  TeX-electric-sub-and-superscript t
-                  ;; Don't insert magic quotes right away
-                  TeX-quote-after-quote t
-                  ;; Provide forward and inverse search with SyncTeX
-                  TeX-source-correlate-mode t
-                  TeX-source-correlate-method 'synctex)
+  :config
+  (progn
+    (setq TeX-clean-confirm nil ; No confirmation when cleaning
+          ;; Parse documents to provide completion
+          TeX-parse-self t
+          ;; Automatically save style information
+          TeX-auto-save t
+          ;; Insert braces after sub- and superscripts in math mode
+          TeX-electric-sub-and-superscript t
+          ;; Don't insert magic quotes right away
+          TeX-quote-after-quote t
+          ;; Provide forward and inverse search with SyncTeX
+          TeX-source-correlate-mode t
+          TeX-source-correlate-method 'synctex)
 
-            (setq-default TeX-master nil     ; Ask for the master file
-                          TeX-engine 'luatex ; Use luatex
-                          TeX-PDF-mode t)
+    (setq-default TeX-master nil     ; Ask for the master file
+                  TeX-engine 'luatex ; Use luatex
+                  TeX-PDF-mode t)
 
-            ;; Move to chktex
-            (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
+    ;; Move to chktex
+    (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
 
-            ;; Tell Emacs how to parse TeX files
-            (add-hook 'tex-mode-hook
-                      #'(lambda () (setq ispell-parser 'tex)))))
+    ;; Tell Emacs how to parse TeX files
+    (add-hook 'tex-mode-hook
+              #'(lambda () (setq ispell-parser 'tex)))))
 
 (use-package tex-buf ; External commands for AUCTeX
   :ensure auctex
@@ -74,13 +75,14 @@
 (use-package latex ; Support for LaTeX documents
   :ensure auctex
   :defer t
-  :config (progn
-            ;; No language-specific hyphens please
-            (setq LaTeX-babel-hyphen nil
-                  LaTeX-command-style
-                  '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
+  :config
+  (progn
+    ;; No language-specific hyphens please
+    (setq LaTeX-babel-hyphen nil
+          LaTeX-command-style
+          '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
 
-            (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode))) ; Easy math input
+    (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode))) ; Easy math input
 
 (use-package latex-extra ; Useful functionalities to LaTeX-mode
   :ensure t
@@ -95,11 +97,12 @@
 
 (use-package bibtex ; Edit and validate BibTeX files
   :defer t
-  :config (progn
-            ;; Run prog mode hooks for bibtex
-            (add-hook 'bibtex-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
-            ;; Use a modern BibTeX dialect
-            (bibtex-set-dialect 'biblatex)))
+  :config
+  (progn
+    ;; Run prog mode hooks for bibtex
+    (add-hook 'bibtex-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
+    ;; Use a modern BibTeX dialect
+    (bibtex-set-dialect 'biblatex)))
 
 (use-package reftex ; Minor mode for \label, \ref, \cite, \index in LaTeX
   :defer t

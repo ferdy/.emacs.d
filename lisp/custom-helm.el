@@ -14,34 +14,35 @@
 (use-package helm ; The ubiquitous Helm
   :ensure t
   :init (helm-mode 1)
-  :config (progn
-            (use-package helm-config
-              :config (progn
-                        (bind-key "C-c h" helm-command-prefix)
-                        (unbind-key "C-x c")))
+  :config
+  (progn
+    (use-package helm-config
+      :config (progn
+                (bind-key "C-c h" helm-command-prefix)
+                (unbind-key "C-x c")))
 
-            (bind-keys :map helm-map
-                       ("C-i" . helm-execute-persistent-action)
-                       ("C-z" . helm-select-action))
+    (bind-keys :map helm-map
+               ("C-i" . helm-execute-persistent-action)
+               ("C-z" . helm-select-action))
 
-            (setq helm-split-window-in-side-p t ; Open buffer in current window
-                  ;; Move to end/beginning when reaching top/bottom of source
-                  helm-move-to-line-cycle-in-source t
-                  ;; Scroll 8 lines using M-<next>/M-<prior>
-                  helm-scroll-amount 8
-                  ;; Fuzzy matching
-                  helm-M-x-fuzzy-match t
-                  helm-semantic-fuzzy-match t
-                  helm-lisp-fuzzy-completion t
-                  ;; Cleaner Helm interface
-                  helm-display-header-line nil)
+    (setq helm-split-window-in-side-p t ; Open buffer in current window
+          ;; Move to end/beginning when reaching top/bottom of source
+          helm-move-to-line-cycle-in-source t
+          ;; Scroll 8 lines using M-<next>/M-<prior>
+          helm-scroll-amount 8
+          ;; Fuzzy matching
+          helm-M-x-fuzzy-match t
+          helm-semantic-fuzzy-match t
+          helm-lisp-fuzzy-completion t
+          ;; Cleaner Helm interface
+          helm-display-header-line nil)
 
-            (helm-adaptive-mode 1)   ; Adaptive sorting in all sources
-            (helm-autoresize-mode 1) ; Autoresize Helm buffer
+    (helm-adaptive-mode 1)   ; Adaptive sorting in all sources
+    (helm-autoresize-mode 1) ; Autoresize Helm buffer
 
-            ;; Man pages at point
-            (add-to-list 'helm-sources-using-default-as-input
-                         'helm-source-man-pages))
+    ;; Man pages at point
+    (add-to-list 'helm-sources-using-default-as-input
+                 'helm-source-man-pages))
   :diminish helm-mode)
 
 (use-package helm-command ; M-x in Helm
@@ -52,23 +53,24 @@
   :ensure helm
   :bind (([remap find-file] . helm-find-files)
          ("C-x C-r"         . helm-recentf))
-  :config (progn
-            (bind-key "C-k" #'helm-ff-persistent-delete helm-find-files-map)
+  :config
+  (progn
+    (bind-key "C-k" #'helm-ff-persistent-delete helm-find-files-map)
 
-            (setq helm-ff-file-name-history-use-recentf t
-                  helm-ff-newfile-prompt-p nil ; Don't prompt for new buffer
-                  helm-idle-delay 0.1
-                  helm-input-idle-delay 0.1
-                  ;; Don't show boring files
-                  helm-ff-skip-boring-files t
-                  ;; Search for library in `require' and `declare-function' sexp
-                  helm-ff-search-library-in-sexp t
-                  ;; Fuzzy matching
-                  helm-recentf-fuzzy-match t
-                  ;; Auto-complete in find-files
-                  helm-ff-auto-update-initial-value t
-                  ;; Sort directories first
-                  helm-find-files-sort-directories t)))
+    (setq helm-ff-file-name-history-use-recentf t
+          helm-ff-newfile-prompt-p nil ; Don't prompt for new buffer
+          helm-idle-delay 0.1
+          helm-input-idle-delay 0.1
+          ;; Don't show boring files
+          helm-ff-skip-boring-files t
+          ;; Search for library in `require' and `declare-function' sexp
+          helm-ff-search-library-in-sexp t
+          ;; Fuzzy matching
+          helm-recentf-fuzzy-match t
+          ;; Auto-complete in find-files
+          helm-ff-auto-update-initial-value t
+          ;; Sort directories first
+          helm-find-files-sort-directories t)))
 
 (use-package helm-misc ; Misc Helm commands
   :ensure helm
@@ -77,10 +79,11 @@
 (use-package helm-buffers ; Manage buffers with Helm
   :ensure helm
   :defer t
-  :config (progn
-            (setq helm-buffers-fuzzy-matching t)
-            (bind-key "C-k" #'helm-buffer-run-kill-persistent
-                      helm-buffer-map)))
+  :config
+  (progn
+    (setq helm-buffers-fuzzy-matching t)
+    (bind-key "C-k" #'helm-buffer-run-kill-persistent
+              helm-buffer-map)))
 
 (use-package helm-ring ; Helm commands for rings
   :ensure helm
@@ -166,34 +169,35 @@
          ("M-I"     . helm-swoop-back-to-last-point)
          ("C-c M-i" . helm-multi-swoop)
          ("C-x M-i" . helm-multi-swoop-all))
-  :config (progn
-            ;; When doing isearch, hand the word over to helm-swoop
-            (bind-key "M-i" #'helm-swoop-from-isearch isearch-mode-map)
-            ;; From helm-swoop to helm-multi-swoop-all
-            (bind-key "M-i" #'helm-multi-swoop-all-from-helm-swoop
-                      helm-swoop-map)
+  :config
+  (progn
+    ;; When doing isearch, hand the word over to helm-swoop
+    (bind-key "M-i" #'helm-swoop-from-isearch isearch-mode-map)
+    ;; From helm-swoop to helm-multi-swoop-all
+    (bind-key "M-i" #'helm-multi-swoop-all-from-helm-swoop
+              helm-swoop-map)
 
-            ;; Move up and down like isearch
-            (bind-keys :map helm-swoop-map
-                       ("C-r" . helm-previous-line)
-                       ("C-s" . helm-next-line))
+    ;; Move up and down like isearch
+    (bind-keys :map helm-swoop-map
+               ("C-r" . helm-previous-line)
+               ("C-s" . helm-next-line))
 
-            (bind-keys :map helm-multi-swoop-map
-                       ("C-r" . helm-previous-line)
-                       ("C-s" . helm-next-line))
+    (bind-keys :map helm-multi-swoop-map
+               ("C-r" . helm-previous-line)
+               ("C-s" . helm-next-line))
 
-            ;; Save buffer when helm-multi-swoop-edit complete
-            (setq helm-multi-swoop-edit-save t
-                  ;; If this value is t, split window inside the current window
-                  helm-swoop-split-with-multiple-windows nil
-                  ;; Split direction
-                  helm-swoop-split-direction 'split-window-vertically
-                  ;; If nil, boost invoke speed in exchange for text color
-                  helm-swoop-speed-or-color nil
-                  ;; Go to the opposite side from the end or beginning of line
-                  helm-swoop-move-to-line-cycle t
-                  ;; Optional face for line numbers
-                  helm-swoop-use-line-number-face t)))
+    ;; Save buffer when helm-multi-swoop-edit complete
+    (setq helm-multi-swoop-edit-save t
+          ;; If this value is t, split window inside the current window
+          helm-swoop-split-with-multiple-windows nil
+          ;; Split direction
+          helm-swoop-split-direction 'split-window-vertically
+          ;; If nil, boost invoke speed in exchange for text color
+          helm-swoop-speed-or-color nil
+          ;; Go to the opposite side from the end or beginning of line
+          helm-swoop-move-to-line-cycle t
+          ;; Optional face for line numbers
+          helm-swoop-use-line-number-face t)))
 
 (use-package helm-company ; Show Company candidates through Helm
   :load-path "various"

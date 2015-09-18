@@ -13,15 +13,16 @@
 
 (use-package rst ; ReStructuredText
   :defer t
-  :config (progn
-            ;; Indent with 3 spaces after all kinds of literal blocks
-            (setq rst-indent-literal-minimized 3
-                  rst-indent-literal-normal 3)
+  :config
+  (progn
+    ;; Indent with 3 spaces after all kinds of literal blocks
+    (setq rst-indent-literal-minimized 3
+          rst-indent-literal-normal 3)
 
-            (bind-key "C-=" nil rst-mode-map)
-            ;; For similarity with AUCTeX and Markdown
-            (bind-key "C-c C-j" #'rst-insert-list rst-mode-map)
-            (bind-key "M-RET" #'rst-insert-list rst-mode-map)))
+    (bind-key "C-=" nil rst-mode-map)
+    ;; For similarity with AUCTeX and Markdown
+    (bind-key "C-c C-j" #'rst-insert-list rst-mode-map)
+    (bind-key "M-RET" #'rst-insert-list rst-mode-map)))
 
 (use-package markdown-mode ; Edit markdown files
   :ensure t
@@ -53,9 +54,10 @@
 (use-package pandoc-mode ; Easily control Pandoc in Emacs
   :ensure t
   :commands pandoc-mode
-  :config (progn
-            (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-            (setq org-pandoc-output-format 'odt)))
+  :config
+  (progn
+    (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+    (setq org-pandoc-output-format 'odt)))
 
 (provide 'custom-formatting)
 

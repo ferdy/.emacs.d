@@ -60,24 +60,25 @@ windows easier."
 
 (use-package shell ; Specialized comint.el for running the shell
   :bind ("C-c a t" . shell)
-  :config (progn
-            (defun clear-shell ()
-              (interactive)
-              (let ((comint-buffer-maximum-size 0))
-                (comint-truncate-buffer)))
+  :config
+  (progn
+    (defun clear-shell ()
+      (interactive)
+      (let ((comint-buffer-maximum-size 0))
+        (comint-truncate-buffer)))
 
-            (bind-key "C-l" #'clear-shell shell-mode-map)
+    (bind-key "C-l" #'clear-shell shell-mode-map)
 
-            ;; Disable hl-line-mode in shell
-            (add-hook 'shell-mode-hook (lambda ()
-                                         (setq-local global-hl-line-mode
-                                                     nil)))
+    ;; Disable hl-line-mode in shell
+    (add-hook 'shell-mode-hook (lambda ()
+                                 (setq-local global-hl-line-mode
+                                             nil)))
 
-            ;; Do not echo input back at me
-            (defun custom/shell-turn-echo-off ()
-              (setq comint-process-echoes t))
+    ;; Do not echo input back at me
+    (defun custom/shell-turn-echo-off ()
+      (setq comint-process-echoes t))
 
-            (add-hook 'shell-mode-hook 'custom/shell-turn-echo-off)))
+    (add-hook 'shell-mode-hook 'custom/shell-turn-echo-off)))
 
 (use-package ansi-term ; Powerful terminal emulator
   :bind ("C-c a T" . ansi-term)

@@ -25,113 +25,114 @@
                 "    \r\n,"
                 "."
                 1))
-  :config (progn
-            (setq org-src-fontify-natively t
-                  org-log-done 'time
-                  org-export-with-smart-quotes t
-                  org-hide-emphasis-markers t
-                  ;; Turn off preamble and postamble in HTML export
-                  org-html-preamble nil
-                  org-html-postamble nil
-                  org-export-html-style-default ""
-                  org-export-html-style-include-default nil
-                  org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
-                  org-agenda-start-on-weekday nil
-                  org-agenda-include-diary t
-                  org-agenda-use-time-grid t
-                  ;; Follow links by pressing ENTER on them
-                  org-return-follows-link t)
+  :config
+  (progn
+    (setq org-src-fontify-natively t
+          org-log-done 'time
+          org-export-with-smart-quotes t
+          org-hide-emphasis-markers t
+          ;; Turn off preamble and postamble in HTML export
+          org-html-preamble nil
+          org-html-postamble nil
+          org-export-html-style-default ""
+          org-export-html-style-include-default nil
+          org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
+          org-agenda-start-on-weekday nil
+          org-agenda-include-diary t
+          org-agenda-use-time-grid t
+          ;; Follow links by pressing ENTER on them
+          org-return-follows-link t)
 
-            (setq org-directory (expand-file-name "~/org/")
-                  org-default-notes-file
-                  (expand-file-name "organizer.org" org-directory))
+    (setq org-directory (expand-file-name "~/org/")
+          org-default-notes-file
+          (expand-file-name "organizer.org" org-directory))
 
-            ;; Use visual-line-mode
-            (add-hook 'org-mode-hook #'visual-line-mode)
+    ;; Use visual-line-mode
+    (add-hook 'org-mode-hook #'visual-line-mode)
 
-            (defun myorg-update-parent-cookie ()
-              "Update parent nodes when child is removed."
-              (when (equal major-mode 'org-mode)
-                (save-excursion
-                  (ignore-errors
-                    (org-back-to-heading)
-                    (org-update-parent-todo-statistics)))))
+    (defun myorg-update-parent-cookie ()
+      "Update parent nodes when child is removed."
+      (when (equal major-mode 'org-mode)
+        (save-excursion
+          (ignore-errors
+            (org-back-to-heading)
+            (org-update-parent-todo-statistics)))))
 
-            (defadvice org-kill-line (after fix-cookies activate)
-              "Update parent node."
-              (myorg-update-parent-cookie))
+    (defadvice org-kill-line (after fix-cookies activate)
+      "Update parent node."
+      (myorg-update-parent-cookie))
 
-            (defadvice kill-whole-line (after fix-cookies activate)
-              "Update parent node."
-              (myorg-update-parent-cookie))
+    (defadvice kill-whole-line (after fix-cookies activate)
+      "Update parent node."
+      (myorg-update-parent-cookie))
 
-            ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
-            (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
+    ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
+    (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
-            ;; Strike out DONE items
-            (defun custom/modify-org-done-face ()
-              (setq org-fontify-done-headline t)
-              (set-face-attribute 'org-done nil :strike-through t)
-              (set-face-attribute 'org-headline-done nil
-                                  :strike-through t
-                                  :foreground "light gray"))
+    ;; Strike out DONE items
+    (defun custom/modify-org-done-face ()
+      (setq org-fontify-done-headline t)
+      (set-face-attribute 'org-done nil :strike-through t)
+      (set-face-attribute 'org-headline-done nil
+                          :strike-through t
+                          :foreground "light gray"))
 
-            (with-eval-after-load "org"
-              (add-hook 'org-add-hook 'custom/modify-org-done-face))
+    (with-eval-after-load "org"
+      (add-hook 'org-add-hook 'custom/modify-org-done-face))
 
-            ;; Define TODO workflow states and different faces
-            (setq org-todo-keywords
-                  '("TODO(t)" "INVIO DOCS(i)" "STAMPE(s)" "FATTURE(f)"
-                    "PHONE(p)" "MEETING(m)" "INFORMAZIONI(n)" "PREVENTIVO(v)"
-                    "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))
+    ;; Define TODO workflow states and different faces
+    (setq org-todo-keywords
+          '("TODO(t)" "INVIO DOCS(i)" "STAMPE(s)" "FATTURE(f)"
+            "PHONE(p)" "MEETING(m)" "INFORMAZIONI(n)" "PREVENTIVO(v)"
+            "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))
 
-            ;; Define custom commands
-            (setq org-agenda-custom-commands
-                  '(("P" "Personal Projects" ((Tags "PERSONAL")))
-                    ("B" "Boccaperta" ((agenda)
-                                       (tags-todo "BOCCAPERTA")))
-                    ("F" "FAV" ((agenda)
-                                (tags-todo "FAV")))))
+    ;; Define custom commands
+    (setq org-agenda-custom-commands
+          '(("P" "Personal Projects" ((Tags "PERSONAL")))
+            ("B" "Boccaperta" ((agenda)
+                               (tags-todo "BOCCAPERTA")))
+            ("F" "FAV" ((agenda)
+                        (tags-todo "FAV")))))
 
-            ;; Embed Youtube videos
-            (org-add-link-type
-             "yt"
-             (lambda (handle)
-               (browse-url (concat "https://www.youtube.com/embed/" handle)))
-             (lambda (path desc backend)
-               (cl-case backend
-                 (html (format "<iframe width=\"440\" height=\"335\"
+    ;; Embed Youtube videos
+    (org-add-link-type
+     "yt"
+     (lambda (handle)
+       (browse-url (concat "https://www.youtube.com/embed/" handle)))
+     (lambda (path desc backend)
+       (cl-case backend
+         (html (format "<iframe width=\"440\" height=\"335\"
 src=\"https://www.youtube.com/embed/%s\" frameborder=\"0\"
 allowfullscreen>%s</iframe>"
-                               path (or desc "")))
-                 (latex (format "\href{%s}{%s}" path (or desc "video"))))))
+                       path (or desc "")))
+         (latex (format "\href{%s}{%s}" path (or desc "video"))))))
 
-            (setq org-latex-pdf-process ; Use LuaTex for PDF export
-                  "latexmk -pdflatex='lualatex -shell-escape
+    (setq org-latex-pdf-process ; Use LuaTex for PDF export
+          "latexmk -pdflatex='lualatex -shell-escape
 -interaction nonstopmode' -pdf -f  %f")
 
-            ;; Disable whitespace highlighting of overlong lines in Org Mode
-            (add-hook 'org-mode-hook
-                      #'custom/whitespace-style-no-long-lines)
+    ;; Disable whitespace highlighting of overlong lines in Org Mode
+    (add-hook 'org-mode-hook
+              #'custom/whitespace-style-no-long-lines)
 
-            ;; Use F12 to toggle image visualization
-            (bind-key "<f12>"
-                      (lambda () (interactive) (org-toggle-inline-images t))
-                      org-mode-map)
+    ;; Use F12 to toggle image visualization
+    (bind-key "<f12>"
+              (lambda () (interactive) (org-toggle-inline-images t))
+              org-mode-map)
 
-            (defun custom/org-ispell ()
-              "Configure `ispell-skip-region-alist' for `org-mode'."
-              (make-local-variable 'ispell-skip-region-alist)
-              (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
-              (add-to-list 'ispell-skip-region-alist '("~" "~"))
-              (add-to-list 'ispell-skip-region-alist '("=" "="))
-              (add-to-list 'ispell-skip-region-alist
-                           '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
+    (defun custom/org-ispell ()
+      "Configure `ispell-skip-region-alist' for `org-mode'."
+      (make-local-variable 'ispell-skip-region-alist)
+      (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
+      (add-to-list 'ispell-skip-region-alist '("~" "~"))
+      (add-to-list 'ispell-skip-region-alist '("=" "="))
+      (add-to-list 'ispell-skip-region-alist
+                   '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
 
-            (add-hook 'org-mode-hook #'custom/org-ispell)
+    (add-hook 'org-mode-hook #'custom/org-ispell)
 
-            (add-hook 'org-mode-hook (lambda ()
-                                       (diminish 'org-indent-mode " ⓘ")))))
+    (add-hook 'org-mode-hook (lambda ()
+                               (diminish 'org-indent-mode " ⓘ")))))
 
 (use-package autoinsert ; Auto insert custom text
   :init (progn
@@ -160,15 +161,16 @@ allowfullscreen>%s</iframe>"
   :bind (("C-c a o w" . org2blog/wp-new-entry)
          ("C-c a o p" . org2blog/wp-post-buffer))
   :init (use-package org2blog-autoloads)
-  :config (progn
-            (setq org2blog/wp-use-sourcecode-shortcode t
-                  org2blog/wp-sourcecode-langs
-                  '("bash" "javascript" "php" "text"
-                    "xml" "sh" "elisp" "lisp" "lua")
-                  org2blog/wp-blog-alist
-                  '(("informatica.boccaperta.com"
-                     :url "http://informatica.boccaperta.com/xmlrpc.php"
-                     :username "manuel")))))
+  :config
+  (progn
+    (setq org2blog/wp-use-sourcecode-shortcode t
+          org2blog/wp-sourcecode-langs
+          '("bash" "javascript" "php" "text"
+            "xml" "sh" "elisp" "lisp" "lua")
+          org2blog/wp-blog-alist
+          '(("informatica.boccaperta.com"
+             :url "http://informatica.boccaperta.com/xmlrpc.php"
+             :username "manuel")))))
 
 (use-package toc-org ; Table of contents for Org files
   :ensure t
@@ -177,19 +179,20 @@ allowfullscreen>%s</iframe>"
 
 (use-package ox-pandoc ; Export Org documents via Pandoc
   :ensure t
-  :config (progn
-            (setq org-pandoc-options '((standalone . t)) ; default options
-                  ;; special settings for beamer-pdf and latex-pdf exporters
-                  org-pandoc-options-for-beamer-pdf
-                  '((latex-engine . "lualatex"))
-                  org-pandoc-options-for-latex-pdf
-                  '((latex-engine . "lualatex")))
+  :config
+  (progn
+    (setq org-pandoc-options '((standalone . t)) ; default options
+          ;; special settings for beamer-pdf and latex-pdf exporters
+          org-pandoc-options-for-beamer-pdf
+          '((latex-engine . "lualatex"))
+          org-pandoc-options-for-latex-pdf
+          '((latex-engine . "lualatex")))
 
-            ;; Use external css for html5
-            (let ((stylesheet (expand-file-name
-                               (locate-user-emacs-file "etc/pandoc.css"))))
-              (setq org-pandoc-options-for-html5
-                    `((css . ,(concat "file://" stylesheet)))))))
+    ;; Use external css for html5
+    (let ((stylesheet (expand-file-name
+                       (locate-user-emacs-file "etc/pandoc.css"))))
+      (setq org-pandoc-options-for-html5
+            `((css . ,(concat "file://" stylesheet)))))))
 
 (use-package ox-reveal ; Slideshows with Reveal.js
   :ensure t
