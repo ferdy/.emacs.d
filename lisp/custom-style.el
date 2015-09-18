@@ -13,11 +13,11 @@
 
 ;;; Fonts setup
 ;; These are the fonts in use:
-;; - DejaVu Sans Mono (http://dejavu-fonts.org/wiki/Main_Page)
+;; - DejaVu Sans Mono (https://packages.debian.org/sid/fonts-dejavu)
 ;; - Fira Sans (https://github.com/mozilla/Fira)
 ;; - Symbola (https://packages.debian.org/sid/ttf-ancient-fonts)
 ;; - XITS Math (https://github.com/khaledhosny/xits-math)
-;; - Gentium Plus (http://scripts.sil.org/cms/scripts/page.php?item_id=Gentium)
+;; - Gentium Plus (https://packages.debian.org/sid/fonts-sil-gentiumplus)
 
 ;; Dinamically change font size based upon screen resolution
 (if window-system
