@@ -121,6 +121,8 @@ symbols, greek letters, as well as fall backs for."
   :init (load-theme 'darktooth 'no-confirm))
 
 ;;; Utilities
+(setq custom-safe-themes t) ; Treat themes as safe
+
 (setq history-length 1000) ; Store more history
 
 (setq-default line-spacing 0.2) ; Increase line-spacing (default 0)
