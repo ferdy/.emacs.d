@@ -218,6 +218,10 @@ allowfullscreen>%s</iframe>"
   :ensure t
   :defer t)
 
+(use-package ox-mediawiki ; Export to mediawiki format
+  :load-path "various"
+  :init (with-eval-after-load 'org '(require ox-mediawiki)))
+
 ;;; Utilities and keybindings
 (bind-key "<f5>" ; Open organizer file
           (lambda () (interactive) (find-file "~/org/organizer.org")))
