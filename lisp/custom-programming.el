@@ -221,13 +221,13 @@
 
 (use-package geiser ; Collection of modes for Scheme interpreters
   :ensure t
-  :commands run-geiser
+  :bind ("C-c m g" . run-geiser)
   :init (setq geiser-active-implementations '(chicken guile)))
 
 ;;; Common Lisp
 (use-package sly ; Sylvester the Cat's Common Lisp IDE
   :ensure t
-  :commands sly
+  :bind ("C-c m c" . sly)
   :init (setq inferior-lisp-program "/usr/bin/sbcl")
   :config (bind-keys :map sly-mode-map
                      ("C-c m q" . sly-quit-lisp)
