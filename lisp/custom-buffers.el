@@ -44,6 +44,7 @@
                       "*Warnings*"        ; Emacs warnings
                       "*shell"            ; Shell window
                       "*cider-repl"       ; CIDER buffers
+                      "*sly-mrepl"        ; Sly REPL
                       "*SQL"              ; SQL REPL
                       ))
          (display-buffer-reuse-window
