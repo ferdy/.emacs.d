@@ -219,6 +219,11 @@
             (switch-to-scheme t)
           (message "\"%s\" compiled and loaded." file-name))))))
 
+(use-package geiser ; Collection of modes for Scheme interpreters
+  :ensure t
+  :commands run-geiser
+  :init (setq geiser-active-implementations '(chicken guile)))
+
 ;;; Common Lisp
 (use-package sly ; Sylvester the Cat's Common Lisp IDE
   :ensure t
