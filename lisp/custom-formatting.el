@@ -51,6 +51,10 @@
     ;; Mode.
     (bind-key "M-q" #'ignore gfm-mode-map)))
 
+(use-package markdown-toc ; Create Table of Contents in Markdown files
+  :ensure t
+  :defer t)
+
 (use-package pandoc-mode ; Easily control Pandoc in Emacs
   :ensure t
   :commands pandoc-mode
