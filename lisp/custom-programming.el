@@ -66,6 +66,7 @@
          ("C-c e C" . flycheck-clear)
          ("C-c e f" . flycheck-first-error)
          ("C-c e w" . flycheck-copy-errors-as-kill)
+         ("C-c e d" . flycheck-dir)
          ("C-c t f" . flycheck-mode))
   :config
   (progn
@@ -75,7 +76,66 @@
 
     ;; Use italic face for checker name
     (set-face-attribute 'flycheck-error-list-checker-name nil
-                        :inherit 'italic))
+                        :inherit 'italic)
+
+    (defun custom/flycheck-dir (dir)
+      "Run flycheck for each file in current directory.
+Results are reported in a compilation buffer."
+      (interactive "DDirectory: ")
+      (displaying-byte-compile-warnings
+       (let ((p nil))
+         (with-current-buffer (get-buffer-create
+                               byte-compile-log-buffer)
+           (setq default-directory dir)
+           (unless (eq major-mode 'compilation-mode)
+             (compilation-mode))
+           (goto-char (point-max))
+           (let ((inhibit-read-only t))
+             (insert "\n\xc\n\n"))
+           (setq p (point)))
+         (dolist (file (directory-files "./" nil
+                                        "\\`[^\\.].*\\'"))
+           (custom/-flycheck-file file))
+         (with-selected-window (display-buffer
+                                byte-compile-log-buffer)
+           (goto-char p)
+           (recenter 1)))))
+
+    (defun custom/-report-error (fmt &rest args)
+      "Print an error on `byte-compile-log-buffer'."
+      (let ((inhibit-read-only t)
+            (fill-prefix "    "))
+        (with-current-buffer byte-compile-log-buffer
+          (let ((l (point)))
+            (insert "\n" (apply #'format fmt args))
+            (fill-region (1+ l) (point))))))
+
+    (defun custom/-flycheck-file (file)
+      "Check FILE and report to `byte-compile-log-buffer'."
+      (let ((was-visited (find-buffer-visiting file)))
+        (with-current-buffer (or was-visited
+                                 (progn (find-file file)
+                                        (current-buffer)))
+          (when (ignore-errors (flycheck-buffer))
+            (while (flycheck-running-p)
+              (accept-process-output nil 0.1))
+            (pcase flycheck-last-status-change
+              ((or `errored `suspicious)
+               (custom/-report-error
+                "%s: Something wrong here!"
+                (file-name-nondirectory (buffer-file-name))))
+              (`finished
+               (dolist (e flycheck-current-errors)
+                 (custom/-report-error
+                  "%s:%s:%s:%s: %s"
+                  (file-name-nondirectory (buffer-file-name))
+                  (flycheck-error-line e)
+                  (flycheck-error-column e)
+                  (flycheck-error-level e)
+                  (flycheck-error-message e))))))
+          (if was-visited
+              (bury-buffer was-visited)
+            (kill-buffer (current-buffer)))))))
   :diminish (flycheck-mode . " Ⓢ"))
 
 (use-package flycheck-package ; Check package conventions with Flycheck
