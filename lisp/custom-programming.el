@@ -66,7 +66,7 @@
          ("C-c e C" . flycheck-clear)
          ("C-c e f" . flycheck-first-error)
          ("C-c e w" . flycheck-copy-errors-as-kill)
-         ("C-c e d" . flycheck-dir)
+         ("C-c e d" . custom/flycheck-dir)
          ("C-c t f" . flycheck-mode))
   :config
   (progn
