@@ -1,11 +1,16 @@
 #.emacs.d
 
-##Table of Contents
-- [Preface](https://github.com/manuel-uberti/.emacs.d#preface)
-- [Setup](https://github.com/manuel-uberti/.emacs.d#setup)
-- [Updates](https://github.com/manuel-uberti/.emacs.d#updates)
-- [Acknowledgements](https://github.com/manuel-uberti/.emacs.d#acknowledgements)
-- [License](https://github.com/manuel-uberti/.emacs.d#license)
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+**Table of Contents**
+
+- [.emacs.d](#emacsd)
+    - [Preface](#preface)
+    - [Setup](#setup)
+    - [Updates](#updates)
+    - [Acknowledgements](#acknowledgements)
+    - [License](#license)
+
+<!-- markdown-toc end -->
 
 ##Preface
 This is the Emacs configuration I use everyday.
