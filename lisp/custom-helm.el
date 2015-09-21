@@ -264,6 +264,11 @@
   :ensure t
   :commands helm-make)
 
+(use-package helm-open-github ; Open Github pages for current repo
+  :ensure t
+  :bind (("C-c v G i" . helm-open-github-from-issues)
+         ("C-c v G p" . helm-open-github-from-pull-requests)))
+
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here
