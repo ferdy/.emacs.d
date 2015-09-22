@@ -116,6 +116,7 @@ symbols, greek letters, as well as fall backs for."
     (setq solarized-use-variable-pitch nil ; Avoid all font-size changes
           solarized-distinct-doc-face t ; Make doc faces stand out more
           solarized-scale-org-headlines nil ; Don't scale Org headlines
+          solarized-use-more-italic t ; Use italic more often
           ;; Underline below the font bottomline instead of the baseline
           x-underline-at-descent-line t)
     (load-theme 'solarized-light 'no-confirm)))
