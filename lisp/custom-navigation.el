@@ -29,15 +29,12 @@
          ("C-c n j" . avy-goto-char-2)
          ("C-c n w" . avy-goto-word-1)))
 
-(use-package ace-link ; Jump to links
+(use-package link-hint ;
   :ensure t
-  :defer t
-  :init
-  (progn (with-eval-after-load 'info
-           (bind-key "C-c j l" #'ace-link-info Info-mode-map))
-         (with-eval-after-load 'help-mode
-           (defvar help-mode-map) ; Silence the byte compiler
-           (bind-key "C-c j l" #'ace-link-help help-mode-map))))
+  :bind (("C-c n l o" . link-hint-open-link-at-point)
+         ("C-c n l c" . link-hint-copy-link-at-point)
+         ("C-c n l a" . link-hint-open-link)
+         ("C-c n l w" . link-hint-copy-link)))
 
 (use-package elisp-slime-nav ; Navigate through elisp code with M-. & M-,
   :ensure t
