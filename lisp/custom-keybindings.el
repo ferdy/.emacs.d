@@ -40,6 +40,7 @@
 (custom/define-group "C-c i" insertion)
 (custom/define-group "C-c m" major-mode)
 (custom/define-group "C-c n" navigation)
+(custom/define-group "C-c n l" links)
 (custom/define-group "C-c o" multiple-cursors)
 (custom/define-group "C-c p" projects)
 (custom/define-group "C-c s" search-and-symbols)
