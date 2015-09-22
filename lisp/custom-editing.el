@@ -324,6 +324,8 @@ the right."
 (bind-key "C-c x a (" #'custom/align-repeat-left-paren)
 (bind-key "C-c x a )" #'custom/align-repeat-right-paren)
 
+(bind-key [remap just-one-space] #'cycle-spacing)
+
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here
