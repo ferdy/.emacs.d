@@ -71,6 +71,7 @@
 
 (use-package gh ; Github API library
   ;; Don't ensure it, since it's only brought in as dependency
+  :ensure nil
   :defer t
   ;; Change the default profile.  The profile itself is set up via customize,
   ;; and includes auth data, to prevent it from storing tokens in Git config
