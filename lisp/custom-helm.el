@@ -262,7 +262,7 @@
 
 (use-package helm-make ; Select a Makefile target with Helm
   :ensure t
-  :commands helm-make)
+  :bind ("C-c c h" . helm-make))
 
 (use-package helm-open-github ; Open Github pages for current repo
   :ensure t
