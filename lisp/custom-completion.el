@@ -125,12 +125,6 @@
   :ensure t
   :init (add-hook 'sly-mode-hook 'sly-company-mode))
 
-(use-package company-emoji ; Emojis completion
-  :ensure t
-  :defer t
-  :init (with-eval-after-load 'company
-          (add-to-list 'company-backends 'company-emoji)))
-
 (provide 'custom-completion)
 
 ;;; custom-completion.el ends here
