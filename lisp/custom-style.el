@@ -103,6 +103,9 @@ symbols, greek letters, as well as fall backs for."
       inhibit-startup-echo-area-message t
       initial-scratch-message nil)
 
+;; Disable startup echo area message
+(fset 'display-startup-echo-area-message #'ignore)
+
 (column-number-mode) ; Turn on column-number-mode
 
 ;;; Theme
