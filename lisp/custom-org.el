@@ -218,7 +218,7 @@ allowfullscreen>%s</iframe>"
   :bind ("C-c a o i" . interleave))
 
 (use-package ox-mediawiki ; Export to mediawiki format
-  :load-path "various"
+  :ensure t
   :init (with-eval-after-load 'org '(require ox-mediawiki)))
 
 ;;; Utilities and keybindings
