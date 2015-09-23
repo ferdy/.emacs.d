@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: table
+# key: table
+# --
+\begin{table}[!htb]
+  \centering
+    \begin{threeparttable}
+      \renewcommand{\arraystretch}{1.5}
+      \begin{tabular}{${0:format}}
+      \end{tabular}
+    \end{threeparttable}
+\end{table}
