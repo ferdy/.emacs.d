@@ -279,7 +279,6 @@
 
 (use-package php-mode ; Better PHP support
   :ensure t
-  :defer t
   :mode "\\.php\\'")
 
 (use-package zencoding-mode ; Unfold CSS-selector-like expressions to markup
@@ -287,7 +286,7 @@
   :init (add-hook 'web-mode-hook #'zencoding-mode))
 
 (use-package nxml-mode ; XML editing
-  :defer t
+  :mode "\\.xml\\'"
   ;; Complete closing tags, and insert XML declarations into empty files
   :config (setq nxml-slash-auto-complete-flag t
                 nxml-auto-insert-xml-declaration-flag t))

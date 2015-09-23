@@ -158,7 +158,6 @@ allowfullscreen>%s</iframe>"
 
 (use-package org2blog ; Blog from Org mode to Wordpress
   :ensure t
-  :defer t
   :bind (("C-c a o w" . org2blog/wp-new-entry)
          ("C-c a o p" . org2blog/wp-post-buffer))
   :init (use-package org2blog-autoloads)
@@ -216,7 +215,7 @@ allowfullscreen>%s</iframe>"
 
 (use-package interleave ; Take notes in org files while reading PDFs
   :ensure t
-  :defer t)
+  :bind ("C-c a o i" . interleave))
 
 (use-package ox-mediawiki ; Export to mediawiki format
   :load-path "various"

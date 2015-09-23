@@ -31,7 +31,6 @@
 
 (use-package highlight-symbol ; Highlight and jump to symbols
   :ensure t
-  :defer t
   :bind (("C-c s %" . highlight-symbol-query-replace)
          ("C-c n n" . highlight-symbol-next-in-defun)
          ("C-c n p" . highlight-symbol-prev-in-defun))

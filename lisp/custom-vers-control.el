@@ -19,7 +19,6 @@
 
 (use-package magit ; The best Git client out there
   :ensure t
-  :defer t
   :bind (("C-c v c" . magit-clone)
          ("C-c v v" . magit-status)
          ("C-c v g" . magit-blame)

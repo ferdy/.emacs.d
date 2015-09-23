@@ -41,7 +41,6 @@
                                            nil)))))
 (use-package elfeed ; RSS feed reader
   :ensure t
-  :defer t
   :bind ("C-c a f" . elfeed)
   :config
   (progn
