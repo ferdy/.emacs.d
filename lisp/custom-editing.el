@@ -134,11 +134,6 @@
   :config (setq copyright-year-ranges t
                 copyright-names-regexp (regexp-quote user-full-name)))
 
-(use-package easy-escape ; Improve escape backslashes readability
-  :ensure t
-  :config (add-hook 'prog-mode-hook 'easy-escape-minor-mode)
-  :diminish easy-escape-minor-mode)
-
 (use-package dubcaps-mode ; DOuble CApitals to Single Capitals
   :load-path "various"
   :init (add-hook 'text-mode-hook #'dubcaps-mode)
