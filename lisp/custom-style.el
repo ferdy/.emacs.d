@@ -122,11 +122,6 @@ symbols, greek letters, as well as fall backs for."
           x-underline-at-descent-line t)
     (load-theme 'solarized-light 'no-confirm)))
 
-(use-package darktooth-theme ; Preferred dark theme
-  :ensure t
-  :disabled t
-  :init (load-theme 'darktooth 'no-confirm))
-
 ;;; Utilities
 (setq custom-safe-themes t) ; Treat themes as safe
 
