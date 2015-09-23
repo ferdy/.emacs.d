@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: bind-keys
+# key: bks
+# expand-env: ((yas-indent-line 'auto) (yas-also-auto-indent-first-line t))
+# --
+(bind-keys :map $1
+           ("$0" . $2))
