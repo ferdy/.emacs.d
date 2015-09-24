@@ -14,33 +14,8 @@
 (use-package yasnippet ; Snippets
   :ensure t
   :init (yas-global-mode)
-  :config
-  (progn
-    (setq yas-verbosity 1 ; No need to be so verbose
-          yas-wrap-around-region t)
-
-    ;; Jump to end of snippet definition
-    (bind-key "<return>" #'yas-exit-all-snippets yas-keymap)
-
-    ;; Inter-field navigation
-    (defun yas/goto-end-of-active-field ()
-      (interactive)
-      (let* ((snippet (car (yas--snippets-at-point)))
-             (position (yas--field-end (yas--snippet-active-field snippet))))
-        (if (= (point) position)
-            (move-end-of-line 1)
-          (goto-char position))))
-
-    (defun yas/goto-start-of-active-field ()
-      (interactive)
-      (let* ((snippet (car (yas--snippets-at-point)))
-             (position (yas--field-start (yas--snippet-active-field snippet))))
-        (if (= (point) position)
-            (move-beginning-of-line 1)
-          (goto-char position))))
-
-    (bind-key "C-e" #'yas/goto-end-of-active-field yas-keymap)
-    (bind-key "C-a" #'yas/goto-start-of-active-field yas-keymap))
+  :config (setq yas-verbosity 1 ; No need to be so verbose
+                yas-wrap-around-region t)
   :diminish (yas-minor-mode . " Ⓨ"))
 
 (use-package abbrev ; Save abbreviations
