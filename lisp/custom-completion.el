@@ -13,7 +13,7 @@
 
 (use-package yasnippet ; Snippets
   :ensure t
-  :defer t
+  :init (yas-global-mode)
   :config
   (progn
     (setq yas-verbosity 1 ; No need to be so verbose

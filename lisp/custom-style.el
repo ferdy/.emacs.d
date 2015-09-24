@@ -169,7 +169,6 @@ symbols, greek letters, as well as fall backs for."
                   (mapconcat #'identity
                              '("Wrap"
                                "WSC.*"
-                               "yas"
                                "cWip"
                                "sWip")
                              "\\|"))
