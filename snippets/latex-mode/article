@@ -14,3 +14,7 @@
 \usepackage{threeparttable}
 \usepackage{fontspec}
 \setmainfont{Charter}
+
+\begin{document}
+$0
+\end{document}
