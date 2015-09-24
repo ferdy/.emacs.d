@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: article
+# key: article
+# --
+\documentclass[10pt,a4paper,oneside]{article}
+
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm,headsep=4pt]{geometry}
+\usepackage[italian]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[official]{eurosym}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{threeparttable}
+\usepackage{fontspec}
+\setmainfont{Charter}
