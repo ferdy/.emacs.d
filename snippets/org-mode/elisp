@@ -1,0 +1,7 @@
+# name : #+begin_src elisp...#+end_src
+# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
+# key: elisp
+# --
+#+BEGIN_SRC elisp
+  $0
+#+END_SRC
