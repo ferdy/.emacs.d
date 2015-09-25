@@ -68,19 +68,6 @@
   :diminish (magit-wip-after-save-local-mode
              magit-wip-before-change-mode))
 
-(use-package gh ; Github API library
-  ;; Don't ensure it, since it's only brought in as dependency
-  :ensure nil
-  :defer t
-  ;; Change the default profile.  The profile itself is set up via customize,
-  ;; and includes auth data, to prevent it from storing tokens in Git config
-  :config (setq gh-profile-default-profile "manuel-uberti"))
-
-(use-package magit-gh-pulls ; Show Github PRs in Magit
-  :ensure t
-  :defer t
-  :init (add-hook 'magit-mode-hook #'turn-on-magit-gh-pulls))
-
 (use-package git-commit ; Git commit message mode
   :ensure t
   :defer t
