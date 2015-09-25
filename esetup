@@ -22,7 +22,7 @@ scheme_setup() {
 configuring Scheme..."
     sudo apt-get -y install --no-install-recommends guile-2.0
     sudo apt-get -y install --no-install-recommends chicken-bin libchicken7 libchicken-dev
-    chicken-install -s apropos chicken-doc loops input-parse numbers
+    chicken-install -s apropos chicken-doc input-parse numbers
     cd `csi -p '(chicken-home)'`
     curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
     cd $HOME
