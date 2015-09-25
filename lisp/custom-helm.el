@@ -213,7 +213,7 @@
   :ensure t
   :defer t
   :init (with-eval-after-load 'yasnippet
-          (bind-key "C-c y" #'helm-yas-complete))
+          (bind-key "C-c h y" #'helm-yas-complete))
   :config (setq helm-yas-space-match-any-greedy t))
 
 (use-package helm-descbinds ; Describing keybinding through Helm
