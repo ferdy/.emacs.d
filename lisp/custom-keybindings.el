@@ -46,7 +46,6 @@
 (custom/define-group "C-c s" search-and-symbols)
 (custom/define-group "C-c t" toggles)
 (custom/define-group "C-c v" version-control)
-(custom/define-group "C-c v G" github)
 (custom/define-group "C-c w" windows-and-frames)
 (custom/define-group "C-c x" text)
 (custom/define-group "C-c x a" align)
