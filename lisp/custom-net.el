@@ -18,8 +18,7 @@
     (setq tramp-default-method "ssh"
           tramp-shell-prompt-pattern
           "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
-          auto-save-file-name-transforms nil
-          password-cache-expiry nil)
+          auto-save-file-name-transforms nil)
     (add-to-list 'backup-directory-alist
                  (cons tramp-file-name-regexp nil))))
 
