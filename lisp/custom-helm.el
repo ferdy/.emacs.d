@@ -78,7 +78,7 @@
 
 (use-package helm-buffers ; Manage buffers with Helm
   :ensure helm
-  :defer t
+  :bind ("C-c C-b" . helm-buffers-list)
   :config
   (progn
     (setq helm-buffers-fuzzy-matching t)
