@@ -18,7 +18,7 @@
 
 (use-package whitespace-cleanup-mode ; Cleanup whitespace in buffers
   :ensure t
-  :bind (("C-c t c" . whitespace-cleanup-mode)
+  :bind (("C-c t w" . whitespace-cleanup-mode)
          ("C-c x w" . whitespace-cleanup))
   :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
           (add-hook hook #'whitespace-cleanup-mode))
@@ -269,7 +269,7 @@ region if active."
 (defun custom/align-repeat (start end regexp &optional justify-right after)
   "Repeat alignment with respect to the given regular expression.
 If JUSTIFY-RIGHT is non nil justify to the right instead of the
-left. If AFTER is non-nil, add whitespace to the left instead of
+left.  If AFTER is non-nil, add whitespace to the left instead of
 the right."
   (interactive "r\nsAlign regexp: ")
   (let ((complete-regexp (if after
@@ -322,7 +322,25 @@ the right."
 
 (bind-key [remap just-one-space] #'cycle-spacing)
 
+(defun untabify-buffer ()
+  "Apply `untabify' to the entire buffer."
+  (interactive)
+  (untabify (point-min) (point-max)))
 
+(defun indent-buffer ()
+  "Apply `indent-region' to the entire buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer.
+Including indent-buffer, which should not be called automatically on save."
+  (interactive)
+  (untabify-buffer)
+  (delete-trailing-whitespace)
+  (indent-buffer))
+
+(bind-key "C-c t c" #'cleanup-buffer)
 
 (provide 'custom-editing)
 
