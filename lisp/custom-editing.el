@@ -321,6 +321,8 @@ the right."
 
 (bind-key [remap just-one-space] #'cycle-spacing)
 
+(bind-key "C-c SPC" #'set-rectangular-region-anchor)
+
 (provide 'custom-editing)
 
 ;;; custom-editing.el ends here
