@@ -11,50 +11,6 @@
 
 ;;; Code:
 
-(use-package prog-mode ; Prog Mode
-  :bind ("C-c t p" . prettify-symbols-mode))
-
-(use-package eldoc ; Documentation in the echo area
-  :defer t
-  ;; Enable Eldoc for `eval-expression', too
-  :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
-  :config (setq-default eldoc-documentation-function #'describe-char-eldoc)
-  :diminish (eldoc-mode . " ⓓ"))
-
-(use-package macrostep ; Navigate through macros
-  :ensure t
-  :init (with-eval-after-load 'lisp-mode
-          (bind-key "C-c m m e" #'macrostep-expand emacs-lisp-mode-map)
-          (bind-key "C-c m m e" #'macrostep-expand lisp-interaction-mode-map)))
-
-(use-package compile ; Compile from Emacs
-  :bind (("C-c c C" . compile)
-         ("C-c c r" . recompile))
-  :config
-  (progn
-    (setq compilation-ask-about-save nil
-          ;; Kill old compilation processes before starting new ones
-          compilation-always-kill t
-          ;; Automatically scroll and jump to the first error
-          compilation-scroll-output 'first-error
-          compilation-auto-jump-to-first-error t
-          ;; Skip over warnings and info messages in compilation
-          compilation-skip-threshold 2
-          ;; Don't freeze when process reads from stdin
-          compilation-disable-input t
-          ;; Show three lines of context around the current message
-          compilation-context-lines 3)
-
-    (defun custom/colorize-compilation-buffer ()
-      "Colorize a compilation mode buffer."
-      (interactive)
-      (when (eq major-mode 'compilation-mode)
-        (let ((inhibit-read-only t))
-          (ansi-color-apply-on-region (point-min) (point-max)))))
-
-    (add-hook 'compilation-filter-hook
-              #'custom/colorize-compilation-buffer)))
-
 ;;; Syntax checking
 ;; Requires: chktex
 (use-package flycheck ; On-the-fly syntax checker
@@ -293,6 +249,54 @@
                 nxml-auto-insert-xml-declaration-flag t))
 
 ;;; Utilities and keybindings
+(use-package prog-mode ; Prog Mode
+  :bind ("C-c t p" . prettify-symbols-mode))
+
+(use-package eldoc ; Documentation in the echo area
+  :defer t
+  ;; Enable Eldoc for `eval-expression', too
+  :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
+  :config (setq-default eldoc-documentation-function #'describe-char-eldoc)
+  :diminish (eldoc-mode . " ⓓ"))
+
+(use-package macrostep ; Navigate through macros
+  :ensure t
+  :init (with-eval-after-load 'lisp-mode
+          (bind-key "C-c m m e" #'macrostep-expand emacs-lisp-mode-map)
+          (bind-key "C-c m m e" #'macrostep-expand lisp-interaction-mode-map)))
+
+(use-package compile ; Compile from Emacs
+  :bind (("C-c c C" . compile)
+         ("C-c c r" . recompile))
+  :config
+  (progn
+    (setq compilation-ask-about-save nil
+          ;; Kill old compilation processes before starting new ones
+          compilation-always-kill t
+          ;; Automatically scroll and jump to the first error
+          compilation-scroll-output 'first-error
+          compilation-auto-jump-to-first-error t
+          ;; Skip over warnings and info messages in compilation
+          compilation-skip-threshold 2
+          ;; Don't freeze when process reads from stdin
+          compilation-disable-input t
+          ;; Show three lines of context around the current message
+          compilation-context-lines 3)
+
+    (defun custom/colorize-compilation-buffer ()
+      "Colorize a compilation mode buffer."
+      (interactive)
+      (when (eq major-mode 'compilation-mode)
+        (let ((inhibit-read-only t))
+          (ansi-color-apply-on-region (point-min) (point-max)))))
+
+    (add-hook 'compilation-filter-hook
+              #'custom/colorize-compilation-buffer)))
+
+(use-package restclient ; ReST REPL for Emacs
+  :ensure t
+  :defer t)
+
 (defun uncomment-sexp (&optional n)
   "Uncomment a sexp around point."
   (interactive "P")
