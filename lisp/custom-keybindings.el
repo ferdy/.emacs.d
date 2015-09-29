@@ -81,6 +81,9 @@ If PAIR is an opening pair, the closing pair will be inserted as well."
 (bind-key "C-à" (lambda () (interactive) (custom/insert-pair "{")))
 (bind-key "C-°" (lambda () (interactive) (custom/insert-pair "}")))
 
+(bind-key "<f5>" ; Open organizer file
+          (lambda () (interactive) (find-file "~/org/organizer.org")))
+
 ;; Keybindings I do not want to be overridden by a major mode
 (bind-keys* ("M-a" . custom/backward-paragraph)
             ("M-e" . custom/forward-paragraph))

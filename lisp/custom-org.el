@@ -221,10 +221,6 @@ allowfullscreen>%s</iframe>"
   :ensure t
   :init (with-eval-after-load 'org '(require ox-mediawiki)))
 
-;;; Utilities and keybindings
-(bind-key "<f5>" ; Open organizer file
-          (lambda () (interactive) (find-file "~/org/organizer.org")))
-
 (provide 'custom-org)
 
 ;;; custom-org.el ends here
