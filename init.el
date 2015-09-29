@@ -123,7 +123,7 @@
 (use-package custom-latex)
 (use-package custom-vers-control :defer 5)
 (use-package custom-net)
-(use-package custom-org :defer t)
+(use-package custom-org :defer 1)
 (use-package custom-programming)
 (use-package custom-project)
 (use-package custom-shells)
