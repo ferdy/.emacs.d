@@ -96,7 +96,8 @@
          ("C-c o r"     . vr/mc-mark)
          ("C-c o C-a"   . mc/edit-beginnings-of-lines)
          ("C-c o C-e"   . mc/edit-ends-of-lines)
-         ("C-c o C-s"   . mc/mark-all-in-region))
+         ("C-c o C-s"   . mc/mark-all-in-region)
+         ("C-c o SPC"   . set-rectangular-region-anchor))
   :config (setq mc/mode-line
                 ;; Simplify the MC mode line indicator
                 '(:propertize (:eval (concat " " (number-to-string
@@ -321,7 +322,7 @@ the right."
 
 (bind-key [remap just-one-space] #'cycle-spacing)
 
-(bind-key "C-c SPC" #'set-rectangular-region-anchor)
+
 
 (provide 'custom-editing)
 
