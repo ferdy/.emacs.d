@@ -79,6 +79,7 @@
 
 (use-package company-math ; Backend for math symbols
   :ensure t
+  :defer t
   :init (with-eval-after-load 'company
           ;; Add backends for math characters
           (add-to-list 'company-backends 'company-math-symbols-unicode)
@@ -86,6 +87,7 @@
 
 (use-package company-web ; Backend for web development
   :ensure t
+  :defer t
   :init (with-eval-after-load 'company
           (add-to-list 'company-backends 'company-web-html)))
 
@@ -99,6 +101,12 @@
 (use-package sly-company ; Backend for Sly
   :ensure t
   :init (add-hook 'sly-mode-hook 'sly-company-mode))
+
+(use-package company-restclient ; Company support for restclient
+  :ensure t
+  :defer t
+  :init (with-eval-after-load 'company
+          (add-to-list 'company-backends 'company-restclient)))
 
 (provide 'custom-completion)
 
