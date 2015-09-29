@@ -109,7 +109,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
          ("C-c a L m" . langtool-show-message-at-point)
          ("C-c a L c" . langtool-correct-buffer))
   :init (setq langtool-language-tool-jar
-              "~/languagetool-3.0/languagetool-commandline.jar"
+              "~/languagetool/languagetool-commandline.jar"
               langtool-default-language "en-GB"
               langtool-java-bin "/usr/bin/java"))
 
