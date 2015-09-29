@@ -178,6 +178,10 @@
   :ensure t
   :mode "\\.service\\'")
 
+(use-package ietf-docs ; Manage IETF documents
+  :ensure t
+  :bind ("C-c i i" . ietf-docs-open-at-point))
+
 ;;; Utilities and keybindings
 (defun custom/current-file ()
   "Gets the \"file\" of the current buffer.
