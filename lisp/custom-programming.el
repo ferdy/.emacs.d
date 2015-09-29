@@ -283,7 +283,8 @@
 
 (use-package zencoding-mode ; Unfold CSS-selector-like expressions to markup
   :ensure t
-  :init (add-hook 'web-mode-hook #'zencoding-mode))
+  :init (add-hook 'web-mode-hook #'zencoding-mode)
+  :diminish (zencoding-mode . " ⓩ"))
 
 (use-package nxml-mode ; XML editing
   :mode "\\.xml\\'"
