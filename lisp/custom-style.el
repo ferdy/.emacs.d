@@ -122,9 +122,7 @@ symbols, greek letters, as well as fall backs for."
           x-underline-at-descent-line t)
     (load-theme 'solarized-light 'no-confirm)))
 
-(bind-key "C-c t v" #'variable-pitch-mode)
-
-;;; Utilities
+;;; Utilities and keybindings
 (setq custom-safe-themes t) ; Treat themes as safe
 
 (setq history-length 1000) ; Store more history
