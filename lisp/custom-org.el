@@ -82,9 +82,9 @@
 
     ;; Define TODO workflow states and different faces
     (setq org-todo-keywords
-          '("TODO(t)" "INVIO DOCS(i)" "STAMPE(s)" "FATTURE(f)"
-            "PHONE(p)" "MEETING(m)" "INFORMAZIONI(n)" "PREVENTIVO(v)"
-            "RINVIO LEZIONI(r)" "|" "CANCELLED(c)" "DONE(x)"))
+          '("TODO(t)" "ON HOLD(o)" "INFO(n)"
+            "GIULIA(g)" "MANUEL(m)" "DELEGATED(d)"
+            "|" "CANCELLED(c)" "DONE(x)"))
 
     ;; Define custom commands
     (setq org-agenda-custom-commands
