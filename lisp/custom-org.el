@@ -82,7 +82,7 @@
 
     ;; Define TODO workflow states and different faces
     (setq org-todo-keywords
-          '("TODO(t)" "ON HOLD(o)" "INFO(n)"
+          '("TODO(t)" "ONHOLD(o)" "INFO(n)"
             "GIULIA(g)" "MANUEL(m)" "DELEGATED(d)"
             "|" "CANCELLED(c)" "DONE(x)"))
 
