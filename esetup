@@ -52,6 +52,7 @@ getting Lein..."
     fi
     wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O $HOME/bin/lein
     chmod 755 $HOME/bin/lein
+    lein
     echo "
 ... done"
 }
