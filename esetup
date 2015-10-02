@@ -104,37 +104,35 @@ configuring Pandoc..."
 
 pdftools_setup() {
     echo "
-configuring pdf-tools..."
-    echo "
-configuring dependencies..."
+configuring pdf-tools dependencies..."
     sudo apt-get -y install --no-install-recommends libpng-dev libz-dev
     sudo apt-get -y install --no-install-recommends libpoppler-glib-dev
     sudo apt-get -y install --no-install-recommends -t experimental libpoppler-private-dev
     sudo apt-get -y install --no-install-recommends imagemagick
     echo "
-... done"
+    ... done"
     cd $HOME
 }
 
 flyspell_setup() {
     echo "
-configuring spell checker..."
+    configuring spell checker..."
     sudo apt-get -y install --no-install-recommends aspell aspell-en aspell-it
     echo "
-... done"
+    ... done"
 }
 
 synosaurus_setup() {
     echo "
-configuring synosaurus..."
+    configuring synosaurus..."
     sudo apt-get -y install --no-install-recommends wordnet
     echo "
-... done"
+    ... done"
 }
 
 langtool_setup() {
     echo "
-configuring langtool..."
+    configuring langtool..."
     if [ ! -x /usr/bin/unzip ]; then
         sudo apt-get -y install --no-install-recommends unzip
     fi
@@ -144,12 +142,12 @@ configuring langtool..."
     mv LanguageTool-3.1 languagetool
     rm LanguageTool-3.1.zip
     echo "
-... done"
+    ... done"
 }
 
 font_setup() {
     echo "
-configuring fonts..."
+    configuring fonts..."
     sudo apt-get -y install --no-install-recommends fonts-dejavu fonts-dejavu-extra
     sudo apt-get -y install --no-install-recommends ttf-ancient-fonts
     sudo apt-get -y install --no-install-recommends fonts-sil-gentium fonts-sil-gentiumplus
@@ -164,29 +162,29 @@ camcorder_setup() {
 }
 
 echo "
-##########################################
-# esetup                                 #
-# Script for creating the right          #
-# environment for my Emacs configuration #
-##########################################"
+    ##########################################
+    # esetup                                 #
+    # Script for creating the right          #
+    # environment for my Emacs configuration #
+    ##########################################"
 
-sudo -v # gets user password for next sudos
+    sudo -v # gets user password for next sudos
 
-cd $HOME
-prerequisites
-ag_setup
-clojure_setup
-scheme_setup
-commonlisp_setup
-latex_setup
-pandoc_setup
-pdftools_setup
-flyspell_setup
-synosaurus_setup
-langtool_setup
-font_setup
-camcorder_setup
+    cd $HOME
+    prerequisites
+    ag_setup
+    clojure_setup
+    scheme_setup
+    commonlisp_setup
+    latex_setup
+    pandoc_setup
+    pdftools_setup
+    flyspell_setup
+    synosaurus_setup
+    langtool_setup
+    font_setup
+    camcorder_setup
 
-echo "
+    echo "
 environment ready, now fire up Emacs!
 "
