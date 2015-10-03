@@ -14,7 +14,7 @@
 (use-package org ; The almighty Org
   :ensure t
   :bind (("C-c a o a" . org-agenda-list)
-         ("C-c a o b" . org-begin-template)
+         ("C-c a o b" . custom/org-begin-template)
          ("C-c a o c" . org-capture)
          ("C-c a o l" . org-store-link)
          ("C-c a o f" . org-cycle-agenda-files)
@@ -135,7 +135,7 @@ allowfullscreen>%s</iframe>"
     (add-hook 'org-mode-hook (lambda ()
                                (diminish 'org-indent-mode " ⓘ")))
 
-    (defun org-begin-template ()
+    (defun custom/org-begin-template ()
       "Make a template at point."
       (interactive)
       (if (org-at-table-p)
