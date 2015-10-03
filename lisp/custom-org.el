@@ -14,6 +14,7 @@
 (use-package org ; The almighty Org
   :ensure t
   :bind (("C-c a o a" . org-agenda-list)
+         ("C-c a o b" . org-begin-template)
          ("C-c a o c" . org-capture)
          ("C-c a o l" . org-store-link)
          ("C-c a o f" . org-cycle-agenda-files)
@@ -132,7 +133,49 @@ allowfullscreen>%s</iframe>"
     (add-hook 'org-mode-hook #'custom/org-ispell)
 
     (add-hook 'org-mode-hook (lambda ()
-                               (diminish 'org-indent-mode " ⓘ")))))
+                               (diminish 'org-indent-mode " ⓘ")))
+
+    (defun org-begin-template ()
+      "Make a template at point."
+      (interactive)
+      (if (org-at-table-p)
+          (call-interactively 'org-table-rotate-recalc-marks)
+        (let* ((choices '(("s" . "SRC")
+                          ("e" . "EXAMPLE")
+                          ("q" . "QUOTE")
+                          ("v" . "VERSE")
+                          ("c" . "CENTER")
+                          ("l" . "LaTeX")
+                          ("h" . "HTML")
+                          ("a" . "ASCII")))
+               (key
+                (key-description
+                 (vector
+                  (read-key
+                   (concat (propertize "Template type: " 'face
+                                       'minibuffer-prompt)
+                           (mapconcat (lambda (choice)
+                                        (concat
+                                         (propertize (car choice) 'face
+                                                     'font-lock-type-face)
+                                         ": "
+                                         (cdr choice)))
+                                      choices
+                                      ", ")))))))
+          (let ((result (assoc key choices)))
+            (when result
+              (let ((choice (cdr result)))
+                (cond
+                 ((region-active-p)
+                  (let ((start (region-beginning))
+                        (end (region-end)))
+                    (goto-char end)
+                    (insert "\n" "#+END_" choice "\n")
+                    (goto-char start)
+                    (insert "#+BEGIN_" choice "\n")))
+                 (t
+                  (insert "#+BEGIN_" choice "\n")
+                  (save-excursion (insert "#+END_" choice))))))))))))
 
 (use-package autoinsert ; Auto insert custom text
   :init
