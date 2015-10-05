@@ -113,6 +113,10 @@ With prefix P, create local abbrev. Otherwise it will be global."
               langtool-default-language "en-GB"
               langtool-java-bin "/usr/bin/java"))
 
+(use-package writegood-mode ; Find common writing problems
+  :ensure t
+  :bind ("C-c a L g" . writegood-mode))
+
 (provide 'custom-languages)
 
 ;;; custom-languages.el ends here
