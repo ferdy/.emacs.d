@@ -212,7 +212,9 @@
 (use-package web-mode ; Major mode for editing web templates
   :ensure t
   :mode "\\.html\\'"
-  :config (setq web-mode-markup-indent-offset 2))
+  :config (setq web-mode-markup-indent-offset 2
+                web-mode-css-indent-offset 2
+                web-mode-code-indent-offset 2))
 
 (use-package js2-mode ; Better JavaScript support
   :ensure t
@@ -225,8 +227,11 @@
 (use-package css-mode ; Better CSS support
   :defer t
   :mode "\\.css\\'"
-  :config (add-hook 'css-mode-hook
-                    (lambda () (run-hooks 'prog-mode-hook))))
+  :config
+  (progn
+    (setq css-indent-offset 2)
+    (add-hook 'css-mode-hook
+              (lambda () (run-hooks 'prog-mode-hook)))))
 
 (use-package css-eldoc ; Eldoc for CSS
   :ensure t
