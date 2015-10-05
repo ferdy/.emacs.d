@@ -102,11 +102,13 @@
   :config
   (progn
     (setq paradox-github-token t ; Don't ask for a token, please
-          ;; No async for now
-          paradox-execute-asynchronously nil
-          paradox-spinner-type 'rotating-line
-          ;; Hide packages from Emacs Wiki
-          paradox-hide-wiki-packages t)
+          paradox-execute-asynchronously nil ; No async updates
+          paradox-spinner-type 'moon
+          paradox-use-homepage-buttons nil ; Hide download button
+          paradox-hide-wiki-packages t ; Hide packages from Emacs Wiki
+          ;; Show all possible counts
+          paradox-display-download-count t
+          paradox-display-star-count t)
 
     ;; Don't need paradox report
     (remove-hook 'paradox-after-execute-functions
