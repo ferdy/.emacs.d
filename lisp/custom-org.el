@@ -218,7 +218,10 @@ allowfullscreen>%s</iframe>"
           org2blog/wp-blog-alist
           '(("informatica.boccaperta.com"
              :url "http://informatica.boccaperta.com/xmlrpc.php"
-             :username "manuel")))))
+             :username "manuel")
+            ("filmsinwords"
+             :url "https://filmsinwords.wordpress.com/xmlrpc.php"
+             :username "manueluberti")))))
 
 (use-package toc-org ; Table of contents for Org files
   :ensure t
