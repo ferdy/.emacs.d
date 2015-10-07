@@ -221,7 +221,8 @@ allowfullscreen>%s</iframe>"
              :username "manuel")
             ("filmsinwords"
              :url "https://filmsinwords.wordpress.com/xmlrpc.php"
-             :username "manueluberti")))))
+             :username "manueluberti"))))
+  :diminish (org2blog/wp-mode . " ⓑ"))
 
 (use-package toc-org ; Table of contents for Org files
   :ensure t
