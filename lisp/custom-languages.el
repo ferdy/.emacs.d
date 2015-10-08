@@ -115,7 +115,8 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
 (use-package writegood-mode ; Find common writing problems
   :ensure t
-  :bind ("C-c a L g" . writegood-mode))
+  :bind ("C-c a L g" . writegood-mode)
+  :diminish (writegood-mode . " ⓖ"))
 
 (provide 'custom-languages)
 
