@@ -172,7 +172,7 @@ symbols, greek letters, as well as fall backs for."
                                "cWip"
                                "sWip")
                              "\\|"))
-          sml/theme 'automatic
+          sml/theme nil
           sml/mode-width 'full
           sml/no-confirm-load-theme t)
     (sml/setup))
