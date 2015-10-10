@@ -26,7 +26,7 @@
           (progn
             (set-face-attribute 'default nil
                                 :family "DejaVu Sans Mono"
-                                :height 150
+                                :height 155
                                 :weight 'regular)
             (set-face-attribute 'variable-pitch nil
                                 :family "Fira Sans"
