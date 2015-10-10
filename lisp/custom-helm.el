@@ -243,6 +243,7 @@
 
 (use-package helm-ag ; Helm frontend for Ag
   :ensure t
+  :bind ("C-c h s" . helm-do-ag)
   :config (setq helm-ag-fuzzy-match t
                 helm-ag-insert-at-point 'symbol
                 helm-ag-source-type 'file-line))
