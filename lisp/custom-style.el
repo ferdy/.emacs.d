@@ -30,7 +30,7 @@
                                 :weight 'regular)
             (set-face-attribute 'variable-pitch nil
                                 :family "Fira Sans"
-                                :height 140
+                                :height 150
                                 :weight 'regular))
         (progn
           (set-face-attribute 'default nil
