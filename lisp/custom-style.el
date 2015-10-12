@@ -127,6 +127,11 @@ symbols, greek letters, as well as fall backs for."
   :ensure monokai-theme
   :init (load-theme 'monokai 'no-confirm))
 
+(use-package zenburn ; Another pretty dark theme
+  :disabled t
+  :ensure zenburn-theme
+  :init (load-theme 'zenburn 'no-confirm))
+
 ;;; Utilities and keybindings
 (setq custom-safe-themes t) ; Treat themes as safe
 
