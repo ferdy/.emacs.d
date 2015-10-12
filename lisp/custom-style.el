@@ -122,15 +122,10 @@ symbols, greek letters, as well as fall backs for."
           x-underline-at-descent-line t)
     (load-theme 'solarized-light 'no-confirm)))
 
-(use-package zenburn ; Beatiful dark theme
+(use-package zenburn ; Beautiful dark theme
   :disabled t
   :ensure zenburn-theme
   :init (load-theme 'zenburn 'no-confirm))
-
-(use-package color-theme-sanityinc-tomorrow ; Another beautiful dark theme
-  :disabled t
-  :ensure t
-  :init (load-theme 'sanityinc-tomorrow-eighties 'no-confirm))
 
 ;;; Utilities and keybindings
 (setq custom-safe-themes t) ; Treat themes as safe
