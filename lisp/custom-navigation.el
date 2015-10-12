@@ -47,6 +47,10 @@
           (add-hook hook #'outline-minor-mode))
   :diminish (outline-minor-mode . " Ⓞ"))
 
+(use-package goto-last-change ; Navigate through last in-buffer changes
+  :ensure t
+  :bind ("C-c n g" . goto-last-change))
+
 ;;; Utilities and keybindings
 ;; Better forward and backward paragraph
 (defun custom/forward-paragraph (&optional n)
