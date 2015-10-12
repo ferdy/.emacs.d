@@ -122,6 +122,11 @@ symbols, greek letters, as well as fall backs for."
           x-underline-at-descent-line t)
     (load-theme 'solarized-light 'no-confirm)))
 
+(use-package monokai ; Fruity dark theme
+  :disabled t
+  :ensure monokai-theme
+  :init (load-theme 'monokai 'no-confirm))
+
 ;;; Utilities and keybindings
 (setq custom-safe-themes t) ; Treat themes as safe
 
