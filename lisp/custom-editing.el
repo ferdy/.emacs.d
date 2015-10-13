@@ -180,7 +180,12 @@
   :ensure t
   :bind ("C-c x r" . wrap-region-mode)
   :config (wrap-region-add-wrappers
-           '(("/* " " */" "#" (javascript-mode css-mode))
+           '(("*" "*" nil org-mode)
+             ("~" "~" nil org-mode)
+             ("/" "/" nil org-mode)
+             ("=" "=" nil org-mode)
+             ("_" "_" nil org-mode)
+             ("/* " " */" "#" (javascript-mode css-mode))
              ("`" "`" nil markdown-mode))))
 
 (setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
