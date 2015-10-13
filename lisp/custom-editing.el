@@ -176,6 +176,13 @@
   :config (add-hook 'latex-mode-hook
                     (lambda () (setq-local tildify-space-string "~"))))
 
+(use-package wrap-region ; Wrap a region with symbols and tags
+  :ensure t
+  :bind ("C-c x r" . wrap-region-mode)
+  :config (wrap-region-add-wrappers
+           '(("/* " " */" "#" (javascript-mode css-mode))
+             ("`" "`" nil markdown-mode))))
+
 (setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
 
 ;; Disable tabs, but given them proper width
