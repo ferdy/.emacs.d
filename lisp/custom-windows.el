@@ -71,10 +71,11 @@
 (bind-key "C-c w b" #'custom/switch-to-minibuffer-window)
 
 ;; Better shrink/enlarge windows
-(bind-key "C-S-<up>" 'enlarge-window)
-(bind-key "C-S-<down>" 'shrink-window)
-(bind-key "C-S-<left>" 'shrink-window-horizontally)
-(bind-key "C-S-<right>" 'enlarge-window-horizontally)
+(bind-keys*
+ ("C-S-<up>"    . enlarge-window)
+ ("C-S-<down>"  . shrink-window)
+ ("C-S-<left>"  . shrink-window-horizontally)
+ ("C-S-<right>" . enlarge-window-horizontally))
 
 (provide 'custom-windows)
 
