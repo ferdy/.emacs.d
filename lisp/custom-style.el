@@ -23,6 +23,7 @@
   "Set up default fonts.
 Use DEFAULT-HEIGHT for default face and VARIABLE-PITCH-HEIGHT
 for variable-pitch face."
+
   (set-face-attribute 'default nil
                       :family "DejaVu Sans Mono"
                       :height default-height)
