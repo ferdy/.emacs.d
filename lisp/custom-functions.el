@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(defun custom/all-init-files (&optional with-packages)
+(defun mu/all-init-files (&optional with-packages)
   "Return a list of all Emacs Lisp files in my configuration.
 
 If WITH-PACKAGES is given and non-nil include 3rd party
@@ -25,7 +25,7 @@ packages."
             nil)))
 
 ;;;###autoload
-(defun custom/count-config-lines (&optional with-packages)
+(defun mu/count-config-lines (&optional with-packages)
   "Show a buffer with LoC statistics for my Emacs config.
 
 If WITH-PACKAGES is given and non-nil include 3rd party packages
@@ -39,7 +39,7 @@ into the count."
       (read-only-mode)
       (view-mode)
       (let ((inhibit-read-only t)
-            (files (custom/all-init-files with-packages)))
+            (files (mu/all-init-files with-packages)))
         (erase-buffer)
         (goto-char (point-min))
         (apply #'call-process cloc nil t t "--quiet" files))

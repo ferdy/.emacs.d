@@ -33,7 +33,7 @@
     (setq isearch-allow-scroll t)
 
     ;; Better backspace during isearch
-    (defun custom/isearch-delete ()
+    (defun mu/isearch-delete ()
       "Delete non-matching text or the last character."
       (interactive)
       (if (= 0 (length isearch-string))
@@ -51,7 +51,7 @@
       (isearch-push-state)
       (isearch-update))
 
-    (bind-key [remap isearch-delete-char] #'custom/isearch-delete)))
+    (bind-key [remap isearch-delete-char] #'mu/isearch-delete)))
 
 (use-package anzu ; Position/matches count for isearch
   :ensure t

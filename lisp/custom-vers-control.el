@@ -47,13 +47,13 @@
     (defun magit-quit-session ()
       "Restore previous window configuration and cleanup buffers."
       (interactive)
-      (custom/kill-buffers "^\\*magit")
+      (mu/kill-buffers "^\\*magit")
       (jump-to-register :magit-fullscreen))
 
     (bind-key "q" #'magit-quit-session magit-status-mode-map)
 
     ;; Set `magit-repository-directories' for `magit-status'
-    (defun custom/magit-set-repo-dirs-from-projectile ()
+    (defun mu/magit-set-repo-dirs-from-projectile ()
       "Set `magit-repository-directories' with known Projectile projects."
       (let ((project-dirs (bound-and-true-p projectile-known-projects)))
         ;; Remove trailing slashes from project directories
@@ -61,10 +61,10 @@
               (mapcar #'directory-file-name project-dirs))))
 
     (with-eval-after-load 'projectile
-      (custom/magit-set-repo-dirs-from-projectile))
+      (mu/magit-set-repo-dirs-from-projectile))
 
     (add-hook 'projectile-switch-project-hook
-              #'custom/magit-set-repo-dirs-from-projectile))
+              #'mu/magit-set-repo-dirs-from-projectile))
   :diminish (magit-wip-after-save-local-mode
              magit-wip-before-change-mode))
 

@@ -64,20 +64,20 @@
     (bind-key "C-c m e e" #'eval-last-sexp emacs-lisp-mode-map)
     (bind-key "C-c m e f" #'eval-defun emacs-lisp-mode-map)
 
-    (defconst custom/use-package-imenu-expression
+    (defconst mu/use-package-imenu-expression
       `("Use Package" ,(rx "(use-package" (optional "-with-elapsed-timer")
                            symbol-end (1+ (syntax whitespace)) symbol-start
                            (group-n 1 (1+ (or (syntax word) (syntax symbol))))
                            symbol-end) 1)
       "IMenu expression for `use-package' declarations.")
 
-    (defun custom/add-use-package-to-imenu ()
+    (defun mu/add-use-package-to-imenu ()
       "Add `use-package' declarations to `imenu'."
       (add-to-list 'imenu-generic-expression
-                   custom/use-package-imenu-expression))
+                   mu/use-package-imenu-expression))
 
     (add-hook 'emacs-lisp-mode-hook
-              #'custom/add-use-package-to-imenu)))
+              #'mu/add-use-package-to-imenu)))
 
 ;;; Clojure
 (use-package cider ; Clojure development environment
@@ -119,12 +119,12 @@
   :defer t
   :init
   (progn
-    (defun custom/clojure-mode-hook ()
+    (defun mu/clojure-mode-hook ()
       (clj-refactor-mode 1)
       (yas-minor-mode 1) ; For adding require/use/import
       (cljr-add-keybindings-with-prefix "C-c m r"))
 
-    (add-hook 'clojure-mode-hook #'custom/clojure-mode-hook))
+    (add-hook 'clojure-mode-hook #'mu/clojure-mode-hook))
   :config (setq cljr-suppress-middleware-warnings t)
   :diminish clj-refactor-mode)
 
@@ -288,7 +288,7 @@
           ;; Show three lines of context around the current message
           compilation-context-lines 3)
 
-    (defun custom/colorize-compilation-buffer ()
+    (defun mu/colorize-compilation-buffer ()
       "Colorize a compilation mode buffer."
       (interactive)
       (when (eq major-mode 'compilation-mode)
@@ -296,7 +296,7 @@
           (ansi-color-apply-on-region (point-min) (point-max)))))
 
     (add-hook 'compilation-filter-hook
-              #'custom/colorize-compilation-buffer)))
+              #'mu/colorize-compilation-buffer)))
 
 (use-package restclient ; ReST REPL for Emacs
   :ensure t

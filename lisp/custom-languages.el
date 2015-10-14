@@ -30,9 +30,9 @@
               (warn "No spell checker available. Install aspell."))
 
             ;; Ispell with Abbrev for auto-correcting spelling mistakes
-            (bind-key "C-i" #'custom/ispell-word-then-abbrev ctl-x-map)
+            (bind-key "C-i" #'mu/ispell-word-then-abbrev ctl-x-map)
 
-            (defun custom/ispell-word-then-abbrev (p)
+            (defun mu/ispell-word-then-abbrev (p)
               "Call `ispell-word'. Then create an abbrev for the correction made.
 With prefix P, create local abbrev. Otherwise it will be global."
               (interactive "P")
@@ -53,22 +53,22 @@ With prefix P, create local abbrev. Otherwise it will be global."
                          nil ("-B") nil utf-8)))
 
             ;; Don't send ’ to the subprocess.
-            (defun custom/replace-apostrophe (args)
+            (defun mu/replace-apostrophe (args)
               (cons (replace-regexp-in-string
                      "’" "'" (car args))
                     (cdr args)))
             (advice-add #'ispell-send-string :filter-args
-                        #'custom/replace-apostrophe)
+                        #'mu/replace-apostrophe)
 
             ;; Convert ' back to ’ from the subprocess.
-            (defun custom/replace-quote (args)
+            (defun mu/replace-quote (args)
               (if (not (derived-mode-p 'org-mode))
                   args
                 (cons (replace-regexp-in-string
                        "'" "’" (car args))
                       (cdr args))))
             (advice-add #'ispell-parse-output :filter-args
-                        #'custom/replace-quote)))
+                        #'mu/replace-quote)))
 
 (use-package flyspell ; Spell checking on-the-fly
   :bind ("C-c t s" . flyspell-mode)

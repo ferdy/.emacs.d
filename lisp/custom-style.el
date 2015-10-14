@@ -42,7 +42,7 @@
                               :height 125
                               :weight 'regular)))))
 
-(defun custom/configure-fonts (frame)
+(defun mu/configure-fonts (frame)
   "Set up fonts for FRAME.
 Set the default font, and configure various overrides for
 symbols, greek letters, as well as fall backs for."
@@ -67,8 +67,8 @@ symbols, greek letters, as well as fall backs for."
                     frame 'append))
 
 (when-let (frame (selected-frame))
-  (custom/configure-fonts frame))
-(add-hook 'after-make-frame-functions #'custom/configure-fonts)
+  (mu/configure-fonts frame))
+(add-hook 'after-make-frame-functions #'mu/configure-fonts)
 
 ;;; Interface
 (use-package frame ; Frames

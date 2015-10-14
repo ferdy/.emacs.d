@@ -28,7 +28,7 @@
 (use-package dired ; File manager
   :defer t
   :bind (("C-c f s"    . dired-get-size)
-         ("<C-return>" . custom/open-in-external-app)
+         ("<C-return>" . mu/open-in-external-app)
          ("C-c f f"    . find-name-dired))
   :config
   (progn
@@ -183,7 +183,7 @@
   :bind ("C-c i i" . ietf-docs-open-at-point))
 
 ;;; Utilities and keybindings
-(defun custom/current-file ()
+(defun mu/current-file ()
   "Gets the \"file\" of the current buffer.
 The file is the buffer's file name, or the `default-directory' in
 `dired-mode'."
@@ -191,7 +191,7 @@ The file is the buffer's file name, or the `default-directory' in
       default-directory
     (buffer-file-name)))
 
-(defun custom/copy-filename-as-kill (&optional arg)
+(defun mu/copy-filename-as-kill (&optional arg)
   "Copy the name of the currently visited file to kill ring.
 With a zero prefix arg, copy the absolute file name.  With
 \\[universal-argument], copy the file name relative to the
@@ -199,7 +199,7 @@ current Projectile project, or to the current buffer's
 `default-directory', if the file is not part of any project.
 Otherwise copy the non-directory part only."
   (interactive "P")
-  (if-let ((file-name (custom/current-file))
+  (if-let ((file-name (mu/current-file))
            (name-to-copy
             (cond
              ((zerop (prefix-numeric-value arg)) file-name)
@@ -214,7 +214,7 @@ Otherwise copy the non-directory part only."
         (message "%s" name-to-copy))
     (user-error "This buffer is not visiting a file")))
 
-(defun custom/delete-this-file ()
+(defun mu/delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
   (or (buffer-file-name) (error "No file is currently being edited"))
@@ -223,7 +223,7 @@ Otherwise copy the non-directory part only."
     (delete-file (buffer-file-name))
     (kill-this-buffer)))
 
-(defun custom/rename-this-file-and-buffer (new-name)
+(defun mu/rename-this-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
   (let ((name (buffer-name))
@@ -247,7 +247,7 @@ Otherwise copy the non-directory part only."
 
 (add-hook 'find-file-hook #'open-with-sudo)
 
-(defun custom/open-in-external-app ()
+(defun mu/open-in-external-app ()
   "Open the file where point is or the marked files in Dired in external
 app. The app is chosen from your OS's preference."
   (interactive)
@@ -258,9 +258,9 @@ app. The app is chosen from your OS's preference."
        (let ((process-connection-type nil))
          (start-process "" nil "xdg-open" file-path))) file-list)))
 
-(bind-key "C-c f D" #'custom/delete-this-file)
-(bind-key "C-c f R" #'custom/rename-this-file-and-buffer)
-(bind-key "C-c f w" #'custom/copy-filename-as-kill)
+(bind-key "C-c f D" #'mu/delete-this-file)
+(bind-key "C-c f R" #'mu/rename-this-file-and-buffer)
+(bind-key "C-c f w" #'mu/copy-filename-as-kill)
 
 ;;; Additional bindings for built-ins
 (bind-key "C-c f v d" #'add-dir-local-variable)
