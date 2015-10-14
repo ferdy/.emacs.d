@@ -124,7 +124,7 @@ symbols, greek letters, as well as fall backs for."
   :init (load-theme 'zenburn 'no-confirm))
 
 ;;; Utilities and keybindings
-(setq mu-safe-themes t) ; Treat themes as safe
+(setq custom-safe-themes t) ; Treat themes as safe
 
 (setq history-length 1000) ; Store more history
 
