@@ -88,7 +88,7 @@
             "|" "CANCELLED(c)" "DONE(x)"))
 
     ;; Define custom commands
-    (setq org-agenda-mu-commands
+    (setq org-agenda-custom-commands
           '(("P" "Personal Projects" ((Tags "PERSONAL")))
             ("B" "Boccaperta" ((agenda)
                                (tags-todo "BOCCAPERTA")))
@@ -178,8 +178,8 @@ allowfullscreen>%s</iframe>"
                   (save-excursion (insert "#+END_" choice))))))))))
 
     ;; Display timestamps with a custom format
-    (setq-default org-display-mu-times t)
-    (setq org-time-stamp-mu-formats
+    (setq-default org-display-custom-times t)
+    (setq org-time-stamp-custom-formats
           '("<%d %b %Y>" . "<%d/%m/%y %a %H:%M>"))))
 
 (use-package autoinsert ; Auto insert custom text
