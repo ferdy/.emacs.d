@@ -1,4 +1,4 @@
-;;; custom-style.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-style.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -77,6 +77,6 @@
  ("C-S-<left>"  . shrink-window-horizontally)
  ("C-S-<right>" . enlarge-window-horizontally))
 
-(provide 'custom-windows)
+(provide 'mu-windows)
 
-;;; custom-windows.el ends here
+;;; mu-windows.el ends here

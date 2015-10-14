@@ -1,4 +1,4 @@
-;;; custom-highlight.el --- Part of my Emacs setup   -*- lexical-binding: t; -*-
+;;; mu-highlight.el --- Part of my Emacs setup   -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -102,6 +102,6 @@ Disable the highlighting of overlong lines."
   "Enable `whitespace-mode' after local variables where set up."
   (add-hook 'hack-local-variables-hook #'whitespace-mode nil 'local))
 
-(provide 'custom-highlight)
+(provide 'mu-highlight)
 
-;;; custom-highlight.el ends here
+;;; mu-highlight.el ends here

@@ -1,4 +1,4 @@
-;;; custom-programming.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-programming.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -394,6 +394,6 @@ With a prefix argument N, comment that many sexps."
 
 (bind-key "C-c t d" #'toggle-debug-on-error)
 
-(provide 'custom-programming)
+(provide 'mu-programming)
 
-;;; custom-programming.el ends here
+;;; mu-programming.el ends here

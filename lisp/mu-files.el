@@ -1,4 +1,4 @@
-;;; custom-files.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-files.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -267,6 +267,6 @@ app. The app is chosen from your OS's preference."
 (bind-key "C-c f v l" #'add-file-local-variable)
 (bind-key "C-c f v p" #'add-file-local-variable-prop-line)
 
-(provide 'custom-files)
+(provide 'mu-files)
 
-;;; custom-files.el ends here
+;;; mu-files.el ends here

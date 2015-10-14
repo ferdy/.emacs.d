@@ -1,4 +1,4 @@
-;;; custom-utilities.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-utilities.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -81,6 +81,6 @@
   :ensure t
   :defer t)
 
-(provide 'custom-utilities)
+(provide 'mu-utilities)
 
-;;; custom-utilities.el ends here
+;;; mu-utilities.el ends here

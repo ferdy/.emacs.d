@@ -1,4 +1,4 @@
-;;; custom-project.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-project.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -27,6 +27,6 @@
                                       "lein cljsbuild test"))
   :diminish projectile-mode)
 
-(provide 'custom-project)
+(provide 'mu-project)
 
-;;; custom-project.el ends here
+;;; mu-project.el ends here

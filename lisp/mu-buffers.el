@@ -1,4 +1,4 @@
-;;; custom-ibuffer.el --- Part of my Emacs configuration  -*- lexical-binding: t; -*-
+;;; mu-ibuffer.el --- Part of my Emacs configuration  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -126,6 +126,6 @@ Add this to `kill-buffer-query-functions'."
 
 (bind-key "C-x C-k" 'kill-this-buffer) ; Kill only the current buffer
 
-(provide 'custom-buffers)
+(provide 'mu-buffers)
 
-;;; custom-ibuffer.el ends here
+;;; mu-ibuffer.el ends here

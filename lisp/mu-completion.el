@@ -1,4 +1,4 @@
-;;; custom-completion.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-completion.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -108,6 +108,6 @@
   :init (with-eval-after-load 'company
           (add-to-list 'company-backends 'company-restclient)))
 
-(provide 'custom-completion)
+(provide 'mu-completion)
 
-;;; custom-completion.el ends here
+;;; mu-completion.el ends here

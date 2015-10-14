@@ -1,4 +1,4 @@
-;;; custom-helm.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-helm.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -275,6 +275,6 @@
   :ensure t
   :bind ("C-c h g" . helm-gitignore))
 
-(provide 'custom-helm)
+(provide 'mu-helm)
 
-;;; custom-helm.el ends here
+;;; mu-helm.el ends here

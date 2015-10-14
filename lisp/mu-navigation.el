@@ -1,4 +1,4 @@
-;;; custom-navigation.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
+;;; mu-navigation.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -114,6 +114,6 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (bind-key [remap exchange-point-and-mark]
           'exchange-point-and-mark-no-activate global-map)
 
-(provide 'custom-navigation)
+(provide 'mu-navigation)
 
-;;; custom-navigation.el ends here
+;;; mu-navigation.el ends here

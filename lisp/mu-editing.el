@@ -1,4 +1,4 @@
-;;; custom-editing.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
+;;; mu-editing.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -354,6 +354,6 @@ Including indent-buffer, which should not be called automatically on save."
 
 (bind-key "C-c t c" #'cleanup-buffer)
 
-(provide 'custom-editing)
+(provide 'mu-editing)
 
-;;; custom-editing.el ends here
+;;; mu-editing.el ends here

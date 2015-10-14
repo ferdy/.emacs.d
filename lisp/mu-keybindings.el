@@ -1,4 +1,4 @@
-;;; custom-keybindings.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-keybindings.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -9,7 +9,7 @@
 
 ;; This file stores the keybindings which are not strictly related to:
 ;; - a specific mode already configured with use-package;
-;; - another custom-* file.
+;; - another mu-* file.
 
 ;;; Code:
 
@@ -85,6 +85,6 @@ If PAIR is an opening pair, the closing pair will be inserted as well."
 (bind-keys* ("M-a" . mu/backward-paragraph)
             ("M-e" . mu/forward-paragraph))
 
-(provide 'custom-keybindings)
+(provide 'mu-keybindings)
 
-;;; custom-keybindings ends here
+;;; mu-keybindings ends here

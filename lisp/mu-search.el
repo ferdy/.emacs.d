@@ -1,4 +1,4 @@
-;;; custom-search.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
+;;; mu-search.el --- Part of my Emacs setup  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -88,6 +88,6 @@
         ag-project-root-function (lambda (d) (let ((default-directory d))
                                                (projectile-project-root)))))
 
-(provide 'custom-search)
+(provide 'mu-search)
 
-;;; custom-search.el ends here
+;;; mu-search.el ends here

@@ -1,4 +1,4 @@
-;;; custom-vers-control.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-vers-control.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015 Manuel Uberti
 
@@ -90,6 +90,6 @@
   :ensure t
   :bind ("C-c v t" . git-timemachine))
 
-(provide 'custom-vers-control)
+(provide 'mu-vers-control)
 
-;;; custom-vers-control.el ends here
+;;; mu-vers-control.el ends here

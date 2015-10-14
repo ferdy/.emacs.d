@@ -1,4 +1,4 @@
-;;; custom-latex.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-latex.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -129,6 +129,6 @@
       (setq reftex-cite-format 'biblatex)))
   :diminish reftex-mode)
 
-(provide 'custom-latex)
+(provide 'mu-latex)
 
-;;; custom-latex.el ends here
+;;; mu-latex.el ends here

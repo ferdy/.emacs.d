@@ -1,4 +1,4 @@
-;;; custom-formatting.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-formatting.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -63,6 +63,6 @@
     (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
     (setq org-pandoc-output-format 'odt)))
 
-(provide 'custom-formatting)
+(provide 'mu-formatting)
 
-;;; custom-formatting.el ends here
+;;; mu-formatting.el ends here

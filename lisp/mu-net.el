@@ -1,4 +1,4 @@
-;;; custom-net.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-net.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -185,6 +185,6 @@ buffer."
         (when (eq (car prop) 'image)
           (add-text-properties left pos (list from nil to prop) object))))))
 
-(provide 'custom-net)
+(provide 'mu-net)
 
-;;; custom-net.el ends here
+;;; mu-net.el ends here

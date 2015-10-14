@@ -1,4 +1,4 @@
-;;; custom-org.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-org.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -88,7 +88,7 @@
             "|" "CANCELLED(c)" "DONE(x)"))
 
     ;; Define custom commands
-    (setq org-agenda-custom-commands
+    (setq org-agenda-mu-commands
           '(("P" "Personal Projects" ((Tags "PERSONAL")))
             ("B" "Boccaperta" ((agenda)
                                (tags-todo "BOCCAPERTA")))
@@ -178,8 +178,8 @@ allowfullscreen>%s</iframe>"
                   (save-excursion (insert "#+END_" choice))))))))))
 
     ;; Display timestamps with a custom format
-    (setq-default org-display-custom-times t)
-    (setq org-time-stamp-custom-formats
+    (setq-default org-display-mu-times t)
+    (setq org-time-stamp-mu-formats
           '("<%d %b %Y>" . "<%d/%m/%y %a %H:%M>"))))
 
 (use-package autoinsert ; Auto insert custom text
@@ -277,6 +277,6 @@ allowfullscreen>%s</iframe>"
 (bind-key "<f5>" ; Open organizer file
           (lambda () (interactive) (find-file "~/org/organizer.org")))
 
-(provide 'custom-org)
+(provide 'mu-org)
 
-;;; custom-org.el ends here
+;;; mu-org.el ends here

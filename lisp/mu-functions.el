@@ -1,4 +1,4 @@
-;;; custom-functions.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-functions.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -56,6 +56,6 @@ into the count."
            (when (> elapsed 0.001)
              (message "spent (%.3fs)" elapsed)))))))
 
-(provide 'custom-functions)
+(provide 'mu-functions)
 
-;;; custom-functions.el ends here
+;;; mu-functions.el ends here

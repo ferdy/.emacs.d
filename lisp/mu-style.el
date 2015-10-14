@@ -1,4 +1,4 @@
-;;; custom-style.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-style.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -124,7 +124,7 @@ symbols, greek letters, as well as fall backs for."
   :init (load-theme 'zenburn 'no-confirm))
 
 ;;; Utilities and keybindings
-(setq custom-safe-themes t) ; Treat themes as safe
+(setq mu-safe-themes t) ; Treat themes as safe
 
 (setq history-length 1000) ; Store more history
 
@@ -189,6 +189,6 @@ symbols, greek letters, as well as fall backs for."
     (add-to-list 'sml/replacer-regexp-list
                  '("^~/projects/" ":Prj:") t)))
 
-(provide 'custom-style)
+(provide 'mu-style)
 
-;;; custom-style.el ends here
+;;; mu-style.el ends here

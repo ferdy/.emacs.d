@@ -1,4 +1,4 @@
-;;; custom-smartparens.el --- Part of my Emacs Setup  -*- lexical-binding: t; -*-
+;;; mu-smartparens.el --- Part of my Emacs Setup  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -73,6 +73,6 @@
 (add-hook 'after-save-hook ; Look for unbalanced parens when saving
           'check-parens nil t)
 
-(provide 'custom-pairs)
+(provide 'mu-pairs)
 
-;;; custom-pairs.el ends here
+;;; mu-pairs.el ends here

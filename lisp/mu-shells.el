@@ -1,4 +1,4 @@
-;;; custom-shells.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-shells.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -141,6 +141,6 @@ windows easier."
 ;; Truncate buffers continuously
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
 
-(provide 'custom-shells)
+(provide 'mu-shells)
 
-;;; custom-shells.el ends here
+;;; mu-shells.el ends here

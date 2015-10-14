@@ -1,4 +1,4 @@
-;;; custom-languages.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-languages.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -118,6 +118,6 @@ With prefix P, create local abbrev. Otherwise it will be global."
   :bind ("C-c a L g" . writegood-mode)
   :diminish (writegood-mode . " ⓖ"))
 
-(provide 'custom-languages)
+(provide 'mu-languages)
 
-;;; custom-languages.el ends here
+;;; mu-languages.el ends here
