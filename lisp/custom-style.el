@@ -26,8 +26,7 @@
           (progn
             (set-face-attribute 'default nil
                                 :family "DejaVu Sans Mono"
-                                :height 155
-                                :weight 'regular)
+                                :height 155)
             (set-face-attribute 'variable-pitch nil
                                 :family "Fira Sans"
                                 :height 150
@@ -35,8 +34,7 @@
         (progn
           (set-face-attribute 'default nil
                               :family "DejaVu Sans Mono"
-                              :height 125
-                              :weight 'regular)
+                              :height 125)
           (set-face-attribute 'variable-pitch nil
                               :family "Fira Sans"
                               :height 125
