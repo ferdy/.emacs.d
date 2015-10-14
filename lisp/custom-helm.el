@@ -265,6 +265,10 @@
   :ensure t
   :bind ("C-c c h" . helm-make))
 
+(use-package helm-gitignore ; Generate .gitignore files with gitignore.io
+  :ensure t
+  :bind ("C-c h g" . helm-gitignore))
+
 (provide 'custom-helm)
 
 ;;; custom-helm.el ends here
