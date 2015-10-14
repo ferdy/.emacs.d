@@ -51,7 +51,7 @@
     ;; Use visual-line-mode
     (add-hook 'org-mode-hook #'visual-line-mode)
 
-    (defun myorg-update-parent-cookie ()
+    (defun mu/org-update-parent ()
       "Update parent nodes when child is removed."
       (when (equal major-mode 'org-mode)
         (save-excursion
@@ -61,11 +61,11 @@
 
     (defadvice org-kill-line (after fix-cookies activate)
       "Update parent node."
-      (myorg-update-parent-cookie))
+      (mu/org-update-parent))
 
     (defadvice kill-whole-line (after fix-cookies activate)
       "Update parent node."
-      (myorg-update-parent-cookie))
+      (mu/org-update-parent))
 
     ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
     (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
