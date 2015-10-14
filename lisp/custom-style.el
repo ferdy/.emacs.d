@@ -19,26 +19,23 @@
 ;; - XITS Math (https://github.com/khaledhosny/xits-math)
 ;; - Gentium Plus (https://packages.debian.org/sid/fonts-sil-gentiumplus)
 
+(defun mu/setup-main-fonts (default-height variable-pitch-height)
+  "Set up default fonts.
+Use DEFAULT-HEIGHT for default face and VARIABLE-PITCH-HEIGHT
+for variable-pitch face."
+  (set-face-attribute 'default nil
+                      :family "DejaVu Sans Mono"
+                      :height default-height)
+  (set-face-attribute 'variable-pitch nil
+                      :family "Fira Sans"
+                      :height variable-pitch-height
+                      :weight 'regular))
+
 ;; Dinamically change font size based upon screen resolution
-(if window-system
-    (progn
-      (if (> (x-display-pixel-width) 1800)
-          (progn
-            (set-face-attribute 'default nil
-                                :family "DejaVu Sans Mono"
-                                :height 155)
-            (set-face-attribute 'variable-pitch nil
-                                :family "Fira Sans"
-                                :height 150
-                                :weight 'regular))
-        (progn
-          (set-face-attribute 'default nil
-                              :family "DejaVu Sans Mono"
-                              :height 125)
-          (set-face-attribute 'variable-pitch nil
-                              :family "Fira Sans"
-                              :height 125
-                              :weight 'regular)))))
+(when window-system
+  (if (> (x-display-pixel-width) 1800)
+      (mu/setup-main-fonts 155 155)
+    (mu/setup-main-fonts 125 125)))
 
 (defun mu/configure-fonts (frame)
   "Set up fonts for FRAME.
