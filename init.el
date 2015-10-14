@@ -71,18 +71,18 @@
        (lwarn 'emacs :warning "Your Emacs build is more than a week old!")))))
 
 ;; Set separate custom file for the customize interface
-(defconst custom/custom-file (locate-user-emacs-file "custom.el")
+(defconst mu/custom-file (locate-user-emacs-file "custom.el")
   "File used to store settings from Customization UI.")
 
 (use-package cus-edit
   :defer t
-  :config (setq custom-file custom/custom-file
+  :config (setq custom-file mu/custom-file
                 custom-buffer-done-kill nil    ; Kill when existing
                 custom-buffer-verbose-help nil ; Remove redundant help text
                 ;; Show me the real variable name
                 custom-unlispify-tag-names nil
                 custom-unlispify-menu-entries nil)
-  :init (load custom/custom-file 'no-error 'no-message))
+  :init (load mu/custom-file 'no-error 'no-message))
 
 ;; Set the directory where all backup and autosave files will be saved
 (defvar backup-dir "~/tmp/")
