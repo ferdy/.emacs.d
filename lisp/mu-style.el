@@ -121,6 +121,11 @@ symbols, greek letters, as well as fall backs for."
   :ensure zenburn-theme
   :init (load-theme 'zenburn 'no-confirm))
 
+(use-package darktooth ; Another beautiful dark theme
+  :disabled t
+  :ensure darktooth-theme
+  :init (load-theme 'darktooth 'no-confirm))
+
 ;;; Utilities and keybindings
 (setq custom-safe-themes t) ; Treat themes as safe
 
