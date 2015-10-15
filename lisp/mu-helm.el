@@ -13,13 +13,7 @@
 
 (use-package helm ; The ubiquitous Helm
   :ensure t
-  :init
-  (progn
-    (use-package helm-flx ; Sort Helm candidates with flx
-      :ensure t
-      :init (helm-flx-mode +1))
-
-    (helm-mode 1))
+  :init (helm-mode 1)
   :config
   (progn
     (use-package helm-config
