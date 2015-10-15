@@ -23,7 +23,6 @@
   "Set up default fonts.
 Use DEFAULT-HEIGHT for default face and VARIABLE-PITCH-HEIGHT
 for variable-pitch face."
-
   (set-face-attribute 'default nil
                       :family "DejaVu Sans Mono"
                       :height default-height)
@@ -42,7 +41,6 @@ for variable-pitch face."
   "Set up fonts for FRAME.
 Set the default font, and configure various overrides for
 symbols, greek letters, as well as fall backs for."
-
   (dolist (script '(symbol mathematical))
     (set-fontset-font t script (font-spec :family "XITS Math")
                       frame 'prepend))
