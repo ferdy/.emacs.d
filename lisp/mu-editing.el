@@ -37,12 +37,6 @@
   :defer t
   :init (delete-selection-mode))
 
-(use-package fix-word ; Convenient word transformation
-  :ensure t
-  :bind (("M-u" . fix-word-upcase)
-         ("M-l" . fix-word-downcase)
-         ("M-c" . fix-word-capitalize)))
-
 (use-package expand-region ; Increase the selected region by semantic units
   :ensure t
   :bind ("C-=" . er/expand-region))
@@ -78,11 +72,6 @@
 (use-package align ; Align text in buffers
   :bind (("C-c x a a" . align)
          ("C-c x a c" . align-current)))
-
-(use-package ediff-wind ; Better ediff behavior
-  :defer 5
-  :config (setq ediff-window-setup-function #'ediff-setup-windows-plain
-                ediff-split-window-function #'split-window-horizontally))
 
 (use-package multiple-cursors ; Easily place multiple cursors in a buffer
   :ensure t
@@ -157,7 +146,7 @@
 
 (use-package string-edit ; Edit strings in a separate buffer
   :ensure t
-  :commands string-edit-at-point)
+  :bind ("C-c x e" . string-edit-at-point))
 
 (use-package writeroom-mode ; Distraction-free interface
   :ensure t
