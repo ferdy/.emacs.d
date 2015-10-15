@@ -225,7 +225,6 @@
     (add-hook 'js2-mode-hook #'js2-highlight-unused-variables-mode)))
 
 (use-package css-mode ; Better CSS support
-  :defer t
   :mode "\\.css\\'"
   :config
   (progn
