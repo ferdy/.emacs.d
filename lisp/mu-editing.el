@@ -145,10 +145,6 @@
       (add-hook hook 'typo-mode)))
   :diminish (typo-mode . " Ⓣ"))
 
-(use-package string-edit ; Edit strings in a separate buffer
-  :ensure t
-  :bind ("C-c x e" . string-edit-at-point))
-
 (use-package writeroom-mode ; Distraction-free interface
   :ensure t
   :bind ("C-c t r" . writeroom-mode))
