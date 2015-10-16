@@ -75,10 +75,10 @@ windows easier."
                                              nil)))
 
     ;; Do not echo input back at me
-    (defun mu/shell-turn-echo-off ()
+    (defun mu-shell-turn-echo-off ()
       (setq comint-process-echoes t))
 
-    (add-hook 'shell-mode-hook 'mu/shell-turn-echo-off)))
+    (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off)))
 
 (use-package ansi-term ; Powerful terminal emulator
   :bind ("C-c a T" . ansi-term)

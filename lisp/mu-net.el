@@ -82,7 +82,7 @@
             (add-hook 'sx-compose-mode-hook #'turn-off-auto-fill)
             (add-hook 'sx-compose-mode-hook #'visual-line-mode)
             (add-hook 'sx-compose-mode-hook
-                      #'mu/whitespace-style-no-long-lines)
+                      #'mu-whitespace-style-no-long-lines)
 
             ;; Clean up whitespace before sending questions
             (add-hook 'sx-compose-before-send-hook
@@ -139,7 +139,7 @@
          ("C-c w w" . eww))
   :config
   (progn
-    (defun mu/eww-keep-lines (regexp)
+    (defun mu-eww-keep-lines (regexp)
       "Show only the lines matching regexp in the web page.
 Call `eww-reload' to undo the filtering."
       (interactive (list (read-from-minibuffer
@@ -152,17 +152,17 @@ Call `eww-reload' to undo the filtering."
 
 ;;; Utilities and keybindings
 ;; Toggle image display on/off, especially useful in eww
-(defvar-local mu/display-images t)
+(defvar-local mu-display-images t)
 
 ;;;###autoload
-(defun mu/toggle-image-display ()
+(defun mu-toggle-image-display ()
   "Toggle images display on current buffer."
   (interactive)
-  (setq mu/display-images
-        (null mu/display-images))
-  (mu/backup-display-property mu/display-images))
+  (setq mu-display-images
+        (null mu-display-images))
+  (mu-backup-display-property mu-display-images))
 
-(defun mu/backup-display-property (invert &optional object)
+(defun mu-backup-display-property (invert &optional object)
   "Move the 'display property at POS to 'display-backup.
 Only applies if display property is an image.
 If INVERT is non-nil, move from 'display-backup to 'display

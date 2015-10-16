@@ -203,7 +203,7 @@
 Except it moves to beginning of line before calling FUNCTION when
 called with a prefix argument.  The FUNCTION still receives the
 prefix argument."
-  (let ((name (intern (format "mu/%s-BOL" function))))
+  (let ((name (intern (format "mu-%s-BOL" function))))
     `(progn
        (defun ,name (p)
          ,(format
@@ -268,7 +268,7 @@ region if active."
 
 (bind-key "M-Q" #'unfill-paragraph) ; The opposite of fill-paragraph
 
-(defun mu/align-repeat (start end regexp &optional justify-right after)
+(defun mu-align-repeat (start end regexp &optional justify-right after)
   "Repeat alignment with respect to the given regular expression.
 If JUSTIFY-RIGHT is non nil justify to the right instead of the
 left.  If AFTER is non-nil, add whitespace to the left instead of
@@ -280,7 +280,7 @@ the right."
         (group (if justify-right -1 1)))
     (align-regexp start end complete-regexp group 1 t)))
 
-(defun mu/align-repeat-decimal (start end)
+(defun mu-align-repeat-decimal (start end)
   "Align a table of numbers on decimal points and dollar signs (both optional)."
   (interactive "r")
   (require 'align)
@@ -292,35 +292,35 @@ the right."
                        (justify nil t)))
                 nil))
 
-(defmacro mu/create-align-repeat-x
+(defmacro mu-create-align-repeat-x
     (name regexp &optional justify-right default-after)
-  (let ((new-func (intern (concat "mu/align-repeat-" name))))
+  (let ((new-func (intern (concat "mu-align-repeat-" name))))
     `(defun ,new-func (start end switch)
        (interactive "r\nP")
        (let ((after (not (eq (if switch t nil) (if ,default-after t nil)))))
-         (mu/align-repeat start end ,regexp ,justify-right after)))))
+         (mu-align-repeat start end ,regexp ,justify-right after)))))
 
-(mu/create-align-repeat-x "comma" "," nil t)
-(mu/create-align-repeat-x "semicolon" ";" nil t)
-(mu/create-align-repeat-x "colon" ":" nil t)
-(mu/create-align-repeat-x "equal" "=")
-(mu/create-align-repeat-x "math-oper" "[+\\-*/]")
-(mu/create-align-repeat-x "ampersand" "&")
-(mu/create-align-repeat-x "bar" "|")
-(mu/create-align-repeat-x "left-paren" "(")
-(mu/create-align-repeat-x "right-paren" ")" t)
+(mu-create-align-repeat-x "comma" "," nil t)
+(mu-create-align-repeat-x "semicolon" ";" nil t)
+(mu-create-align-repeat-x "colon" ":" nil t)
+(mu-create-align-repeat-x "equal" "=")
+(mu-create-align-repeat-x "math-oper" "[+\\-*/]")
+(mu-create-align-repeat-x "ampersand" "&")
+(mu-create-align-repeat-x "bar" "|")
+(mu-create-align-repeat-x "left-paren" "(")
+(mu-create-align-repeat-x "right-paren" ")" t)
 
-(bind-key "C-c x a r" #'mu/align-repeat)
-(bind-key "C-c x a m" #'mu/align-repeat-math-oper)
-(bind-key "C-c x a ." #'mu/align-repeat-decimal)
-(bind-key "C-c x a ," #'mu/align-repeat-comma)
-(bind-key "C-c x a ;" #'mu/align-repeat-semicolon)
-(bind-key "C-c x a :" #'mu/align-repeat-colon)
-(bind-key "C-c x a =" #'mu/align-repeat-equal)
-(bind-key "C-c x a &" #'mu/align-repeat-ampersand)
-(bind-key "C-c x a |" #'mu/align-repeat-bar)
-(bind-key "C-c x a (" #'mu/align-repeat-left-paren)
-(bind-key "C-c x a )" #'mu/align-repeat-right-paren)
+(bind-key "C-c x a r" #'mu-align-repeat)
+(bind-key "C-c x a m" #'mu-align-repeat-math-oper)
+(bind-key "C-c x a ." #'mu-align-repeat-decimal)
+(bind-key "C-c x a ," #'mu-align-repeat-comma)
+(bind-key "C-c x a ;" #'mu-align-repeat-semicolon)
+(bind-key "C-c x a :" #'mu-align-repeat-colon)
+(bind-key "C-c x a =" #'mu-align-repeat-equal)
+(bind-key "C-c x a &" #'mu-align-repeat-ampersand)
+(bind-key "C-c x a |" #'mu-align-repeat-bar)
+(bind-key "C-c x a (" #'mu-align-repeat-left-paren)
+(bind-key "C-c x a )" #'mu-align-repeat-right-paren)
 
 (bind-key [remap just-one-space] #'cycle-spacing)
 
