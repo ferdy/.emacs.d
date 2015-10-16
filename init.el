@@ -52,7 +52,7 @@
 (require 'diminish)
 (require 'bind-key)
 (require 'grep)
-(require 'subr-x)
+(require 'dash)
 (require 'rx)
 (require 'time-date)
 

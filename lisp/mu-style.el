@@ -60,7 +60,7 @@ symbols, greek letters, as well as fall backs for."
   (set-fontset-font t nil (font-spec :family "Symbola")
                     frame 'append))
 
-(when-let (frame (selected-frame))
+(-when-let (frame (selected-frame))
   (mu/configure-fonts frame))
 (add-hook 'after-make-frame-functions #'mu/configure-fonts)
 
