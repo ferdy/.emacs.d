@@ -187,8 +187,7 @@
                ("C-r" . helm-previous-line)
                ("C-s" . helm-next-line))
 
-    ;; Save buffer when helm-multi-swoop-edit complete
-    (setq helm-multi-swoop-edit-save t
+    (setq helm-multi-swoop-edit-save t ; Save when done with editing
           ;; If this value is t, split window inside the current window
           helm-swoop-split-with-multiple-windows nil
           ;; Split direction
@@ -198,7 +197,18 @@
           ;; Go to the opposite side from the end or beginning of line
           helm-swoop-move-to-line-cycle t
           ;; Optional face for line numbers
-          helm-swoop-use-line-number-face t)))
+          helm-swoop-use-line-number-face t)
+
+    ;; Match/Search methods (Fuzzy matching)
+    (defvar helm-c-source-swoop-match-functions
+      '(helm-mm-exact-match
+        helm-mm-match
+        helm-fuzzy-match))
+    (setq helm-c-source-swoop-search-functions
+          '(helm-mm-exact-search
+            helm-mm-search
+            helm-candidates-in-buffer-search-default-fn
+            helm-fuzzy-search))))
 
 (use-package helm-company ; Show Company candidates through Helm
   :ensure t
