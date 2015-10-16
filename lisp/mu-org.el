@@ -14,7 +14,7 @@
 (use-package org ; The almighty Org
   :ensure t
   :bind (("C-c a o a" . org-agenda-list)
-         ("C-c a o b" . mu/org-begin-template)
+         ("C-c a o b" . mu-org-begin-template)
          ("C-c a o c" . org-capture)
          ("C-c a o l" . org-store-link)
          ("C-c a o f" . org-cycle-agenda-files)
@@ -51,7 +51,7 @@
     ;; Use visual-line-mode
     (add-hook 'org-mode-hook #'visual-line-mode)
 
-    (defun mu/org-update-parent ()
+    (defun mu-org-update-parent ()
       "Update parent nodes when child is removed."
       (when (equal major-mode 'org-mode)
         (save-excursion
@@ -61,17 +61,17 @@
 
     (defadvice org-kill-line (after fix-cookies activate)
       "Update parent node."
-      (mu/org-update-parent))
+      (mu-org-update-parent))
 
     (defadvice kill-whole-line (after fix-cookies activate)
       "Update parent node."
-      (mu/org-update-parent))
+      (mu-org-update-parent))
 
     ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
     (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
     ;; Strike out DONE items
-    (defun mu/modify-org-done-face ()
+    (defun mu-modify-org-done-face ()
       (setq org-fontify-done-headline t)
       (set-face-attribute 'org-done nil :strike-through t)
       (set-face-attribute 'org-headline-done nil
@@ -79,7 +79,7 @@
                           :foreground "light gray"))
 
     (with-eval-after-load "org"
-      (add-hook 'org-add-hook 'mu/modify-org-done-face))
+      (add-hook 'org-add-hook 'mu-modify-org-done-face))
 
     ;; Define TODO workflow states and different faces
     (setq org-todo-keywords
@@ -114,14 +114,14 @@ allowfullscreen>%s</iframe>"
 
     ;; Disable whitespace highlighting of overlong lines in Org Mode
     (add-hook 'org-mode-hook
-              #'mu/whitespace-style-no-long-lines)
+              #'mu-whitespace-style-no-long-lines)
 
     ;; Use F12 to toggle image visualization
     (bind-key "<f12>"
               (lambda () (interactive) (org-toggle-inline-images t))
               org-mode-map)
 
-    (defun mu/org-ispell ()
+    (defun mu-org-ispell ()
       "Configure `ispell-skip-region-alist' for `org-mode'."
       (make-local-variable 'ispell-skip-region-alist)
       (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
@@ -130,12 +130,12 @@ allowfullscreen>%s</iframe>"
       (add-to-list 'ispell-skip-region-alist
                    '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
 
-    (add-hook 'org-mode-hook #'mu/org-ispell)
+    (add-hook 'org-mode-hook #'mu-org-ispell)
 
     (add-hook 'org-mode-hook (lambda ()
                                (diminish 'org-indent-mode " ⓘ")))
 
-    (defun mu/org-begin-template ()
+    (defun mu-org-begin-template ()
       "Make a template at point."
       (interactive)
       (if (org-at-table-p)

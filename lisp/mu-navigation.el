@@ -53,12 +53,12 @@
 
 ;;; Utilities and keybindings
 ;; Better forward and backward paragraph
-(defun mu/forward-paragraph (&optional n)
+(defun mu-forward-paragraph (&optional n)
   "Advance N times just past next blank line."
   (interactive "p")
   (let ((m (use-region-p))
         (para-commands
-         '(mu/forward-paragraph mu/backward-paragraph)))
+         '(mu-forward-paragraph mu-backward-paragraph)))
     ;; Only push mark if it's not active and we're not repeating.
     (or m
         (not (member this-command para-commands))
@@ -79,13 +79,13 @@
       ;; This looks redundant, but it's surprisingly necessary.
       (back-to-indentation))))
 
-(defun mu/backward-paragraph (&optional n)
+(defun mu-backward-paragraph (&optional n)
   "Go back up N times to previous blank line."
   (interactive "p")
-  (mu/forward-paragraph (- n)))
+  (mu-forward-paragraph (- n)))
 
-(bind-key "M-a" 'mu/backward-paragraph)
-(bind-key "M-e" 'mu/forward-paragraph)
+(bind-key "M-a" 'mu-backward-paragraph)
+(bind-key "M-e" 'mu-forward-paragraph)
 
 (bind-key "M-g" 'goto-line) ; Goto line is M-g
 

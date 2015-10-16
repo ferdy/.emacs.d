@@ -19,7 +19,7 @@
 ;; - XITS Math (https://github.com/khaledhosny/xits-math)
 ;; - Gentium Plus (https://packages.debian.org/sid/fonts-sil-gentiumplus)
 
-(defun mu/setup-main-fonts (default-height variable-pitch-height)
+(defun mu-setup-main-fonts (default-height variable-pitch-height)
   "Set up default fonts.
 Use DEFAULT-HEIGHT for default face and VARIABLE-PITCH-HEIGHT
 for variable-pitch face."
@@ -34,10 +34,10 @@ for variable-pitch face."
 ;; Dinamically change font size based upon screen resolution
 (when window-system
   (if (> (x-display-pixel-width) 1800)
-      (mu/setup-main-fonts 155 155)
-    (mu/setup-main-fonts 125 125)))
+      (mu-setup-main-fonts 155 155)
+    (mu-setup-main-fonts 125 125)))
 
-(defun mu/configure-fonts (frame)
+(defun mu-configure-fonts (frame)
   "Set up fonts for FRAME.
 Set the default font, and configure various overrides for
 symbols, greek letters, as well as fall backs for."
@@ -61,8 +61,8 @@ symbols, greek letters, as well as fall backs for."
                     frame 'append))
 
 (-when-let (frame (selected-frame))
-  (mu/configure-fonts frame))
-(add-hook 'after-make-frame-functions #'mu/configure-fonts)
+  (mu-configure-fonts frame))
+(add-hook 'after-make-frame-functions #'mu-configure-fonts)
 
 ;;; Interface
 (use-package frame ; Frames

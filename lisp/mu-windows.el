@@ -41,7 +41,7 @@
 
 ;;; Utilities and keybindings
 ;;;###autoload
-(defun mu/quit-bottom-side-windows ()
+(defun mu-quit-bottom-side-windows ()
   "Quit side windows of the current frame."
   (interactive)
   (dolist (window (window-at-side-list))
@@ -49,14 +49,14 @@
 
 ;; Taken graciously from Spacemacs
 ;;;###autoload
-(defun mu/switch-to-minibuffer-window ()
+(defun mu-switch-to-minibuffer-window ()
   "Switch to current minibuffer window (if active)."
   (interactive)
   (when (active-minibuffer-window)
     (select-window (active-minibuffer-window))))
 
 ;;;###autoload
-(defun mu/toggle-current-window-dedication ()
+(defun mu-toggle-current-window-dedication ()
   "Toggle dedication state of a window."
   (interactive)
   (let* ((window    (selected-window))
@@ -66,9 +66,9 @@
              (if dedicated "no longer " "")
              (buffer-name))))
 
-(bind-key "C-c w q" #'mu/quit-bottom-side-windows)
-(bind-key "C-c w d" #'mu/toggle-current-window-dedication)
-(bind-key "C-c w b" #'mu/switch-to-minibuffer-window)
+(bind-key "C-c w q" #'mu-quit-bottom-side-windows)
+(bind-key "C-c w d" #'mu-toggle-current-window-dedication)
+(bind-key "C-c w b" #'mu-switch-to-minibuffer-window)
 
 ;; Better shrink/enlarge windows
 (bind-keys*
