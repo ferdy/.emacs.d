@@ -65,6 +65,7 @@
 
 (use-package aggressive-indent ; Automatically indent code
   :ensure t
+  :bind ("C-c t i" . aggressive-indent-mode)
   :init (global-aggressive-indent-mode 1)
   :config (add-to-list 'aggressive-indent-excluded-modes
                        'cider-repl-mode))
