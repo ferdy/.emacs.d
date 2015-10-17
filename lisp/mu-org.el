@@ -182,6 +182,10 @@ allowfullscreen>%s</iframe>"
     (setq org-time-stamp-custom-formats
           '("<%d %b %Y>" . "<%d/%m/%y %a %H:%M>"))))
 
+(use-package org-indent
+  :ensure org
+  :init (add-hook 'org-mode-hook #'org-indent-mode))
+
 (use-package autoinsert ; Auto insert custom text
   :init
   (progn
