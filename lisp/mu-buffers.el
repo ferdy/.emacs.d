@@ -42,6 +42,7 @@
         (,(rx bos (or "*Flycheck errors*" ; Flycheck error list
                       "*compilation"      ; Compilation buffers
                       "*Warnings*"        ; Emacs warnings
+                      "*Help*"            ; Help window
                       "*shell"            ; Shell window
                       "*cider-repl"       ; CIDER buffers
                       "*sly-mrepl"        ; Sly REPL
