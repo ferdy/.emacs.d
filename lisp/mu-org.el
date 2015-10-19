@@ -132,9 +132,6 @@ allowfullscreen>%s</iframe>"
 
     (add-hook 'org-mode-hook #'mu-org-ispell)
 
-    (add-hook 'org-mode-hook (lambda ()
-                               (diminish 'org-indent-mode " ⓘ")))
-
     (defun mu-org-begin-template ()
       "Make a template at point."
       (interactive)
@@ -184,7 +181,8 @@ allowfullscreen>%s</iframe>"
 
 (use-package org-indent
   :ensure org
-  :init (add-hook 'org-mode-hook #'org-indent-mode))
+  :init (add-hook 'org-mode-hook #'org-indent-mode)
+  :diminish (org-indent-mode ." ⓘ"))
 
 (use-package autoinsert ; Auto insert custom text
   :init
