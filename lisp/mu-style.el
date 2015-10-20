@@ -13,12 +13,12 @@
 
 ;;; Fonts setup
 ;; These are the fonts in use:
-;; - Source Code Pro (https://github.com/adobe-fonts/source-code-pro)
-;; - DejaVu Sans Mono (https://packages.debian.org/sid/fonts-dejavu)
-;; - Fira Sans (https://github.com/mozilla/Fira)
-;; - Symbola (https://packages.debian.org/sid/ttf-ancient-fonts)
-;; - XITS Math (https://github.com/khaledhosny/xits-math)
-;; - Gentium Plus (https://packages.debian.org/sid/fonts-sil-gentiumplus)
+;; - Source Code Pro: https://github.com/adobe-fonts/source-code-pro
+;; - DejaVu Sans Mono: https://packages.debian.org/sid/fonts-dejavu
+;; - Fira Sans: https://github.com/mozilla/Fira
+;; - Symbola: https://packages.debian.org/sid/ttf-ancient-fonts
+;; - XITS Math: https://github.com/khaledhosny/xits-math
+;; - Gentium Plus: https://packages.debian.org/sid/fonts-sil-gentiumplus
 
 (defun mu-setup-main-fonts (default-height variable-pitch-height)
   "Set up default fonts.
