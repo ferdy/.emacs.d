@@ -22,11 +22,11 @@
 (setq apropos-do-all t)
 
 (use-package calendar ; Display a calendar
-  :bind ("C-c a c c" . calendar)
+  :bind ("C-c a t c" . calendar)
   :config (setq calendar-week-start-day 1)); Start on Monday
 
 (use-package time ; Display time
-  :bind ("C-c a c t" . display-time-world)
+  :bind ("C-c a t t" . display-time-world)
   :config
   (setq display-time-world-time-format "%H:%M %Z, %d. %b"
         display-time-world-list '(("Europe/Rome" "Rome")
