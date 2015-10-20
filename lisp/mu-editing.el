@@ -168,7 +168,7 @@
 
 (use-package wrap-region ; Wrap a region with symbols and tags
   :ensure t
-  :bind ("C-c x r" . wrap-region-mode)
+  :bind ("C-c t W" . wrap-region-mode)
   :config (wrap-region-add-wrappers
            '(("*" "*" nil org-mode)
              ("~" "~" nil org-mode)
