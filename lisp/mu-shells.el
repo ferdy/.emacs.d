@@ -12,7 +12,7 @@
 ;;; Code:
 
 (use-package eshell ; Emacs command shell
-  :bind ("C-c a e" . eshell-here)
+  :bind ("C-c a s e" . eshell-here)
   :config
   (progn
     ;; Handy aliases
@@ -59,7 +59,7 @@ windows easier."
          (unintern 'eshell/sudo nil)))))
 
 (use-package shell ; Specialized comint.el for running the shell
-  :bind ("C-c a t" . shell)
+  :bind ("C-c a s t" . shell)
   :config
   (progn
     (defun clear-shell ()
@@ -81,7 +81,7 @@ windows easier."
     (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off)))
 
 (use-package ansi-term ; Powerful terminal emulator
-  :bind ("C-c a T" . ansi-term)
+  :bind ("C-c a s T" . ansi-term)
   :init
   (progn
     ;; Always use Zsh
