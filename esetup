@@ -172,6 +172,14 @@ configuring camcorder dependencies..."
 ... done"
 }
 
+bongo_setup() {
+    echo "
+configuring bongo dependencies..."
+    sudo apt-get -y install --no-install-recommends mpg123
+    echo "
+... done"
+}
+
 echo "
 ##########################################
 # esetup                                 #
@@ -195,6 +203,7 @@ synosaurus_setup
 langtool_setup
 font_setup
 camcorder_setup
+bongo_setup
 
 echo "
 environment ready, now fire up Emacs!
