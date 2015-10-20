@@ -13,6 +13,7 @@
 
 ;;; Fonts setup
 ;; These are the fonts in use:
+;; - Source Code Pro (https://github.com/adobe-fonts/source-code-pro)
 ;; - DejaVu Sans Mono (https://packages.debian.org/sid/fonts-dejavu)
 ;; - Fira Sans (https://github.com/mozilla/Fira)
 ;; - Symbola (https://packages.debian.org/sid/ttf-ancient-fonts)
@@ -24,7 +25,7 @@
 Use DEFAULT-HEIGHT for default face and VARIABLE-PITCH-HEIGHT
 for variable-pitch face."
   (set-face-attribute 'default nil
-                      :family "DejaVu Sans Mono"
+                      :family "Source Code Pro"
                       :height default-height)
   (set-face-attribute 'variable-pitch nil
                       :family "Fira Sans"
