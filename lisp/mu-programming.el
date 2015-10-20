@@ -205,7 +205,7 @@
 
 ;;; Databases
 (use-package sql ; SQL editing and REPL
-  :bind ("C-c a s" . sql-connect)
+  :commands sql-connect
   :config (add-hook 'sql-interactive-mode-hook #'toggle-truncate-lines))
 
 ;;; Web development
