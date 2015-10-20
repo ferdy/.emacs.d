@@ -18,7 +18,8 @@
   :diminish (camcorder-mode ". ⓒ"))
 
 (use-package volume ; Control audio volume from Emacs
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package bongo ; Play music with Emacs
   :ensure t
