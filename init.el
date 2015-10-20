@@ -128,5 +128,7 @@
 (use-package mu-project)
 (use-package mu-shells)
 (use-package mu-utilities)
+(use-package mu-bugs)
+(use-package mu-media)
 
 ;;; init.el ends here
