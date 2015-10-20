@@ -38,11 +38,6 @@
   :bind (("C-c a m q" . quick-calc)
          ("C-c a m c" . calc)))
 
-(use-package camcorder ; Record movements from within Emacs
-  :ensure t
-  :no-require t
-  :init (setq camcorder-window-id-offset -2))
-
 (use-package proced ; Manage processes
   :bind ("C-c a a p" . proced)
   :config
@@ -65,21 +60,6 @@
 (use-package command-log-mode ; Show event history and command history
   :ensure t
   :bind ("C-c t l" . command-log-mode))
-
-;;; Bugs management
-(use-package bug-reference ; Buttonize bug references
-  :no-require t
-  :init
-  (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
-         (add-hook 'text-mode-hook #'bug-reference-mode)))
-
-(use-package bug-hunter ; Find bugs in Emacs configuration
-  :ensure t
-  :commands bug-hunter-file)
-
-(use-package debbugs ; Access the GNU bug tracker
-  :ensure t
-  :defer t)
 
 (provide 'mu-utilities)
 
