@@ -132,7 +132,7 @@ symbols, greek letters, as well as fall backs for."
 
 (setq history-length 1000) ; Store more history
 
-(setq-default line-spacing 0.2) ; Increase line-spacing (default 0)
+(setq-default line-spacing 0.1) ; Increase line-spacing (default 0)
 
 ;; Configure a reasonable fill column and enable automatic filling
 (setq-default fill-column 80)
