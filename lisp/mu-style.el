@@ -118,14 +118,10 @@ symbols, greek letters, as well as fall backs for."
     (load-theme 'solarized-light 'no-confirm)))
 
 (use-package zenburn ; Beautiful dark theme
-  :disabled t
-  :ensure zenburn-theme
-  :init (load-theme 'zenburn 'no-confirm))
+  :ensure zenburn-theme)
 
 (use-package darktooth ; Another beautiful dark theme
-  :disabled t
-  :ensure darktooth-theme
-  :init (load-theme 'darktooth 'no-confirm))
+  :ensure darktooth-theme)
 
 ;;; Utilities and keybindings
 (setq custom-safe-themes t) ; Treat themes as safe
