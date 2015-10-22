@@ -68,7 +68,7 @@
   :diminish (magit-wip-after-save-local-mode
              magit-wip-before-change-mode))
 
-(use-package magit-rockstar ; Extra commit functions for Magit
+(use-package magit-rockstar ; Extra functions for Magit
   :ensure t
   :init
   (progn
