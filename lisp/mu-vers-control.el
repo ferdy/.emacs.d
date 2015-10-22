@@ -70,16 +70,16 @@
 
 (use-package magit-rockstar ; Extra commit functions for Magit
   :ensure t
-  :defer t
-  :config (with-eval-after-load 'magit
-            (magit-define-popup-action 'magit-rebase-popup
-              ?R "Rockstar" 'magit-rockstar)
-            (magit-define-popup-action 'magit-commit-popup
-              ?n "Reshelve" 'magit-reshelve)
-            (magit-define-popup-action 'magit-branch-popup
-              ?R "Toggle rebasing" 'magit-branch-toggle-rebase)
-            (magit-define-popup-action 'magit-fetch-popup
-              ?p "Pull request" 'magit-branch-pull-request)))
+  :init
+  (progn
+    (magit-define-popup-action 'magit-rebase-popup
+      ?R "Rockstar" 'magit-rockstar)
+    (magit-define-popup-action 'magit-commit-popup
+      ?n "Reshelve" 'magit-reshelve)
+    (magit-define-popup-action 'magit-branch-popup
+      ?R "Toggle rebasing" 'magit-branch-toggle-rebase)
+    (magit-define-popup-action 'magit-fetch-popup
+      ?p "Pull request" 'magit-branch-pull-request)))
 
 (use-package git-commit ; Git commit message mode
   :ensure t
