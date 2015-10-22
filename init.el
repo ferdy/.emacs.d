@@ -118,7 +118,6 @@
 (use-package mu-search)
 (use-package mu-files :defer 2)
 (use-package mu-completion :defer 3)
-(use-package mu-formatting)
 (use-package mu-languages)
 (use-package mu-latex)
 (use-package mu-vers-control :defer 5)
