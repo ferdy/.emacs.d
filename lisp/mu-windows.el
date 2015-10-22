@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the windows customizations.
+;; This file stores my windows customizations and utilities.
 
 ;;; Code:
 

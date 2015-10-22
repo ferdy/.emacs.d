@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configuration for programming utilities.
+;; This file stores my configuration for programming utilities.
 
 ;;; Code:
 

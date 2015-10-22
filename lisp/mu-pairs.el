@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores pairs balancing configuration
+;; This file stores my pairs balancing configuration.
 
 ;;; Code:
 

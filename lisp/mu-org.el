@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configuration for everything Org mode related.
+;; This file stores my Org-mode configuration.
 
 ;;; Code:
 

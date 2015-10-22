@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the interface customizations.
+;; This file stores my look'n'feel configuration.
 
 ;;; Code:
 

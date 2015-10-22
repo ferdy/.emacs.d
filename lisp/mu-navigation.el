@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configuration for in-buffer navigation.
+;; This file stores my configuration for in-buffer navigation.
 
 ;;; Code:
 

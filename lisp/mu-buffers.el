@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores configuration for buffers.
+;; This file stores my configuration for buffers.
 
 ;;; Code:
 

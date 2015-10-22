@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configuration for everything completion related.
+;; This file stores my configuration for autocompletion tools.
 
 ;;; Code:
 

@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configurations for media utilities.
+;; This file stores my configuration for media utilities.
 
 ;;; Code:
 

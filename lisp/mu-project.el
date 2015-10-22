@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configuration for project management utilities.
+;; This file stores my configuration for project management utilities.
 
 ;;; Code:
 

@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the keybindings which are not strictly related to:
+;; This file stores keybindings that are not strictly related to:
 ;; - a specific mode already configured with use-package;
 ;; - another mu-* file.
 

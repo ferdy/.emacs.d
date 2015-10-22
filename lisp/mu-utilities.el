@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configurations for random utilities.
+;; This file stores my configuration for random utilities.
 
 ;;; Code:
 
@@ -60,6 +60,14 @@
 (use-package command-log-mode ; Show event history and command history
   :ensure t
   :bind ("C-c t l" . command-log-mode))
+
+(use-package pandoc-mode ; Easily control Pandoc in Emacs
+  :ensure t
+  :bind ("C-c t P" . pandoc-mode)
+  :config
+  (progn
+    (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+    (setq org-pandoc-output-format 'odt)))
 
 (provide 'mu-utilities)
 

@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configuration for highlighting utilites.
+;; This file stores my configuration for highlighting utilities.
 
 ;;; Code:
 

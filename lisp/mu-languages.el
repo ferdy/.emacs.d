@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configuration for languages and translations.
+;; This file stores my configuration for languages and translations utilities.
 
 ;;; Code:
 

@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configurations for bugs management utilities.
+;; This file stores my configuration for bugs management utilities.
 
 ;;; Code:
 

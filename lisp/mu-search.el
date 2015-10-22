@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores searching customizations.
+;; This file stores searching customizations and utilities.
 
 ;;; Code:
 

@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores the configuration for eshell, shell and ansi-term.
+;; This file stores my configuration for eshell, shell and ansi-term.
 
 ;;; Code:
 

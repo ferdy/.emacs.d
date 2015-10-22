@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores dired and file settings.
+;; This file stores my configuration for Dired and file management.
 
 ;;; Code:
 
