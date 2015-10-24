@@ -42,6 +42,7 @@
 (mu-define-group "C-c m" major-mode)
 (mu-define-group "C-c n" navigation)
 (mu-define-group "C-c n l" links)
+(mu-define-group "C-c n m" marks)
 (mu-define-group "C-c o" multiple-cursors)
 (mu-define-group "C-c p" projects)
 (mu-define-group "C-c s" search-and-symbols)
