@@ -51,6 +51,12 @@
   :ensure t
   :bind ("C-c n g" . goto-last-change))
 
+(use-package show-marks ; Navigate and visualize the mark-ring
+  :ensure t
+  :bind (("C-c n m s" . show-marks)
+         ("C-c n m f" . forward-mark)
+         ("C-c n m b" . backward-mark)))
+
 ;;; Utilities and keybindings
 ;; Better forward and backward paragraph
 (defun mu-forward-paragraph (&optional n)
