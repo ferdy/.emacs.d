@@ -122,11 +122,11 @@
 (use-package mu-latex)
 (use-package mu-vers-control :defer 5)
 (use-package mu-net)
+(use-package mu-utilities)
 (use-package mu-org :defer 1)
 (use-package mu-programming)
 (use-package mu-project)
 (use-package mu-shells)
-(use-package mu-utilities)
 (use-package mu-bugs)
 (use-package mu-media)
 
