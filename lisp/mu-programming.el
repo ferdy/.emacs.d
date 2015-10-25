@@ -113,7 +113,13 @@
     (setq cider-repl-history-size 1000
           cider-repl-history-file
           (locate-user-emacs-file "cider-repl-history")
-          cider-repl-pop-to-buffer-on-connect nil)))
+          cider-repl-pop-to-buffer-on-connect nil
+          cider-repl-result-prefix ";; => ")))
+
+(use-package cider-stacktrace ; Navigate stacktrace
+  :ensure cider
+  :defer t
+  :config (setq cider-stacktrace-fill-column t))
 
 (use-package clj-refactor ; Refactoring utilities
   :ensure t
