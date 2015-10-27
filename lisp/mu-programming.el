@@ -141,14 +141,6 @@
   ;; Do not show defqueries by default
   :config (setq yesql-ghosts-show-ghosts-automatically nil))
 
-(use-package elein ; Run Leiningen commands from Emacs
-  :ensure t
-  :defer t
-  :init (with-eval-after-load 'clojure-mode
-          (bind-keys :map clojure-mode-map
-                     ("C-c m l c" . elein-run-cmd)
-                     ("C-c m l t" . elein-run-task))))
-
 ;;; Scheme
 (use-package scheme ; Configuration for Scheme
   :config
