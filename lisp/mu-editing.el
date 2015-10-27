@@ -178,6 +178,10 @@
              ("/* " " */" "#" (javascript-mode css-mode))
              ("`" "`" nil markdown-mode))))
 
+(use-package hungry-delete ; Delete useless white spaces
+  :ensure t
+  :init (global-hungry-delete-mode))
+
 (use-package rst ; ReStructuredText
   :defer t
   :config
