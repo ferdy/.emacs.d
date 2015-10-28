@@ -69,6 +69,10 @@
     (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
     (setq org-pandoc-output-format 'odt)))
 
+(use-package list-environment ; List process environment variables
+  :ensure t
+  :bind ("C-c a a l" . list-environment))
+
 (provide 'mu-utilities)
 
 ;;; mu-utilities.el ends here
