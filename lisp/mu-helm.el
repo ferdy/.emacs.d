@@ -31,6 +31,8 @@
           ;; Scroll 8 lines using M-<next>/M-<prior>
           helm-scroll-amount 8
           ;; Fuzzy matching
+          helm-mode-fuzzy-match t
+          helm-completion-in-region-fuzzy-match t
           helm-M-x-fuzzy-match t
           helm-semantic-fuzzy-match t
           helm-lisp-fuzzy-completion t
