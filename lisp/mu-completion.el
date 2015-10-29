@@ -107,6 +107,12 @@
   :init (with-eval-after-load 'company
           (add-to-list 'company-backends 'company-restclient)))
 
+(use-package company-flx ; Flx based fuzzy matching for company
+  :ensure t
+  :defer t
+  :init (with-eval-after-load 'company
+          (company-flx-mode +1)))
+
 (provide 'mu-completion)
 
 ;;; mu-completion.el ends here
