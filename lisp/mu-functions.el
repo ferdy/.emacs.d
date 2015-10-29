@@ -58,6 +58,7 @@ into the count."
 
 (defun mu--string-to-acronym (string)
   "Convert STRING into an acronym.
+
 An acronym must be uppercase and have each letter followed by a dot."
   (s-upcase
    (s-append "."
@@ -68,6 +69,7 @@ An acronym must be uppercase and have each letter followed by a dot."
 ;;;###autoload
 (defun mu-word-to-acronym (arg)
   "Convert word at or next to point to its acronym.
+
 With numerical argument ARG, convert the next ARG-1 words as well.
 With negative argument, convert previous words."
   (interactive "p")
