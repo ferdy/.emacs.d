@@ -60,11 +60,7 @@ into the count."
   "Convert STRING into an acronym.
 
 An acronym must be uppercase and have each letter followed by a dot."
-  (s-upcase
-   (s-append "."
-             (s-join "."
-                     (delete ""
-                             (s-split "" string))))))
+  (s-upcase (s-append "." (s-join "." (delete "" (s-split "" string))))))
 
 ;;;###autoload
 (defun mu-word-to-acronym (arg)
