@@ -56,6 +56,42 @@ into the count."
            (when (> elapsed 0.001)
              (message "spent (%.3fs)" elapsed)))))))
 
+(defun mu--string-to-acronym (string)
+  "Convert STRING into an acronym.
+An acronym must be uppercase and have each letter followed by a dot."
+  (s-upcase
+   (s-append "."
+             (s-join "."
+                     (delete ""
+                             (s-split "" string))))))
+
+;;;###autoload
+(defun mu-word-to-acronym (arg)
+  "Convert word at or next to point to its acronym.
+With numerical argument ARG, convert the next ARG-1 words as well.
+With negative argument, convert previous words."
+  (interactive "p")
+  ;; With negative argument, move back point firstly
+  (when (< arg 0)
+    ;; If point is in a word but not at the beginning of that word,
+    ;; then move to the beginning
+    (let ((bounds (bounds-of-thing-at-point 'word)))
+      (when (and bounds (not (= (car bounds) (point))))
+        (forward-word -1)))
+    (forward-word arg))
+  (dotimes (_ (abs arg))
+    ;; Adjust point in case point isn't on any word
+    (forward-word)
+    (backward-word)
+    (let ((bounds (bounds-of-thing-at-point 'word)))
+      (when bounds
+        (let* ((beg (car bounds))
+               (end (cdr bounds))
+               (str (buffer-substring beg end)))
+          (delete-region beg end)
+          (goto-char beg)
+          (insert (mu--string-to-acronym str)))))))
+
 (provide 'mu-functions)
 
 ;;; mu-functions.el ends here
