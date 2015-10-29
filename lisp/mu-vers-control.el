@@ -38,6 +38,20 @@
           magit-push-always-verify nil
           magit-revision-show-gravatars nil)
 
+    (defadvice magit-status (around magit-fullscreen activate)
+      "Turn fullscreen on for magit-status."
+      (window-configuration-to-register :magit-fullscreen)
+      ad-do-it
+      (delete-other-windows))
+
+    (defun magit-quit-session ()
+      "Restore previous window configuration and cleanup buffers."
+      (interactive)
+      (mu-kill-buffers "^\\*magit")
+      (jump-to-register :magit-fullscreen))
+
+    (bind-key "q" #'magit-quit-session magit-status-mode-map)
+
     ;; Set `magit-repository-directories' for `magit-status'
     (defun mu-magit-set-repo-dirs-from-projectile ()
       "Set `magit-repository-directories' with known Projectile projects."
