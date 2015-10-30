@@ -38,6 +38,7 @@
           magit-push-always-verify nil
           magit-revision-show-gravatars nil)
 
+    ;; Set `magit-status' fullscreen
     (setq magit-post-display-buffer-hook
           #'(lambda ()
               (when (derived-mode-p 'magit-status-mode)
