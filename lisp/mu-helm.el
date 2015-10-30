@@ -75,17 +75,10 @@
           helm-ff-skip-boring-files t
           ;; Search for library in `require' and `declare-function' sexp
           helm-ff-search-library-in-sexp t
-          ;; Fuzzy matching
-          ;; helm-recentf-fuzzy-match t
           ;; Auto-complete in find-files
           helm-ff-auto-update-initial-value t
           ;; Sort directories first
-          helm-find-files-sort-directories t)
-
-    ;; helm-recentf-fuzzy-match var is broken: redeclare it manually
-    (setq helm-source-recentf
-          (helm-make-source "Recentf" 'helm-recentf-source
-            :fuzzy-match t))))
+          helm-find-files-sort-directories t)))
 
 (use-package helm-misc ; Misc Helm commands
   :ensure helm
