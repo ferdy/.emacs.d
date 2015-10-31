@@ -300,6 +300,10 @@
   :ensure t
   :defer t)
 
+(use-package describe-number ; Describe any number at point
+  :ensure t
+  :bind ("C-c a d" . describe-number-at-point))
+
 (defun uncomment-sexp (&optional n)
   "Uncomment a sexp around point."
   (interactive "P")
