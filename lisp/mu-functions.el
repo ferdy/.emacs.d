@@ -90,6 +90,34 @@ With negative argument, convert previous words."
           (goto-char beg)
           (insert (mu--string-to-acronym str)))))))
 
+;;;###autoload
+(defun mu-list-known-bindings (key)
+  "List all known binding for KEY."
+  (interactive "kList known bindings for key: ")
+  (with-current-buffer (get-buffer-create "*known bindings*")
+    (erase-buffer)
+    (mapatoms (lambda (sym)
+                (when (or (eq sym 'global-map)
+                          (and (boundp sym)
+                               (symbol-value sym)
+                               (s-ends-with-p "-mode-map" (symbol-name sym))
+                               (keymapp (symbol-value sym))))
+                  (let ((binding (lookup-key (symbol-value sym) key t)))
+                    (when (and binding
+                               (not (numberp binding)))
+                      (insert (format "%-40s `%s'\n"
+                                      (format "`%s'" sym)
+                                      (if (keymapp binding)
+                                          "KEYMAP"
+                                        binding))))))))
+    (sort-lines nil (point-min) (point-max))
+    (goto-char (point-min))
+    (insert
+     (format "Known bindings for key: %s\n\n" (key-description key))
+     (format "%-40s %s" "Map" "Binding\n")
+     (s-repeat 40 "-") " " (s-repeat 30 "-") "\n")
+    (display-buffer (current-buffer))))
+
 (provide 'mu-functions)
 
 ;;; mu-functions.el ends here
