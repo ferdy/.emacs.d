@@ -101,7 +101,7 @@
   :bind (([remap yank-pop]        . helm-show-kill-ring)
          ("C-h SPC"               . helm-all-mark-rings)))
 
-;;; Navigation
+;;; Projects and navigation
 (use-package helm-imenu ; Imenu through Helm
   :ensure helm
   :bind (("C-c n i" . helm-imenu-in-all-buffers)
@@ -120,6 +120,11 @@
 (use-package helm-pages ; Move between pages in current buffer with Helm
   :ensure t
   :bind ("C-c n P" . helm-pages))
+
+(use-package helm-projectile ; Projectile through Helm
+  :ensure t
+  :init (with-eval-after-load 'projectile (helm-projectile-on))
+  :config (setq projectile-switch-project-action #'helm-projectile))
 
 ;;; Programming
 (use-package helm-eval ; Evaluate expressions with Helm
@@ -158,6 +163,10 @@
 (use-package helm-man ; Manual pages through Helm
   :ensure helm
   :bind ("C-c h m" . helm-man-woman))
+
+(use-package helm-descbinds ; Describing keybinding through Helm
+  :ensure t
+  :bind ("C-c h d" . helm-descbinds))
 
 ;;; Search
 (use-package helm-regex ; Helm regex tools
@@ -236,7 +245,26 @@
           (bind-key "C-c h y" #'helm-yas-complete))
   :config (setq helm-yas-space-match-any-greedy t))
 
-;;; Utilities
+;;; Languages
+(use-package helm-flyspell ; Use Flyspell with Helm
+  :ensure t
+  :bind ("C-c h f" . helm-flyspell-correct))
+
+(use-package helm-wordnet ; Helm interface for Wordnet dictionary
+  :ensure t
+  :bind ("C-c h w" . helm-wordnet)
+  :config (setq helm-wordnet-wordnet-location "/usr/share/wordnet"))
+
+;;; Input
+(use-package helm-color ; Input colors with Helm
+  :ensure helm
+  :bind ("C-c h c" . helm-colors))
+
+(use-package helm-unicode ; Browse Unicode characters by name
+  :ensure t
+  :bind ("C-c h 8" . helm-unicode))
+
+;;; Shell integration
 (use-package helm-shell ; Manage shells/terms with Helm
   :ensure helm
   :defer t
@@ -257,39 +285,14 @@
                             'helm-esh-pcomplete
                             eshell-mode-map)))))
 
+;;; Extra utilities
 (use-package helm-external ; Run external commands through Helm
   :ensure helm
   :bind ("C-c h x" . helm-run-external-command))
 
-(use-package helm-color ; Input colors with Helm
-  :ensure helm
-  :bind ("C-c h c" . helm-colors))
-
-(use-package helm-descbinds ; Describing keybinding through Helm
-  :ensure t
-  :bind ("C-c h d" . helm-descbinds))
-
-(use-package helm-unicode ; Browse Unicode characters by name
-  :ensure t
-  :bind ("C-c h 8" . helm-unicode))
-
-(use-package helm-flyspell ; Use Flyspell with Helm
-  :ensure t
-  :bind ("C-c h f" . helm-flyspell-correct))
-
 (use-package helm-bibtex ; Manage BibTeX bibliographies with Helm
   :ensure t
   :bind ("C-c h h b" . helm-bibtex))
-
-(use-package helm-projectile ; Projectile through Helm
-  :ensure t
-  :init (with-eval-after-load 'projectile (helm-projectile-on))
-  :config (setq projectile-switch-project-action #'helm-projectile))
-
-(use-package helm-wordnet ; Helm interface for Wordnet dictionary
-  :ensure t
-  :bind ("C-c h w" . helm-wordnet)
-  :config (setq helm-wordnet-wordnet-location "/usr/share/wordnet"))
 
 (use-package helm-gitignore ; Generate .gitignore files with gitignore.io
   :ensure t
