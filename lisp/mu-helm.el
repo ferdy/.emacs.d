@@ -11,6 +11,7 @@
 
 ;;; Code:
 
+;;; Core setup
 (use-package helm ; The ubiquitous Helm
   :ensure t
   :init (helm-mode 1)
@@ -98,9 +99,9 @@
 (use-package helm-ring ; Helm commands for rings
   :ensure helm
   :bind (([remap yank-pop]        . helm-show-kill-ring)
-         ([remap insert-register] . helm-register)
          ("C-h SPC"               . helm-all-mark-rings)))
 
+;;; Navigation
 (use-package helm-imenu ; Imenu through Helm
   :ensure helm
   :bind (("C-c n i" . helm-imenu-in-all-buffers)
@@ -120,6 +121,7 @@
   :ensure t
   :bind ("C-c n P" . helm-pages))
 
+;;; Programming
 (use-package helm-eval ; Evaluate expressions with Helm
   :ensure helm
   :bind (("C-c h M-:" . helm-eval-expression-with-eldoc)
@@ -131,6 +133,23 @@
          ("C-c h l" . helm-locate-library))
   :config (setq helm-apropos-fuzzy-match t))
 
+(use-package cljr-helm ; Helm interface for clj-refactor
+  :ensure t
+  :bind ("C-c h h c" . cljr-helm))
+
+(use-package helm-cider-history ; Integrate cider-input-history with Helm
+  :ensure t
+  :commands helm-cider-history)
+
+(use-package helm-make ; Select a Makefile target with Helm
+  :ensure t
+  :bind ("C-c c h" . helm-make))
+
+(use-package helm-flycheck ; Show Flycheck errors with Helm
+  :ensure t
+  :bind ("C-c h h f" . helm-flycheck))
+
+;;; Help
 (use-package helm-info ; Helm tools for Info
   :ensure helm
   :bind (("C-c h e" . helm-info-emacs)
@@ -140,34 +159,7 @@
   :ensure helm
   :bind ("C-c h m" . helm-man-woman))
 
-(use-package helm-external ; Run external commands through Helm
-  :ensure helm
-  :bind ("C-c h x" . helm-run-external-command))
-
-(use-package helm-color ; Input colors with Helm
-  :ensure helm
-  :bind ("C-c h c" . helm-colors))
-
-(use-package helm-shell ; Manage shells/terms with Helm
-  :ensure helm
-  :defer t
-  :init
-  (progn
-    ;; Shell history
-    (add-hook 'eshell-mode-hook
-              #'(lambda ()
-                  (bind-key "C-c C-l"
-                            #'helm-eshell-history
-                            eshell-mode-map)))
-    (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)
-
-    ;; Completion with helm
-    (add-hook 'eshell-mode-hook
-              #'(lambda ()
-                  (bind-key [remap eshell-pcomplete]
-                            'helm-esh-pcomplete
-                            eshell-mode-map)))))
-
+;;; Search
 (use-package helm-regex ; Helm regex tools
   :ensure helm
   :bind (("C-c M-o"     . helm-occur)
@@ -220,6 +212,14 @@
             helm-candidates-in-buffer-search-default-fn
             helm-fuzzy-search))))
 
+(use-package helm-ag ; Helm frontend for Ag
+  :ensure t
+  :bind ("C-c h s" . helm-do-ag)
+  :config (setq helm-ag-fuzzy-match t
+                helm-ag-insert-at-point 'symbol
+                helm-ag-source-type 'file-line))
+
+;;; Completion
 (use-package helm-company ; Show Company candidates through Helm
   :ensure t
   :defer t
@@ -236,6 +236,35 @@
           (bind-key "C-c h y" #'helm-yas-complete))
   :config (setq helm-yas-space-match-any-greedy t))
 
+;;; Utilities
+(use-package helm-shell ; Manage shells/terms with Helm
+  :ensure helm
+  :defer t
+  :init
+  (progn
+    ;; Shell history
+    (add-hook 'eshell-mode-hook
+              #'(lambda ()
+                  (bind-key "C-c C-l"
+                            #'helm-eshell-history
+                            eshell-mode-map)))
+    (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)
+
+    ;; Completion with helm
+    (add-hook 'eshell-mode-hook
+              #'(lambda ()
+                  (bind-key [remap eshell-pcomplete]
+                            'helm-esh-pcomplete
+                            eshell-mode-map)))))
+
+(use-package helm-external ; Run external commands through Helm
+  :ensure helm
+  :bind ("C-c h x" . helm-run-external-command))
+
+(use-package helm-color ; Input colors with Helm
+  :ensure helm
+  :bind ("C-c h c" . helm-colors))
+
 (use-package helm-descbinds ; Describing keybinding through Helm
   :ensure t
   :bind ("C-c h d" . helm-descbinds))
@@ -248,10 +277,6 @@
   :ensure t
   :bind ("C-c h f" . helm-flyspell-correct))
 
-(use-package helm-flycheck ; Show Flycheck errors with Helm
-  :ensure t
-  :bind ("C-c h h f" . helm-flycheck))
-
 (use-package helm-bibtex ; Manage BibTeX bibliographies with Helm
   :ensure t
   :bind ("C-c h h b" . helm-bibtex))
@@ -261,29 +286,10 @@
   :init (with-eval-after-load 'projectile (helm-projectile-on))
   :config (setq projectile-switch-project-action #'helm-projectile))
 
-(use-package helm-ag ; Helm frontend for Ag
-  :ensure t
-  :bind ("C-c h s" . helm-do-ag)
-  :config (setq helm-ag-fuzzy-match t
-                helm-ag-insert-at-point 'symbol
-                helm-ag-source-type 'file-line))
-
 (use-package helm-wordnet ; Helm interface for Wordnet dictionary
   :ensure t
   :bind ("C-c h w" . helm-wordnet)
   :config (setq helm-wordnet-wordnet-location "/usr/share/wordnet"))
-
-(use-package cljr-helm ; Helm interface for clj-refactor
-  :ensure t
-  :bind ("C-c h h c" . cljr-helm))
-
-(use-package helm-cider-history ; Integrate cider-input-history with Helm
-  :ensure t
-  :commands helm-cider-history)
-
-(use-package helm-make ; Select a Makefile target with Helm
-  :ensure t
-  :bind ("C-c c h" . helm-make))
 
 (use-package helm-gitignore ; Generate .gitignore files with gitignore.io
   :ensure t
