@@ -42,7 +42,8 @@
           org-agenda-include-diary t
           org-agenda-use-time-grid t
           ;; Follow links by pressing ENTER on them
-          org-return-follows-link t)
+          org-return-follows-link t
+          org-ellipsis "⤵")
 
     (setq org-directory (expand-file-name "~/org/")
           org-default-notes-file
