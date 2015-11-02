@@ -24,11 +24,6 @@
          ("C-c v g" . magit-blame)
          ("C-c v l" . magit-log-buffer-file)
          ("C-c v p" . magit-pull))
-  ;; Aggressively commit to WIP refs on any change
-  :init
-  (progn (magit-wip-after-save-mode)
-         (magit-wip-after-apply-mode)
-         (magit-wip-before-change-mode))
   :config
   (progn
     ;; Be quiet
