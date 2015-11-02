@@ -51,7 +51,7 @@
       (magit-restore-window-configuration kill-buffer)
       (mu-kill-buffers "^\\*magit"))
 
-    (setq magit-bury-buffer-function #'magit-quit-session)
+    (bind-key "q" #'magit-quit-session magit-status-mode-map)
 
     ;; Set `magit-repository-directories' for `magit-status'
     (defun mu-magit-set-repo-dirs-from-projectile ()
