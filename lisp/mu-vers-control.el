@@ -44,6 +44,15 @@
               (when (derived-mode-p 'magit-status-mode)
                 (delete-other-windows))))
 
+    ;; Kill, don't bury, all related buffers on quit
+    (defun magit-quit-session (&optional kill-buffer)
+      "Kill all Magit buffers on quit"
+      (interactive)
+      (magit-restore-window-configuration kill-buffer)
+      (mu-kill-buffers "^\\*magit"))
+
+    (setq magit-bury-buffer-function #'magit-quit-session)
+
     ;; Set `magit-repository-directories' for `magit-status'
     (defun mu-magit-set-repo-dirs-from-projectile ()
       "Set `magit-repository-directories' with known Projectile projects."
