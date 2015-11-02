@@ -132,7 +132,10 @@
       (cljr-add-keybindings-with-prefix "C-c m r"))
 
     (add-hook 'clojure-mode-hook #'mu-clojure-mode-hook))
-  :config (setq cljr-suppress-middleware-warnings t)
+  :config (setq cljr-suppress-middleware-warnings t
+                cljr-auto-sort-ns t
+                cljr-favor-prefix-notation
+                cljr-favor-private-functions)
   :diminish clj-refactor-mode)
 
 (use-package yesql-ghosts ; Display ghostly yesql queries inline
