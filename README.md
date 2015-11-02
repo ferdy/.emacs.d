@@ -63,9 +63,9 @@ $ ./esetup
 
 ##Updates
 This configuration tracks latest Emacs developments. If you intend to use it, I
-highly recommend you update and re-build your sources at least once a week.
+highly recommend you update and build your sources at least once a week.
 
-You can use [Magit](https://github.com/magit/magit), ```magit-status``` is bound
+You can use [Magit](https://github.com/magit/magit); ```magit-status``` is bound
 to ```C-c v v```. Or you can do it with the command line:
 ```console
 $ cd emacs
