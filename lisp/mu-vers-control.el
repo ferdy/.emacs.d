@@ -44,7 +44,7 @@
               (when (derived-mode-p 'magit-status-mode)
                 (delete-other-windows))))
 
-    ;; Kill, don't bury, all related buffers on quit
+    ;; Kill Magit buffers when quitting `magit-status'
     (defun magit-quit-session (&optional kill-buffer)
       "Kill all Magit buffers on quit"
       (interactive)
