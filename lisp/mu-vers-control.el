@@ -24,6 +24,11 @@
          ("C-c v g" . magit-blame)
          ("C-c v l" . magit-log-buffer-file)
          ("C-c v p" . magit-pull))
+  ;; Aggressively commit to WIP refs on any change
+  :init
+  (progn (magit-wip-after-save-mode)
+         (magit-wip-after-apply-mode)
+         (magit-wip-before-change-mode))
   :config
   (progn
     ;; Be quiet
@@ -56,20 +61,22 @@
       (mu-magit-set-repo-dirs-from-projectile))
 
     (add-hook 'projectile-switch-project-hook
-              #'mu-magit-set-repo-dirs-from-projectile)))
+              #'mu-magit-set-repo-dirs-from-projectile))
+  :diminish (magit-wip-after-save-local-mode
+             magit-wip-before-change-mode))
 
-(use-package gh ; Github API library
-  ;; Don't ensure it, since it's only brought in as dependency
-  :ensure nil
-  :defer t
-  ;; Change the default profile.  The profile itself is set up via customize,
-  ;; and includes auth data, to prevent it from storing tokens in Git config
-  :config (setq gh-profile-default-profile "manuel-uberti"))
-
-(use-package magit-gh-pulls ; Show Github PRs in Magit
+(use-package magit-rockstar ; Extra functions for Magit
   :ensure t
-  :defer t
-  :init (add-hook 'magit-mode-hook #'turn-on-magit-gh-pulls))
+  :init
+  (progn
+    (magit-define-popup-action 'magit-rebase-popup
+                               ?R "Rockstar" 'magit-rockstar)
+    (magit-define-popup-action 'magit-commit-popup
+                               ?n "Reshelve" 'magit-reshelve)
+    (magit-define-popup-action 'magit-branch-popup
+                               ?R "Toggle rebasing" 'magit-branch-toggle-rebase)
+    (magit-define-popup-action 'magit-fetch-popup
+                               ?p "Pull request" 'magit-branch-pull-request)))
 
 (use-package git-commit ; Git commit message mode
   :ensure t
