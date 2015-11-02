@@ -56,22 +56,7 @@
       (mu-magit-set-repo-dirs-from-projectile))
 
     (add-hook 'projectile-switch-project-hook
-              #'mu-magit-set-repo-dirs-from-projectile))
-  :diminish (magit-wip-after-save-local-mode
-             magit-wip-before-change-mode))
-
-(use-package magit-rockstar ; Extra functions for Magit
-  :ensure t
-  :init
-  (progn
-    (magit-define-popup-action 'magit-rebase-popup
-      ?R "Rockstar" 'magit-rockstar)
-    (magit-define-popup-action 'magit-commit-popup
-      ?n "Reshelve" 'magit-reshelve)
-    (magit-define-popup-action 'magit-branch-popup
-      ?R "Toggle rebasing" 'magit-branch-toggle-rebase)
-    (magit-define-popup-action 'magit-fetch-popup
-      ?p "Pull request" 'magit-branch-pull-request)))
+              #'mu-magit-set-repo-dirs-from-projectile)))
 
 (use-package gh ; Github API library
   ;; Don't ensure it, since it's only brought in as dependency
