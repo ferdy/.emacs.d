@@ -37,9 +37,19 @@
 (package-initialize)
 
 (setq load-prefer-newer t)         ; Always load newer compiled files
-(setq gc-cons-threshold 100000000) ; Allow more than 800Kb cache
 (setq gnutls-min-prime-bits 4096)  ; Avoid GnuTLS warnings
 (setq message-log-max 10000)       ; Debugging
+
+;; Allow more than 800Kb cache during init
+(setq gc-cons-threshold 50000000)
+
+;; Reset threshold to its default after Emacs has startup, because a large
+;; GC threshold equates to longer delays whenever GC happens
+(defun mu-set-gc-threshold ()
+  "Reset `gc-cons-threshold' to its default value."
+  (setq gc-cons-threshold 800000))
+
+(add-hook 'emacs-startup-hook 'mu-set-gc-threshold)
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
