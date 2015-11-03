@@ -44,7 +44,7 @@
     (add-hook 'tex-mode-hook
               #'(lambda () (setq ispell-parser 'tex)))
 
-    ;; Revert your PDF buffers after successful LaTeX runs
+    ;; Update PDF buffers after successful LaTeX runs
     (defun mu-pdf-view-revert-buffer-maybe (file)
       (when-let ((buf (find-buffer-visiting file)))
         (with-current-buffer buf
