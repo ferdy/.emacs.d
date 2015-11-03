@@ -182,10 +182,6 @@
   :ensure t
   :init (global-hungry-delete-mode))
 
-(use-package commify ; Insert grouping commas in numbers
-  :ensure t
-  :bind ("C-c x c" . commify-toggle))
-
 (use-package rst ; ReStructuredText
   :defer t
   :config
