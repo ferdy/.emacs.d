@@ -84,10 +84,10 @@
   :init (beacon-mode 1)
   :config
   (progn
-    (setq beacon-color "#cccec4"
-          beacon-dont-blink-major-modes
-          '(magit-status-mode magit-popup-mode shell-mode eshell-mode))
-
+    (setq beacon-color "#cccec4")
+    ;; Don't blink on specific major modes
+    (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
+    (add-to-list 'beacon-dont-blink-major-modes 'eshell-mode)
     ;; Don't blink on next-line/previous-line at the top/bottom of the window
     (add-to-list 'beacon-dont-blink-commands 'next-line)
     (add-to-list 'beacon-dont-blink-commands 'previous-line))
