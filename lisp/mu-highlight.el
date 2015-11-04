@@ -82,6 +82,7 @@
 (use-package beacon ; Highlight cursor when moving in buffers and windows
   :ensure t
   :init (beacon-mode 1)
+  :config (setq beacon-color "#cccec4")
   :diminish beacon-mode)
 
 ;;; Utilities and keybindings
