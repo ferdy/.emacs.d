@@ -47,11 +47,6 @@ windows easier."
       "Run scrips from current working on remote system."
       (setq command (file-truename command)))
 
-    ;; Disable hl-line-mode in eshell
-    (add-hook 'eshell-mode-hook (lambda ()
-                                  (setq-local global-hl-line-mode
-                                              nil)))
-
     ;; Use system su/sudo
     (with-eval-after-load "em-unix"
       '(progn
@@ -69,11 +64,6 @@ windows easier."
 
     (bind-key "C-l" #'clear-shell shell-mode-map)
 
-    ;; Disable hl-line-mode in shell
-    (add-hook 'shell-mode-hook (lambda ()
-                                 (setq-local global-hl-line-mode
-                                             nil)))
-
     ;; Do not echo input back at me
     (defun mu-shell-turn-echo-off ()
       (setq comint-process-echoes t))
@@ -89,11 +79,6 @@ windows easier."
     (defadvice ansi-term (before force-bash)
       (interactive (list my-term-shell)))
     (ad-activate 'ansi-term)
-
-    ;; Disable hl-line-mode in ansi-term
-    (add-hook 'term-mode-hook (lambda ()
-                                (setq-local global-hl-line-mode
-                                            nil)))
 
     ;; Close buffer with 'exit'
     (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))

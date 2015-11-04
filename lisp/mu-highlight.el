@@ -60,18 +60,6 @@
   :defer t
   :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-(use-package hl-line ; Highlight current line
-  :init (global-hl-line-mode 1)
-  :config
-  (progn
-    ;; Highlight visual line. Useful for long, wrapped lines
-    (defun highlight-visual-line ()
-      (save-excursion
-        (cons (progn (beginning-of-visual-line) (point))
-              (progn (end-of-visual-line) (point)))))
-
-    (setq hl-line-range-function 'highlight-visual-line)))
-
 (use-package hi-lock ; Custom regexp highlights
   :init (global-hi-lock-mode))
 

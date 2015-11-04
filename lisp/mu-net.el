@@ -33,12 +33,9 @@
       :defer t
       :config (erc-services-mode 1))
 
-    (setq erc-nick gp-nick) ; Set nickname
+    ;; Set nickname
+    (setq erc-nick gp-nick)))
 
-    ;; Disable hl-line-mode in erc
-    (add-hook 'erc-mode-hook (lambda ()
-                               (setq-local global-hl-line-mode
-                                           nil)))))
 (use-package elfeed ; RSS feed reader
   :ensure t
   :bind ("C-c a f" . elfeed)
