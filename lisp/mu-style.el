@@ -106,7 +106,6 @@ symbols, greek letters, as well as fall backs for."
 ;;; Theme
 (use-package solarized ; Default theme
   :ensure solarized-theme
-  :defer t
   :config
   (progn
     (setq solarized-use-variable-pitch nil  ; Avoid all font-size changes
@@ -115,7 +114,9 @@ symbols, greek letters, as well as fall backs for."
           solarized-use-more-italic t       ; Use italic more often
           solarized-use-less-bold t         ; Less bold, italic is enough
           ;; Underline below the font bottomline instead of the baseline
-          x-underline-at-descent-line t)))
+          x-underline-at-descent-line t)
+
+    (load-theme 'solarized-light 'no-confirm)))
 
 (use-package zenburn ; Beautiful dark theme
   :ensure zenburn-theme
@@ -127,7 +128,7 @@ symbols, greek letters, as well as fall backs for."
 
 (use-package zerodark
   :ensure zerodark-theme
-  :init (load-theme 'zerodark 'no-confirm))
+  :defer t)
 
 ;;; Utilities and keybindings
 (setq custom-safe-themes t) ; Treat themes as safe
@@ -179,7 +180,7 @@ symbols, greek letters, as well as fall backs for."
                                "cWip"
                                "sWip")
                              "\\|"))
-          sml/theme 'respectful
+          sml/theme nil
           sml/mode-width 'full
           sml/no-confirm-load-theme t)
     (sml/setup))
