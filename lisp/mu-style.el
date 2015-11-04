@@ -125,6 +125,10 @@ symbols, greek letters, as well as fall backs for."
   :ensure darktooth-theme
   :defer t)
 
+(use-package zerodark
+  :ensure zerodark-theme
+  :defer t)
+
 ;;; Utilities and keybindings
 (setq custom-safe-themes t) ; Treat themes as safe
 
