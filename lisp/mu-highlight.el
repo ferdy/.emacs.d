@@ -82,9 +82,15 @@
 (use-package beacon ; Highlight cursor when moving in buffers and windows
   :ensure t
   :init (beacon-mode 1)
-  :config (setq beacon-color "#cccec4"
-                beacon-dont-blink-major-modes
-                '(magit-status-mode magit-popup-mode shell-mode eshell-mode))
+  :config
+  (progn
+    (setq beacon-color "#cccec4"
+          beacon-dont-blink-major-modes
+          '(magit-status-mode magit-popup-mode shell-mode eshell-mode))
+
+    ;; Don't blink on next-line/previous-line at the top/bottom of the window
+    (add-to-list 'beacon-dont-blink-commands 'next-line)
+    (add-to-list 'beacon-dont-blink-commands 'previous-line))
   :diminish beacon-mode)
 
 ;;; Utilities and keybindings
