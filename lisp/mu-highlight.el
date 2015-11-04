@@ -79,6 +79,11 @@
   :ensure t
   :bind ("C-c t h" . focus-mode))
 
+(use-package beacon ; Highlight cursor when moving in buffers and windows
+  :ensure t
+  :init (beacon-mode 1)
+  :diminish beacon-mode)
+
 ;;; Utilities and keybindings
 (defun mu-whitespace-style-no-long-lines ()
   "Configure `whitespace-mode' for Org.
