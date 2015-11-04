@@ -84,7 +84,7 @@
   :init (beacon-mode 1)
   :config
   (progn
-    (setq beacon-color "#cccec4")
+    (setq beacon-color "#93a1a1")
     ;; Don't blink on specific major modes
     (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
     (add-to-list 'beacon-dont-blink-major-modes 'eshell-mode)
