@@ -126,7 +126,7 @@ symbols, greek letters, as well as fall backs for."
   :ensure darktooth-theme
   :defer t)
 
-(use-package zerodark
+(use-package zerodark ; Yet another beautiful dark theme
   :ensure zerodark-theme
   :defer t)
 
