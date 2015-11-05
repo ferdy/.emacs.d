@@ -167,12 +167,15 @@
   :mode "\\.csv\\'")
 
 (use-package image+ ; Better image management
-  :defer t
   :ensure t
-  :init (with-eval-after-load 'image
-          (imagex-global-sticky-mode 1)
-          (imagex-auto-adjust-mode 1))
-  :config (setq imagex-quiet-error t))
+  :defer t
+  :after image
+  :config
+  (progn
+    (imagex-global-sticky-mode 1)
+    (imagex-auto-adjust-mode 1)
+
+    (setq imagex-quiet-error t)))
 
 (use-package systemd ; Major mode for editing systemd units
   :ensure t

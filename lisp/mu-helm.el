@@ -123,7 +123,8 @@
 
 (use-package helm-projectile ; Projectile through Helm
   :ensure t
-  :init (with-eval-after-load 'projectile (helm-projectile-on))
+  :after projectile
+  :init (helm-projectile-on)
   :config (setq projectile-switch-project-action #'helm-projectile))
 
 ;;; Programming
@@ -231,18 +232,20 @@
 ;;; Completion
 (use-package helm-company ; Show Company candidates through Helm
   :ensure t
-  :defer t
-  :init (with-eval-after-load 'company
-          ;; Use Company for completion
-          (bind-key [remap completion-at-point] #'helm-company company-mode-map)
-          (bind-key "C-:" #'helm-company company-mode-map)
-          (bind-key "C-:" #'helm-company company-active-map)))
+  :after company
+  :config
+  (progn
+    ;; Use Company for completion
+    (bind-key [remap completion-at-point] #'helm-company company-mode-map)
+    (bind-key "C-:" #'helm-company company-mode-map)
+    (bind-key "C-:" #'helm-company company-active-map)))
+
+
 
 (use-package helm-c-yasnippet ; Helm source for Yasnippet
   :ensure t
-  :defer t
-  :init (with-eval-after-load 'yasnippet
-          (bind-key "C-c h y" #'helm-yas-complete))
+  :after yasnippet
+  :init (bind-key "C-c h y" #'helm-yas-complete)
   :config (setq helm-yas-space-match-any-greedy t))
 
 ;;; Languages

@@ -79,7 +79,7 @@
                           :strike-through t
                           :foreground "light gray"))
 
-    (with-eval-after-load "org"
+    (with-eval-after-load 'org
       (add-hook 'org-add-hook 'mu-modify-org-done-face))
 
     ;; Define TODO workflow states and different faces

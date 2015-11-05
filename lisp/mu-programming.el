@@ -37,15 +37,14 @@
 (use-package flycheck-package ; Check package conventions with Flycheck
   :ensure t
   :defer t
-  :init (with-eval-after-load 'flycheck (flycheck-package-setup)))
+  :after flycheck
+  :init (flycheck-package-setup))
 
 (use-package flycheck-clojure ; Backend for Clojure
   :ensure t
   :defer t
-  :init
-  (progn
-    (with-eval-after-load 'flycheck '(flycheck-clojure-setup))
-    (add-hook 'after-init-hook #'flycheck-mode)))
+  :after flycheck
+  :init (add-hook 'after-init-hook #'flycheck-mode))
 
 ;;; Emacs Lisp
 (use-package ielm ; Emacs Lisp REPL
@@ -266,9 +265,11 @@
 
 (use-package macrostep ; Navigate through macros
   :ensure t
-  :init (with-eval-after-load 'lisp-mode
-          (bind-key "C-c m m e" #'macrostep-expand emacs-lisp-mode-map)
-          (bind-key "C-c m m e" #'macrostep-expand lisp-interaction-mode-map)))
+  :after lisp-mode
+  :init
+  (progn
+    (bind-key "C-c m m e" #'macrostep-expand emacs-lisp-mode-map)
+    (bind-key "C-c m m e" #'macrostep-expand lisp-interaction-mode-map)))
 
 (use-package compile ; Compile from Emacs
   :bind (("C-c c C" . compile)

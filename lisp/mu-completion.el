@@ -66,29 +66,26 @@
 
 (use-package company-statistics ; Show likelier candidates on top
   :ensure t
-  :defer t
-  :init (with-eval-after-load 'company
-          (company-statistics-mode)))
+  :after company
+  :init (company-statistics-mode))
 
 (use-package company-quickhelp ; Show help in tooltip
   :ensure t
-  :defer t
-  :init (with-eval-after-load 'company
-          (company-quickhelp-mode)))
+  :after company
+  :init (company-quickhelp-mode))
 
 (use-package company-math ; Backend for math symbols
   :ensure t
-  :defer t
-  :init (with-eval-after-load 'company
-          ;; Add backends for math characters
-          (add-to-list 'company-backends 'company-math-symbols-unicode)
-          (add-to-list 'company-backends 'company-math-symbols-latex)))
+  :after company
+  :init
+  (progn
+    (add-to-list 'company-backends 'company-math-symbols-unicode)
+    (add-to-list 'company-backends 'company-math-symbols-latex)))
 
 (use-package company-web ; Backend for web development
   :ensure t
-  :defer t
-  :init (with-eval-after-load 'company
-          (add-to-list 'company-backends 'company-web-html)))
+  :after company
+  :init (add-to-list 'company-backends 'company-web-html))
 
 (use-package company-auctex ; Backend for AUCTeX
   :ensure t
@@ -103,9 +100,8 @@
 
 (use-package company-restclient ; Company support for restclient
   :ensure t
-  :defer t
-  :init (with-eval-after-load 'company
-          (add-to-list 'company-backends 'company-restclient)))
+  :after company
+  :init (add-to-list 'company-backends 'company-restclient))
 
 (provide 'mu-completion)
 

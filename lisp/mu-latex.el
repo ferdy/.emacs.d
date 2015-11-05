@@ -102,8 +102,8 @@
 (use-package auctex-latexmk ; Add LatexMk support to AUCTeX
   :ensure t
   :defer t
-  :init (with-eval-after-load 'latex
-          (auctex-latexmk-setup)))
+  :after latex
+  :init (auctex-latexmk-setup))
 
 (use-package bibtex ; Edit and validate BibTeX files
   :defer t
