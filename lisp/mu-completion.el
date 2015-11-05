@@ -42,7 +42,7 @@
 
 (use-package pcomplete-extension ; Enhanced completion in (e)shell buffers
   :ensure t
-  :init (with-eval-after-load 'eshell '(require pcomplete-extension)))
+  :after eshell)
 
 (use-package company ; Auto-completion
   :ensure t

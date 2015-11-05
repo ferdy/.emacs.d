@@ -266,7 +266,7 @@ allowfullscreen>%s</iframe>"
 
 (use-package org-pdfview ; Link to PDF files
   :ensure t
-  :init (with-eval-after-load 'org '(require org-pdfview)))
+  :after org)
 
 (use-package interleave ; Take notes in org files while reading PDFs
   :ensure t
@@ -274,7 +274,7 @@ allowfullscreen>%s</iframe>"
 
 (use-package ox-mediawiki ; Export to mediawiki format
   :ensure t
-  :init (with-eval-after-load 'org '(require ox-mediawiki)))
+  :after org)
 
 ;;; Utilities and keybindings
 (bind-key "<f5>" ; Open organizer file

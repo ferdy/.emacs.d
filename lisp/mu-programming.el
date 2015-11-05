@@ -96,8 +96,7 @@
 (use-package clojure-mode-extra-font-locking ; Font-locking for Clojure mode
   :ensure t
   :defer t
-  :init (with-eval-after-load 'clojure-mode
-          (require 'clojure-mode-extra-font-locking)))
+  :after clojure-mode)
 
 (use-package nrepl-client ; Client for Clojure nREPL
   :ensure cider
