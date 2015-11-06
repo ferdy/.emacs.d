@@ -226,7 +226,7 @@
   :ensure t
   :defer t)
 
-(use-package tiny ;
+(use-package tiny ; Quickly generate number ranges
   :ensure t
   :bind ("C-c x e" . tiny-expand))
 
