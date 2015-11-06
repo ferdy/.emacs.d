@@ -147,7 +147,7 @@
 
 (use-package string-edit ; Edit strings in a separate buffer
   :ensure t
-  :bind ("C-c x e" . string-edit-at-point))
+  :bind ("C-c x s" . string-edit-at-point))
 
 (use-package writeroom-mode ; Distraction-free interface
   :ensure t
@@ -225,6 +225,10 @@
 (use-package markdown-toc ; Create Table of Contents in Markdown files
   :ensure t
   :defer t)
+
+(use-package tiny ;
+  :ensure t
+  :bind ("C-c x e" . tiny-expand))
 
 (setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
 
