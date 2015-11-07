@@ -299,6 +299,11 @@ prefix argument."
 
 (bind-key "C-x C-d" 'duplicate-line) ; Duplicate line at point
 
+;; Join line with the next one
+(bind-key "M-j" '(lambda ()
+                   (interactive)
+                   (join-line -1)))
+
 (defun flush-kill-lines (regex)
   "Flush lines matching REGEX and append to kill ring.  Restrict to \
 region if active."
