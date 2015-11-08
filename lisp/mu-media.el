@@ -15,7 +15,7 @@
   :ensure t
   :bind ("C-c t c" . camcorder-mode)
   :config (setq camcorder-output-directory "~/videos")
-  :diminish (camcorder-mode ". ⓒ"))
+  :diminish camcorder-mode)
 
 (use-package volume ; Control audio volume from Emacs
   :ensure t
