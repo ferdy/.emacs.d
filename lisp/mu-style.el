@@ -118,10 +118,6 @@ symbols, greek letters, as well as fall backs for."
 
     (load-theme 'solarized-light 'no-confirm)))
 
-(use-package zenburn ; Beautiful dark theme
-  :ensure zenburn-theme
-  :defer t)
-
 (use-package darktooth ; Another beautiful dark theme
   :ensure darktooth-theme
   :defer t)
