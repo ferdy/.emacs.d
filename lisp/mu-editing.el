@@ -300,7 +300,7 @@ prefix argument."
 (bind-key "C-x C-d" 'duplicate-line) ; Duplicate line at point
 
 ;; Join line with the next one
-(bind-key "M-j" '(lambda ()
+(bind-key "C-j" '(lambda ()
                    (interactive)
                    (join-line -1)))
 
