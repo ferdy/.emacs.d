@@ -89,8 +89,6 @@
     (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
     (add-to-list 'beacon-dont-blink-major-modes 'eshell-mode)
     ;; Don't blink on next-line/previous-line at the top/bottom of the window
-    (add-to-list 'beacon-dont-blink-commands 'next-line)
-    (add-to-list 'beacon-dont-blink-commands 'previous-line)
     (add-to-list 'beacon-dont-blink-commands 'sx-question-list-next)
     (add-to-list 'beacon-dont-blink-commands 'sx-question-list-previous))
   :diminish beacon-mode)
