@@ -240,8 +240,6 @@
     (bind-key "C-:" #'helm-company company-mode-map)
     (bind-key "C-:" #'helm-company company-active-map)))
 
-
-
 (use-package helm-c-yasnippet ; Helm source for Yasnippet
   :ensure t
   :after yasnippet
