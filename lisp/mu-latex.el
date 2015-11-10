@@ -31,7 +31,9 @@
           TeX-quote-after-quote t
           ;; Provide forward and inverse search with SyncTeX
           TeX-source-correlate-mode t
-          TeX-source-correlate-method 'synctex)
+          TeX-source-correlate-method 'synctex
+          ;; Tune fill-paragraph
+          LaTeX-fill-break-at-separators '(\\\( \\\[))
 
     (setq-default TeX-master nil     ; Ask for the master file
                   TeX-engine 'luatex ; Use luatex
