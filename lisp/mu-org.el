@@ -211,7 +211,6 @@ allowfullscreen>%s</iframe>"
   :ensure t
   :bind (("C-c a o w" . org2blog/wp-new-entry)
          ("C-c a o p" . org2blog/wp-post-buffer))
-  :init (use-package org2blog-autoloads)
   :config
   (progn
     (setq org2blog/wp-use-sourcecode-shortcode t
@@ -226,6 +225,10 @@ allowfullscreen>%s</iframe>"
              :url "https://filmsinwords.wordpress.com/xmlrpc.php"
              :username "manueluberti"))))
   :diminish (org2blog/wp-mode . " ⓑ"))
+
+(use-package org2blog-autoloads ; Autoloads from `ox-wp.el'
+  :ensure org2blog
+  :after org2blog)
 
 (use-package toc-org ; Table of contents for Org files
   :ensure t

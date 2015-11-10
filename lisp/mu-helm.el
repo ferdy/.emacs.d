@@ -17,11 +17,6 @@
   :init (helm-mode 1)
   :config
   (progn
-    (use-package helm-config
-      :config (progn
-                (bind-key "C-c h" helm-command-prefix)
-                (unbind-key "C-x c")))
-
     (bind-keys :map helm-map
                ("C-i" . helm-execute-persistent-action)
                ("C-z" . helm-select-action))
@@ -47,6 +42,14 @@
     (add-to-list 'helm-sources-using-default-as-input
                  'helm-source-man-pages))
   :diminish helm-mode)
+
+(use-package helm-config ; Applications library for `helm.el'
+  :ensure helm
+  :after helm
+  :config
+  (progn
+    (bind-key "C-c h" helm-command-prefix)
+    (unbind-key "C-x c")))
 
 (use-package helm-flx ; Sort helm candidates by flx score
   :ensure t

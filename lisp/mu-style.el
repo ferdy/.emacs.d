@@ -167,18 +167,10 @@ symbols, greek letters, as well as fall backs for."
   :init
   (progn
     ;; Hide some modes
-    (use-package rich-minority)
-    (setq rm-blacklist
-          (format "^ \\(%s\\)$"
-                  (mapconcat #'identity
-                             '("Wrap"
-                               "WSC.*"
-                               "cWip"
-                               "sWip")
-                             "\\|"))
-          sml/theme nil
+    (setq sml/theme nil
           sml/mode-width 'full
           sml/no-confirm-load-theme t)
+
     (sml/setup))
   :config
   (progn
@@ -191,6 +183,18 @@ symbols, greek letters, as well as fall backs for."
                  '("^:Doc:books/" ":Bks:") t)
     (add-to-list 'sml/replacer-regexp-list
                  '("^~/projects/" ":Prj:") t)))
+
+(use-package rich-minority
+  :ensure smart-mode-line
+  :after smart-mode-line
+  :config (setq rm-blacklist
+                (format "^ \\(%s\\)$"
+                        (mapconcat #'identity
+                                   '("Wrap"
+                                     "WSC.*"
+                                     "cWip"
+                                     "sWip")
+                                   "\\|"))))
 
 (provide 'mu-style)
 
