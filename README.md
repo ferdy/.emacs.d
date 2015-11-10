@@ -100,7 +100,7 @@ This configuration would not have been possible without the work of and the
 inspiration from these people:
 - [Mickey Petersen](https://github.com/mickeynp)
 - [Sebastian Wiesner](https://github.com/lunaryorn)
-- [Artur Malabarba](https://github.com/Bruce-Connor)
+- [Artur Malabarba](https://github.com/Malabarba)
 - [Sacha Chua](https://github.com/sachac)
 - [John Wiegley](https://github.com/jwiegley)
 - [Bozhidar Batsov](https://github.com/bbatsov)
