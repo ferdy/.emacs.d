@@ -100,7 +100,7 @@
     (defun sudired ()
       "Open directory with sudo in dired."
       (interactive)
-      (use-package tramp)
+      (require 'tramp)
       (let ((dir (expand-file-name default-directory)))
         (if (string-match "^/sudo:" dir)
             (user-error "Already in sudo")

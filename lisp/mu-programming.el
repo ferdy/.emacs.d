@@ -56,8 +56,6 @@
   :interpreter ("emacs" . emacs-lisp-mode)
   :config
   (progn
-    (use-package ert)
-
     (bind-key "C-c m e r" #'eval-region emacs-lisp-mode-map)
     (bind-key "C-c m e b" #'eval-buffer emacs-lisp-mode-map)
     (bind-key "C-c m e e" #'eval-last-sexp emacs-lisp-mode-map)
@@ -77,6 +75,9 @@
 
     (add-hook 'emacs-lisp-mode-hook
               #'mu-add-use-package-to-imenu)))
+
+(use-package ert ; Elisp Regression Test
+  :after elisp-mode)
 
 ;;; Clojure
 (use-package cider ; Clojure development environment

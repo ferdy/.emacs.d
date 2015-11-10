@@ -52,13 +52,17 @@
             ("http://www.wumingfoundation.com/giap/?feed=rss2" book)
             ("https://cavallette.noblogs.org/feed" security)))
 
-    (setf url-queue-timeout 30) ; Increase url-queue timeout
+    ;; Increase url-queue timeout
+    (setf url-queue-timeout 30)))
 
+(use-package elfeed-search ; List feed entries
+  :ensure elfeed
+  :after elfeed
+  :config
+  (progn
     ;; Elfeed: mark all feed as read
-    (use-package elfeed-search)
-
     (defun elfeed-mark-all-as-read ()
-      "Mark all fees as read."
+      "Mark all feeds as read."
       (interactive)
       (call-interactively 'mark-whole-buffer)
       (elfeed-search-untag-all-unread))
