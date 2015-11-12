@@ -47,11 +47,8 @@
               #'(lambda () (setq ispell-parser 'tex)))
 
     ;; Use pdf-tools to open PDF files
-    (setq TeX-view-program-selection '((output-pdf "PDF Viewer"))
-          TeX-source-correlate-start-server t
-          TeX-view-program-list
-          '(("PDF Viewer"
-             "(lambda () (let ((f \"%o\")) (find-file-other-window f)))")))
+    (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+          TeX-source-correlate-start-server t)
 
     ;; Update PDF buffers after successful LaTeX runs
     (defun mu-pdf-view-revert-buffer-maybe (file)
