@@ -47,7 +47,8 @@
               #'(lambda () (setq ispell-parser 'tex)))
 
     ;; Use pdf-tools to open PDF files
-    (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+    (setq TeX-view-program-selection '((output-pdf "PDF Viewer"))
+          TeX-source-correlate-start-server t)
     (setq TeX-view-program-list
           '(("PDF Viewer"
              "(lambda () (let ((f \"%o\")) (find-file-other-window f)))")))
