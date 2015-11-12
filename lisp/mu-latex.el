@@ -39,18 +39,18 @@
                   TeX-engine 'luatex ; Use luatex
                   TeX-PDF-mode t)
 
-    ;; Use pdf-tools to open PDF files
-    (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
-    (setq TeX-view-program-list
-          '(("PDF Viewer" "(lambda () (let ((f \"%o\"))
-(find-file-other-window f)))")))
-
     ;; Move to chktex
     (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
 
     ;; Tell Emacs how to parse TeX files
     (add-hook 'tex-mode-hook
               #'(lambda () (setq ispell-parser 'tex)))
+
+    ;; Use pdf-tools to open PDF files
+    (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+    (setq TeX-view-program-list
+          '(("PDF Viewer" "(lambda () (let ((f \"%o\"))
+(find-file-other-window f)))")))
 
     ;; Update PDF buffers after successful LaTeX runs
     (defun mu-pdf-view-revert-buffer-maybe (file)
