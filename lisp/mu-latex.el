@@ -39,6 +39,12 @@
                   TeX-engine 'luatex ; Use luatex
                   TeX-PDF-mode t)
 
+    ;; Use pdf-tools to open PDF files
+    (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
+    (setq TeX-view-program-list
+          '(("PDF Viewer" "(lambda () (let ((f \"%o\"))
+(find-file-other-window f)))")))
+
     ;; Move to chktex
     (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
 
