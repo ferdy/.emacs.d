@@ -49,8 +49,8 @@
     ;; Use pdf-tools to open PDF files
     (setq TeX-view-program-selection '((output-pdf "PDF Viewer")))
     (setq TeX-view-program-list
-          '(("PDF Viewer" "(lambda () (let ((f \"%o\"))
-(find-file-other-window f)))")))
+          '(("PDF Viewer"
+             "(lambda () (let ((f \"%o\")) (find-file-other-window f)))")))
 
     ;; Update PDF buffers after successful LaTeX runs
     (defun mu-pdf-view-revert-buffer-maybe (file)
