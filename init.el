@@ -38,6 +38,7 @@
 
 (setq load-prefer-newer t)         ; Always load newer compiled files
 (setq gnutls-min-prime-bits 4096)  ; Avoid GnuTLS warnings
+(setq gnutls-verify-error t)       ; Verify secure connections
 (setq message-log-max 10000)       ; Debugging
 
 ;; Allow more than 800Kb cache during init
