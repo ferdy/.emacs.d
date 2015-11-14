@@ -4,7 +4,16 @@ prerequisites() {
     echo "
 configuring prerequisites..."
     sudo apt-get -y install --no-install-recommends make gcc automake autoconf
-    sudo apt-get -y install --no-install-recommends g++ git
+    sudo apt-get -y install --no-install-recommends g++ git python-pip
+    echo "
+... done"
+}
+
+tls_setup() {
+    echo "
+configuring tls..."
+    sudo apt-get -y install --no-install-recommends gnutls-bin
+    sudo pip install certifi
     echo "
 ... done"
 }
@@ -192,6 +201,7 @@ sudo -v # gets user password for next sudos
 
 cd $HOME
 prerequisites
+tls_setup
 ag_setup
 clojure_setup
 scheme_setup

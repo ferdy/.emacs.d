@@ -37,8 +37,6 @@
 (package-initialize)
 
 (setq load-prefer-newer t)         ; Always load newer compiled files
-(setq gnutls-min-prime-bits 4096)  ; Avoid GnuTLS warnings
-(setq gnutls-verify-error t)       ; Verify secure connections
 (setq message-log-max 10000)       ; Debugging
 
 ;; Allow more than 800Kb cache during init
@@ -116,6 +114,7 @@
 
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(use-package mu-security)
 (use-package mu-style)
 (use-package mu-pairs)
 (use-package mu-keybindings)
