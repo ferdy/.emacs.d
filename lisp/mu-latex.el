@@ -51,14 +51,8 @@
           TeX-source-correlate-start-server t)
 
     ;; Update PDF buffers after successful LaTeX runs
-    (defun mu-pdf-view-revert-buffer-maybe (file)
-      (when-let ((buf (find-buffer-visiting file)))
-        (with-current-buffer buf
-          (when (derived-mode-p 'pdf-view-mode)
-            (pdf-view-revert-buffer nil t)))))
-
     (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
-              #'mu-pdf-view-revert-buffer-maybe)))
+              #'TeX-revert-document-buffer)))
 
 (use-package tex-buf ; External commands for AUCTeX
   :ensure auctex
