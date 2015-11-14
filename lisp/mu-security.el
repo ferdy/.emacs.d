@@ -12,19 +12,20 @@
 ;;; Code:
 
 ;; Verify secure connections
+(defun mu-certificate-bundle ()
+  "Get the path to a certificate bundle."
+  (let* ((lines (or (ignore-errors (process-lines "python3" "-m" "certifi"))
+                    (ignore-errors (process-lines "python2" "-m" "certifi"))
+                    (ignore-errors (process-lines "python" "-m" "certifi"))))
+         (cert-bundle (car lines)))
+    (unless (file-exists-p cert-bundle)
+      (error "Failed to find a certificate bundle.  Install certifi"))
+    cert-bundle))
+
+(setq gnutls-verify-error t)
+
 (if (gnutls-available-p)
-    (let ((trustfile
-           (replace-regexp-in-string
-            "\\\\" "/"
-            (replace-regexp-in-string
-             "\n" ""
-             (shell-command-to-string "python -m certifi")))))
-      (setq tls-program
-            (list
-             (format "gnutls-cli%s --x509cafile %s -p %%p %%h"
-                     "" trustfile)))
-      (setq gnutls-verify-error t)
-      (setq gnutls-trustfiles (list trustfile)))
+    (setq gnutls-trustfiles (mu-certificate-bundle))
   (run-with-idle-timer
    2 nil
    (lambda ()
