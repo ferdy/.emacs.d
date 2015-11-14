@@ -50,6 +50,16 @@
 
 (add-hook 'emacs-startup-hook 'mu-set-gc-threshold)
 
+;; Verify secure connections
+(setq gnutls-verify-error t)
+(unless (gnutls-available-p)
+  (run-with-idle-timer
+   2 nil
+   (lambda ()
+     (lwarn 'emacs
+            :warning
+            "GNUTLS is missing!  Certificate validation _not_ configured"))))
+
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -114,7 +124,6 @@
 
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(use-package mu-security)
 (use-package mu-style)
 (use-package mu-pairs)
 (use-package mu-keybindings)
