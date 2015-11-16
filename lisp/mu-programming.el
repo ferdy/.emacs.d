@@ -22,7 +22,7 @@
          ("C-c e C" . flycheck-clear)
          ("C-c e f" . flycheck-first-error)
          ("C-c e w" . flycheck-copy-errors-as-kill)
-         ("C-c t f" . flycheck-mode))
+         ("C-c t e" . flycheck-mode))
   :config
   (progn
     (setq flycheck-emacs-lisp-load-path 'inherit
