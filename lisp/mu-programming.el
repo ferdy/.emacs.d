@@ -25,7 +25,8 @@
          ("C-c t f" . flycheck-mode))
   :config
   (progn
-    (setq flycheck-standard-error-navigation nil
+    (setq flycheck-emacs-lisp-load-path 'inherit
+          flycheck-standard-error-navigation nil
           flycheck-display-errors-function
           #'flycheck-display-error-messages-unless-error-list)
 
