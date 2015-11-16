@@ -93,9 +93,13 @@
     ;; Don't blink on specific major modes
     (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
     (add-to-list 'beacon-dont-blink-major-modes 'eshell-mode)
+    (add-to-list 'beacon-dont-blink-major-modes 'which-key-mode)
     ;; Don't blink on next-line/previous-line at the top/bottom of the window
     (add-to-list 'beacon-dont-blink-commands 'sx-question-list-next)
     (add-to-list 'beacon-dont-blink-commands 'sx-question-list-previous))
+
+
+
   :diminish beacon-mode)
 
 ;;; Utilities and keybindings
