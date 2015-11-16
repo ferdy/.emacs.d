@@ -173,12 +173,7 @@ allowfullscreen>%s</iframe>"
                     (insert "#+BEGIN_" choice "\n")))
                  (t
                   (insert "#+BEGIN_" choice "\n")
-                  (save-excursion (insert "#+END_" choice))))))))))
-
-    ;; Display timestamps with a custom format
-    (setq-default org-display-custom-times t)
-    (setq org-time-stamp-custom-formats
-          '("<%d %b %Y>" . "<%d/%m/%y %a %H:%M>"))))
+                  (save-excursion (insert "#+END_" choice))))))))))))
 
 (use-package org-indent
   :ensure org
