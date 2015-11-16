@@ -391,6 +391,16 @@ Including indent-buffer, which should not be called automatically on save."
 
 (bind-key "C-c t c" #'cleanup-buffer)
 
+(defun mu-fill-buffer ()
+  "Fill entire buffer."
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (widen)
+      (fill-region (point-min) (point-max)))))
+
+(bind-key "C-c t f" #'mu-fill-buffer)
+
 (provide 'mu-editing)
 
 ;;; mu-editing.el ends here
