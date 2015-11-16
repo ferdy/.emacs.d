@@ -103,14 +103,6 @@
   :after company
   :init (add-to-list 'company-backends 'company-restclient))
 
-(use-package company-emoji ; Backend for Emoji
-  :ensure t
-  :after company
-  :init (add-to-list 'company-backends 'company-emoji)
-  :config
-  ;; Use emojify
-  (setq company-emoji-insert-unicode nil))
-
 (provide 'mu-completion)
 
 ;;; mu-completion.el ends here
