@@ -210,17 +210,7 @@
                          "--standalone" "-f" "markdown" "-t" "html5")
                        " ")))
 
-    ;; No filling in GFM, because line breaks are significant.
-    (add-hook 'gfm-mode-hook #'turn-off-auto-fill)
-    ;; Use visual lines instead
-    (add-hook 'gfm-mode-hook #'visual-line-mode)
-    (add-hook 'gfm-mode-hook #'mu-whitespace-style-no-long-lines)
-
-    (bind-key "C-c C-s C" #'markdown-insert-gfm-code-block markdown-mode-map)
-
-    ;; Fight my habit of constantly pressing M-q.  We should not fill in GFM
-    ;; Mode.
-    (bind-key "M-q" #'ignore gfm-mode-map)))
+    (add-hook 'markdown-mode-hook #'auto-fill-mode)))
 
 (use-package markdown-toc ; Create Table of Contents in Markdown files
   :ensure t
