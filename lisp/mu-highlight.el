@@ -97,9 +97,6 @@
     ;; Don't blink on next-line/previous-line at the top/bottom of the window
     (add-to-list 'beacon-dont-blink-commands 'sx-question-list-next)
     (add-to-list 'beacon-dont-blink-commands 'sx-question-list-previous))
-
-
-
   :diminish beacon-mode)
 
 ;;; Utilities and keybindings
