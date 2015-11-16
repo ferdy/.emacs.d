@@ -161,6 +161,10 @@ symbols, greek letters, as well as fall backs for."
   :ensure t
   :bind ("C-c t l" . nlinum-mode))
 
+(use-package emojify ; Display Emoji in Emacs
+  :ensure t
+  :init (global-emojify-mode))
+
 ;;; Mode line
 (use-package smart-mode-line ; Better mode-line
   :ensure t
