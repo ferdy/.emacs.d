@@ -59,6 +59,7 @@
 
 ;;; Utilities and keybindings
 ;; Better forward and backward paragraph
+;;;###autoload
 (defun mu-forward-paragraph (&optional n)
   "Advance N times just past next blank line."
   (interactive "p")
@@ -85,6 +86,7 @@
       ;; This looks redundant, but it's surprisingly necessary.
       (back-to-indentation))))
 
+;;;###autoload
 (defun mu-backward-paragraph (&optional n)
   "Go back up N times to previous blank line."
   (interactive "p")
@@ -96,6 +98,7 @@
 (bind-key "M-g" 'goto-line) ; Goto line is M-g
 
 ;; Better mark commands
+;;;###autoload
 (defun push-mark-no-activate ()
   "Pushes 'point' to 'mark-ring' and does not activate the region.
 Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
@@ -103,12 +106,14 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
   (push-mark (point) t nil)
   (message "Pushed mark to ring"))
 
+;;;###autoload
 (defun jump-to-mark ()
   "Jumps to the local mark, respecting the mark-ring' order.
 This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
   (set-mark-command 1))
 
+;;;###autoload
 (defun exchange-point-and-mark-no-activate ()
   "Identical to \\[exchange-point-and-mark] but will not activate the region."
   (interactive)

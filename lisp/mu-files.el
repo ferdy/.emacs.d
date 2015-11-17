@@ -190,6 +190,7 @@ The file is the buffer's file name, or the `default-directory' in
       default-directory
     (buffer-file-name)))
 
+;;;###autoload
 (defun mu-copy-filename-as-kill (&optional arg)
   "Copy the name of the currently visited file to kill ring.
 With a zero prefix arg, copy the absolute file name.  With
@@ -213,6 +214,7 @@ Otherwise copy the non-directory part only."
         (message "%s" name-to-copy))
     (user-error "This buffer is not visiting a file")))
 
+;;;###autoload
 (defun mu-delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
@@ -222,6 +224,7 @@ Otherwise copy the non-directory part only."
     (delete-file (buffer-file-name))
     (kill-this-buffer)))
 
+;;;###autoload
 (defun mu-rename-this-file-and-buffer (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
@@ -246,6 +249,7 @@ Otherwise copy the non-directory part only."
 
 (add-hook 'find-file-hook #'open-with-sudo)
 
+;;;###autoload
 (defun mu-open-in-external-app ()
   "Open the file where point is or the marked files in Dired in external
 app. The app is chosen from your OS's preference."

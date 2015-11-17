@@ -309,6 +309,7 @@
   :ensure t
   :bind ("C-c a m d" . describe-number-at-point))
 
+;;;###autoload
 (defun uncomment-sexp (&optional n)
   "Uncomment a sexp around point."
   (interactive "P")
@@ -374,6 +375,7 @@
      (comment-region l r)
      (skip-chars-forward "\r\n[:blank:]"))))
 
+;;;###autoload
 (defun comment-or-uncomment-sexp (&optional n)
   "Comment the sexp at point and move past it.
 If already inside (or before) a comment, uncomment instead.
