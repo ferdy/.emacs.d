@@ -38,8 +38,8 @@
         ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
-(setq load-prefer-newer t)         ; Always load newer compiled files
-(setq message-log-max 10000)       ; Debugging
+(setq load-prefer-newer t)   ; Always load newer compiled files
+(setq message-log-max 10000) ; Debugging
 
 ;; Allow more than 800Kb cache during init
 (setq gc-cons-threshold 50000000)
