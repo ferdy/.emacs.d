@@ -101,6 +101,7 @@
   :bind ("C-c b s" . scratch))
 
 ;;; Utilities and keybindings
+;;;###autoload
 (defun mu-kill-buffers (regexp)
   "Kill buffers matching REGEXP without asking for confirmation."
   (interactive "sKill buffers matching this regular expression: ")
@@ -112,6 +113,7 @@
 (defconst mu-do-not-kill-buffer-names '("*scratch*" "*Messages*")
   "Names of buffers that should not be killed.")
 
+;;;###autoload
 (defun mu-do-not-kill-important-buffers ()
   "Inhibit killing of important buffers.
 Add this to `kill-buffer-query-functions'."

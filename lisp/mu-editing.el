@@ -262,6 +262,7 @@ prefix argument."
 (bind-key [remap kill-line] (bol-with-prefix kill-line))
 (bind-key "C-k" (bol-with-prefix kill-visual-line))
 
+;;;###autoload
 (defun just-one-space-in-region (beg end)
   "Replace all whitespace in the region from BEG to END with single spaces."
   (interactive "r")
@@ -272,6 +273,7 @@ prefix argument."
       (while (re-search-forward "\\s-+" nil t)
         (replace-match " ")))))
 
+;;;###autoload
 (defun duplicate-line ()
   "Duplicate the line containing point."
   (interactive)
@@ -294,6 +296,7 @@ prefix argument."
                    (interactive)
                    (join-line -1)))
 
+;;;###autoload
 (defun flush-kill-lines (regex)
   "Flush lines matching REGEX and append to kill ring.  Restrict to \
 region if active."
@@ -307,6 +310,7 @@ region if active."
         (move-beginning-of-line nil)
         (kill-whole-line)))))
 
+;;;###autoload
 (defun unfill-paragraph (&optional region)
   "Turn a multi-line paragraph into a single line of text."
   (interactive (progn (barf-if-buffer-read-only) '(t)))
@@ -315,6 +319,7 @@ region if active."
 
 (bind-key "M-Q" #'unfill-paragraph) ; The opposite of fill-paragraph
 
+;;;###autoload
 (defun mu-align-repeat (start end regexp &optional justify-right after)
   "Repeat alignment with respect to the given regular expression.
 If JUSTIFY-RIGHT is non nil justify to the right instead of the
@@ -327,6 +332,7 @@ the right."
         (group (if justify-right -1 1)))
     (align-regexp start end complete-regexp group 1 t)))
 
+;;;###autoload
 (defun mu-align-repeat-decimal (start end)
   "Align a table of numbers on decimal points and dollar signs (both optional)."
   (interactive "r")
@@ -371,16 +377,19 @@ the right."
 
 (bind-key [remap just-one-space] #'cycle-spacing)
 
+;;;###autoload
 (defun untabify-buffer ()
   "Apply `untabify' to the entire buffer."
   (interactive)
   (untabify (point-min) (point-max)))
 
+;;;###autoload
 (defun indent-buffer ()
   "Apply `indent-region' to the entire buffer."
   (interactive)
   (indent-region (point-min) (point-max)))
 
+;;;###autoload
 (defun cleanup-buffer ()
   "Perform a bunch of operations on the whitespace content of a buffer.
 Including indent-buffer, which should not be called automatically on save."
@@ -391,6 +400,7 @@ Including indent-buffer, which should not be called automatically on save."
 
 (bind-key "C-c t c" #'cleanup-buffer)
 
+;;;###autoload
 (defun mu-fill-buffer ()
   "Fill entire buffer."
   (interactive)
