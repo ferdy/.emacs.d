@@ -108,11 +108,11 @@ windows easier."
 
 ;;; Utilities and keybindings
 (custom-set-variables
- '(comint-scroll-to-bottom-on-input t)    ; always insert at the bottom
- '(comint-scroll-to-bottom-on-output nil) ; always add output at the bottom
- '(comint-scroll-show-maximum-output t)   ; scroll to show max possible output
- '(comint-input-ignoredups t)             ; no duplicates in command history
- '(comint-completion-addsuffix t)         ; insert space/slash after completion
+ '(comint-scroll-to-bottom-on-input t)    ; Always insert at the bottom
+ '(comint-scroll-to-bottom-on-output nil) ; Always add output at the bottom
+ '(comint-scroll-show-maximum-output t)   ; Scroll to show max possible output
+ '(comint-input-ignoredups t)             ; No duplicates in command history
+ '(comint-completion-addsuffix t)         ; Insert space/slash after completion
  )
 
 (defun comint-clear-buffer ()
