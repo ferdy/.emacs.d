@@ -401,6 +401,19 @@ With a prefix argument N, comment that many sexps."
 
 (bind-key "C-c t d" #'toggle-debug-on-error)
 
+;; Test-driven development in Clojure
+(defun tdd-test ()
+  "Thin wrapper around `cider-test-run-tests'."
+  (when (cider-connected-p)
+    (cider-test-run-tests nil)))
+
+(define-minor-mode tdd-mode
+  "Run all tests whenever a file is saved."
+  nil " TDD" nil
+  (if tdd-mode
+      (add-hook 'after-save-hook #'tdd-test nil 'local)
+    (remove-hook 'after-save-hook #'tdd-test 'local)))
+
 (provide 'mu-programming)
 
 ;;; mu-programming.el ends here
