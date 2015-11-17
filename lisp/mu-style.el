@@ -126,31 +126,6 @@ symbols, greek letters, as well as fall backs for."
   :ensure zerodark-theme
   :defer t)
 
-;;; Utilities and keybindings
-(setq custom-safe-themes t) ; Treat themes as safe
-
-(setq history-length 1000) ; Store more history
-
-(setq-default line-spacing 0.1) ; Increase line-spacing (default 0)
-
-;; Configure a reasonable fill column and enable automatic filling
-(setq-default fill-column 80)
-(add-hook 'text-mode-hook #'auto-fill-mode)
-(diminish 'auto-fill-function " Ⓕ")
-
-;; Give us narrowing back!
-(put 'narrow-to-region 'disabled nil)
-(put 'narrow-to-page 'disabled nil)
-(put 'narrow-to-defun 'disabled nil)
-
-;; Same for region casing
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
-;; C-specific Indentation
-(setq c-default-style "linux"
-      c-basic-offset 4)
-
 (use-package page-break-lines ; Better looking break lines
   :ensure t
   :defer t
@@ -199,6 +174,31 @@ symbols, greek letters, as well as fall backs for."
                                      "cWip"
                                      "sWip")
                                    "\\|"))))
+
+;;; Utilities and keybindings
+(setq custom-safe-themes t) ; Treat themes as safe
+
+(setq history-length 1000) ; Store more history
+
+(setq-default line-spacing 0.1) ; Increase line-spacing (default 0)
+
+;; Configure a reasonable fill column and enable automatic filling
+(setq-default fill-column 80)
+(add-hook 'text-mode-hook #'auto-fill-mode)
+(diminish 'auto-fill-function " Ⓕ")
+
+;; Give us narrowing back!
+(put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-defun 'disabled nil)
+
+;; Same for region casing
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+;; C-specific Indentation
+(setq c-default-style "linux"
+      c-basic-offset 4)
 
 (provide 'mu-style)
 
