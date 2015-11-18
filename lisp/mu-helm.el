@@ -289,6 +289,16 @@
                             'helm-esh-pcomplete
                             eshell-mode-map)))))
 
+;;; Version control tools
+(use-package helm-gitignore ; Generate .gitignore files with gitignore.io
+  :ensure t
+  :bind ("C-c h v g" . helm-gitignore))
+
+(use-package helm-open-github ; Open Github pages for current repo
+  :ensure t
+  :bind (("C-c h v i" . helm-open-github-from-issues)
+         ("C-c h v p" . helm-open-github-from-pull-requests)))
+
 ;;; Extra utilities
 (use-package helm-external ; Run external commands through Helm
   :ensure helm
@@ -297,10 +307,6 @@
 (use-package helm-bibtex ; Manage BibTeX bibliographies with Helm
   :ensure t
   :bind ("C-c h h b" . helm-bibtex))
-
-(use-package helm-gitignore ; Generate .gitignore files with gitignore.io
-  :ensure t
-  :bind ("C-c h g" . helm-gitignore))
 
 (provide 'mu-helm)
 
