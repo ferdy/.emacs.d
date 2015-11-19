@@ -14,7 +14,6 @@
 (use-package org ; The almighty Org
   :ensure t
   :bind (("C-c a o a" . org-agenda-list)
-         ("C-c a o b" . mu-org-begin-template)
          ("C-c a o c" . org-capture)
          ("C-c a o l" . org-store-link)
          ("C-c a o f" . org-cycle-agenda-files)
@@ -42,8 +41,7 @@
           org-agenda-include-diary t
           org-agenda-use-time-grid t
           ;; Follow links by pressing ENTER on them
-          org-return-follows-link t
-          org-ellipsis "⤵")
+          org-return-follows-link t)
 
     (setq org-directory (expand-file-name "~/org/")
           org-default-notes-file
@@ -71,18 +69,7 @@
     ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
     (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
-    ;; Strike out DONE items
-    (defun mu-modify-org-done-face ()
-      (setq org-fontify-done-headline t)
-      (set-face-attribute 'org-done nil :strike-through t)
-      (set-face-attribute 'org-headline-done nil
-                          :strike-through t
-                          :foreground "light gray"))
-
-    (with-eval-after-load 'org
-      (add-hook 'org-add-hook 'mu-modify-org-done-face))
-
-    ;; Define TODO workflow states and different faces
+    ;; Define TODO workflow states
     (setq org-todo-keywords
           '("TODO(t)" "ONHOLD(o)" "INFO(n)"
             "GIULIA(g)" "MANUEL(m)" "DELEGATED(d)"
@@ -95,19 +82,6 @@
                                (tags-todo "BOCCAPERTA")))
             ("F" "FAV" ((agenda)
                         (tags-todo "FAV")))))
-
-    ;; Embed Youtube videos
-    (org-add-link-type
-     "yt"
-     (lambda (handle)
-       (browse-url (concat "https://www.youtube.com/embed/" handle)))
-     (lambda (path desc backend)
-       (cl-case backend
-         (html (format "<iframe width=\"440\" height=\"335\"
-src=\"https://www.youtube.com/embed/%s\" frameborder=\"0\"
-allowfullscreen>%s</iframe>"
-                       path (or desc "")))
-         (latex (format "\href{%s}{%s}" path (or desc "video"))))))
 
     (setq org-latex-pdf-process ; Use LuaTex for PDF export
           "latexmk -pdflatex='lualatex -shell-escape
@@ -131,49 +105,7 @@ allowfullscreen>%s</iframe>"
       (add-to-list 'ispell-skip-region-alist
                    '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
 
-    (add-hook 'org-mode-hook #'mu-org-ispell)
-
-    (defun mu-org-begin-template ()
-      "Make a template at point."
-      (interactive)
-      (if (org-at-table-p)
-          (call-interactively 'org-table-rotate-recalc-marks)
-        (let* ((choices '(("s" . "SRC")
-                          ("e" . "EXAMPLE")
-                          ("q" . "QUOTE")
-                          ("v" . "VERSE")
-                          ("c" . "CENTER")
-                          ("l" . "LaTeX")
-                          ("h" . "HTML")
-                          ("a" . "ASCII")))
-               (key
-                (key-description
-                 (vector
-                  (read-key
-                   (concat (propertize "Template type: " 'face
-                                       'minibuffer-prompt)
-                           (mapconcat (lambda (choice)
-                                        (concat
-                                         (propertize (car choice) 'face
-                                                     'font-lock-type-face)
-                                         ": "
-                                         (cdr choice)))
-                                      choices
-                                      ", ")))))))
-          (let ((result (assoc key choices)))
-            (when result
-              (let ((choice (cdr result)))
-                (cond
-                 ((region-active-p)
-                  (let ((start (region-beginning))
-                        (end (region-end)))
-                    (goto-char end)
-                    (insert "\n" "#+END_" choice "\n")
-                    (goto-char start)
-                    (insert "#+BEGIN_" choice "\n")))
-                 (t
-                  (insert "#+BEGIN_" choice "\n")
-                  (save-excursion (insert "#+END_" choice))))))))))))
+    (add-hook 'org-mode-hook #'mu-org-ispell)))
 
 (use-package org-indent
   :ensure org
