@@ -1,17 +1,5 @@
 #.emacs.d
 
-<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
-**Table of Contents**
-
-- [.emacs.d](#emacsd)
-    - [Preface](#preface)
-    - [Setup](#setup)
-    - [Updates](#updates)
-    - [Acknowledgements](#acknowledgements)
-    - [License](#license)
-
-<!-- markdown-toc end -->
-
 ##Preface
 This is the Emacs configuration I use everyday.
 
