@@ -1,6 +1,5 @@
 #.emacs.d
 
-##Preface
 This is the Emacs configuration I use everyday.
 
 It requires Emacs built from development sources to work. I regularly update my
