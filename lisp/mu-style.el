@@ -122,23 +122,11 @@ symbols, greek letters, as well as fall backs for."
   :ensure darktooth-theme
   :defer t)
 
-(use-package zerodark ; Yet another beautiful dark theme
-  :ensure zerodark-theme
-  :defer t)
-
 (use-package page-break-lines ; Better looking break lines
   :ensure t
   :defer t
   :init (global-page-break-lines-mode)
   :diminish page-break-lines-mode)
-
-(use-package nlinum ; Line numbers in display margin
-  :ensure t
-  :bind ("C-c t l" . nlinum-mode))
-
-(use-package emojify ; Display Emoji in Emacs
-  :ensure t
-  :init (global-emojify-mode))
 
 ;;; Mode line
 (use-package smart-mode-line ; Better mode-line

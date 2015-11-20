@@ -51,14 +51,6 @@
     (bind-key "C-c h" helm-command-prefix)
     (unbind-key "C-x c")))
 
-(use-package helm-flx ; Sort helm candidates by flx score
-  :ensure t
-  :init (helm-flx-mode +1))
-
-(use-package helm-fuzzier ; Better fuzzy matching for Helm
-  :ensure t
-  :init (helm-fuzzier-mode 1))
-
 (use-package helm-command ; M-x in Helm
   :ensure helm
   :bind ([remap execute-extended-command] . helm-M-x))

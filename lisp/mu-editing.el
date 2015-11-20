@@ -108,10 +108,6 @@
                 global-auto-revert-non-file-buffers t)
   :diminish (auto-revert-mode . " Ⓐ"))
 
-(use-package transpose-mark ; Transpose data by leaving an Emacs mark
-  :ensure t                 ; on the line you want to transpose.
-  :bind ("C-c t m" . transpose-mark))
-
 (use-package auto-insert ; Automatic insertion into new files
   :defer t
   :bind ("C-c i a" . auto-insert))
@@ -211,10 +207,6 @@
                        " ")))
 
     (add-hook 'markdown-mode-hook #'auto-fill-mode)))
-
-(use-package markdown-toc ; Create Table of Contents in Markdown files
-  :ensure t
-  :defer t)
 
 (use-package tiny ; Quickly generate number ranges
   :ensure t
