@@ -56,7 +56,6 @@
   :ensure t
   :init (which-key-mode)
   :config (setq which-key-idle-delay 0.5
-                which-key-side-window-location 'bottom
                 which-key-key-replacement-alist
                 '(("<\\([[:alnum:]-]+\\)>" . "\\1")
                   ("up"                  . "↑")
