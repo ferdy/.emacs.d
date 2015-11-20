@@ -21,10 +21,6 @@
   :ensure t
   :commands bug-hunter-file)
 
-(use-package debbugs ; Access the GNU bug tracker
-  :ensure t
-  :defer t)
-
 (provide 'mu-bugs)
 
 ;;; mu-bugs.el ends here
