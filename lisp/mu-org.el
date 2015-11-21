@@ -157,11 +157,6 @@
   :ensure org2blog
   :after org2blog)
 
-(use-package toc-org ; Table of contents for Org files
-  :ensure t
-  :defer t
-  :init (add-hook 'org-mode-hook 'toc-org-enable))
-
 (use-package ox-pandoc ; Export Org documents via Pandoc
   :ensure t
   :config
