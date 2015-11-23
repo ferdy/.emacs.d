@@ -407,14 +407,17 @@ With a prefix argument N, comment that many sexps."
 (defun tdd-test ()
   "Thin wrapper around `cider-test-run-tests'."
   (when (cider-connected-p)
-    (cider-test-run-tests nil)))
+    (let ((cider-auto-select-test-report-buffer nil)
+          (cider-test-show-report-on-success nil))
+      (cider-test-run-tests nil))))
 
 (define-minor-mode tdd-mode
   "Run all tests whenever a file is saved."
-  nil " TDD" nil
+  t nil nil
+  :global t
   (if tdd-mode
-      (add-hook 'after-save-hook #'tdd-test nil 'local)
-    (remove-hook 'after-save-hook #'tdd-test 'local)))
+      (add-hook 'cider-file-loaded-hook #'tdd-test)
+    (remove-hook 'cider-file-loaded-hook #'tdd-test)))
 
 (provide 'mu-programming)
 
