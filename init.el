@@ -53,7 +53,9 @@
 (add-hook 'emacs-startup-hook 'mu-set-gc-threshold)
 
 ;; Verify secure connections
-(setq gnutls-verify-error t)
+(setq gnutls-verify-error t
+      tls-checktrust t)
+
 (unless (gnutls-available-p)
   (run-with-idle-timer
    2 nil
