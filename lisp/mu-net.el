@@ -46,12 +46,13 @@
             ("http://emacshorrors.com/feed.atom" emacs)
             ("http://emacsninja.com/feed.atom" emacs)
             ("http://planet.clojure.in/atom.xml" clojure)
+            ("https://cavallette.noblogs.org/feed" security)
+            ("https://mjg59.dreamwidth.org/data/rss" security)
             ("http://flashstrap.blogspot.com/feeds/posts/default" music)
             ("http://jazzfromitaly.blogspot.it/feeds/posts/default"
              music)
-            ("http://www.wumingfoundation.com/giap/?feed=rss2" book)
-            ("https://cavallette.noblogs.org/feed" security)
-            ("https://mjg59.dreamwidth.org/data/rss" security)))
+            ("http://www.avclub.com/feed/rss/?tags=film" film)
+            ("http://www.slantmagazine.com/rss?tag=film" film)))
 
     ;; Increase url-queue timeout
     (setf url-queue-timeout 30)))
