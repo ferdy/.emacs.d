@@ -52,7 +52,11 @@
             ("http://jazzfromitaly.blogspot.it/feeds/posts/default"
              music)
             ("http://www.avclub.com/feed/rss/?tags=film" film)
-            ("http://www.slantmagazine.com/rss?tag=film" film)))
+            ("http://www.slantmagazine.com/rss?tag=film" film)
+            ("http://sensesofcinema.com/feed/" film)
+            ("https://mubi.com/notebook/posts.atom" film)
+            ("http://girishshambu.blogspot.it/feeds/posts/default?alt=rss"
+             film)))
 
     ;; Increase url-queue timeout
     (setf url-queue-timeout 30)))
