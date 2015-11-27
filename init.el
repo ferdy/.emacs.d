@@ -150,7 +150,6 @@
 (use-package mu-project)
 (use-package mu-shells)
 (use-package mu-bugs)
-(use-package mu-media)
 (use-package mu-functions)
 
 ;;; init.el ends here
