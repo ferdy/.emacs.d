@@ -109,6 +109,7 @@
 
 (use-package org-indent
   :ensure org
+  :bind ("C-c t o" . org-indent-mode)
   :init (add-hook 'org-mode-hook #'org-indent-mode)
   :diminish (org-indent-mode ." ⓘ"))
 
