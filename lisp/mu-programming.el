@@ -196,6 +196,9 @@
   :bind ("C-c m g" . run-geiser)
   :init (setq geiser-active-implementations '(chicken guile)))
 
+(use-package sicp ; The Wizard Book in Info format
+  :ensure t)
+
 ;;; Common Lisp
 (use-package sly ; Sylvester the Cat's Common Lisp IDE
   :ensure t
