@@ -141,6 +141,13 @@ symbols, greek letters, as well as fall backs for."
 mouse-2: toggle rest visibility\n\
 mouse-3: go to end"))))
 
+;;; Header line
+;; Remove which-func from the mode-line and place it in the header-line
+(let ((which-func '(which-func-mode ("" which-func-format " "))))
+  (setq-default mode-line-format (remove which-func mode-line-format))
+  (setq-default mode-line-misc-info (remove which-func mode-line-misc-info))
+  (setq-default header-line-format which-func))
+
 ;;; Mode line
 (use-package smart-mode-line ; Better mode-line
   :ensure t
@@ -148,7 +155,6 @@ mouse-3: go to end"))))
   (progn
     (setq sml/theme nil ; Let Solarized take care of the mode-line
           sml/mode-width 'full
-          sml/name-width 25 ; Make room for which-func-mode
           sml/no-confirm-load-theme t)
 
     (sml/setup))
