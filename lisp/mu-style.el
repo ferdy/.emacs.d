@@ -146,7 +146,6 @@ mouse-3: go to end"))))
   :ensure t
   :init
   (progn
-    ;; Hide some modes
     (setq sml/theme nil
           sml/mode-width 'full
           sml/name-width 25
