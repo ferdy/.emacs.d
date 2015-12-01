@@ -146,9 +146,9 @@ mouse-3: go to end"))))
   :ensure t
   :init
   (progn
-    (setq sml/theme nil
+    (setq sml/theme nil ; Let Solarized take care of the mode-line
           sml/mode-width 'full
-          sml/name-width 25
+          sml/name-width 25 ; Make room for which-func-mode
           sml/no-confirm-load-theme t)
 
     (sml/setup))
