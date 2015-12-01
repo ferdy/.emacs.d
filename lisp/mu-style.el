@@ -148,7 +148,6 @@ mouse-3: go to end"))))
   (progn
     ;; Hide some modes
     (setq sml/theme nil
-          sml/mode-width 'full
           sml/no-confirm-load-theme t)
 
     (sml/setup))
