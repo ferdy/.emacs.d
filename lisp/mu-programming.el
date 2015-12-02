@@ -109,6 +109,19 @@
   :defer t
   :config
   (progn
+    ;; Run cljs-repl inside Emacs
+    (defun cider-figwheel-repl ()
+      (interactive)
+      (save-some-buffers)
+      (with-current-buffer (cider-current-repl-buffer)
+        (goto-char (point-max))
+        (insert "(require 'figwheel-sidecar.repl-api)
+             (figwheel-sidecar.repl-api/start-figwheel!)
+             (figwheel-sidecar.repl-api/cljs-repl)")
+        (cider-repl-return)))
+
+    (bind-key "C-c m f" #'cider-figwheel-repl)
+
     ;; Increase the history size and make it permanent
     (setq cider-repl-history-size 1000
           cider-repl-history-file
