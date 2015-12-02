@@ -67,6 +67,10 @@
                   ("RET"                 . "⏎")))
   :diminish (which-key-mode . " Ⓚ"))
 
+(use-package free-keys ; Show free keybindings
+  :ensure t
+  :bind ("C-c a k" . free-keys))
+
 (bind-key "M-=" 'count-words) ; Use count-words instead of count-words-region
 (bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
 
