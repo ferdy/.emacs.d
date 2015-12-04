@@ -129,7 +129,7 @@
          ("C-c a w w" . eww)
          ("C-c a w u" . eww-browse-url))
   :config (setq browse-url-browser-function 'browse-url-generic
-                browse-url-generic-program "~/firefox/firefox"))
+                browse-url-generic-program "/usr/bin/iceweasel"))
 
 (use-package goto-addr ; Make links clickable
   :defer t
