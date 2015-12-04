@@ -176,7 +176,8 @@
 
 (use-package hungry-delete ; Delete useless white spaces
   :ensure t
-  :init (global-hungry-delete-mode))
+  :init (global-hungry-delete-mode)
+  :diminish (hungry-delete-mode . " ⓗ"))
 
 (use-package rst ; ReStructuredText
   :defer t
