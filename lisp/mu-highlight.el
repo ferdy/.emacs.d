@@ -64,7 +64,6 @@
   :init (global-hi-lock-mode))
 
 (use-package whitespace ; Highlight bad whitespace
-  :commands whitespace-mode
   :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
           (add-hook hook #'mu-whitespace-mode-local))
   :config
