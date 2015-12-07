@@ -72,10 +72,14 @@
 (eval-when-compile
   (require 'use-package))
 
+;; Install dash
+(unless (package-installed-p 'dash)
+  (package-install 'dash))
+
+(require 'dash)
 (require 'diminish)
 (require 'bind-key)
 (require 'grep)
-(require 'dash)
 (require 'rx)
 (require 'time-date)
 
