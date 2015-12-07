@@ -64,17 +64,15 @@
             :warning
             "GNUTLS is missing!  Certificate validation _not_ configured"))))
 
-;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package)
+;; Bootstrap `use-package' and `dash'
+(unless (and (package-installed-p 'use-package)
+             (package-installed-p 'dash))
   (package-refresh-contents)
-  (package-install 'use-package))
+  (package-install 'use-package)
+  (package-install 'dash))
 
 (eval-when-compile
   (require 'use-package))
-
-;; Install dash
-(unless (package-installed-p 'dash)
-  (package-install 'dash))
 
 (require 'dash)
 (require 'diminish)
