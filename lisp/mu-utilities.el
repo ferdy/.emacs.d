@@ -76,8 +76,7 @@
 (use-package camcorder ; Record movements from within Emacs
   :ensure t
   :bind ("C-c t c" . camcorder-mode)
-  :config (setq camcorder-output-directory "~/videos")
-  :diminish camcorder-mode)
+  :config (setq camcorder-output-directory "~/Videos"))
 
 (provide 'mu-utilities)
 
