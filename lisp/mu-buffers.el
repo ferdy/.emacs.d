@@ -1,4 +1,4 @@
-;;; mu-ibuffer.el --- Part of my Emacs configuration  -*- lexical-binding: t; -*-
+;;; mu-buffers.el --- Part of my Emacs configuration  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2013-2015  Manuel Uberti
 
@@ -131,4 +131,4 @@ Add this to `kill-buffer-query-functions'."
 
 (provide 'mu-buffers)
 
-;;; mu-ibuffer.el ends here
+;;; mu-buffers.el ends here
