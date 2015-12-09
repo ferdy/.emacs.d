@@ -32,8 +32,7 @@
 
     ;; Use italic face for checker name
     (set-face-attribute 'flycheck-error-list-checker-name nil
-                        :inherit 'italic))
-  :diminish (flycheck-mode . " Ⓢ"))
+                        :inherit 'italic)))
 
 (use-package flycheck-package ; Check package conventions with Flycheck
   :ensure t
@@ -85,7 +84,7 @@
   :ensure t
   :defer t
   :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
-  :diminish (cider-mode " Ⓒ"))
+  :diminish cider-mode)
 
 (use-package clojure-mode ; Major mode for Clojure files
   :ensure t
@@ -262,7 +261,7 @@
 (use-package zencoding-mode ; Unfold CSS-selector-like expressions to markup
   :ensure t
   :init (add-hook 'web-mode-hook #'zencoding-mode)
-  :diminish (zencoding-mode . " ⓩ"))
+  :diminish zencoding-mode)
 
 (use-package nxml-mode ; XML editing
   :mode "\\.xml\\'"
@@ -279,7 +278,7 @@
   ;; Enable Eldoc for `eval-expression', too
   :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
   :config (setq-default eldoc-documentation-function #'describe-char-eldoc)
-  :diminish (eldoc-mode . " ⓓ"))
+  :diminish eldoc-mode)
 
 (use-package macrostep ; Navigate through macros
   :ensure t
