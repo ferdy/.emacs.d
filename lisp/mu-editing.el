@@ -22,7 +22,7 @@
          ("C-c x w" . whitespace-cleanup))
   :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
           (add-hook hook #'whitespace-cleanup-mode))
-  :diminish (whitespace-cleanup-mode . " Ⓦ"))
+  :diminish whitespace-cleanup-mode)
 
 (use-package shrink-whitespace ; Better whitespace removal
   :ensure t
@@ -31,7 +31,7 @@
 (use-package undo-tree ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode)
-  :diminish (undo-tree-mode . " ⓤ"))
+  :diminish undo-tree-mode)
 
 (use-package delsel ; Delete the selection instead of insert
   :defer t
@@ -106,7 +106,7 @@
   :config (setq auto-revert-verbose nil
                 ;; Revert Dired buffers, too
                 global-auto-revert-non-file-buffers t)
-  :diminish (auto-revert-mode . " Ⓐ"))
+  :diminish auto-revert-mode)
 
 (use-package auto-insert ; Automatic insertion into new files
   :defer t
@@ -139,7 +139,7 @@
                     markdown-mode-hook
                     rst-mode-hook))
       (add-hook hook 'typo-mode)))
-  :diminish (typo-mode . " Ⓣ"))
+  :diminish typo-mode)
 
 (use-package string-edit ; Edit strings in a separate buffer
   :ensure t
@@ -177,7 +177,7 @@
 (use-package hungry-delete ; Delete useless white spaces
   :ensure t
   :init (global-hungry-delete-mode)
-  :diminish (hungry-delete-mode . " ⓗ"))
+  :diminish hungry-delete-mode)
 
 (use-package rst ; ReStructuredText
   :defer t

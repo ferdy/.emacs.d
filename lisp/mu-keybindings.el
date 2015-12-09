@@ -65,7 +65,7 @@
                   ("DEL"                 . "⌫")
                   ("deletechar"          . "⌦")
                   ("RET"                 . "⏎")))
-  :diminish (which-key-mode . " Ⓚ"))
+  :diminish which-key-mode)
 
 (use-package free-keys ; Show free keybindings
   :ensure t

@@ -16,7 +16,7 @@
   :init (yas-global-mode)
   :config (setq yas-verbosity 1 ; No need to be so verbose
                 yas-wrap-around-region t)
-  :diminish (yas-minor-mode . " Ⓨ"))
+  :diminish yas-minor-mode)
 
 (use-package abbrev ; Save abbreviations
   :init (abbrev-mode)

@@ -93,7 +93,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
     ;; Free C-M-i for completion
     (unbind-key "M-t" flyspell-mode-map))
-  :diminish (flyspell-mode . " ⓢ"))
+  :diminish flyspell-mode)
 
 ;;; Language tools
 (use-package synosaurus ; An extensible thesaurus
@@ -116,7 +116,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
 (use-package writegood-mode ; Find common writing problems
   :ensure t
   :bind ("C-c a L g" . writegood-mode)
-  :diminish (writegood-mode . " ⓖ"))
+  :diminish writegood-mode)
 
 (provide 'mu-languages)
 

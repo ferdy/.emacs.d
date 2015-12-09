@@ -24,8 +24,7 @@
       (add-hook hook #'smartparens-strict-mode)))
   :config (setq sp-autoskip-closing-pair 'always
                 ;; Don't kill entire symbol on C-k
-                sp-hybrid-kill-entire-symbol nil)
-  :diminish (smartparens-mode . " ⓟ"))
+                sp-hybrid-kill-entire-symbol nil))
 
 (use-package smartparens-config
   :ensure smartparens

@@ -77,7 +77,7 @@
     (setq whitespace-style '(face indentation space-after-tab space-before-tab
                                   tab-mark empty trailing lines-tail)
           whitespace-line-column nil)) ; Use `fill-column' for overlong lines
-  :diminish (whitespace-mode . " ⓦ"))
+  :diminish whitespace-mode)
 
 (use-package focus ; Dim the text of surrounding sections
   :ensure t

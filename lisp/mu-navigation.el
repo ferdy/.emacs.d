@@ -45,7 +45,7 @@
   :defer t
   :init (dolist (hook '(text-mode-hook prog-mode-hook))
           (add-hook hook #'outline-minor-mode))
-  :diminish (outline-minor-mode . " Ⓞ"))
+  :diminish outline-minor-mode)
 
 (use-package goto-last-change ; Navigate through last in-buffer changes
   :ensure t
