@@ -42,6 +42,9 @@ $ ./esetup
 ```
 - run Emacs
 
+The first time you run Emacs, every package configured in `init.el` and in every
+file in the `lisp` directory will be automatically installed and configured.
+
 ##Updates
 This configuration tracks latest Emacs developments. If you intend to use it, I
 highly recommend you update and build your sources at least once a week.
