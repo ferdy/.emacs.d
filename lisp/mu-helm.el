@@ -138,10 +138,6 @@
   :ensure t
   :bind ("C-c h h c" . cljr-helm))
 
-(use-package helm-cider-history ; Integrate cider-input-history with Helm
-  :ensure t
-  :commands helm-cider-history)
-
 (use-package helm-make ; Select a Makefile target with Helm
   :ensure t
   :bind ("C-c c h" . helm-make))
