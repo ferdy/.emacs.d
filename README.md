@@ -1,19 +1,11 @@
 #.emacs.d
 
-This is the Emacs configuration I use everyday.
+This is the Emacs configuration I use everyday. It requires Emacs built from
+development sources to work.
 
-It requires Emacs built from development sources to work. I regularly update my
-sources from here:
-
-```console
-git://git.savannah.gnu.org/emacs.git
-```
-
-I use Emacs on [LinuxBBQ](http://linuxbbq.org/).
-
-The ```esetup``` script helps to create the right environment *before* starting
-Emacs with this configuration for the first time. The script only works with
-**Debian-based** systems.
+I use Emacs on [Debian](https://www.debian.org). The ```esetup``` script helps
+to create the right environment *before* starting Emacs with this configuration
+for the first time. The script only works with **Debian-based** systems.
 
 This configuration uses
 [use-package](https://github.com/jwiegley/use-package) and relies heavily upon
