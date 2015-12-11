@@ -155,8 +155,48 @@
 
 (use-package pdf-tools ; Better PDF support
   :ensure t
-  :bind ("C-c f g" . pdf-view-goto-page)
-  :init (pdf-tools-install))
+  :commands (mu-pdf-tools-install)
+  :mode ("\\.pdf\\'" . pdf-view-mode)
+  :config
+  (progn
+    (defun mu-get-latest-pdf-tools-dir ()
+      "Get the full directory path of the latest installed version of
+pdf-tools package in `package-user-dir'."
+      (let ((pdf-tools-epdfinfo-dir))
+        (let ((mu-package-dirs (directory-files package-user-dir)))
+          ;; `break' implementation in elisp
+          ;; http://ergoemacs.org/emacs/elisp_break_loop.html
+          (catch 'break
+            (dotimes (index (safe-length mu-package-dirs))
+              (let ((dir-name (pop mu-package-dirs)))
+                ;; Find a directory name that matches "pdf-tools-*"
+                (when (string-match "pdf\\-tools\\-.*" dir-name)
+                  (setq pdf-tools-epdfinfo-dir
+                        (concat package-user-dir "/" dir-name))
+                  ;; To ensure that the directory is valid, ensure that it
+                  ;; contains "pdf-tools.el"
+                  (when (locate-file "pdf-tools.el"
+                                     (list pdf-tools-epdfinfo-dir))
+                    ;; break the `dotimes' loop on finding this directory
+                    ;; and return its full path
+                    (throw 'break pdf-tools-epdfinfo-dir)))))))))
+
+    (defun mu-pdf-tools-install ()
+      (interactive)
+      ;; Update the `pdf-info-epdfinfo-program' variable to point to
+      ;; the directory containing the latest version of `pdf-tools'
+      (setq pdf-info-epdfinfo-program
+            (expand-file-name "epdfinfo" (mu-get-latest-pdf-tools-dir)))
+      ;; Call the original `pdf-tools-install' function after updating the
+      ;; `pdf-info-epdfinfo-program' variable
+      (pdf-tools-install))
+
+    (bind-keys :map pdf-view-mode-map
+               ("M-w"     . pdf-view-kill-ring-save)
+               ("C-w"     . pdf-view-kill-ring-save)
+               ("C-c f g" . pdf-view-goto-page))
+
+    (mu-pdf-tools-install)))
 
 (use-package archive-mode ; Browse archive files
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
