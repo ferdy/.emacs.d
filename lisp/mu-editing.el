@@ -179,6 +179,10 @@
   :init (global-hungry-delete-mode)
   :diminish hungry-delete-mode)
 
+(use-package smart-mark ; Restore point with C-g when mark
+  :ensure t
+  :init (smart-mark-mode))
+
 (use-package rst ; ReStructuredText
   :defer t
   :config
