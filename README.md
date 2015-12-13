@@ -3,9 +3,10 @@
 This is the Emacs configuration I use everyday. It requires Emacs built from
 development sources to work.
 
-I use Emacs on [Debian](https://www.debian.org). The ```esetup``` script helps
-to create the right environment *before* starting Emacs with this configuration
-for the first time. The script only works with **Debian-based** systems.
+I use Emacs on [Debian Jessie](https://www.debian.org) (amd64). The ```esetup```
+script helps to create the right environment *before* starting Emacs with this
+configuration for the first time. The script only works with **Debian-based**
+systems.
 
 This configuration uses
 [use-package](https://github.com/jwiegley/use-package) and relies heavily upon
