@@ -158,6 +158,26 @@
   :ensure org2blog
   :after org2blog)
 
+;; ox-pandoc needs latest Pandoc.
+;; If latest Pandoc is not available via apt-get,
+;; install it from here: https://github.com/jgm/pandoc/releases/latest
+(use-package ox-pandoc ; Export Org documents via Pandoc
+  :ensure t
+  :config
+  (progn
+    (setq org-pandoc-options '((standalone . t)) ; Default options
+          ;; Special settings for beamer-pdf and latex-pdf exporters
+          org-pandoc-options-for-beamer-pdf
+          '((latex-engine . "lualatex"))
+          org-pandoc-options-for-latex-pdf
+          '((latex-engine . "lualatex")))
+
+    ;; Use external css for html5
+    (let ((stylesheet (expand-file-name
+                       (locate-user-emacs-file "etc/pandoc.css"))))
+      (setq org-pandoc-options-for-html5
+            `((css . ,(concat "file://" stylesheet)))))))
+
 (use-package ox-reveal ; Slideshows with Reveal.js
   :ensure t
   :config (setq org-reveal-root "file:///home/manuel/reveal.js"
