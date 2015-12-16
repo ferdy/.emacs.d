@@ -156,6 +156,10 @@
   ;; Do not show defqueries by default
   :config (setq yesql-ghosts-show-ghosts-automatically nil))
 
+(use-package clojars ; Search Clojars from Emacs
+  :ensure t
+  :commands clojars)
+
 ;;; Scheme
 (use-package scheme ; Configuration for Scheme
   :config
