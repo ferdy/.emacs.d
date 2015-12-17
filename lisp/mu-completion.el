@@ -54,6 +54,10 @@
           ;; Easy navigation to candidates with M-<n>
           company-show-numbers t)
 
+    ;; Use C-n and C-p instead of M-n and M-p
+    (bind-key "C-n" #'company-select-next company-active-map)
+    (bind-key "C-p" #'company-select-previous company-active-map)
+
     ;; Don't complete numbers
     (push (apply-partially #'cl-remove-if
                            (lambda (c)
