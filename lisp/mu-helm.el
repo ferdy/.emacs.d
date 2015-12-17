@@ -282,11 +282,6 @@
   :ensure t
   :bind ("C-c h v g" . helm-gitignore))
 
-(use-package helm-open-github ; Open Github pages for current repo
-  :ensure t
-  :bind (("C-c h v i" . helm-open-github-from-issues)
-         ("C-c h v p" . helm-open-github-from-pull-requests)))
-
 ;;; Extra utilities
 (use-package helm-external ; Run external commands through Helm
   :ensure helm
