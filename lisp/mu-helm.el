@@ -138,10 +138,6 @@
   :ensure t
   :bind ("C-c h h c" . cljr-helm))
 
-(use-package helm-make ; Select a Makefile target with Helm
-  :ensure t
-  :bind ("C-c c h" . helm-make))
-
 (use-package helm-flycheck ; Show Flycheck errors with Helm
   :ensure t
   :bind ("C-c h h f" . helm-flycheck))
