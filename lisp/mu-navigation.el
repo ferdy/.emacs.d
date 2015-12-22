@@ -57,6 +57,9 @@
          ("C-c n m f" . forward-mark)
          ("C-c n m b" . backward-mark)))
 
+;; Quickly pop the mark several times with C-u C-SPC C-SPC
+(setq set-mark-command-repeat-pop t)
+
 ;;; Utilities and keybindings
 ;; Better forward and backward paragraph
 ;;;###autoload
@@ -124,6 +127,13 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 (bind-key "M-+" 'jump-to-mark)
 (bind-key [remap exchange-point-and-mark]
           'exchange-point-and-mark-no-activate global-map)
+
+;; When popping the mark, continue popping until the cursor
+;; actually moves
+(defadvice pop-to-mark-command (around ensure-new-position activate)
+  (let ((p (point)))
+    (dotimes (i 10)
+      (when (= p (point)) ad-do-it))))
 
 (provide 'mu-navigation)
 
