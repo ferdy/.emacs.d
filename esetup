@@ -5,8 +5,6 @@ prerequisites() {
 configuring prerequisites..."
     sudo apt-get -y install --no-install-recommends make gcc automake autoconf
     sudo apt-get -y install --no-install-recommends g++ git
-    echo "
-... done"
 }
 
 tls_setup() {
@@ -14,16 +12,12 @@ tls_setup() {
 configuring tls..."
     sudo apt-get -y install --no-install-recommends gnutls-bin
     sudo apt-get -y install --no-install-recommends ca-certificates
-    echo "
-... done"
 }
 
 ag_setup() {
     echo "
 configuring ag..."
     sudo apt-get -y install --no-install-recommends silversearcher-ag
-    echo "
-... done"
 }
 
 scheme_setup() {
@@ -35,8 +29,6 @@ configuring Scheme..."
     cd `csi -p '(chicken-home)'`
     curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
     cd $HOME
-    echo "
-... done"
 }
 
 commonlisp_setup() {
@@ -45,8 +37,6 @@ configuring Common Lisp..."
     sudo apt-get -y install --no-install-recommends sbcl sbcl-doc
     sudo apt-get -y install --no-install-recommends cl-clx-sbcl cl-ppcre
     sudo apt-get -y install --no-install-recommends texinfo cl-swank
-    echo "
-... done"
 }
 
 clojure_setup() {
@@ -62,8 +52,6 @@ getting Lein..."
     wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O $HOME/bin/lein
     chmod 755 $HOME/bin/lein
     lein
-    echo "
-... done"
 }
 
 latex_setup() {
@@ -98,8 +86,6 @@ configuring LaTeX..."
     ./configure --enable-lacheck-replace && make
     sudo make install
     cp /usr/local/etc/chktexrc $HOME/.chktexrc
-    echo "
-... done"
     cd $HOME
 }
 
@@ -107,8 +93,6 @@ pandoc_setup() {
     echo "
 configuring Pandoc..."
     sudo apt-get -y install --no-install-recommends pandoc
-    echo "
-... done"
 }
 
 pdftools_setup() {
@@ -118,8 +102,6 @@ configuring pdf-tools dependencies..."
     sudo apt-get -y install --no-install-recommends libpoppler-glib-dev
     sudo apt-get -y install --no-install-recommends libpoppler-private-dev
     sudo apt-get -y install --no-install-recommends imagemagick
-    echo "
-... done"
     cd $HOME
 }
 
@@ -127,16 +109,12 @@ flyspell_setup() {
     echo "
 configuring spell checker..."
     sudo apt-get -y install --no-install-recommends aspell aspell-en aspell-it
-    echo "
-... done"
 }
 
 synosaurus_setup() {
     echo "
 configuring synosaurus..."
     sudo apt-get -y install --no-install-recommends wordnet
-    echo "
-... done"
 }
 
 langtool_setup() {
@@ -150,8 +128,6 @@ configuring langtool..."
     unzip LanguageTool-3.1.zip
     mv LanguageTool-3.1 languagetool
     rm LanguageTool-3.1.zip
-    echo "
-... done"
 }
 
 font_setup() {
@@ -161,16 +137,19 @@ configuring fonts..."
     sudo apt-get -y install --no-install-recommends fonts-croscore
     sudo apt-get -y install --no-install-recommends ttf-ancient-fonts
     sudo apt-get -y install --no-install-recommends fonts-sil-gentium fonts-sil-gentiumplus
-    echo "
-... done"
 }
 
 camcorder_setup() {
     echo "
 configuring camcorder dependencies..."
     sudo apt-get -y install --no-install-recommends recordmydesktop
+}
+
+elfeed_setup() {
     echo "
-... done"
+configuring elfeed dependencies..."
+    sudo apt-get -y install python3-pip python3-dev python3-lxml
+    sudo pip3 install readability-lxml
 }
 
 echo "
@@ -197,6 +176,7 @@ synosaurus_setup
 langtool_setup
 font_setup
 camcorder_setup
+elfeed_setup
 
 echo "
 environment ready, now fire up Emacs!
