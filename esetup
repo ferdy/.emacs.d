@@ -145,13 +145,6 @@ configuring camcorder dependencies..."
     sudo apt-get -y install --no-install-recommends recordmydesktop
 }
 
-elfeed_setup() {
-    echo "
-configuring elfeed dependencies..."
-    sudo apt-get -y install python3-pip python3-dev python3-lxml
-    sudo pip3 install readability-lxml
-}
-
 echo "
 ##########################################
 # esetup                                 #
@@ -176,7 +169,6 @@ synosaurus_setup
 langtool_setup
 font_setup
 camcorder_setup
-elfeed_setup
 
 echo "
 environment ready, now fire up Emacs!
