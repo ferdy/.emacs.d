@@ -144,11 +144,6 @@
 (setq view-read-only t) ; View read-only
 (setq large-file-warning-threshold nil) ; No large file warning
 
-(use-package focus-autosave-mode ; Autosave buffers when focus is lost
-  :ensure t
-  :init (focus-autosave-mode)
-  :diminish focus-autosave-mode)
-
 (use-package ffap ; Find files at point
   :defer t
   :config (setq ffap-machine-p-known 'reject)) ;; Do not ping random hosts
