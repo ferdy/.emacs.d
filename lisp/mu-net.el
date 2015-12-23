@@ -55,6 +55,7 @@
             ("http://www.slantmagazine.com/rss?tag=film" film)
             ("http://sensesofcinema.com/feed/" film)
             ("https://mubi.com/notebook/posts.atom" film)
+            ("https://cinebeats.wordpress.com/feed/" film)
             ("http://girishshambu.blogspot.it/feeds/posts/default?alt=rss"
              film)))
 
