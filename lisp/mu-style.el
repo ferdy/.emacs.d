@@ -128,7 +128,7 @@ symbols, greek letters, as well as fall backs for."
   :init (global-page-break-lines-mode)
   :diminish page-break-lines-mode)
 
-(use-package prog-mode
+(use-package prog-mode ; Load prog-mode to enable prettify-symbols-mode
   :init (global-prettify-symbols-mode 1)
   :config
   (progn
