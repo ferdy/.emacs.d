@@ -95,6 +95,11 @@ With prefix P, create local abbrev. Otherwise it will be global."
     (unbind-key "M-t" flyspell-mode-map)))
 
 ;;; Language tools
+(use-package wordnut ; Interface to WordNet
+  :ensure t
+  :bind (("C-c a L d" . wordnut-search)
+         ("C-c a L D" . wordnut-lookup-current-word)))
+
 (use-package synosaurus ; An extensible thesaurus
   :ensure t
   :bind (("C-c a L s" . synosaurus-lookup)
