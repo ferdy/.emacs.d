@@ -124,10 +124,10 @@ configuring langtool..."
         sudo apt-get -y install --no-install-recommends unzip
     fi
     cd $HOME
-    wget https://languagetool.org/download/LanguageTool-3.1.zip
-    unzip LanguageTool-3.1.zip
-    mv LanguageTool-3.1 languagetool
-    rm LanguageTool-3.1.zip
+    wget https://languagetool.org/download/LanguageTool-3.2.zip
+    unzip LanguageTool-3.2.zip
+    mv LanguageTool-3.2 languagetool
+    rm LanguageTool-3.2.zip
 }
 
 font_setup() {
