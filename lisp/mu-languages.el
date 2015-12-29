@@ -124,18 +124,26 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
 ;;; Utilities and keybindings
 ;;;###autoload
-(defun custom-wordreference ()
-  "Translate text from Italian to English with WordReference.
-Check the selected region if any or display a query prompt otherwise."
+(defun custom-wordreference (&optional word)
+  "Translate prompted text from Italian to English with WordReference."
   (interactive)
   (browse-url
    (concat
     "http://www.wordreference.com/iten/"
-    (url-hexify-string (if mark-active
-                           (buffer-substring (region-beginning) (region-end))
-                         (read-string "WordReference: "))))))
+    (if (stringp word)
+        (downcase word)
+      (downcase (read-string "WordReference: "))))))
 
 (bind-key "C-c a L t" #'custom-wordreference)
+
+;;;###autoload
+(defun custom-wordreference-at-point ()
+  "Use `custom-wordreference' to translate word at point."
+  (interactive)
+  (custom-wordreference (substring-no-properties
+                         (thing-at-point 'word))))
+
+(bind-key "C-c a L T" #'custom-wordreference-at-point)
 
 (provide 'mu-languages)
 
