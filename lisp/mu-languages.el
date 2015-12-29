@@ -125,7 +125,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
 ;;; Utilities and keybindings
 ;;;###autoload
 (defun custom-wordreference (&optional word)
-  "Translate prompted text from Italian to English with WordReference."
+  "Translate WORD or prompted text from Italian to English with WordReference."
   (interactive)
   (browse-url
    (concat
