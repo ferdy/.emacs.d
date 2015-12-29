@@ -128,6 +128,51 @@ symbols, greek letters, as well as fall backs for."
   :init (global-page-break-lines-mode)
   :diminish page-break-lines-mode)
 
+(use-package prog-mode
+  :init (global-prettify-symbols-mode 1)
+  :config
+  (progn
+    ;; Unprettify symbols with point on them and symbols
+    ;; right next to point
+    (setq prettify-symbols-unprettify-at-point 'right-edge)
+
+    (defvar custom-prettify-alist '())
+
+    (add-to-list 'custom-prettify-alist
+                 '("<=" . (?· (Br . Bl) ?≤)))
+    (add-to-list 'custom-prettify-alist
+                 '(">=" . (?· (Br . Bl) ?≥)))
+    (add-to-list 'custom-prettify-alist
+                 '("->" . (?\s (Br . Bl) ?\s (Bc . Bc) ?🠊)))
+    (add-to-list 'custom-prettify-alist
+                 '("->>" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s
+                                (Bc . Br) ?🠊 (Bc . Bl) ?🠊)))
+
+    (eval-after-load 'clojure-mode
+      '(setq clojure--prettify-symbols-alist
+             (append custom-prettify-alist
+                     clojure--prettify-symbols-alist)))
+    (eval-after-load 'lisp-mode
+      '(setq lisp--prettify-symbols-alist
+             (append custom-prettify-alist
+                     lisp--prettify-symbols-alist)))
+
+    ;; Improve LaTeX equations with font-lock
+    (defface custom-unimportant-latex-face
+      '((t :height 0.7
+           :inherit font-lock-comment-face))
+      "Face used on less relevant math commands.")
+
+    (font-lock-add-keywords
+     'latex-mode
+     `((,(rx (or (and "\\" (or (any ",.!;")
+                               (and (or "left" "right"
+                                        "big" "Big")
+                                    symbol-end)))
+                 (any "_^")))
+        0 'custom-unimportant-latex-face prepend))
+     'end)))
+
 ;;; Mode line
 (use-package smart-mode-line ; Better mode-line
   :ensure t
