@@ -124,26 +124,47 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
 ;;; Utilities and keybindings
 ;;;###autoload
-(defun custom-wordreference (&optional word)
-  "Translate WORD or prompted text from Italian to English with WordReference."
-  (interactive)
+(defun custom--wordreference (languages &optional word)
+  "Translate WORD or prompted text using given LANGUAGES with WordReference."
   (browse-url
    (concat
-    "http://www.wordreference.com/iten/"
+    "http://www.wordreference.com/" languages "/"
     (if (stringp word)
         (downcase word)
       (downcase (read-string "WordReference: "))))))
 
-(bind-key "C-c a L t" #'custom-wordreference)
-
 ;;;###autoload
-(defun custom-wordreference-at-point ()
-  "Use `custom-wordreference' to translate word at point."
-  (interactive)
-  (custom-wordreference (substring-no-properties
-                         (thing-at-point 'word))))
+(defun custom--wordreference-at-point (languages)
+  "Use `custom--wordreference' to translate word at point."
+  (custom--wordreference languages
+                         (substring-no-properties
+                          (thing-at-point 'word))))
 
-(bind-key "C-c a L T" #'custom-wordreference-at-point)
+(defun custom-wordreference-iten ()
+  "Use `custom--wordreference' to translate IT>EN."
+  (interactive)
+  (custom--wordreference "iten"))
+
+(defun custom-wordreference-enit ()
+  "Use `custom--wordreference' to translate EN>IT."
+  (interactive)
+  (custom--wordreference "enit"))
+
+(defun custom-wordreference-iten-at-point ()
+  "Use `custom--wordreference-at-point' to translate IT>EN."
+  (interactive)
+  (custom--wordreference-at-point "iten"))
+
+(defun custom-wordreference-enit-at-point ()
+  "Use `custom--wordreference-at-point' to translate EN>IT."
+  (interactive)
+  (custom--wordreference-at-point "enit"))
+
+(bind-keys
+ ("C-c a L t i" . custom-wordreference-iten)
+ ("C-c a L t I" . custom-wordreference-iten-at-point)
+ ("C-c a L t e" . custom-wordreference-enit)
+ ("C-c a L t E" . custom-wordreference-enit-at-point))
 
 (provide 'mu-languages)
 
