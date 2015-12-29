@@ -27,6 +27,7 @@
 (mu-define-group "C-c a a" admin)
 (mu-define-group "C-c a o" org)
 (mu-define-group "C-c a L" language)
+(mu-define-group "C-c a L l" langtool)
 (mu-define-group "C-c a L t" translations)
 (mu-define-group "C-c a m" math)
 (mu-define-group "C-c a r" remote)

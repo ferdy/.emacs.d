@@ -107,11 +107,11 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
 (use-package langtool ; LanguageTool for Emacs
   :ensure t
-  :bind (("C-c a L w" . langtool-check)
-         ("C-c a L W" . langtool-check-done)
-         ("C-c a L l" . langtool-switch-default-language)
-         ("C-c a L m" . langtool-show-message-at-point)
-         ("C-c a L c" . langtool-correct-buffer))
+  :bind (("C-c a L l w" . langtool-check)
+         ("C-c a L l W" . langtool-check-done)
+         ("C-c a L l l" . langtool-switch-default-language)
+         ("C-c a L l m" . langtool-show-message-at-point)
+         ("C-c a L l c" . langtool-correct-buffer))
   :init (setq langtool-language-tool-jar
               "~/languagetool/languagetool-commandline.jar"
               langtool-default-language "en-GB"
