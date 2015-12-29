@@ -80,13 +80,13 @@ With prefix P, create local abbrev. Otherwise it will be global."
           flyspell-issue-message-flag nil)
 
     (bind-key "C-c I"
-              (lambda()
+              (lambda ()
                 (interactive)
                 (ispell-change-dictionary "italiano")
                 (flyspell-buffer)))
 
     (bind-key "C-c E"
-              (lambda()
+              (lambda ()
                 (interactive)
                 (ispell-change-dictionary "british")
                 (flyspell-buffer)))
