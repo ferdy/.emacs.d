@@ -125,7 +125,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
 ;;; Utilities and keybindings
 ;;;###autoload
 (defun custom--wordreference (languages &optional word)
-  "Translate WORD or prompted text using given LANGUAGES with WordReference."
+  "Use given LANGUAGES to translate WORD or prompted text with WordReference."
   (browse-url
    (concat
     "http://www.wordreference.com/" languages "/"
@@ -135,7 +135,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
 ;;;###autoload
 (defun custom--wordreference-at-point (languages)
-  "Use `custom--wordreference' to translate word at point."
+  "Use `custom--wordreference' with LANGUAGES to translate word at point."
   (custom--wordreference languages
                          (substring-no-properties
                           (thing-at-point 'word))))
