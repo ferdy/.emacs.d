@@ -240,7 +240,8 @@
 
 (use-package helm-ispell ; Complete word using Ispell with Helm
   :ensure t
-  :bind ("C-c h i" . helm-ispell))
+  :bind (([remap ispell-word] . helm-ispell)
+         ("C-c h i"           . helm-ispell)))
 
 (use-package helm-wordnet ; Helm interface for Wordnet dictionary
   :ensure t
