@@ -145,8 +145,8 @@
 ;;; Help
 (use-package helm-info ; Helm tools for Info
   :ensure helm
-  :bind (("C-c h e" . helm-info-emacs)
-         ("C-c h i" . helm-info-at-point)))
+  :bind (("C-c h h e" . helm-info-emacs)
+         ("C-c h h i" . helm-info-at-point)))
 
 (use-package helm-man ; Manual pages through Helm
   :ensure helm
@@ -237,6 +237,10 @@
 (use-package helm-flyspell ; Use Flyspell with Helm
   :ensure t
   :bind ("C-c h f" . helm-flyspell-correct))
+
+(use-package helm-ispell ; Complete word using Ispell with Helm
+  :ensure t
+  :bind ("C-c h i" . helm-ispell))
 
 (use-package helm-wordnet ; Helm interface for Wordnet dictionary
   :ensure t
