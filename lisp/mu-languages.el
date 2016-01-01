@@ -125,7 +125,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
 ;;; Utilities and keybindings
 ;;;###autoload
 (defun mu--wordreference (languages &optional word)
-  "Use given LANGUAGES to translate WORD or prompted text with WordReference."
+  "Use LANGUAGES to translate WORD or prompted text with WordReference."
   (browse-url
    (concat
     "http://www.wordreference.com/" languages "/"
