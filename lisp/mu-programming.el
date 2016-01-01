@@ -1,6 +1,6 @@
 ;;; mu-programming.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2013-2015  Manuel Uberti
+;; Copyright (C) 2013-2016  Manuel Uberti
 
 ;; Author: Manuel Uberti <manuel@boccaperta.com>
 ;; Keywords: convenience
@@ -78,6 +78,13 @@
 
 (use-package ert ; Elisp Regression Test
   :after elisp-mode)
+
+(use-package emr ; Refactor utilities
+  :ensure t
+  :init
+  (progn
+    (bind-key "M-RET" 'emr-show-refactor-menu prog-mode-map)
+    (add-hook 'prog-mode-hook 'emr-initialize)))
 
 ;;; Clojure
 (use-package cider ; Clojure development environment
