@@ -124,7 +124,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
 
 ;;; Utilities and keybindings
 ;;;###autoload
-(defun custom--wordreference (languages &optional word)
+(defun mu--wordreference (languages &optional word)
   "Use given LANGUAGES to translate WORD or prompted text with WordReference."
   (browse-url
    (concat
@@ -134,37 +134,37 @@ With prefix P, create local abbrev. Otherwise it will be global."
       (downcase (read-string "WordReference: "))))))
 
 ;;;###autoload
-(defun custom--wordreference-at-point (languages)
-  "Use `custom--wordreference' with LANGUAGES to translate word at point."
-  (custom--wordreference languages
-                         (substring-no-properties
-                          (thing-at-point 'word))))
+(defun mu--wordreference-at-point (languages)
+  "Use `mu--wordreference' with LANGUAGES to translate word at point."
+  (mu--wordreference languages
+                     (substring-no-properties
+                      (thing-at-point 'word))))
 
-(defun custom-wordreference-iten ()
-  "Use `custom--wordreference' to translate IT>EN."
+(defun mu-wordreference-iten ()
+  "Use `mu--wordreference' to translate IT>EN."
   (interactive)
-  (custom--wordreference "iten"))
+  (mu--wordreference "iten"))
 
-(defun custom-wordreference-enit ()
-  "Use `custom--wordreference' to translate EN>IT."
+(defun mu-wordreference-enit ()
+  "Use `mu--wordreference' to translate EN>IT."
   (interactive)
-  (custom--wordreference "enit"))
+  (mu--wordreference "enit"))
 
-(defun custom-wordreference-iten-at-point ()
-  "Use `custom--wordreference-at-point' to translate IT>EN."
+(defun mu-wordreference-iten-at-point ()
+  "Use `mu--wordreference-at-point' to translate IT>EN."
   (interactive)
-  (custom--wordreference-at-point "iten"))
+  (mu--wordreference-at-point "iten"))
 
-(defun custom-wordreference-enit-at-point ()
-  "Use `custom--wordreference-at-point' to translate EN>IT."
+(defun mu-wordreference-enit-at-point ()
+  "Use `mu--wordreference-at-point' to translate EN>IT."
   (interactive)
-  (custom--wordreference-at-point "enit"))
+  (mu--wordreference-at-point "enit"))
 
 (bind-keys
- ("C-c a L t i" . custom-wordreference-iten)
- ("C-c a L t I" . custom-wordreference-iten-at-point)
- ("C-c a L t e" . custom-wordreference-enit)
- ("C-c a L t E" . custom-wordreference-enit-at-point))
+ ("C-c a L t i" . mu-wordreference-iten)
+ ("C-c a L t I" . mu-wordreference-iten-at-point)
+ ("C-c a L t e" . mu-wordreference-enit)
+ ("C-c a L t E" . mu-wordreference-enit-at-point))
 
 (provide 'mu-languages)
 

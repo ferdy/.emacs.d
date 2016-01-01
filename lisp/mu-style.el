@@ -116,29 +116,29 @@ symbols, greek letters, as well as fall backs for."
 ;; right next to point
 (setq prettify-symbols-unprettify-at-point 'right-edge)
 
-(defvar custom-prettify-alist '())
+(defvar mu-prettify-alist '())
 
-(add-to-list 'custom-prettify-alist
+(add-to-list 'mu-prettify-alist
              '("<=" . (?· (Br . Bl) ?≤)))
-(add-to-list 'custom-prettify-alist
+(add-to-list 'mu-prettify-alist
              '(">=" . (?· (Br . Bl) ?≥)))
-(add-to-list 'custom-prettify-alist
+(add-to-list 'mu-prettify-alist
              '("->" . (?\s (Br . Bl) ?\s (Bc . Bc) ?🠊)))
-(add-to-list 'custom-prettify-alist
+(add-to-list 'mu-prettify-alist
              '("->>" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s
                             (Bc . Br) ?🠊 (Bc . Bl) ?🠊)))
 
 (eval-after-load 'clojure-mode
   '(setq clojure--prettify-symbols-alist
-         (append custom-prettify-alist
+         (append mu-prettify-alist
                  clojure--prettify-symbols-alist)))
 (eval-after-load 'lisp-mode
   '(setq lisp--prettify-symbols-alist
-         (append custom-prettify-alist
+         (append mu-prettify-alist
                  lisp--prettify-symbols-alist)))
 
 ;; Improve LaTeX equations with font-lock
-(defface custom-unimportant-latex-face
+(defface mu-unimportant-latex-face
   '((t :height 0.7
        :inherit font-lock-comment-face))
   "Face used on less relevant math commands.")
@@ -150,7 +150,7 @@ symbols, greek letters, as well as fall backs for."
                                     "big" "Big")
                                 symbol-end)))
              (any "_^")))
-    0 'custom-unimportant-latex-face prepend))
+    0 'mu-unimportant-latex-face prepend))
  'end)
 
 ;;; Theme
