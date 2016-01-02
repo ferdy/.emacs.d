@@ -111,9 +111,9 @@ configuring spell checker..."
     sudo apt-get -y install --no-install-recommends aspell aspell-en aspell-it
 }
 
-synosaurus_setup() {
+wordnet_setup() {
     echo "
-configuring synosaurus..."
+configuring wordnet..."
     sudo apt-get -y install --no-install-recommends wordnet
 }
 
@@ -165,7 +165,7 @@ latex_setup
 pandoc_setup
 pdftools_setup
 flyspell_setup
-synosaurus_setup
+wordnet_setup
 langtool_setup
 font_setup
 camcorder_setup
