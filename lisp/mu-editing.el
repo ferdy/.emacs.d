@@ -11,12 +11,12 @@
 
 ;;; Code:
 
-(use-package zop-to-char ; Better zap-to-char
+(use-package zop-to-char                ; Better zap-to-char
   :ensure t
   :bind (("M-z" . zop-to-char)
          ("M-Z" . zop-up-to-char)))
 
-(use-package whitespace-cleanup-mode ; Cleanup whitespace in buffers
+(use-package whitespace-cleanup-mode    ; Cleanup whitespace in buffers
   :ensure t
   :bind (("C-c t w" . whitespace-cleanup-mode)
          ("C-c x w" . whitespace-cleanup))
@@ -24,34 +24,34 @@
           (add-hook hook #'whitespace-cleanup-mode))
   :diminish whitespace-cleanup-mode)
 
-(use-package shrink-whitespace ; Better whitespace removal
+(use-package shrink-whitespace          ; Better whitespace removal
   :ensure t
   :bind ("M-SPC" . shrink-whitespace))
 
-(use-package undo-tree ; Show buffer changes as a tree
+(use-package undo-tree                  ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode)
   :diminish undo-tree-mode)
 
-(use-package delsel ; Delete the selection instead of insert
+(use-package delsel                     ; Delete the selection instead of insert
   :defer t
   :init (delete-selection-mode))
 
-(use-package expand-region ; Increase the selected region by semantic units
+(use-package expand-region      ; Increase the selected region by semantic units
   :ensure t
   :bind ("C-=" . er/expand-region))
 
-(use-package easy-kill ; Better kill text
+(use-package easy-kill                  ; Better kill text
   :ensure t
   :bind (([remap kill-ring-save] . easy-kill)
          ([remap mark-sexp]      . easy-mark)))
 
-(use-package adaptive-wrap ; Better line wrap
+(use-package adaptive-wrap              ; Better line wrap
   :ensure t
   :defer t
   :init (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode))
 
-(use-package aggressive-fill-paragraph ; Automatically fill paragrah
+(use-package aggressive-fill-paragraph  ; Automatically fill paragrah
   :ensure t
   :defer t
   :config
@@ -59,22 +59,22 @@
     (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
     (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode)))
 
-(use-package visual-fill-column ; Wrap at fill column
+(use-package visual-fill-column         ; Wrap at fill column
   :ensure t
   :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode))
 
-(use-package aggressive-indent ; Automatically indent code
+(use-package aggressive-indent          ; Automatically indent code
   :ensure t
   :bind ("C-c t i" . aggressive-indent-mode)
   :init (global-aggressive-indent-mode 1)
   :config (add-to-list 'aggressive-indent-excluded-modes
                        'cider-repl-mode))
 
-(use-package align ; Align text in buffers
+(use-package align                      ; Align text in buffers
   :bind (("C-c x a a" . align)
          ("C-c x a c" . align-current)))
 
-(use-package multiple-cursors ; Easily place multiple cursors in a buffer
+(use-package multiple-cursors        ; Easily place multiple cursors in a buffer
   :ensure t
   :bind (("C-c o <SPC>" . mc/vertical-align-with-space)
          ("C-c o a"     . mc/vertical-align)
@@ -94,29 +94,29 @@
                                                   (mc/num-cursors))))
                               face font-lock-warning-face)))
 
-(use-package multifiles ; Edit multiple files at once
+(use-package multifiles                 ; Edit multiple files at once
   :ensure t
   :bind ("C-!" . mf/mirror-region-in-multifile))
 
-(use-package saveplace ; Save point position in files
+(use-package saveplace                  ; Save point position in files
   :init (save-place-mode 1))
 
-(use-package super-save ; Autosave buffers when they lose focus
+(use-package super-save                 ; Autosave buffers when they lose focus
   :ensure t
   :config (super-save-initialize))
 
-(use-package autorevert ; Auto-revert buffers of changed files
+(use-package autorevert                 ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
   :config (setq auto-revert-verbose nil
                 ;; Revert Dired buffers, too
                 global-auto-revert-non-file-buffers t)
   :diminish auto-revert-mode)
 
-(use-package auto-insert ; Automatic insertion into new files
+(use-package auto-insert                ; Automatic insertion into new files
   :defer t
   :bind ("C-c i a" . auto-insert))
 
-(use-package copyright ; Deal with copyright notices
+(use-package copyright                  ; Deal with copyright notices
   :defer t
   :bind ("C-c i c" . copyright-update)
   ;; Update copyright when visiting files
@@ -125,12 +125,12 @@
   :config (setq copyright-year-ranges t
                 copyright-names-regexp (regexp-quote user-full-name)))
 
-(use-package dubcaps-mode ; DOuble CApitals to Single Capitals
+(use-package dubcaps-mode               ; DOuble CApitals to Single Capitals
   :load-path "various"
   :init (add-hook 'text-mode-hook #'dubcaps-mode)
   :diminish dubcaps-mode)
 
-(use-package typo ; Automatically use typographic quotes
+(use-package typo                       ; Automatically use typographic quotes
   :ensure t
   :bind ("C-c i t" . typo-change-language)
   :init
@@ -145,18 +145,18 @@
       (add-hook hook 'typo-mode)))
   :diminish typo-mode)
 
-(use-package string-edit ; Edit strings in a separate buffer
+(use-package string-edit                ; Edit strings in a separate buffer
   :ensure t
   :bind ("C-c x s" . string-edit-at-point))
 
-(use-package writeroom-mode ; Distraction-free interface
+(use-package writeroom-mode             ; Distraction-free interface
   :ensure t
   :bind ("C-c t r" . writeroom-mode))
 
-(use-package indent ; Built-in indentation
+(use-package indent                     ; Built-in indentation
   :bind ("C-c x i" . indent-region))
 
-(use-package tildify ; Insert non-breaking spaces on the fly
+(use-package tildify                    ; Insert non-breaking spaces on the fly
   :bind ("C-c x t" . tildify-region)
   :init (dolist (hook '(markdown-mode-hook
                         latex-mode-hook
@@ -166,7 +166,7 @@
   :config (add-hook 'latex-mode-hook
                     (lambda () (setq-local tildify-space-string "~"))))
 
-(use-package wrap-region ; Wrap a region with symbols and tags
+(use-package wrap-region                ; Wrap a region with symbols and tags
   :ensure t
   :bind ("C-c t W" . wrap-region-mode)
   :config (wrap-region-add-wrappers
@@ -178,16 +178,16 @@
              ("/* " " */" "#" (javascript-mode css-mode))
              ("`" "`" nil markdown-mode))))
 
-(use-package hungry-delete ; Delete useless white spaces
+(use-package hungry-delete              ; Delete useless white spaces
   :ensure t
   :init (global-hungry-delete-mode)
   :diminish hungry-delete-mode)
 
-(use-package smart-mark ; Restore point with C-g when mark
+(use-package smart-mark                 ; Restore point with C-g when mark
   :ensure t
   :init (smart-mark-mode))
 
-(use-package rst ; ReStructuredText
+(use-package rst                        ; ReStructuredText
   :defer t
   :config
   (progn
@@ -200,7 +200,7 @@
     (bind-key "C-c C-j" #'rst-insert-list rst-mode-map)
     (bind-key "M-RET" #'rst-insert-list rst-mode-map)))
 
-(use-package markdown-mode ; Edit markdown files
+(use-package markdown-mode              ; Edit markdown files
   :ensure t
   :mode ("\\.md\\'" . markdown-mode)
   :config
@@ -217,11 +217,11 @@
 
     (add-hook 'markdown-mode-hook #'auto-fill-mode)))
 
-(use-package tiny ; Quickly generate number ranges
+(use-package tiny                       ; Quickly generate number ranges
   :ensure t
   :bind ("C-c x e" . tiny-expand))
 
-(setq next-line-add-newlines t) ; C-n adds new line when at the end of a line
+(setq next-line-add-newlines t)    ; C-n adds new line when at the end of a line
 
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil
@@ -235,7 +235,7 @@
 (setq indicate-empty-lines t
       require-final-newline t)
 
-(setq kill-ring-max 200 ; More killed items
+(setq kill-ring-max 200                 ; More killed items
       ;; Save the contents of the clipboard to kill ring before killing
       save-interprogram-paste-before-kill t)
 
@@ -290,7 +290,7 @@ prefix argument."
       (open-line 1)
       (insert line-text))))
 
-(bind-key "C-x C-d" 'duplicate-line) ; Duplicate line at point
+(bind-key "C-x C-d" 'duplicate-line)    ; Duplicate line at point
 
 ;; Join line with the next one
 (bind-key "C-j" '(lambda ()
@@ -318,7 +318,7 @@ region if active."
   (let ((fill-column (point-max)))
     (fill-paragraph nil region)))
 
-(bind-key "M-Q" #'unfill-paragraph) ; The opposite of fill-paragraph
+(bind-key "M-Q" #'unfill-paragraph)     ; The opposite of fill-paragraph
 
 ;;;###autoload
 (defun mu-align-repeat (start end regexp &optional justify-right after)

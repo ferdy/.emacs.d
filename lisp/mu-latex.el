@@ -11,16 +11,16 @@
 
 ;;; Code:
 
-(use-package tex-site ; Startup LaTeX mode
+(use-package tex-site                   ; Startup LaTeX mode
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode))
 
-(use-package tex ; TeX editing
+(use-package tex                        ; TeX editing
   :ensure auctex
   :defer t
   :config
   (progn
-    (setq TeX-clean-confirm nil ; No confirmation when cleaning
+    (setq TeX-clean-confirm nil         ; No confirmation when cleaning
           ;; Parse documents to provide completion
           TeX-parse-self t
           ;; Automatically save style information
@@ -35,8 +35,8 @@
           ;; Tune fill-paragraph
           LaTeX-fill-break-at-separators '(\\\( \\\[))
 
-    (setq-default TeX-master nil     ; Ask for the master file
-                  TeX-engine 'luatex ; Use luatex
+    (setq-default TeX-master nil        ; Ask for the master file
+                  TeX-engine 'luatex    ; Use luatex
                   TeX-PDF-mode t)
 
     ;; Move to chktex
@@ -54,24 +54,24 @@
     (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
               #'TeX-revert-document-buffer)))
 
-(use-package tex-buf ; External commands for AUCTeX
+(use-package tex-buf                    ; External commands for AUCTeX
   :ensure auctex
   :defer t
   ;; Don't ask for confirmation when saving before processing
   :config (setq TeX-save-query nil))
 
-(use-package tex-style ; Customizable variables for AUCTeX style files
+(use-package tex-style           ; Customizable variables for AUCTeX style files
   :ensure auctex
   :defer t
   :config (setq LaTeX-csquotes-close-quote "}" ; Enable support for csquotes
                 LaTeX-csquotes-open-quote "\\enquote{"))
 
-(use-package tex-fold ; Fold TeX macros
+(use-package tex-fold                   ; Fold TeX macros
   :ensure auctex
   :defer t
   :init (add-hook 'TeX-mode-hook #'TeX-fold-mode))
 
-(use-package tex-mode ; Major mode for TeX files
+(use-package tex-mode                   ; Major mode for TeX files
   :ensure auctex
   :defer t
   :config (font-lock-add-keywords 'latex-mode
@@ -82,7 +82,7 @@
                                           symbol-end)
                                      . font-lock-warning-face))))
 
-(use-package latex ; Support for LaTeX documents
+(use-package latex                      ; Support for LaTeX documents
   :ensure auctex
   :defer t
   :config
@@ -94,18 +94,18 @@
 
     (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode))) ; Easy math input
 
-(use-package latex-extra ; Useful functionalities to LaTeX-mode
+(use-package latex-extra                ; Useful functionalities to LaTeX-mode
   :ensure t
   :defer t
   :config (add-hook 'LaTeX-mode-hook #'latex-extra-mode))
 
-(use-package auctex-latexmk ; Add LatexMk support to AUCTeX
+(use-package auctex-latexmk             ; Add LatexMk support to AUCTeX
   :ensure t
   :defer t
   :after latex
   :init (auctex-latexmk-setup))
 
-(use-package bibtex ; Edit and validate BibTeX files
+(use-package bibtex                     ; Edit and validate BibTeX files
   :defer t
   :config
   (progn
@@ -114,7 +114,7 @@
     ;; Use a modern BibTeX dialect
     (bibtex-set-dialect 'biblatex)))
 
-(use-package reftex ; Minor mode for \label, \ref, \cite, \index in LaTeX
+(use-package reftex        ; Minor mode for \label, \ref, \cite, \index in LaTeX
   :defer t
   :init (add-hook 'LaTeX-mode-hook #'reftex-mode)
   :config

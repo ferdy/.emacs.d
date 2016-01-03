@@ -11,12 +11,12 @@
 
 ;;; Code:
 
-(use-package paren ; Highlight paired delimiters
+(use-package paren                      ; Highlight paired delimiters
   :init (show-paren-mode)
   :config (setq show-paren-when-point-inside-paren t
                 show-paren-when-point-in-periphery t))
 
-(use-package diff-hl ; Show changes in fringe
+(use-package diff-hl                    ; Show changes in fringe
   :ensure t
   :defer 10
   :init
@@ -29,7 +29,7 @@
     (unless (display-graphic-p)
       (diff-hl-margin-mode))))
 
-(use-package highlight-symbol ; Highlight and jump to symbols
+(use-package highlight-symbol           ; Highlight and jump to symbols
   :ensure t
   :bind (("C-c s %" . highlight-symbol-query-replace)
          ("C-c n n" . highlight-symbol-next-in-defun)
@@ -45,25 +45,25 @@
                 highlight-symbol-on-navigation-p t)
   :diminish highlight-symbol-mode)
 
-(use-package highlight-numbers ; Fontify number literals
+(use-package highlight-numbers          ; Fontify number literals
   :ensure t
   :defer t
   :init (add-hook 'prog-mode-hook #'highlight-numbers-mode))
 
-(use-package rainbow-mode ; Highlight colors
+(use-package rainbow-mode               ; Highlight colors
   :ensure t
   :bind ("C-c t R" . rainbow-mode)
   :config (add-hook 'css-mode-hook #'rainbow-mode))
 
-(use-package rainbow-delimiters ; Highlight parens
+(use-package rainbow-delimiters         ; Highlight parens
   :ensure t
   :defer t
   :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
-(use-package hi-lock ; Custom regexp highlights
+(use-package hi-lock                    ; Custom regexp highlights
   :init (global-hi-lock-mode))
 
-(use-package whitespace ; Highlight bad whitespace
+(use-package whitespace                 ; Highlight bad whitespace
   :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
           (add-hook hook #'mu-whitespace-mode-local))
   :config
@@ -76,14 +76,14 @@
     ;; portions of lines via faces.  Also indicate tabs via characters
     (setq whitespace-style '(face indentation space-after-tab space-before-tab
                                   tab-mark empty trailing lines-tail)
-          whitespace-line-column nil)) ; Use `fill-column' for overlong lines
+          whitespace-line-column nil))  ; Use `fill-column' for overlong lines
   :diminish whitespace-mode)
 
-(use-package focus ; Dim the text of surrounding sections
+(use-package focus                      ; Dim the text of surrounding sections
   :ensure t
   :bind ("C-c t h" . focus-mode))
 
-(use-package beacon ; Highlight cursor when moving in buffers and windows
+(use-package beacon        ; Highlight cursor when moving in buffers and windows
   :ensure t
   :init (beacon-mode 1)
   :config

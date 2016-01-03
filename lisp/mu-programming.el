@@ -13,7 +13,7 @@
 
 ;;; Syntax checking
 ;; Requires: chktex
-(use-package flycheck ; On-the-fly syntax checker
+(use-package flycheck                   ; On-the-fly syntax checker
   :ensure t
   :bind (("C-c e l" . list-flycheck-errors)
          ("C-c e n" . flycheck-next-error)
@@ -34,24 +34,24 @@
     (set-face-attribute 'flycheck-error-list-checker-name nil
                         :inherit 'italic)))
 
-(use-package flycheck-package ; Check package conventions with Flycheck
+(use-package flycheck-package          ; Check package conventions with Flycheck
   :ensure t
   :defer t
   :after flycheck
   :init (flycheck-package-setup))
 
-(use-package flycheck-clojure ; Backend for Clojure
+(use-package flycheck-clojure           ; Backend for Clojure
   :ensure t
   :defer t
   :after flycheck
   :init (add-hook 'after-init-hook #'flycheck-mode))
 
 ;;; Emacs Lisp
-(use-package ielm ; Emacs Lisp REPL
+(use-package ielm                       ; Emacs Lisp REPL
   :bind ("C-c a z" . ielm)
   :config (bind-key "C-c C-q" #'comint-send-eof inferior-emacs-lisp-mode-map))
 
-(use-package elisp-mode ; Emacs Lisp editing
+(use-package elisp-mode                 ; Emacs Lisp editing
   :defer t
   :interpreter ("emacs" . emacs-lisp-mode)
   :config
@@ -76,10 +76,10 @@
     (add-hook 'emacs-lisp-mode-hook
               #'mu-add-use-package-to-imenu)))
 
-(use-package ert ; Elisp Regression Test
+(use-package ert                        ; Elisp Regression Test
   :after elisp-mode)
 
-(use-package emr ; Refactor utilities
+(use-package emr                        ; Refactor utilities
   :ensure t
   :init
   (progn
@@ -87,13 +87,13 @@
     (add-hook 'prog-mode-hook 'emr-initialize)))
 
 ;;; Clojure
-(use-package cider ; Clojure development environment
+(use-package cider                      ; Clojure development environment
   :ensure t
   :defer t
   :config (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
   :diminish cider-mode)
 
-(use-package clojure-mode ; Major mode for Clojure files
+(use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
   :defer t
   :init
@@ -105,12 +105,12 @@
   :defer t
   :after clojure-mode)
 
-(use-package nrepl-client ; Client for Clojure nREPL
+(use-package nrepl-client               ; Client for Clojure nREPL
   :ensure cider
   :defer t
   :config (setq nrepl-hide-special-buffers t))
 
-(use-package cider-repl ; REPL interactions with CIDER
+(use-package cider-repl                 ; REPL interactions with CIDER
   :ensure cider
   :defer t
   :config
@@ -135,19 +135,19 @@
           cider-repl-pop-to-buffer-on-connect nil
           cider-repl-result-prefix ";; => ")))
 
-(use-package cider-stacktrace ; Navigate stacktrace
+(use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
   :defer t
   :config (setq cider-stacktrace-fill-column t))
 
-(use-package clj-refactor ; Refactoring utilities
+(use-package clj-refactor               ; Refactoring utilities
   :ensure t
   :defer t
   :init
   (progn
     (defun mu-clojure-mode-hook ()
       (clj-refactor-mode 1)
-      (yas-minor-mode 1) ; For adding require/use/import
+      (yas-minor-mode 1)                ; For adding require/use/import
       (cljr-add-keybindings-with-prefix "C-c m r"))
 
     (add-hook 'clojure-mode-hook #'mu-clojure-mode-hook))
@@ -157,14 +157,14 @@
                 cljr-favor-private-functions)
   :diminish clj-refactor-mode)
 
-(use-package yesql-ghosts ; Display ghostly yesql queries inline
+(use-package yesql-ghosts               ; Display ghostly yesql queries inline
   :ensure t
   :commands yesql-ghosts-display-query-ghosts
   ;; Do not show defqueries by default
   :config (setq yesql-ghosts-show-ghosts-automatically nil))
 
 ;;; Scheme
-(use-package scheme ; Configuration for Scheme
+(use-package scheme                     ; Configuration for Scheme
   :config
   (progn
     (require 'cmuscheme)
@@ -210,16 +210,16 @@
             (switch-to-scheme t)
           (message "\"%s\" compiled and loaded." file-name))))))
 
-(use-package geiser ; Collection of modes for Scheme interpreters
+(use-package geiser                ; Collection of modes for Scheme interpreters
   :ensure t
   :bind ("C-c m g" . run-geiser)
   :init (setq geiser-active-implementations '(chicken guile)))
 
-(use-package sicp ; The Wizard Book in Info format
+(use-package sicp                       ; The Wizard Book in Info format
   :ensure t)
 
 ;;; Common Lisp
-(use-package sly ; Sylvester the Cat's Common Lisp IDE
+(use-package sly                        ; Sylvester the Cat's Common Lisp IDE
   :ensure t
   :bind ("C-c m c" . sly)
   :init (setq inferior-lisp-program "/usr/bin/sbcl")
@@ -228,19 +228,19 @@
                      ("C-c m h" . sly-documentation-lookup)))
 
 ;;; Databases
-(use-package sql ; SQL editing and REPL
+(use-package sql                        ; SQL editing and REPL
   :commands sql-connect
   :config (add-hook 'sql-interactive-mode-hook #'toggle-truncate-lines))
 
 ;;; Web development
-(use-package web-mode ; Major mode for editing web templates
+(use-package web-mode                   ; Major mode for editing web templates
   :ensure t
   :mode "\\.html\\'"
   :config (setq web-mode-markup-indent-offset 2
                 web-mode-css-indent-offset 2
                 web-mode-code-indent-offset 2))
 
-(use-package js2-mode ; Better JavaScript support
+(use-package js2-mode                   ; Better JavaScript support
   :ensure t
   :mode "\\.js\\'"
   :config
@@ -248,7 +248,7 @@
     (setq-default js2-basic-offset 2)
     (add-hook 'js2-mode-hook #'js2-highlight-unused-variables-mode)))
 
-(use-package css-mode ; Better CSS support
+(use-package css-mode                   ; Better CSS support
   :mode "\\.css\\'"
   :config
   (progn
@@ -256,38 +256,35 @@
     (add-hook 'css-mode-hook
               (lambda () (run-hooks 'prog-mode-hook)))))
 
-(use-package css-eldoc ; Eldoc for CSS
+(use-package css-eldoc                  ; Eldoc for CSS
   :ensure t
   :commands (turn-on-css-eldoc)
   :init (add-hook 'css-mode-hook #'turn-on-css-eldoc))
 
-(use-package php-mode ; Better PHP support
+(use-package php-mode                   ; Better PHP support
   :ensure t
   :mode "\\.php\\'")
 
-(use-package zencoding-mode ; Unfold CSS-selector-like expressions to markup
+(use-package zencoding-mode     ; Unfold CSS-selector-like expressions to markup
   :ensure t
   :init (add-hook 'web-mode-hook #'zencoding-mode)
   :diminish zencoding-mode)
 
-(use-package nxml-mode ; XML editing
+(use-package nxml-mode                  ; XML editing
   :mode "\\.xml\\'"
   ;; Complete closing tags, and insert XML declarations into empty files
   :config (setq nxml-slash-auto-complete-flag t
                 nxml-auto-insert-xml-declaration-flag t))
 
 ;;; Utilities and keybindings
-(use-package prog-mode ; Prog Mode
-  :bind ("C-c t p" . prettify-symbols-mode))
-
-(use-package eldoc ; Documentation in the echo area
+(use-package eldoc                      ; Documentation in the echo area
   :defer t
   ;; Enable Eldoc for `eval-expression', too
   :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
   :config (setq-default eldoc-documentation-function #'describe-char-eldoc)
   :diminish eldoc-mode)
 
-(use-package macrostep ; Navigate through macros
+(use-package macrostep                  ; Navigate through macros
   :ensure t
   :after lisp-mode
   :init
@@ -295,7 +292,7 @@
     (bind-key "C-c m m e" #'macrostep-expand emacs-lisp-mode-map)
     (bind-key "C-c m m e" #'macrostep-expand lisp-interaction-mode-map)))
 
-(use-package compile ; Compile from Emacs
+(use-package compile                    ; Compile from Emacs
   :bind (("C-c c C" . compile)
          ("C-c c r" . recompile))
   :config
@@ -323,11 +320,11 @@
     (add-hook 'compilation-filter-hook
               #'mu-colorize-compilation-buffer)))
 
-(use-package restclient ; ReST REPL for Emacs
+(use-package restclient                 ; ReST REPL for Emacs
   :ensure t
   :defer t)
 
-(use-package describe-number ; Describe any number at point
+(use-package describe-number            ; Describe any number at point
   :ensure t
   :bind ("C-c a m d" . describe-number-at-point))
 

@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package info ; Info, the documentation browser
+(use-package info                       ; Info, the documentation browser
   :bind ("C-h C-i" . info-lookup-symbol)
   :config
   ;; Fix `Info-quoted' face by going back to the default face.
@@ -21,11 +21,11 @@
 ;; Let apropos commands perform more extensive searches than default
 (setq apropos-do-all t)
 
-(use-package calendar ; Display a calendar
+(use-package calendar                   ; Display a calendar
   :bind ("C-c a t c" . calendar)
-  :config (setq calendar-week-start-day 1)); Start on Monday
+  :config (setq calendar-week-start-day 1)) ; Start on Monday
 
-(use-package time ; Display time
+(use-package time                       ; Display time
   :bind ("C-c a t t" . display-time-world)
   :config
   (setq display-time-world-time-format "%H:%M %Z, %d. %b"
@@ -34,11 +34,11 @@
                                   ("Asia/Hong_Kong" "Hong Kong")
                                   ("Asia/Tokyo" "Tokyo"))))
 
-(use-package calc ; Calculator
+(use-package calc                       ; Calculator
   :bind (("C-c a m q" . quick-calc)
          ("C-c a m c" . calc)))
 
-(use-package proced ; Manage processes
+(use-package proced                     ; Manage processes
   :bind ("C-c a a p" . proced)
   :config
   (progn
@@ -48,7 +48,7 @@
 
     (add-hook 'proced-mode-hook 'proced-settings)))
 
-(use-package vkill ; Visually kill programs and processes
+(use-package vkill                      ; Visually kill programs and processes
   :ensure t
   :bind (("C-c a a k" . vkill)
          ("C-c a a h" . vkill-and-helm-occur))
@@ -57,11 +57,11 @@
           (vkill)
           (call-interactively #'helm-occur)))
 
-(use-package command-log-mode ; Show event history and command history
+(use-package command-log-mode           ; Show event history and command history
   :ensure t
   :bind ("C-c t l" . command-log-mode))
 
-(use-package pandoc-mode ; Easily control Pandoc in Emacs
+(use-package pandoc-mode                ; Easily control Pandoc in Emacs
   :ensure t
   :bind ("C-c t P" . pandoc-mode)
   :config
@@ -69,11 +69,11 @@
     (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
     (setq org-pandoc-output-format 'odt)))
 
-(use-package list-environment ; List process environment variables
+(use-package list-environment           ; List process environment variables
   :ensure t
   :bind ("C-c a a l" . list-environment))
 
-(use-package camcorder ; Record movements from within Emacs
+(use-package camcorder                  ; Record movements from within Emacs
   :ensure t
   :bind ("C-c t c" . camcorder-mode)
   :config (setq camcorder-output-directory "~/Videos"))

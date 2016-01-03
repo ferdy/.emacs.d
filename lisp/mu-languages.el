@@ -12,14 +12,14 @@
 ;;; Code:
 
 ;;; Translation
-(use-package po-mode ; Manage .po files
+(use-package po-mode                    ; Manage .po files
   :load-path "various"
   :mode "\\.po\\'"
   :no-require t
   :config (setq po-keep-mo-file t))
 
 ;;; Spell checking and dictionaries
-(use-package ispell ; Word correction
+(use-package ispell                     ; Word correction
   :defer t
   :config (progn
             (setq ispell-program-name (executable-find "aspell")
@@ -70,7 +70,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
             (advice-add #'ispell-parse-output :filter-args
                         #'mu-replace-quote)))
 
-(use-package flyspell ; Spell checking on-the-fly
+(use-package flyspell                   ; Spell checking on-the-fly
   :bind ("C-c t s" . flyspell-mode)
   :config
   (progn
@@ -95,17 +95,17 @@ With prefix P, create local abbrev. Otherwise it will be global."
     (unbind-key "M-t" flyspell-mode-map)))
 
 ;;; Language tools
-(use-package wordnut ; Interface to WordNet
+(use-package wordnut                    ; Interface to WordNet
   :ensure t
   :bind (("C-c a L d" . wordnut-search)
          ("C-c a L D" . wordnut-lookup-current-word)))
 
-(use-package synosaurus ; An extensible thesaurus
+(use-package synosaurus                 ; An extensible thesaurus
   :ensure t
   :bind (("C-c a L s" . synosaurus-lookup)
          ("C-c a L r" . synosaurus-choose-and-replace)))
 
-(use-package langtool ; LanguageTool for Emacs
+(use-package langtool                   ; LanguageTool for Emacs
   :ensure t
   :bind (("C-c a L l w" . langtool-check)
          ("C-c a L l W" . langtool-check-done)
@@ -117,7 +117,7 @@ With prefix P, create local abbrev. Otherwise it will be global."
               langtool-default-language "en-GB"
               langtool-java-bin "/usr/bin/java"))
 
-(use-package writegood-mode ; Find common writing problems
+(use-package writegood-mode             ; Find common writing problems
   :ensure t
   :bind ("C-c a L g" . writegood-mode)
   :diminish writegood-mode)

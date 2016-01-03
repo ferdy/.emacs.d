@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package org ; The almighty Org
+(use-package org                        ; The almighty Org
   :ensure t
   :bind (("C-c a o a" . org-agenda-list)
          ("C-c a o c" . org-capture)
@@ -83,7 +83,7 @@
             ("F" "FAV" ((agenda)
                         (tags-todo "FAV")))))
 
-    (setq org-latex-pdf-process ; Use LuaTex for PDF export
+    (setq org-latex-pdf-process         ; Use LuaTex for PDF export
           "latexmk -pdflatex='lualatex -shell-escape
 -interaction nonstopmode' -pdf -f  %f")
 
@@ -107,13 +107,13 @@
 
     (add-hook 'org-mode-hook #'mu-org-ispell)))
 
-(use-package org-indent
+(use-package org-indent ; Dynamic indentation for Org-mode
   :ensure org
   :bind ("C-c t o" . org-indent-mode)
   :init (add-hook 'org-mode-hook #'org-indent-mode)
   :diminish org-indent-mode)
 
-(use-package autoinsert ; Auto insert custom text
+(use-package autoinsert                 ; Auto insert custom text
   :init
   (progn
     (auto-insert-mode)
@@ -123,19 +123,19 @@
         > _ \n \n)))
   :config (setq auto-insert-query nil))
 
-(use-package metaweblog ; Access metaweblog based weblogs
+(use-package metaweblog                 ; Access metaweblog based weblogs
   :ensure t
   :defer t)
 
-(use-package xml-rpc ; Clientside XML-RPC
+(use-package xml-rpc                    ; Clientside XML-RPC
   :ensure t
   :defer t)
 
-(use-package htmlize ; Convert buffer text and decorations to HTML
+(use-package htmlize               ; Convert buffer text and decorations to HTML
   :ensure t
   :defer t)
 
-(use-package org2blog ; Blog from Org mode to Wordpress
+(use-package org2blog                   ; Blog from Org mode to Wordpress
   :ensure t
   :bind (("C-c a o w" . org2blog/wp-new-entry)
          ("C-c a o p" . org2blog/wp-post-buffer))
@@ -154,14 +154,14 @@
              :username "manueluberti"))))
   :diminish org2blog/wp-mode)
 
-(use-package org2blog-autoloads ; Autoloads from `ox-wp.el'
+(use-package org2blog-autoloads         ; Autoloads from `ox-wp.el'
   :ensure org2blog
   :after org2blog)
 
 ;; ox-pandoc needs latest Pandoc.
 ;; If latest Pandoc is not available via apt-get,
 ;; install it from here: https://github.com/jgm/pandoc/releases/latest
-(use-package ox-pandoc ; Export Org documents via Pandoc
+(use-package ox-pandoc                  ; Export Org documents via Pandoc
   :ensure t
   :config
   (progn
@@ -178,7 +178,7 @@
       (setq org-pandoc-options-for-html5
             `((css . ,(concat "file://" stylesheet)))))))
 
-(use-package ox-reveal ; Slideshows with Reveal.js
+(use-package ox-reveal                  ; Slideshows with Reveal.js
   :ensure t
   :config (setq org-reveal-root "file:///home/manuel/reveal.js"
                 ;; Hide some controls
@@ -187,26 +187,26 @@
                 org-reveal-overview nil
                 org-reveal-slide-number nil))
 
-(use-package org-bullets ; Bullets as UTF-8 characters
+(use-package org-bullets                ; Bullets as UTF-8 characters
   :ensure t
   :init (add-hook 'org-mode-hook #'org-bullets-mode)
   :config (setq org-bullets-bullet-list
                 '("◉" "○" "●" "▶")))
 
-(use-package org-pdfview ; Link to PDF files
+(use-package org-pdfview                ; Link to PDF files
   :ensure t
   :after org)
 
-(use-package interleave ; Take notes in org files while reading PDFs
+(use-package interleave             ; Take notes in org files while reading PDFs
   :ensure t
   :bind ("C-c a o i" . interleave))
 
-(use-package ox-mediawiki ; Export to mediawiki format
+(use-package ox-mediawiki               ; Export to mediawiki format
   :ensure t
   :after org)
 
 ;;; Utilities and keybindings
-(bind-key "<f5>" ; Open organizer file
+(bind-key "<f5>"                        ; Open organizer file
           (lambda () (interactive) (find-file "~/org/organizer.org")))
 
 (provide 'mu-org)

@@ -54,27 +54,27 @@
 (mu-define-group "C-c x" text)
 (mu-define-group "C-c x a" align)
 
-(use-package which-key ; Show help popups for prefix keys
+(use-package which-key                  ; Show help popups for prefix keys
   :ensure t
   :init (which-key-mode)
   :config (setq which-key-idle-delay 0.5
                 which-key-key-replacement-alist
                 '(("<\\([[:alnum:]-]+\\)>" . "\\1")
-                  ("up"                  . "↑")
-                  ("right"               . "→")
-                  ("down"                . "↓")
-                  ("left"                . "←")
-                  ("DEL"                 . "⌫")
-                  ("deletechar"          . "⌦")
-                  ("RET"                 . "⏎")))
+                  ("up"                    . "↑")
+                  ("right"                 . "→")
+                  ("down"                  . "↓")
+                  ("left"                  . "←")
+                  ("DEL"                   . "⌫")
+                  ("deletechar"            . "⌦")
+                  ("RET"                   . "⏎")))
   :diminish which-key-mode)
 
-(use-package free-keys ; Show free keybindings
+(use-package free-keys                  ; Show free keybindings
   :ensure t
   :bind ("C-c a k" . free-keys))
 
-(bind-key "M-=" 'count-words) ; Use count-words instead of count-words-region
-(bind-key "C-z" 'repeat) ; C-z for repeat (usually C-x z)
+(bind-key "M-=" 'count-words)    ; Use count-words instead of count-words-region
+(bind-key "C-z" 'repeat)         ; C-z for repeat (usually C-x z)
 
 ;; These keybindings make it easier to type curly braces and square brackets
 ;; with an Italian keyboard layout

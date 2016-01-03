@@ -38,8 +38,8 @@
         ("melpa" . "https://melpa.org/packages/")))
 (package-initialize)
 
-(setq load-prefer-newer t)   ; Always load newer compiled files
-(setq message-log-max 10000) ; Debugging
+(setq load-prefer-newer t)              ; Always load newer compiled files
+(setq message-log-max 10000)            ; Debugging
 
 ;; Allow more than 800Kb cache during init
 (setq gc-cons-threshold 50000000)
@@ -85,7 +85,7 @@
 (when (version< emacs-version "25")
   (warn "This configuration needs Emacs trunk, but this is %s!" emacs-version))
 
-(setq inhibit-default-init t) ; Disable the site default settings
+(setq inhibit-default-init t)           ; Disable the site default settings
 
 ;; Warn if the current build is more than a week old
 (run-with-idle-timer

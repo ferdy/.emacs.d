@@ -11,30 +11,30 @@
 
 ;;; Code:
 
-(use-package ace-window ; Better movements between windows
+(use-package ace-window                 ; Better movements between windows
   :ensure t
   :bind (("C-x o"   . ace-window)
          ("C-c w w" . ace-window)
          ("C-c w s" . ace-swap-window))
-  :config (setq aw-keys ; Use home row
+  :config (setq aw-keys                 ; Use home row
                 '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
                 aw-dispatch-always t))
 
-(use-package ediff-wind ; Ediff window management
+(use-package ediff-wind                 ; Ediff window management
   :defer t
   :config
   ;; Prevent Ediff from spamming the frame
   (setq ediff-window-setup-function #'ediff-setup-windows-plain
         ediff-split-window-function #'split-window-horizontally))
 
-(use-package window ; Standard window functions
+(use-package window                     ; Standard window functions
   :bind (("C-c w =" . balance-windows)
          ("C-c w k" . delete-window)
          ("C-c w /" . split-window-right)
          ("C-c w -" . split-window-below)
          ("C-c w m" . delete-other-windows)))
 
-(use-package windmove ; Move between windows with Shift+Arrow
+(use-package windmove                   ; Move between windows with Shift+Arrow
   :bind (("C-c w <left>"  . windmove-left)
          ("C-c w <right>" . windmove-right)
          ("C-c w <up>"    . windmove-up)

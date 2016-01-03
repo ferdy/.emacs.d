@@ -26,19 +26,19 @@
                (and (get-buffer completions)
                     (kill-buffer completions)))))
 
-(setq use-dialog-box nil) ; Never use dialogs for minibuffer input
+(setq use-dialog-box nil)               ; Never use dialogs for minibuffer input
 
-(setq kill-buffer-query-functions ; Don't ask for confirmation
+(setq kill-buffer-query-functions       ; Don't ask for confirmation
       (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
 
-(setq frame-resize-pixelwise t ; Resize by pixels
+(setq frame-resize-pixelwise t          ; Resize by pixels
       frame-title-format
       '(:eval (if (buffer-file-name)
                   (abbreviate-file-name (buffer-file-name)) "%b")))
 
 ;; Configure `display-buffer' behaviour for some special buffers
 (setq display-buffer-alist
-      `(;; Put REPLs and error lists into the bottom side window
+      `( ;; Put REPLs and error lists into the bottom side window
         (,(rx bos (or "*Flycheck errors*" ; Flycheck error list
                       "*compilation"      ; Compilation buffers
                       "*Warnings*"        ; Emacs warnings
@@ -58,11 +58,11 @@
         ;; later entry with more specific actions.
         ("." nil (reusable-frames . visible))))
 
-(use-package uniquify ; Unique buffer names
+(use-package uniquify                   ; Unique buffer names
   :config (setq uniquify-buffer-name-style
                 'post-forward uniquify-separator ":"))
 
-(use-package ibuffer ; Buffer management
+(use-package ibuffer                    ; Buffer management
   :bind (([remap list-buffers] . ibuffer)
          ("C-c b i"            . ibuffer))
   :config
@@ -88,15 +88,15 @@
                   " " filename)))
 
     (setq ibuffer-show-empty-filter-groups nil ; Hide empty groups
-          ibuffer-never-show-predicates ; Hide Helm buffers
+          ibuffer-never-show-predicates        ; Hide Helm buffers
           '("*helm"))))
 
-(use-package ibuffer-projectile ; Group buffers by Projectile project
+(use-package ibuffer-projectile         ; Group buffers by Projectile project
   :ensure t
   :defer t
   :init (add-hook 'ibuffer-hook #'ibuffer-projectile-set-filter-groups))
 
-(use-package scratch ; Mode-specific scratch buffers
+(use-package scratch                    ; Mode-specific scratch buffers
   :ensure t
   :bind ("C-c b s" . scratch))
 
@@ -127,7 +127,7 @@ Add this to `kill-buffer-query-functions'."
 (add-hook 'kill-buffer-query-functions
           #'mu-do-not-kill-important-buffers)
 
-(bind-key "C-x C-k" 'kill-this-buffer) ; Kill only the current buffer
+(bind-key "C-x C-k" 'kill-this-buffer)  ; Kill only the current buffer
 
 (provide 'mu-buffers)
 

@@ -66,7 +66,7 @@ symbols, greek letters, as well as fall backs for."
 (add-hook 'after-make-frame-functions #'mu-configure-fonts)
 
 ;;; Interface
-(use-package frame ; Frames
+(use-package frame                      ; Frames
   :bind ("C-c w f" . toggle-frame-fullscreen)
   :init
   (progn
@@ -75,7 +75,7 @@ symbols, greek letters, as well as fall backs for."
     (global-set-key (kbd "C-x C-z") nil))
   :config (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
 
-(setq echo-keystrokes 0.1) ; Faster echo keystrokes
+(setq echo-keystrokes 0.1)              ; Faster echo keystrokes
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -101,9 +101,9 @@ symbols, greek letters, as well as fall backs for."
 ;; Disable startup echo area message
 (fset 'display-startup-echo-area-message #'ignore)
 
-(column-number-mode) ; Turn on column-number-mode
+(column-number-mode)                    ; Turn on column-number-mode
 
-(use-package page-break-lines ; Better looking break lines
+(use-package page-break-lines           ; Better looking break lines
   :ensure t
   :defer t
   :init (global-page-break-lines-mode)
@@ -154,7 +154,7 @@ symbols, greek letters, as well as fall backs for."
  'end)
 
 ;;; Theme
-(use-package solarized ; Default theme
+(use-package solarized                  ; Default theme
   :ensure solarized-theme
   :config
   (progn
@@ -168,16 +168,16 @@ symbols, greek letters, as well as fall backs for."
 
     (load-theme 'solarized-light 'no-confirm)))
 
-(use-package darktooth ; Another beautiful dark theme
+(use-package darktooth                  ; Another beautiful dark theme
   :ensure darktooth-theme
   :defer t)
 
 ;;; Mode line
-(use-package smart-mode-line ; Better mode-line
+(use-package smart-mode-line            ; Better mode-line
   :ensure t
   :init
   (progn
-    (setq sml/theme nil ; Let Solarized take care of the mode-line
+    (setq sml/theme nil               ; Let Solarized take care of the mode-line
           sml/mode-width 'full
           sml/no-confirm-load-theme t)
 
@@ -194,7 +194,7 @@ symbols, greek letters, as well as fall backs for."
     (add-to-list 'sml/replacer-regexp-list
                  '("^~/projects/" ":Prj:") t)))
 
-(use-package rich-minority
+(use-package rich-minority              ; Hide modes in the mode-line
   :ensure smart-mode-line
   :after smart-mode-line
   :config (setq rm-blacklist
@@ -207,11 +207,9 @@ symbols, greek letters, as well as fall backs for."
                                    "\\|"))))
 
 ;;; Utilities and keybindings
-(setq custom-safe-themes t) ; Treat themes as safe
-
-(setq history-length 1000) ; Store more history
-
-(setq-default line-spacing 0.1) ; Increase line-spacing (default 0)
+(setq custom-safe-themes t)             ; Treat themes as safe
+(setq history-length 1000)              ; Store more history
+(setq-default line-spacing 0.1)         ; Increase line-spacing (default 0)
 
 ;; Configure a reasonable fill column and enable automatic filling
 (setq-default fill-column 80)

@@ -17,10 +17,10 @@
       ;; Ensure M-v always undoes C-v
       scroll-preserve-screen-position 'always)
 
-(use-package winner ; Undo and redo window configurations
+(use-package winner                     ; Undo and redo window configurations
   :init (winner-mode))
 
-(use-package avy-jump ; Jump to characters in buffers
+(use-package avy-jump                   ; Jump to characters in buffers
   :ensure avy
   :bind (("C-c s s" . avy-isearch)
          ("C-c j"   . avy-goto-word-1)
@@ -29,29 +29,29 @@
          ("C-c n j" . avy-goto-char-2)
          ("C-c n w" . avy-goto-word-1)))
 
-(use-package link-hint ; Link hinting with Avy
+(use-package link-hint                  ; Link hinting with Avy
   :ensure t
   :bind (("C-c n l o" . link-hint-open-link-at-point)
          ("C-c n l c" . link-hint-copy-link-at-point)
          ("C-c n l a" . link-hint-open-link)
          ("C-c n l w" . link-hint-copy-link)))
 
-(use-package elisp-slime-nav ; Navigate through elisp code with M-. & M-,
+(use-package elisp-slime-nav        ; Navigate through elisp code with M-. & M-,
   :ensure t
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
   :diminish elisp-slime-nav-mode)
 
-(use-package outline ; Navigate outlines in buffers
+(use-package outline                    ; Navigate outlines in buffers
   :defer t
   :init (dolist (hook '(text-mode-hook prog-mode-hook))
           (add-hook hook #'outline-minor-mode))
   :diminish outline-minor-mode)
 
-(use-package goto-last-change ; Navigate through last in-buffer changes
+(use-package goto-last-change          ; Navigate through last in-buffer changes
   :ensure t
   :bind ("C-c n g" . goto-last-change))
 
-(use-package show-marks ; Navigate and visualize the mark-ring
+(use-package show-marks                 ; Navigate and visualize the mark-ring
   :ensure t
   :bind (("C-c n m s" . show-marks)
          ("C-c n m f" . forward-mark)
@@ -98,7 +98,7 @@
 (bind-key "M-a" 'mu-backward-paragraph)
 (bind-key "M-e" 'mu-forward-paragraph)
 
-(bind-key "M-g" 'goto-line) ; Goto line is M-g
+(bind-key "M-g" 'goto-line)             ; Goto line is M-g
 
 ;; Better mark commands
 ;;;###autoload

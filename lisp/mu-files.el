@@ -11,11 +11,11 @@
 
 ;;; Code:
 
-(use-package files ; Core commands for files
+(use-package files                      ; Core commands for files
   :bind (("C-c f z" . revert-buffer)
          ("C-c f /" . revert-buffer)))
 
-(use-package recentf ; Manage recent files
+(use-package recentf                    ; Manage recent files
   :init (recentf-mode)
   :defer t
   :config (setq recentf-max-saved-items 200
@@ -25,14 +25,14 @@
                                       "/tmp/"
                                       "/ssh:")))
 
-(use-package dired ; File manager
+(use-package dired                      ; File manager
   :defer t
   :bind (("C-c f s"    . dired-get-size)
          ("<C-return>" . mu-open-in-external-app)
          ("C-c f f"    . find-name-dired))
   :config
   (progn
-    (setq dired-auto-revert-buffer t            ; Revert buffers on revisiting
+    (setq dired-auto-revert-buffer t    ; Revert buffers on revisiting
           dired-listing-switches
           "-lFaGh1v --group-directories-first"  ; Add ls switches
           global-auto-revert-non-file-buffers t ; Auto refresh dired
@@ -124,11 +124,11 @@
     ;; Handle long file names
     (add-hook 'dired-mode-hook #'toggle-truncate-lines)))
 
-(use-package dired-x ; Enable some nice dired features
+(use-package dired-x                    ; Enable some nice dired features
   :bind ("C-x C-j" . dired-jump)
   :config
   (progn
-    (setq dired-omit-verbose nil ; Be less verbose, Dired
+    (setq dired-omit-verbose nil        ; Be less verbose, Dired
           ;; Omit dotfiles with C-x M-o
           dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
     (add-hook 'dired-mode-hook #'dired-omit-mode)
@@ -141,14 +141,14 @@
                   (lambda () (diminish 'dired-omit-mode " ⓞ"))
                   '((name . dired-omit-mode-diminish)))))
 
-(setq view-read-only t) ; View read-only
+(setq view-read-only t)                 ; View read-only
 (setq large-file-warning-threshold nil) ; No large file warning
 
-(use-package ffap ; Find files at point
+(use-package ffap                       ; Find files at point
   :defer t
-  :config (setq ffap-machine-p-known 'reject)) ;; Do not ping random hosts
+  :config (setq ffap-machine-p-known 'reject)) ; Do not ping random hosts
 
-(use-package pdf-tools ; Better PDF support
+(use-package pdf-tools                  ; Better PDF support
   :ensure t
   :init (pdf-tools-install)
   :config (bind-keys :map pdf-view-mode-map
@@ -156,15 +156,15 @@
                      ("C-w"     . pdf-view-kill-ring-save)
                      ("C-c f g" . pdf-view-goto-page)))
 
-(use-package archive-mode ; Browse archive files
+(use-package archive-mode                   ; Browse archive files
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
 
-(use-package csv-mode ; Better .csv files editing
+(use-package csv-mode                   ; Better .csv files editing
   :ensure t
   :no-require t
   :mode "\\.csv\\'")
 
-(use-package image+ ; Better image management
+(use-package image+                     ; Better image management
   :ensure t
   :defer t
   :after image
@@ -175,7 +175,7 @@
 
     (setq imagex-quiet-error t)))
 
-(use-package systemd ; Major mode for editing systemd units
+(use-package systemd                    ; Major mode for editing systemd units
   :ensure t
   :mode "\\.service\\'")
 

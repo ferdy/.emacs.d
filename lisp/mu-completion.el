@@ -11,14 +11,14 @@
 
 ;;; Code:
 
-(use-package yasnippet ; Snippets
+(use-package yasnippet                  ; Snippets
   :ensure t
   :init (yas-global-mode)
-  :config (setq yas-verbosity 1 ; No need to be so verbose
+  :config (setq yas-verbosity 1         ; No need to be so verbose
                 yas-wrap-around-region t)
   :diminish yas-minor-mode)
 
-(use-package abbrev ; Save abbreviations
+(use-package abbrev                     ; Save abbreviations
   :init (abbrev-mode)
   :config (setq save-abbrevs t)
   :diminish abbrev-mode)
@@ -27,7 +27,7 @@
 ;; than five candidates. Cycle instead.
 (setq completion-cycle-threshold 5)
 
-(use-package hippie-exp ; Powerful expansion and completion
+(use-package hippie-exp                 ; Powerful expansion and completion
   :bind ([remap dabbrev-expand] . hippie-expand)
   :config (setq hippie-expand-try-functions-list
                 '(try-expand-dabbrev
@@ -40,11 +40,11 @@
                   try-complete-lisp-symbol-partially
                   try-complete-lisp-symbol)))
 
-(use-package pcomplete-extension ; Enhanced completion in (e)shell buffers
+(use-package pcomplete-extension       ; Enhance completion in (e)shell buffers
   :ensure t
   :after eshell)
 
-(use-package company ; Auto-completion
+(use-package company                    ; Auto-completion
   :ensure t
   :init (global-company-mode)
   :config
@@ -68,17 +68,17 @@
           company-transformers))
   :diminish company-mode)
 
-(use-package company-statistics ; Show likelier candidates on top
+(use-package company-statistics         ; Show likelier candidates on top
   :ensure t
   :after company
   :init (company-statistics-mode))
 
-(use-package company-quickhelp ; Show help in tooltip
+(use-package company-quickhelp          ; Show help in tooltip
   :ensure t
   :after company
   :init (company-quickhelp-mode))
 
-(use-package company-math ; Backend for math symbols
+(use-package company-math               ; Backend for math symbols
   :ensure t
   :after company
   :init
@@ -86,23 +86,23 @@
     (add-to-list 'company-backends 'company-math-symbols-unicode)
     (add-to-list 'company-backends 'company-math-symbols-latex)))
 
-(use-package company-web ; Backend for web development
+(use-package company-web                ; Backend for web development
   :ensure t
   :after company
   :init (add-to-list 'company-backends 'company-web-html))
 
-(use-package company-auctex ; Backend for AUCTeX
+(use-package company-auctex             ; Backend for AUCTeX
   :ensure t
   :init
   (progn
     (add-hook 'company-mode-hook #'yas-minor-mode)
     (company-auctex-init)))
 
-(use-package sly-company ; Backend for Sly
+(use-package sly-company                ; Backend for Sly
   :ensure t
   :init (add-hook 'sly-mode-hook 'sly-company-mode))
 
-(use-package company-restclient ; Company support for restclient
+(use-package company-restclient         ; Company support for restclient
   :ensure t
   :after company
   :init (add-to-list 'company-backends 'company-restclient))

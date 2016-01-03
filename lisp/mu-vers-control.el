@@ -11,13 +11,13 @@
 
 ;;; Code:
 
-(use-package vc-hooks ; Simple version control
+(use-package vc-hooks                   ; Simple version control
   :defer t
   :config
   ;; Always follow symlinks to files in VCS repos
   (setq vc-follow-symlinks t))
 
-(use-package magit ; The best Git client out there
+(use-package magit                      ; The best Git client out there
   :ensure t
   :bind (("C-c v c" . magit-clone)
          ("C-c v C" . magit-checkout)
@@ -70,7 +70,7 @@
   :diminish (magit-wip-after-save-local-mode
              magit-wip-before-change-mode))
 
-(use-package magit-rockstar ; Extra functions for Magit
+(use-package magit-rockstar             ; Extra functions for Magit
   :ensure t
   :init
   (progn
@@ -83,7 +83,7 @@
     (magit-define-popup-action 'magit-fetch-popup
       ?p "Pull request" 'magit-branch-pull-request)))
 
-(use-package gh ; Github API library
+(use-package gh     ; Github API library
   ;; Don't ensure it, since it's only brought in as dependency
   :ensure nil
   :defer t
@@ -91,30 +91,30 @@
   ;; and includes auth data, to prevent it from storing tokens in Git config
   :config (setq gh-profile-default-profile "manuel-uberti"))
 
-(use-package magit-gh-pulls ; Show Github PRs in Magit
+(use-package magit-gh-pulls             ; Show Github PRs in Magit
   :ensure t
   :defer t
   :init (add-hook 'magit-mode-hook #'turn-on-magit-gh-pulls))
 
-(use-package git-commit ; Git commit message mode
+(use-package git-commit                 ; Git commit message mode
   :ensure t
   :defer t
   :config (remove-hook 'git-commit-finish-query-functions
                        #'git-commit-check-style-conventions))
 
-(use-package gitconfig-mode ; Git configuration mode
+(use-package gitconfig-mode             ; Git configuration mode
   :ensure t
   :defer t)
 
-(use-package gitignore-mode ; .gitignore mode
+(use-package gitignore-mode             ; .gitignore mode
   :ensure t
   :defer t)
 
-(use-package gitattributes-mode ; Git attributes mode
+(use-package gitattributes-mode         ; Git attributes mode
   :ensure t
   :defer t)
 
-(use-package git-timemachine ; Go back in Git time
+(use-package git-timemachine            ; Go back in Git time
   :ensure t
   :bind ("C-c v t" . git-timemachine))
 

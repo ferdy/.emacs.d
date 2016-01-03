@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package smartparens ; Parenthesis editing and balancing
+(use-package smartparens                ; Parenthesis editing and balancing
   :ensure t
   :init
   (progn
@@ -26,7 +26,7 @@
                 ;; Don't kill entire symbol on C-k
                 sp-hybrid-kill-entire-symbol nil))
 
-(use-package smartparens-config
+(use-package smartparens-config         ; Configure Smartparens
   :ensure smartparens
   :after smartparens
   :config
@@ -69,7 +69,7 @@
     (bind-key "M-q" #'sp-indent-defun
               smartparens-strict-mode-map)))
 
-(add-hook 'after-save-hook ; Look for unbalanced parens when saving
+(add-hook 'after-save-hook              ; Look for unbalanced parens when saving
           'check-parens nil t)
 
 (provide 'mu-pairs)

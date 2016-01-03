@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package eshell ; Emacs command shell
+(use-package eshell                     ; Emacs command shell
   :bind ("C-c a s e" . eshell-here)
   :config
   (progn
@@ -53,7 +53,7 @@ windows easier."
          (unintern 'eshell/su nil)
          (unintern 'eshell/sudo nil)))))
 
-(use-package shell ; Specialized comint.el for running the shell
+(use-package shell                 ; Specialized comint.el for running the shell
   :bind ("C-c a s t" . shell)
   :config
   (progn
@@ -70,7 +70,7 @@ windows easier."
 
     (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off)))
 
-(use-package ansi-term ; Powerful terminal emulator
+(use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s T" . ansi-term)
   :init
   (progn
@@ -102,7 +102,7 @@ windows easier."
        (if string string (current-kill 0))))
 
     (defun my-term-hook ()
-      (goto-address-mode) ; Clickable URLs
+      (goto-address-mode)               ; Clickable URLs
       (bind-key "C-y" #'my-term-paste term-raw-map))
     (add-hook 'term-mode-hook 'my-term-hook)))
 

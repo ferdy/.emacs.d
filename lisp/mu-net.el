@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(use-package tramp ; Remote editing
+(use-package tramp                      ; Remote editing
   :bind ("C-c a r c" . tramp-cleanup-all-connections)
   :config
   (progn
@@ -24,7 +24,7 @@
 
 ;; Requires in ~/.ercpass the format
 ;; (setq variable "nickname")
-(use-package erc ; IRC client
+(use-package erc                        ; IRC client
   :bind ("C-c a i" . erc)
   :config
   (progn
@@ -36,7 +36,7 @@
     ;; Set nickname
     (setq erc-nick gp-nick)))
 
-(use-package elfeed ; RSS feed reader
+(use-package elfeed                     ; RSS feed reader
   :ensure t
   :bind ("C-c a f" . elfeed)
   :config
@@ -62,7 +62,7 @@
     ;; Increase url-queue timeout
     (setf url-queue-timeout 30)))
 
-(use-package elfeed-search ; List feed entries
+(use-package elfeed-search              ; List feed entries
   :ensure elfeed
   :after elfeed
   :config
@@ -76,13 +76,13 @@
 
     (bind-key "R" #'elfeed-mark-all-as-read elfeed-search-mode-map)))
 
-(use-package sx ; StackExchange client for Emacs
+(use-package sx                         ; StackExchange client for Emacs
   :ensure t
   :bind (("C-c a S a" . sx-ask)
          ("C-c a S q" . sx-tab-all-questions)
          ("C-c a S n" . sx-tab-newest)))
 
-(use-package sx-compose ; Compose questions and answers
+(use-package sx-compose                 ; Compose questions and answers
   :ensure sx
   :defer t
   :config (progn
@@ -98,13 +98,13 @@
                         (whitespace-cleanup)
                         t))))
 
-(use-package sx-question-mode ; Display questions
+(use-package sx-question-mode           ; Display questions
   :ensure sx
   :defer t
   ;; Display questions in the same window
   :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
 
-(use-package paradox ; Better package manager interface
+(use-package paradox                    ; Better package manager interface
   :ensure t
   :bind ("C-c a p" . paradox-list-packages)
   :config
@@ -125,14 +125,14 @@
     (remove-hook 'paradox-after-execute-functions
                  #'paradox--report-buffer-display-if-noquery)))
 
-(use-package browse-url ; Browse URLs
+(use-package browse-url                 ; Browse URLs
   :bind (("C-c a w b" . eww-list-bookmarks)
          ("C-c a w w" . eww)
          ("C-c a w u" . eww-browse-url))
   :config (setq browse-url-browser-function 'browse-url-generic
                 browse-url-generic-program "/usr/bin/iceweasel"))
 
-(use-package goto-addr ; Make links clickable
+(use-package goto-addr                  ; Make links clickable
   :defer t
   :bind (("C-c t a" . goto-address-mode)
          ("C-c t A" . goto-address-prog-mode))
@@ -142,7 +142,7 @@
          (add-hook 'org-mode-hook (lambda ()
                                     (goto-address-mode -1)))))
 
-(use-package eww ; Built-in web browser
+(use-package eww                        ; Built-in web browser
   :bind (("C-c w b" . eww-list-bookmarks)
          ("C-c w w" . eww))
   :config
