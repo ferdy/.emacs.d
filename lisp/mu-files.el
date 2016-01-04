@@ -138,7 +138,7 @@
     ;; `dired-omit-startup'.  We can't just use `:diminish' because the lighter
     ;; isn't there yet after dired-omit-mode is loaded.
     (add-function :after (symbol-function 'dired-omit-startup)
-                  (lambda () (diminish 'dired-omit-mode " ⓞ"))
+                  (lambda () (diminish 'dired-omit-mode))
                   '((name . dired-omit-mode-diminish)))))
 
 (setq view-read-only t)                 ; View read-only
