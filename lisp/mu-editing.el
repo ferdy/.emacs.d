@@ -120,10 +120,18 @@
   :defer t
   :bind ("C-c i c" . copyright-update)
   ;; Update copyright when visiting files
-  :init (add-hook 'find-file-hook #'copyright-update)
+  :init
+  (progn
+    (defun mu-copyright-update ()
+      (interactive)
+      (unless buffer-read-only
+        (copyright-update nil 'interactive)
+        (unless copyright-update
+          ;; Fix years when the copyright was updated
+          (copyright-fix-years))))
+    (add-hook 'find-file-hook #'mu-copyright-update))
   ;; Use ranges to denote consecutive years
-  :config (setq copyright-year-ranges t
-                copyright-names-regexp (regexp-quote user-full-name)))
+  :config (setq copyright-year-ranges t))
 
 (use-package dubcaps-mode               ; DOuble CApitals to Single Capitals
   :load-path "various"
