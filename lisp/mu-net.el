@@ -57,6 +57,8 @@
             ("https://mubi.com/notebook/posts.atom" film)
             ("https://cinebeats.wordpress.com/feed/" film)
             ("http://girishshambu.blogspot.it/feeds/posts/default?alt=rss"
+             film)
+            ("http://filmstudiesforfree.blogspot.it/feeds/posts/default?alt=rss"
              film)))
 
     ;; Increase url-queue timeout
