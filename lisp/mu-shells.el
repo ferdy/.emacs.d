@@ -106,6 +106,10 @@ windows easier."
       (bind-key "C-y" #'my-term-paste term-raw-map))
     (add-hook 'term-mode-hook 'my-term-hook)))
 
+(use-package multishell                ; Manage multiple local and remote shells
+  :ensure t
+  :bind ("C-c a s m" . multishell-pop-to-shell))
+
 ;;; Utilities and keybindings
 (custom-set-variables
  '(comint-scroll-to-bottom-on-input t)    ; Always insert at the bottom
