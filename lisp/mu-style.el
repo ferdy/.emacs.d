@@ -168,10 +168,6 @@ symbols, greek letters, as well as fall backs for."
 
     (load-theme 'solarized-light 'no-confirm)))
 
-(use-package darktooth                  ; Another beautiful dark theme
-  :ensure darktooth-theme
-  :defer t)
-
 ;;; Mode line
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
