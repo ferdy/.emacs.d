@@ -98,7 +98,7 @@
 
 (use-package git-commit                 ; Git commit message mode
   :ensure t
-  :defer t
+  :init (global-git-commit-mode)
   :config (remove-hook 'git-commit-finish-query-functions
                        #'git-commit-check-style-conventions))
 
