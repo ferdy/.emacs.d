@@ -134,7 +134,7 @@
   :config (setq copyright-year-ranges t))
 
 (use-package dubcaps-mode               ; DOuble CApitals to Single Capitals
-  :load-path "various"
+  :load-path "extra"
   :init (add-hook 'text-mode-hook #'dubcaps-mode)
   :diminish dubcaps-mode)
 
