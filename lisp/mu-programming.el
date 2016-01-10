@@ -40,6 +40,11 @@
   :after flycheck
   :init (flycheck-package-setup))
 
+(use-package flycheck-cask              ; Setup Flycheck by Cask projects
+  :ensure t
+  :defer t
+  :init (add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
+
 (use-package flycheck-clojure           ; Backend for Clojure
   :ensure t
   :defer t
@@ -85,6 +90,22 @@
   (progn
     (bind-key "M-RET" 'emr-show-refactor-menu prog-mode-map)
     (add-hook 'prog-mode-hook 'emr-initialize)))
+
+(use-package buttercup                  ; Behavior-Driven elisp testing
+  :ensure t
+  :defer t
+  :init
+  (progn
+    (defun mu-is-buttercup-buffer ()
+      (and (buffer-file-name)
+           (string-match-p (rx "/test-" (1+ (not (any "/"))) ".el" eos)
+                           (buffer-file-name))))
+
+    ;; Load buttercup automatically for proper indentation in specs
+    (add-hook 'emacs-lisp-mode-hook
+              (lambda ()
+                (when (mu-is-buttercup-buffer)
+                  (require 'buttercup))))))
 
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
