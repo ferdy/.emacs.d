@@ -37,7 +37,7 @@
 
     (setq-default TeX-master nil        ; Ask for the master file
                   TeX-engine 'luatex    ; Use luatex
-                  TeX-PDF-mode t)
+                  )
 
     ;; Move to chktex
     (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
