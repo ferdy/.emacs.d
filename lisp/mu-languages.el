@@ -99,31 +99,31 @@
                      (substring-no-properties
                       (thing-at-point 'word))))
 
-(defun mu-wordreference-iten ()
+(defun mu-translate-iten ()
   "Use `mu--wordreference' to translate IT>EN."
   (interactive)
   (mu--wordreference "iten"))
 
-(defun mu-wordreference-enit ()
+(defun mu-translate-enit ()
   "Use `mu--wordreference' to translate EN>IT."
   (interactive)
   (mu--wordreference "enit"))
 
-(defun mu-wordreference-iten-at-point ()
+(defun mu-translate-iten-at-point ()
   "Use `mu--wordreference-at-point' to translate IT>EN."
   (interactive)
   (mu--wordreference-at-point "iten"))
 
-(defun mu-wordreference-enit-at-point ()
+(defun mu-translate-enit-at-point ()
   "Use `mu--wordreference-at-point' to translate EN>IT."
   (interactive)
   (mu--wordreference-at-point "enit"))
 
 (bind-keys
- ("C-c a L t i" . mu-wordreference-iten)
- ("C-c a L t I" . mu-wordreference-iten-at-point)
- ("C-c a L t e" . mu-wordreference-enit)
- ("C-c a L t E" . mu-wordreference-enit-at-point))
+ ("C-c a L t i" . mu-translate-iten)
+ ("C-c a L t I" . mu-translate-iten-at-point)
+ ("C-c a L t e" . mu-translate-enit)
+ ("C-c a L t E" . mu-translate-enit-at-point))
 
 (provide 'mu-languages)
 
