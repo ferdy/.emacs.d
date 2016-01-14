@@ -103,7 +103,7 @@
 
 (use-package super-save                 ; Autosave buffers when they lose focus
   :ensure t
-  :config (global-super-save-mode +1)
+  :init (super-save-mode)
   :diminish super-save-mode)
 
 (use-package autorevert                 ; Auto-revert buffers of changed files
