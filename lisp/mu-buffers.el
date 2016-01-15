@@ -129,6 +129,16 @@ Add this to `kill-buffer-query-functions'."
 
 (bind-key "C-x C-k" 'kill-this-buffer)  ; Kill only the current buffer
 
+;;;###autoload
+(defun scratch-clear ()
+  "Clear *scratch* buffer."
+  (interactive)
+  (with-current-buffer "*scratch*"
+    (if (string= "*scratch*" (buffer-name))
+        (erase-buffer))))
+
+(bind-key "C-c C-l" #'scratch-clear lisp-interaction-mode-map)
+
 (provide 'mu-buffers)
 
 ;;; mu-buffers.el ends here
