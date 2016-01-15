@@ -71,8 +71,7 @@
 
     ;; Define TODO workflow states
     (setq org-todo-keywords
-          '("TODO(t)" "ONHOLD(o)" "INFO(n)"
-            "GIULIA(g)" "MANUEL(m)" "DELEGATED(d)"
+          '("TODO(t)" "WAITING(w)" "INFO(i)"
             "|" "CANCELLED(c)" "DONE(x)"))
 
     ;; Define custom commands
