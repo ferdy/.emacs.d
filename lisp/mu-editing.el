@@ -385,6 +385,14 @@ the right."
 (bind-key "C-c x a (" #'mu-align-repeat-left-paren)
 (bind-key "C-c x a )" #'mu-align-repeat-right-paren)
 
+(defun mu-align-whitespace (start end)
+  "Align columns by whitespace"
+  (interactive "r")
+  (align-regexp start end
+                "\\(\\s-*\\)\\s-" 1 0 t))
+
+(bind-key "C-c x a SPC" #'mu-align-whitespace)
+
 (bind-key [remap just-one-space] #'cycle-spacing)
 
 ;;;###autoload
