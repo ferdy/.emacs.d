@@ -78,8 +78,7 @@
 
 (use-package writegood-mode             ; Find common writing problems
   :ensure t
-  :bind ("C-c a L g" . writegood-mode)
-  :diminish writegood-mode)
+  :bind ("C-c a L g" . writegood-mode))
 
 ;;; Utilities and keybindings
 ;;;###autoload
