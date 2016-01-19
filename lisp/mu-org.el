@@ -150,8 +150,7 @@
              :username "manuel")
             ("filmsinwords"
              :url "https://filmsinwords.wordpress.com/xmlrpc.php"
-             :username "manueluberti"))))
-  :diminish org2blog/wp-mode)
+             :username "manueluberti")))))
 
 (use-package org2blog-autoloads         ; Autoloads from `ox-wp.el'
   :ensure org2blog
