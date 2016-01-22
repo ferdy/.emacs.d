@@ -59,7 +59,8 @@
             ("http://girishshambu.blogspot.it/feeds/posts/default?alt=rss"
              film)
             ("http://filmstudiesforfree.blogspot.it/feeds/posts/default?alt=rss"
-             film)))
+             film)
+            ("http://quod.lib.umich.edu/f/fc/longfeed.xml" film)))
 
     ;; Increase url-queue timeout
     (setf url-queue-timeout 30)))
