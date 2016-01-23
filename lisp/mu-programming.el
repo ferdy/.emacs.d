@@ -248,6 +248,9 @@
                      ("C-c m q" . sly-quit-lisp)
                      ("C-c m h" . sly-documentation-lookup)))
 
+(use-package sly-macrostep              ; Macro-expansion via macrostep.el
+  :ensure t)
+
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
   :commands sql-connect
