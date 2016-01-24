@@ -63,7 +63,8 @@
 (use-package tex-style           ; Customizable variables for AUCTeX style files
   :ensure auctex
   :defer t
-  :config (setq LaTeX-csquotes-close-quote "}" ; Enable support for csquotes
+  ;; Enable support for csquotes
+  :config (setq LaTeX-csquotes-close-quote "}"
                 LaTeX-csquotes-open-quote "\\enquote{"))
 
 (use-package tex-fold                   ; Fold TeX macros
@@ -87,8 +88,11 @@
   :defer t
   :config
   (progn
-    ;; No language-specific hyphens please
-    (setq LaTeX-babel-hyphen nil
+    (setq TeX-outline-extra `((,(rx (0+ space) "\\section*{") 2)
+                              (,(rx (0+ space) "\\subsection*{") 3)
+                              (,(rx (0+ space) "\\subsubsection*{") 4)
+                              (,(rx (0+ space) "\\minisec{") 5))
+          LaTeX-babel-hyphen nil        ; No language-specific hyphens please
           LaTeX-command-style
           '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
 
