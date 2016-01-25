@@ -147,7 +147,7 @@
   :config (unless (server-running-p)
             (server-mode)))
 
-;; Require files under ~/.emacs.d/lisp
+;;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (use-package mu-style)
 (use-package mu-pairs)
