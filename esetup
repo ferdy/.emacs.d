@@ -57,22 +57,20 @@ getting Lein..."
 latex_setup() {
     echo "
 configuring LaTeX..."
-    sudo apt-get -y install --no-install-recommends texlive-latex-base
-    sudo apt-get -y install --no-install-recommends texlive-latex-recommended
-    sudo apt-get -y install --no-install-recommends latexmk texlive-xetex
-    sudo apt-get -y install --no-install-recommends texlive-luatex luatex
-    sudo apt-get -y install --no-install-recommends texlive-latex-extra
-    sudo apt-get -y install --no-install-recommends texlive-fonts-recommended
-    sudo apt-get -y install --no-install-recommends texlive-fonts-extra
-    sudo apt-get -y install --no-install-recommends texlive-generic-recommended
-    sudo apt-get -y install --no-install-recommends texlive-math-extra
-    sudo apt-get -y install --no-install-recommends texlive-lang-italian
-    sudo apt-get -y install --no-install-recommends texlive-lang-english
-    sudo apt-get -y install --no-install-recommends cjk-latex latex-cjk-all
-    sudo apt-get -y install --no-install-recommends texlive-lang-cjk
-    sudo apt-get -y install --no-install-recommends texlive-chinese-lang
-    sudo apt-get -y install --no-install-recommends latex-xcolor fonts-lmodern lmodern
-    sudo apt-get -y install --no-install-recommends texlive-pstricks
+    cd ~/Downloads
+    mv -f install-tl-unx.tar.gz /tmp
+    wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    tar -xzf install-tl-unx.tar.gz
+    cd `tar -tzf install-tl-unx.tar.gz | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D'`
+    sudo ./install-tl
+    mkdir -p /opt
+    sudo ln -s /usr/local/texlive/2015/bin/* /opt/texbin
+    sudo apt-get install --no-install-recommends equivs
+    mkdir -p /tmp/tl-equivs && cd /tmp/tl-equivs
+    wget http://www.tug.org/texlive/files/debian-equivs-2015-ex.txt
+    /bin/cp -f debian-equivs-2015-ex.txt texlive-local
+    equivs-build texlive-local
+    sudo dpkg -i texlive-local_2015-1_all.deb
     echo "
 ... done. Configuring chktex for Flycheck..."
     if [ ! -d "$HOME/sources" ]; then
