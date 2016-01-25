@@ -137,6 +137,7 @@ configuring fonts..."
     sudo apt-get -y install --no-install-recommends fonts-croscore
     sudo apt-get -y install --no-install-recommends ttf-ancient-fonts
     sudo apt-get -y install --no-install-recommends fonts-sil-gentium fonts-sil-gentiumplus
+    sudo apt-get -y install --no-install-recommends fonts-arphic-ukai
 }
 
 camcorder_setup() {
