@@ -95,6 +95,28 @@
      (when (> (time-to-number-of-days time-since-build) 7)
        (lwarn 'emacs :warning "Your Emacs build is more than a week old!")))))
 
+;;; Environment fixup
+(use-package exec-path-from-shell
+  :ensure t
+  :if (display-graphic-p)
+  :config
+  (progn
+    (dolist (var '("EMAIL" "INFOPATH" "JAVA_OPTS"))
+      (add-to-list 'exec-path-from-shell-variables var))
+
+    (exec-path-from-shell-initialize)
+
+    (setq user-mail-address (getenv "EMAIL"))
+
+    ;; Re-initialize the `Info-directory-list' from $INFOPATH.  Since package.el
+    ;; already initializes info, we need to explicitly add the $INFOPATH
+    ;; directories to `Info-directory-list'.  We reverse the list of info paths
+    ;; to prepend them in proper order subsequently
+    (with-eval-after-load 'info
+      (dolist (dir (nreverse (parse-colon-path (getenv "INFOPATH"))))
+        (when dir
+          (add-to-list 'Info-directory-list dir))))))
+
 ;; Set separate custom file for the customize interface
 (defconst mu-custom-file (locate-user-emacs-file "custom.el")
   "File used to store settings from Customization UI.")
