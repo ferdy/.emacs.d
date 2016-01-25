@@ -106,8 +106,6 @@
 
     (exec-path-from-shell-initialize)
 
-    (setq user-mail-address (getenv "EMAIL"))
-
     ;; Re-initialize the `Info-directory-list' from $INFOPATH.  Since package.el
     ;; already initializes info, we need to explicitly add the $INFOPATH
     ;; directories to `Info-directory-list'.  We reverse the list of info paths
