@@ -243,11 +243,6 @@
   :bind (([remap ispell-word] . helm-ispell)
          ("C-c h i"           . helm-ispell)))
 
-(use-package helm-wordnet               ; Helm interface for Wordnet dictionary
-  :ensure t
-  :bind ("C-c h w" . helm-wordnet)
-  :config (setq helm-wordnet-wordnet-location "/usr/share/wordnet"))
-
 ;;; Input
 (use-package helm-color                 ; Input colors with Helm
   :ensure helm
