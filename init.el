@@ -101,6 +101,11 @@
   :if (display-graphic-p)
   :config
   (progn
+    (when (string-match-p "/zsh$" (getenv "SHELL"))
+      ;; Use a non-interactive login shell.  A login shell, because my
+      ;; environment variables are mostly set in `.zprofile'.
+      (setq exec-path-from-shell-arguments '("-l")))
+
     (dolist (var '("EMAIL" "INFOPATH" "JAVA_OPTS"))
       (add-to-list 'exec-path-from-shell-variables var))
 
