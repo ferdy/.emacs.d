@@ -12,6 +12,7 @@
 ;;; Code:
 
 (use-package org                        ; The almighty Org
+  :ensure t
   :bind (("C-c a o a" . org-agenda-list)
          ("C-c a o c" . org-capture)
          ("C-c a o l" . org-store-link)
