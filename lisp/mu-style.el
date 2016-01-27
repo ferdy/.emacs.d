@@ -164,11 +164,9 @@ symbols, greek letters, as well as fall backs for."
           solarized-use-more-italic t       ; Use italic more often
           solarized-use-less-bold t         ; Less bold, italic is enough
           ;; Underline below the font bottomline instead of the baseline
-          x-underline-at-descent-line t)))
+          x-underline-at-descent-line t)
 
-(use-package zenburn                    ; Beautiful dark theme
-  :ensure zenburn-theme
-  :init (load-theme 'zenburn 'no-confirm))
+    (load-theme 'solarized-light 'no-confirm)))
 
 ;;; Mode line
 (use-package smart-mode-line            ; Better mode-line
