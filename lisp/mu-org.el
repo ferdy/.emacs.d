@@ -189,7 +189,7 @@
   :ensure t
   :init (add-hook 'org-mode-hook #'org-bullets-mode)
   :config (setq org-bullets-bullet-list
-                '("◉" "○" "●" "▶")))
+                '("◉" "◎" "●" "○" "►" "◇")))
 
 (use-package org-pdfview                ; Link to PDF files
   :ensure t
