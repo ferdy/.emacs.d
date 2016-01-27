@@ -173,7 +173,7 @@ symbols, greek letters, as well as fall backs for."
   :ensure t
   :init
   (progn
-    (setq sml/theme nil               ; Let Solarized take care of the mode-line
+    (setq sml/theme 'automatic               ; Let Solarized take care of the mode-line
           sml/mode-width 'full
           sml/no-confirm-load-theme t)
 
