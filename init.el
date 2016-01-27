@@ -25,8 +25,8 @@
 
 ;;; Commentary:
 
-;; This file sets up packages, custom file, username and mail address. It also
-;; loads the different configuration files I have in ~/.emacs.d/lisp.
+;; This file sets up packages, environment, custom file and personal details.
+;; It also loads the different configuration files I have in ~/.emacs.d/lisp.
 
 ;;; Code:
 
