@@ -38,6 +38,7 @@
 (mu-define-group "C-c b" buffers)
 (mu-define-group "C-c c" compile-and-comments)
 (mu-define-group "C-c e" errors)
+(mu-define-group "C-c e v" evalator)
 (mu-define-group "C-c f" files)
 (mu-define-group "C-c h" helm)
 (mu-define-group "C-c i" insertion)
