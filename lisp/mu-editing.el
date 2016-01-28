@@ -94,10 +94,6 @@
                                                   (mc/num-cursors))))
                               face font-lock-warning-face)))
 
-(use-package multifiles                 ; Edit multiple files at once
-  :ensure t
-  :bind ("C-!" . mf/mirror-region-in-multifile))
-
 (use-package saveplace                  ; Save point position in files
   :init (save-place-mode 1))
 
@@ -191,10 +187,6 @@
   :ensure t
   :init (global-hungry-delete-mode)
   :diminish hungry-delete-mode)
-
-(use-package smart-mark                 ; Restore point with C-g when mark
-  :ensure t
-  :init (smart-mark-mode))
 
 (use-package rst                        ; ReStructuredText
   :defer t
