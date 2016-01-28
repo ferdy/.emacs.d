@@ -110,7 +110,7 @@
 
 (use-package helm-bookmarks             ; List bookmarks with Helm
   :ensure helm
-  :bind ("C-x r l" . helm-bookmarks))
+  :bind ("C-x r l" . helm-filtered-bookmarks))
 
 (use-package helm-pages         ; Move between pages in current buffer with Helm
   :ensure t
