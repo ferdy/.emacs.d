@@ -127,6 +127,19 @@
                   (lambda () (diminish 'dired-omit-mode))
                   '((name . dired-omit-mode-diminish)))))
 
+;;; Utilities and keybindings
+;;;###autoload
+(defun mu-open-in-external-app ()
+  "Open the file where point is or the marked files in Dired in external
+app. The app is chosen from your OS's preference."
+  (interactive)
+  (let* ((file-list
+          (dired-get-marked-files)))
+    (mapc
+     (lambda (file-path)
+       (let ((process-connection-type nil))
+         (start-process "" nil "xdg-open" file-path))) file-list)))
+
 (provide 'mu-dired)
 
 ;;; mu-dired.el ends here

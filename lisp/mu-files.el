@@ -50,7 +50,6 @@
 
 (use-package image+                     ; Better image management
   :ensure t
-  :defer t
   :after image
   :config
   (progn
@@ -58,40 +57,6 @@
     (imagex-auto-adjust-mode 1)
 
     (setq imagex-quiet-error t)))
-
-(use-package systemd                    ; Major mode for editing systemd units
-  :ensure t
-  :mode "\\.service\\'")
-
-(use-package rst                        ; ReStructuredText
-  :defer t
-  :config
-  (progn
-    ;; Indent with 3 spaces after all kinds of literal blocks
-    (setq rst-indent-literal-minimized 3
-          rst-indent-literal-normal 3)
-
-    (bind-key "C-=" nil rst-mode-map)
-    ;; For similarity with AUCTeX and Markdown
-    (bind-key "C-c C-j" #'rst-insert-list rst-mode-map)
-    (bind-key "M-RET" #'rst-insert-list rst-mode-map)))
-
-(use-package markdown-mode              ; Edit markdown files
-  :ensure t
-  :mode ("\\.md\\'" . markdown-mode)
-  :config
-  (progn
-    ;; Process Markdown with Pandoc, using a custom stylesheet for nice output
-    (let ((stylesheet (expand-file-name
-                       (locate-user-emacs-file "etc/pandoc.css"))))
-      (setq markdown-command
-            (mapconcat #'shell-quote-argument
-                       `("pandoc" "--toc" "--section-divs"
-                         "--css" ,(concat "file://" stylesheet)
-                         "--standalone" "-f" "markdown" "-t" "html5")
-                       " ")))
-
-    (add-hook 'markdown-mode-hook #'auto-fill-mode)))
 
 ;;; Utilities and keybindings
 (defun mu-current-file ()
@@ -160,18 +125,6 @@ Otherwise copy the non-directory part only."
      (concat "/sudo:root@localhost:" buffer-file-name))))
 
 (add-hook 'find-file-hook #'open-with-sudo)
-
-;;;###autoload
-(defun mu-open-in-external-app ()
-  "Open the file where point is or the marked files in Dired in external
-app. The app is chosen from your OS's preference."
-  (interactive)
-  (let* ((file-list
-          (dired-get-marked-files)))
-    (mapc
-     (lambda (file-path)
-       (let ((process-connection-type nil))
-         (start-process "" nil "xdg-open" file-path))) file-list)))
 
 (bind-key "C-c f D" #'mu-delete-this-file)
 (bind-key "C-c f R" #'mu-rename-this-file-and-buffer)

@@ -204,6 +204,41 @@
                    "κ" "λ" "μ" "ν" "ξ" "ο" "π" "ρ" "σ" "τ" "υ" "φ"
                    "χ" "ψ" "ω"))))
 
+;;; Specific files support
+(use-package systemd                    ; Major mode for editing systemd units
+  :ensure t
+  :mode "\\.service\\'")
+
+(use-package rst                        ; ReStructuredText
+  :defer t
+  :config
+  (progn
+    ;; Indent with 3 spaces after all kinds of literal blocks
+    (setq rst-indent-literal-minimized 3
+          rst-indent-literal-normal 3)
+
+    (bind-key "C-=" nil rst-mode-map)
+    ;; For similarity with AUCTeX and Markdown
+    (bind-key "C-c C-j" #'rst-insert-list rst-mode-map)
+    (bind-key "M-RET" #'rst-insert-list rst-mode-map)))
+
+(use-package markdown-mode              ; Edit markdown files
+  :ensure t
+  :mode ("\\.md\\'" . markdown-mode)
+  :config
+  (progn
+    ;; Process Markdown with Pandoc, using a custom stylesheet for nice output
+    (let ((stylesheet (expand-file-name
+                       (locate-user-emacs-file "etc/pandoc.css"))))
+      (setq markdown-command
+            (mapconcat #'shell-quote-argument
+                       `("pandoc" "--toc" "--section-divs"
+                         "--css" ,(concat "file://" stylesheet)
+                         "--standalone" "-f" "markdown" "-t" "html5")
+                       " ")))
+
+    (add-hook 'markdown-mode-hook #'auto-fill-mode)))
+
 (setq next-line-add-newlines t)    ; C-n adds new line when at the end of a line
 
 ;; Disable tabs, but given them proper width
