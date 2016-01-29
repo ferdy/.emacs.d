@@ -222,6 +222,18 @@
   :ensure t
   :bind ("C-c x e" . tiny-expand))
 
+(use-package char-menu                  ; Fast insertion of symbols
+  :ensure t
+  :bind ("C-c x c" . char-menu)
+  :config (setq char-menu
+                '("—" "‘’" "“”" "…" "«»" "–"
+                  ("Typography" "•" "©" "†" "‡" "°" "·" "§" "№" "★")
+                  ("Math"       "≈" "≡" "≠" "∞" "×" "±" "∓" "÷" "√")
+                  ("Arrows"     "←" "→" "↑" "↓" "⇐" "⇒" "⇑" "⇓")
+                  ("Greek"      "α" "β" "Y" "δ" "ε" "ζ" "η" "θ" "ι"
+                   "κ" "λ" "μ" "ν" "ξ" "ο" "π" "ρ" "σ" "τ" "υ" "φ"
+                   "χ" "ψ" "ω"))))
+
 (setq next-line-add-newlines t)    ; C-n adds new line when at the end of a line
 
 ;; Disable tabs, but given them proper width
