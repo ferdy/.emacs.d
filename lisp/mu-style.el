@@ -128,14 +128,14 @@ symbols, greek letters, as well as fall backs for."
              '("->>" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s
                             (Bc . Br) ?🠊 (Bc . Bl) ?🠊)))
 
-(eval-after-load 'clojure-mode
-  '(setq clojure--prettify-symbols-alist
-         (append mu-prettify-alist
-                 clojure--prettify-symbols-alist)))
-(eval-after-load 'lisp-mode
-  '(setq lisp--prettify-symbols-alist
-         (append mu-prettify-alist
-                 lisp--prettify-symbols-alist)))
+(with-eval-after-load 'clojure-mode
+  (setq clojure--prettify-symbols-alist
+        (append mu-prettify-alist
+                clojure--prettify-symbols-alist)))
+(with-eval-after-load 'lisp-mode
+  (setq lisp--prettify-symbols-alist
+        (append mu-prettify-alist
+                lisp--prettify-symbols-alist)))
 
 ;; Improve LaTeX equations with font-lock
 (defface mu-unimportant-latex-face

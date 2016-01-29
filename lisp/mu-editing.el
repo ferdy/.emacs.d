@@ -466,8 +466,8 @@ already narrowed."
 
 (bind-key "C-x n" #'narrow-or-widen-dwim)
 
-(eval-after-load 'latex
-  '(bind-key "C-x n" nil LaTeX-mode-map))
+(with-eval-after-load 'latex
+  (bind-key "C-x n" nil LaTeX-mode-map))
 
 (provide 'mu-editing)
 
