@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores my configuration for Dired and file management.
+;; This file stores my configuration for various file types.
 
 ;;; Code:
 
@@ -24,122 +24,6 @@
                                       "/elpa/.*\\'"
                                       "/tmp/"
                                       "/ssh:")))
-
-(use-package dired                      ; File manager
-  :defer t
-  :bind (("C-c f s"    . dired-get-size)
-         ("<C-return>" . mu-open-in-external-app)
-         ("C-c f f"    . find-name-dired))
-  :config
-  (progn
-    (setq dired-auto-revert-buffer t    ; Revert buffers on revisiting
-          dired-listing-switches
-          "-lFaGh1v --group-directories-first"  ; Add ls switches
-          global-auto-revert-non-file-buffers t ; Auto refresh dired
-          auto-revert-verbose nil               ; But be quiet about it
-          dired-dwim-target t                   ; Use other pane as target
-          dired-recursive-copies 'always        ; Copy dirs recursively
-          dired-recursive-deletes ' always      ; Delete dirs recursively
-          ;; -F marks links with @
-          dired-ls-F-marks-symlinks t)
-
-    ;; Enable dired-find-alternate-file
-    (put 'dired-find-alternate-file 'disabled nil)
-
-    ;; Reuse buffers if they are directories
-    (defun find-file-reuse-dir-buffer ()
-      "Like `dired-find-file', but reuse Dired buffers."
-      (interactive)
-      (set-buffer-modified-p nil)
-      (let ((file (dired-get-file-for-visit)))
-        (if (file-directory-p file)
-            (find-alternate-file file)
-          (find-file file))))
-
-    ;; Better keybinding for moving between directories
-    (bind-keys :map dired-mode-map
-               ("M-<up>"   . (lambda ()
-                               (interactive)
-                               (find-alternate-file "..")))
-               ("M-p"      . (lambda ()
-                               (interactive)
-                               (find-alternate-file "..")))
-               ("^"        . (lambda ()
-                               (interactive)
-                               (find-alternate-file "..")))
-               ("RET"      . find-file-reuse-dir-buffer)
-               ("M-<down>" . (lambda ()
-                               (interactive)
-                               (dired-find-alternate-file)))
-               ("M-n"      . (lambda ()
-                               (interactive)
-                               (dired-find-alternate-file))))
-
-    ;; Make find-name-dired faster
-    (use-package find-dired
-      :config (setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
-
-    ;; Better M-< and M->
-    (defun dired-back-to-top ()
-      (interactive)
-      (beginning-of-buffer)
-      (dired-next-line 2))
-
-    (bind-key (vector 'remap 'beginning-of-buffer) 'dired-back-to-top
-              dired-mode-map)
-
-    (defun dired-jump-to-bottom ()
-      (interactive)
-      (end-of-buffer)
-      (dired-next-line -1))
-
-    (bind-key (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom
-              dired-mode-map)
-
-    ;; Open directory with sudo in dired
-    (defun sudired ()
-      "Open directory with sudo in dired."
-      (interactive)
-      (require 'tramp)
-      (let ((dir (expand-file-name default-directory)))
-        (if (string-match "^/sudo:" dir)
-            (user-error "Already in sudo")
-          (dired (concat "/sudo::" dir)))))
-
-    (bind-key "!" #'sudired dired-mode-map)
-
-    ;; Get files size in dired
-    (defun dired-get-size ()
-      "Quick and easy way to get file size in dired."
-      (interactive)
-      (let ((files (dired-get-marked-files)))
-        (with-temp-buffer
-          (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
-          (message
-           "Size of all marked files: %s"
-           (progn
-             (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
-             (match-string 1))))))
-
-    ;; Handle long file names
-    (add-hook 'dired-mode-hook #'toggle-truncate-lines)))
-
-(use-package dired-x                    ; Enable some nice dired features
-  :bind ("C-x C-j" . dired-jump)
-  :config
-  (progn
-    (setq dired-omit-verbose nil        ; Be less verbose, Dired
-          ;; Omit dotfiles with C-x M-o
-          dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
-    (add-hook 'dired-mode-hook #'dired-omit-mode)
-
-    ;; Diminish dired-omit-mode. We need this hack, because Dired Omit Mode has
-    ;; a very peculiar way of registering its lighter explicitly in
-    ;; `dired-omit-startup'.  We can't just use `:diminish' because the lighter
-    ;; isn't there yet after dired-omit-mode is loaded.
-    (add-function :after (symbol-function 'dired-omit-startup)
-                  (lambda () (diminish 'dired-omit-mode))
-                  '((name . dired-omit-mode-diminish)))))
 
 (setq view-read-only t)                 ; View read-only
 (setq large-file-warning-threshold nil) ; No large file warning
@@ -178,6 +62,36 @@
 (use-package systemd                    ; Major mode for editing systemd units
   :ensure t
   :mode "\\.service\\'")
+
+(use-package rst                        ; ReStructuredText
+  :defer t
+  :config
+  (progn
+    ;; Indent with 3 spaces after all kinds of literal blocks
+    (setq rst-indent-literal-minimized 3
+          rst-indent-literal-normal 3)
+
+    (bind-key "C-=" nil rst-mode-map)
+    ;; For similarity with AUCTeX and Markdown
+    (bind-key "C-c C-j" #'rst-insert-list rst-mode-map)
+    (bind-key "M-RET" #'rst-insert-list rst-mode-map)))
+
+(use-package markdown-mode              ; Edit markdown files
+  :ensure t
+  :mode ("\\.md\\'" . markdown-mode)
+  :config
+  (progn
+    ;; Process Markdown with Pandoc, using a custom stylesheet for nice output
+    (let ((stylesheet (expand-file-name
+                       (locate-user-emacs-file "etc/pandoc.css"))))
+      (setq markdown-command
+            (mapconcat #'shell-quote-argument
+                       `("pandoc" "--toc" "--section-divs"
+                         "--css" ,(concat "file://" stylesheet)
+                         "--standalone" "-f" "markdown" "-t" "html5")
+                       " ")))
+
+    (add-hook 'markdown-mode-hook #'auto-fill-mode)))
 
 ;;; Utilities and keybindings
 (defun mu-current-file ()
