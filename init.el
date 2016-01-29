@@ -164,11 +164,11 @@
 (use-package mu-editing)
 (use-package mu-navigation)
 (use-package mu-search)
-(use-package mu-files)
+(use-package mu-files :defer 2)
 (use-package mu-dired :defer 2)
 (use-package mu-completion :defer 3)
 (use-package mu-languages)
-(use-package mu-latex)
+(use-package mu-latex :mode "\\.tex\\'")
 (use-package mu-vers-control :defer 5)
 (use-package mu-net)
 (use-package mu-utilities)
@@ -176,7 +176,7 @@
 (use-package mu-programming)
 (use-package mu-project)
 (use-package mu-shells)
-(use-package mu-bugs)
+(use-package mu-bugs :defer 2)
 (use-package mu-functions)
 
 ;;; init.el ends here

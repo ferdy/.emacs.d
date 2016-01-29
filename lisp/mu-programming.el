@@ -83,12 +83,14 @@
 
 (use-package emr                        ; Refactor utilities
   :ensure t
+  :defer t
   :init
   (progn
     (bind-key "M-RET" 'emr-show-refactor-menu prog-mode-map)
     (add-hook 'prog-mode-hook 'emr-initialize)))
 
 (use-package ert                        ; Elisp Regression Test
+  :defer t
   :after elisp-mode)
 
 (use-package buttercup                  ; Behavior-Driven elisp testing
@@ -193,6 +195,7 @@
 
 ;;; Scheme
 (use-package scheme                     ; Configuration for Scheme
+  :defer t
   :config
   (progn
     (require 'cmuscheme)
@@ -207,9 +210,10 @@
              (insert
               "#!/bin/sh\n#| -*- scheme -*-\nexec csi -s $0 \"$@\"\n|#\n"))))
 
-    (bind-key "C-c m s" #'run-scheme scheme-mode-map)
-    (bind-key "C-c m l" #'scheme-load-current-file scheme-mode-map)
-    (bind-key "C-c m f" #'scheme-compile-current-file scheme-mode-map)
+    (with-eval-after-load 'scheme
+      (bind-key "C-c m s" #'run-scheme scheme-mode-map)
+      (bind-key "C-c m l" #'scheme-load-current-file scheme-mode-map)
+      (bind-key "C-c m f" #'scheme-compile-current-file scheme-mode-map))
 
     (defun scheme-load-current-file (&optional switch)
       (interactive "P")
@@ -244,7 +248,8 @@
   :init (setq geiser-active-implementations '(chicken guile)))
 
 (use-package sicp                       ; The Wizard Book in Info format
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; Common Lisp
 (use-package sly                        ; Sylvester the Cat's Common Lisp IDE
@@ -256,7 +261,8 @@
                      ("C-c m h" . sly-documentation-lookup)))
 
 (use-package sly-macrostep              ; Macro-expansion via macrostep.el
-  :ensure t)
+  :ensure t
+  :defer t)
 
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
@@ -298,6 +304,7 @@
 
 (use-package zencoding-mode     ; Unfold CSS-selector-like expressions to markup
   :ensure t
+  :defer t
   :init (add-hook 'web-mode-hook #'zencoding-mode)
   :diminish zencoding-mode)
 
@@ -317,6 +324,7 @@
 
 (use-package macrostep                  ; Navigate through macros
   :ensure t
+  :defer t
   :after lisp-mode
   :init
   (progn
@@ -444,10 +452,11 @@ With a prefix argument N, comment that many sexps."
 
 (bind-key "C-M-;" 'comment-dwim) ; Use C-M-; instead of M-;
 
-(eval-after-load 'clojure-mode
-  '(bind-key "M-;" #'comment-or-uncomment-sexp clojure-mode-map))
+(with-eval-after-load 'clojure-mode
+  (bind-key "M-;" #'comment-or-uncomment-sexp clojure-mode-map))
 (bind-key "M-;" #'comment-or-uncomment-sexp emacs-lisp-mode-map)
-(bind-key "M-;" #'comment-or-uncomment-sexp scheme-mode-map)
+(with-eval-after-load 'scheme
+  (bind-key "M-;" #'comment-or-uncomment-sexp scheme-mode-map))
 
 (bind-key "C-;" #'comment-line)
 
