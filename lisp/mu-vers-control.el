@@ -66,7 +66,10 @@
       (mu-magit-set-repo-dirs-from-projectile))
 
     (add-hook 'projectile-switch-project-hook
-              #'mu-magit-set-repo-dirs-from-projectile))
+              #'mu-magit-set-repo-dirs-from-projectile)
+
+    ;; Refresh `diff-hl' accordingly
+    (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
   :diminish (magit-wip-after-save-local-mode
              magit-wip-before-change-mode))
 
