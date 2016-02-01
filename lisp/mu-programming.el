@@ -314,6 +314,17 @@
   :config (setq nxml-slash-auto-complete-flag t
                 nxml-auto-insert-xml-declaration-flag t))
 
+;;; Bugs management
+(use-package bug-reference              ; Buttonize bug references
+  :defer t
+  :init
+  (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
+         (add-hook 'text-mode-hook #'bug-reference-mode)))
+
+(use-package bug-hunter                 ; Find bugs in Emacs configuration
+  :ensure t
+  :commands bug-hunter-file)
+
 ;;; Utilities and keybindings
 (use-package eldoc                      ; Documentation in the echo area
   :defer t

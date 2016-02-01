@@ -176,7 +176,6 @@
 (use-package mu-programming)
 (use-package mu-project)
 (use-package mu-shells)
-(use-package mu-bugs :defer 2)
 (use-package mu-functions)
 
 ;;; init.el ends here
