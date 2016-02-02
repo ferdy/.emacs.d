@@ -31,8 +31,8 @@
     (diminish 'isearch-mode)
 
     (setq isearch-allow-scroll t        ; Scroll during search
-          replace-character-fold t      ; Use character-folding in query-replace
-          )))
+          ;; Use character-folding in query-replace
+          replace-character-fold t)))
 
 (use-package anzu                       ; Position/matches count for isearch
   :ensure t
