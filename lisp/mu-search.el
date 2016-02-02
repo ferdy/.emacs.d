@@ -30,30 +30,9 @@
   (progn
     (diminish 'isearch-mode)
 
-    (setq isearch-allow-scroll          ; Scroll during search
+    (setq isearch-allow-scroll t        ; Scroll during search
           replace-character-fold t      ; Use character-folding in query-replace
-          )
-
-    ;; Better backspace during isearch
-    (defun mu-isearch-delete ()
-      "Delete non-matching text or the last character."
-      (interactive)
-      (if (= 0 (length isearch-string))
-          (ding)
-        (setq isearch-string
-              (substring isearch-string
-                         0
-                         (or (isearch-fail-pos)
-                             (1- (length isearch-string)))))
-        (setq isearch-message
-              (mapconcat #'isearch-text-char-description
-                         isearch-string "")))
-      (if isearch-other-end (goto-char isearch-other-end))
-      (isearch-search)
-      (isearch-push-state)
-      (isearch-update))
-
-    (bind-key [remap isearch-delete-char] #'mu-isearch-delete)))
+          )))
 
 (use-package anzu                       ; Position/matches count for isearch
   :ensure t
