@@ -168,7 +168,7 @@
 (use-package mu-dired :defer 2)
 (use-package mu-completion :defer 3)
 (use-package mu-languages)
-(use-package mu-latex :mode "\\.tex\\'")
+(use-package mu-latex)
 (use-package mu-vers-control :defer 5)
 (use-package mu-net)
 (use-package mu-utilities)
