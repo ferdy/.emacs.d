@@ -29,8 +29,10 @@
   :init
   (progn
     (diminish 'isearch-mode)
-    ;; Scroll during search
-    (setq isearch-allow-scroll t)
+
+    (setq isearch-allow-scroll          ; Scroll during search
+          replace-character-fold t      ; Use character-folding in query-replace
+          )
 
     ;; Better backspace during isearch
     (defun mu-isearch-delete ()
