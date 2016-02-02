@@ -25,6 +25,8 @@
           TeX-parse-self t
           ;; Automatically save style information
           TeX-auto-save t
+          ;; Automatically save when compiling
+          TeX-save-query nil
           ;; Insert braces after sub- and superscripts in math mode
           TeX-electric-sub-and-superscript t
           ;; Don't insert magic quotes right away
