@@ -129,9 +129,6 @@
                  #'paradox--report-buffer-display-if-noquery)))
 
 (use-package browse-url                 ; Browse URLs
-  :bind (("C-c a w b" . eww-list-bookmarks)
-         ("C-c a w w" . eww)
-         ("C-c a w u" . eww-browse-url))
   :config (setq browse-url-browser-function 'browse-url-generic
                 browse-url-generic-program "/usr/bin/iceweasel"))
 
@@ -146,8 +143,9 @@
                                     (goto-address-mode -1)))))
 
 (use-package eww                        ; Built-in web browser
-  :bind (("C-c w b" . eww-list-bookmarks)
-         ("C-c w w" . eww))
+  :bind  (("C-c a w b" . eww-list-bookmarks)
+          ("C-c a w w" . eww)
+          ("C-c a w u" . eww-browse-url))
   :config
   (progn
     (defun mu-eww-keep-lines (regexp)
