@@ -145,6 +145,11 @@
       (setq reftex-cite-format 'biblatex)))
   :diminish reftex-mode)
 
+(use-package latex-unicode-math-mode    ; Input method for Unicode math symbols
+  :ensure t
+  :defer t
+  :init (add-hook 'LaTeX-mode-hook 'latex-unicode-mode))
+
 (provide 'mu-latex)
 
 ;;; mu-latex.el ends here
