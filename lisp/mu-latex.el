@@ -148,7 +148,8 @@
 (use-package latex-unicode-math-mode    ; Input method for Unicode math symbols
   :ensure t
   :defer t
-  :init (add-hook 'LaTeX-mode-hook 'latex-unicode-mode))
+  :init (add-hook 'LaTeX-mode-hook 'latex-unicode-mode)
+  :diminish latex-unicode-mode)
 
 (provide 'mu-latex)
 
