@@ -107,6 +107,11 @@
   :after company
   :init (add-to-list 'company-backends 'company-restclient))
 
+(use-package company-shell              ; Company support for shell functions
+  :ensure t
+  :after company
+  :init (add-to-list 'company-backends 'company-shell))
+
 (provide 'mu-completion)
 
 ;;; mu-completion.el ends here
