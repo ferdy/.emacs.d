@@ -152,7 +152,11 @@
 
 (use-package helm-descbinds             ; Describing keybinding through Helm
   :ensure t
-  :bind ("C-c h d" . helm-descbinds))
+  :bind ("C-c h h d" . helm-descbinds))
+
+(use-package helm-describe-modes        ; Describe modes through Helm
+  :ensure t
+  :bind ("C-c h d" . helm-describe-modes))
 
 ;;; Search
 (use-package helm-regex                 ; Helm regex tools
