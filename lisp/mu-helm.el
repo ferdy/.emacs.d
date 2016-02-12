@@ -21,9 +21,7 @@
                ("C-i" . helm-execute-persistent-action)
                ("C-z" . helm-select-action))
 
-    (setq helm-split-window-in-side-p t ; Open buffer in current window
-          ;; Move to end/beginning when reaching top/bottom of source
-          helm-move-to-line-cycle-in-source t
+    (setq helm-move-to-line-cycle-in-source t ; Cycle Helm candidates
           ;; Scroll 8 lines using M-<next>/M-<prior>
           helm-scroll-amount 8
           ;; Fuzzy matching
