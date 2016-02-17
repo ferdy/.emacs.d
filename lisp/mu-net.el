@@ -22,6 +22,9 @@
     (add-to-list 'backup-directory-alist
                  (cons tramp-file-name-regexp nil))))
 
+(use-package tramp-theme                ; Custom theme for remote buffers
+  :ensure t)
+
 ;; Requires in ~/.ercpass the format
 ;; (setq variable "nickname")
 (use-package erc                        ; IRC client
