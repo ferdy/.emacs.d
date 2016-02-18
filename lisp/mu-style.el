@@ -168,16 +168,18 @@ symbols, greek letters, as well as fall backs for."
           solarized-use-more-italic t       ; Use italic more often
           solarized-use-less-bold t         ; Less bold, italic is enough
           ;; Underline below the font bottomline instead of the baseline
-          x-underline-at-descent-line t)
+          x-underline-at-descent-line t)))
 
-    (load-theme 'solarized-light 'no-confirm)))
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :init (load-theme 'sanityinc-tomorrow-night 'no-confirm))
 
 ;;; Mode line
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
   :init
   (progn
-    (setq sml/theme 'automatic
+    (setq sml/theme 'respectful
           sml/mode-width 'full
           sml/no-confirm-load-theme t)
 
