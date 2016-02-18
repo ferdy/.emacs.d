@@ -103,10 +103,6 @@ symbols, greek letters, as well as fall backs for."
 
 (column-number-mode)                    ; Turn on column-number-mode
 
-(use-package nlinum                     ; More efficient line numbers
-  :ensure t
-  :bind ("C-c t n" . nlinum-mode))
-
 (use-package page-break-lines           ; Better looking break lines
   :ensure t
   :defer t
