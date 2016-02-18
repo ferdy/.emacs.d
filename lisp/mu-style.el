@@ -170,7 +170,7 @@ symbols, greek letters, as well as fall backs for."
           ;; Underline below the font bottomline instead of the baseline
           x-underline-at-descent-line t)))
 
-(use-package color-theme-sanityinc-tomorrow
+(use-package color-theme-sanityinc-tomorrow ; Collection of beautiful themes
   :ensure t
   :init (load-theme 'sanityinc-tomorrow-night 'no-confirm))
 
