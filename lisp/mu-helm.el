@@ -120,6 +120,11 @@
   :init (helm-projectile-on)
   :config (setq projectile-switch-project-action #'helm-projectile))
 
+(use-package ace-jump-helm-line         ; Ace-jump to a candidate
+  :ensure t
+  :after helm
+  :bind ("C-'" . ace-jump-helm-line))
+
 ;;; Programming
 (use-package helm-eval                  ; Evaluate expressions with Helm
   :ensure helm
