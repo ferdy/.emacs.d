@@ -123,7 +123,8 @@
 (use-package ace-jump-helm-line         ; Ace-jump to a candidate
   :ensure t
   :after helm
-  :bind ("C-'" . ace-jump-helm-line))
+  :bind ("C-'" . ace-jump-helm-line)
+  :config (setq ace-jump-helm-line-default-action 'select))
 
 ;;; Programming
 (use-package helm-eval                  ; Evaluate expressions with Helm
