@@ -11,18 +11,23 @@
 
 ;;; Code:
 
-(use-package swiper
+(use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind ("C-s" . swiper))
 
-(use-package ivy
+(use-package ivy                        ; Incremental Vertical completYon
   :ensure swiper
   :bind ("C-c C-r" . ivy-resume)
   :init (ivy-mode 1)
-  :config (setq ivy-use-virtual-buffers t)
+  :config
+  (progn
+    ;; Show recently killed buffers when calling `ivy-switch-buffer'
+    (setq ivy-use-virtual-buffers t
+          ivy-virtual-abbreviate 'full ; Show full file path
+          ivy-re-builders-alist '((t . ivy--regex-plus))))
   :diminish ivy-mode)
 
-(use-package counsel
+(use-package counsel                    ; Completion functions with Ivy
   :ensure t
   :bind (("C-x C-f" . counsel-find-file)
          ("M-x"     . counsel-M-x)
@@ -35,7 +40,23 @@
          ("C-c G"   . counsel-git-grep)
          ("C-c k"   . counsel-ag)
          ("C-x l"   . counsel-locate)
-         ("C-S-o"   . counsel-rhythmbox)))
+         ("C-x i"   . counsel-imenu)
+         ("M-y"     . counsel-yank-pop))
+  :config
+  (progn
+    (setq counsel-find-file-at-point t
+          counsel-find-file-ignore-regexp
+          (concat
+           ;; file names beginning with # or .
+           "\\(?:\\`[#.]\\)"
+           ;; file names ending with # or ~
+           "\\|\\(?:\\`.+?[#~]\\'\\)"))
+
+    (ivy-set-actions
+     'counsel-find-file
+     `(("x"
+        (lambda (x) (delete-file (expand-file-name x ivy--directory)))
+        ,(propertize "delete" 'face 'font-lock-warning-face))))))
 
 (provide 'mu-swiper)
 
