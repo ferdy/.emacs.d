@@ -40,7 +40,6 @@
 (mu-define-group "C-c e" errors)
 (mu-define-group "C-c e v" evalator)
 (mu-define-group "C-c f" files)
-(mu-define-group "C-c h" helm)
 (mu-define-group "C-c i" insertion)
 (mu-define-group "C-c m" major-mode)
 (mu-define-group "C-c n" navigation)

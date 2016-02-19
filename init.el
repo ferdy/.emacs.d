@@ -160,7 +160,6 @@
 (use-package mu-highlight)
 (use-package mu-buffers)
 (use-package mu-windows)
-;; (use-package mu-helm)
 (use-package mu-swiper)
 (use-package mu-editing)
 (use-package mu-navigation)
