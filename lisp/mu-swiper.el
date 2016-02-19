@@ -17,7 +17,8 @@
 
 (use-package ivy                        ; Incremental Vertical completYon
   :ensure swiper
-  :bind ("C-c C-r" . ivy-resume)
+  :bind (("C-c C-r" . ivy-resume)
+         ("C-c s o" . ivy-occur))
   :init (ivy-mode 1)
   :config
   (progn
