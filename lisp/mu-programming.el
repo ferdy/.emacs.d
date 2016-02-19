@@ -462,7 +462,7 @@ With a prefix argument N, comment that many sexps."
     (dotimes (_ n)
       (comment-sexp--raw))))
 
-(bind-key "C-M-;" #'comment-dwim) ; Use C-M-; instead of M-;
+(bind-key* "C-M-;" #'comment-dwim) ; Use C-M-; instead of M-;
 
 (with-eval-after-load 'clojure-mode
   (bind-key "M-;" #'comment-or-uncomment-sexp clojure-mode-map))
@@ -470,7 +470,7 @@ With a prefix argument N, comment that many sexps."
 (with-eval-after-load 'scheme
   (bind-key "M-;" #'comment-or-uncomment-sexp scheme-mode-map))
 
-(bind-key "C-;" #'comment-line)
+(bind-key* "C-;" #'comment-line)
 
 (bind-key "C-c t d" #'toggle-debug-on-error)
 
