@@ -8,11 +8,6 @@ script helps to create the right environment *before* starting Emacs with this
 configuration for the first time. The script only works with **Debian-based**
 systems.
 
-This configuration uses
-[use-package](https://github.com/jwiegley/use-package) and relies heavily upon
-[Helm](https://github.com/emacs-helm/helm). It comprises a sane setup for
-Clojure, LaTeX and Org-mode.
-
 ##Setup
 On your **Debian-based** machine:
 
