@@ -50,12 +50,7 @@
 
 (use-package vkill                      ; Visually kill programs and processes
   :ensure t
-  :bind (("C-c a a k" . vkill)
-         ("C-c a a h" . vkill-and-helm-occur))
-  :init (defun vkill-and-helm-occur ()
-          (interactive)
-          (vkill)
-          (call-interactively #'helm-occur)))
+  :bind ("C-c a a k" . vkill))
 
 (use-package command-log-mode           ; Show event history and command history
   :ensure t
