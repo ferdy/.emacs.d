@@ -1,6 +1,6 @@
 ;;; mu-buffers.el --- Part of my Emacs configuration  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2013-2016  Manuel Uberti
+;; Copyright (C) 2016  Manuel Uberti
 
 ;; Author: Manuel Uberti <manuel@boccaperta.com>
 ;; Keywords: convenience
