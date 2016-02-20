@@ -9,6 +9,9 @@
 
 ;; This file stores my Helm configuration.
 
+;; Note: I don't use Helm anymore, but I'm keeping this file here because it
+;; took me a lot to set up Helm. Who knows, maybe some day I'll use it again.
+
 ;;; Code:
 
 ;;; Core setup
