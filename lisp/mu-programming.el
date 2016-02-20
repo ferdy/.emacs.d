@@ -109,13 +109,6 @@
                 (when (mu-is-buttercup-buffer)
                   (require 'buttercup))))))
 
-(use-package evalator                   ; Interactive evaluation of data
-  :ensure t
-  :bind (("C-c e v v" . evalator)
-         ("C-c e v e" . evalator-explicit)
-         ("C-c e v r" . evalator-resume)
-         ("C-c e v i" . evalator-insert-equiv-expr)))
-
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
