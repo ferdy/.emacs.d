@@ -54,6 +54,20 @@
 
     (bind-key "q" #'magit-quit-session magit-status-mode-map)
 
+    ;; Set `magit-repository-directories' for `magit-status'
+    (defun mu-magit-set-repo-dirs-from-projectile ()
+      "Set `magit-repository-directories' with known Projectile projects."
+      (let ((project-dirs (bound-and-true-p projectile-known-projects)))
+        ;; Remove trailing slashes from project directories
+        (setq magit-repository-directories
+              (mapcar #'directory-file-name project-dirs))))
+
+    (with-eval-after-load 'projectile
+      (mu-magit-set-repo-dirs-from-projectile))
+
+    (add-hook 'projectile-switch-project-hook
+              #'mu-magit-set-repo-dirs-from-projectile)
+
     ;; Refresh `diff-hl' accordingly
     (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh))
   :diminish (magit-wip-after-save-local-mode
