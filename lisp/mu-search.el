@@ -34,13 +34,6 @@
           ;; Use character-folding in query-replace
           replace-character-fold t)))
 
-(use-package anzu                       ; Position/matches count for isearch
-  :ensure t
-  :bind (("M-%"   . anzu-query-replace)
-         ("C-M-%" . anzu-query-replace-regexp))
-  :init (global-anzu-mode)
-  :diminish anzu-mode)
-
 (use-package wgrep                      ; Editable grep buffer
   :ensure t
   :defer t)
