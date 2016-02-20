@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores my configuration for Swiper, Ivy and Counsel.
+;; This file stores my configuration for Ivy and related packages.
 
 ;;; Code:
 
