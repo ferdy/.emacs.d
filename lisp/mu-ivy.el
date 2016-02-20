@@ -15,9 +15,6 @@
   :ensure t
   :bind ("C-s" . swiper))
 
-(use-package smex                       ; Better M-x interface
-  :ensure t)
-
 (use-package ivy                        ; Incremental Vertical completYon
   :ensure swiper
   :bind (("C-c C-r" . ivy-resume)
@@ -30,6 +27,9 @@
           ivy-virtual-abbreviate 'full  ; Show full file path
           ivy-re-builders-alist '((t . ivy--regex-plus))))
   :diminish ivy-mode)
+
+(use-package smex                       ; Better M-x interface for Counsel
+  :ensure t)
 
 (use-package counsel                    ; Completion functions with Ivy
   :ensure t
