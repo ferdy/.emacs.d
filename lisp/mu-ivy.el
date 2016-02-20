@@ -15,6 +15,9 @@
   :ensure t
   :bind ("C-s" . swiper))
 
+(use-package smex                       ; Better M-x interface
+  :ensure t)
+
 (use-package ivy                        ; Incremental Vertical completYon
   :ensure swiper
   :bind (("C-c C-r" . ivy-resume)
