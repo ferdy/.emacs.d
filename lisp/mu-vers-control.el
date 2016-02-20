@@ -39,6 +39,9 @@
           magit-push-always-verify nil
           magit-revision-show-gravatars nil)
 
+    ;; Use Ivy
+    (setq magit-completing-read-function 'ivy-completing-read)
+
     ;; Set `magit-status' fullscreen
     (setq magit-post-display-buffer-hook
           #'(lambda ()
