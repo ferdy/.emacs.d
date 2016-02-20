@@ -25,7 +25,8 @@
   (progn
     ;; Show recently killed buffers when calling `ivy-switch-buffer'
     (setq ivy-use-virtual-buffers t
-          ivy-virtual-abbreviate 'full ; Show full file path
+          ivy-count-format ""           ; Do not show counter
+          ivy-virtual-abbreviate 'full  ; Show full file path
           ivy-re-builders-alist '((t . ivy--regex-plus))))
   :diminish ivy-mode)
 
