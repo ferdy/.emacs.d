@@ -28,7 +28,7 @@
           ivy-re-builders-alist '((t . ivy--regex-plus))))
   :diminish ivy-mode)
 
-(use-package smex                       ; Better M-x interface for Counsel
+(use-package smex                       ; Better M-x interface
   :ensure t)
 
 (use-package counsel                    ; Completion functions with Ivy
