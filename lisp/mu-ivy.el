@@ -1,4 +1,4 @@
-;;; mu-swiper.el --- Part of my Emacs configuration  -*- lexical-binding: t; -*-
+;;; mu-ivy.el --- Part of my Emacs configuration  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2016  Manuel Uberti
 
@@ -59,6 +59,6 @@
         (lambda (x) (delete-file (expand-file-name x ivy--directory)))
         ,(propertize "delete" 'face 'font-lock-warning-face))))))
 
-(provide 'mu-swiper)
+(provide 'mu-ivy)
 
-;;; mu-swiper.el ends here
+;;; mu-ivy.el ends here
