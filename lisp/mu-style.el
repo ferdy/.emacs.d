@@ -168,6 +168,10 @@ symbols, greek letters, as well as fall backs for."
 
     (load-theme 'solarized-light 'no-confirm)))
 
+(use-package select-themes              ; Better theme selection
+  :ensure t
+  :commands select-themes)
+
 ;;; Mode line
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
