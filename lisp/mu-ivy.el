@@ -13,7 +13,8 @@
 
 (use-package swiper                     ; Isearch with an overview
   :ensure t
-  :bind ("C-s" . swiper))
+  :bind (("C-c s s" . swiper)
+         ("C-c s S" . swiper-all)))
 
 (use-package ivy                        ; Incremental Vertical completYon
   :ensure swiper
