@@ -81,14 +81,6 @@
     (add-hook 'emacs-lisp-mode-hook
               #'mu-add-use-package-to-imenu)))
 
-(use-package emr                        ; Refactor utilities
-  :ensure t
-  :defer t
-  :init
-  (progn
-    (bind-key "M-RET" 'emr-show-refactor-menu prog-mode-map)
-    (add-hook 'prog-mode-hook 'emr-initialize)))
-
 (use-package ert                        ; Elisp Regression Test
   :defer t
   :after elisp-mode)
