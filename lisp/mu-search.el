@@ -55,12 +55,10 @@
   :config
   (progn
     (with-eval-after-load 'grep
-      (bind-keys :map grep-mode-map
-                 ("C-x C-q" . wgrep-change-to-wgrep-mode)))
+      (bind-key "C-x C-q" #'wgrep-change-to-wgrep-mode grep-mode-map))
 
     (with-eval-after-load 'wgrep
-      (bind-keys :map grep-mode-map
-                 ("C-c C-c" .  wgrep-finish-edit)))))
+      (bind-key "C-c C-c" #'wgrep-finish-edit grep-mode-map))))
 
 (use-package wgrep-ag                   ; Wgrep for ag
   :ensure t
@@ -69,16 +67,13 @@
   (progn
     (add-hook 'ag-mode-hook #'wgrep-ag-setup)
 
-    (bind-keys :map wgrep-mode-map
-               ("C-x s" . wgrep-save-all-buffers))
+    (bind-key "C-x s" #'wgrep-save-all-buffers wgrep-mode-map)
 
     (with-eval-after-load 'ag
-      (bind-keys :map ag-mode-map
-                 ("C-x C-q" . wgrep-change-to-wgrep-mode)))
+      (bind-key "C-x C-q" #'wgrep-change-to-wgrep-mode ag-mode-map))
 
     (with-eval-after-load 'wgrep
-      (bind-keys :map grep-mode-map
-                 ("C-c C-c" .  wgrep-finish-edit)))))
+      (bind-key "C-c C-c" #'wgrep-finish-edit ag-mode-map))))
 
 (use-package visual-regexp              ; Regexp replace with in-buffer display
   :ensure t
