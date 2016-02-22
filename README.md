@@ -89,6 +89,7 @@ inspiration from these people:
 - [Oleh Krehel](https://github.com/abo-abo)
 - [Joe Brock](https://github.com/DebianJoe)
 - [Wilfred Hughes](https://github.com/Wilfred)
+- [Kaushal Modi](https://github.com/kaushalmodi)
 
 ##License
 This program is free software; you can redistribute it and/or modify
