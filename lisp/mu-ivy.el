@@ -14,7 +14,9 @@
 (use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind (("C-c s s" . swiper)
-         ("C-c s S" . swiper-all)))
+         ("C-c s S" . swiper-all))
+  :bind (:map isearch-mode-map
+              ("M-i" . swiper-from-isearch)))
 
 (use-package ivy                        ; Incremental Vertical completYon
   :ensure swiper
