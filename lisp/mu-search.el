@@ -34,24 +34,6 @@
           ;; Use character-folding in query-replace
           replace-character-fold t)))
 
-(use-package wgrep                      ; Editable grep buffer
-  :ensure t
-  :defer t)
-
-(use-package wgrep-ag                   ; Wgrep for ag
-  :ensure t
-  :defer t)
-
-(use-package visual-regexp              ; Regexp replace with in-buffer display
-  :ensure t
-  :bind (("C-c s r" . vr/query-replace)
-         ("C-c s R" . vr/replace)))
-
-(use-package replace-pairs              ; Query-replace pairs of things
-  :ensure t
-  :bind (("C-c s q" . query-replace-pairs)
-         ("C-c s p" . replace-pairs)))
-
 (use-package ag                         ; Search code in files/projects
   :ensure t
   :bind (("C-c s a" . ag)
@@ -66,6 +48,47 @@
         ;; Use Projectile to find the project root
         ag-project-root-function (lambda (d) (let ((default-directory d))
                                           (projectile-project-root)))))
+
+(use-package wgrep                      ; Editable grep buffer
+  :ensure t
+  :defer t
+  :config
+  (progn
+    (with-eval-after-load 'grep
+      (bind-keys :map grep-mode-map
+                 ("C-x C-q" . wgrep-change-to-wgrep-mode)))
+
+    (with-eval-after-load 'wgrep
+      (bind-keys :map grep-mode-map
+                 ("C-c C-c" .  wgrep-finish-edit)))))
+
+(use-package wgrep-ag                   ; Wgrep for ag
+  :ensure t
+  :commands (wgrep-ag-setup)
+  :config
+  (progn
+    (add-hook 'ag-mode-hook #'wgrep-ag-setup)
+
+    (bind-keys :map wgrep-mode-map
+               ("C-x s" . wgrep-save-all-buffers))
+
+    (with-eval-after-load 'ag
+      (bind-keys :map ag-mode-map
+                 ("C-x C-q" . wgrep-change-to-wgrep-mode)))
+
+    (with-eval-after-load 'wgrep
+      (bind-keys :map grep-mode-map
+                 ("C-c C-c" .  wgrep-finish-edit)))))
+
+(use-package visual-regexp              ; Regexp replace with in-buffer display
+  :ensure t
+  :bind (("C-c s r" . vr/query-replace)
+         ("C-c s R" . vr/replace)))
+
+(use-package replace-pairs              ; Query-replace pairs of things
+  :ensure t
+  :bind (("C-c s q" . query-replace-pairs)
+         ("C-c s p" . replace-pairs)))
 
 (provide 'mu-search)
 
