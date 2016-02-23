@@ -32,7 +32,6 @@
 (mu-define-group "C-c a m" math)
 (mu-define-group "C-c a r" remote)
 (mu-define-group "C-c a s" shells)
-(mu-define-group "C-c a S" stackexchange)
 (mu-define-group "C-c a t" time-and-date)
 (mu-define-group "C-c a w" eww)
 (mu-define-group "C-c b" buffers)

@@ -79,34 +79,6 @@
 
     (bind-key "R" #'elfeed-mark-all-as-read elfeed-search-mode-map)))
 
-(use-package sx                         ; StackExchange client for Emacs
-  :ensure t
-  :bind (("C-c a S a" . sx-ask)
-         ("C-c a S q" . sx-tab-all-questions)
-         ("C-c a S n" . sx-tab-newest)))
-
-(use-package sx-compose                 ; Compose questions and answers
-  :ensure sx
-  :defer t
-  :config (progn
-            ;; Don't fill in SX questions/answers, and use visual lines instead.
-            (add-hook 'sx-compose-mode-hook #'turn-off-auto-fill)
-            (add-hook 'sx-compose-mode-hook #'visual-line-mode)
-            (add-hook 'sx-compose-mode-hook
-                      #'mu-whitespace-style-no-long-lines)
-
-            ;; Clean up whitespace before sending questions
-            (add-hook 'sx-compose-before-send-hook
-                      (lambda ()
-                        (whitespace-cleanup)
-                        t))))
-
-(use-package sx-question-mode           ; Display questions
-  :ensure sx
-  :defer t
-  ;; Display questions in the same window
-  :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
-
 (use-package paradox                    ; Better package manager interface
   :ensure t
   :bind ("C-c a p" . paradox-list-packages)
