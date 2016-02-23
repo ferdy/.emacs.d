@@ -43,11 +43,15 @@
          ("C-c s k" . ag-kill-other-buffers)
          ("C-c s K" . ag-kill-buffers))
   :config
-  (setq ag-reuse-buffers t            ; Don't spam buffer list with ag buffers
-        ag-highlight-search t         ; Highlight results
-        ;; Use Projectile to find the project root
-        ag-project-root-function (lambda (d) (let ((default-directory d))
-                                          (projectile-project-root)))))
+  (progn
+    (setq ag-reuse-buffers t            ; Don't spam buffer list with ag buffers
+          ag-highlight-search t         ; Highlight results
+          ;; Use Projectile to find the project root
+          ag-project-root-function (lambda (d) (let ((default-directory d))
+                                            (projectile-project-root))))
+    ;; Set ag arguments
+    (setq ag-arguments (list "--smart-case" "--nogroup" "--column")
+          ag-arguments (append '("--follow") ag-arguments))))
 
 (use-package wgrep                      ; Editable grep buffer
   :ensure t
