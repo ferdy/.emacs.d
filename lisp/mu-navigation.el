@@ -50,12 +50,6 @@
   :ensure t
   :bind ("C-c n g" . goto-last-change))
 
-(use-package show-marks                 ; Navigate and visualize the mark-ring
-  :ensure t
-  :bind (("C-c n m s" . show-marks)
-         ("C-c n m f" . forward-mark)
-         ("C-c n m b" . backward-mark)))
-
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (setq set-mark-command-repeat-pop t)
 
