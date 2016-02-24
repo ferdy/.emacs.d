@@ -42,17 +42,19 @@ windows easier."
       (let ((inhibit-read-only t))
         (erase-buffer)))
 
-    (defun mu-ivy-eshell-history ()
-      "Browse Eshell history with Ivy."
+    (defun mu-counsel-esh-history ()
+      "Browse Eshell history."
       (interactive)
-      (insert
-       (ivy-read "Eshell history: "
-                 (delete-dups
-                  (ring-elements eshell-history-ring)))))
+      (setq ivy-completion-beg (point))
+      (setq ivy-completion-end (point))
+      (ivy-read "Symbol name: "
+                (delete-dups
+                 (ring-elements eshell-history-ring))
+                :action #'ivy-completion-in-region-action))
 
     (add-hook 'eshell-mode-hook
               (lambda ()
-                (bind-key "C-c C-l" #'mu-ivy-eshell-history
+                (bind-key "C-c C-l" #'mu-counsel-esh-history
                           eshell-mode-map)))
 
     (defadvice eshell-gather-process-output
@@ -68,14 +70,14 @@ windows easier."
 
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind ("C-c a s t" . shell)
+  :bind (:map shell-mode-map
+              ("C-l" . mu-clear-shell))
   :config
   (progn
     (defun mu-clear-shell ()
       (interactive)
       (let ((comint-buffer-maximum-size 0))
         (comint-truncate-buffer)))
-
-    (bind-key "C-l" #'mu-clear-shell shell-mode-map)
 
     ;; Do not echo input back at me
     (defun mu-shell-turn-echo-off ()
