@@ -51,7 +51,21 @@ windows easier."
     (with-eval-after-load "em-unix"
       '(progn
          (unintern 'eshell/su nil)
-         (unintern 'eshell/sudo nil)))))
+         (unintern 'eshell/sudo nil)))
+
+    ;; Browse eshell history with ivy
+    (defun mu-ivy-eshell-history ()
+      "Browse Eshell history with Ivy."
+      (interactive)
+      (insert
+       (ivy-read "Eshell history: "
+                 (delete-dups
+                  (ring-elements eshell-history-ring)))))
+
+    (add-hook 'eshell-mode-hook
+              (lambda ()
+                (bind-key "C-c C-l" #'mu-ivy-eshell-history
+                          eshell-mode-map)))))
 
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind ("C-c a s t" . shell)
