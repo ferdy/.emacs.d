@@ -40,7 +40,7 @@
                   try-complete-lisp-symbol-partially
                   try-complete-lisp-symbol)))
 
-(use-package pcomplete-extension       ; Enhance completion in (e)shell buffers
+(use-package pcomplete-extension        ; Enhance completion in (e)shell
   :ensure t
   :after eshell)
 
