@@ -88,9 +88,9 @@ windows easier."
   :init
   (progn
     ;; Always use Zsh
-    (defvar my-term-shell "/usr/bin/zsh")
+    (defvar mu-term-shell "/usr/bin/zsh")
     (defadvice ansi-term (before force-bash)
-      (interactive (list my-term-shell)))
+      (interactive (list mu-term-shell)))
     (ad-activate 'ansi-term)
 
     ;; Close buffer with 'exit'
