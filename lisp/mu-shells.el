@@ -71,7 +71,8 @@ windows easier."
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind ("C-c a s t" . shell)
   :bind (:map shell-mode-map
-              ("C-l" . mu-clear-shell))
+              ("C-l"     . mu-clear-shell)
+              ("C-c C-l" . mu-counsel-shell-history))
   :config
   (progn
     (defun mu-clear-shell ()
@@ -83,7 +84,17 @@ windows easier."
     (defun mu-shell-turn-echo-off ()
       (setq comint-process-echoes t))
 
-    (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off)))
+    (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off)
+
+    (defun mu-counsel-shell-history ()
+      "Browse shell history."
+      (interactive)
+      (setq ivy-completion-beg (point))
+      (setq ivy-completion-end (point))
+      (ivy-read "Symbol name: "
+                (delete-dups
+                 (ring-elements comint-input-ring))
+                :action #'ivy-completion-in-region-action))))
 
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s T" . ansi-term)
