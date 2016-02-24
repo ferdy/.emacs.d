@@ -65,31 +65,26 @@
 (use-package ibuffer                    ; Buffer management
   :bind (([remap list-buffers] . ibuffer)
          ("C-c b i"            . ibuffer))
-  :config
-  (progn
-    (setq ibuffer-formats
-          '((mark modified read-only " "
-                  (name 18 18 :left :elide)
-                  " "
-                  (size 9 -1 :right)
-                  " "
-                  (mode 16 16 :left :elide)
-                  " "
-                  filename-and-process)
-            (mark modified read-only " "
-                  (name 18 18 :left :elide)
-                  " "
-                  (size 9 -1 :right)
-                  " "
-                  (mode 16 16 :left :elide)
-                  " " filename-and-process)
-            (mark " "
-                  (name 16 -1)
-                  " " filename)))
-
-    (setq ibuffer-show-empty-filter-groups nil ; Hide empty groups
-          ibuffer-never-show-predicates        ; Hide Helm buffers
-          '("*helm"))))
+  :config (setq ibuffer-show-empty-filter-groups nil ; Hide empty groups
+                ibuffer-formats
+                '((mark modified read-only " "
+                        (name 18 18 :left :elide)
+                        " "
+                        (size 9 -1 :right)
+                        " "
+                        (mode 16 16 :left :elide)
+                        " "
+                        filename-and-process)
+                  (mark modified read-only " "
+                        (name 18 18 :left :elide)
+                        " "
+                        (size 9 -1 :right)
+                        " "
+                        (mode 16 16 :left :elide)
+                        " " filename-and-process)
+                  (mark " "
+                        (name 16 -1)
+                        " " filename))))
 
 (use-package ibuffer-projectile         ; Group buffers by Projectile project
   :ensure t
