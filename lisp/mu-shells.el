@@ -70,12 +70,12 @@ windows easier."
   :bind ("C-c a s t" . shell)
   :config
   (progn
-    (defun clear-shell ()
+    (defun mu-clear-shell ()
       (interactive)
       (let ((comint-buffer-maximum-size 0))
         (comint-truncate-buffer)))
 
-    (bind-key "C-l" #'clear-shell shell-mode-map)
+    (bind-key "C-l" #'mu-clear-shell shell-mode-map)
 
     ;; Do not echo input back at me
     (defun mu-shell-turn-echo-off ()
@@ -103,21 +103,21 @@ windows easier."
     (ad-activate 'term-sentinel)
 
     ;; Always use UTF-8
-    (defun my-term-use-utf8 ()
+    (defun mu-term-use-utf8 ()
       (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-    (add-hook 'term-exec-hook 'my-term-use-utf8)
+    (add-hook 'term-exec-hook 'mu-term-use-utf8)
 
     ;; Paste with C-y
-    (defun my-term-paste (&optional string)
+    (defun mu-term-paste (&optional string)
       (interactive)
       (process-send-string
        (get-buffer-process (current-buffer))
        (if string string (current-kill 0))))
 
-    (defun my-term-hook ()
+    (defun mu-term-hook ()
       (goto-address-mode)               ; Clickable URLs
-      (bind-key "C-y" #'my-term-paste term-raw-map))
-    (add-hook 'term-mode-hook 'my-term-hook)))
+      (bind-key "C-y" #'mu-term-paste term-raw-map))
+    (add-hook 'term-mode-hook 'mu-term-hook)))
 
 ;;; Utilities and keybindings
 (custom-set-variables
