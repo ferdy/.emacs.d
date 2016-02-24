@@ -178,10 +178,6 @@
   :init (global-hungry-delete-mode)
   :diminish hungry-delete-mode)
 
-(use-package tiny                       ; Quickly generate number ranges
-  :ensure t
-  :bind ("C-c x e" . tiny-expand))
-
 (use-package char-menu                  ; Fast insertion of symbols
   :ensure t
   :bind ("C-c x c" . char-menu)
