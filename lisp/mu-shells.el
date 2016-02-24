@@ -12,7 +12,7 @@
 ;;; Code:
 
 (use-package eshell                     ; Emacs command shell
-  :bind ("C-c a s e" . eshell-here)
+  :bind ("C-c a s e" . mu-eshell-here)
   :config
   (progn
     ;; Handy aliases
@@ -23,7 +23,7 @@
     (setq eshell-cmpl-cycle-completions nil
           eshell-save-history-on-exit t)
 
-    (defun eshell-here ()
+    (defun mu-eshell-here ()
       "Open a new shell in the directory of the buffer's file.
 The eshell is renamed to match that directory to make multiple eshell
 windows easier."
