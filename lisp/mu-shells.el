@@ -20,6 +20,9 @@
     (defun eshell/l (&rest args) "Same as `ls -lah'"
            (apply #'eshell/ls "-lah" args))
 
+    (setq eshell-cmpl-cycle-completions nil
+          eshell-save-history-on-exit t)
+
     (defun eshell-here ()
       "Open a new shell in the directory of the buffer's file.
 The eshell is renamed to match that directory to make multiple eshell
@@ -39,21 +42,6 @@ windows easier."
       (let ((inhibit-read-only t))
         (erase-buffer)))
 
-    (setq eshell-cmpl-cycle-completions nil
-          eshell-save-history-on-exit t)
-
-    (defadvice eshell-gather-process-output
-        (before absolute-cmd (command args) act)
-      "Run scrips from current working on remote system."
-      (setq command (file-truename command)))
-
-    ;; Use system su/sudo
-    (with-eval-after-load "em-unix"
-      '(progn
-         (unintern 'eshell/su nil)
-         (unintern 'eshell/sudo nil)))
-
-    ;; Browse eshell history with ivy
     (defun mu-ivy-eshell-history ()
       "Browse Eshell history with Ivy."
       (interactive)
@@ -65,7 +53,18 @@ windows easier."
     (add-hook 'eshell-mode-hook
               (lambda ()
                 (bind-key "C-c C-l" #'mu-ivy-eshell-history
-                          eshell-mode-map)))))
+                          eshell-mode-map)))
+
+    (defadvice eshell-gather-process-output
+        (before absolute-cmd (command args) act)
+      "Run scrips from current working on remote system."
+      (setq command (file-truename command)))
+
+    ;; Use system su/sudo
+    (with-eval-after-load "em-unix"
+      '(progn
+         (unintern 'eshell/su nil)
+         (unintern 'eshell/sudo nil)))))
 
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind ("C-c a s t" . shell)
