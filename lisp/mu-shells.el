@@ -53,9 +53,9 @@ windows easier."
                 :action #'ivy-completion-in-region-action))
 
     (add-hook 'eshell-mode-hook
-              (lambda ()
-                (bind-key "C-c C-l" #'mu-counsel-esh-history
-                          eshell-mode-map)))
+              #'(lambda ()
+                  (bind-key "C-c C-l" #'mu-counsel-esh-history
+                            eshell-mode-map)))
 
     (defadvice eshell-gather-process-output
         (before absolute-cmd (command args) act)
