@@ -230,7 +230,7 @@
 
 (use-package geiser                ; Collection of modes for Scheme interpreters
   :ensure t
-  :bind ("C-c m g" . run-geiser)
+  :bind ("C-c d g" . run-geiser)
   :init (setq geiser-active-implementations '(chicken guile)))
 
 (use-package sicp                       ; The Wizard Book in Info format
@@ -240,7 +240,7 @@
 ;;; Common Lisp
 (use-package sly                        ; Sylvester the Cat's Common Lisp IDE
   :ensure t
-  :bind ("C-c m c" . sly)
+  :bind ("C-c d c" . sly)
   :init (setq inferior-lisp-program "/usr/bin/sbcl")
   :config (bind-keys :map sly-mode-map
                      ("C-c m q" . sly-quit-lisp)
