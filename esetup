@@ -138,12 +138,6 @@ configuring fonts..."
     sudo apt-get -y install --no-install-recommends fonts-arphic-ukai
 }
 
-camcorder_setup() {
-    echo "
-configuring camcorder dependencies..."
-    sudo apt-get -y install --no-install-recommends recordmydesktop
-}
-
 cask_setup() {
     echo "
 configuring cask dependencies..."
@@ -176,7 +170,6 @@ flyspell_setup
 wordnet_setup
 langtool_setup
 font_setup
-camcorder_setup
 cask_setup
 
 echo "

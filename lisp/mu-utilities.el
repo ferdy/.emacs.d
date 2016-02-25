@@ -68,11 +68,6 @@
   :ensure t
   :bind ("C-c a a l" . list-environment))
 
-(use-package camcorder                  ; Record movements from within Emacs
-  :ensure t
-  :bind ("C-c t c" . camcorder-mode)
-  :config (setq camcorder-output-directory "~/Videos"))
-
 (provide 'mu-utilities)
 
 ;;; mu-utilities.el ends here
