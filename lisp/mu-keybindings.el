@@ -36,6 +36,7 @@
 (mu-define-group "C-c a w" eww)
 (mu-define-group "C-c b" buffers)
 (mu-define-group "C-c c" compile-and-comments)
+(mu-define-group "C-c d" develop)
 (mu-define-group "C-c e" errors)
 (mu-define-group "C-c e v" evalator)
 (mu-define-group "C-c f" files)
