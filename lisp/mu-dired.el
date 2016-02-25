@@ -13,7 +13,7 @@
 
 (use-package dired                      ; File manager
   :defer t
-  :bind (("C-c f s"    . dired-get-size)
+  :bind (("C-c f s"    . mu-dired-get-size)
          ("<C-return>" . mu-open-in-external-app)
          ("C-c f f"    . find-name-dired))
   :config
@@ -85,8 +85,7 @@
             (user-error "Already in sudo")
           (dired (concat "/sudo::" dir)))))
 
-    ;; Get files size in Dired
-    (defun dired-get-size ()
+    (defun mu-dired-get-size ()
       "Quick and easy way to get file size in Dired."
       (interactive)
       (let ((files (dired-get-marked-files)))
@@ -99,7 +98,37 @@
              (match-string 1))))))
 
     ;; Handle long file names
-    (add-hook 'dired-mode-hook #'toggle-truncate-lines)))
+    (add-hook 'dired-mode-hook #'toggle-truncate-lines)
+
+    (defun mu-dired-rsync (dest)
+      "Copy files with `rysnc'."
+      (interactive
+       (list
+        (expand-file-name
+         (read-file-name
+          "Rsync to:"
+          (dired-dwim-target-directory)))))
+      ;; Store all selected files into "files" list
+      (let ((files (dired-get-marked-files
+                    nil current-prefix-arg))
+            (mu-rsync-command
+             "rsync -arvz --progress "))
+        ;; Add all selected file names as arguments to the rsync command
+        (dolist (file files)
+          (setq mu-rsync-command
+                (concat mu-rsync-command
+                        (shell-quote-argument file)
+                        " ")))
+        ;; Append the destination
+        (setq mu-rsync-command
+              (concat mu-rsync-command
+                      (shell-quote-argument dest)))
+        ;; Run the async shell command
+        (async-shell-command mu-rsync-command "*rsync*")
+        ;; Finally, switch to that window
+        (other-window 1)))
+
+    (bind-key* "Y" #'mu-dired-rsync dired-mode-map)))
 
 (use-package find-dired                 ; Run `find' in Dired
   :config (setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
