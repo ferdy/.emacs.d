@@ -21,7 +21,7 @@
     (setq dired-auto-revert-buffer t    ; Revert buffers on revisiting
           dired-listing-switches
           "-lFaGh1v --group-directories-first"  ; Add ls switches
-          global-auto-revert-non-file-buffers t ; Auto refresh dired
+          global-auto-revert-non-file-buffers t ; Auto refresh Dired
           auto-revert-verbose nil               ; But be quiet about it
           dired-dwim-target t                   ; Use other pane as target
           dired-recursive-copies 'always        ; Copy dirs recursively
@@ -59,32 +59,25 @@
                                (dired-find-alternate-file)))
                ("M-n"      . (lambda ()
                                (interactive)
-                               (dired-find-alternate-file))))
+                               (dired-find-alternate-file)))
+               ("!"        . mu-sudired)
+               ([remap beginning-of-buffer] . mu-dired-back-to-top)
+               ([remap end-of-buffer]       . mu-dired-jump-to-bottom))
 
-    ;; Make find-name-dired faster
-    (use-package find-dired
-      :config (setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
-
-    ;; Better M-< and M->
-    (defun dired-back-to-top ()
+    (defun mu-dired-back-to-top ()
+      "Move point to the first file or directory listed."
       (interactive)
       (beginning-of-buffer)
       (dired-next-line 2))
 
-    (bind-key (vector 'remap 'beginning-of-buffer) 'dired-back-to-top
-              dired-mode-map)
-
-    (defun dired-jump-to-bottom ()
+    (defun mu-dired-jump-to-bottom ()
+      "Move point to the last file or directory listed."
       (interactive)
       (end-of-buffer)
       (dired-next-line -1))
 
-    (bind-key (vector 'remap 'end-of-buffer) 'dired-jump-to-bottom
-              dired-mode-map)
-
-    ;; Open directory with sudo in dired
-    (defun sudired ()
-      "Open directory with sudo in dired."
+    (defun mu-sudired ()
+      "Open directory with sudo in Dired."
       (interactive)
       (require 'tramp)
       (let ((dir (expand-file-name default-directory)))
@@ -92,11 +85,9 @@
             (user-error "Already in sudo")
           (dired (concat "/sudo::" dir)))))
 
-    (bind-key "!" #'sudired dired-mode-map)
-
-    ;; Get files size in dired
+    ;; Get files size in Dired
     (defun dired-get-size ()
-      "Quick and easy way to get file size in dired."
+      "Quick and easy way to get file size in Dired."
       (interactive)
       (let ((files (dired-get-marked-files)))
         (with-temp-buffer
@@ -110,7 +101,10 @@
     ;; Handle long file names
     (add-hook 'dired-mode-hook #'toggle-truncate-lines)))
 
-(use-package dired-x                    ; Enable some nice dired features
+(use-package find-dired                 ; Run `find' in Dired
+  :config (setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
+
+(use-package dired-x                    ; Enable some nice Dired features
   :bind ("C-x C-j" . dired-jump)
   :config
   (progn
