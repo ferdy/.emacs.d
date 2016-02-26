@@ -88,8 +88,8 @@
   (interactive "p")
   (mu-forward-paragraph (- n)))
 
-(bind-key* "M-a" 'mu-backward-paragraph)
-(bind-key* "M-e" 'mu-forward-paragraph)
+(bind-key* "M-a" #'mu-backward-paragraph)
+(bind-key* "M-e" #'mu-forward-paragraph)
 
 (bind-key "M-g" 'goto-line)             ; Goto line is M-g
 
