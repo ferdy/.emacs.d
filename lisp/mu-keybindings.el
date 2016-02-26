@@ -85,10 +85,6 @@ If PAIR is an opening pair, the closing pair will be inserted as well."
 (bind-key "C-à" (lambda () (interactive) (mu-insert-pair "{")))
 (bind-key "C-°" (lambda () (interactive) (mu-insert-pair "}")))
 
-;; Keybindings I do not want to be overridden by a major mode
-(bind-keys* ("M-a" . mu-backward-paragraph)
-            ("M-e" . mu-forward-paragraph))
-
 (provide 'mu-keybindings)
 
 ;;; mu-keybindings ends here
