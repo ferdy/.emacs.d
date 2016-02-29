@@ -98,7 +98,27 @@
              (match-string 1))))))
 
     ;; Handle long file names
-    (add-hook 'dired-mode-hook #'toggle-truncate-lines)
+    (add-hook 'dired-mode-hook #'toggle-truncate-lines)))
+
+(use-package find-dired                 ; Run `find' in Dired
+  :config (setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
+
+(use-package dired-x                    ; Enable some nice Dired features
+  :bind ("C-x C-j" . dired-jump)
+  :config
+  (progn
+    (setq dired-omit-verbose nil        ; Be less verbose, Dired
+          ;; Omit dotfiles with C-x M-o
+          dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+    (add-hook 'dired-mode-hook #'dired-omit-mode)
+
+    ;; Diminish dired-omit-mode. We need this hack, because Dired Omit Mode has
+    ;; a very peculiar way of registering its lighter explicitly in
+    ;; `dired-omit-startup'.  We can't just use `:diminish' because the lighter
+    ;; isn't there yet after dired-omit-mode is loaded.
+    (add-function :after (symbol-function 'dired-omit-startup)
+                  (lambda () (diminish 'dired-omit-mode))
+                  '((name . dired-omit-mode-diminish)))
 
     (defun mu-dired-rsync (dest)
       "Copy files with `rysnc'."
@@ -128,27 +148,7 @@
         ;; Finally, switch to that window
         (other-window 1)))
 
-    (bind-key* "Y" #'mu-dired-rsync dired-mode-map)))
-
-(use-package find-dired                 ; Run `find' in Dired
-  :config (setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
-
-(use-package dired-x                    ; Enable some nice Dired features
-  :bind ("C-x C-j" . dired-jump)
-  :config
-  (progn
-    (setq dired-omit-verbose nil        ; Be less verbose, Dired
-          ;; Omit dotfiles with C-x M-o
-          dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
-    (add-hook 'dired-mode-hook #'dired-omit-mode)
-
-    ;; Diminish dired-omit-mode. We need this hack, because Dired Omit Mode has
-    ;; a very peculiar way of registering its lighter explicitly in
-    ;; `dired-omit-startup'.  We can't just use `:diminish' because the lighter
-    ;; isn't there yet after dired-omit-mode is loaded.
-    (add-function :after (symbol-function 'dired-omit-startup)
-                  (lambda () (diminish 'dired-omit-mode))
-                  '((name . dired-omit-mode-diminish)))))
+    (bind-key "Y" #'mu-dired-rsync dired-mode-map)))
 
 ;;; Utilities and keybindings
 ;;;###autoload
