@@ -14,6 +14,12 @@ configuring tls..."
     sudo apt-get -y install --no-install-recommends ca-certificates
 }
 
+keychain_setup() {
+    echo "
+configuring keychain..."
+    sudo apt-get -y install --no-install-recommends keychain
+}
+
 ag_setup() {
     echo "
 configuring ag..."
@@ -159,6 +165,7 @@ sudo -v # gets user password for next sudos
 cd $HOME
 prerequisites
 tls_setup
+keychain_setup
 ag_setup
 clojure_setup
 scheme_setup
