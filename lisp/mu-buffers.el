@@ -95,10 +95,6 @@
   :ensure t
   :bind ("C-c b s" . scratch))
 
-(use-package eldoc-eval                 ; Eldoc support in minibuffer
-  :ensure t
-  :init (eldoc-in-minibuffer-mode 1))
-
 ;;; Utilities and keybindings
 ;;;###autoload
 (defun mu-kill-buffers (regexp)
