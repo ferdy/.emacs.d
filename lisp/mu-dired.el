@@ -13,8 +13,8 @@
 
 (use-package dired                      ; File manager
   :defer t
-  :bind (("C-c f s"    . mu-dired-get-size)
-         ("<C-return>" . mu-open-in-external-app)
+  :bind (("<C-return>" . mu-open-in-external-app)
+         ("C-c f s"    . mu-dired-get-size)
          ("C-c f f"    . find-name-dired)
          ("C-c f r"    . mu-dired-recent-dirs))
   :config
