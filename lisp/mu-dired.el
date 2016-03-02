@@ -15,7 +15,8 @@
   :defer t
   :bind (("C-c f s"    . mu-dired-get-size)
          ("<C-return>" . mu-open-in-external-app)
-         ("C-c f f"    . find-name-dired))
+         ("C-c f f"    . find-name-dired)
+         ("C-c f r"    . mu-dired-recent-dirs))
   :config
   (progn
     (setq dired-auto-revert-buffer t    ; Revert buffers on revisiting
@@ -31,16 +32,6 @@
 
     ;; Enable dired-find-alternate-file
     (put 'dired-find-alternate-file 'disabled nil)
-
-    ;; Reuse buffers if they are directories
-    (defun find-file-reuse-dir-buffer ()
-      "Like `dired-find-file', but reuse Dired buffers."
-      (interactive)
-      (set-buffer-modified-p nil)
-      (let ((file (dired-get-file-for-visit)))
-        (if (file-directory-p file)
-            (find-alternate-file file)
-          (find-file file))))
 
     ;; Better keybinding for moving between directories
     (bind-keys :map dired-mode-map
@@ -64,39 +55,6 @@
                ([remap beginning-of-buffer] . mu-dired-back-to-top)
                ([remap end-of-buffer]       . mu-dired-jump-to-bottom))
 
-    (defun mu-dired-back-to-top ()
-      "Move point to the first file or directory listed."
-      (interactive)
-      (beginning-of-buffer)
-      (dired-next-line 2))
-
-    (defun mu-dired-jump-to-bottom ()
-      "Move point to the last file or directory listed."
-      (interactive)
-      (end-of-buffer)
-      (dired-next-line -1))
-
-    (defun mu-sudired ()
-      "Open directory with sudo in Dired."
-      (interactive)
-      (require 'tramp)
-      (let ((dir (expand-file-name default-directory)))
-        (if (string-match "^/sudo:" dir)
-            (user-error "Already in sudo")
-          (dired (concat "/sudo::" dir)))))
-
-    (defun mu-dired-get-size ()
-      "Quick and easy way to get file size in Dired."
-      (interactive)
-      (let ((files (dired-get-marked-files)))
-        (with-temp-buffer
-          (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
-          (message
-           "Size of all marked files: %s"
-           (progn
-             (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
-             (match-string 1))))))
-
     ;; Handle long file names
     (add-hook 'dired-mode-hook #'toggle-truncate-lines)))
 
@@ -105,6 +63,8 @@
 
 (use-package dired-x                    ; Enable some nice Dired features
   :bind ("C-x C-j" . dired-jump)
+  :bind (:map dired-mode-map
+              ("Y" . mu-dired-rsync))
   :config
   (progn
     (setq dired-omit-verbose nil        ; Be less verbose, Dired
@@ -118,37 +78,7 @@
     ;; isn't there yet after dired-omit-mode is loaded.
     (add-function :after (symbol-function 'dired-omit-startup)
                   (lambda () (diminish 'dired-omit-mode))
-                  '((name . dired-omit-mode-diminish)))
-
-    (defun mu-dired-rsync (dest)
-      "Copy files with `rysnc'."
-      (interactive
-       (list
-        (expand-file-name
-         (read-file-name
-          "Rsync to:"
-          (dired-dwim-target-directory)))))
-      ;; Store all selected files into "files" list
-      (let ((files (dired-get-marked-files
-                    nil current-prefix-arg))
-            (mu-rsync-command
-             "rsync -arvz --progress "))
-        ;; Add all selected file names as arguments to the rsync command
-        (dolist (file files)
-          (setq mu-rsync-command
-                (concat mu-rsync-command
-                        (shell-quote-argument file)
-                        " ")))
-        ;; Append the destination
-        (setq mu-rsync-command
-              (concat mu-rsync-command
-                      (shell-quote-argument dest)))
-        ;; Run the async shell command
-        (async-shell-command mu-rsync-command "*rsync*")
-        ;; Finally, switch to that window
-        (other-window 1)))
-
-    (bind-key "Y" #'mu-dired-rsync dired-mode-map)))
+                  '((name . dired-omit-mode-diminish)))))
 
 (use-package dired-narrow               ; Live-narrowing of search results
   :ensure t
@@ -167,6 +97,101 @@ app. The app is chosen from your OS's preference."
      (lambda (file-path)
        (let ((process-connection-type nil))
          (start-process "" nil "xdg-open" file-path))) file-list)))
+
+;;;###autoload
+(defun find-file-reuse-dir-buffer ()
+  "Like `dired-find-file', but reuse Dired buffers."
+  (interactive)
+  (set-buffer-modified-p nil)
+  (let ((file (dired-get-file-for-visit)))
+    (if (file-directory-p file)
+        (find-alternate-file file)
+      (find-file file))))
+
+;;;###autoload
+(defun mu-dired-back-to-top ()
+  "Move point to the first file or directory listed."
+  (interactive)
+  (beginning-of-buffer)
+  (dired-next-line 2))
+
+;;;###autoload
+(defun mu-dired-jump-to-bottom ()
+  "Move point to the last file or directory listed."
+  (interactive)
+  (end-of-buffer)
+  (dired-next-line -1))
+
+;;;###autoload
+(defun mu-sudired ()
+  "Open directory with sudo in Dired."
+  (interactive)
+  (require 'tramp)
+  (let ((dir (expand-file-name default-directory)))
+    (if (string-match "^/sudo:" dir)
+        (user-error "Already in sudo")
+      (dired (concat "/sudo::" dir)))))
+
+;;;###autoload
+(defun mu-dired-get-size ()
+  "Quick and easy way to get file size in Dired."
+  (interactive)
+  (let ((files (dired-get-marked-files)))
+    (with-temp-buffer
+      (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
+      (message
+       "Size of all marked files: %s"
+       (progn
+         (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
+         (match-string 1))))))
+
+;;;###autoload
+(defun mu-dired-rsync (dest)
+  "Copy files with `rysnc'."
+  (interactive
+   (list
+    (expand-file-name
+     (read-file-name
+      "Rsync to:"
+      (dired-dwim-target-directory)))))
+  ;; Store all selected files into "files" list
+  (let ((files (dired-get-marked-files
+                nil current-prefix-arg))
+        (mu-rsync-command
+         "rsync -arvz --progress "))
+    ;; Add all selected file names as arguments to the rsync command
+    (dolist (file files)
+      (setq mu-rsync-command
+            (concat mu-rsync-command
+                    (shell-quote-argument file)
+                    " ")))
+    ;; Append the destination
+    (setq mu-rsync-command
+          (concat mu-rsync-command
+                  (shell-quote-argument dest)))
+    ;; Run the async shell command
+    (async-shell-command mu-rsync-command "*rsync*")
+    ;; Finally, switch to that window
+    (other-window 1)))
+
+;;;###autoload
+(defun mu-dired-recent-dirs ()
+  "Present a list of recently used directories and open the selected
+one in dired."
+  (interactive)
+  (let ((recent-dirs
+         (delete-dups
+          (mapcar (lambda (file)
+                    (if (file-directory-p file)
+                        file
+                      (file-name-directory file)))
+                  recentf-list))))
+    (let ((dir (ivy-read "Directory: "
+                         recent-dirs
+                         :re-builder #'ivy--regex
+                         :sort nil
+                         :initial-input nil)))
+      (dired dir))))
 
 (provide 'mu-dired)
 
