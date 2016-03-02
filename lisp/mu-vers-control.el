@@ -107,10 +107,6 @@
   :ensure t
   :defer t)
 
-(use-package git-timemachine            ; Go back in Git time
-  :ensure t
-  :bind ("C-c v t" . git-timemachine))
-
 (provide 'mu-vers-control)
 
 ;;; mu-vers-control.el ends here
