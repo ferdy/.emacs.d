@@ -150,6 +150,11 @@
 
     (bind-key "Y" #'mu-dired-rsync dired-mode-map)))
 
+(use-package dired-narrow               ; Live-narrowing of search results
+  :ensure t
+  :bind (:map dired-mode-map
+              ("/" . dired-narrow)))
+
 ;;; Utilities and keybindings
 ;;;###autoload
 (defun mu-open-in-external-app ()
