@@ -176,8 +176,7 @@ app. The app is chosen from your OS's preference."
 
 ;;;###autoload
 (defun mu-dired-recent-dirs ()
-  "Present a list of recently used directories and open the selected
-one in dired."
+  "List recently used directories and open the selected one in dired."
   (interactive)
   (let ((recent-dirs
          (delete-dups
