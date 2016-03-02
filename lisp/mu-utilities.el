@@ -68,6 +68,10 @@
   :ensure t
   :bind ("C-c a a l" . list-environment))
 
+(use-package keychain-environment       ; Load keychain environment variables
+  :ensure t
+  :bind ("C-c a a s" . keychain-environment-refresh))
+
 (provide 'mu-utilities)
 
 ;;; mu-utilities.el ends here
