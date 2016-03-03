@@ -35,10 +35,9 @@
 (use-package pdf-tools                  ; Better PDF support
   :ensure t
   :init (pdf-tools-install)
-  :config (bind-keys :map pdf-view-mode-map
-                     ("M-w"     . pdf-view-kill-ring-save)
-                     ("C-w"     . pdf-view-kill-ring-save)
-                     ("C-c f g" . pdf-view-goto-page)))
+  :bind (:map pdf-view-mode-map
+              ("M-w" . pdf-view-kill-ring-save)
+              ("M-g" . pdf-view-goto-page)))
 
 (use-package archive-mode                   ; Browse archive files
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
