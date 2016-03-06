@@ -72,6 +72,10 @@
   :ensure t
   :bind ("C-c a a s" . keychain-environment-refresh))
 
+(use-package browse-at-remote           ; Open github/gitlab/bitbucket page
+  :ensure t
+  :bind ("C-c a b" . browse-at-remote/browse))
+
 (provide 'mu-utilities)
 
 ;;; mu-utilities.el ends here
