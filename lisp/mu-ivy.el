@@ -38,13 +38,13 @@
 (use-package counsel                    ; Completion functions with Ivy
   :ensure t
   :init (counsel-mode 1)
-  :bind (("C-h S"   . counsel-info-lookup-symbol)
-         ("C-c u"   . counsel-unicode-char)
-         ("C-c g"   . counsel-git)
-         ("C-c G"   . counsel-git-grep)
-         ("C-c k"   . counsel-ag)
-         ("C-x l"   . counsel-locate)
-         ("C-x i"   . counsel-imenu))
+  :bind (("C-h S" . counsel-info-lookup-symbol)
+         ("C-c u" . counsel-unicode-char)
+         ("C-c g" . counsel-git)
+         ("C-c G" . counsel-git-grep)
+         ("C-c k" . counsel-ag)
+         ("C-x l" . counsel-locate)
+         ("C-x i" . counsel-imenu))
   :config
   (progn
     (setq counsel-find-file-at-point t
