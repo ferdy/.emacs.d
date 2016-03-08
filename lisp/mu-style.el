@@ -12,9 +12,6 @@
 ;;; Code:
 
 ;;; Fonts setup
-;; These are the fonts in use:
-;; - DejaVu Sans: https://packages.debian.org/sid/fonts-dejavu
-;; - Symbola: https://packages.debian.org/sid/ttf-ancient-fonts
 (defun mu-setup-main-fonts (default-height variable-pitch-height)
   "Set up default fonts.
 Use DEFAULT-HEIGHT for default face and VARIABLE-PITCH-HEIGHT
