@@ -13,22 +13,17 @@
 
 ;;; Fonts setup
 ;; These are the fonts in use:
-;; - Source Code Pro: https://github.com/adobe-fonts/source-code-pro
-;; - DejaVu Sans Mono: https://packages.debian.org/sid/fonts-dejavu
-;; - Fira Sans: https://github.com/mozilla/Fira
+;; - DejaVu Sans: https://packages.debian.org/sid/fonts-dejavu
 ;; - Symbola: https://packages.debian.org/sid/ttf-ancient-fonts
-;; - XITS Math: https://github.com/khaledhosny/xits-math
-;; - Gentium Plus: https://packages.debian.org/sid/fonts-sil-gentiumplus
-
 (defun mu-setup-main-fonts (default-height variable-pitch-height)
   "Set up default fonts.
 Use DEFAULT-HEIGHT for default face and VARIABLE-PITCH-HEIGHT
 for variable-pitch face."
   (set-face-attribute 'default nil
-                      :family "Source Code Pro"
+                      :family "DejaVu Sans Mono"
                       :height default-height)
   (set-face-attribute 'variable-pitch nil
-                      :family "Fira Sans"
+                      :family "DejaVu Sans"
                       :height variable-pitch-height
                       :weight 'regular))
 
@@ -42,17 +37,9 @@ for variable-pitch face."
   "Set up fonts for FRAME.
 Set the default font, and configure various overrides for
 symbols, greek letters, as well as fall backs for."
-  (dolist (script '(symbol mathematical))
-    (set-fontset-font t script (font-spec :family "XITS Math")
-                      frame 'prepend))
-
   ;; Define a font set stack for symbols, greek and math characters
   (dolist (script '(symbol greek mathematical))
     (set-fontset-font t script (font-spec :family "Symbola")
-                      frame 'prepend)
-    (set-fontset-font t script (font-spec :family "XITS Math")
-                      frame 'prepend)
-    (set-fontset-font t script (font-spec :family "Gentium Plus")
                       frame 'prepend)
     (set-fontset-font t script (font-spec :family "DejaVu Sans Mono")
                       frame 'prepend))
