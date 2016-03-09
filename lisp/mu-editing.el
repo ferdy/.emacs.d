@@ -178,18 +178,6 @@
   :init (global-hungry-delete-mode)
   :diminish hungry-delete-mode)
 
-(use-package char-menu                  ; Fast insertion of symbols
-  :ensure t
-  :bind ("C-c x c" . char-menu)
-  :config (setq char-menu
-                '("—" "‘’" "“”" "…" "«»" "–"
-                  ("Typography" "•" "©" "†" "‡" "°" "·" "§" "№" "★")
-                  ("Math"       "≈" "≡" "≠" "∞" "×" "±" "∓" "÷" "√")
-                  ("Arrows"     "←" "→" "↑" "↓" "⇐" "⇒" "⇑" "⇓")
-                  ("Greek"      "α" "β" "Y" "δ" "ε" "ζ" "η" "θ" "ι"
-                   "κ" "λ" "μ" "ν" "ξ" "ο" "π" "ρ" "σ" "τ" "υ" "φ"
-                   "χ" "ψ" "ω"))))
-
 ;;; Specific files support
 (use-package systemd                    ; Major mode for editing systemd units
   :ensure t
