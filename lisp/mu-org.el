@@ -19,6 +19,8 @@
          ("C-c a o f" . org-cycle-agenda-files)
          ("C-c a o s" . org-search-view)
          ("C-c a o t" . org-todo-list))
+  :bind (:map org-mode-map
+              ("<return>" . mu-org-return))
   :init (setq org-emphasis-regexp-components ; Fix markup for ' and "
               '("     ('\"{“”"
                 "-   .,!?;''“”\")}/\\“”"
@@ -104,7 +106,14 @@
       (add-to-list 'ispell-skip-region-alist
                    '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
 
-    (add-hook 'org-mode-hook #'mu-org-ispell)))
+    (add-hook 'org-mode-hook #'mu-org-ispell)
+
+    (defun mu-org-return ()
+      "Disable `org-return-follows-link' if at bol or eol."
+      (interactive)
+      (let* ((follow org-return-follows-link)
+             (org-return-follows-link (and follow (not (or (bolp) (eolp))))))
+        (org-return)))))
 
 (use-package org-indent ; Dynamic indentation for Org-mode
   :ensure org
