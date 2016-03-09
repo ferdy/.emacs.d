@@ -148,9 +148,11 @@ symbols, greek letters, as well as fall backs for."
           solarized-use-more-italic t       ; Use italic more often
           solarized-use-less-bold t         ; Less bold, italic is enough
           ;; Underline below the font bottomline instead of the baseline
-          x-underline-at-descent-line t)
+          x-underline-at-descent-line t)))
 
-    (load-theme 'solarized-light 'no-confirm)))
+(use-package punpun-theme               ; Minimal light theme
+  :load-path "extra"
+  :config (load-theme 'punpun 'no-confirm))
 
 (use-package select-themes              ; Better theme selection
   :ensure t
