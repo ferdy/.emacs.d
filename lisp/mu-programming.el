@@ -360,10 +360,6 @@
   :ensure t
   :defer t)
 
-(use-package describe-number            ; Describe any number at point
-  :ensure t
-  :bind ("C-c a m d" . describe-number-at-point))
-
 ;;;###autoload
 (defun uncomment-sexp (&optional n)
   "Uncomment a sexp around point."
