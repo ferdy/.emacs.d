@@ -152,7 +152,7 @@ symbols, greek letters, as well as fall backs for."
 
 (use-package punpun-theme               ; Minimal light theme
   :load-path "extra"
-  :config (load-theme 'punpun 'no-confirm))
+  :config (load-theme 'punpun t))
 
 (use-package select-themes              ; Better theme selection
   :ensure t
