@@ -96,6 +96,9 @@
   :bind ("C-c b s" . scratch))
 
 ;;; Utilities and keybindings
+;; Use `emacs-lisp-mode' instead of `lisp-interaction-mode'
+(setq initial-major-mode 'emacs-lisp-mode)
+
 ;;;###autoload
 (defun mu-kill-buffers (regexp)
   "Kill buffers matching REGEXP without asking for confirmation."
