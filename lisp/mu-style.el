@@ -194,6 +194,7 @@ symbols, greek letters, as well as fall backs for."
 
 ;;; Utilities and keybindings
 (setq custom-safe-themes t)             ; Treat themes as safe
+(setq x-gtk-use-system-tooltips nil)    ; Use Emacs tooltips
 (setq history-length 1000)              ; Store more history
 (setq-default line-spacing 0.1)         ; Increase line-spacing (default 0)
 
