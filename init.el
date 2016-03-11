@@ -135,11 +135,12 @@
   :init (load mu-custom-file 'no-error 'no-message))
 
 ;; Set the directory where all backup and autosave files will be saved
-(defvar backup-dir "~/tmp/")
-(setq backup-directory-alist
-      `((".*" . ,backup-dir)))
-(setq auto-save-file-name-transforms
-      `((".*" ,backup-dir t)))
+(setq backup-directory-alist '((".*" . "~/.emacs.d/backup"))
+      version-control        t          ; Version number for backup files
+      delete-old-versions    t)
+
+(setq auto-save-list-file-prefix     "~/.emacs.d/autosave/"
+      auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
 
 ;; Personal informations
 (setq user-full-name "Manuel Uberti")
