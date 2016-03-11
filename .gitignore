@@ -47,3 +47,5 @@ network-security.data
 /site-lisp/
 /request/
 /.cask/
+/autosave/
+/backup/
