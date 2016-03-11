@@ -103,32 +103,49 @@
     output))
 
 (punpun-set-faces
- '((default :foreground base5 :background base0)
+ '(;; faces.el
+   (default :foreground base5 :background base0)
    (cursor :background base4)
    (region :foreground unspecified :background base2)
    (fringe :foreground base7 :background base1)
    (vertical-border :foreground base6)
-
-   (escape-glyph :inherit bold :foreground green)
-   (font-lock-builtin-face :inherit bold :foreground base4)
-   (font-lock-comment-face :foreground base4)
-   (font-lock-constant-face :inherit italic)
-   (font-lock-function-name-face :inherit italic)
-   (font-lock-keyword-face :inherit bold :foreground base4)
-   (font-lock-negation-char-face :inherit bold)
-   (font-lock-regexp-grouping-construct :inherit bold)
-   (font-lock-regexp-grouping-backslash :inherit bold)
-   (font-lock-string-face :foreground base4)
-   (font-lock-type-face :inherit italic)
-   (font-lock-variable-name-face :inherit italic)
-   (font-lock-warning-face :inherit bold :foreground orange)
-
-   (error :foreground red)
-   (success :foreground green)
-   (warning :inherit bold :foreground orange)
+   (shadow :inherit font-lock-comment-face)
+   (link :slant italic :underline t)
+   (link-visited :inherit link :foreground base4)
+   (highlight :background base1)
+   (secondary-selection :background base1)
+   (trailing-whitespace :background red)
+   (escape-glyph :foreground green :weight bold)
 
    (mode-line :foreground base5 :background base1)
    (mode-line-inactive :foreground base3 :background base1)
+   (mode-line-highlight :slant italic)
+   (mode-line-highlight :box (:line-width -1))
+   (header-line :inherit mode-line)
+   (vertical-border :foreground base4)
+   (window-divider :inherit vertical-border)
+   (minibuffer-prompt :inherit font-lock-comment-face)
+
+   (error :foreground red)
+   (success :foreground green)
+   (warning :foreground orange :weight bold)
+
+   (show-paren-match :weight bold)
+   (show-paren-mismatch :foreground red :weight bold)
+
+   ;; font-lock.el
+   (font-lock-builtin-face :foreground base4 :weight bold)
+   (font-lock-comment-face :foreground base4)
+   (font-lock-constant-face :slant italic)
+   (font-lock-function-name-face :slant italic)
+   (font-lock-keyword-face :foreground base4 :weight bold)
+   (font-lock-negation-char-face :weight bold)
+   (font-lock-regexp-grouping-construct :weight bold)
+   (font-lock-regexp-grouping-backslash :weight bold)
+   (font-lock-string-face :foreground base4)
+   (font-lock-type-face :slant italic)
+   (font-lock-variable-name-face :slant italic)
+   (font-lock-warning-face :foreground orange :weight bold)
 
    ))
 
