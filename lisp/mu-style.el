@@ -151,7 +151,7 @@ symbols, greek letters, as well as fall backs for."
           x-underline-at-descent-line t)))
 
 (use-package punpun-theme               ; Minimal light theme
-  :load-path "extra"
+  :load-path "extra"                    ; TODO change when available on MELPA
   :config (load-theme 'punpun t))
 
 (use-package select-themes              ; Better theme selection
