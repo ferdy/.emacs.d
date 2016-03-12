@@ -53,13 +53,7 @@
            ;; file names beginning with # or .
            "\\(?:\\`[#.]\\)"
            ;; file names ending with # or ~
-           "\\|\\(?:\\`.+?[#~]\\'\\)"))
-
-    (ivy-set-actions
-     'counsel-find-file
-     `(("x"
-        (lambda (x) (delete-file (expand-file-name x ivy--directory)))
-        ,(propertize "delete" 'face 'font-lock-warning-face)))))
+           "\\|\\(?:\\`.+?[#~]\\'\\)")))
   :diminish counsel-mode)
 
 (provide 'mu-ivy)
