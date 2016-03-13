@@ -138,6 +138,10 @@ symbols, greek letters, as well as fall backs for."
  'end)
 
 ;;; Theme
+(use-package punpun-theme               ; Default, minimal light theme
+  :ensure t
+  :config (load-theme 'punpun-light t))
+
 (use-package solarized                  ; Superb light theme
   :ensure solarized-theme
   :config
@@ -149,10 +153,6 @@ symbols, greek letters, as well as fall backs for."
           solarized-use-less-bold t         ; Less bold, italic is enough
           ;; Underline below the font bottomline instead of the baseline
           x-underline-at-descent-line t)))
-
-(use-package punpun-theme               ; Minimal light theme
-  :ensure t
-  :config (load-theme 'punpun-light t))
 
 (use-package select-themes              ; Better theme selection
   :ensure t
