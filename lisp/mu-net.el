@@ -25,16 +25,17 @@
 ;; Requires in ~/.ercpass the format
 ;; (setq variable "nickname")
 (use-package erc                        ; IRC client
-  :bind ("C-c a i" . erc)
+  :bind ("C-c a i" . erc))
+
+(use-package erc-services               ; Identify to NickServ
+  :after erc
+  :defer t
   :config
   (progn
-    (load "~/.ercpass")
-    (use-package erc-services
-      :defer t
-      :config (erc-services-mode 1))
+    (load "~/.ercpass")                 ; Load my credentials
+    (setq erc-nick gp-nick)
 
-    ;; Set nickname
-    (setq erc-nick gp-nick)))
+    (erc-services-mode 1)))
 
 (use-package elfeed                     ; RSS feed reader
   :ensure t
