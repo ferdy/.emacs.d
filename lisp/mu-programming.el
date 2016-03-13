@@ -250,6 +250,10 @@
   :ensure t
   :defer t)
 
+(use-package sly-quicklisp              ; QUICKLISP support for Sly
+  :ensure t
+  :defer t)
+
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
   :commands sql-connect
