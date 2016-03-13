@@ -138,7 +138,7 @@ symbols, greek letters, as well as fall backs for."
  'end)
 
 ;;; Theme
-(use-package solarized                  ; My favourite light theme
+(use-package solarized                  ; Superb light theme
   :ensure solarized-theme
   :config
   (progn
