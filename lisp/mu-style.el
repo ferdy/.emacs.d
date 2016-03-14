@@ -140,7 +140,7 @@ symbols, greek letters, as well as fall backs for."
 ;;; Theme
 (use-package punpun-theme               ; Default, minimal light theme
   :ensure t
-  :config (load-theme 'punpun-light t))
+  :init (load-theme 'punpun-light t))
 
 (use-package solarized                  ; Superb light theme
   :ensure solarized-theme
