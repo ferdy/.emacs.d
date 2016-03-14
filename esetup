@@ -99,7 +99,9 @@ configuring LaTeX..."
 pandoc_setup() {
     echo "
 configuring Pandoc..."
-    sudo apt-get -y install --no-install-recommends pandoc
+    wget https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
+    sudo dpkg -i pandoc-1.16.0.2-1-amd64.deb
+    rm pandoc-1.16.0.2-1-amd64.deb
 }
 
 pdftools_setup() {
