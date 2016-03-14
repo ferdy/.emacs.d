@@ -23,7 +23,6 @@
 (use-package avy-jump                   ; Jump to characters in buffers
   :ensure avy
   :bind (("C-c j"   . avy-goto-word-1)
-         ("C-c l"   . avy-goto-line)
          ("C-c n b" . avy-pop-mark)
          ("C-c n j" . avy-goto-char-2)
          ("C-c n w" . avy-goto-word-1)))
