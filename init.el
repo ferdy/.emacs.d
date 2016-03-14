@@ -33,10 +33,12 @@
 ;;; Package setup
 (require 'package)
 (setq package-enable-at-startup nil)
-(setq package-archives
-      `(("gnu"   . "https://elpa.gnu.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")))
+(setq package-archives '())
 (package-initialize)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives
+             '("gnu" . "https://elpa.gnu.org/packages/"))
 
 (setq load-prefer-newer t)              ; Always load newer compiled files
 (setq message-log-max 10000)            ; Debugging
