@@ -155,6 +155,8 @@
   :config (unless (server-running-p)
             (server-mode)))
 
+(setq confirm-kill-emacs #'y-or-n-p)    ; Confirm before quitting Emacs
+
 ;;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (use-package mu-style)
