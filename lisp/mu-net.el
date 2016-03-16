@@ -46,6 +46,7 @@
           '(("http://planet.emacsen.org/atom.xml" emacs)
             ("http://emacshorrors.com/feed.atom" emacs)
             ("http://emacsninja.com/feed.atom" emacs)
+            ("http://planet.lisp.org/rss20.xml" lisp)
             ("http://planet.clojure.in/atom.xml" clojure)
             ("https://cavallette.noblogs.org/feed" security)
             ("https://mjg59.dreamwidth.org/data/rss" security)
