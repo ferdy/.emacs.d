@@ -23,6 +23,7 @@
 (use-package avy-jump                   ; Jump to characters in buffers
   :ensure avy
   :bind (("C-c j"   . avy-goto-word-1)
+         ("M-g"     . avy-goto-line)
          ("C-c n b" . avy-pop-mark)
          ("C-c n j" . avy-goto-char-2)
          ("C-c n w" . avy-goto-word-1)))
@@ -91,8 +92,6 @@
 (bind-keys*
  ("M-a" . mu-backward-paragraph)
  ("M-e" . mu-forward-paragraph))
-
-(bind-key "M-g" 'goto-line)             ; Goto line is M-g
 
 ;; Better mark commands
 ;;;###autoload
