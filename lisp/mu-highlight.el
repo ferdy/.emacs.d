@@ -83,22 +83,6 @@
   :ensure t
   :bind ("C-c t h" . focus-mode))
 
-(use-package beacon        ; Highlight cursor when moving in buffers and windows
-  :ensure t
-  :init (beacon-mode 1)
-  :config
-  (progn
-    (setq beacon-color "#93a1a1")
-    ;; Don't blink on specific major modes
-    (add-to-list 'beacon-dont-blink-major-modes 'shell-mode)
-    (add-to-list 'beacon-dont-blink-major-modes 'eshell-mode)
-    (add-to-list 'beacon-dont-blink-major-modes 'which-key-mode)
-    (add-to-list 'beacon-dont-blink-major-modes 'eww-mode)
-    ;; Don't blink on next-line/previous-line at the top/bottom of the window
-    (add-to-list 'beacon-dont-blink-commands 'sx-question-list-next)
-    (add-to-list 'beacon-dont-blink-commands 'sx-question-list-previous))
-  :diminish beacon-mode)
-
 ;;; Utilities and keybindings
 (defun mu-whitespace-style-no-long-lines ()
   "Configure `whitespace-mode' for Org.
