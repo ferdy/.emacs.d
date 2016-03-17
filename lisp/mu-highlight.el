@@ -79,10 +79,6 @@
           whitespace-line-column nil))  ; Use `fill-column' for overlong lines
   :diminish whitespace-mode)
 
-(use-package focus                      ; Dim the text of surrounding sections
-  :ensure t
-  :bind ("C-c t h" . focus-mode))
-
 ;;; Utilities and keybindings
 (defun mu-whitespace-style-no-long-lines ()
   "Configure `whitespace-mode' for Org.
