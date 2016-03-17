@@ -44,7 +44,8 @@
          ("C-c G" . counsel-git-grep)
          ("C-c k" . counsel-ag)
          ("C-x l" . counsel-locate)
-         ("C-x i" . counsel-imenu))
+         ("C-x i" . counsel-imenu)
+         ("C-c r" . counsel-linux-app))
   :config
   (progn
     (setq counsel-find-file-at-point t
