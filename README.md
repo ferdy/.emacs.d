@@ -78,18 +78,18 @@ maintenance is fairly simple.
 ##Acknowledgements
 This configuration would not have been possible without the work of and the
 inspiration from these people:
-- [Mickey Petersen](https://github.com/mickeynp)
-- [Sebastian Wiesner](https://github.com/lunaryorn)
-- [Artur Malabarba](https://github.com/Malabarba)
-- [Sacha Chua](https://github.com/sachac)
-- [John Wiegley](https://github.com/jwiegley)
 - [Bozhidar Batsov](https://github.com/bbatsov)
-- [Magnar Sveen](https://github.com/magnars)
-- [Steve Purcell](https://github.com/purcell)
-- [Oleh Krehel](https://github.com/abo-abo)
 - [Joe Brock](https://github.com/DebianJoe)
+- [Sacha Chua](https://github.com/sachac)
 - [Wilfred Hughes](https://github.com/Wilfred)
+- [Oleh Krehel](https://github.com/abo-abo)
+- [Artur Malabarba](https://github.com/Malabarba)
 - [Kaushal Modi](https://github.com/kaushalmodi)
+- [Mickey Petersen](https://github.com/mickeynp)
+- [Steve Purcell](https://github.com/purcell)
+- [Magnar Sveen](https://github.com/magnars)
+- [John Wiegley](https://github.com/jwiegley)
+- [Sebastian Wiesner](https://github.com/lunaryorn)
 
 ##License
 This program is free software; you can redistribute it and/or modify
