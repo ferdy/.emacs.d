@@ -54,7 +54,8 @@
            ;; file names beginning with # or .
            "\\(?:\\`[#.]\\)"
            ;; file names ending with # or ~
-           "\\|\\(?:\\`.+?[#~]\\'\\)")))
+           "\\|\\(?:\\`.+?[#~]\\'\\)")
+          counsel-mode-override-describe-bindings t))
   :diminish counsel-mode)
 
 (provide 'mu-ivy)
