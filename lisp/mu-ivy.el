@@ -37,7 +37,10 @@
 
 (use-package counsel                    ; Completion functions with Ivy
   :ensure t
-  :init (counsel-mode 1)
+  :init
+  (progn
+    (setq counsel-mode-override-describe-bindings t)
+    (counsel-mode 1))
   :bind (("C-h S" . counsel-info-lookup-symbol)
          ("C-c u" . counsel-unicode-char)
          ("C-c g" . counsel-git)
@@ -54,8 +57,7 @@
            ;; file names beginning with # or .
            "\\(?:\\`[#.]\\)"
            ;; file names ending with # or ~
-           "\\|\\(?:\\`.+?[#~]\\'\\)")
-          counsel-mode-override-describe-bindings t))
+           "\\|\\(?:\\`.+?[#~]\\'\\)")))
   :diminish counsel-mode)
 
 (provide 'mu-ivy)
