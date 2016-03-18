@@ -27,14 +27,14 @@
          ("C-c v p" . magit-pull))
   ;; Aggressively commit to WIP refs on any change
   :init
-  (progn (magit-wip-after-save-mode)
-         (magit-wip-after-apply-mode)
-         (magit-wip-before-change-mode))
+  (progn
+    (magit-wip-after-save-mode)
+    (magit-wip-after-apply-mode)
+    (magit-wip-before-change-mode))
   :config
   (progn
     ;; Be quiet
-    (setq magit-revert-buffers 'silent
-          magit-save-repository-buffers 'dontask
+    (setq magit-save-repository-buffers 'dontask
           magit-refs-show-commit-count 'all
           magit-push-always-verify nil
           magit-revision-show-gravatars nil)
