@@ -143,10 +143,7 @@ font_setup() {
     echo "
 configuring fonts..."
     sudo apt-get -y install --no-install-recommends fonts-dejavu fonts-dejavu-extra
-    sudo apt-get -y install --no-install-recommends fonts-croscore
     sudo apt-get -y install --no-install-recommends ttf-ancient-fonts
-    sudo apt-get -y install --no-install-recommends fonts-sil-gentium fonts-sil-gentiumplus
-    sudo apt-get -y install --no-install-recommends fonts-arphic-ukai
 }
 
 cask_setup() {
