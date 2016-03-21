@@ -30,13 +30,12 @@
   :config
   (progn
     ;; Load and set my credentials
+    (setq mu-credentials-file "~/.ercpass")
+
     (defun mu-retrieve-irc-password (_)
-      (let ((network circe-server-network)
-            (mu-credentials-file "~/.ercpass"))
-        (with-temp-buffer
-          (insert-file-contents-literally mu-credentials-file)
-          (let ((plist (read (buffer-string))))
-            (plist-get plist :my-pass)))))
+      (with-temp-buffer
+        (insert-file-contents-literally mu-credentials-file)
+        (plist-get (read (buffer-string)) :my-pass)))
 
     (setq circe-network-options
           '(("Freenode"
