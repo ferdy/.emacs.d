@@ -53,8 +53,7 @@
           circe-format-server-topic
           "*** Topic Change by {userhost}: {topic-diff}"
           circe-server-buffer-name "{network}"
-          circe-prompt-string (propertize ">>> " 'face 'circe-prompt-face)
-          circe-color-nicks-everywhere t)))
+          circe-prompt-string (propertize ">>> " 'face 'circe-prompt-face))))
 
 (use-package elfeed                     ; RSS feed reader
   :ensure t
