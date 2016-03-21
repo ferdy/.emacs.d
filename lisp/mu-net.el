@@ -54,8 +54,6 @@
           "*** Topic Change by {userhost}: {topic-diff}"
           circe-server-buffer-name "{network}"
           circe-prompt-string (propertize ">>> " 'face 'circe-prompt-face)
-          circe-nickserv-ghost-style 'after-auth
-          circe-new-buffer-behavior 'ignore
           circe-color-nicks-everywhere t)))
 
 (use-package elfeed                     ; RSS feed reader
