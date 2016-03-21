@@ -23,19 +23,41 @@
                  (cons tramp-file-name-regexp nil))))
 
 ;; Requires in ~/.ercpass the format
-;; (setq variable "nickname")
-(use-package erc                        ; IRC client
-  :bind ("C-c a i" . erc))
-
-(use-package erc-services               ; Identify to NickServ
-  :after erc
-  :defer t
+;; (:my-pass "password")
+(use-package circe
+  :ensure t
+  :bind ("C-c a i" . circe)
   :config
   (progn
-    (load "~/.ercpass")                 ; Load my credentials
-    (setq erc-nick gp-nick)
+    ;; Load and set my credentials
+    (defun mu-retrieve-irc-password (_)
+      (let ((network circe-server-network)
+            (mu-credentials-file "~/.ercpass"))
+        (with-temp-buffer
+          (insert-file-contents-literally mu-credentials-file)
+          (let ((plist (read (buffer-string))))
+            (plist-get plist :my-pass)))))
 
-    (erc-services-mode 1)))
+    (setq circe-network-options
+          '(("Freenode"
+             :tls t
+             :pass mu-retrieve-irc-password)))
+
+    (setq circe-default-nick "gekkop"
+          circe-default-user "gekkop"
+          circe-default-realname "Manuel Uberti"
+          circe-default-part-message "Bye!"
+          circe-default-quit-message "Bye!"
+          circe-use-cycle-completion t
+          circe-reduce-lurker-spam t
+          circe-format-self-say "<{nick}> {body}"
+          circe-format-server-topic
+          "*** Topic Change by {userhost}: {topic-diff}"
+          circe-server-buffer-name "{network}"
+          circe-prompt-string (propertize ">>> " 'face 'circe-prompt-face)
+          circe-nickserv-ghost-style 'after-auth
+          circe-new-buffer-behavior 'ignore
+          circe-color-nicks-everywhere t)))
 
 (use-package elfeed                     ; RSS feed reader
   :ensure t
