@@ -87,6 +87,7 @@ inspiration from these people:
 - [Kaushal Modi](https://github.com/kaushalmodi)
 - [Mickey Petersen](https://github.com/mickeynp)
 - [Steve Purcell](https://github.com/purcell)
+- [Vasilij Schneidermann](https://github.com/wasamasa)
 - [Magnar Sveen](https://github.com/magnars)
 - [John Wiegley](https://github.com/jwiegley)
 - [Sebastian Wiesner](https://github.com/lunaryorn)
