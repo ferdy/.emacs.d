@@ -24,7 +24,7 @@
 
 ;; Requires in ~/.ercpass the format
 ;; (:my-pass "password")
-(use-package circe
+(use-package circe                      ; Light IRC client
   :ensure t
   :bind ("C-c a i" . circe)
   :config
