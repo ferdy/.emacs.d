@@ -46,13 +46,13 @@ all=""
  scheme_setup() {
      dostep 1 "y" "apt-get -y install --no-install-recommends guile-2.0"
      dostep 2 "y" "apt-get -y install --no-install-recommends chicken-bin libchicken7 libchicken-dev"
-     dostep 3 "n" chicken-install -s apropos chicken-doc input-parse numbers
-     dostep 4 "n" chicken-install -s sxml-transforms matchable scss filepath spiffy uri-common
-     dostep 5 "n" chicken-install -s doctype colorize multidoc defstruct atom svnwiki-sxml
-     dostep 6 "n" chicken-install -s rfc3339 hyde
-     dostep 7 "n" cd `csi -p '(chicken-home)'`
-     dostep 8 "n" curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
-     dostep 9 "n" cd $HOME
+     dostep 3 "n" "chicken-install -s apropos chicken-doc input-parse numbers"
+     dostep 4 "n" "chicken-install -s sxml-transforms matchable scss filepath spiffy uri-common"
+     dostep 5 "n" "chicken-install -s doctype colorize multidoc defstruct atom svnwiki-sxml"
+     dostep 6 "n" "chicken-install -s rfc3339 hyde"
+     dostep 7 "n" "cd `csi -p '(chicken-home)'`"
+     dostep 8 "n" "curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx"
+     dostep 9 "n" "cd $HOME"
  }
 
  commonlisp_setup() {
@@ -177,5 +177,5 @@ all=""
  cask_setup
 
  echo "
-environment ready, now fire up Emacs!
+     environment ready, now fire up Emacs!
 "
