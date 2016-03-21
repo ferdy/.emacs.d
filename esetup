@@ -1,186 +1,181 @@
 #!/bin/bash
 
-prerequisites() {
-    echo "
-configuring prerequisites..."
-    sudo apt-get -y install --no-install-recommends make gcc automake autoconf
-    sudo apt-get -y install --no-install-recommends g++ git
-}
+red="\e[31m"
+grn="\e[32m"
+cyn="\e[36m"
+rst="\e[0m"    # reset
+all=""
 
-tls_setup() {
-    echo "
-configuring tls..."
-    sudo apt-get -y install --no-install-recommends gnutls-bin
-    sudo apt-get -y install --no-install-recommends ca-certificates
-}
+ announce() {
+     echo -e $grn"configuring $1"$rst
+ }
 
-keychain_setup() {
-    echo "
-configuring keychain..."
-    sudo apt-get -y install --no-install-recommends keychain
-}
+ dostep() {
+     step=$1
+     sdo=$2
+     cmd=$3
+     echo
+     echo -e $grn"step $step: $cyn$cmd$rst"
+     echo -e $cyn"running $cmd$rst"
+     echo
+     if [[ $sdo == "y" ]] ; then
+         sudo $cmd
+     else
+         $cmd
+     fi
+ }
 
-ag_setup() {
-    echo "
-configuring ag..."
-    sudo apt-get -y install --no-install-recommends silversearcher-ag
-}
+ prerequisites() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends make gcc automake autoconf"
+     dostep 2 "y" "apt-get -y install --no-install-recommends g++ git"
+ }
 
-scheme_setup() {
-    echo "
-configuring Scheme..."
-    sudo apt-get -y install --no-install-recommends guile-2.0
-    sudo apt-get -y install --no-install-recommends chicken-bin libchicken7 libchicken-dev
-    chicken-install -s apropos chicken-doc input-parse numbers
-    chicken-install -s sxml-transforms matchable scss filepath spiffy uri-common
-    chicken-install -s doctype colorize multidoc defstruct atom svnwiki-sxml
-    chicken-install -s rfc3339 hyde
-    cd `csi -p '(chicken-home)'`
-    curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
-    cd $HOME
-}
+ tls_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends gnutls-bin"
+     dostep 2 "y" "apt-get -y install --no-install-recommends ca-certificates"
+ }
 
-commonlisp_setup() {
-    echo "
-configuring Common Lisp..."
-    sudo apt-get -y install --no-install-recommends sbcl sbcl-doc
-    sudo apt-get -y install --no-install-recommends cl-clx-sbcl cl-ppcre
-    sudo apt-get -y install --no-install-recommends texinfo cl-swank
-}
+ keychain_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends keychain"
+ }
 
-clojure_setup() {
-    echo "
-configuring Clojure..."
-    sudo apt-get -y install --no-install-recommends openjdk-8-jre
-    echo "
-getting Lein..."
-    if [ ! -d "$HOME/bin" ]; then
-        mkdir -p $HOME/bin
-        export PATH=$PATH:$HOME/bin
-    fi
-    wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O $HOME/bin/lein
-    chmod 755 $HOME/bin/lein
-    lein
-}
+ ag_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends silversearcher-ag"
+ }
 
-latex_setup() {
-    echo "
-configuring LaTeX..."
-    cd ~/Downloads
-    mv -f install-tl-unx.tar.gz /tmp
-    wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-    tar -xzf install-tl-unx.tar.gz
-    cd `tar -tzf install-tl-unx.tar.gz | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D'`
-    sudo ./install-tl
-    mkdir -p /opt
-    sudo ln -s /usr/local/texlive/2015/bin/* /opt/texbin
-    sudo apt-get install --no-install-recommends equivs
-    mkdir -p /tmp/tl-equivs && cd /tmp/tl-equivs
-    wget http://www.tug.org/texlive/files/debian-equivs-2015-ex.txt
-    /bin/cp -f debian-equivs-2015-ex.txt texlive-local
-    equivs-build texlive-local
-    sudo dpkg -i texlive-local_2015-1_all.deb
-    echo "
-... done. Configuring chktex for Flycheck..."
-    if [ ! -d "$HOME/sources" ]; then
-        mkdir -p $HOME/sources
-    fi
-    cd $HOME/sources
-    wget http://download.savannah.gnu.org/releases/chktex/chktex-1.7.2.tar.gz
-    tar xzf chktex-1.7.2.tar.gz
-    rm chktex-1.7.2.tar.gz
-    cd chktex-1.7.2
-    ./configure --enable-lacheck-replace && make
-    sudo make install
-    cp /usr/local/etc/chktexrc $HOME/.chktexrc
-    cd $HOME
-}
+ scheme_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends guile-2.0"
+     dostep 2 "y" "apt-get -y install --no-install-recommends chicken-bin libchicken7 libchicken-dev"
+     dostep 3 "n" chicken-install -s apropos chicken-doc input-parse numbers
+     dostep 4 "n" chicken-install -s sxml-transforms matchable scss filepath spiffy uri-common
+     dostep 5 "n" chicken-install -s doctype colorize multidoc defstruct atom svnwiki-sxml
+     dostep 6 "n" chicken-install -s rfc3339 hyde
+     dostep 7 "n" cd `csi -p '(chicken-home)'`
+     dostep 8 "n" curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
+     dostep 9 "n" cd $HOME
+ }
 
-pandoc_setup() {
-    echo "
-configuring Pandoc..."
-    wget https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb
-    sudo dpkg -i pandoc-1.16.0.2-1-amd64.deb
-    rm pandoc-1.16.0.2-1-amd64.deb
-}
+ commonlisp_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends sbcl sbcl-doc"
+     dostep 2 "y" "apt-get -y install --no-install-recommends cl-clx-sbcl cl-ppcre"
+     dostep 3 "y" "apt-get -y install --no-install-recommends texinfo cl-swank"
+ }
 
-pdftools_setup() {
-    echo "
-configuring pdf-tools dependencies..."
-    sudo apt-get -y install --no-install-recommends libpng-dev libz-dev
-    sudo apt-get -y install --no-install-recommends libpoppler-glib-dev
-    sudo apt-get -y install --no-install-recommends libpoppler-private-dev
-    sudo apt-get -y install --no-install-recommends imagemagick
-    cd $HOME
-}
+ clojure_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends openjdk-8-jre"
+     if [ ! -d "$HOME/bin" ]; then
+         dostep 2 "n" "mkdir -p $HOME/bin"
+     fi
+     dostep 3 "n" "wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O $HOME/bin/lein"
+     dostep 4 "n" "chmod 755 $HOME/bin/lein"
+     dostep 5 "n" "lein"
+ }
 
-flyspell_setup() {
-    echo "
-configuring spell checker..."
-    sudo apt-get -y install --no-install-recommends aspell aspell-en aspell-it
-}
+ latex_setup() {
+     dostep 1 "n" "cd ~/Downloads"
+     dostep 2 "n" "mv -f install-tl-unx.tar.gz /tmp"
+     dostep 3 "n" "wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
+     dostep 4 "n" "tar -xzf install-tl-unx.tar.gz"
+     dostep 5 "n" "cd `tar -tzf install-tl-unx.tar.gz | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D'`"
+     dostep 6 "y" "./install-tl"
+     dostep 7 "y" "mkdir -p /opt"
+     dostep 8 "y" "ln -s /usr/local/texlive/2015/bin/* /opt/texbin"
+     dostep 9 "y" "apt-get install --no-install-recommends equivs"
+     dostep 10 "n" "mkdir -p /tmp/tl-equivs && cd /tmp/tl-equivs"
+     dostep 11 "n" "wget http://www.tug.org/texlive/files/debian-equivs-2015-ex.txt"
+     dostep 12 "n" "/bin/cp -f debian-equivs-2015-ex.txt texlive-local"
+     dostep 13 "n" "equivs-build texlive-local"
+     dostep 14 "y" "dpkg -i texlive-local_2015-1_all.deb"
+     if [ ! -d "$HOME/sources" ]; then
+         dostep 15 "n" "mkdir -p $HOME/sources"
+     fi
+     dostep 16 "n" "cd $HOME/sources"
+     dostep 17 "n" "wget http://download.savannah.gnu.org/releases/chktex/chktex-1.7.2.tar.gz"
+     dostep 18 "n" "tar xzf chktex-1.7.2.tar.gz"
+     dostep 19 "n" "rm chktex-1.7.2.tar.gz"
+     dostep 20 "n" "cd chktex-1.7.2"
+     dostep 21 "n" "./configure --enable-lacheck-replace && make"
+     dostep 22 "y" "make install"
+     dostep 23 "n" "cp /usr/local/etc/chktexrc $HOME/.chktexrc"
+     dostep 24 "n" "cd $HOME"
+ }
 
-wordnet_setup() {
-    echo "
-configuring wordnet..."
-    sudo apt-get -y install --no-install-recommends wordnet
-}
+ pandoc_setup() {
+     dostep 1 "n" "wget https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb"
+     dostep 2 "y" "dpkg -i pandoc-1.16.0.2-1-amd64.deb"
+     dostep 3 "n" "rm pandoc-1.16.0.2-1-amd64.deb"
+ }
 
-langtool_setup() {
-    echo "
-configuring langtool..."
-    if [ ! -x /usr/bin/unzip ]; then
-        sudo apt-get -y install --no-install-recommends unzip
-    fi
-    cd $HOME
-    wget https://languagetool.org/download/LanguageTool-3.2.zip
-    unzip LanguageTool-3.2.zip
-    mv LanguageTool-3.2 languagetool
-    rm LanguageTool-3.2.zip
-}
+ pdftools_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends libpng-dev libz-dev"
+     dostep 2 "y" "apt-get -y install --no-install-recommends libpoppler-glib-dev"
+     dostep 3 "y" "apt-get -y install --no-install-recommends libpoppler-private-dev"
+     dostep 4 "y" "apt-get -y install --no-install-recommends imagemagick"
+ }
 
-font_setup() {
-    echo "
-configuring fonts..."
-    sudo apt-get -y install --no-install-recommends fonts-dejavu fonts-dejavu-extra
-    sudo apt-get -y install --no-install-recommends ttf-ancient-fonts
-}
+ flyspell_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends aspell aspell-en aspell-it"
+ }
 
-cask_setup() {
-    echo "
-configuring cask dependencies..."
-    sudo apt-get -y install --no-install-recommends python2.7
-    echo "
-configuring cask"
-    curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
-}
+ wordnet_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends wordnet"
+ }
 
-echo "
-##########################################
-# esetup                                 #
-# Script for creating the right          #
-# environment for my Emacs configuration #
-##########################################"
+ langtool_setup() {
+     if [ ! -x /usr/bin/unzip ]; then
+         dostep 1 "y" "apt-get -y install --no-install-recommends unzip"
+     fi
+     dostep 2 "n" "cd $HOME"
+     dostep 3 "n" "wget https://languagetool.org/download/LanguageTool-3.2.zip"
+     dostep 4 "n" "unzip LanguageTool-3.2.zip"
+     dostep 5 "n" "mv LanguageTool-3.2 languagetool"
+     dostep 6 "n" "rm LanguageTool-3.2.zip"
+ }
 
-sudo -v # gets user password for next sudos
+ font_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends fonts-dejavu fonts-dejavu-extra"
+     dostep 2 "y" "apt-get -y install --no-install-recommends ttf-ancient-fonts"
+ }
 
-cd $HOME
-prerequisites
-tls_setup
-keychain_setup
-ag_setup
-clojure_setup
-scheme_setup
-commonlisp_setup
-latex_setup
-pandoc_setup
-pdftools_setup
-flyspell_setup
-wordnet_setup
-langtool_setup
-font_setup
-cask_setup
+ cask_setup() {
+     dostep 1 "y" "apt-get -y install --no-install-recommends python2.7"
+     dostep 2 "n" "curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python"
+ }
 
-echo "
+ sudo -v # gets user password for next sudos
+
+ cd $HOME
+ announce PREREQUISITES
+ prerequisites
+ announce TLS
+ tls_setup
+ announce KEYCHAIN
+ keychain_setup
+ announce AG
+ ag_setup
+ announce CLOJURE
+ clojure_setup
+ announce SCHEME
+ scheme_setup
+ announce COMMONLISP
+ commonlisp_setup
+ announce LaTeX
+ latex_setup
+ announce PANDOC
+ pandoc_setup
+ announce PDFTOOLS
+ pdftools_setup
+ announce FLYSPELL
+ flyspell_setup
+ announce WORDNET
+ wordnet_setup
+ announce LANGTOOL
+ langtool_setup
+ announce FONT
+ font_setup
+ announce CASK
+ cask_setup
+
+ echo "
 environment ready, now fire up Emacs!
 "
