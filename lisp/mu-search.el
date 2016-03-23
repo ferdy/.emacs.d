@@ -23,6 +23,8 @@
 (use-package "isearch"                  ; Search buffers
   ;; Defer because `isearch' is not a feature and we don't want to `require' it
   :defer t
+  :bind (:map isearch-mode-map
+              ("<C-return>" . mu-isearch-exit-other-end))
   ;; `:diminish' doesn't work for isearch, because it uses eval-after-load on
   ;; the feature name, but isearch.el does not provide any feature.  For the
   ;; same reason we have to use `:init', but isearch is always loaded anyways.
@@ -32,7 +34,13 @@
 
     (setq isearch-allow-scroll t        ; Scroll during search
           ;; Use character-folding in query-replace
-          replace-character-fold t)))
+          replace-character-fold t)
+
+    (defun mu-isearch-exit-other-end ()
+      "Exit isearch, at the opposite end of the string."
+      (interactive)
+      (isearch-exit)
+      (goto-char isearch-other-end))))
 
 (use-package ag                         ; Search code in files/projects
   :ensure t
