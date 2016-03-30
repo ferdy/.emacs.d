@@ -54,7 +54,7 @@ $ git pull
 ```
 Now you can build Emacs:
 ```console
-$ ./configure
+$ ./configure --host=x86_64-debian-linux-gnu
 $ make
 $ sudo make install
 $ make clean
@@ -67,7 +67,7 @@ If sources do not build correctly, or you find errors while using the latest
 commit, you can still revert to a working commit and re-build:
 ```console
 $ git reset --hard <commit>
-$ ./configure
+$ ./configure --host=x86_64-debian-linux-gnu
 $ make
 $ sudo make install
 $ make clean
