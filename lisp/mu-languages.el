@@ -51,7 +51,11 @@
                 (flyspell-buffer)))
 
     ;; Free C-M-i for completion
-    (unbind-key "M-t" flyspell-mode-map)))
+    (unbind-key "M-t" flyspell-mode-map)
+
+    ;; Use Ivy for flyspell candidates
+    (unbind-key "C-c $" flyspell-mode-map)
+    (bind-key "C-c $" #'mu-flyspell-correct flyspell-mode-map)))
 
 ;;; Language tools
 (use-package wordnut                    ; Interface to WordNet
@@ -123,6 +127,63 @@
  ("C-c a L t I" . mu-translate-iten-at-point)
  ("C-c a L t e" . mu-translate-enit)
  ("C-c a L t E" . mu-translate-enit-at-point))
+
+;;;###autoload
+(defun mu-flyspell-correct ()
+  "Use counsel for flyspell correction.
+Adapted from `flyspell-correct-word-before-point'."
+  (interactive)
+  ;; Use the correct dictionary
+  (flyspell-accept-buffer-local-defs)
+  (let ((cursor-location (point))
+        (word (flyspell-get-word))
+        (opoint (point)))
+    (if (consp word)
+        (let ((start (car (cdr word)))
+              (end (car (cdr (cdr word))))
+              (word (car word))
+              poss ispell-filter)
+          ;; Now check spelling of word.
+          (ispell-send-string "%\n")	; Put in verbose mode
+          (ispell-send-string (concat "^" word "\n"))
+          ;; Wait until ispell has processed word
+          (while (progn
+                   (accept-process-output ispell-process)
+                   (not (string= "" (car ispell-filter)))))
+          ;; Remove leading empty element
+          (setq ispell-filter (cdr ispell-filter))
+          ;; ispell process should return something after word is sent.
+          ;; Tag word as valid (i.e., skip) otherwise
+          (or ispell-filter
+              (setq ispell-filter '(*)))
+          (if (consp ispell-filter)
+              (setq poss (ispell-parse-output (car ispell-filter))))
+          (cond
+           ((or (eq poss t) (stringp poss))
+            ;; Don't correct word
+            t)
+           ((null poss)
+            ;; ispell error
+            (error "Ispell: error in Ispell process"))
+           (t
+            ;; The word is incorrect, we have to propose a replacement.
+            (let ((res (ivy-read "Correction: " (third poss) :preselect word)))
+              (cond ((stringp res)
+                     (flyspell-do-correct
+                      res poss word cursor-location start end opoint))
+                    (t
+                     (let ((cmd (car res))
+                           (wrd (cdr res)))
+                       (if (string= wrd word)
+                           (flyspell-do-correct
+                            cmd poss wrd cursor-location start end opoint)
+                         (progn
+                           (flyspell-do-correct
+                            cmd poss wrd cursor-location start end opoint)
+                           (flyspell-do-correct
+                            wrd poss word cursor-location start end opoint))))))
+              )))
+          (ispell-pdict-save t)))))
 
 (provide 'mu-languages)
 
