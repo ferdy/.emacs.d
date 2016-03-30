@@ -130,7 +130,7 @@
 
 ;;;###autoload
 (defun mu-flyspell-correct ()
-  "Use counsel for flyspell correction.
+  "Use Ivy for Flyspell correction.
 Adapted from `flyspell-correct-word-before-point'."
   (interactive)
   ;; Use the correct dictionary
@@ -143,30 +143,28 @@ Adapted from `flyspell-correct-word-before-point'."
               (end (car (cdr (cdr word))))
               (word (car word))
               poss ispell-filter)
-          ;; Now check spelling of word.
+          ;; Check spelling of the word
           (ispell-send-string "%\n")	; Put in verbose mode
           (ispell-send-string (concat "^" word "\n"))
-          ;; Wait until ispell has processed word
+          ;; Wait until Ispell has processed word
           (while (progn
                    (accept-process-output ispell-process)
                    (not (string= "" (car ispell-filter)))))
           ;; Remove leading empty element
           (setq ispell-filter (cdr ispell-filter))
-          ;; ispell process should return something after word is sent.
-          ;; Tag word as valid (i.e., skip) otherwise
+          ;; Ispell process should return something after word is sent;
+          ;; tag word as valid (i.e., skip) otherwise.
           (or ispell-filter
               (setq ispell-filter '(*)))
-          (if (consp ispell-filter)
-              (setq poss (ispell-parse-output (car ispell-filter))))
+          (when (consp ispell-filter)
+            (setq poss (ispell-parse-output (car ispell-filter))))
           (cond
-           ((or (eq poss t) (stringp poss))
-            ;; Don't correct word
-            t)
-           ((null poss)
-            ;; ispell error
-            (error "Ispell: error in Ispell process"))
+           ;; Don't correct word
+           ((or (eq poss t) (stringp poss)) t)
+           ;; Ispell error
+           ((null poss) (error "Ispell: error in Ispell process"))
            (t
-            ;; The word is incorrect, we have to propose a replacement.
+            ;; The word is incorrect, we have to propose a replacement
             (let ((res (ivy-read "Correction: " (third poss) :preselect word)))
               (cond ((stringp res)
                      (flyspell-do-correct
