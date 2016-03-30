@@ -20,7 +20,7 @@ $ git clone git://git.savannah.gnu.org/emacs.git
 $ cd emacs
 $ sudo apt-get build-dep emacs24
 $ ./autogen.sh
-$ ./configure
+$ ./configure --host=x86_64-debian-linux-gnu
 $ make
 $ sudo make install
 $ make clean
@@ -53,7 +53,7 @@ $ git pull
 ```
 Now you can build Emacs:
 ```console
-$ ./configure
+$ ./configure --host=x86_64-debian-linux-gnu
 $ make
 $ sudo make install
 $ make clean
