@@ -19,6 +19,8 @@
                                      face
                                      minibuffer-prompt))
 
+(add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+
 ;; Automatically close somebuffers on exit
 (add-hook 'minibuffer-exit-hook
           '(lambda ()
