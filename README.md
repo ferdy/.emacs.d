@@ -21,7 +21,7 @@ $ cd emacs
 $ sudo apt-get build-dep emacs24
 $ ./autogen.sh
 $ ./autogen.sh git
-$ ./configure --host=x86_64-debian-linux-gnu
+$ ./configure
 $ make
 $ sudo make install
 $ make clean
@@ -54,7 +54,7 @@ $ git pull
 ```
 Now you can build Emacs:
 ```console
-$ ./configure --host=x86_64-debian-linux-gnu
+$ ./configure
 $ make
 $ sudo make install
 $ make clean
