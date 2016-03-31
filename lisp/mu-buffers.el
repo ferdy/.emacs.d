@@ -12,8 +12,7 @@
 ;;; Code:
 
 ;; Don't let the cursor go into minibuffer prompt
-(let ((default (eval (car (get 'minibuffer-prompt-properties
-                               'standard-value))))
+(let ((default (eval (car (get 'minibuffer-prompt-properties 'standard-value))))
       (dont-touch-prompt-prop '(cursor-intangible t)))
   (setq minibuffer-prompt-properties (append default dont-touch-prompt-prop))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
