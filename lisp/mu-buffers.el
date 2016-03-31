@@ -12,12 +12,11 @@
 ;;; Code:
 
 ;; Don't let the cursor go into minibuffer prompt
-(setq minibuffer-prompt-properties '(read-only
-                                     t
-                                     point-entered
-                                     minibuffer-avoid-prompt
-                                     face
-                                     minibuffer-prompt))
+(let ((default (car (cdr (car (get 'minibuffer-prompt-properties
+                                   'standard-value)))))
+      (dont-touch-prompt-prop '(cursor-intangible t)))
+  (setq minibuffer-prompt-properties (append default dont-touch-prompt-prop))
+  (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
 
 ;; Automatically close some buffers on exit
 (add-hook 'minibuffer-exit-hook
