@@ -23,7 +23,7 @@
   :defer t
   :config (progn
             (setq ispell-program-name (executable-find "aspell")
-                  ispell-dictionary "italiano"
+                  ispell-dictionary "british"
                   ispell-choices-win-default-height 5)
 
             (unless ispell-program-name
