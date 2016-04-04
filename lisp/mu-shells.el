@@ -133,6 +133,7 @@ windows easier."
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
 
 (defun mu-browse-history (elements)
+  "Use Ivy to navigate through ELEMENTS."
   (setq ivy-completion-beg (point))
   (setq ivy-completion-end (point))
   (ivy-read "Symbol name: "
