@@ -83,7 +83,15 @@
             ("http://quod.lib.umich.edu/f/fc/longfeed.xml" film)))
 
     ;; Increase url-queue timeout
-    (setf url-queue-timeout 30)))
+    (setf url-queue-timeout 30)
+
+    ;; Kill all Elfeed buffers when leaving `elfeed-search'
+    (defun elfeed-quit-session (&optional kill-buffer)
+      "Kill all Elfeed buffers on quit."
+      (interactive)
+      (mu-kill-buffers "^\\*elfeed"))
+
+    (bind-key "q" #'elfeed-quit-session elfeed-search-mode-map)))
 
 (use-package elfeed-search              ; List feed entries
   :ensure elfeed
