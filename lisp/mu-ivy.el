@@ -38,9 +38,7 @@
 (use-package counsel                    ; Completion functions with Ivy
   :ensure t
   :init
-  (progn
-    (setq counsel-mode-override-describe-bindings t)
-    (counsel-mode 1))
+  (setq counsel-mode-override-describe-bindings t)
   :bind (("C-h S" . counsel-info-lookup-symbol)
          ("C-c u" . counsel-unicode-char)
          ("C-c g" . counsel-git)
@@ -51,6 +49,8 @@
          ("C-c r" . counsel-linux-app))
   :config
   (progn
+    (counsel-mode 1)
+
     (setq counsel-find-file-at-point t
           counsel-find-file-ignore-regexp
           (concat
