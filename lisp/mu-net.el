@@ -83,15 +83,7 @@
             ("http://quod.lib.umich.edu/f/fc/longfeed.xml" film)))
 
     ;; Increase url-queue timeout
-    (setf url-queue-timeout 30)
-
-    ;; Kill all Elfeed buffers when leaving `elfeed-search'
-    (defun elfeed-quit-session (&optional kill-buffer)
-      "Kill all Elfeed buffers on quit."
-      (interactive)
-      (mu-kill-buffers "^\\*elfeed"))
-
-    (bind-key "q" #'elfeed-quit-session elfeed-search-mode-map)))
+    (setf url-queue-timeout 30)))
 
 (use-package elfeed-search              ; List feed entries
   :ensure elfeed
@@ -105,7 +97,15 @@
       (call-interactively 'mark-whole-buffer)
       (elfeed-search-untag-all-unread))
 
-    (bind-key "R" #'elfeed-mark-all-as-read elfeed-search-mode-map)))
+    (bind-key "R" #'elfeed-mark-all-as-read elfeed-search-mode-map)
+
+    ;; Kill all Elfeed buffers when leaving `elfeed-search'
+    (defun elfeed-quit-session (&optional kill-buffer)
+      "Kill all Elfeed buffers on quit."
+      (interactive)
+      (mu-kill-buffers "^\\*elfeed"))
+
+    (bind-key "q" #'elfeed-quit-session elfeed-search-mode-map)))
 
 (use-package paradox                    ; Better package manager interface
   :ensure t
