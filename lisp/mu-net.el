@@ -90,22 +90,21 @@
   :after elfeed
   :config
   (progn
-    ;; Elfeed: mark all feed as read
-    (defun elfeed-mark-all-as-read ()
+    (defun mu-elfeed-mark-all-read ()
       "Mark all feeds as read."
       (interactive)
       (call-interactively 'mark-whole-buffer)
       (elfeed-search-untag-all-unread))
 
-    (bind-key "R" #'elfeed-mark-all-as-read elfeed-search-mode-map)
+    (bind-key "R" #'mu-elfeed-mark-all-read elfeed-search-mode-map)
 
     ;; Kill all Elfeed buffers when leaving `elfeed-search'
-    (defun elfeed-quit-session (&optional kill-buffer)
+    (defun mu-elfeed-quit (&optional kill-buffer)
       "Kill all Elfeed buffers on quit."
       (interactive)
       (mu-kill-buffers "^\\*elfeed"))
 
-    (bind-key "q" #'elfeed-quit-session elfeed-search-mode-map)))
+    (bind-key "q" #'mu-elfeed-quit elfeed-search-mode-map)))
 
 (use-package paradox                    ; Better package manager interface
   :ensure t
