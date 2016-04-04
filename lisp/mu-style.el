@@ -157,6 +157,9 @@ symbols, greek letters, as well as fall backs for."
 (use-package darktooth                  ; Beautiful dark theme
   :ensure darktooth-theme)
 
+(use-package zerodark                   ; Another beautiful dark theme
+  :ensure zerodark-theme)
+
 (use-package select-themes              ; Better theme selection
   :ensure t
   :commands select-themes)
