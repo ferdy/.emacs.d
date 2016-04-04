@@ -87,7 +87,6 @@
 
 (use-package clear-text                 ; Force the use of clearer text
   :ensure t
-  :configx
   :bind ("C-c a L c" . clear-text-mode))
 
 ;;; Utilities and keybindings
