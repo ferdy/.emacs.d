@@ -4,9 +4,9 @@ This is the Emacs configuration I use everyday. It requires Emacs built from
 development sources to work.
 
 I use Emacs on [Debian Jessie](https://www.debian.org) (amd64). The ```esetup```
-script helps to create the environment I need *before* starting Emacs with this
-configuration for the first time. The script only works with **Debian-based**
-systems.
+script helps to create the required environment for this configuration. It must
+be run *before* starting Emacs for first time. The script only works with
+**Debian-based** systems.
 
 ##Setup
 On your **Debian-based** machine:
