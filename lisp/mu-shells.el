@@ -42,16 +42,6 @@ windows easier."
       (let ((inhibit-read-only t))
         (erase-buffer)))
 
-    (defun mu-counsel-esh-history ()
-      "Browse Eshell history."
-      (interactive)
-      (setq ivy-completion-beg (point))
-      (setq ivy-completion-end (point))
-      (ivy-read "Symbol name: "
-                (delete-dups
-                 (ring-elements eshell-history-ring))
-                :action #'ivy-completion-in-region-action))
-
     (add-hook 'eshell-mode-hook
               #'(lambda ()
                   (bind-key "C-c C-l" #'mu-counsel-esh-history
@@ -84,17 +74,7 @@ windows easier."
     (defun mu-shell-turn-echo-off ()
       (setq comint-process-echoes t))
 
-    (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off)
-
-    (defun mu-counsel-shell-history ()
-      "Browse shell history."
-      (interactive)
-      (setq ivy-completion-beg (point))
-      (setq ivy-completion-end (point))
-      (ivy-read "Symbol name: "
-                (delete-dups
-                 (ring-elements comint-input-ring))
-                :action #'ivy-completion-in-region-action))))
+    (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off)))
 
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s T" . ansi-term)
@@ -151,6 +131,26 @@ windows easier."
 
 ;; Truncate buffers continuously
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
+
+(defun mu-browse-history (elements)
+  (setq ivy-completion-beg (point))
+  (setq ivy-completion-end (point))
+  (ivy-read "Symbol name: "
+            (delete-dups
+             (ring-elements elements))
+            :action #'ivy-completion-in-region-action))
+
+;;;###autoload
+(defun mu-counsel-esh-history ()
+  "Browse Eshell history."
+  (interactive)
+  (mu-browse-history eshell-history-ring))
+
+;;;###autoload
+(defun mu-counsel-shell-history ()
+  "Browse shell history."
+  (interactive)
+  (mu-browse-history comint-input-ring))
 
 (provide 'mu-shells)
 
