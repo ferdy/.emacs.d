@@ -57,7 +57,7 @@
     (unbind-key "C-c $" flyspell-mode-map)
     (bind-key "C-c $" #'mu-flyspell-correct flyspell-mode-map)))
 
-;;; Language tools
+;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
   :ensure t
   :bind (("C-c a L d" . wordnut-search)
@@ -68,6 +68,7 @@
   :bind (("C-c a L s" . synosaurus-lookup)
          ("C-c a L r" . synosaurus-choose-and-replace)))
 
+;;; Grammar and style
 (use-package langtool                   ; LanguageTool for Emacs
   :ensure t
   :bind (("C-c a L l w" . langtool-check)
@@ -83,6 +84,11 @@
 (use-package writegood-mode             ; Find common writing problems
   :ensure t
   :bind ("C-c a L g" . writegood-mode))
+
+(use-package clear-text                 ; Force the use of clearer text
+  :ensure t
+  :configx
+  :bind ("C-c a L c" . clear-text-mode))
 
 ;;; Utilities and keybindings
 ;;;###autoload
