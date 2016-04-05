@@ -20,8 +20,9 @@
   :ensure t
   :bind (("C-c t w" . whitespace-cleanup-mode)
          ("C-c x w" . whitespace-cleanup))
-  :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-          (add-hook hook #'whitespace-cleanup-mode))
+  :init
+  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+    (add-hook hook #'whitespace-cleanup-mode))
   :diminish whitespace-cleanup-mode)
 
 (use-package shrink-whitespace          ; Better whitespace removal
@@ -55,9 +56,8 @@
   :ensure t
   :defer t
   :config
-  (progn
-    (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
-    (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode)))
+  (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
+  (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode))
 
 (use-package visual-fill-column         ; Wrap at fill column
   :ensure t
@@ -67,8 +67,9 @@
   :ensure t
   :bind ("C-c t i" . aggressive-indent-mode)
   :init (global-aggressive-indent-mode 1)
-  :config (add-to-list 'aggressive-indent-excluded-modes
-                       'cider-repl-mode))
+  :config
+  (add-to-list 'aggressive-indent-excluded-modes
+               'cider-repl-mode))
 
 (use-package align                      ; Align text in buffers
   :bind (("C-c x a a" . align)
@@ -88,11 +89,12 @@
          ("C-c o C-e"   . mc/edit-ends-of-lines)
          ("C-c o C-s"   . mc/mark-all-in-region)
          ("C-c o SPC"   . set-rectangular-region-anchor))
-  :config (setq mc/mode-line
-                ;; Simplify the MC mode line indicator
-                '(:propertize (:eval (concat " " (number-to-string
-                                                  (mc/num-cursors))))
-                              face font-lock-warning-face)))
+  :config
+  (setq mc/mode-line
+        ;; Simplify the MC mode line indicator
+        '(:propertize (:eval (concat " " (number-to-string
+                                          (mc/num-cursors))))
+                      face font-lock-warning-face)))
 
 (use-package saveplace                  ; Save point position in files
   :init (save-place-mode 1))
@@ -105,9 +107,10 @@
 
 (use-package autorevert                 ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
-  :config (setq auto-revert-verbose nil
-                ;; Revert Dired buffers, too
-                global-auto-revert-non-file-buffers t)
+  :config
+  (setq auto-revert-verbose nil
+        ;; Revert Dired buffers, too
+        global-auto-revert-non-file-buffers t)
   :diminish auto-revert-mode)
 
 (use-package auto-insert                ; Automatic insertion into new files
@@ -129,15 +132,14 @@
   :ensure t
   :bind ("C-c i t" . typo-change-language)
   :init
-  (progn
-    (setq typo-language "English")
+  (setq typo-language "English")
 
-    (typo-global-mode)
+  (typo-global-mode)
 
-    (dolist (hook '(org-mode-hook
-                    markdown-mode-hook
-                    rst-mode-hook))
-      (add-hook hook 'typo-mode)))
+  (dolist (hook '(org-mode-hook
+                  markdown-mode-hook
+                  rst-mode-hook))
+    (add-hook hook 'typo-mode))
   :diminish typo-mode)
 
 (use-package string-edit                ; Edit strings in a separate buffer
@@ -153,25 +155,28 @@
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :bind ("C-c x t" . tildify-region)
-  :init (dolist (hook '(markdown-mode-hook
-                        latex-mode-hook
-                        rst-mode-hook))
-          (add-hook hook #'tildify-mode))
+  :init
+  (dolist (hook '(markdown-mode-hook
+                  latex-mode-hook
+                  rst-mode-hook))
+    (add-hook hook #'tildify-mode))
+  :config
   ;; Use the right space for LaTeX
-  :config (add-hook 'latex-mode-hook
-                    (lambda () (setq-local tildify-space-string "~"))))
+  (add-hook 'latex-mode-hook
+            (lambda () (setq-local tildify-space-string "~"))))
 
 (use-package wrap-region                ; Wrap a region with symbols and tags
   :ensure t
   :bind ("C-c t W" . wrap-region-mode)
-  :config (wrap-region-add-wrappers
-           '(("*" "*" nil org-mode)
-             ("~" "~" nil org-mode)
-             ("/" "/" nil org-mode)
-             ("=" "=" nil org-mode)
-             ("_" "_" nil org-mode)
-             ("/* " " */" "#" (javascript-mode css-mode))
-             ("`" "`" nil markdown-mode))))
+  :config
+  (wrap-region-add-wrappers
+   '(("*" "*" nil org-mode)
+     ("~" "~" nil org-mode)
+     ("/" "/" nil org-mode)
+     ("=" "=" nil org-mode)
+     ("_" "_" nil org-mode)
+     ("/* " " */" "#" (javascript-mode css-mode))
+     ("`" "`" nil markdown-mode))))
 
 (use-package hungry-delete              ; Delete useless white spaces
   :ensure t
@@ -186,32 +191,25 @@
 (use-package rst                        ; ReStructuredText
   :defer t
   :config
-  (progn
-    ;; Indent with 3 spaces after all kinds of literal blocks
-    (setq rst-indent-literal-minimized 3
-          rst-indent-literal-normal 3)
-
-    (bind-key "C-=" nil rst-mode-map)
-    ;; For similarity with AUCTeX and Markdown
-    (bind-key "C-c C-j" #'rst-insert-list rst-mode-map)
-    (bind-key "M-RET" #'rst-insert-list rst-mode-map)))
+  (bind-key "C-=" nil rst-mode-map)
+  ;; For similarity with AUCTeX and Markdown
+  (bind-key "C-c C-j" #'rst-insert-list rst-mode-map)
+  (bind-key "M-RET" #'rst-insert-list rst-mode-map))
 
 (use-package markdown-mode              ; Edit markdown files
   :ensure t
   :mode ("\\.md\\'" . markdown-mode)
   :config
-  (progn
-    ;; Process Markdown with Pandoc, using a custom stylesheet for nice output
-    (let ((stylesheet (expand-file-name
-                       (locate-user-emacs-file "etc/pandoc.css"))))
-      (setq markdown-command
-            (mapconcat #'shell-quote-argument
-                       `("pandoc" "--toc" "--section-divs"
-                         "--css" ,(concat "file://" stylesheet)
-                         "--standalone" "-f" "markdown" "-t" "html5")
-                       " ")))
-
-    (add-hook 'markdown-mode-hook #'auto-fill-mode)))
+  ;; Process Markdown with Pandoc, using a custom stylesheet for nice output
+  (let ((stylesheet (expand-file-name
+                     (locate-user-emacs-file "etc/pandoc.css"))))
+    (setq markdown-command
+          (mapconcat #'shell-quote-argument
+                     `("pandoc" "--toc" "--section-divs"
+                       "--css" ,(concat "file://" stylesheet)
+                       "--standalone" "-f" "markdown" "-t" "html5")
+                     " ")))
+  (add-hook 'markdown-mode-hook #'auto-fill-mode))
 
 (setq next-line-add-newlines t)    ; C-n adds new line when at the end of a line
 
