@@ -3,10 +3,14 @@
 This is the Emacs configuration I use everyday. It requires Emacs built from
 development sources to work.
 
-I use Emacs on [Debian Jessie](https://www.debian.org) (amd64). The ```esetup```
-script helps to create the required environment for this configuration. It must
-be run *before* starting Emacs for the first time. The script only works with
-**Debian-based** systems.
+##Notes
+I use Emacs on [Debian Jessie](https://www.debian.org) (amd64). This
+configuration is tested *only* on **Debian-based** systems.
+
+The `esetup` script helps to create the required environment for this
+configuration. It installs all the necessary tools automatically, provided the
+user has `sudo` privileges. It must be run *before* starting Emacs for the first
+time.
 
 ##Setup
 On your **Debian-based** machine:
@@ -46,8 +50,8 @@ file in the `lisp` directory will be automatically installed and configured.
 This configuration tracks latest Emacs developments. If you intend to use it, I
 highly recommend you update and build your sources at least once a week.
 
-You can use [Magit](https://github.com/magit/magit); ```magit-status``` is bound
-to ```C-c v v```. Or you can do it with the command line:
+You can use [Magit](https://github.com/magit/magit); `magit-status` is bound
+to <kbd>C-c v v</kbd>. Or you can do it with the command line:
 ```console
 $ cd emacs
 $ git pull
@@ -61,7 +65,7 @@ $ make clean
 ```
 I would also recommend you regularly upgrade every package installed. You can
 easily do it with [Paradox](https://github.com/Bruce-Connor/paradox), which is
-bound to ```C-c a p```.
+bound to <kbd>C-c a p</kbd>.
 
 If sources do not build correctly, or you find errors while using the latest
 commit, you can still revert to a working commit and re-build:
