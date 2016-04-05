@@ -84,10 +84,6 @@
   :ensure t
   :bind ("C-c a L g" . writegood-mode))
 
-(use-package clear-text                 ; Force the use of clearer text
-  :ensure t
-  :bind ("C-c a L c" . clear-text-mode))
-
 ;;; Utilities and keybindings
 ;;;###autoload
 (defun mu--wordreference (languages &optional word)
