@@ -49,15 +49,14 @@
 (use-package company                    ; Auto-completion
   :ensure t
   :init (global-company-mode)
+  :bind (:map company-active-map
+              ("C-n" . company-select-next)
+              ("C-p" . company-select-previous))
   :config
   (setq company-tooltip-align-annotations t
         company-tooltip-flip-when-above t
         ;; Easy navigation to candidates with M-<n>
         company-show-numbers t)
-
-  ;; Use C-n and C-p instead of M-n and M-p
-  (bind-key "C-n" #'company-select-next company-active-map)
-  (bind-key "C-p" #'company-select-previous company-active-map)
 
   ;; Don't complete numbers
   (push (apply-partially #'cl-remove-if

@@ -190,11 +190,11 @@
 
 (use-package rst                        ; ReStructuredText
   :defer t
-  :config
-  (bind-key "C-=" nil rst-mode-map)
-  ;; For similarity with AUCTeX and Markdown
-  (bind-key "C-c C-j" #'rst-insert-list rst-mode-map)
-  (bind-key "M-RET" #'rst-insert-list rst-mode-map))
+  :bind (:map rst-mode-map
+              ("C-="     . nil)
+              ;; For similarity with AUCTeX and Markdown
+              ("C-c C-j" . rst-insert-list)
+              ("M-RET"   . rst-insert-list)))
 
 (use-package markdown-mode              ; Edit markdown files
   :ensure t

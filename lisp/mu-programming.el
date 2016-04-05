@@ -58,12 +58,12 @@
 (use-package elisp-mode                 ; Emacs Lisp editing
   :defer t
   :interpreter ("emacs" . emacs-lisp-mode)
+  :bind (:map emacs-lisp-mode-map
+              ("C-c m e r" . eval-region)
+              ("C-c m e b" . eval-buffer)
+              ("C-c m e e" . eval-last-sexp)
+              ("C-c m e f" . eval-defun))
   :config
-  (bind-key "C-c m e r" #'eval-region emacs-lisp-mode-map)
-  (bind-key "C-c m e b" #'eval-buffer emacs-lisp-mode-map)
-  (bind-key "C-c m e e" #'eval-last-sexp emacs-lisp-mode-map)
-  (bind-key "C-c m e f" #'eval-defun emacs-lisp-mode-map)
-
   (defconst mu-use-package-imenu-expression
     `("Use Package" ,(rx "(use-package" (optional "-with-elapsed-timer")
                          symbol-end (1+ (syntax whitespace)) symbol-start
@@ -97,6 +97,11 @@
             (lambda ()
               (when (mu-is-buttercup-buffer)
                 (require 'buttercup)))))
+
+(use-package cask-mode                  ; Major mode for Cask files
+  ;; Pending https://github.com/melpa/melpa/pull/3737
+  :disabled t
+  :ensure t)
 
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
