@@ -31,6 +31,7 @@
 
   (which-key-declare-prefixes
     "C-c !"     "flycheck"
+    "C-c @"     "outline"
     "C-c 8"     "typo"
     "C-c 8 -"   "typo/dashes"
     "C-c 8 <"   "typo/left-brackets"
