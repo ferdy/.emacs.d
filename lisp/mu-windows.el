@@ -11,6 +11,39 @@
 
 ;;; Code:
 
+(setq window-combination-resize t)      ; Size new windows proportionally
+
+(use-package golden-ratio               ; Automatically resize windows
+  :ensure t
+  :init
+  (defun mu-toggle-golden-ratio ()
+    (interactive)
+    (if (bound-and-true-p golden-ratio-mode)
+        (progn
+          (golden-ratio-mode -1)
+          (balance-windows))
+      (golden-ratio-mode)
+      (golden-ratio)))
+  :bind (("C-c t g" . mu-toggle-golden-ratio))
+  :config
+  (setq golden-ratio-extra-commands '(windmove-up
+                                      windmove-down
+                                      windmove-left
+                                      windmove-right
+                                      ace-window
+                                      ace-delete-window
+                                      ace-select-window
+                                      ace-swap-window
+                                      ace-maximize-window)
+        ;; Exclude some modes from golden ratio
+        golden-ratio-exclude-modes '(flycheck-error-list-mode
+                                     calc-mode
+                                     dired-mode
+                                     ediff-mode)
+        ;; Exclude special buffers from golden ratio
+        golden-ratio-exclude-buffer-regexp `(,(rx bos "*which-key*" eos)))
+  :diminish golden-ratio-mode)
+
 (use-package ace-window                 ; Better movements between windows
   :ensure t
   :bind (("C-x o"   . ace-window)
