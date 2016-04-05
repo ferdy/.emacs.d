@@ -53,10 +53,9 @@ symbols, greek letters, as well as fall backs for."
 (use-package frame                      ; Frames
   :bind ("C-c w f" . toggle-frame-fullscreen)
   :init
-  (progn
-    ;; Kill `suspend-frame'
-    (unbind-key "C-z")
-    (unbind-key "C-x C-z"))
+  ;; Kill `suspend-frame'
+  (unbind-key "C-z")
+  (unbind-key "C-x C-z")
   :config (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
 
 (setq echo-keystrokes 0.1)              ; Faster echo keystrokes
@@ -145,14 +144,13 @@ symbols, greek letters, as well as fall backs for."
 (use-package solarized                  ; Superb light theme
   :ensure solarized-theme
   :config
-  (progn
-    (setq solarized-use-variable-pitch nil  ; Avoid all font-size changes
-          solarized-distinct-doc-face t     ; Make doc faces stand out more
-          solarized-scale-org-headlines nil ; Don't scale Org headlines
-          solarized-use-more-italic t       ; Use italic more often
-          solarized-use-less-bold t         ; Less bold, italic is enough
-          ;; Underline below the font bottomline instead of the baseline
-          x-underline-at-descent-line t)))
+  (setq solarized-use-variable-pitch nil  ; Avoid all font-size changes
+        solarized-distinct-doc-face t     ; Make doc faces stand out more
+        solarized-scale-org-headlines nil ; Don't scale Org headlines
+        solarized-use-more-italic t       ; Use italic more often
+        solarized-use-less-bold t         ; Less bold, italic is enough
+        ;; Underline below the font bottomline instead of the baseline
+        x-underline-at-descent-line t))
 
 (use-package select-themes              ; Better theme selection
   :ensure t
@@ -162,35 +160,33 @@ symbols, greek letters, as well as fall backs for."
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
   :init
-  (progn
-    (setq sml/theme nil
-          sml/mode-width 'full
-          sml/no-confirm-load-theme t)
-
-    (sml/setup))
+  (setq sml/theme nil
+        sml/mode-width 'full
+        sml/no-confirm-load-theme t)
+  (sml/setup)
   :config
-  (progn
-    ;; More abbreviations
-    (add-to-list 'sml/replacer-regexp-list
-                 '("^~/githubs/" ":Git:") t)
-    (add-to-list 'sml/replacer-regexp-list
-                 '("^:Doc:boccaperta/" ":Ba:") t)
-    (add-to-list 'sml/replacer-regexp-list
-                 '("^:Doc:books/" ":Bks:") t)
-    (add-to-list 'sml/replacer-regexp-list
-                 '("^~/projects/" ":Prj:") t)))
+  ;; More abbreviations
+  (add-to-list 'sml/replacer-regexp-list
+               '("^~/githubs/" ":Git:") t)
+  (add-to-list 'sml/replacer-regexp-list
+               '("^:Doc:boccaperta/" ":Ba:") t)
+  (add-to-list 'sml/replacer-regexp-list
+               '("^:Doc:books/" ":Bks:") t)
+  (add-to-list 'sml/replacer-regexp-list
+               '("^~/projects/" ":Prj:") t))
 
 (use-package rich-minority              ; Hide modes in the mode-line
   :ensure smart-mode-line
   :after smart-mode-line
-  :config (setq rm-blacklist
-                (format "^ \\(%s\\)$"
-                        (mapconcat #'identity
-                                   '("Wrap"
-                                     "WSC.*"
-                                     "cWip"
-                                     "sWip")
-                                   "\\|"))))
+  :config
+  (setq rm-blacklist
+        (format "^ \\(%s\\)$"
+                (mapconcat #'identity
+                           '("Wrap"
+                             "WSC.*"
+                             "cWip"
+                             "sWip")
+                           "\\|"))))
 
 ;;; Utilities and keybindings
 (setq custom-safe-themes t)             ; Treat themes as safe
