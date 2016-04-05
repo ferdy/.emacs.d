@@ -26,10 +26,10 @@
   :config
   ;; Show recently killed buffers when calling `ivy-switch-buffer'
   (setq ivy-use-virtual-buffers t
-          ivy-count-format ""           ; Suppress counter
-          ;; Show full file path
-          ivy-virtual-abbreviate 'full)
-    :diminish ivy-mode)
+        ivy-count-format ""           ; Suppress counter
+        ;; Show full file path
+        ivy-virtual-abbreviate 'full)
+  :diminish ivy-mode)
 
 (use-package smex                       ; Better M-x interface
   :ensure t)
@@ -49,13 +49,13 @@
          ("C-c r" . counsel-linux-app))
   :config
   (setq counsel-find-file-at-point t
-          counsel-find-file-ignore-regexp
-          (concat
-           ;; file names beginning with # or .
-           "\\(?:\\`[#.]\\)"
-           ;; file names ending with # or ~
-           "\\|\\(?:\\`.+?[#~]\\'\\)"))
-    :diminish counsel-mode)
+        counsel-find-file-ignore-regexp
+        (concat
+         ;; file names beginning with # or .
+         "\\(?:\\`[#.]\\)"
+         ;; file names ending with # or ~
+         "\\|\\(?:\\`.+?[#~]\\'\\)"))
+  :diminish counsel-mode)
 
 (provide 'mu-ivy)
 
