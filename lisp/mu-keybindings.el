@@ -18,6 +18,7 @@
   :init (which-key-mode)
   :config
   (setq which-key-idle-delay 0.4
+        which-key-sort-order 'which-key-prefix-then-key-order
         which-key-key-replacement-alist
         '(("<\\([[:alnum:]-]+\\)>" . "\\1")
           ("up"                    . "↑")
@@ -65,16 +66,16 @@
     "C-c x a"   "align")
 
   (which-key-declare-prefixes-for-mode 'markdown-mode
-     "C-c TAB" "markdown/images"
-     "C-c C-a" "markdown/links"
-     "C-c C-c" "markdown/process"
-     "C-c C-s" "markdown/style"
-     "C-c C-t" "markdown/header"
-     "C-c C-x" "markdown/structure")
+    "C-c TAB" "markdown/images"
+    "C-c C-a" "markdown/links"
+    "C-c C-c" "markdown/process"
+    "C-c C-s" "markdown/style"
+    "C-c C-t" "markdown/header"
+    "C-c C-x" "markdown/structure")
 
-   (which-key-declare-prefixes-for-mode 'emacs-lisp-mode
-     "C-c m"   "elisp/personal"
-     "C-c m e" "eval")
+  (which-key-declare-prefixes-for-mode 'emacs-lisp-mode
+    "C-c m"   "elisp/personal"
+    "C-c m e" "eval")
   :diminish which-key-mode)
 
 (bind-key "M-=" 'count-words)    ; Use count-words instead of count-words-region
