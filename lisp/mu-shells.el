@@ -14,49 +14,49 @@
 (use-package eshell                     ; Emacs command shell
   :bind ("C-c a s e" . mu-eshell-here)
   :config
-  (progn
-    ;; Handy aliases
-    (defalias 'ff 'find-file)
-    (defun eshell/l (&rest args) "Same as `ls -lah'"
-           (apply #'eshell/ls "-lah" args))
+  ;; Handy aliases
+  (defalias 'ff 'find-file)
 
-    (setq eshell-cmpl-cycle-completions nil
-          eshell-save-history-on-exit t)
+  (defun eshell/l (&rest args) "Same as `ls -lah'"
+         (apply #'eshell/ls "-lah" args))
 
-    (defun mu-eshell-here ()
-      "Open a new shell in the directory of the buffer's file.
+  (setq eshell-cmpl-cycle-completions nil
+        eshell-save-history-on-exit t)
+
+  (defun mu-eshell-here ()
+    "Open a new shell in the directory of the buffer's file.
 The eshell is renamed to match that directory to make multiple eshell
 windows easier."
-      (interactive)
-      (let* ((parent (if (buffer-file-name)
-                         (file-name-directory (buffer-file-name))
-                       default-directory))
-             (name   (car (last (split-string parent "/" t)))))
-        (other-window 1)
-        (eshell "new")
-        (rename-buffer (concat "*eshell: " name "*"))))
+    (interactive)
+    (let* ((parent (if (buffer-file-name)
+                       (file-name-directory (buffer-file-name))
+                     default-directory))
+           (name   (car (last (split-string parent "/" t)))))
+      (other-window 1)
+      (eshell "new")
+      (rename-buffer (concat "*eshell: " name "*"))))
 
-    (defun eshell/clear ()
-      "Clear the eshell buffer."
-      (interactive)
-      (let ((inhibit-read-only t))
-        (erase-buffer)))
+  (defun eshell/clear ()
+    "Clear the eshell buffer."
+    (interactive)
+    (let ((inhibit-read-only t))
+      (erase-buffer)))
 
-    (add-hook 'eshell-mode-hook
-              #'(lambda ()
-                  (bind-key "C-c C-l" #'mu-counsel-esh-history
-                            eshell-mode-map)))
+  (add-hook 'eshell-mode-hook
+            #'(lambda ()
+                (bind-key "C-c C-l" #'mu-counsel-esh-history
+                          eshell-mode-map)))
 
-    (defadvice eshell-gather-process-output
-        (before absolute-cmd (command args) act)
-      "Run scrips from current working on remote system."
-      (setq command (file-truename command)))
+  (defadvice eshell-gather-process-output
+      (before absolute-cmd (command args) act)
+    "Run scrips from current working on remote system."
+    (setq command (file-truename command)))
 
-    ;; Use system su/sudo
-    (with-eval-after-load "em-unix"
-      '(progn
-         (unintern 'eshell/su nil)
-         (unintern 'eshell/sudo nil)))))
+  ;; Use system su/sudo
+  (with-eval-after-load "em-unix"
+    '(progn
+       (unintern 'eshell/su nil)
+       (unintern 'eshell/sudo nil))))
 
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind ("C-c a s t" . shell)
@@ -64,53 +64,52 @@ windows easier."
               ("C-l"     . mu-clear-shell)
               ("C-c C-l" . mu-counsel-shell-history))
   :config
-  (progn
-    (defun mu-clear-shell ()
-      (interactive)
-      (let ((comint-buffer-maximum-size 0))
-        (comint-truncate-buffer)))
+  (defun mu-clear-shell ()
+    (interactive)
+    (let ((comint-buffer-maximum-size 0))
+      (comint-truncate-buffer)))
 
-    ;; Do not echo input back at me
-    (defun mu-shell-turn-echo-off ()
-      (setq comint-process-echoes t))
+  ;; Do not echo input back at me
+  (defun mu-shell-turn-echo-off ()
+    (setq comint-process-echoes t))
 
-    (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off)))
+  (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off))
 
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s T" . ansi-term)
   :init
-  (progn
-    ;; Always use Zsh
-    (defvar mu-term-shell "/usr/bin/zsh")
-    (defadvice ansi-term (before force-bash)
-      (interactive (list mu-term-shell)))
-    (ad-activate 'ansi-term)
+  ;; Always use Zsh
+  (defvar mu-term-shell "/usr/bin/zsh")
 
-    ;; Close buffer with 'exit'
-    (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
-      (if (memq (process-status proc) '(signal exit))
-          (let ((buffer (process-buffer proc)))
-            ad-do-it
-            (kill-buffer buffer))
-        ad-do-it))
-    (ad-activate 'term-sentinel)
+  (defadvice ansi-term (before force-bash)
+    (interactive (list mu-term-shell)))
+  (ad-activate 'ansi-term)
 
-    ;; Always use UTF-8
-    (defun mu-term-use-utf8 ()
-      (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
-    (add-hook 'term-exec-hook 'mu-term-use-utf8)
+  ;; Close buffer with 'exit'
+  (defadvice term-sentinel (around my-advice-term-sentinel (proc msg))
+    (if (memq (process-status proc) '(signal exit))
+        (let ((buffer (process-buffer proc)))
+          ad-do-it
+          (kill-buffer buffer))
+      ad-do-it))
+  (ad-activate 'term-sentinel)
 
-    ;; Paste with C-y
-    (defun mu-term-paste (&optional string)
-      (interactive)
-      (process-send-string
-       (get-buffer-process (current-buffer))
-       (if string string (current-kill 0))))
+  ;; Always use UTF-8
+  (defun mu-term-use-utf8 ()
+    (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix))
+  (add-hook 'term-exec-hook 'mu-term-use-utf8)
 
-    (defun mu-term-hook ()
-      (goto-address-mode)               ; Clickable URLs
-      (bind-key "C-y" #'mu-term-paste term-raw-map))
-    (add-hook 'term-mode-hook 'mu-term-hook)))
+  ;; Paste with C-y
+  (defun mu-term-paste (&optional string)
+    (interactive)
+    (process-send-string
+     (get-buffer-process (current-buffer))
+     (if string string (current-kill 0))))
+
+  (defun mu-term-hook ()
+    (goto-address-mode)               ; Clickable URLs
+    (bind-key "C-y" #'mu-term-paste term-raw-map))
+  (add-hook 'term-mode-hook 'mu-term-hook))
 
 ;;; Utilities and keybindings
 (custom-set-variables

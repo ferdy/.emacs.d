@@ -15,16 +15,15 @@
   :ensure t
   :init (projectile-global-mode)
   :config
-  (progn
-    ;; Remove dead projects when Emacs is idle
-    (run-with-idle-timer 10 nil #'projectile-cleanup-known-projects)
+  ;; Remove dead projects when Emacs is idle
+  (run-with-idle-timer 10 nil #'projectile-cleanup-known-projects)
 
-    (setq projectile-completion-system 'ivy
-          projectile-find-dir-includes-top-level t)
+  (setq projectile-completion-system 'ivy
+        projectile-find-dir-includes-top-level t)
 
-    (projectile-register-project-type 'lein-cljs '("project.clj")
-                                      "lein cljsbuild once"
-                                      "lein cljsbuild test"))
+  (projectile-register-project-type 'lein-cljs '("project.clj")
+                                    "lein cljsbuild once"
+                                    "lein cljsbuild test")
   :diminish projectile-mode)
 
 (provide 'mu-project)

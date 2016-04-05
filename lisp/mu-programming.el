@@ -24,15 +24,14 @@
          ("C-c e w" . flycheck-copy-errors-as-kill)
          ("C-c t e" . flycheck-mode))
   :config
-  (progn
-    (setq flycheck-emacs-lisp-load-path nil
-          flycheck-standard-error-navigation nil
-          flycheck-display-errors-function
-          #'flycheck-display-error-messages-unless-error-list)
+  (setq flycheck-emacs-lisp-load-path nil
+        flycheck-standard-error-navigation nil
+        flycheck-display-errors-function
+        #'flycheck-display-error-messages-unless-error-list)
 
-    ;; Use italic face for checker name
-    (set-face-attribute 'flycheck-error-list-checker-name nil
-                        :inherit 'italic)))
+  ;; Use italic face for checker name
+  (set-face-attribute 'flycheck-error-list-checker-name nil
+                      :inherit 'italic))
 
 (use-package flycheck-package          ; Check package conventions with Flycheck
   :ensure t
@@ -60,26 +59,25 @@
   :defer t
   :interpreter ("emacs" . emacs-lisp-mode)
   :config
-  (progn
-    (bind-key "C-c m e r" #'eval-region emacs-lisp-mode-map)
-    (bind-key "C-c m e b" #'eval-buffer emacs-lisp-mode-map)
-    (bind-key "C-c m e e" #'eval-last-sexp emacs-lisp-mode-map)
-    (bind-key "C-c m e f" #'eval-defun emacs-lisp-mode-map)
+  (bind-key "C-c m e r" #'eval-region emacs-lisp-mode-map)
+  (bind-key "C-c m e b" #'eval-buffer emacs-lisp-mode-map)
+  (bind-key "C-c m e e" #'eval-last-sexp emacs-lisp-mode-map)
+  (bind-key "C-c m e f" #'eval-defun emacs-lisp-mode-map)
 
-    (defconst mu-use-package-imenu-expression
-      `("Use Package" ,(rx "(use-package" (optional "-with-elapsed-timer")
-                           symbol-end (1+ (syntax whitespace)) symbol-start
-                           (group-n 1 (1+ (or (syntax word) (syntax symbol))))
-                           symbol-end) 1)
-      "IMenu expression for `use-package' declarations.")
+  (defconst mu-use-package-imenu-expression
+    `("Use Package" ,(rx "(use-package" (optional "-with-elapsed-timer")
+                         symbol-end (1+ (syntax whitespace)) symbol-start
+                         (group-n 1 (1+ (or (syntax word) (syntax symbol))))
+                         symbol-end) 1)
+    "IMenu expression for `use-package' declarations.")
 
-    (defun mu-add-use-package-to-imenu ()
-      "Add `use-package' declarations to `imenu'."
-      (add-to-list 'imenu-generic-expression
-                   mu-use-package-imenu-expression))
+  (defun mu-add-use-package-to-imenu ()
+    "Add `use-package' declarations to `imenu'."
+    (add-to-list 'imenu-generic-expression
+                 mu-use-package-imenu-expression))
 
-    (add-hook 'emacs-lisp-mode-hook
-              #'mu-add-use-package-to-imenu)))
+  (add-hook 'emacs-lisp-mode-hook
+            #'mu-add-use-package-to-imenu))
 
 (use-package ert                        ; Elisp Regression Test
   :defer t
@@ -89,17 +87,16 @@
   :ensure t
   :defer t
   :init
-  (progn
-    (defun mu-is-buttercup-buffer ()
-      (and (buffer-file-name)
-           (string-match-p (rx "/test-" (1+ (not (any "/"))) ".el" eos)
-                           (buffer-file-name))))
+  (defun mu-is-buttercup-buffer ()
+    (and (buffer-file-name)
+         (string-match-p (rx "/test-" (1+ (not (any "/"))) ".el" eos)
+                         (buffer-file-name))))
 
-    ;; Load buttercup automatically for proper indentation in specs
-    (add-hook 'emacs-lisp-mode-hook
-              (lambda ()
-                (when (mu-is-buttercup-buffer)
-                  (require 'buttercup))))))
+  ;; Load buttercup automatically for proper indentation in specs
+  (add-hook 'emacs-lisp-mode-hook
+            (lambda ()
+              (when (mu-is-buttercup-buffer)
+                (require 'buttercup)))))
 
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
@@ -112,8 +109,8 @@
   :ensure t
   :defer t
   :init
-  (progn (add-hook 'clojure-mode-hook #'cider-mode)
-         (add-hook 'clojure-mode-hook #'subword-mode)))
+  (add-hook 'clojure-mode-hook #'cider-mode)
+  (add-hook 'clojure-mode-hook #'subword-mode))
 
 (use-package clojure-mode-extra-font-locking ; Font-locking for Clojure mode
   :ensure t
@@ -129,27 +126,27 @@
   :ensure cider
   :defer t
   :config
-  (progn
-    ;; Run cljs-repl inside Emacs
-    (defun cider-figwheel-repl ()
-      (interactive)
-      (save-some-buffers)
-      (with-current-buffer (cider-current-repl-buffer)
-        (goto-char (point-max))
-        (insert "(require 'figwheel-sidecar.repl-api)
+  ;; Run cljs-repl inside Emacs
+  (defun cider-figwheel-repl ()
+    (interactive)
+    (save-some-buffers)
+    (with-current-buffer (cider-current-repl-buffer)
+      (goto-char (point-max))
+      (insert "(require 'figwheel-sidecar.repl-api)
              (figwheel-sidecar.repl-api/start-figwheel!)
              (figwheel-sidecar.repl-api/cljs-repl)")
-        (cider-repl-return)))
+      (cider-repl-return)))   ;; Run cljs-repl inside Emacs
 
-    (bind-key "C-c m f" #'cider-figwheel-repl)
 
-    ;; Increase the history size and make it permanent
-    (setq cider-repl-history-size 1000
-          cider-repl-history-file
-          (locate-user-emacs-file "cider-repl-history")
-          cider-repl-display-help-banner nil ; Disable help banner
-          cider-repl-pop-to-buffer-on-connect nil
-          cider-repl-result-prefix ";; => ")))
+  (bind-key "C-c m f" #'cider-figwheel-repl)
+
+  ;; Increase the history size and make it permanent
+  (setq cider-repl-history-size 1000
+        cider-repl-history-file
+        (locate-user-emacs-file "cider-repl-history")
+        cider-repl-display-help-banner nil ; Disable help banner
+        cider-repl-pop-to-buffer-on-connect nil
+        cider-repl-result-prefix ";; => "))
 
 (use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
@@ -160,17 +157,17 @@
   :ensure t
   :defer t
   :init
-  (progn
-    (defun mu-clojure-mode-hook ()
-      (clj-refactor-mode 1)
-      (yas-minor-mode 1)                ; For adding require/use/import
-      (cljr-add-keybindings-with-prefix "C-c m r"))
+  (defun mu-clojure-mode-hook ()
+    (clj-refactor-mode 1)
+    (yas-minor-mode 1)                ; For adding require/use/import
+    (cljr-add-keybindings-with-prefix "C-c m r"))
 
-    (add-hook 'clojure-mode-hook #'mu-clojure-mode-hook))
-  :config (setq cljr-suppress-middleware-warnings t
-                cljr-auto-sort-ns t
-                cljr-favor-prefix-notation
-                cljr-favor-private-functions)
+  (add-hook 'clojure-mode-hook #'mu-clojure-mode-hook)
+  :config
+  (setq cljr-suppress-middleware-warnings t
+        cljr-auto-sort-ns t
+        cljr-favor-prefix-notation
+        cljr-favor-private-functions)
   :diminish clj-refactor-mode)
 
 (use-package yesql-ghosts               ; Display ghostly yesql queries inline
@@ -183,50 +180,49 @@
 (use-package scheme                     ; Configuration for Scheme
   :defer t
   :config
-  (progn
-    (require 'cmuscheme)
+  (require 'cmuscheme)
 
-    ;; Use CHICKEN Scheme
-    (setq scheme-program-name "csi")
-    (add-to-list 'interpreter-mode-alist '("chicken-scheme" . scheme-mode))
+  ;; Use CHICKEN Scheme
+  (setq scheme-program-name "csi")
+  (add-to-list 'interpreter-mode-alist '("chicken-scheme" . scheme-mode))
 
-    ;; Add custom header to .scm files
-    (setq auto-insert-alist
-          '(("\\.scm" .
-             (insert
-              "#!/bin/sh\n#| -*- scheme -*-\nexec csi -s $0 \"$@\"\n|#\n"))))
+  ;; Add custom header to .scm files
+  (setq auto-insert-alist
+        '(("\\.scm" .
+           (insert
+            "#!/bin/sh\n#| -*- scheme -*-\nexec csi -s $0 \"$@\"\n|#\n"))))
 
-    (with-eval-after-load 'scheme
-      (bind-key "C-c m s" #'run-scheme scheme-mode-map)
-      (bind-key "C-c m l" #'scheme-load-current-file scheme-mode-map)
-      (bind-key "C-c m f" #'scheme-compile-current-file scheme-mode-map))
+  (with-eval-after-load 'scheme
+    (bind-key "C-c m s" #'run-scheme scheme-mode-map)
+    (bind-key "C-c m l" #'scheme-load-current-file scheme-mode-map)
+    (bind-key "C-c m f" #'scheme-compile-current-file scheme-mode-map))
 
-    (defun scheme-load-current-file (&optional switch)
-      (interactive "P")
-      (let ((file-name (buffer-file-name)))
-        (comint-check-source file-name)
-        (setq scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
-                                             (file-name-nondirectory file-name)))
-        (comint-send-string (scheme-proc) (concat "(load \""
-                                                  file-name
-                                                  "\"\)\n"))
-        (if switch
-            (switch-to-scheme t)
-          (message "\"%s\" loaded." file-name) ) ) )
+  (defun scheme-load-current-file (&optional switch)
+    (interactive "P")
+    (let ((file-name (buffer-file-name)))
+      (comint-check-source file-name)
+      (setq scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
+                                           (file-name-nondirectory file-name)))
+      (comint-send-string (scheme-proc) (concat "(load \""
+                                                file-name
+                                                "\"\)\n"))
+      (if switch
+          (switch-to-scheme t)
+        (message "\"%s\" loaded." file-name) ) ) )
 
-    (defun scheme-compile-current-file (&optional switch)
-      (interactive "P")
-      (let ((file-name (buffer-file-name)))
-        (comint-check-source file-name)
-        (setq scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
-                                             (file-name-nondirectory file-name)))
-        (message "compiling \"%s\" ..." file-name)
-        (comint-send-string (scheme-proc) (concat "(compile-file \""
-                                                  file-name
-                                                  "\"\)\n"))
-        (if switch
-            (switch-to-scheme t)
-          (message "\"%s\" compiled and loaded." file-name))))))
+  (defun scheme-compile-current-file (&optional switch)
+    (interactive "P")
+    (let ((file-name (buffer-file-name)))
+      (comint-check-source file-name)
+      (setq scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
+                                           (file-name-nondirectory file-name)))
+      (message "compiling \"%s\" ..." file-name)
+      (comint-send-string (scheme-proc) (concat "(compile-file \""
+                                                file-name
+                                                "\"\)\n"))
+      (if switch
+          (switch-to-scheme t)
+        (message "\"%s\" compiled and loaded." file-name)))))
 
 (use-package geiser                ; Collection of modes for Scheme interpreters
   :ensure t
@@ -242,9 +238,10 @@
   :ensure t
   :bind ("C-c d c" . sly)
   :init (setq inferior-lisp-program "/usr/bin/sbcl")
-  :config (bind-keys :map sly-mode-map
-                     ("C-c m q" . sly-quit-lisp)
-                     ("C-c m h" . sly-documentation-lookup)))
+  :config
+  (bind-keys :map sly-mode-map
+             ("C-c m q" . sly-quit-lisp)
+             ("C-c m h" . sly-documentation-lookup)))
 
 (use-package sly-macrostep              ; Macro-expansion via macrostep.el
   :ensure t
@@ -263,25 +260,24 @@
 (use-package web-mode                   ; Major mode for editing web templates
   :ensure t
   :mode "\\.html\\'"
-  :config (setq web-mode-markup-indent-offset 2
-                web-mode-css-indent-offset 2
-                web-mode-code-indent-offset 2))
+  :config
+  (setq web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2))
 
 (use-package js2-mode                   ; Better JavaScript support
   :ensure t
   :mode "\\.js\\'"
   :config
-  (progn
-    (setq-default js2-basic-offset 2)
-    (add-hook 'js2-mode-hook #'js2-highlight-unused-variables-mode)))
+  (setq-default js2-basic-offset 2)
+  (add-hook 'js2-mode-hook #'js2-highlight-unused-variables-mode))
 
 (use-package css-mode                   ; Better CSS support
   :mode "\\.css\\'"
   :config
-  (progn
-    (setq css-indent-offset 2)
-    (add-hook 'css-mode-hook
-              (lambda () (run-hooks 'prog-mode-hook)))))
+  (setq css-indent-offset 2)
+  (add-hook 'css-mode-hook
+            (lambda () (run-hooks 'prog-mode-hook))))
 
 (use-package css-eldoc                  ; Eldoc for CSS
   :ensure t
@@ -300,16 +296,17 @@
 
 (use-package nxml-mode                  ; XML editing
   :mode "\\.xml\\'"
+  :config
   ;; Complete closing tags, and insert XML declarations into empty files
-  :config (setq nxml-slash-auto-complete-flag t
-                nxml-auto-insert-xml-declaration-flag t))
+  (setq nxml-slash-auto-complete-flag t
+        nxml-auto-insert-xml-declaration-flag t))
 
 ;;; Bugs management
 (use-package bug-reference              ; Buttonize bug references
   :defer t
   :init
-  (progn (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
-         (add-hook 'text-mode-hook #'bug-reference-mode)))
+  (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
+  (add-hook 'text-mode-hook #'bug-reference-mode))
 
 (use-package bug-hunter                 ; Find bugs in Emacs configuration
   :ensure t
@@ -328,37 +325,35 @@
   :defer t
   :after lisp-mode
   :init
-  (progn
-    (bind-key "C-c m m e" #'macrostep-expand emacs-lisp-mode-map)
-    (bind-key "C-c m m e" #'macrostep-expand lisp-interaction-mode-map)))
+  (bind-key "C-c m m e" #'macrostep-expand emacs-lisp-mode-map)
+  (bind-key "C-c m m e" #'macrostep-expand lisp-interaction-mode-map))
 
 (use-package compile                    ; Compile from Emacs
   :bind (("C-c c C" . compile)
          ("C-c c r" . recompile))
   :config
-  (progn
-    (setq compilation-ask-about-save nil
-          ;; Kill old compilation processes before starting new ones
-          compilation-always-kill t
-          ;; Automatically scroll and jump to the first error
-          compilation-scroll-output 'first-error
-          compilation-auto-jump-to-first-error t
-          ;; Skip over warnings and info messages in compilation
-          compilation-skip-threshold 2
-          ;; Don't freeze when process reads from stdin
-          compilation-disable-input t
-          ;; Show three lines of context around the current message
-          compilation-context-lines 3)
+  (setq compilation-ask-about-save nil
+        ;; Kill old compilation processes before starting new ones
+        compilation-always-kill t
+        ;; Automatically scroll and jump to the first error
+        compilation-scroll-output 'first-error
+        compilation-auto-jump-to-first-error t
+        ;; Skip over warnings and info messages in compilation
+        compilation-skip-threshold 2
+        ;; Don't freeze when process reads from stdin
+        compilation-disable-input t
+        ;; Show three lines of context around the current message
+        compilation-context-lines 3)
 
-    (defun mu-colorize-compilation-buffer ()
-      "Colorize a compilation mode buffer."
-      (interactive)
-      (when (eq major-mode 'compilation-mode)
-        (let ((inhibit-read-only t))
-          (ansi-color-apply-on-region (point-min) (point-max)))))
+  (defun mu-colorize-compilation-buffer ()
+    "Colorize a compilation mode buffer."
+    (interactive)
+    (when (eq major-mode 'compilation-mode)
+      (let ((inhibit-read-only t))
+        (ansi-color-apply-on-region (point-min) (point-max)))))
 
-    (add-hook 'compilation-filter-hook
-              #'mu-colorize-compilation-buffer)))
+  (add-hook 'compilation-filter-hook
+            #'mu-colorize-compilation-buffer))
 
 (use-package restclient                 ; ReST REPL for Emacs
   :ensure t
