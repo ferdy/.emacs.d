@@ -13,21 +13,21 @@
 
 (use-package paren                      ; Highlight paired delimiters
   :init (show-paren-mode)
-  :config (setq show-paren-when-point-inside-paren t
-                show-paren-when-point-in-periphery t))
+  :config
+  (setq show-paren-when-point-inside-paren t
+        show-paren-when-point-in-periphery t))
 
 (use-package diff-hl                    ; Show changes in fringe
   :ensure t
   :defer 10
   :init
-  (progn
-    ;; Highlight changes to the current file in the fringe
-    (global-diff-hl-mode)
-    ;; Highlight changed files in the fringe of Dired
-    (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
-    ;; Fall back to the display margin, if the fringe is unavailable
-    (unless (display-graphic-p)
-      (diff-hl-margin-mode))))
+  ;; Highlight changes to the current file in the fringe
+  (global-diff-hl-mode)
+  ;; Highlight changed files in the fringe of Dired
+  (add-hook 'dired-mode-hook 'diff-hl-dired-mode)
+  ;; Fall back to the display margin, if the fringe is unavailable
+  (unless (display-graphic-p)
+    (diff-hl-margin-mode)))
 
 (use-package highlight-symbol           ; Highlight and jump to symbols
   :ensure t
@@ -35,14 +35,14 @@
          ("C-c n n" . highlight-symbol-next-in-defun)
          ("C-c n p" . highlight-symbol-prev-in-defun))
   :init
-  (progn
-    ;; Navigate occurrences of the symbol under point with M-n and M-p
-    (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
-    ;; Highlight symbol occurrences
-    (add-hook 'prog-mode-hook #'highlight-symbol-mode))
-  :config (setq highlight-symbol-idle-delay 0.4 ; Almost immediately
-                ;; Immediately after navigation
-                highlight-symbol-on-navigation-p t)
+  ;; Navigate occurrences of the symbol under point with M-n and M-p
+  (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
+  ;; Highlight symbol occurrences
+  (add-hook 'prog-mode-hook #'highlight-symbol-mode)
+  :config
+  (setq highlight-symbol-idle-delay 0.4 ; Almost immediately
+        ;; Immediately after navigation
+        highlight-symbol-on-navigation-p t)
   :diminish highlight-symbol-mode)
 
 (use-package highlight-numbers          ; Fontify number literals
@@ -64,19 +64,19 @@
   :init (global-hi-lock-mode))
 
 (use-package whitespace                 ; Highlight bad whitespace
-  :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-          (add-hook hook #'mu-whitespace-mode-local))
+  :init
+  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+    (add-hook hook #'mu-whitespace-mode-local))
   :config
-  (progn
-    (defun mu-whitespace-mode-local ()
-      "Enable `whitespace-mode' after local variables where set up."
-      (add-hook 'hack-local-variables-hook #'whitespace-mode nil 'local))
+  (defun mu-whitespace-mode-local ()
+    "Enable `whitespace-mode' after local variables where set up."
+    (add-hook 'hack-local-variables-hook #'whitespace-mode nil 'local))
 
-    ;; Highlight tabs, empty lines at beg/end, trailing whitespaces and overlong
-    ;; portions of lines via faces.  Also indicate tabs via characters
-    (setq whitespace-style '(face indentation space-after-tab space-before-tab
-                                  tab-mark empty trailing lines-tail)
-          whitespace-line-column nil))  ; Use `fill-column' for overlong lines
+  ;; Highlight tabs, empty lines at beg/end, trailing whitespaces and overlong
+  ;; portions of lines via faces.  Also indicate tabs via characters
+  (setq whitespace-style '(face indentation space-after-tab space-before-tab
+                                tab-mark empty trailing lines-tail)
+        whitespace-line-column nil)     ; Use `fill-column' for overlong lines
   :diminish whitespace-mode)
 
 ;;; Utilities and keybindings
