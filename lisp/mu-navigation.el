@@ -12,8 +12,9 @@
 ;;; Code:
 
 ;; Scrolling
-(setq scroll-margin 0
-      scroll-conservatively 1000
+(setq scroll-conservatively 1000
+      ;; Move to beg/end of buffer before signalling an error
+      scroll-error-top-bottom t
       ;; Ensure M-v always undoes C-v
       scroll-preserve-screen-position 'always)
 
@@ -42,8 +43,9 @@
 
 (use-package outline                    ; Navigate outlines in buffers
   :defer t
-  :init (dolist (hook '(text-mode-hook prog-mode-hook))
-          (add-hook hook #'outline-minor-mode))
+  :init
+  (dolist (hook '(text-mode-hook prog-mode-hook))
+    (add-hook hook #'outline-minor-mode))
   :diminish outline-minor-mode)
 
 (use-package goto-last-change          ; Navigate through last in-buffer changes
