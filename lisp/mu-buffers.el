@@ -57,32 +57,34 @@
         ("." nil (reusable-frames . visible))))
 
 (use-package uniquify                   ; Unique buffer names
-  :config (setq uniquify-buffer-name-style
-                'post-forward uniquify-separator ":"))
+  :config
+  (setq uniquify-buffer-name-style
+        'post-forward uniquify-separator ":"))
 
 (use-package ibuffer                    ; Buffer management
   :bind (([remap list-buffers] . ibuffer)
          ("C-c b i"            . ibuffer))
-  :config (setq ibuffer-show-empty-filter-groups nil ; Hide empty groups
-                ibuffer-formats
-                '((mark modified read-only " "
-                        (name 18 18 :left :elide)
-                        " "
-                        (size 9 -1 :right)
-                        " "
-                        (mode 16 16 :left :elide)
-                        " "
-                        filename-and-process)
-                  (mark modified read-only " "
-                        (name 18 18 :left :elide)
-                        " "
-                        (size 9 -1 :right)
-                        " "
-                        (mode 16 16 :left :elide)
-                        " " filename-and-process)
-                  (mark " "
-                        (name 16 -1)
-                        " " filename))))
+  :config
+  (setq ibuffer-show-empty-filter-groups nil ; Hide empty groups
+        ibuffer-formats
+        '((mark modified read-only " "
+                (name 18 18 :left :elide)
+                " "
+                (size 9 -1 :right)
+                " "
+                (mode 16 16 :left :elide)
+                " "
+                filename-and-process)
+          (mark modified read-only " "
+                (name 18 18 :left :elide)
+                " "
+                (size 9 -1 :right)
+                " "
+                (mode 16 16 :left :elide)
+                " " filename-and-process)
+          (mark " "
+                (name 16 -1)
+                " " filename))))
 
 (use-package ibuffer-projectile         ; Group buffers by Projectile project
   :ensure t
