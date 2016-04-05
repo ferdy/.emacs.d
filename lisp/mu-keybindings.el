@@ -13,60 +13,68 @@
 
 ;;; Code:
 
-;; Define prefix commands for my personal key binding groups.  Not specifically
-;; important, but plays better with which-key, as it shows the names of prefix
-;; commands in its popup
-(defmacro mu-define-group (prefix name &optional map)
-  "Define a group at PREFIX with NAME in MAP."
-  (let ((command (intern (format "group:%s" name))))
-    `(progn
-       (define-prefix-command ',command)
-       (bind-key ,prefix #',command ,map))))
-
-(mu-define-group "C-c a" applications)
-(mu-define-group "C-c a a" admin)
-(mu-define-group "C-c a o" org)
-(mu-define-group "C-c a L" language)
-(mu-define-group "C-c a L l" langtool)
-(mu-define-group "C-c a L t" translations)
-(mu-define-group "C-c a m" math)
-(mu-define-group "C-c a r" remote)
-(mu-define-group "C-c a s" shells)
-(mu-define-group "C-c a t" time-and-date)
-(mu-define-group "C-c a w" eww)
-(mu-define-group "C-c b" buffers)
-(mu-define-group "C-c c" compile-and-comments)
-(mu-define-group "C-c d" develop)
-(mu-define-group "C-c e" errors)
-(mu-define-group "C-c e v" evalator)
-(mu-define-group "C-c f" files)
-(mu-define-group "C-c i" insertion)
-(mu-define-group "C-c m" major-mode)
-(mu-define-group "C-c n" navigation)
-(mu-define-group "C-c n l" links)
-(mu-define-group "C-c n m" marks)
-(mu-define-group "C-c o" multiple-cursors)
-(mu-define-group "C-c p" projects)
-(mu-define-group "C-c s" search-and-symbols)
-(mu-define-group "C-c t" toggles)
-(mu-define-group "C-c v" version-control)
-(mu-define-group "C-c w" windows-and-frames)
-(mu-define-group "C-c x" text)
-(mu-define-group "C-c x a" align)
-
 (use-package which-key                  ; Show help popups for prefix keys
   :ensure t
   :init (which-key-mode)
-  :config (setq which-key-idle-delay 0.5
-                which-key-key-replacement-alist
-                '(("<\\([[:alnum:]-]+\\)>" . "\\1")
-                  ("up"                    . "↑")
-                  ("right"                 . "→")
-                  ("down"                  . "↓")
-                  ("left"                  . "←")
-                  ("DEL"                   . "⌫")
-                  ("deletechar"            . "⌦")
-                  ("RET"                   . "⏎")))
+  :config
+  (setq which-key-idle-delay 0.4
+        which-key-key-replacement-alist
+        '(("<\\([[:alnum:]-]+\\)>" . "\\1")
+          ("up"                    . "↑")
+          ("right"                 . "→")
+          ("down"                  . "↓")
+          ("left"                  . "←")
+          ("DEL"                   . "⌫")
+          ("deletechar"            . "⌦")
+          ("RET"                   . "⏎")))
+
+  (which-key-declare-prefixes
+    "C-c !"     "flycheck"
+    "C-c 8"     "typo"
+    "C-c 8 -"   "typo/dashes"
+    "C-c 8 <"   "typo/left-brackets"
+    "C-c 8 >"   "typo/right-brackets"
+    "C-c a"     "applications"
+    "C-c a a"   "admin"
+    "C-c a o"   "org"
+    "C-c a L"   "languages"
+    "C-c a L l" "langtool"
+    "C-c a L t" "translations"
+    "C-c a m"   "math"
+    "C-c a r"   "remote"
+    "C-c a s"   "shells"
+    "C-c a t"   "time-and-date"
+    "C-c a w"   "eww"
+    "C-c b"     "buffers"
+    "C-c c"     "compile-and-comments"
+    "C-c d"     "develop"
+    "C-c e"     "errors"
+    "C-c e v"   "evalator"
+    "C-c f"     "files"
+    "C-c i"     "insertion"
+    "C-c m"     "major mode"
+    "C-c n"     "navigation"
+    "C-c n l"   "links"
+    "C-c o"     "cursors"
+    "C-c p"     "projects"
+    "C-c s"     "search-and-symbols"
+    "C-c t"     "toggles"
+    "C-c v"     "version-control"
+    "C-c w"     "windows-and-frames"
+    "C-c x"     "text"
+    "C-c x a"   "align")
+
+  (which-key-declare-prefixes-for-mode 'markdown-mode
+     "C-c TAB" "markdown/images"
+     "C-c C-a" "markdown/links"
+     "C-c C-c" "markdown/process"
+     "C-c C-s" "markdown/style"
+     "C-c C-t" "markdown/header"
+     "C-c C-x" "markdown/structure")
+
+   (which-key-declare-prefixes-for-mode 'emacs-lisp-mode
+     "C-c m"   "elisp/personal"
+     "C-c m e" "eval")
   :diminish which-key-mode)
 
 (bind-key "M-=" 'count-words)    ; Use count-words instead of count-words-region
