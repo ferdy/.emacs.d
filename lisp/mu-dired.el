@@ -17,6 +17,16 @@
          ("C-c f s"    . mu-dired-get-size)
          ("C-c f f"    . find-name-dired)
          ("C-c f r"    . mu-dired-recent-dirs))
+  :bind (:map dired-mode-map
+              ("M-<up>"   . mu-dired-up)
+              ("M-p"      . mu-dired-up)
+              ("^"        . mu-dired-up)
+              ("RET"      . find-file-reuse-dir-buffer)
+              ("M-<down>" . mu-dired-down)
+              ("M-n"      . mu-dired-down)
+              ("!"        . mu-sudired)
+              ([remap beginning-of-buffer] . mu-dired-back-to-top)
+              ([remap end-of-buffer]       . mu-dired-jump-to-bottom))
   :config
   (setq dired-auto-revert-buffer t    ; Revert buffers on revisiting
         dired-listing-switches
@@ -31,28 +41,6 @@
 
   ;; Enable dired-find-alternate-file
   (put 'dired-find-alternate-file 'disabled nil)
-
-  ;; Better keybinding for moving between directories
-  (bind-keys :map dired-mode-map
-             ("M-<up>"   . (lambda ()
-                             (interactive)
-                             (find-alternate-file "..")))
-             ("M-p"      . (lambda ()
-                             (interactive)
-                             (find-alternate-file "..")))
-             ("^"        . (lambda ()
-                             (interactive)
-                             (find-alternate-file "..")))
-             ("RET"      . find-file-reuse-dir-buffer)
-             ("M-<down>" . (lambda ()
-                             (interactive)
-                             (dired-find-alternate-file)))
-             ("M-n"      . (lambda ()
-                             (interactive)
-                             (dired-find-alternate-file)))
-             ("!"        . mu-sudired)
-             ([remap beginning-of-buffer] . mu-dired-back-to-top)
-             ([remap end-of-buffer]       . mu-dired-jump-to-bottom))
 
   ;; Handle long file names
   (add-hook 'dired-mode-hook #'toggle-truncate-lines))
@@ -84,6 +72,18 @@
               ("/" . dired-narrow)))
 
 ;;; Utilities and keybindings
+;;;###autoload
+(defun mu-dired-up ()
+  "Go to previous directory."
+  (interactive)
+  (find-alternate-file ".."))
+
+;;;###autoload
+(defun mu-dired-down ()
+  "Enter directory."
+  (interactive)
+  (dired-find-alternate-file))
+
 ;;;###autoload
 (defun mu-open-in-external-app ()
   "Open the file where point is or the marked files in Dired in external
