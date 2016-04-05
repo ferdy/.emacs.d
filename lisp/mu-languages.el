@@ -15,47 +15,45 @@
 (use-package po-mode                    ; Manage .po files
   :load-path "extra"
   :mode "\\.po\\'"
-  :no-require t
   :config (setq po-keep-mo-file t))
 
 ;;; Spell checking and dictionaries
 (use-package ispell                     ; Word correction
   :defer t
-  :config (progn
-            (setq ispell-program-name (executable-find "aspell")
-                  ispell-dictionary "british"
-                  ispell-choices-win-default-height 5)
+  :config
+  (setq ispell-program-name (executable-find "aspell")
+        ispell-dictionary "british"
+        ispell-choices-win-default-height 5)
 
-            (unless ispell-program-name
-              (warn "No spell checker available. Install aspell."))))
+  (unless ispell-program-name
+    (warn "No spell checker available. Install aspell.")))
 
 (use-package flyspell                   ; Spell checking on-the-fly
   :bind ("C-c t s" . flyspell-mode)
   :config
-  (progn
-    (setq flyspell-use-meta-tab nil
-          ;; Make Flyspell less chatty
-          flyspell-issue-welcome-flag nil
-          flyspell-issue-message-flag nil)
+  (setq flyspell-use-meta-tab nil
+        ;; Make Flyspell less chatty
+        flyspell-issue-welcome-flag nil
+        flyspell-issue-message-flag nil)
 
-    (bind-key "C-c I"
-              (lambda ()
-                (interactive)
-                (ispell-change-dictionary "italiano")
-                (flyspell-buffer)))
+  (bind-key "C-c I"
+            (lambda ()
+              (interactive)
+              (ispell-change-dictionary "italiano")
+              (flyspell-buffer)))
 
-    (bind-key "C-c E"
-              (lambda ()
-                (interactive)
-                (ispell-change-dictionary "british")
-                (flyspell-buffer)))
+  (bind-key "C-c E"
+            (lambda ()
+              (interactive)
+              (ispell-change-dictionary "british")
+              (flyspell-buffer)))
 
-    ;; Free C-M-i for completion
-    (unbind-key "M-t" flyspell-mode-map)
+  ;; Free C-M-i for completion
+  (unbind-key "M-t" flyspell-mode-map)
 
-    ;; Use Ivy for flyspell candidates
-    (unbind-key "C-c $" flyspell-mode-map)
-    (bind-key "C-c $" #'mu-flyspell-correct flyspell-mode-map)))
+  ;; Use Ivy for flyspell candidates
+  (unbind-key "C-c $" flyspell-mode-map)
+  (bind-key "C-c $" #'mu-flyspell-correct flyspell-mode-map))
 
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
@@ -76,10 +74,11 @@
          ("C-c a L l l" . langtool-switch-default-language)
          ("C-c a L l m" . langtool-show-message-at-point)
          ("C-c a L l c" . langtool-correct-buffer))
-  :init (setq langtool-language-tool-jar
-              "~/languagetool/languagetool-commandline.jar"
-              langtool-default-language "en-GB"
-              langtool-java-bin "/usr/bin/java"))
+  :init
+  (setq langtool-language-tool-jar
+        "~/languagetool/languagetool-commandline.jar"
+        langtool-default-language "en-GB"
+        langtool-java-bin "/usr/bin/java"))
 
 (use-package writegood-mode             ; Find common writing problems
   :ensure t
