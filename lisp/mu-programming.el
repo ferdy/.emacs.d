@@ -242,11 +242,10 @@
 (use-package sly                        ; Sylvester the Cat's Common Lisp IDE
   :ensure t
   :bind ("C-c d c" . sly)
-  :init (setq inferior-lisp-program "/usr/bin/sbcl")
-  :config
-  (bind-keys :map sly-mode-map
-             ("C-c m q" . sly-quit-lisp)
-             ("C-c m h" . sly-documentation-lookup)))
+  :bind (:map sly-mode-map
+              ("C-c m q" . sly-quit-lisp)
+              ("C-c m h" . sly-documentation-lookup))
+  :init (setq inferior-lisp-program "/usr/bin/sbcl"))
 
 (use-package sly-macrostep              ; Macro-expansion via macrostep.el
   :ensure t
