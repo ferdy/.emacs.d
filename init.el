@@ -75,10 +75,7 @@
   (require 'use-package))
 
 (require 'dash)
-(require 'diminish)
-(require 'bind-key)
-(require 'grep)
-(require 'rx)
+(require 'subr-x)
 (require 'time-date)
 
 ;;; Initialization
