@@ -29,18 +29,17 @@
   ;; the feature name, but isearch.el does not provide any feature.  For the
   ;; same reason we have to use `:init', but isearch is always loaded anyways.
   :init
-  (progn
-    (diminish 'isearch-mode)
+  (diminish 'isearch-mode)
 
-    (setq isearch-allow-scroll t        ; Scroll during search
-          ;; Use character-folding in query-replace
-          replace-character-fold t)
+  (setq isearch-allow-scroll t        ; Scroll during search
+        ;; Use character-folding in query-replace
+        replace-character-fold t)
 
-    (defun mu-isearch-exit-other-end ()
-      "Exit isearch, at the opposite end of the string."
-      (interactive)
-      (isearch-exit)
-      (goto-char isearch-other-end))))
+  (defun mu-isearch-exit-other-end ()
+    "Exit isearch, at the opposite end of the string."
+    (interactive)
+    (isearch-exit)
+    (goto-char isearch-other-end)))
 
 (use-package ag                         ; Search code in files/projects
   :ensure t
@@ -51,41 +50,38 @@
          ("C-c s k" . ag-kill-other-buffers)
          ("C-c s K" . ag-kill-buffers))
   :config
-  (progn
-    (setq ag-reuse-buffers t            ; Don't spam buffer list with ag buffers
-          ag-highlight-search t         ; Highlight results
-          ;; Use Projectile to find the project root
-          ag-project-root-function (lambda (d) (let ((default-directory d))
-                                            (projectile-project-root))))
-    ;; Set ag arguments
-    (setq ag-arguments (list "--smart-case" "--nogroup" "--column")
-          ag-arguments (append '("--follow") ag-arguments))))
+  (setq ag-reuse-buffers t            ; Don't spam buffer list with ag buffers
+        ag-highlight-search t         ; Highlight results
+        ;; Use Projectile to find the project root
+        ag-project-root-function (lambda (d) (let ((default-directory d))
+                                          (projectile-project-root))))
+  ;; Set ag arguments
+  (setq ag-arguments (list "--smart-case" "--nogroup" "--column")
+        ag-arguments (append '("--follow") ag-arguments)))
 
 (use-package wgrep                      ; Editable grep buffer
   :ensure t
   :defer t
   :config
-  (progn
-    (with-eval-after-load 'grep
-      (bind-key "C-x C-q" #'wgrep-change-to-wgrep-mode grep-mode-map))
+  (with-eval-after-load 'grep
+    (bind-key "C-x C-q" #'wgrep-change-to-wgrep-mode grep-mode-map))
 
-    (with-eval-after-load 'wgrep
-      (bind-key "C-c C-c" #'wgrep-finish-edit grep-mode-map))))
+  (with-eval-after-load 'wgrep
+    (bind-key "C-c C-c" #'wgrep-finish-edit grep-mode-map)))
 
 (use-package wgrep-ag                   ; Wgrep for ag
   :ensure t
   :commands (wgrep-ag-setup)
   :config
-  (progn
-    (add-hook 'ag-mode-hook #'wgrep-ag-setup)
+  (add-hook 'ag-mode-hook #'wgrep-ag-setup)
 
-    (bind-key "C-x s" #'wgrep-save-all-buffers wgrep-mode-map)
+  (bind-key "C-x s" #'wgrep-save-all-buffers wgrep-mode-map)
 
-    (with-eval-after-load 'ag
-      (bind-key "C-x C-q" #'wgrep-change-to-wgrep-mode ag-mode-map))
+  (with-eval-after-load 'ag
+    (bind-key "C-x C-q" #'wgrep-change-to-wgrep-mode ag-mode-map))
 
-    (with-eval-after-load 'wgrep
-      (bind-key "C-c C-c" #'wgrep-finish-edit ag-mode-map))))
+  (with-eval-after-load 'wgrep
+    (bind-key "C-c C-c" #'wgrep-finish-edit ag-mode-map)))
 
 (use-package visual-regexp              ; Regexp replace with in-buffer display
   :ensure t
