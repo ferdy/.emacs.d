@@ -441,7 +441,6 @@ already narrowed."
 (with-eval-after-load 'latex
   (bind-key "C-x n" nil LaTeX-mode-map))
 
-
 ;;;###autoload
 (defun mu-smart-kill-whole-line (&optional arg)
   "Kill whole line and move back to indentation.
