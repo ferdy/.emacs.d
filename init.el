@@ -100,25 +100,24 @@
   :ensure t
   :if (display-graphic-p)
   :config
-  (progn
-    (when (string-match-p "/zsh$" (getenv "SHELL"))
-      ;; Use a non-interactive login shell.  A login shell, because my
-      ;; environment variables are mostly set in `.zprofile'.
-      (setq exec-path-from-shell-arguments '("-l")))
+  (when (string-match-p "/zsh$" (getenv "SHELL"))
+    ;; Use a non-interactive login shell.  A login shell, because my
+    ;; environment variables are mostly set in `.zprofile'.
+    (setq exec-path-from-shell-arguments '("-l")))
 
-    (dolist (var '("EMAIL" "INFOPATH" "JAVA_OPTS"))
-      (add-to-list 'exec-path-from-shell-variables var))
+  (dolist (var '("EMAIL" "INFOPATH" "JAVA_OPTS"))
+    (add-to-list 'exec-path-from-shell-variables var))
 
-    (exec-path-from-shell-initialize)
+  (exec-path-from-shell-initialize)
 
-    ;; Re-initialize the `Info-directory-list' from $INFOPATH.  Since package.el
-    ;; already initializes info, we need to explicitly add the $INFOPATH
-    ;; directories to `Info-directory-list'.  We reverse the list of info paths
-    ;; to prepend them in proper order subsequently
-    (with-eval-after-load 'info
-      (dolist (dir (nreverse (parse-colon-path (getenv "INFOPATH"))))
-        (when dir
-          (add-to-list 'Info-directory-list dir))))))
+  ;; Re-initialize the `Info-directory-list' from $INFOPATH.  Since package.el
+  ;; already initializes info, we need to explicitly add the $INFOPATH
+  ;; directories to `Info-directory-list'.  We reverse the list of info paths
+  ;; to prepend them in proper order subsequently
+  (with-eval-after-load 'info
+    (dolist (dir (nreverse (parse-colon-path (getenv "INFOPATH"))))
+      (when dir
+        (add-to-list 'Info-directory-list dir)))))
 
 ;; Set separate custom file for the customize interface
 (defconst mu-custom-file (locate-user-emacs-file "custom.el")
@@ -126,12 +125,13 @@
 
 (use-package cus-edit
   :defer t
-  :config (setq custom-file mu-custom-file
-                custom-buffer-done-kill nil    ; Kill when existing
-                custom-buffer-verbose-help nil ; Remove redundant help text
-                ;; Show me the real variable name
-                custom-unlispify-tag-names nil
-                custom-unlispify-menu-entries nil)
+  :config
+  (setq custom-file mu-custom-file
+        custom-buffer-done-kill nil    ; Kill when existing
+        custom-buffer-verbose-help nil ; Remove redundant help text
+        ;; Show me the real variable name
+        custom-unlispify-tag-names nil
+        custom-unlispify-menu-entries nil)
   :init (load mu-custom-file 'no-error 'no-message))
 
 ;; Set the directory where all backup and autosave files will be saved
@@ -149,9 +149,10 @@
 ;; The server of `emacsclient'
 (use-package server
   :defer t
+  :config
   ;; Start server only if it is not already running
-  :config (unless (server-running-p)
-            (server-mode)))
+  (unless (server-running-p)
+    (server-mode)))
 
 (setq confirm-kill-emacs #'y-or-n-p)    ; Confirm before quitting Emacs
 
