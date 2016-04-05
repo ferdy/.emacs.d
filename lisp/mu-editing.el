@@ -499,6 +499,8 @@ point reaches the beginning or end of the buffer, stop there."
     (kill-local-variable 'comment-auto-fill-only-comments)
     (auto-fill-mode -1))))
 
+(add-hook 'prog-mode-hook #'mu-auto-fill-comments-mode)
+
 ;;;###autoload
 (defun mu-insert-current-date (iso)
   "Insert the current date at point.
