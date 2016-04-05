@@ -18,45 +18,44 @@
          ("C-c f f"    . find-name-dired)
          ("C-c f r"    . mu-dired-recent-dirs))
   :config
-  (progn
-    (setq dired-auto-revert-buffer t    ; Revert buffers on revisiting
-          dired-listing-switches
-          "-lFaGh1v --group-directories-first"  ; Add ls switches
-          global-auto-revert-non-file-buffers t ; Auto refresh Dired
-          auto-revert-verbose nil               ; But be quiet about it
-          dired-dwim-target t                   ; Use other pane as target
-          dired-recursive-copies 'always        ; Copy dirs recursively
-          dired-recursive-deletes ' always      ; Delete dirs recursively
-          ;; -F marks links with @
-          dired-ls-F-marks-symlinks t)
+  (setq dired-auto-revert-buffer t    ; Revert buffers on revisiting
+        dired-listing-switches
+        "-lFaGh1v --group-directories-first"  ; Add ls switches
+        global-auto-revert-non-file-buffers t ; Auto refresh Dired
+        auto-revert-verbose nil               ; But be quiet about it
+        dired-dwim-target t                   ; Use other pane as target
+        dired-recursive-copies 'always        ; Copy dirs recursively
+        dired-recursive-deletes ' always      ; Delete dirs recursively
+        ;; -F marks links with @
+        dired-ls-F-marks-symlinks t)
 
-    ;; Enable dired-find-alternate-file
-    (put 'dired-find-alternate-file 'disabled nil)
+  ;; Enable dired-find-alternate-file
+  (put 'dired-find-alternate-file 'disabled nil)
 
-    ;; Better keybinding for moving between directories
-    (bind-keys :map dired-mode-map
-               ("M-<up>"   . (lambda ()
-                               (interactive)
-                               (find-alternate-file "..")))
-               ("M-p"      . (lambda ()
-                               (interactive)
-                               (find-alternate-file "..")))
-               ("^"        . (lambda ()
-                               (interactive)
-                               (find-alternate-file "..")))
-               ("RET"      . find-file-reuse-dir-buffer)
-               ("M-<down>" . (lambda ()
-                               (interactive)
-                               (dired-find-alternate-file)))
-               ("M-n"      . (lambda ()
-                               (interactive)
-                               (dired-find-alternate-file)))
-               ("!"        . mu-sudired)
-               ([remap beginning-of-buffer] . mu-dired-back-to-top)
-               ([remap end-of-buffer]       . mu-dired-jump-to-bottom))
+  ;; Better keybinding for moving between directories
+  (bind-keys :map dired-mode-map
+             ("M-<up>"   . (lambda ()
+                             (interactive)
+                             (find-alternate-file "..")))
+             ("M-p"      . (lambda ()
+                             (interactive)
+                             (find-alternate-file "..")))
+             ("^"        . (lambda ()
+                             (interactive)
+                             (find-alternate-file "..")))
+             ("RET"      . find-file-reuse-dir-buffer)
+             ("M-<down>" . (lambda ()
+                             (interactive)
+                             (dired-find-alternate-file)))
+             ("M-n"      . (lambda ()
+                             (interactive)
+                             (dired-find-alternate-file)))
+             ("!"        . mu-sudired)
+             ([remap beginning-of-buffer] . mu-dired-back-to-top)
+             ([remap end-of-buffer]       . mu-dired-jump-to-bottom))
 
-    ;; Handle long file names
-    (add-hook 'dired-mode-hook #'toggle-truncate-lines)))
+  ;; Handle long file names
+  (add-hook 'dired-mode-hook #'toggle-truncate-lines))
 
 (use-package find-dired                 ; Run `find' in Dired
   :config (setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
@@ -66,19 +65,18 @@
   :bind (:map dired-mode-map
               ("Y" . mu-dired-rsync))
   :config
-  (progn
-    (setq dired-omit-verbose nil        ; Be less verbose, Dired
-          ;; Omit dotfiles with C-x M-o
-          dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
-    (add-hook 'dired-mode-hook #'dired-omit-mode)
+  (setq dired-omit-verbose nil        ; Be less verbose, Dired
+        ;; Omit dotfiles with C-x M-o
+        dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+  (add-hook 'dired-mode-hook #'dired-omit-mode)
 
-    ;; Diminish dired-omit-mode. We need this hack, because Dired Omit Mode has
-    ;; a very peculiar way of registering its lighter explicitly in
-    ;; `dired-omit-startup'.  We can't just use `:diminish' because the lighter
-    ;; isn't there yet after dired-omit-mode is loaded.
-    (add-function :after (symbol-function 'dired-omit-startup)
-                  (lambda () (diminish 'dired-omit-mode))
-                  '((name . dired-omit-mode-diminish)))))
+  ;; Diminish dired-omit-mode. We need this hack, because Dired Omit Mode has
+  ;; a very peculiar way of registering its lighter explicitly in
+  ;; `dired-omit-startup'.  We can't just use `:diminish' because the lighter
+  ;; isn't there yet after dired-omit-mode is loaded.
+  (add-function :after (symbol-function 'dired-omit-startup)
+                (lambda () (diminish 'dired-omit-mode))
+                '((name . dired-omit-mode-diminish))))
 
 (use-package dired-narrow               ; Live-narrowing of search results
   :ensure t

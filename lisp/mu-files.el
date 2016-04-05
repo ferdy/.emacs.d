@@ -18,12 +18,13 @@
 (use-package recentf                    ; Manage recent files
   :init (recentf-mode)
   :defer t
-  :config (setq recentf-max-saved-items 200
-                recentf-max-menu-items 15
-                recentf-exclude (list "/\\.git/.*\\'"
-                                      "/elpa/.*\\'"
-                                      "/tmp/"
-                                      "/ssh:")))
+  :config
+  (setq recentf-max-saved-items 200
+        recentf-max-menu-items 15
+        recentf-exclude (list "/\\.git/.*\\'"
+                              "/elpa/.*\\'"
+                              "/tmp/"
+                              "/ssh:")))
 
 (setq view-read-only t)                 ; View read-only
 (setq large-file-warning-threshold nil) ; No large file warning
@@ -51,11 +52,9 @@
   :ensure t
   :after image
   :config
-  (progn
-    (imagex-global-sticky-mode 1)
-    (imagex-auto-adjust-mode 1)
-
-    (setq imagex-quiet-error t)))
+  (imagex-global-sticky-mode 1)
+  (imagex-auto-adjust-mode 1)
+  (setq imagex-quiet-error t))
 
 ;;; Utilities and keybindings
 (defun mu-current-file ()
