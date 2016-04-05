@@ -41,12 +41,10 @@
 (use-package proced                     ; Manage processes
   :bind ("C-c a a p" . proced)
   :config
-  (progn
-    ;; Auto-update proced buffer
-    (defun proced-settings ()
-      (proced-toggle-auto-update 1))
-
-    (add-hook 'proced-mode-hook 'proced-settings)))
+  ;; Auto-update proced buffer
+  (defun proced-settings ()
+    (proced-toggle-auto-update 1))
+  (add-hook 'proced-mode-hook 'proced-settings))
 
 (use-package vkill                      ; Visually kill programs and processes
   :ensure t
@@ -60,9 +58,8 @@
   :ensure t
   :bind ("C-c t P" . pandoc-mode)
   :config
-  (progn
-    (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-    (setq org-pandoc-output-format 'odt)))
+  (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+  (setq org-pandoc-output-format 'odt))
 
 (use-package list-environment           ; List process environment variables
   :ensure t
