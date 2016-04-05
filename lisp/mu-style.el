@@ -154,12 +154,6 @@ symbols, greek letters, as well as fall backs for."
           ;; Underline below the font bottomline instead of the baseline
           x-underline-at-descent-line t)))
 
-(use-package darktooth                  ; Beautiful dark theme
-  :ensure darktooth-theme)
-
-(use-package zerodark                   ; Another beautiful dark theme
-  :ensure zerodark-theme)
-
 (use-package select-themes              ; Better theme selection
   :ensure t
   :commands select-themes)
