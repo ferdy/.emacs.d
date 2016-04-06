@@ -120,8 +120,11 @@
 (use-package copyright                  ; Deal with copyright notices
   :defer t
   :bind ("C-c i c" . copyright-update)
+  :config
   ;; Use ranges to denote consecutive years
-  :config (setq copyright-year-ranges t))
+  (setq copyright-year-ranges t
+        ;; Limit copyright changes to my own copyright
+        copyright-names-regexp (regexp-quote user-full-name)))
 
 (use-package dubcaps-mode               ; DOuble CApitals to Single Capitals
   :load-path "extra"
@@ -149,9 +152,6 @@
 (use-package writeroom-mode             ; Distraction-free interface
   :ensure t
   :bind ("C-c t r" . writeroom-mode))
-
-(use-package indent                     ; Built-in indentation
-  :bind ("C-c x i" . indent-region))
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :bind ("C-c x t" . tildify-region)
@@ -230,6 +230,8 @@
       save-interprogram-paste-before-kill t)
 
 ;;; Utilities and keybindings
+(bind-key "C-c x i" #'indent-region)
+
 ;; Kill entire line with prefix argument
 (defmacro bol-with-prefix (function)
   "Define a new function which calls FUNCTION.
