@@ -11,9 +11,6 @@
 
 ;;; Code:
 
-(use-package hydra                      ; Make bindings that stick
-  :ensure t)
-
 (use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind (("C-c s s" . swiper)

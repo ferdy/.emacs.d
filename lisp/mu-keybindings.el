@@ -94,6 +94,9 @@
 
   :diminish which-key-mode)
 
+(use-package hydra                      ; Make bindings that stick
+  :ensure t)
+
 (bind-key "M-=" 'count-words)    ; Use count-words instead of count-words-region
 (bind-key "C-z" 'repeat)         ; C-z for repeat (usually C-x z)
 (bind-key "C-c l" 'find-library) ; Go to the source code of the given library
