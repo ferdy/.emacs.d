@@ -61,12 +61,13 @@
   (setq ediff-window-setup-function #'ediff-setup-windows-plain
         ediff-split-window-function #'split-window-horizontally))
 
-(use-package window                     ; Standard window functions
-  :bind (("C-c w =" . balance-windows)
-         ("C-c w k" . delete-window)
-         ("C-c w /" . split-window-right)
-         ("C-c w -" . split-window-below)
-         ("C-c w m" . delete-other-windows)))
+;; Standard window commands
+(bind-keys
+ ("C-c w =" . balance-windows)
+ ("C-c w k" . delete-window)
+ ("C-c w /" . split-window-right)
+ ("C-c w -" . split-window-below)
+ ("C-c w m" . delete-other-windows))
 
 (use-package windmove                   ; Move between windows with Shift+Arrow
   :bind (("C-c w <left>"  . windmove-left)
