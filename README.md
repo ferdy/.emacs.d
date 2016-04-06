@@ -1,17 +1,18 @@
 #.emacs.d
 
-This is the Emacs configuration I use everyday. It requires Emacs built from
-development sources to work.
+This is the Emacs configuration I use everyday.
 
 ##Notes
 I use Emacs on [Debian Jessie](https://www.debian.org) (amd64). This
 configuration has been tested on a wide range of GNU/Linux distributions, but it
 is tailored for **Debian-based** systems in particular.
 
-The `esetup` script helps to create the required environment for this
-configuration. It installs all the necessary tools automatically, provided the
-user has `sudo` privileges. It must be run *before* starting Emacs for the first
-time.
+The `esetup` script helps to create the required environment. It installs all
+the necessary tools automatically, provided the user has `sudo` privileges. The
+script must be run *before* starting Emacs for the first time.
+
+This configuration requires an Emacs version built from development sources. It
+does not work with older versions.
 
 ##Setup
 On your **Debian-based** machine:
