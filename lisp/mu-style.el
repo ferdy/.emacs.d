@@ -175,7 +175,7 @@ symbols, greek letters, as well as fall backs for."
         sml/no-confirm-load-theme t)
 
   (defun mu-get-buffer-size ()
-    "Make `buffer-size' more readable."
+    "Get a fancier version of `buffer-size'."
     (cond
      ((> (buffer-size) 1000000)
       (format "%7.1fM" (/ (buffer-size) 1000000.0)))
