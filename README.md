@@ -11,7 +11,7 @@ wide range of GNU/Linux distributions;
 the necessary tools automatically, provided the user has `sudo` privileges. The
 script must be run *before* starting Emacs for the first time;
 
-- This configuration requires an Emacs version built from development
+- this configuration requires an Emacs version built from development
 sources. It does not work with older versions.
 
 ##Setup
