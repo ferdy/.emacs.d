@@ -165,36 +165,20 @@ symbols, greek letters, as well as fall backs for."
   :commands select-themes)
 
 ;;; Mode line
-(use-package smart-mode-line            ; Better mode-line
-  :ensure t
-  :init
-  (setq sml/theme nil
-        sml/mode-width 'full
-        sml/no-confirm-load-theme t)
-  (sml/setup)
+(use-package spaceline-config           ; A beautiful mode line
+  :ensure spaceline
   :config
-  ;; More abbreviations
-  (add-to-list 'sml/replacer-regexp-list
-               '("^~/githubs/" ":Git:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^:Doc:boccaperta/" ":Ba:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^:Doc:books/" ":Bks:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^~/projects/" ":Prj:") t))
+  (setq spaceline-hud-p nil
+        spaceline-minor-modes-separator " | ")
+  (spaceline-emacs-theme))
 
-(use-package rich-minority              ; Hide modes in the mode-line
-  :ensure smart-mode-line
-  :after smart-mode-line
+(use-package powerline                  ; The work-horse of Spaceline
+  :ensure t
+  :defer t
+  :after spaceline-config
   :config
-  (setq rm-blacklist
-        (format "^ \\(%s\\)$"
-                (mapconcat #'identity
-                           '("Wrap"
-                             "WSC.*"
-                             "cWip"
-                             "sWip")
-                           "\\|"))))
+  (setq powerline-height (truncate (* 1.0 (frame-char-height)))
+        powerline-default-separator 'utf-8))
 
 ;;; Utilities and keybindings
 (setq custom-safe-themes t)             ; Treat themes as safe
