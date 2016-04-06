@@ -34,7 +34,6 @@
   ;; Be quiet
   (setq magit-save-repository-buffers 'dontask
         magit-refs-show-commit-count 'all
-        magit-push-always-verify nil
         magit-revision-show-gravatars nil)
 
   ;; Use Ivy
