@@ -165,20 +165,47 @@ symbols, greek letters, as well as fall backs for."
   :commands select-themes)
 
 ;;; Mode line
-(use-package spaceline-config           ; A beautiful mode line
-  :ensure spaceline
-  :config
-  (setq spaceline-hud-p nil
-        spaceline-minor-modes-separator " ")
-  (spaceline-emacs-theme))
-
-(use-package powerline                  ; The work-horse of Spaceline
+(use-package smart-mode-line            ; Better mode-line
   :ensure t
-  :defer t
-  :after spaceline-config
+  :init
+  (sml/setup)
+
+  (setq sml/theme nil
+        sml/mode-width 'full
+        sml/no-confirm-load-theme t)
+
+  (defun mu-get-buffer-size ()
+    "Make `buffer-size' more readable."
+    (cond
+     ((> (buffer-size) 1000000)
+      (format "%7.1fM" (/ (buffer-size) 1000000.0)))
+     ((> (buffer-size) 1000)
+      (format "%7.1fk" (/ (buffer-size) 1000.0)))
+     (t (format "%8d" (buffer-size)))))
+
+  (setq-default mode-line-end-spaces
+                (append mode-line-end-spaces
+                        '(:eval (mu-get-buffer-size))))
   :config
-  (setq powerline-height (truncate (* 1.0 (frame-char-height)))
-        powerline-default-separator 'utf-8))
+  ;; More abbreviations
+  (add-to-list 'sml/replacer-regexp-list
+               '("^~/githubs/" ":Git:") t)
+  (add-to-list 'sml/replacer-regexp-list
+               '("^:Doc:boccaperta/" ":Ba:") t)
+  (add-to-list 'sml/replacer-regexp-list
+               '("^:Doc:books/" ":Bks:") t)
+  (add-to-list 'sml/replacer-regexp-list
+               '("^~/projects/" ":Prj:") t))
+
+(use-package rich-minority              ; Hide modes in the mode-line
+  :ensure smart-mode-line
+  :after smart-mode-line
+  :config
+  (setq rm-blacklist
+        (format "^ \\(%s\\)$"
+                (mapconcat #'identity
+                           '("WSC.*")
+                           "\\|"))))
 
 ;;; Utilities and keybindings
 (setq custom-safe-themes t)             ; Treat themes as safe
