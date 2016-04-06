@@ -269,12 +269,18 @@
         web-mode-css-indent-offset 2
         web-mode-code-indent-offset 2))
 
-(use-package js2-mode                   ; Better JavaScript support
+(use-package js2-mode                   ; Powerful Javascript mode
   :ensure t
-  :mode "\\.js\\'"
+  :mode (("\\.js\\'" . js2-mode)
+         ("\\.jsx\\'" . js2-jsx-mode)))
+
+(use-package js2-refactor               ; Refactor Javascript
+  :ensure t
+  :after js2-mode
+  :init
+  (add-hook 'js2-mode-hook 'js2-refactor-mode)
   :config
-  (setq-default js2-basic-offset 2)
-  (add-hook 'js2-mode-hook #'js2-highlight-unused-variables-mode))
+  (js2r-add-keybindings-with-prefix "C-c m r"))
 
 (use-package css-mode                   ; Better CSS support
   :mode "\\.css\\'"
