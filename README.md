@@ -3,9 +3,9 @@
 This is the Emacs configuration I use everyday.
 
 ##Notes
-I use Emacs on [Debian Jessie](https://www.debian.org) (amd64). This
-configuration has been tested on a wide range of GNU/Linux distributions, but it
-is tailored for **Debian-based** systems in particular.
+I use Emacs on [Debian Jessie](https://www.debian.org) (amd64), so this
+configuration targets **Debian-based** systems. However, it has been tested on a
+wide range of GNU/Linux distributions.
 
 The `esetup` script helps to create the required environment. It installs all
 the necessary tools automatically, provided the user has `sudo` privileges. The
