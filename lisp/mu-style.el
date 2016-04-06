@@ -169,7 +169,7 @@ symbols, greek letters, as well as fall backs for."
   :ensure spaceline
   :config
   (setq spaceline-hud-p nil
-        spaceline-minor-modes-separator " | ")
+        spaceline-minor-modes-separator " ")
   (spaceline-emacs-theme))
 
 (use-package powerline                  ; The work-horse of Spaceline
