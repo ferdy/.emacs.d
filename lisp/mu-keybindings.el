@@ -77,6 +77,21 @@
   (which-key-declare-prefixes-for-mode 'emacs-lisp-mode
     "C-c m"   "elisp/personal"
     "C-c m e" "eval")
+
+  (which-key-declare-prefixes-for-mode 'scheme-mode
+    "C-c m"  "scheme/personal")
+
+  (which-key-declare-prefixes-for-mode 'sly-mode
+    "C-c m"  "clisp/personal")
+
+  (which-key-declare-prefixes-for-mode 'clojure-mode
+    "C-c m"   "clj/personal"
+    "C-c m r" "clj-refactor")
+
+  (which-key-declare-prefixes-for-mode 'js2-mode
+    "C-c m"   "js/personal"
+    "C-c m r" "refactor")
+
   :diminish which-key-mode)
 
 (bind-key "M-=" 'count-words)    ; Use count-words instead of count-words-region
