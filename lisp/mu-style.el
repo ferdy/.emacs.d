@@ -197,16 +197,6 @@ symbols, greek letters, as well as fall backs for."
   (add-to-list 'sml/replacer-regexp-list
                '("^~/projects/" ":Prj:") t))
 
-(use-package rich-minority              ; Hide modes in the mode-line
-  :ensure smart-mode-line
-  :after smart-mode-line
-  :config
-  (setq rm-blacklist
-        (format "^ \\(%s\\)$"
-                (mapconcat #'identity
-                           '("WSC.*")
-                           "\\|"))))
-
 ;;; Utilities and keybindings
 (setq custom-safe-themes t)             ; Treat themes as safe
 (setq x-gtk-use-system-tooltips nil)    ; Use Emacs tooltips
