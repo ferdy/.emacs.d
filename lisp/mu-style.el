@@ -137,20 +137,28 @@ symbols, greek letters, as well as fall backs for."
  'end)
 
 ;;; Theme
-(use-package punpun-theme               ; Default, minimal light theme
-  :ensure t
-  :init (load-theme 'punpun-light t))
-
 (use-package solarized                  ; Superb light theme
   :ensure solarized-theme
   :config
-  (setq solarized-use-variable-pitch nil  ; Avoid all font-size changes
+  (setq solarized-use-variable-pitch nil  ; Disable variable pitch fonts
         solarized-distinct-doc-face t     ; Make doc faces stand out more
-        solarized-scale-org-headlines nil ; Don't scale Org headlines
         solarized-use-more-italic t       ; Use italic more often
         solarized-use-less-bold t         ; Less bold, italic is enough
         ;; Underline below the font bottomline instead of the baseline
-        x-underline-at-descent-line t))
+        x-underline-at-descent-line t
+        ;; Avoid all font-size changes
+        solarized-height-minus-1 1.0
+        solarized-height-plus-1 1.0
+        solarized-height-plus-2 1.0
+        solarized-height-plus-3 1.0
+        solarized-height-plus-4 1.0)
+
+  (load-theme 'solarized-light 'no-confirm))
+
+(use-package punpun-theme               ; Minimal light theme
+  :ensure t
+  ;; TODO: renable when it supports the modes I use
+  :disabled t)
 
 (use-package select-themes              ; Better theme selection
   :ensure t
