@@ -27,8 +27,15 @@
           ("left"                  . "←")
           ("DEL"                   . "⌫")
           ("deletechar"            . "⌦")
-          ("RET"                   . "⏎")))
-
+          ("RET"                   . "⏎"))
+        which-key-description-replacement-alist
+        '(("Prefix Command" . "prefix")
+          ;; Lambdas
+          ("\\`\\?\\?\\'"   . "λ")
+          ;; Prettify hydra entry points
+          ("/body\\'"       . " |=")
+          ;; Drop my personal prefix
+          ("\\`mu-"  . "")))
   (which-key-declare-prefixes
     "C-c !"     "flycheck"
     "C-c @"     "outline"
@@ -91,7 +98,6 @@
   (which-key-declare-prefixes-for-mode 'js2-mode
     "C-c m"   "js/personal"
     "C-c m r" "refactor")
-
   :diminish which-key-mode)
 
 (use-package hydra                      ; Make bindings that stick
