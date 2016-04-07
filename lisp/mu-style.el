@@ -174,18 +174,9 @@ symbols, greek letters, as well as fall backs for."
         sml/mode-width 'full
         sml/no-confirm-load-theme t)
 
-  (defun mu-get-buffer-size ()
-    "Get a fancier version of `buffer-size'."
-    (cond
-     ((> (buffer-size) 1000000)
-      (format "%7.1fM" (/ (buffer-size) 1000000.0)))
-     ((> (buffer-size) 1000)
-      (format "%7.1fk" (/ (buffer-size) 1000.0)))
-     (t (format "%8d" (buffer-size)))))
-
   (setq-default mode-line-end-spaces
                 (append mode-line-end-spaces
-                        '(:eval (mu-get-buffer-size))))
+                        '(:eval "%I")))
   :config
   ;; More abbreviations
   (add-to-list 'sml/replacer-regexp-list
