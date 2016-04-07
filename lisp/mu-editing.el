@@ -77,18 +77,32 @@
 
 (use-package multiple-cursors        ; Easily place multiple cursors in a buffer
   :ensure t
-  :bind (("C-c o <SPC>" . mc/vertical-align-with-space)
-         ("C-c o a"     . mc/vertical-align)
-         ("C-c o e"     . mc/mark-more-like-this-extended)
-         ("C-c o h"     . mc/mark-all-like-this-dwim)
-         ("C-c o l"     . mc/edit-lines)
-         ("C-c o n"     . mc/mark-next-like-this)
-         ("C-c o p"     . mc/mark-previous-like-this)
-         ("C-c o r"     . vr/mc-mark)
-         ("C-c o C-a"   . mc/edit-beginnings-of-lines)
-         ("C-c o C-e"   . mc/edit-ends-of-lines)
-         ("C-c o C-s"   . mc/mark-all-in-region)
-         ("C-c o SPC"   . set-rectangular-region-anchor))
+  :bind ("C-c o" . mu-multiple-cursors/body)
+  :init
+  (defhydra mu-multiple-cursors (:hint nil)
+    "
+Multiple cursors (quit with _q_)
+^Mark^                ^Edit^              ^Other^
+^----^----------------^----^--------------^-----^----------------------
+_e_:   mark more      _l_:   edit lines   _a_: vertical align
+_h_:   mark all       _C-a_: edit begs    _s_: set rect action
+_n_:   mark next      _C-e_: edit ends
+_p_:   mark previous
+_r_:   regexp mark
+_C-s_: mark region
+"
+    ("q" nil)
+    ("a" mc/vertical-align :exit t)
+    ("e" mc/mark-more-like-this-extended)
+    ("h" mc/mark-all-like-this-dwim)
+    ("l" mc/edit-lines :exit t)
+    ("n" mc/mark-next-like-this)
+    ("p" mc/mark-previous-like-this)
+    ("r" vr/mc-mark)
+    ("s" set-rectangular-region-anchor)
+    ("C-a" mc/edit-beginnings-of-lines :exit t)
+    ("C-e" mc/edit-ends-of-lines :exit t)
+    ("C-s" mc/mark-all-in-region))
   :config
   (setq mc/mode-line
         ;; Simplify the MC mode line indicator
