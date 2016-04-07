@@ -13,10 +13,34 @@
 
 (use-package yasnippet                  ; Snippets
   :ensure t
+  :bind ("C-c y" . mu-yasnippet/body)
   :init (yas-global-mode)
   :config
   (setq yas-verbosity 1         ; No need to be so verbose
         yas-wrap-around-region t)
+
+  (defhydra mu-yasnippet (:hint nil)
+    "
+              ^YASnippets^
+--------------------------------------------
+  Modes:    Load/Visit:    Actions:
+
+ _g_ global  _d_ directory    _i_ insert
+ _m_ minor   _f_ file         _t_ tryout
+ _e_ extra   _l_ list         _n_ new
+         _a_ll
+"
+    ("d" yas-load-directory)
+    ("e" yas-activate-extra-mode)
+    ("i" yas-insert-snippet)
+    ("f" yas-visit-snippet-file :color blue)
+    ("n" yas-new-snippet)
+    ("t" yas-tryout-snippet)
+    ("l" yas-describe-tables)
+    ("g" yas/global-mode)
+    ("m" yas/minor-mode)
+    ("a" yas-reload-all))
+
   :diminish yas-minor-mode)
 
 (use-package abbrev                     ; Save abbreviations
