@@ -99,8 +99,7 @@
                 (require 'buttercup)))))
 
 (use-package cask-mode                  ; Major mode for Cask files
-  ;; Pending https://github.com/melpa/melpa/pull/3737
-  :disabled t
+  :defer t
   :ensure t)
 
 ;;; Clojure
