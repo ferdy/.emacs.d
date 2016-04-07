@@ -64,7 +64,6 @@
     "C-c m"     "major mode"
     "C-c n"     "navigation"
     "C-c n l"   "links"
-    "C-c o"     "cursors"
     "C-c p"     "projects"
     "C-c s"     "search-and-symbols"
     "C-c t"     "toggles"
