@@ -21,19 +21,20 @@
 
   (defhydra mu-yasnippet (:hint nil)
     "
-              ^YASnippets^
---------------------------------------------
-  Modes:    Load/Visit:    Actions:
+YASnippets (quit with _q_)
 
- _g_ global  _d_ directory    _i_ insert
- _m_ minor   _f_ file         _t_ tryout
- _e_ extra   _l_ list         _n_ new
+^Modes^      ^Load/Visit^     ^Actions^
+^-----^------^----------^-----^-------^--------
+_g_: global  _d_: directory   _i_: insert
+_m_: minor   _f_: file        _t_: tryout
+_e_: extra   _l_: list        _n_: new
          _a_ll
 "
+    ("q" nil)
     ("d" yas-load-directory)
     ("e" yas-activate-extra-mode)
     ("i" yas-insert-snippet)
-    ("f" yas-visit-snippet-file :color blue)
+    ("f" yas-visit-snippet-file)
     ("n" yas-new-snippet)
     ("t" yas-tryout-snippet)
     ("l" yas-describe-tables)
