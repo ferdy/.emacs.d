@@ -40,7 +40,6 @@ _e_: extra   _l_: list        _n_: new
     ("g" yas/global-mode)
     ("m" yas/minor-mode)
     ("a" yas-reload-all))
-
   :diminish yas-minor-mode)
 
 (use-package abbrev                     ; Save abbreviations
