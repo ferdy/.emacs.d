@@ -22,7 +22,6 @@
   (defhydra mu-yasnippet (:hint nil)
     "
 YASnippets (quit with _q_)
-
 ^Modes^      ^Load/Visit^     ^Actions^
 ^-----^------^----------^-----^-------^--------
 _g_: global  _d_: directory   _i_: insert
