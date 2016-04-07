@@ -88,7 +88,7 @@ _e_:   mark more      _l_:   edit lines   _a_: vertical align
 _h_:   mark all       _C-a_: edit begs    _s_: set rect action
 _n_:   mark next      _C-e_: edit ends
 _p_:   mark previous
-_r_:   regexp mark
+_r_:   mark regexp
 _C-s_: mark region
 "
     ("q" nil)
