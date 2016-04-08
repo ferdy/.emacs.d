@@ -11,6 +11,8 @@
 
 ;;; Code:
 
+(prefer-coding-system 'utf-8)
+
 (use-package zop-to-char                ; Better zap-to-char
   :ensure t
   :bind (("M-z" . zop-to-char)
