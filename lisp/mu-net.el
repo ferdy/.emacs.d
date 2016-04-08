@@ -59,16 +59,11 @@
   :config
   (setq elfeed-feeds
         '(("http://planet.emacsen.org/atom.xml" emacs)
-          ("http://emacshorrors.com/feed.atom" emacs)
-          ("http://emacsninja.com/feed.atom" emacs)
           ("http://planet.lisp.org/rss20.xml" lisp)
           ("https://cavallette.noblogs.org/feed" security)
           ("https://theintercept.com/feed/?rss" press)
           ("https://freedom.press/blog/feed" press)
           ("https://www.hongkongfp.com/feed/" press)
-          ("http://flashstrap.blogspot.com/feeds/posts/default" music)
-          ("http://jazzfromitaly.blogspot.it/feeds/posts/default"
-           music)
           ("http://www.avclub.com/feed/rss/?tags=film" film)
           ("http://www.slantmagazine.com/rss?tag=film" film)
           ("http://sensesofcinema.com/feed/" film)
