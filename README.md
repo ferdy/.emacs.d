@@ -80,7 +80,7 @@ $ make clean
 ```
 With the help of tools such as [Magit](https://github.com/magit/magit),
 [Paradox](https://github.com/Bruce-Connor/paradox) and your preferred shell,
-maintenance is fairly simple.
+maintenance is simple.
 
 ##Acknowledgements
 This configuration would not have been possible without the work of and the
