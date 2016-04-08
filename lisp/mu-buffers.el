@@ -24,7 +24,14 @@
                (and (get-buffer completions)
                     (kill-buffer completions)))))
 
-(setq use-dialog-box nil)               ; Never use dialogs for minibuffer input
+(setq use-dialog-box nil               ; Never use dialogs for minibuffer input
+      history-length 1000              ; Store more history
+      )
+
+(use-package savehist                   ; Save minibuffer history
+  :init (savehist-mode t)
+  :config (setq savehist-save-minibuffer-history t
+                savehist-autosave-interval 180))
 
 (setq kill-buffer-query-functions       ; Don't ask for confirmation
       (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
