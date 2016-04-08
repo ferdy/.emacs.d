@@ -62,10 +62,10 @@
           ("http://emacshorrors.com/feed.atom" emacs)
           ("http://emacsninja.com/feed.atom" emacs)
           ("http://planet.lisp.org/rss20.xml" lisp)
-          ("http://planet.clojure.in/atom.xml" clojure)
           ("https://cavallette.noblogs.org/feed" security)
-          ("https://mjg59.dreamwidth.org/data/rss" security)
-          ("https://theintercept.com/feed/?rss" security)
+          ("https://theintercept.com/feed/?rss" press)
+          ("https://freedom.press/blog/feed" press)
+          ("https://www.hongkongfp.com/feed/" press)
           ("http://flashstrap.blogspot.com/feeds/posts/default" music)
           ("http://jazzfromitaly.blogspot.it/feeds/posts/default"
            music)
