@@ -48,6 +48,9 @@
   :no-require t
   :mode "\\.csv\\'")
 
+(use-package image-file                 ; Visit images as images
+  :init (auto-image-file-mode))
+
 (use-package image+                     ; Better image management
   :ensure t
   :after image
