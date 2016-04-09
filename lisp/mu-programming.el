@@ -321,6 +321,10 @@
   :ensure t
   :commands bug-hunter-file)
 
+(use-package debbugs                    ; Browse bugs on Debbugs servers
+  :ensure t
+  :commands debbugs)
+
 ;;; Utilities and keybindings
 (use-package eldoc                      ; Documentation in the echo area
   :defer t
