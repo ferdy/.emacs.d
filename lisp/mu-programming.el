@@ -323,7 +323,7 @@
 
 (use-package debbugs                    ; Browse bugs on Debbugs servers
   :ensure t
-  :commands debbugs)
+  :commands debbugs-gnu)
 
 ;;; Utilities and keybindings
 (use-package eldoc                      ; Documentation in the echo area
