@@ -47,6 +47,8 @@
          ("C-x l" . counsel-locate)
          ("C-x i" . counsel-imenu)
          ("C-c r" . counsel-linux-app))
+  :bind (:map read-expression-map
+              ("C-r" . counsel-expression-history))
   :config
   (setq counsel-find-file-at-point t
         counsel-find-file-ignore-regexp
