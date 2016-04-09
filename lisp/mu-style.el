@@ -176,7 +176,7 @@ symbols, greek letters, as well as fall backs for."
 
   (setq-default mode-line-end-spaces
                 (append mode-line-end-spaces
-                        '(:eval "%I")))
+                        '(:eval "%I ")))
   :config
   ;; More abbreviations
   (add-to-list 'sml/replacer-regexp-list
