@@ -335,11 +335,11 @@
 
 (use-package macrostep                  ; Navigate through macros
   :ensure t
-  :defer t
   :after lisp-mode
-  :init
-  (bind-key "C-c m m e" #'macrostep-expand emacs-lisp-mode-map)
-  (bind-key "C-c m m e" #'macrostep-expand lisp-interaction-mode-map))
+  :bind (:map emacs-lisp-mode-map
+              ("C-c m m e" . macrostep-expand))
+  :bind (:map lisp-interaction-mode-map
+              ("C-c m m e" . macrostep-expand)))
 
 (use-package compile                    ; Compile from Emacs
   :bind (("C-c c C" . compile)
