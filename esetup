@@ -28,6 +28,7 @@ dostep() {
 prerequisites() {
     dostep 1 "y" "apt-get -y install --no-install-recommends make gcc automake autoconf"
     dostep 2 "y" "apt-get -y install --no-install-recommends g++ git"
+    dostep 3 "y" "apt-get -y install --no-install-recommends gnupg"
 }
 
 tls_setup() {
