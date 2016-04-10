@@ -40,7 +40,7 @@
   :config
   ;; Show recently killed buffers when calling `ivy-switch-buffer'
   (setq ivy-use-virtual-buffers t
-        ivy-count-format ""           ; Suppress counter
+        ivy-count-format ""             ; Suppress counter
         ;; Show full file path
         ivy-virtual-abbreviate 'full)
   :diminish ivy-mode)
