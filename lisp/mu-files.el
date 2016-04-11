@@ -41,8 +41,7 @@
     ;; Ignore some additional directories
     (add-to-list 'ignoramus-file-basename-exact-names name))
 
-  (dolist (ext '(".fls" ".out" ".aux"; LaTeX
-                 ))
+  (dolist (ext '(".fls" ".out" ".aux"))
     (add-to-list 'ignoramus-file-endings ext))
 
   (ignoramus-setup))
@@ -50,6 +49,8 @@
 (use-package hardhat                    ; Protect user-writable files
   :ensure t
   :init (global-hardhat-mode)
+  :config
+  (add-to-list 'hardhat-fullpath-editable-regexps "~/org")
   :diminish global-hardhat-mode)
 
 (use-package pdf-tools                  ; Better PDF support
