@@ -55,6 +55,12 @@
   (unbind-key "C-c $" flyspell-mode-map)
   (bind-key "C-c $" #'mu-flyspell-correct flyspell-mode-map))
 
+(use-package auto-dictionary            ; Automatically infer dictionary
+  :ensure t
+  :defer t
+  :init
+  (add-hook 'flyspell-mode-hook #'auto-dictionary-mode))
+
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
   :ensure t
