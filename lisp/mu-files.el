@@ -50,6 +50,7 @@
   :ensure t
   :init (global-hardhat-mode)
   :config
+  ;; Ignore some directories and files
   (add-to-list 'hardhat-fullpath-editable-regexps "~/org")
   :diminish global-hardhat-mode)
 
