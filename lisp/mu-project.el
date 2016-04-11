@@ -17,7 +17,7 @@
               ("p" . counsel-projectile-switch-project))
   :init
   (projectile-global-mode)
-
+  ;; TODO: remove as soon as this is implemented in Counsel
   (defun counsel-projectile-switch-project ()
     (interactive)
     (ivy-read "Switch to project: "
