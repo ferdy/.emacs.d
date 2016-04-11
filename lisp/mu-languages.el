@@ -58,8 +58,7 @@
 (use-package auto-dictionary            ; Automatically infer dictionary
   :ensure t
   :defer t
-  :init
-  (add-hook 'flyspell-mode-hook #'auto-dictionary-mode))
+  :init (add-hook 'flyspell-mode-hook #'auto-dictionary-mode))
 
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
