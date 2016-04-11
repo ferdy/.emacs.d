@@ -33,6 +33,25 @@
   :defer t
   :config (setq ffap-machine-p-known 'reject)) ; Do not ping random hosts
 
+(use-package ignoramus                  ; Ignore uninteresting files everywhere
+  :ensure t
+  :config
+  ;; Ignore some additional directories and file extensions
+  (dolist (name '(".cask"))
+    ;; Ignore some additional directories
+    (add-to-list 'ignoramus-file-basename-exact-names name))
+
+  (dolist (ext '(".fls" ".out" ".aux"; LaTeX
+                 ))
+    (add-to-list 'ignoramus-file-endings ext))
+
+  (ignoramus-setup))
+
+(use-package hardhat                    ; Protect user-writable files
+  :ensure t
+  :init (global-hardhat-mode)
+  :diminish global-hardhat-mode)
+
 (use-package pdf-tools                  ; Better PDF support
   :ensure t
   :init (pdf-tools-install)
