@@ -26,7 +26,7 @@ Sexps (quit with _q_)
 ^---^------------^----------^-----------------^-----^-----------------
 _f_: forward     _→_:          slurp forward   _R_: splice
 _b_: backward    _←_:          barf forward    _r_: raise
-_u_: backward ↑  _C-<right>_:  slurp backward  _↑_: raise backward
+_u_: backward ↑  _C-<right>_:  slurp forward   _↑_: raise backward
 _d_: forward ↓   _C-<left>_:   barf backward   _↓_: raise forward
 _p_: backward ↓
 _n_: forward ↑
