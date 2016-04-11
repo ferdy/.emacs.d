@@ -13,7 +13,21 @@
 
 (use-package projectile                 ; Project management
   :ensure t
-  :init (projectile-global-mode)
+  :bind (:map projectile-command-map
+              ("p" . counsel-projectile-switch-project))
+  :init
+  (projectile-global-mode)
+
+  (defun counsel-projectile-switch-project ()
+    (interactive)
+    (ivy-read "Switch to project: "
+              projectile-known-projects
+              :require-match t
+              :action '(1
+                        ("o" projectile-switch-project-by-name
+                         "Select file in project")
+                        ("g" projectile-vc
+                         "Open `magit-status' for this project"))))
   :config
   ;; Remove dead projects when Emacs is idle
   (run-with-idle-timer 10 nil #'projectile-cleanup-known-projects)
