@@ -26,8 +26,8 @@ Sexps (quit with _q_)
 ^---^------------^----------^-----------------^-----^-----------------
 _f_: forward     _→_:          slurp forward   _R_: splice
 _b_: backward    _←_:          barf forward    _r_: raise
-_u_: backward ↑  _C-<right>_:  slurp forward   _↑_: raise backward
-_d_: forward ↓   _C-<left>_:   barf forward    _↓_: raise forward
+_u_: backward ↑  _C-<right>_:  slurp backward  _↑_: raise backward
+_d_: forward ↓   _C-<left>_:   barf backward   _↓_: raise forward
 _p_: backward ↓
 _n_: forward ↑
 ^Kill^           ^Misc^                       ^Wrap^
@@ -62,13 +62,13 @@ _k_: kill        _s_: split                   _{_: wrap with { }
     ;; Depth changing
     ("R" sp-splice-sexp)
     ("r" sp-splice-sexp-killing-around)
-    ("<up>" sp-splice-sexp-killing-backward))
+    ("<up>" sp-splice-sexp-killing-backward)
     ("<down>" sp-splice-sexp-killing-forward)
     ;; Barfing/slurping
     ("<right>" sp-forward-slurp-sexp)
     ("<left>" sp-forward-barf-sexp)
     ("C-<left>" sp-backward-barf-sexp)
-    ("C-<right>" sp-backward-slurp-sexp)
+    ("C-<right>" sp-backward-slurp-sexp))
 
   (smartparens-global-mode)
   (show-smartparens-global-mode)
