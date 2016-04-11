@@ -151,7 +151,7 @@ _C-s_: mark region
   :ensure t
   :bind ("C-c i t" . typo-change-language)
   :init
-  (setq typo-language "English")
+  (setq-default typo-language "English")
 
   (typo-global-mode)
 
