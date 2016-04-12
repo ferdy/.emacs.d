@@ -15,6 +15,8 @@
   :ensure t
   :bind (("C-c s s" . mu-swiper)
          ("C-c s S" . swiper-all))
+  :bind  (:map isearch-mode-map
+               ("M-i" . swiper-from-isearch))
   :init
   (defun mu-swiper ()
     "Choose between `swiper--ivy' and `counsel-grep' based upon file size."
@@ -28,9 +30,7 @@
         (progn
           (save-buffer)
           (counsel-grep))
-      (swiper--ivy (swiper--candidates))))
-  :bind (:map isearch-mode-map
-              ("M-i" . swiper-from-isearch)))
+      (swiper--ivy (swiper--candidates)))))
 
 (use-package ivy                        ; Incremental Vertical completYon
   :ensure swiper
