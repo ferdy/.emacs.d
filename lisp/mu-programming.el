@@ -256,7 +256,7 @@
 
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
-  :bind (("C-c a s" . sql-connect)
+  :bind (("C-c d s" . sql-connect)
          :map sql-mode-map
          ("C-c m p" . sql-set-product)))
 
