@@ -256,8 +256,16 @@
 
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
-  :commands sql-connect
-  :config (add-hook 'sql-interactive-mode-hook #'toggle-truncate-lines))
+  :bind (("C-c a s" . sql-connect)
+         :map sql-mode-map
+         ("C-c m p" . sql-set-product)))
+
+(use-package sqlup-mode                 ; Upcase SQL keywords
+  :ensure t
+  :after sql
+  :bind (:map sql-mode-map
+              ("C-c m u" . sqlup-capitalize-keywords-in-region))
+  :init (add-hook 'sql-mode-hook #'sqlup-mode))
 
 ;;; Web development
 (use-package web-mode                   ; Major mode for editing web templates
