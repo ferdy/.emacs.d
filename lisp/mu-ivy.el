@@ -52,7 +52,6 @@
                      (vert
                       (sexp (bookmark-jump "desktop"))
                       (sexp (bookmark-jump "ba-server"))))))
-
   :diminish ivy-mode)
 
 (use-package smex                       ; Better M-x interface
