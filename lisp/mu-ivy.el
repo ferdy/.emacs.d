@@ -38,11 +38,21 @@
          ("C-x C-r" . ivy-switch-buffer))
   :init (ivy-mode 1)
   :config
-  ;; Show recently killed buffers when calling `ivy-switch-buffer'
-  (setq ivy-use-virtual-buffers t
-        ivy-count-format ""             ; Suppress counter
-        ;; Show full file path
-        ivy-virtual-abbreviate 'full)
+  (setq ivy-count-format ""             ; Suppress counter
+        ivy-virtual-abbreviate 'full    ; Show full file path
+        ;; Show recently killed buffers when calling `ivy-switch-buffer'
+        ivy-use-virtual-buffers t)
+
+  ;; Speed up my workflow with useful, prearranged windows
+  (setq ivy-views '(("boccaperta + ba-server [–]"
+                     (vert
+                      (sexp (bookmark-jump "boccaperta"))
+                      (sexp (bookmark-jump "ba-server"))))
+                    ("desktop + ba-server [–]"
+                     (vert
+                      (sexp (bookmark-jump "desktop"))
+                      (sexp (bookmark-jump "ba-server"))))))
+
   :diminish ivy-mode)
 
 (use-package smex                       ; Better M-x interface
