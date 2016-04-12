@@ -27,7 +27,7 @@
                         ("o" projectile-switch-project-by-name
                          "Select file in project")
                         ("g" projectile-vc
-                         "Open `magit-status' for this project"))))
+                         "Open Magit for this project"))))
   :config
   ;; Remove dead projects when Emacs is idle
   (run-with-idle-timer 10 nil #'projectile-cleanup-known-projects)
