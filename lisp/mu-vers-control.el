@@ -57,10 +57,15 @@
   ;; Set `magit-repository-directories' for `magit-status'
   (defun mu-magit-set-repo-dirs-from-projectile ()
     "Set `magit-repository-directories' with known Projectile projects."
-    (let ((project-dirs (bound-and-true-p projectile-known-projects)))
-      ;; Remove trailing slashes from project directories
-      (setq magit-repository-directories
-            (mapcar #'directory-file-name project-dirs))))
+    (setq magit-repository-directories
+            (mapcar
+             (lambda (dir)
+               (substring dir 0 -1))
+             (cl-remove-if-not
+              (lambda (project)
+                (unless (file-remote-p project)
+                  (file-directory-p (concat project "/.git/"))))
+              (projectile-relevant-known-projects)))))
 
   (with-eval-after-load 'projectile
     (mu-magit-set-repo-dirs-from-projectile))
