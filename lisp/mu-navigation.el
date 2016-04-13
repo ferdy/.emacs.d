@@ -21,6 +21,11 @@
 (use-package winner                     ; Undo and redo window configurations
   :init (winner-mode))
 
+(use-package bookmark                   ; Bookmarks to files and directories
+  :config
+  (setq bookmark-completion-ignore-case nil)
+  (bookmark-maybe-load-default-file))
+
 (use-package avy-jump                   ; Jump to characters in buffers
   :ensure avy
   :bind (("C-c j"   . avy-goto-word-1)
