@@ -81,9 +81,11 @@
   "Quit side windows of the current frame."
   (interactive)
   (dolist (window (window-at-side-list nil 'bottom))
-    (quit-window nil window)
     (when (window-live-p window)
-      (delete-window window))))
+      (quit-window nil window)
+      ;; When the window is still live, delete it
+      (when (window-live-p window)
+        (delete-window window)))))
 
 ;;;###autoload
 (defun mu-switch-to-minibuffer-window ()
