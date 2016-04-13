@@ -13,21 +13,7 @@
 
 (use-package projectile                 ; Project management
   :ensure t
-  :bind (:map projectile-command-map
-              ("p" . counsel-projectile-switch-project))
-  :init
-  (projectile-global-mode)
-  ;; TODO: remove as soon as this is implemented in Counsel
-  (defun counsel-projectile-switch-project ()
-    (interactive)
-    (ivy-read "Switch to project: "
-              projectile-known-projects
-              :require-match t
-              :action '(1
-                        ("o" projectile-switch-project-by-name
-                         "Select file in project")
-                        ("g" projectile-vc
-                         "Open Magit for this project"))))
+  :init (projectile-global-mode)
   :config
   ;; Remove dead projects when Emacs is idle
   (run-with-idle-timer 10 nil #'projectile-cleanup-known-projects)
@@ -39,6 +25,11 @@
                                     "lein cljsbuild once"
                                     "lein cljsbuild test")
   :diminish projectile-mode)
+
+(use-package counsel-projectile         ; Ivy integration for Projectile
+  :ensure t
+  :bind (:map projectile-command-map
+              ("p" . counsel-projectile)))
 
 (provide 'mu-project)
 
