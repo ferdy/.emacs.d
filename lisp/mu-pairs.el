@@ -33,13 +33,14 @@ _n_: forward ↑
 ^Kill^           ^Misc^                       ^Wrap^
 ^----^-----------^----^-----------------------^----^------------------
 _w_: copy        _j_: join                    _(_: wrap with ( )
-_k_: kill        _s_: split                   _{_: wrap with { }
-^^               _t_: transpose               _'_: wrap with ' '
-^^               _c_: convolute               _\"_: wrap with \" \"
-^^               _i_: indent defun"
+_k_: kill        _s_: split                   _[_: wrap with [ ]
+^^               _t_: transpose               _{_: wrap with { }
+^^               _c_: convolute               _'_: wrap with ' '
+^^               _i_: indent defun            _\"_: wrap with \" \""
     ("q" nil)
     ;; Wrapping
     ("(" (lambda (a) (interactive "P") (sp-wrap-with-pair "(")))
+    ("[" (lambda (a) (interactive "P") (sp-wrap-with-pair "[")))
     ("{" (lambda (a) (interactive "P") (sp-wrap-with-pair "{")))
     ("'" (lambda (a) (interactive "P") (sp-wrap-with-pair "'")))
     ("\"" (lambda (a) (interactive "P") (sp-wrap-with-pair "\"")))
