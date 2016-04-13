@@ -175,12 +175,6 @@
         cljr-favor-private-functions)
   :diminish clj-refactor-mode)
 
-(use-package yesql-ghosts               ; Display ghostly yesql queries inline
-  :ensure t
-  :commands yesql-ghosts-display-query-ghosts
-  ;; Do not show defqueries by default
-  :config (setq yesql-ghosts-show-ghosts-automatically nil))
-
 ;;; Scheme
 (use-package scheme                     ; Configuration for Scheme
   :defer t
