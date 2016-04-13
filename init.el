@@ -171,7 +171,7 @@
 (use-package mu-languages)
 (use-package mu-latex)
 (use-package mu-project)
-(use-package mu-vers-control)
+(use-package mu-vers-control :defer 3)
 (use-package mu-net)
 (use-package mu-utilities)
 (use-package mu-org :defer 1)
