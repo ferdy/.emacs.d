@@ -130,6 +130,8 @@
   :ensure cider
   :defer t
   :config
+  (add-hook 'cider-repl-mode-hook #'eldoc-mode)
+
   ;; Run cljs-repl inside Emacs
   (defun cider-figwheel-repl ()
     (interactive)
