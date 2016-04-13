@@ -106,8 +106,7 @@
 (use-package cider                      ; Clojure development environment
   :ensure t
   :defer t
-  :config (add-hook 'cider-mode-hook 'eldoc-mode)
-  :diminish cider-mode)
+  :config (add-hook 'cider-mode-hook 'eldoc-mode))
 
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
