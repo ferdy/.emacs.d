@@ -43,7 +43,7 @@
         ;; Show recently killed buffers when calling `ivy-switch-buffer'
         ivy-use-virtual-buffers t)
 
-  ;; Speed up my workflow with useful, prearranged windows
+  ;; Speed up my workflow with prearranged windows
   (setq ivy-views '(("boccaperta + ba-server [–]"
                      (vert
                       (sexp (bookmark-jump "boccaperta"))
