@@ -80,10 +80,11 @@
 (defun mu-quit-bottom-side-windows ()
   "Quit side windows of the current frame."
   (interactive)
-  (dolist (window (window-at-side-list))
-    (quit-window nil window)))
+  (dolist (window (window-at-side-list nil 'bottom))
+    (quit-window nil window)
+    (when (window-live-p window)
+      (delete-window window))))
 
-;; Taken graciously from Spacemacs
 ;;;###autoload
 (defun mu-switch-to-minibuffer-window ()
   "Switch to current minibuffer window (if active)."
