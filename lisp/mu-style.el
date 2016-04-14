@@ -116,7 +116,7 @@ symbols, greek letters, as well as fall backs for."
  'end)
 
 ;;; Theme
-(use-package solarized                  ; Superb light theme
+(use-package solarized                  ; My default theme
   :ensure solarized-theme
   :config
   (setq solarized-use-variable-pitch nil  ; Disable variable pitch fonts
@@ -133,11 +133,6 @@ symbols, greek letters, as well as fall backs for."
         solarized-height-plus-4 1.0)
 
   (load-theme 'solarized-light 'no-confirm))
-
-(use-package punpun-theme               ; Minimal light theme
-  :ensure t
-  ;; TODO: renable when it supports the modes I use
-  :disabled t)
 
 (use-package select-themes              ; Better theme selection
   :ensure t
