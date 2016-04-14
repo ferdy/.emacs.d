@@ -44,7 +44,7 @@ windows easier."
 
   (add-hook 'eshell-mode-hook
             #'(lambda ()
-                (bind-key "C-c C-l" #'mu-counsel-esh-history
+                (bind-key "C-c C-l" #'counsel-esh-history
                           eshell-mode-map)))
 
   (defadvice eshell-gather-process-output
@@ -62,7 +62,7 @@ windows easier."
   :bind ("C-c a s t" . shell)
   :bind (:map shell-mode-map
               ("C-l"     . mu-clear-shell)
-              ("C-c C-l" . mu-counsel-shell-history))
+              ("C-c C-l" . counsel-shell-history))
   :config
   (defun mu-clear-shell ()
     (interactive)
@@ -130,27 +130,6 @@ windows easier."
 
 ;; Truncate buffers continuously
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
-
-(defun mu-browse-history (elements)
-  "Use Ivy to navigate through ELEMENTS."
-  (setq ivy-completion-beg (point))
-  (setq ivy-completion-end (point))
-  (ivy-read "Symbol name: "
-            (delete-dups
-             (ring-elements elements))
-            :action #'ivy-completion-in-region-action))
-
-;;;###autoload
-(defun mu-counsel-esh-history ()
-  "Browse Eshell history."
-  (interactive)
-  (mu-browse-history eshell-history-ring))
-
-;;;###autoload
-(defun mu-counsel-shell-history ()
-  "Browse shell history."
-  (interactive)
-  (mu-browse-history comint-input-ring))
 
 (provide 'mu-shells)
 
