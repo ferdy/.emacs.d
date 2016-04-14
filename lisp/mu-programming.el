@@ -175,6 +175,10 @@
         cljr-favor-private-functions)
   :diminish clj-refactor-mode)
 
+(use-package clomacs                    ; Elisp interaction with Clojure
+  :ensure t
+  :defer t)
+
 ;;; Scheme
 (use-package scheme                     ; Configuration for Scheme
   :defer t
