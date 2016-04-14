@@ -264,8 +264,7 @@
   :after sql
   :bind (:map sql-mode-map
               ("C-c m u" . sqlup-capitalize-keywords-in-region))
-  :init (add-hook 'sql-mode-hook #'sqlup-mode)
-  :diminish sqlup-mode)
+  :init (add-hook 'sql-mode-hook #'sqlup-mode))
 
 ;;; Web development
 (use-package web-mode                   ; Major mode for editing web templates
