@@ -18,9 +18,6 @@
       ;; Ensure M-v always undoes C-v
       scroll-preserve-screen-position 'always)
 
-(use-package winner                     ; Undo and redo window configurations
-  :init (winner-mode))
-
 (use-package bookmark                   ; Bookmarks to files and directories
   :config
   (setq bookmark-completion-ignore-case nil)

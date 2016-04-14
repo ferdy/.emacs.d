@@ -13,6 +13,9 @@
 
 (setq window-combination-resize t)      ; Size new windows proportionally
 
+(use-package winner                     ; Undo and redo window configurations
+  :init (winner-mode))
+
 (use-package golden-ratio               ; Automatically resize windows
   :ensure t
   :init
