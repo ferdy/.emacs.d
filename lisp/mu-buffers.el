@@ -17,13 +17,6 @@
   (setq minibuffer-prompt-properties (append default dont-touch-prompt-prop))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
 
-;; Automatically close some buffers on exit
-(add-hook 'minibuffer-exit-hook
-          '(lambda ()
-             (let ((completions "*Completions*"))
-               (and (get-buffer completions)
-                    (kill-buffer completions)))))
-
 (setq use-dialog-box nil               ; Never use dialogs for minibuffer input
       history-length 1000              ; Store more history
       )
