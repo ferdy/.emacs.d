@@ -60,6 +60,7 @@
   (setq elfeed-feeds
         '(("http://planet.emacsen.org/atom.xml" emacs)
           ("http://planet.lisp.org/rss20.xml" lisp)
+          ("http://planet.clojure.in/atom.xml" lisp)
           ("https://cavallette.noblogs.org/feed" security)
           ("https://theintercept.com/feed/?rss" press)
           ("https://freedom.press/blog/feed" press)
