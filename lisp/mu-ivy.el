@@ -13,24 +13,10 @@
 
 (use-package swiper                     ; Isearch with an overview
   :ensure t
-  :bind (("C-c s s" . mu-swiper)
+  :bind (("C-c s s" . counsel-grep-or-swiper)
          ("C-c s S" . swiper-all))
   :bind  (:map isearch-mode-map
-               ("M-i" . swiper-from-isearch))
-  :init
-  (defun mu-swiper ()
-    "Choose between `swiper--ivy' and `counsel-grep' based upon file size."
-    (interactive)
-    (if (and (buffer-file-name)
-             (not (ignore-errors
-                    (file-remote-p (buffer-file-name))))
-             (if (eq major-mode 'org-mode)
-                 (> (buffer-size) 60000)
-               (> (buffer-size) 300000)))
-        (progn
-          (save-buffer)
-          (counsel-grep))
-      (swiper--ivy (swiper--candidates)))))
+               ("M-i" . swiper-from-isearch)))
 
 (use-package ivy                        ; Incremental Vertical completYon
   :ensure swiper
