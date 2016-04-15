@@ -48,7 +48,7 @@
   :ensure t
   :defer t
   :after flycheck
-  :init (add-hook 'after-init-hook #'flycheck-mode))
+  :init (flycheck-clojure-setup))
 
 ;;; Emacs Lisp
 (use-package ielm                       ; Emacs Lisp REPL
