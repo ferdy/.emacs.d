@@ -15,23 +15,46 @@
 ;; Requires: chktex
 (use-package flycheck                   ; On-the-fly syntax checker
   :ensure t
-  :bind (("C-c e l" . list-flycheck-errors)
-         ("C-c e n" . flycheck-next-error)
-         ("C-c e p" . flycheck-previous-error)
-         ("C-c e c" . flycheck-buffer)
-         ("C-c e C" . flycheck-clear)
-         ("C-c e f" . flycheck-first-error)
-         ("C-c e w" . flycheck-copy-errors-as-kill)
+  :bind (("C-c e"   . mu-flycheck-errors/body)
          ("C-c t e" . flycheck-mode))
-  :config
-  (setq flycheck-emacs-lisp-load-path nil
-        flycheck-standard-error-navigation nil
-        flycheck-display-errors-function
-        #'flycheck-display-error-messages-unless-error-list)
+  :init
+  (defhydra mu-flycheck-errors ()
+    "Flycheck errors"
+    ("n" flycheck-next-error "next")
+    ("p" flycheck-previous-error "previous")
+    ("f" flycheck-first-error "first")
+    ("l" flycheck-list-errors "list")
+    ("w" flycheck-copy-errors-as-kill "copy message"))
 
-  ;; Use italic face for checker name
-  (set-face-attribute 'flycheck-error-list-checker-name nil
-                      :inherit 'italic))
+  (defun mu-flycheck-set-load-path-for-user-configuration ()
+    "Set Flycheck load path for files in user configuration."
+    (when (and (buffer-file-name)
+               (flycheck-in-user-emacs-directory-p (buffer-file-name)))
+      (setq-local flycheck-emacs-lisp-load-path
+                  (cons (locate-user-emacs-file "lisp/")
+                        flycheck-emacs-lisp-load-path))))
+
+  (defun mu-discard-undesired-html-tidy-error (err)
+    "Discard ERR if it is undesired.
+Tidy is very verbose, so we prevent Flycheck from highlighting
+most errors from HTML Tidy."
+    ;; A non-nil result means to inhibit further processing (i.e. highlighting)
+    ;; of the error
+    (and (eq (flycheck-error-checker err) 'html-tidy)
+         ;; Only allow warnings about missing tags, or unexpected end tags being
+         ;; discarded
+         (not (string-match-p (rx (or "missing" "discarding"))
+                              (flycheck-error-message err)))))
+
+  ;; Don't highlight undesired errors from html tidy
+  (add-hook 'flycheck-process-error-functions
+            #'mu-discard-undesired-html-tidy-error)
+  (add-hook 'flycheck-mode-hook
+            #'mu-flycheck-set-load-path-for-user-configuration)
+  :config
+  (setq flycheck-standard-error-navigation nil
+        flycheck-display-errors-function
+        #'flycheck-display-error-messages-unless-error-list))
 
 (use-package flycheck-package          ; Check package conventions with Flycheck
   :ensure t
