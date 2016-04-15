@@ -11,13 +11,6 @@
 
 ;;; Code:
 
-(use-package swiper                     ; Isearch with an overview
-  :ensure t
-  :bind (("C-c s s" . counsel-grep-or-swiper)
-         ("C-c s S" . swiper-all))
-  :bind  (:map isearch-mode-map
-               ("M-i" . swiper-from-isearch)))
-
 (use-package ivy                        ; Incremental Vertical completYon
   :ensure swiper
   :bind (("C-c C-r" . ivy-resume)
@@ -67,6 +60,13 @@
          ;; file names ending with # or ~
          "\\|\\(?:\\`.+?[#~]\\'\\)"))
   :diminish counsel-mode)
+
+(use-package swiper                     ; Isearch with an overview
+  :ensure t
+  :bind (("C-c s s" . counsel-grep-or-swiper)
+         ("C-c s S" . swiper-all))
+  :bind  (:map isearch-mode-map
+               ("M-i" . swiper-from-isearch)))
 
 (provide 'mu-ivy)
 
