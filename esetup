@@ -1,10 +1,8 @@
 #!/bin/bash
 
-red="\e[31m"
 grn="\e[32m"
 cyn="\e[36m"
 rst="\e[0m"    # reset
-all=""
 
 announce() {
     echo -e $grn"configuring $1"$rst
@@ -19,7 +17,7 @@ dostep() {
     echo -e $cyn"running $cmd$rst"
     echo
     if [[ $sdo == "y" ]] ; then
-        sudo $cmd
+        sudo "$cmd"
     else
         $cmd
     fi
@@ -51,7 +49,7 @@ scheme_setup() {
     dostep 4 "n" "chicken-install -s sxml-transforms matchable scss filepath spiffy uri-common"
     dostep 5 "n" "chicken-install -s doctype colorize multidoc defstruct atom svnwiki-sxml"
     dostep 6 "n" "chicken-install -s rfc3339 hyde"
-    dostep 7 "n" "cd `csi -p '(chicken-home)'`"
+    dostep 7 "n" "cd $(csi -p '(chicken-home)')"
     dostep 8 "n" "curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx"
     dostep 9 "n" "cd $HOME"
 }
@@ -77,7 +75,7 @@ latex_setup() {
     dostep 2 "n" "mv -f install-tl-unx.tar.gz /tmp"
     dostep 3 "n" "wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
     dostep 4 "n" "tar -xzf install-tl-unx.tar.gz"
-    dostep 5 "n" "cd `tar -tzf install-tl-unx.tar.gz | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D'`"
+    dostep 5 "n" "cd $(tar -tzf install-tl-unx.tar.gz | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D')"
     dostep 6 "y" "./install-tl"
     dostep 7 "y" "mkdir -p /opt"
     dostep 8 "y" "ln -s /usr/local/texlive/2015/bin/* /opt/texbin"
@@ -149,7 +147,7 @@ shellcheck_setup() {
 
 sudo -v # gets user password for next sudos
 
-cd $HOME
+cd "$HOME"
 announce PREREQUISITES
 prerequisites
 announce TLS
