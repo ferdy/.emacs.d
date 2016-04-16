@@ -143,6 +143,10 @@ cask_setup() {
     dostep 2 "n" "curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python"
 }
 
+shellcheck_setup() {
+    dostep 1 "y" "apt-get -y install --no-install-recommends shellcheck"
+}
+
 sudo -v # gets user password for next sudos
 
 cd $HOME
@@ -176,6 +180,8 @@ announce FONT
 font_setup
 announce CASK
 cask_setup
+announce SHELLCHECK
+shellcheck_setup
 
 echo
 echo "environment ready, now fire up Emacs!"
