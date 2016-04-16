@@ -17,7 +17,7 @@ dostep() {
     echo -e $cyn"running $cmd$rst"
     echo
     if [[ $sdo == "y" ]] ; then
-        sudo "$cmd"
+        sudo $cmd
     else
         $cmd
     fi
