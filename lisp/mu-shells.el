@@ -24,17 +24,13 @@
         eshell-save-history-on-exit t)
 
   (defun mu-eshell-here ()
-    "Open a new shell in the directory of the buffer's file.
-The eshell is renamed to match that directory to make multiple eshell
-windows easier."
+    "Open a new shell in the directory of the buffer's file."
     (interactive)
     (let* ((parent (if (buffer-file-name)
                        (file-name-directory (buffer-file-name))
-                     default-directory))
-           (name   (car (last (split-string parent "/" t)))))
+                     default-directory)))
       (other-window 1)
-      (eshell "new")
-      (rename-buffer (concat "*eshell: " name "*"))))
+      (eshell "new")))
 
   (defun eshell/clear ()
     "Clear the eshell buffer."
