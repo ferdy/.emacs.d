@@ -12,7 +12,7 @@
 ;;; Code:
 
 (use-package eshell                     ; Emacs command shell
-  :bind ("C-c a s e" . mu-eshell-here)
+  :bind ("C-c a s e" . eshell)
   :config
   ;; Handy aliases
   (defalias 'ff 'find-file)
@@ -22,15 +22,6 @@
 
   (setq eshell-cmpl-cycle-completions nil
         eshell-save-history-on-exit t)
-
-  (defun mu-eshell-here ()
-    "Open a new shell in the directory of the buffer's file."
-    (interactive)
-    (let* ((parent (if (buffer-file-name)
-                       (file-name-directory (buffer-file-name))
-                     default-directory)))
-      (other-window 1)
-      (eshell "new")))
 
   (defun eshell/clear ()
     "Clear the eshell buffer."
