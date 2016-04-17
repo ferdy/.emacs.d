@@ -177,6 +177,10 @@ _C-s_: mark region
   (add-hook 'latex-mode-hook
             (lambda () (setq-local tildify-space-string "~"))))
 
+(use-package table                      ; Edit table in text files
+  :defer t
+  :init (add-hook 'text-mode-hook #'table-recognize))
+
 (use-package wrap-region                ; Wrap a region with symbols and tags
   :ensure t
   :bind ("C-c t W" . wrap-region-mode)
