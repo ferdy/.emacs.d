@@ -171,11 +171,7 @@ _C-s_: mark region
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :bind ("C-c x t" . tildify-region)
-  :init
-  (dolist (hook '(markdown-mode-hook
-                  latex-mode-hook
-                  rst-mode-hook))
-    (add-hook hook #'tildify-mode))
+  :init (add-hook 'text-mode-hook #'tildify-mode)
   :config
   ;; Use the right space for LaTeX
   (add-hook 'latex-mode-hook
