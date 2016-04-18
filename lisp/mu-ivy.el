@@ -22,6 +22,9 @@
         ;; Show recently killed buffers when calling `ivy-switch-buffer'
         ivy-use-virtual-buffers t)
 
+  ;; Ignore some buffers in `ivy-switch-buffer'
+  (setq ivy-ignore-buffers '("company-statistics-cache.el"))
+
   ;; Speed up my workflow with prearranged windows
   (setq ivy-views '(("boccaperta + ba-server [–]"
                      (vert
