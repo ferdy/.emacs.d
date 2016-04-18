@@ -20,10 +20,11 @@
   (setq ivy-count-format ""             ; Suppress counter
         ivy-virtual-abbreviate 'full    ; Show full file path
         ;; Show recently killed buffers when calling `ivy-switch-buffer'
-        ivy-use-virtual-buffers t)
-
-  ;; Ignore some buffers in `ivy-switch-buffer'
-  (setq ivy-ignore-buffers '("company-statistics-cache.el"))
+        ivy-use-virtual-buffers t
+        ;; Always ignore buffers set in `ivy-ignore-buffers'
+        ivy-use-ignore-default 'always
+        ;; Ignore some buffers in `ivy-switch-buffer'
+        ivy-ignore-buffers '("company-statistics-cache.el"))
 
   ;; Speed up my workflow with prearranged windows
   (setq ivy-views '(("boccaperta + ba-server [–]"
