@@ -175,7 +175,8 @@ _C-s_: mark region
   :config
   ;; Use the right space for LaTeX
   (add-hook 'latex-mode-hook
-            (lambda () (setq-local tildify-space-string "~"))))
+            (lambda () (setq-local tildify-space-string "~")))
+  :diminish tildify-mode)
 
 (use-package table                      ; Edit table in text files
   :defer t
