@@ -4,15 +4,12 @@ This is the Emacs configuration I use everyday.
 
 ##Notes
 - I use Emacs on [Debian Jessie](https://www.debian.org) (amd64), so this
-configuration targets **Debian-based** systems. However, it has been tested on a
-wide range of GNU/Linux distributions;
+configuration targets **Debian-based** systems
 
-- the `esetup` script helps to create the required environment. It installs all
-the necessary tools automatically, provided the user has `sudo` privileges. The
-script must be run *before* starting Emacs for the first time;
+- the `esetup` script helps to create the required environment and it must be
+run *before* starting Emacs for the first time
 
-- this configuration requires an Emacs version built from development
-sources. It does not work with older versions.
+- this configuration requires an Emacs version built from development sources
 
 ##Setup
 On your **Debian-based** machine:
