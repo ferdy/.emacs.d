@@ -153,6 +153,7 @@ most errors from HTML Tidy."
   :defer t
   :config
   (add-hook 'cider-repl-mode-hook #'eldoc-mode)
+  (add-hook 'cider-repl-mode-hook #'subword-mode)
 
   ;; Run cljs-repl inside Emacs
   (defun cider-figwheel-repl ()
