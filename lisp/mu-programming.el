@@ -165,7 +165,6 @@ most errors from HTML Tidy."
              (figwheel-sidecar.repl-api/cljs-repl)")
       (cider-repl-return)))   ;; Run cljs-repl inside Emacs
 
-
   (bind-key "C-c m f" #'cider-figwheel-repl)
 
   ;; Increase the history size and make it permanent
