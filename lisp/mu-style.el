@@ -223,8 +223,6 @@ mouse-3: go to end")
   (add-to-list 'sml/replacer-regexp-list
                '("^~/projects/" ":Prj:") t))
 
-
-
 (provide 'mu-style)
 
 ;;; mu-style.el ends here
