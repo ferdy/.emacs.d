@@ -86,10 +86,14 @@
                 (name 16 -1)
                 " " filename))))
 
-(use-package ibuffer-projectile         ; Group buffers by Projectile project
+(use-package ibuffer-vc                 ; Group buffers by VC project and status
   :ensure t
   :defer t
-  :init (add-hook 'ibuffer-hook #'ibuffer-projectile-set-filter-groups))
+  :init (add-hook 'ibuffer-hook
+                  (lambda ()
+                    (ibuffer-vc-set-filter-groups-by-vc-root)
+                    (unless (eq ibuffer-sorting-mode 'alphabetic)
+                      (ibuffer-do-sort-by-alphabetic)))))
 
 (use-package scratch                    ; Mode-specific scratch buffers
   :ensure t
