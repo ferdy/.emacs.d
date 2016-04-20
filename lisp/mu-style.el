@@ -86,6 +86,28 @@ symbols, greek letters, as well as fall backs for."
 
 (column-number-mode)                    ; Turn on column-number-mode
 
+(setq x-gtk-use-system-tooltips nil)    ; Use Emacs tooltips
+(setq history-length 1000)              ; Store more history
+(setq-default line-spacing 0.2)         ; Increase line-spacing (default 0)
+
+;; Configure a reasonable fill column and enable automatic filling
+(setq-default fill-column 80)
+(add-hook 'text-mode-hook #'auto-fill-mode)
+(diminish 'auto-fill-function)
+
+;; Give us narrowing back!
+(put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+(put 'narrow-to-defun 'disabled nil)
+
+;; Same for region casing
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+;; C-specific Indentation
+(setq c-default-style "linux"
+      c-basic-offset 4)
+
 (use-package page-break-lines           ; Better looking break lines
   :ensure t
   :defer t
@@ -116,6 +138,8 @@ symbols, greek letters, as well as fall backs for."
  'end)
 
 ;;; Theme
+(setq custom-safe-themes t)             ; Treat themes as safe
+
 (use-package solarized                  ; My default theme
   :ensure solarized-theme
   :config
@@ -139,6 +163,19 @@ symbols, greek letters, as well as fall backs for."
   :commands select-themes)
 
 ;;; Mode line
+(use-package which-func                 ; Current function name
+  :init (which-func-mode)
+  :config
+  (setq which-func-unknown "⊥"
+        which-func-format
+        `((:propertize (" ➤ " which-func-current)
+                       local-map ,which-func-keymap
+                       face which-func
+                       mouse-face mode-line-highlight
+                       help-echo "mouse-1: go to beginning\n\
+mouse-2: toggle rest visibility\n\
+mouse-3: go to end"))))
+
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
   :init
@@ -162,29 +199,7 @@ symbols, greek letters, as well as fall backs for."
   (add-to-list 'sml/replacer-regexp-list
                '("^~/projects/" ":Prj:") t))
 
-;;; Utilities and keybindings
-(setq custom-safe-themes t)             ; Treat themes as safe
-(setq x-gtk-use-system-tooltips nil)    ; Use Emacs tooltips
-(setq history-length 1000)              ; Store more history
-(setq-default line-spacing 0.2)         ; Increase line-spacing (default 0)
 
-;; Configure a reasonable fill column and enable automatic filling
-(setq-default fill-column 80)
-(add-hook 'text-mode-hook #'auto-fill-mode)
-(diminish 'auto-fill-function)
-
-;; Give us narrowing back!
-(put 'narrow-to-region 'disabled nil)
-(put 'narrow-to-page 'disabled nil)
-(put 'narrow-to-defun 'disabled nil)
-
-;; Same for region casing
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
-;; C-specific Indentation
-(setq c-default-style "linux"
-      c-basic-offset 4)
 
 (provide 'mu-style)
 
