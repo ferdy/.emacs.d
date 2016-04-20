@@ -167,7 +167,7 @@ symbols, greek letters, as well as fall backs for."
   :init (which-func-mode)
   :config
   (defun mu-which-func-current ()
-    "Determine the name of the current function."
+    "Get current function name and set it to max 20 characters width."
     (if-let (current (or (gethash (selected-window) which-func-table)))
         (truncate-string-to-width current 20 nil nil "…")
       which-func-unknown))
