@@ -174,15 +174,13 @@ symbols, greek letters, as well as fall backs for."
 
   (setq which-func-unknown "⊥"
         which-func-format
-        `("["
-          (:propertize (:eval (mu-which-func-current))
+        `((:propertize (" ➤ " (:eval (mu-which-func-current)))
                        local-map ,which-func-keymap
                        face which-func
                        mouse-face mode-line-highlight
                        help-echo "mouse-1: go to beginning\n\
 mouse-2: toggle rest visibility\n\
-mouse-3: go to end")
-          "]")))
+mouse-3: go to end"))))
 
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
