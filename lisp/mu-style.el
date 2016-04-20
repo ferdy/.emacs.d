@@ -166,15 +166,39 @@ symbols, greek letters, as well as fall backs for."
 (use-package which-func                 ; Current function name
   :init (which-func-mode)
   :config
+  (defun mu-current-namespace ()
+    "Determine the namespace of the current file."
+    (when-let (filename (buffer-file-name))
+      (if (string= (file-truename filename) (file-truename user-init-file))
+          "mu"                          ; The “namespace” of my init
+        (file-name-base filename))))
+
+  (defun mu-which-func-current ()
+    "Determine the name of the current function."
+    (if-let (current (or (gethash (selected-window) which-func-table)))
+        (truncate-string-to-width
+         (pcase major-mode
+           (`emacs-lisp-mode
+            (let ((namespace (mu-current-namespace)))
+              (if (and namespace
+                       (string-prefix-p namespace current 'ignore-case))
+                  (concat "…" (substring current (length namespace)))
+                current)))
+           (_ current))
+         20 nil nil "…")
+      which-func-unknown))
+
   (setq which-func-unknown "⊥"
         which-func-format
-        `((:propertize (" ➤ " which-func-current)
+        `("["
+          (:propertize (:eval (mu-which-func-current))
                        local-map ,which-func-keymap
                        face which-func
                        mouse-face mode-line-highlight
                        help-echo "mouse-1: go to beginning\n\
 mouse-2: toggle rest visibility\n\
-mouse-3: go to end"))))
+mouse-3: go to end")
+          "]")))
 
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
