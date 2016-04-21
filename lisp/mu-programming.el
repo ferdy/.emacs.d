@@ -301,7 +301,14 @@ most errors from HTML Tidy."
 (use-package js2-mode                   ; Powerful Javascript mode
   :ensure t
   :mode (("\\.js\\'" . js2-mode)
-         ("\\.jsx\\'" . js2-jsx-mode)))
+         ("\\.jsx\\'" . js2-jsx-mode))
+  :config
+  ;; Disable parser errors and strict warnings
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil)
+
+  ;; Try to highlight most ECMA built-ins
+  (setq js2-highlight-level 3))
 
 (use-package js2-refactor               ; Refactor Javascript
   :ensure t
