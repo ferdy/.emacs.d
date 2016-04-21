@@ -158,10 +158,6 @@ symbols, greek letters, as well as fall backs for."
 
   (load-theme 'solarized-light 'no-confirm))
 
-(use-package select-themes              ; Better theme selection
-  :ensure t
-  :commands select-themes)
-
 ;;; Mode line
 (use-package which-func                 ; Current function name
   :init (which-func-mode)
