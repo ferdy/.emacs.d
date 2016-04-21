@@ -96,12 +96,12 @@
   :ensure t
   :bind ("C-c a p" . paradox-list-packages)
   :config
-  (setq paradox-github-token t             ; Don't ask for a token, please
+  (setq paradox-github-token t             ; Don't ask for a token
         paradox-execute-asynchronously nil ; No async updates
-        paradox-spinner-type 'moon
+        paradox-spinner-type 'moon         ; Prettier spinner
         paradox-use-homepage-buttons nil   ; Hide download button
         paradox-hide-wiki-packages t       ; Hide packages from Emacs Wiki
-        paradox-automatically-star nil
+        paradox-automatically-star nil     ; Don't star packages automatically
         ;; Show all possible counts
         paradox-display-download-count t
         paradox-display-star-count t)
