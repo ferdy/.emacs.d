@@ -74,7 +74,8 @@
            film)
           ("http://filmstudiesforfree.blogspot.it/feeds/posts/default?alt=rss"
            film)
-          ("http://quod.lib.umich.edu/f/fc/longfeed.xml" film)))
+          ("http://quod.lib.umich.edu/f/fc/longfeed.xml" film)
+          ("http://dilbert.oeey.com/" comic)))
 
   ;; Increase url-queue timeout
   (setf url-queue-timeout 30))
