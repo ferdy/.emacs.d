@@ -328,7 +328,12 @@ most errors from HTML Tidy."
 (use-package xref-js2                   ; Navigate JS with ag & js2-mode's AST
   :ensure t
   :after js2-mode
-  :config (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))
+  :init
+  (defun add-xref-js2-backend ()
+    (add-hook 'xref-backend-functions
+              #'xref-js2-xref-backend nil t))
+
+  (add-hook 'js2-mode-hook #'add-xref-js2-backend))
 
 (use-package css-mode                   ; Better CSS support
   :mode "\\.css\\'"
