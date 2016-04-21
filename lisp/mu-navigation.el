@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores my configuration for in-buffer navigation.
+;; This file stores my configuration for general in-buffer navigation.
 
 ;;; Code:
 
@@ -37,11 +37,6 @@
          ("C-c n l c" . link-hint-copy-link-at-point)
          ("C-c n l a" . link-hint-open-link)
          ("C-c n l w" . link-hint-copy-link)))
-
-(use-package elisp-slime-nav        ; Navigate through elisp code with M-. & M-,
-  :ensure t
-  :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
-  :diminish elisp-slime-nav-mode)
 
 (use-package outline                    ; Navigate outlines in buffers
   :defer t
