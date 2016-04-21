@@ -102,6 +102,11 @@ most errors from HTML Tidy."
   (add-hook 'emacs-lisp-mode-hook
             #'mu-add-use-package-to-imenu))
 
+(use-package elisp-slime-nav            ; Navigate elisp code with M-. & M-,
+  :ensure t
+  :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
+  :diminish elisp-slime-nav-mode)
+
 (use-package ert                        ; Elisp Regression Test
   :defer t
   :after elisp-mode)
@@ -298,11 +303,13 @@ most errors from HTML Tidy."
         web-mode-css-indent-offset 2
         web-mode-code-indent-offset 2))
 
-(use-package js2-mode                   ; Powerful Javascript mode
+(use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
   :mode (("\\.js\\'" . js2-mode)
          ("\\.jsx\\'" . js2-jsx-mode))
   :config
+  (unbind-key "M-." js2-mode-map)
+
   ;; Disable parser errors and strict warnings
   (setq js2-mode-show-parse-errors nil
         js2-mode-show-strict-warnings nil)
@@ -310,13 +317,18 @@ most errors from HTML Tidy."
   ;; Try to highlight most ECMA built-ins
   (setq js2-highlight-level 3))
 
-(use-package js2-refactor               ; Refactor Javascript
+(use-package js2-refactor               ; Refactor JavaScript
   :ensure t
   :after js2-mode
   :init
   (add-hook 'js2-mode-hook 'js2-refactor-mode)
   :config
   (js2r-add-keybindings-with-prefix "C-c m r"))
+
+(use-package xref-js2                   ; Navigate JS with ag & js2-mode's AST
+  :ensure t
+  :after js2-mode
+  :config (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))
 
 (use-package css-mode                   ; Better CSS support
   :mode "\\.css\\'"
