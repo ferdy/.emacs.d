@@ -294,10 +294,6 @@
   :ensure helm
   :bind ("C-c h x" . helm-run-external-command))
 
-(use-package helm-bibtex                ; Manage BibTeX bibliographies with Helm
-  :ensure t
-  :bind ("C-c h h b" . helm-bibtex))
-
 (provide 'mu-helm)
 
 ;;; mu-helm.el ends here
