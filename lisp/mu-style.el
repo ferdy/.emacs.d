@@ -185,6 +185,7 @@ mouse-3: go to end"))))
 
   (setq sml/theme nil
         sml/mode-width 'full
+        sml/name-width 30
         sml/no-confirm-load-theme t)
 
   (setq-default mode-line-end-spaces
