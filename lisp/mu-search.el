@@ -41,24 +41,6 @@
     (isearch-exit)
     (goto-char isearch-other-end)))
 
-(use-package ag                         ; Search code in files/projects
-  :ensure t
-  :bind (("C-c s a" . ag)
-         ("C-c s d" . ag-dired-regexp)
-         ("C-c s D" . ag-dired)
-         ("C-c s f" . ag-files)
-         ("C-c s k" . ag-kill-other-buffers)
-         ("C-c s K" . ag-kill-buffers))
-  :config
-  (setq ag-reuse-buffers t            ; Don't spam buffer list with ag buffers
-        ag-highlight-search t         ; Highlight results
-        ;; Use Projectile to find the project root
-        ag-project-root-function (lambda (d) (let ((default-directory d))
-                                          (projectile-project-root))))
-  ;; Set ag arguments
-  (setq ag-arguments (list "--smart-case" "--nogroup" "--column")
-        ag-arguments (append '("--follow") ag-arguments)))
-
 (use-package wgrep                      ; Editable grep buffer
   :ensure t
   :defer t
@@ -68,20 +50,6 @@
 
   (with-eval-after-load 'wgrep
     (bind-key "C-c C-c" #'wgrep-finish-edit grep-mode-map)))
-
-(use-package wgrep-ag                   ; Wgrep for ag
-  :ensure t
-  :commands (wgrep-ag-setup)
-  :config
-  (add-hook 'ag-mode-hook #'wgrep-ag-setup)
-
-  (bind-key "C-x s" #'wgrep-save-all-buffers wgrep-mode-map)
-
-  (with-eval-after-load 'ag
-    (bind-key "C-x C-q" #'wgrep-change-to-wgrep-mode ag-mode-map))
-
-  (with-eval-after-load 'wgrep
-    (bind-key "C-c C-c" #'wgrep-finish-edit ag-mode-map)))
 
 (use-package visual-regexp              ; Regexp replace with in-buffer display
   :ensure t
