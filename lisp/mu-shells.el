@@ -46,16 +46,10 @@
        (unintern 'eshell/sudo nil))))
 
 (use-package shell                 ; Specialized comint.el for running the shell
-  :bind ("C-c a s t" . shell)
-  :bind (:map shell-mode-map
-              ("C-l"     . mu-clear-shell)
-              ("C-c C-l" . counsel-shell-history))
+  :bind (("C-c a s t" . shell)
+         (:map shell-mode-map
+               ("C-c C-l" . counsel-shell-history)))
   :config
-  (defun mu-clear-shell ()
-    (interactive)
-    (let ((comint-buffer-maximum-size 0))
-      (comint-truncate-buffer)))
-
   ;; Do not echo input back at me
   (defun mu-shell-turn-echo-off ()
     (setq comint-process-echoes t))
