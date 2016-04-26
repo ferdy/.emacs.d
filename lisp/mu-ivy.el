@@ -12,7 +12,7 @@
 ;;; Code:
 
 (use-package ivy                        ; Incremental Vertical completYon
-  :ensure swiper
+  :ensure t
   :bind (("C-c C-r" . ivy-resume)
          ("C-x C-r" . ivy-switch-buffer))
   :init (ivy-mode 1)
