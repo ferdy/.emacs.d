@@ -44,12 +44,7 @@
 (use-package wgrep                      ; Editable grep buffer
   :ensure t
   :defer t
-  :config
-  (with-eval-after-load 'grep
-    (bind-key "C-x C-q" #'wgrep-change-to-wgrep-mode grep-mode-map))
-
-  (with-eval-after-load 'wgrep
-    (bind-key "C-c C-c" #'wgrep-finish-edit grep-mode-map)))
+  :config)
 
 (use-package visual-regexp              ; Regexp replace with in-buffer display
   :ensure t
