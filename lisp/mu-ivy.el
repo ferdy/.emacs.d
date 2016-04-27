@@ -40,7 +40,7 @@
 
 (use-package swiper                     ; Isearch with an overview
   :ensure t
-  :bind (("C-c s S" . swiper-all)
+  :bind (("C-c s s" . swiper-all)
          :map isearch-mode-map
          ("M-i" . swiper-from-isearch)))
 
@@ -52,15 +52,15 @@
   :init
   (setq counsel-mode-override-describe-bindings t)
   (counsel-mode 1)
-  :bind (("C-c s s" . counsel-grep-or-swiper)
-         ("C-h S"   . counsel-info-lookup-symbol)
-         ("C-c u"   . counsel-unicode-char)
-         ("C-c g"   . counsel-git)
-         ("C-c G"   . counsel-git-grep)
-         ("C-c k"   . counsel-ag)
-         ("C-x l"   . counsel-locate)
-         ("C-x i"   . counsel-imenu)
-         ("C-c r"   .  counsel-linux-app))
+  :bind (("C-s"   . counsel-grep-or-swiper)
+         ("C-h S" . counsel-info-lookup-symbol)
+         ("C-c u" . counsel-unicode-char)
+         ("C-c g" . counsel-git)
+         ("C-c G" . counsel-git-grep)
+         ("C-c k" . counsel-ag)
+         ("C-x l" . counsel-locate)
+         ("C-x i" . counsel-imenu)
+         ("C-c r" . counsel-linux-app))
   :bind (:map read-expression-map
               ("C-r" . counsel-expression-history))
   :config
