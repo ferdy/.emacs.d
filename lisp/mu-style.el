@@ -141,10 +141,9 @@ symbols, greek letters, as well as fall backs for."
   :defer t
   :config
   (defun mu-colorize-compilation ()
-    "Colorize from `compilation-filter-start' to `point'."
+    "Colorize from `compilation-filter-start' to `point-max'."
     (let ((inhibit-read-only t))
-      (ansi-color-apply-on-region
-       compilation-filter-start (point))))
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
 
   (add-hook 'compilation-filter-hook #'mu-colorize-compilation))
 
