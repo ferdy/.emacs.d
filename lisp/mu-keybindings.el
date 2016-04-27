@@ -33,7 +33,7 @@
           ;; Lambdas
           ("\\`\\?\\?\\'"   . "λ")
           ;; Prettify hydra entry points
-          ("/body\\'"       . " |=")
+          ("/body\\'"       . "|=")
           ;; Drop my personal prefix
           ("\\`mu-"  . "")))
   (which-key-declare-prefixes
