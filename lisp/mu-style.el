@@ -147,6 +147,15 @@ symbols, greek letters, as well as fall backs for."
 
   (add-hook 'compilation-filter-hook #'mu-colorize-compilation))
 
+(use-package niceify-info               ; Prettify Info rendering
+  :ensure t
+  :defer t
+  :after info
+  ;; Adds emphasis to text between * and _, tries to fontify Emacs Lisp code,
+  ;; tries to cross-reference symbol names in backticks, tries to fontify
+  ;; headers, etc.
+  :init (add-hook 'Info-selection-hook #'niceify-info))
+
 ;;; Theme
 (setq custom-safe-themes t)             ; Treat themes as safe
 
