@@ -18,7 +18,6 @@
          ;; A fill paragraph in strict mode
          ("M-q" . sp-indent-defun))
   :init
-  ;; Hydra for Smartparens
   (defhydra mu-smartparens (:hint nil)
     "
 Sexps (quit with _q_)
@@ -45,7 +44,7 @@ _k_: kill        _s_: split                   _[_: wrap with [ ]
     ("'" (lambda (a) (interactive "P") (sp-wrap-with-pair "'")))
     ("\"" (lambda (a) (interactive "P") (sp-wrap-with-pair "\"")))
     ;; Navigation
-    ("f" sp-forward-sexp )
+    ("f" sp-forward-sexp)
     ("b" sp-backward-sexp)
     ("u" sp-backward-up-sexp)
     ("d" sp-down-sexp)
@@ -87,6 +86,22 @@ _k_: kill        _s_: split                   _[_: wrap with [ ]
 
 (add-hook 'after-save-hook              ; Look for unbalanced parens when saving
           'check-parens nil t)
+
+(use-package embrace                    ; Wrap semantic units with pairs
+  :ensure t
+  :bind ("C-c x e" . mu-embrace/body)
+  :init
+  (defhydra mu-embrace (:hint nil)
+    "
+Add (_a_), change (_c_) or delete (_d_) a pair.  Quit with _q_.
+"
+    ("q" nil)
+    ("a" embrace-add)
+    ("c" embrace-change)
+    ("d" embrace-delete))
+  :config
+  (add-hook 'LaTeX-mode-hook 'embrace-LaTeX-mode-hook)
+  (add-hook 'org-mode-hook 'embrace-org-mode-hook))
 
 (provide 'mu-pairs)
 
