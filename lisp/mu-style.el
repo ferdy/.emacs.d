@@ -137,6 +137,17 @@ symbols, greek letters, as well as fall backs for."
     0 'mu-unimportant-latex-face prepend))
  'end)
 
+(use-package ansi-color                 ; Colorize ANSI escape sequences
+  :defer t
+  :config
+  (defun mu-colorize-compilation ()
+    "Colorize from `compilation-filter-start' to `point'."
+    (let ((inhibit-read-only t))
+      (ansi-color-apply-on-region
+       compilation-filter-start (point))))
+
+  (add-hook 'compilation-filter-hook #'mu-colorize-compilation))
+
 ;;; Theme
 (setq custom-safe-themes t)             ; Treat themes as safe
 
