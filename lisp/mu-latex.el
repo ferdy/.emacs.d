@@ -144,7 +144,8 @@
         ;; Automatically derive labels, and prompt for confirmation
         reftex-insert-label-flags '(t t)
         reftex-label-alist
-        '(;; Additional label definitions for RefTeX.
+        '(
+          ;; Additional label definitions for RefTeX.
           ("definition" ?d "def:" "~\\ref{%s}"
            mu-reftex-find-ams-environment-caption
            ("definition" "def.") -3)
