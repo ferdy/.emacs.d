@@ -79,7 +79,7 @@
 
 (use-package multiple-cursors        ; Easily place multiple cursors in a buffer
   :ensure t
-  :bind ("C-c o" . mu-multiple-cursors/body)
+  :bind ("C-c x m" . mu-multiple-cursors/body)
   :init
   (defhydra mu-multiple-cursors (:hint nil)
     "

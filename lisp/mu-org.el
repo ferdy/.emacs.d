@@ -13,12 +13,12 @@
 
 (use-package org                        ; The almighty Org
   :ensure t
-  :bind (("C-c a o a" . org-agenda-list)
-         ("C-c a o c" . org-capture)
-         ("C-c a o l" . org-store-link)
-         ("C-c a o f" . org-cycle-agenda-files)
-         ("C-c a o s" . org-search-view)
-         ("C-c a o t" . org-todo-list))
+  :bind (("C-c o a" . org-agenda-list)
+         ("C-c o c" . org-capture)
+         ("C-c o l" . org-store-link)
+         ("C-c o f" . org-cycle-agenda-files)
+         ("C-c o s" . org-search-view)
+         ("C-c o t" . org-todo-list))
   :bind (:map org-mode-map
               ("<return>" . mu-org-return))
   :init
@@ -144,8 +144,8 @@
 
 (use-package org2blog                   ; Blog from Org mode to Wordpress
   :ensure t
-  :bind (("C-c a o w" . org2blog/wp-new-entry)
-         ("C-c a o p" . org2blog/wp-post-buffer))
+  :bind (("C-c o w" . org2blog/wp-new-entry)
+         ("C-c o p" . org2blog/wp-post-buffer))
   :config
   (setq org2blog/wp-use-sourcecode-shortcode t
         org2blog/wp-sourcecode-langs
@@ -205,7 +205,7 @@
 
 (use-package interleave             ; Take notes in org files while reading PDFs
   :ensure t
-  :bind ("C-c a o i" . interleave))
+  :bind ("C-c o i" . interleave))
 
 (use-package ox-mediawiki               ; Export to mediawiki format
   :ensure t
