@@ -39,12 +39,6 @@
   ;; Use Ivy
   (setq magit-completing-read-function 'ivy-completing-read)
 
-  ;; Set `magit-status' fullscreen
-  (setq magit-post-display-buffer-hook
-        #'(lambda ()
-            (when (derived-mode-p 'magit-status-mode)
-              (delete-other-windows))))
-
   ;; Kill Magit buffers when quitting `magit-status'
   (defun magit-quit-session (&optional kill-buffer)
     "Kill all Magit buffers on quit"
@@ -58,14 +52,14 @@
   (defun mu-magit-set-repo-dirs-from-projectile ()
     "Set `magit-repository-directories' with known Projectile projects."
     (setq magit-repository-directories
-            (mapcar
-             (lambda (dir)
-               (substring dir 0 -1))
-             (cl-remove-if-not
-              (lambda (project)
-                (unless (file-remote-p project)
-                  (file-directory-p (concat project "/.git/"))))
-              (projectile-relevant-known-projects)))))
+          (mapcar
+           (lambda (dir)
+             (substring dir 0 -1))
+           (cl-remove-if-not
+            (lambda (project)
+              (unless (file-remote-p project)
+                (file-directory-p (concat project "/.git/"))))
+            (projectile-relevant-known-projects)))))
 
   (with-eval-after-load 'projectile
     (mu-magit-set-repo-dirs-from-projectile))

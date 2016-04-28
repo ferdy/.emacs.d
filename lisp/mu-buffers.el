@@ -34,9 +34,24 @@
       '(:eval (if (buffer-file-name)
                   (abbreviate-file-name (buffer-file-name)) "%b")))
 
+(defun mu-display-buffer-fullframe (buffer alist)
+  "Display BUFFER in fullscreen.
+ALIST is a `display-buffer' ALIST.
+Return the new window for BUFFER."
+  (let ((window (or (display-buffer-use-some-window buffer alist)
+                    (display-buffer-pop-up-window buffer alist))))
+    (when window
+      (delete-other-windows window))
+    window))
+
 ;; Configure `display-buffer' behaviour for some special buffers
 (setq display-buffer-alist
-      `( ;; Put REPLs and error lists into the bottom side window
+      `(
+        ;; Magit status window in fullscreen
+        (,(rx "*magit: ")
+         (mu-display-buffer-fullframe)
+         (reusable-frames . nil))
+        ;; Put REPLs and error lists into the bottom side window
         (,(rx bos (or "*Flycheck errors*" ; Flycheck error list
                       "*compilation"      ; Compilation buffers
                       "*Warnings*"        ; Emacs warnings
