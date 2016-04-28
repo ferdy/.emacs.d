@@ -36,6 +36,16 @@
                      (vert
                       (sexp (bookmark-jump "desktop"))
                       (sexp (bookmark-jump "ba-server"))))))
+
+  (defun ivy-insert-action (x)
+    "Insert X at point."
+    (with-ivy-window
+      (insert x)))
+
+  (ivy-set-actions
+   t
+   '(("I" ivy-insert-action "insert")))
+
   :diminish ivy-mode)
 
 (use-package swiper                     ; Isearch with an overview
