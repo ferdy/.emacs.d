@@ -50,21 +50,29 @@ Return the new window for BUFFER."
         (,(rx "*magit: ")
          (mu-display-buffer-fullframe)
          (reusable-frames . nil))
-        ;; Put REPLs and error lists into the bottom side window
-        (,(rx bos (or "*Flycheck errors*" ; Flycheck error list
-                      "*compilation"      ; Compilation buffers
-                      "*Warnings*"        ; Emacs warnings
-                      "*Help*"            ; Help window
-                      "*shell"            ; Shell window
-                      "*cider-repl"       ; CIDER buffers
+        ;; REPLs in the right side window
+        (,(rx bos (or "*cider-repl"       ; CIDER buffers
                       "*sly-mrepl"        ; Sly REPL
                       "*SQL"              ; SQL REPL
                       ))
          (display-buffer-reuse-window
           display-buffer-in-side-window)
-         (side            . bottom)
+         (side . right)
          (reusable-frames . visible)
-         (window-height   . 0.33))
+         (window-width . 0.5))
+        ;; Messages, errors and Calendar in the bottom side window
+        (,(rx bos (or "*Help"             ; Help buffers
+                      "*Warnings*"        ; Emacs warnings
+                      "*compilation"      ; Compilation buffers
+                      "*Flycheck errors*" ; Flycheck error list
+                      "*shell"            ; Shell window
+                      "*Calendar"         ; Calendar window
+                      ))
+         (display-buffer-reuse-window
+          display-buffer-in-side-window)
+         (side . bottom)
+         (reusable-frames . visible)
+         (window-height . 0.33))
         ;; Let `display-buffer' reuse visible frames for all buffers.  This must
         ;; be the last entry in `display-buffer-alist', because it overrides any
         ;; later entry with more specific actions.

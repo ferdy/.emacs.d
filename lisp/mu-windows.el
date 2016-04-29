@@ -80,22 +80,24 @@
 
 ;;; Utilities and keybindings
 ;;;###autoload
-(defun mu-quit-bottom-side-windows ()
-  "Quit side windows of the current frame."
-  (interactive)
-  (dolist (window (window-at-side-list nil 'bottom))
+(defun mu--quit-side-windows (pos)
+  "Quit windows on the POS side of the current frame."
+  (dolist (window (window-at-side-list nil pos))
     (when (window-live-p window)
       (quit-window nil window)
       ;; When the window is still live, delete it
       (when (window-live-p window)
         (delete-window window)))))
 
-;;;###autoload
-(defun mu-switch-to-minibuffer-window ()
-  "Switch to current minibuffer window (if active)."
+(defun mu-quit-bottom-side-windows ()
+  "Quit bottom side windows."
   (interactive)
-  (when (active-minibuffer-window)
-    (select-window (active-minibuffer-window))))
+  (mu--quit-side-windows 'bottom))
+
+(defun mu-quit-right-side-windows ()
+  "Quit right side windows."
+  (interactive)
+  (mu--quit-side-windows 'right))
 
 ;;;###autoload
 (defun mu-toggle-current-window-dedication ()
@@ -108,9 +110,9 @@
              (if dedicated "no longer " "")
              (buffer-name))))
 
-(bind-key "C-c w q" #'mu-quit-bottom-side-windows)
+(bind-key "C-c w b" #'mu-quit-bottom-side-windows)
+(bind-key "C-c w r" #'mu-quit-right-side-windows)
 (bind-key "C-c w d" #'mu-toggle-current-window-dedication)
-(bind-key "C-c w b" #'mu-switch-to-minibuffer-window)
 
 ;; Better shrink/enlarge windows
 (bind-keys*
