@@ -63,6 +63,7 @@
   ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
+  ;; Do not underline Org dates
   (custom-set-faces
    '(org-date ((((class color)) (:underline nil))) t))
 
