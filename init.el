@@ -25,8 +25,7 @@
 
 ;;; Commentary:
 
-;; This file sets up packages, environment, custom file and personal details.
-;; It also loads the different configuration files I have in ~/.emacs.d/lisp.
+;; This is the GNU Emacs configuration of Manuel Uberti.
 
 ;;; Code:
 
