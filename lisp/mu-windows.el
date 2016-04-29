@@ -79,7 +79,6 @@
          ("C-c w <down>"  . windmove-down)))
 
 ;;; Utilities and keybindings
-;;;###autoload
 (defun mu--quit-side-windows (pos)
   "Quit windows on the POS side of the current frame."
   (dolist (window (window-at-side-list nil pos))
@@ -89,11 +88,13 @@
       (when (window-live-p window)
         (delete-window window)))))
 
+;;;###autoload
 (defun mu-quit-bottom-side-windows ()
   "Quit bottom side windows."
   (interactive)
   (mu--quit-side-windows 'bottom))
 
+;;;###autoload
 (defun mu-quit-right-side-windows ()
   "Quit right side windows."
   (interactive)
