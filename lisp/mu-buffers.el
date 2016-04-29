@@ -51,7 +51,7 @@ Return the new window for BUFFER."
          (mu-display-buffer-fullframe)
          (reusable-frames . nil))
         ;; REPLs in the right side window
-        (,(rx bos (or "*cider-repl"       ; CIDER buffers
+        (,(rx bos (or "*cider-repl"       ; CIDER REPL
                       "*sly-mrepl"        ; Sly REPL
                       "*SQL"              ; SQL REPL
                       ))
@@ -152,16 +152,6 @@ Add this to `kill-buffer-query-functions'."
           #'mu-do-not-kill-important-buffers)
 
 (bind-key "C-x C-k" 'kill-this-buffer)  ; Kill only the current buffer
-
-;;;###autoload
-(defun scratch-clear ()
-  "Clear *scratch* buffer."
-  (interactive)
-  (with-current-buffer "*scratch*"
-    (if (string= "*scratch*" (buffer-name))
-        (erase-buffer))))
-
-(bind-key "C-c C-l" #'scratch-clear lisp-interaction-mode-map)
 
 (provide 'mu-buffers)
 
