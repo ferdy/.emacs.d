@@ -60,16 +60,11 @@
           (org-back-to-heading)
           (org-update-parent-todo-statistics)))))
 
-  (defadvice org-kill-line (after fix-cookies activate)
-    "Update parent node."
-    (mu-org-update-parent))
-
-  (defadvice kill-whole-line (after fix-cookies activate)
-    "Update parent node."
-    (mu-org-update-parent))
-
   ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
+
+  (custom-set-faces
+   '(org-date ((((class color)) (:underline nil))) t))
 
   ;; Define TODO workflow states
   (setq org-todo-keywords
