@@ -200,12 +200,12 @@ mouse-3: go to end"))))
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
   :init
-  (sml/setup)
-
   (setq sml/theme nil
         sml/mode-width 'full
         sml/name-width 30
         sml/no-confirm-load-theme t)
+
+  (sml/setup)
 
   (setq-default mode-line-end-spaces
                 (append mode-line-end-spaces
