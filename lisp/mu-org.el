@@ -63,10 +63,6 @@
   ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
-  ;; Do not underline Org dates
-  (custom-set-faces
-   '(org-date ((((class color)) (:underline nil))) t))
-
   ;; Define TODO workflow states
   (setq org-todo-keywords
         '("TODO(t)" "WAITING(w)" "INFO(i)"
