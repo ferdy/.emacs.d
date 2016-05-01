@@ -63,7 +63,7 @@
   (setq counsel-mode-override-describe-bindings t)
   (counsel-mode 1)
   :bind (("C-s"   . counsel-grep-or-swiper)
-         ("C-h S" . counsel-info-lookup-symbol)
+         ("C-r"   . counsel-grep-or-swiper)
          ("C-c u" . counsel-unicode-char)
          ("C-c g" . counsel-git)
          ("C-c G" . counsel-git-grep)
