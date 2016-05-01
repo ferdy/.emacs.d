@@ -178,31 +178,12 @@ symbols, greek letters, as well as fall backs for."
   (load-theme 'solarized-light 'no-confirm))
 
 ;;; Mode line
-(use-package which-func                 ; Current function name
-  :init (which-func-mode)
-  :config
-  (defun mu-which-func-current ()
-    "Get current function name and set it to max 20 characters width."
-    (if-let (current (or (gethash (selected-window) which-func-table)))
-        (truncate-string-to-width current 20 nil nil "…")
-      which-func-unknown))
-
-  (setq which-func-unknown "⊥"
-        which-func-format
-        `((:propertize (" ➤ " (:eval (mu-which-func-current)))
-                       local-map ,which-func-keymap
-                       face which-func
-                       mouse-face mode-line-highlight
-                       help-echo "mouse-1: go to beginning\n\
-mouse-2: toggle rest visibility\n\
-mouse-3: go to end"))))
-
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
   :init
   (setq sml/theme nil
         sml/mode-width 'full
-        sml/name-width 30
+        sml/name-width 40
         sml/no-confirm-load-theme t)
 
   (sml/setup)
