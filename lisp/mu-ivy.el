@@ -45,7 +45,6 @@
   (ivy-set-actions
    t
    '(("I" ivy-insert-action "insert")))
-
   :diminish ivy-mode)
 
 (use-package swiper                     ; Isearch with an overview
