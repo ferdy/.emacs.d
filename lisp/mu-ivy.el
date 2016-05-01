@@ -77,9 +77,9 @@
   (setq counsel-find-file-at-point t
         counsel-find-file-ignore-regexp
         (concat
-         ;; file names beginning with # or .
+         ;; File names beginning with # or .
          "\\(?:\\`[#.]\\)"
-         ;; file names ending with # or ~
+         ;; File names ending with # or ~
          "\\|\\(?:\\`.+?[#~]\\'\\)"))
   :diminish counsel-mode)
 
