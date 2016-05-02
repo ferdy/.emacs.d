@@ -183,7 +183,6 @@ symbols, greek letters, as well as fall backs for."
   :init
   (setq sml/theme nil
         sml/mode-width 'full
-        sml/name-width 40
         sml/no-confirm-load-theme t)
 
   (sml/setup)
