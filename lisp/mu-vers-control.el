@@ -115,6 +115,8 @@
 
 (use-package magit-gh-pulls             ; Show Github PRs in Magit
   :ensure t
+  ;; Disabling it, see https://github.com/sigma/magit-gh-pulls/issues/90
+  :disabled t
   :defer t
   :init (add-hook 'magit-mode-hook #'turn-on-magit-gh-pulls))
 
