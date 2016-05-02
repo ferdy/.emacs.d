@@ -187,10 +187,6 @@ symbols, greek letters, as well as fall backs for."
         sml/no-confirm-load-theme t)
 
   (sml/setup)
-
-  (setq-default mode-line-end-spaces
-                (append mode-line-end-spaces
-                        '(:eval "%I ")))
   :config
   ;; More abbreviations
   (add-to-list 'sml/replacer-regexp-list
