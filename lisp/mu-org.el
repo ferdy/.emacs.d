@@ -52,14 +52,6 @@
   ;; Use visual-line-mode
   (add-hook 'org-mode-hook #'visual-line-mode)
 
-  (defun mu-org-update-parent ()
-    "Update parent nodes when child is removed."
-    (when (equal major-mode 'org-mode)
-      (save-excursion
-        (ignore-errors
-          (org-back-to-heading)
-          (org-update-parent-todo-statistics)))))
-
   ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
@@ -72,9 +64,7 @@
   (setq org-agenda-custom-commands
         '(("P" "Personal Projects" ((Tags "PERSONAL")))
           ("B" "Boccaperta" ((agenda)
-                             (tags-todo "BOCCAPERTA")))
-          ("F" "FAV" ((agenda)
-                      (tags-todo "FAV")))))
+                             (tags-todo "BOCCAPERTA")))))
 
   (setq org-latex-pdf-process         ; Use LuaTex for PDF export
         "latexmk -pdflatex='lualatex -shell-escape
