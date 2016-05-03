@@ -67,6 +67,7 @@
           ("https://www.hongkongfp.com/feed/" press)
           ("http://www.avclub.com/feed/rss/?tags=film" film)
           ("https://asianfilmstrike.wordpress.com/feed/" film)
+          ("http://www.easternkicks.com/feed" film)
           ("https://cinebeats.wordpress.com/feed/" film)
           ("http://girishshambu.blogspot.it/feeds/posts/default?alt=rss"
            film)
