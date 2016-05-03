@@ -66,9 +66,7 @@
           ("https://freedom.press/blog/feed" press)
           ("https://www.hongkongfp.com/feed/" press)
           ("http://www.avclub.com/feed/rss/?tags=film" film)
-          ("http://www.slantmagazine.com/rss?tag=film" film)
-          ("http://sensesofcinema.com/feed/" film)
-          ("https://mubi.com/notebook/posts.atom" film)
+          ("https://asianfilmstrike.wordpress.com/feed/" film)
           ("https://cinebeats.wordpress.com/feed/" film)
           ("http://girishshambu.blogspot.it/feeds/posts/default?alt=rss"
            film)
