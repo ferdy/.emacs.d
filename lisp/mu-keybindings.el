@@ -97,6 +97,13 @@
   (which-key-declare-prefixes-for-mode 'js2-mode
     "C-c m"   "js/personal"
     "C-c m r" "refactor")
+
+  (which-key-declare-prefixes-for-mode 'web-mode
+    "C-c C-a" "web/attributes"
+    "C-c C-b" "web/blocks"
+    "C-c C-d" "web/dom"
+    "C-c C-e" "web/element"
+    "C-c C-t" "web/tags")
   :diminish which-key-mode)
 
 (use-package hydra                      ; Make bindings that stick
