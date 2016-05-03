@@ -16,7 +16,9 @@
       ;; Move to beg/end of buffer before signalling an error
       scroll-error-top-bottom t
       ;; Ensure M-v always undoes C-v
-      scroll-preserve-screen-position 'always)
+      scroll-preserve-screen-position 'always
+      ;; Recenter starting from top
+      recenter-positions '(top middle bottom))
 
 (use-package bookmark                   ; Bookmarks to files and directories
   :bind
