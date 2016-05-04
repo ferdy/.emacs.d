@@ -156,6 +156,9 @@ symbols, greek letters, as well as fall backs for."
   ;; headers, etc.
   :init (add-hook 'Info-selection-hook #'niceify-info))
 
+;; Underline below the font bottomline instead of the baseline
+(setq x-underline-at-descent-line t)
+
 ;;; Theme
 (setq custom-safe-themes t)             ; Treat themes as safe
 
@@ -166,8 +169,6 @@ symbols, greek letters, as well as fall backs for."
         solarized-distinct-doc-face t     ; Make doc faces stand out more
         solarized-use-more-italic t       ; Use italic more often
         solarized-use-less-bold t         ; Less bold, italic is enough
-        ;; Underline below the font bottomline instead of the baseline
-        x-underline-at-descent-line t
         ;; Avoid all font-size changes
         solarized-height-minus-1 1.0
         solarized-height-plus-1 1.0
