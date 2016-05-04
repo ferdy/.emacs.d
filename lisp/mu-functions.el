@@ -123,9 +123,6 @@ Examples:
     (with-temp-buffer
       (shell-command ton t))))
 
-
-
-
 (provide 'mu-functions)
 
 ;;; mu-functions.el ends here
