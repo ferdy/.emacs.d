@@ -6,10 +6,13 @@ This is the Emacs configuration I use everyday.
 - I use Emacs on [Debian Jessie](https://www.debian.org) (amd64), so this
 configuration targets **Debian-based** systems
 
-- the `esetup` script helps to create the required environment and it must be
+- The `esetup` script helps to create the required environment and it must be
 run *before* starting Emacs for the first time
 
-- this configuration requires an Emacs version built from development sources
+- This configuration requires an Emacs version built from development
+  sources – see [Setup](https://github.com/manuel-uberti/.emacs.d#setup)
+
+- I use Emacs for programming (Clojure, Elisp) and writing (Org, LaTeX)
 
 ##Setup
 On your **Debian-based** machine:
