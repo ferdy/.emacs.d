@@ -90,6 +90,42 @@ With negative argument, convert previous words."
           (goto-char beg)
           (insert (mu--string-to-acronym str)))))))
 
+;;;###autoload
+(defun mu-touchpad-off ()
+  "Disable touchpad using an external shell script.
+
+It needs https://github.com/manuel-uberti/scripts/blob/master/touchpad-off
+in `exec-path'.
+
+Examples:
+(add-hook 'focus-in-hook #'mu-touchpad-off)"
+  (interactive)
+  (let ((toff (executable-find "touchpad-off")))
+    (unless toff
+      (user-error "Shell script touchpad-off not found"))
+    (with-temp-buffer
+      (shell-command toff t))))
+
+;;;###autoload
+(defun mu-touchpad-on ()
+  "Enable touchpad using an external shell script.
+
+It needs https://github.com/manuel-uberti/scripts/blob/master/touchpad-on
+in `exec-path'.
+
+Examples:
+(add-hook 'focus-out-hook #'mu-touchpad-on)
+(add-hook 'delete-frame-functions #'mu-touchpad-on)"
+  (interactive)
+  (let ((ton (executable-find "touchpad-on")))
+    (unless ton
+      (user-error "Shell script touchpad-on not found"))
+    (with-temp-buffer
+      (shell-command ton t))))
+
+
+
+
 (provide 'mu-functions)
 
 ;;; mu-functions.el ends here
