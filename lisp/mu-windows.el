@@ -55,7 +55,12 @@
   :config
   (setq aw-keys                 ; Use home row
         '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
-        aw-dispatch-always t))
+        aw-dispatch-always t)
+
+  ;; Make leading char more visible
+  (custom-set-faces
+   '(aw-leading-char-face
+     ((t (:foreground "red" :weight normal :height 1.5))))))
 
 (use-package ediff-wind                 ; Ediff window management
   :defer t
