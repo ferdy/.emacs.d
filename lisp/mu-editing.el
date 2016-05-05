@@ -303,9 +303,9 @@ prefix argument."
 (bind-key "C-x C-d" 'duplicate-line)    ; Duplicate line at point
 
 ;; Join line with the next one
-(bind-key "C-j" '(lambda ()
-                   (interactive)
-                   (join-line -1)))
+(bind-key "C-j" (lambda ()
+                  (interactive)
+                  (join-line -1)))
 
 ;;;###autoload
 (defun flush-kill-lines (regex)

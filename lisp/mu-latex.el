@@ -45,7 +45,7 @@
 
   ;; Tell Emacs how to parse TeX files
   (add-hook 'tex-mode-hook
-            #'(lambda () (setq ispell-parser 'tex)))
+            (lambda () (setq ispell-parser 'tex)))
 
   ;; Use pdf-tools to open PDF files
   (setq TeX-view-program-selection '((output-pdf "PDF Tools"))

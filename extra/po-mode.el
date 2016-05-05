@@ -2277,8 +2277,8 @@ comments) from the current entry, if the user gives the permission."
   (exit-recursive-edit))
 
 (add-hook 'ediff-keymap-setup-hook
-          '(lambda ()
-             (define-key ediff-mode-map "Q" 'po-ediff-quit)))
+          (lambda ()
+            (define-key ediff-mode-map "Q" 'po-ediff-quit)))
 
 (defun po-ediff-buffers-exit-recursive (b1 b2 oldbuf end)
   "Ediff buffer B1 and B2, pop back to OLDBUF and replace the old variants.
