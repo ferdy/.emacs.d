@@ -25,7 +25,7 @@ dostep() {
 
 prerequisites() {
     dostep 1 "y" "apt-get -y install --no-install-recommends make gcc automake autoconf"
-    dostep 2 "y" "apt-get -y install --no-install-recommends g++ git"
+    dostep 2 "y" "apt-get -y install --no-install-recommends g++ git curl"
     dostep 3 "y" "apt-get -y install --no-install-recommends gnupg"
 }
 
@@ -68,6 +68,15 @@ clojure_setup() {
     dostep 3 "n" "wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O $HOME/bin/lein"
     dostep 4 "n" "chmod 755 $HOME/bin/lein"
     dostep 5 "n" "lein"
+}
+
+python_setup() {
+    dostep 1 "y" "apt-get -y install --no-install-recommends python2.7 ipython"
+}
+
+rust_setup() {
+    dostep 1 "n" "curl -sSf https://static.rust-lang.org/rustup.sh | sh"
+    dostep 2 "n" "cargo install racer"
 }
 
 latex_setup() {
@@ -137,8 +146,7 @@ font_setup() {
 }
 
 cask_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends python2.7"
-    dostep 2 "n" "curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python"
+    dostep 1 "n" "curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python"
 }
 
 shellcheck_setup() {
@@ -162,6 +170,14 @@ announce SCHEME
 scheme_setup
 announce COMMONLISP
 commonlisp_setup
+announce PYTHON
+python_setup
+announce RUST
+rust_setup
+announce CASK
+cask_setup
+announce SHELLCHECK
+shellcheck_setup
 announce LaTeX
 latex_setup
 announce PANDOC
@@ -176,10 +192,6 @@ announce LANGTOOL
 langtool_setup
 announce FONT
 font_setup
-announce CASK
-cask_setup
-announce SHELLCHECK
-shellcheck_setup
 
 echo
 echo "environment ready, now fire up Emacs!"
