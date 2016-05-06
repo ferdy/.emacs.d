@@ -95,6 +95,9 @@
     "C-c m"   "clj/personal"
     "C-c m r" "clj-refactor")
 
+  (which-key-declare-prefixes-for-mode 'rust-mode
+    "C-c C-c" "rust/cargo")
+
   (which-key-declare-prefixes-for-mode 'js2-mode
     "C-c m"   "js/personal"
     "C-c m r" "refactor")
