@@ -73,6 +73,12 @@ most errors from HTML Tidy."
   :after flycheck
   :init (flycheck-clojure-setup))
 
+(use-package flycheck-rust              ; Flycheck setup for Rust
+  :ensure t
+  :defer t
+  :after rust-mode
+  :init (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
 (provide 'mu-flycheck)
 
 ;;; mu-flycheck.el ends here
