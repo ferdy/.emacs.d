@@ -25,11 +25,6 @@
          ("C-c v g" . magit-blame)
          ("C-c v l" . magit-log-buffer-file)
          ("C-c v p" . magit-pull))
-  :init
-  ;; Aggressively commit to WIP refs on any change
-  (magit-wip-after-save-mode)
-  (magit-wip-after-apply-mode)
-  (magit-wip-before-change-mode)
   :config
   ;; Be quiet
   (setq magit-save-repository-buffers 'dontask
@@ -74,18 +69,6 @@
   (add-hook 'after-save-hook 'magit-after-save-refresh-status)
   :diminish (magit-wip-after-save-local-mode
              magit-wip-before-change-mode))
-
-(use-package magit-rockstar             ; Extra functions for Magit
-  :ensure t
-  :init
-  (magit-define-popup-action 'magit-rebase-popup
-    ?R "Rockstar" 'magit-rockstar)
-  (magit-define-popup-action 'magit-commit-popup
-    ?n "Reshelve" 'magit-reshelve)
-  (magit-define-popup-action 'magit-branch-popup
-    ?R "Toggle rebasing" 'magit-branch-toggle-rebase)
-  (magit-define-popup-action 'magit-fetch-popup
-    ?p "Pull request" 'magit-branch-pull-request))
 
 (use-package git-commit                 ; Git commit message mode
   :ensure t
