@@ -215,6 +215,51 @@
   :ensure t
   :defer t)
 
+;;; Python
+(use-package python                     ; Python editing
+  :defer t
+  :config
+  ;; PEP 8 compliant filling rules, 79 chars maximum
+  (add-hook 'python-mode-hook (lambda () (setq fill-column 79)))
+  (add-hook 'python-mode-hook #'subword-mode)
+
+  (let ((ipython (executable-find "ipython")))
+    (if ipython
+        (setq python-shell-interpreter ipython)
+      (warn "IPython is missing, falling back to default python"))))
+
+(use-package anaconda-mode              ; Powerful Python backend for Emacs
+  :ensure t
+  :defer t
+  :after python
+  :init (add-hook 'python-mode-hook #'anaconda-mode))
+
+(use-package pip-requirements           ; requirements.txt files
+  :ensure t
+  :defer t)
+
+;;; Rust
+(use-package rust-mode                  ; Rust major mode
+  :ensure t
+  :defer t)
+
+(use-package cargo                      ; Control Cargo
+  :ensure t
+  :bind (:map rust-mode-map ("<f6>" . cargo-process-build))
+  :after rust-mode
+  :init (add-hook 'rust-mode-hook #'cargo-minor-mode))
+
+(use-package toml-mode                  ; Toml for Cargo files
+  :ensure t
+  :defer t)
+
+(use-package racer                      ; Rust completion
+  :ensure t
+  :after rust-mode
+  :config
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'racer-mode-hook #'eldoc-mode))
+
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
   :bind (("C-c d s" . sql-connect)
