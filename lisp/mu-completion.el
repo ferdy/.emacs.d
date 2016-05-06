@@ -133,6 +133,12 @@ _e_: extra   _l_: list        _n_: new
   :after company
   :init (add-to-list 'company-backends 'company-shell))
 
+(use-package company-anaconda           ; Python backend for Company
+  :ensure t
+  :defer t
+  :after company
+  :init (add-to-list 'company-backends 'company-anaconda))
+
 (provide 'mu-completion)
 
 ;;; mu-completion.el ends here
