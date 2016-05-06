@@ -80,7 +80,7 @@ rust_setup() {
 }
 
 latex_setup() {
-    dostep 1 "n" "cd ~/Downloads"
+    dostep 1 "n" "cd ~/Downloads/"
     dostep 2 "n" "mv -f install-tl-unx.tar.gz /tmp"
     dostep 3 "n" "wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
     dostep 4 "n" "tar -xzf install-tl-unx.tar.gz"
