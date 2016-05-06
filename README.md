@@ -27,7 +27,7 @@ $ cd emacs
 $ sudo apt-get build-dep emacs24
 $ ./autogen.sh
 $ ./autogen.sh git
-$ ./configure
+$ ./configure --host=x86_64-debian-linux-gnu
 $ make
 $ sudo make install
 $ make clean
