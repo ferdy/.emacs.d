@@ -49,10 +49,7 @@
               (flyspell-buffer)))
 
   ;; Free C-M-i for completion
-  (unbind-key "M-t" flyspell-mode-map)
-
-  ;; Free C-c $, it is bound to `flyspell-correct-word-generic'
-  (unbind-key "C-c $" flyspell-mode-map))
+  (unbind-key "M-t" flyspell-mode-map))
 
 (use-package flyspell-correct           ; Better interface for corrections
   :ensure t
