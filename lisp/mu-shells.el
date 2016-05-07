@@ -29,15 +29,12 @@
     (let ((inhibit-read-only t))
       (erase-buffer)))
 
-  (add-hook 'eshell-mode-hook
-            (lambda ()
-              (bind-key "C-c C-l" #'counsel-esh-history
-                        eshell-mode-map)))
-
-  (defadvice eshell-gather-process-output
-      (before absolute-cmd (command args) act)
-    "Run scrips from current working on remote system."
-    (setq command (file-truename command)))
+  (add-hook
+   'eshell-mode-hook
+   (lambda ()
+     (bind-keys :map eshell-mode-map
+                ("C-c C-l"                . counsel-esh-history)
+                ([remap eshell-pcomplete] . completion-at-point))))
 
   ;; Use system su/sudo
   (with-eval-after-load "em-unix"
