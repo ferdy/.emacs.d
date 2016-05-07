@@ -14,10 +14,13 @@
 (use-package yasnippet                  ; Snippets
   :ensure t
   :bind ("C-c y" . mu-yasnippet/body)
-  :init (yas-global-mode)
   :config
   (setq yas-verbosity 1         ; No need to be so verbose
         yas-wrap-around-region t)
+
+  (yas-reload-all)
+  (add-hook 'text-mode-hook #'yas-minor-mode)
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
 
   (defhydra mu-yasnippet (:hint nil)
     "
