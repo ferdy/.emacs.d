@@ -147,17 +147,12 @@ symbols, greek letters, as well as fall backs for."
 
   (add-hook 'compilation-filter-hook #'mu-colorize-compilation))
 
-(use-package niceify-info               ; Prettify Info rendering
-  :ensure t
-  :defer t
-  :after info
-  ;; Adds emphasis to text between * and _, tries to fontify Emacs Lisp code,
-  ;; tries to cross-reference symbol names in backticks, tries to fontify
-  ;; headers, etc.
-  :init (add-hook 'Info-selection-hook #'niceify-info))
-
 ;; Underline below the font bottomline instead of the baseline
 (setq x-underline-at-descent-line t)
+
+(use-package stripe-buffer              ; Add stripes to a buffer
+  :ensure t
+  :init (add-hook 'dired-mode-hook #'stripe-buffer-mode))
 
 ;;; Theme
 (setq custom-safe-themes t)             ; Treat themes as safe
