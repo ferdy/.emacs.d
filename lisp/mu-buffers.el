@@ -59,6 +59,7 @@ Return the new window for BUFFER."
                       "*Calendar"         ; Calendar window
                       "*cider-repl"       ; CIDER REPL
                       "*sly-mrepl"        ; Sly REPL
+                      "*ielm"             ; IELM REPL
                       "*SQL"              ; SQL REPL
                       ))
          (display-buffer-reuse-window
