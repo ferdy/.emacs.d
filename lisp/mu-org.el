@@ -95,7 +95,10 @@
     (interactive)
     (let* ((follow org-return-follows-link)
            (org-return-follows-link (and follow (not (or (bolp) (eolp))))))
-      (org-return))))
+      (org-return)))
+
+  ;; Free C-c $ (see: mu-languages.el)
+  (unbind-key "C-c $" org-mode-map))
 
 (use-package org-indent ; Dynamic indentation for Org-mode
   :ensure org
