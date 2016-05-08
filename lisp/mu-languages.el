@@ -48,7 +48,7 @@
               (ispell-change-dictionary "british")
               (flyspell-buffer)))
 
-  ;; Free C-M-i for completion
+  ;; Free M-t for transpose words
   (unbind-key "M-t" flyspell-mode-map))
 
 (use-package flyspell-correct           ; Better interface for corrections
