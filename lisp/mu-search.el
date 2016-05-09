@@ -51,11 +51,6 @@
   :bind (("C-c s r" . vr/query-replace)
          ("C-c s R" . vr/replace)))
 
-(use-package replace-pairs              ; Query-replace pairs of things
-  :ensure t
-  :bind (("C-c s q" . query-replace-pairs)
-         ("C-c s p" . replace-pairs)))
-
 (provide 'mu-search)
 
 ;;; mu-search.el ends here
