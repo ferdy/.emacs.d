@@ -45,6 +45,13 @@
   :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
   :diminish elisp-slime-nav-mode)
 
+(use-package el-search                  ; pcase-based search for elisp
+  :ensure t
+  :after elisp-mode
+  :bind (:map emacs-lisp-mode-map
+              ("C-c m s" . el-search-pattern)
+              ("C-c m r" . el-search-query-replace)))
+
 (use-package ert                        ; Elisp Regression Test
   :defer t
   :after elisp-mode)
