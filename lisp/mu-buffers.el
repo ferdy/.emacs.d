@@ -61,6 +61,8 @@ Return the new window for BUFFER."
                       "*sly-mrepl"        ; Sly REPL
                       "*ielm"             ; IELM REPL
                       "*SQL"              ; SQL REPL
+                      "*Cargo"            ; Cargo process buffers
+                      (and (1+ nonl) " output*") ; AUCTeX command output
                       ))
          (display-buffer-reuse-window
           display-buffer-in-side-window)
