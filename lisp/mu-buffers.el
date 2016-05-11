@@ -76,8 +76,10 @@ Return the new window for BUFFER."
 
 (use-package uniquify                   ; Unique buffer names
   :config
-  (setq uniquify-buffer-name-style
-        'post-forward uniquify-separator ":"))
+  (setq uniquify-buffer-name-style 'post-forward
+        uniquify-separator ":"
+        ;; Ignore special buffers
+        uniquify-ignore-buffers-re "^\\*"))
 
 (use-package ibuffer                    ; Buffer management
   :bind (([remap list-buffers] . ibuffer)
