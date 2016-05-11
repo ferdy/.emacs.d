@@ -37,7 +37,7 @@ $ make clean
 $ cd
 $ git clone https://github.com/manuel-uberti/.emacs.d
 ```
-- run ```esetup```:
+- put the kettle on and run ```esetup```:
 ```console
 $ cd .emacs.d
 $ chmod +x esetup
