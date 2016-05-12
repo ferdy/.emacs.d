@@ -65,9 +65,6 @@
 (require 'subr-x)
 (require 'time-date)
 
-(use-package validate                   ; Validation for Emacs Lisp
-  :ensure t)
-
 ;;; Initialization
 (when (version< emacs-version "25")
   (warn "This configuration needs Emacs trunk, but this is %s!" emacs-version))
@@ -90,7 +87,7 @@
   (when (string-match-p "/zsh$" (getenv "SHELL"))
     ;; Use a non-interactive login shell.  A login shell, because my
     ;; environment variables are mostly set in `.zprofile'.
-    (validate-setq exec-path-from-shell-arguments '("-l")))
+    (setq exec-path-from-shell-arguments '("-l")))
 
   (dolist (var '("EMAIL" "INFOPATH" "JAVA_OPTS"))
     (add-to-list 'exec-path-from-shell-variables var))
@@ -159,7 +156,7 @@
 (use-package mu-dired :defer 2)
 (use-package mu-completion :defer 3)
 (use-package mu-languages)
-(use-package mu-latex)
+(use-package mu-latex :defer 2)
 (use-package mu-project)
 (use-package mu-vers-control :defer 3)
 (use-package mu-net)
