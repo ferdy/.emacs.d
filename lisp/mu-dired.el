@@ -86,8 +86,8 @@
 
 ;;;###autoload
 (defun mu-open-in-external-app ()
-  "Open the file where point is or the marked files in Dired in external
-app. The app is chosen from your OS's preference."
+  "Open the file where point is or the marked files in external app.
+The app is chosen from your OS's preference."
   (interactive)
   (let* ((file-list
           (dired-get-marked-files)))
@@ -145,7 +145,7 @@ app. The app is chosen from your OS's preference."
 
 ;;;###autoload
 (defun mu-dired-rsync (dest)
-  "Copy files with `rysnc'."
+  "Copy files with `rysnc' to DEST."
   (interactive
    (list
     (expand-file-name

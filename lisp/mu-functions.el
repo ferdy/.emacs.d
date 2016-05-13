@@ -98,7 +98,7 @@ It needs https://github.com/manuel-uberti/scripts/blob/master/touchpad-off
 in `exec-path'.
 
 Examples:
-(add-hook 'focus-in-hook #'mu-touchpad-off)"
+\(add-hook 'focus-in-hook #'mu-touchpad-off)"
   (interactive)
   (let ((toff (executable-find "touchpad-off")))
     (unless toff
@@ -114,8 +114,8 @@ It needs https://github.com/manuel-uberti/scripts/blob/master/touchpad-on
 in `exec-path'.
 
 Examples:
-(add-hook 'focus-out-hook #'mu-touchpad-on)
-(add-hook 'delete-frame-functions #'mu-touchpad-on)"
+\(add-hook 'focus-out-hook #'mu-touchpad-on)
+\(add-hook 'delete-frame-functions #'mu-touchpad-on)"
   (interactive)
   (let ((ton (executable-find "touchpad-on")))
     (unless ton

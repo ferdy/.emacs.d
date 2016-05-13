@@ -90,7 +90,7 @@ The file is the buffer's file name, or the `default-directory' in
 (defun mu-copy-filename-as-kill (&optional arg)
   "Copy the name of the currently visited file to kill ring.
 With a zero prefix arg, copy the absolute file name.  With
-\\[universal-argument], copy the file name relative to the
+\\[universal-argument] ARG, copy the file name relative to the
 current Projectile project, or to the current buffer's
 `default-directory', if the file is not part of any project.
 Otherwise copy the non-directory part only."

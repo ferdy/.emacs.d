@@ -323,7 +323,7 @@ region if active."
 
 ;;;###autoload
 (defun unfill-paragraph (&optional region)
-  "Turn a multi-line paragraph into a single line of text."
+  "Turn a multi-line paragraph or a REGION into a single line of text."
   (interactive (progn (barf-if-buffer-read-only) '(t)))
   (let ((fill-column (point-max)))
     (fill-paragraph nil region)))
@@ -332,7 +332,7 @@ region if active."
 
 ;;;###autoload
 (defun mu-align-repeat (start end regexp &optional justify-right after)
-  "Repeat alignment with respect to the given regular expression.
+  "Repeat alignment from START to END respecting the given REGEXP.
 If JUSTIFY-RIGHT is non nil justify to the right instead of the
 left.  If AFTER is non-nil, add whitespace to the left instead of
 the right."
@@ -345,7 +345,8 @@ the right."
 
 ;;;###autoload
 (defun mu-align-repeat-decimal (start end)
-  "Align a table of numbers on decimal points and dollar signs (both optional)."
+  "Align from START to END a table of numbers.
+Use decimal points and dollar signs (both optional)."
   (interactive "r")
   (require 'align)
   (align-region start end nil
@@ -387,7 +388,7 @@ the right."
 (bind-key "C-c x a )" #'mu-align-repeat-right-paren)
 
 (defun mu-align-whitespace (start end)
-  "Align columns by whitespace"
+  "Align columns from START to END by whitespace."
   (interactive "r")
   (align-regexp start end
                 "\\(\\s-*\\)\\s-" 1 0 t))
@@ -411,7 +412,7 @@ the right."
 ;;;###autoload
 (defun cleanup-buffer ()
   "Perform a bunch of operations on the whitespace content of a buffer.
-Including indent-buffer, which should not be called automatically on save."
+Including `indent-buffer', which should not be called automatically on save."
   (interactive)
   (untabify-buffer)
   (delete-trailing-whitespace)
@@ -434,7 +435,7 @@ Including indent-buffer, which should not be called automatically on save."
 (defun narrow-or-widen-dwim (p)
   "Widen if buffer is narrowed, narrow-dwim otherwise.
 Dwim means: region, org-src-block, org-subtree, or defun,
-whichever applies first. Narrowing to org-src-block actually
+whichever applies first.  Narrowing to org-src-block actually
 calls `org-edit-src-code'.
 
 With prefix P, don't widen, just narrow even if buffer is
@@ -465,7 +466,8 @@ already narrowed."
 (defun mu-smart-kill-whole-line (&optional arg)
   "Kill whole line and move back to indentation.
 Kill the whole line with function `kill-whole-line' and then move
-`back-to-indentation'."
+`back-to-indentation'.
+With prefix ARG, kill that many lines."
   (interactive "p")
   (kill-whole-line arg)
   (back-to-indentation))
