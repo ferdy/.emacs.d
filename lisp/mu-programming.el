@@ -260,13 +260,6 @@
   :ensure t
   :defer t)
 
-(use-package racer                      ; Rust completion
-  :ensure t
-  :after rust-mode
-  :config
-  (add-hook 'rust-mode-hook #'racer-mode)
-  (add-hook 'racer-mode-hook #'eldoc-mode))
-
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
   :bind (("C-c d s" . sql-connect)
