@@ -37,13 +37,6 @@
          ("C-c n j" . avy-goto-char-2)
          ("C-c n w" . avy-goto-word-1)))
 
-(use-package link-hint                  ; Link hinting with Avy
-  :ensure t
-  :bind (("C-c n l o" . link-hint-open-link-at-point)
-         ("C-c n l c" . link-hint-copy-link-at-point)
-         ("C-c n l a" . link-hint-open-link)
-         ("C-c n l w" . link-hint-copy-link)))
-
 (use-package outline                    ; Navigate outlines in buffers
   :defer t
   :init
