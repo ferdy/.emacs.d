@@ -12,15 +12,19 @@
 ;;; Code:
 
 ;;; Fonts setup
+;; Fonts used:
+;; - Source Code Pro (https://github.com/adobe-fonts/source-code-pro)
+;; - Fira Sans (https://github.com/mozilla/Fira/)
 (defun mu-setup-main-fonts (default-height variable-pitch-height)
   "Set up default fonts.
+
 Use DEFAULT-HEIGHT for default face and VARIABLE-PITCH-HEIGHT
 for variable-pitch face."
   (set-face-attribute 'default nil
-                      :family "DejaVu Sans Mono"
+                      :family "Source Code Pro"
                       :height default-height)
   (set-face-attribute 'variable-pitch nil
-                      :family "DejaVu Sans"
+                      :family "Fira Sans"
                       :height variable-pitch-height
                       :weight 'regular))
 
@@ -32,8 +36,9 @@ for variable-pitch face."
 
 (defun mu-configure-fonts (frame)
   "Set up fonts for FRAME.
-Set the default font, and configure various overrides for
-symbols, greek letters, as well as fall backs for."
+
+Configure various overrides for symbols, greek letters,
+as well as fall backs for."
   ;; Define a font set stack for symbols, greek and math characters
   (dolist (script '(symbol greek mathematical))
     (set-fontset-font t script (font-spec :family "Symbola")
