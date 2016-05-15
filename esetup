@@ -76,7 +76,7 @@ python_setup() {
 
 rust_setup() {
     dostep 1 "n" "curl -sSf https://static.rust-lang.org/rustup.sh | sh"
-    dostep 2 "n" "cargo install racer"
+    dostep 2 "n" "cargo install rustfmt"
 }
 
 latex_setup() {

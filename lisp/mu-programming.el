@@ -248,7 +248,7 @@
 ;;; Rust
 (use-package rust-mode                  ; Rust major mode
   :ensure t
-  :defer t)
+  :bind (:map rust-mode-map ("C-c <tab>" . rust-format-buffer)))
 
 (use-package cargo                      ; Control Cargo
   :ensure t
