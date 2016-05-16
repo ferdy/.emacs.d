@@ -276,6 +276,7 @@
     (stop-eclimd)
     (eclim-mode -1)
     (gradle-mode -1))
+
   (add-hook 'java-mode-hook 'eclim-mode))
 
 (use-package eclimd                     ; Start and stop eclimd
