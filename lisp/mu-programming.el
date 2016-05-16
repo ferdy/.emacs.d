@@ -260,18 +260,6 @@
   :ensure t
   :defer t)
 
-;;; Java
-(use-package gradle-mode                ; Gradle integration
-  :ensure t
-  :bind (:map gradle-mode-map
-              ("C-c C-r" . build-and-run))
-  :init (add-hook 'java-mode-hook (lambda() (gradle-mode 1)))
-  :config
-  (defun build-and-run ()
-    "Build and run project with Gradle."
-    (interactive)
-    (gradle-run "build run")))
-
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
   :bind (("C-c d s" . sql-connect)
