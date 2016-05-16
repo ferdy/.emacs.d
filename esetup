@@ -79,11 +79,6 @@ rust_setup() {
     dostep 2 "n" "cargo install rustfmt"
 }
 
-java_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends openjdk-7-jdk"
-    dostep 2 "y" "apt-get -y install --no-install-recommends eclipse"
-}
-
 latex_setup() {
     dostep 1 "n" "cd $HOME/Downloads"
     dostep 2 "n" "wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
@@ -178,8 +173,6 @@ announce PYTHON
 python_setup
 announce RUST
 rust_setup
-announce JAVA
-java_setup
 announce CASK
 cask_setup
 announce SHELLCHECK
