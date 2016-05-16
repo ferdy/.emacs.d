@@ -142,6 +142,10 @@ _e_: extra   _l_: list        _n_: new
   :after company
   :init (add-to-list 'company-backends 'company-anaconda))
 
+(use-package company-emacs-eclim        ; Setup Company for eclim
+  :after eclim
+  :init (company-emacs-eclim-setup))
+
 (provide 'mu-completion)
 
 ;;; mu-completion.el ends here

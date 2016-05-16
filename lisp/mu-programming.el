@@ -260,6 +260,38 @@
   :ensure t
   :defer t)
 
+;;; Java
+;; Requires eclim from http://eclim.org/install.html
+(use-package eclim                      ; Interface to the Eclipse IDE
+  :ensure emacs-eclim
+  :commands start-eclimd
+  :bind (:map eclim-mode-map
+              ("C-c C-c" . eclim-problems-correct)
+              ("C-c C-q" . quit-eclimd-and-gradle))
+  :init (setq eclim-executable "~/eclipse/eclim")
+  :config
+  (defun quit-eclimd-and-gradle ()
+    "Stop eclimd and gradle-mode."
+    (interactive)
+    (stop-eclimd)
+    (eclim-mode -1)
+    (gradle-mode -1))
+  (add-hook 'java-mode-hook 'eclim-mode))
+
+(use-package eclimd                     ; Start and stop eclimd
+  :after eclim)
+
+(use-package gradle-mode                ; Gradle integration
+  :ensure t
+  :bind (:map gradle-mode-map
+              ("C-c C-r" . build-and-run))
+  :init (add-hook 'java-mode-hook (lambda() (gradle-mode 1)))
+  :config
+  (defun build-and-run ()
+    "Build and run project with Gradle."
+    (interactive)
+    (gradle-run "build run")))
+
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
   :bind (("C-c d s" . sql-connect)
