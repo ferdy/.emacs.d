@@ -47,6 +47,10 @@
    '(("I" ivy-insert-action "insert")))
   :diminish ivy-mode)
 
+(use-package ivy-hydra                  ; Additional bindings for Ivy
+  :ensure t
+  :after ivy)
+
 (use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind (("C-c s s" . swiper-all)
