@@ -253,6 +253,7 @@ _C-s_: mark region
 ;; Kill entire line with prefix argument
 (defmacro bol-with-prefix (function)
   "Define a new function which calls FUNCTION.
+
 Except it moves to beginning of line before calling FUNCTION when
 called with a prefix argument.  The FUNCTION still receives the
 prefix argument."

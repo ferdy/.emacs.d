@@ -123,6 +123,7 @@
 ;; with an Italian keyboard layout
 (defun mu-insert-pair (pair)
   "Insert PAIR.
+
 If PAIR is an opening pair, the closing pair will be inserted as well."
   (insert pair)
   (sp-insert-pair))

@@ -87,6 +87,7 @@
 ;;;###autoload
 (defun mu-open-in-external-app ()
   "Open the file where point is or the marked files in external app.
+
 The app is chosen from your OS's preference."
   (interactive)
   (let* ((file-list

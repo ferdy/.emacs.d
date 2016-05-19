@@ -80,6 +80,7 @@
 ;;; Utilities and keybindings
 (defun mu-current-file ()
   "Gets the \"file\" of the current buffer.
+
 The file is the buffer's file name, or the `default-directory' in
 `dired-mode'."
   (if (derived-mode-p 'dired-mode)
@@ -89,6 +90,7 @@ The file is the buffer's file name, or the `default-directory' in
 ;;;###autoload
 (defun mu-copy-filename-as-kill (&optional arg)
   "Copy the name of the currently visited file to kill ring.
+
 With a zero prefix arg, copy the absolute file name.  With
 \\[universal-argument] ARG, copy the file name relative to the
 current Projectile project, or to the current buffer's

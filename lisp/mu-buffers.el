@@ -36,8 +36,8 @@
 
 (defun mu-display-buffer-fullframe (buffer alist)
   "Display BUFFER in fullscreen.
-ALIST is a `display-buffer' ALIST.
-Return the new window for BUFFER."
+
+ALIST is a `display-buffer' ALIST. Return the new window for BUFFER."
   (let ((window (display-buffer-pop-up-window buffer alist)))
     (when window
       (delete-other-windows window))
@@ -138,6 +138,7 @@ Return the new window for BUFFER."
 ;;;###autoload
 (defun mu-do-not-kill-important-buffers ()
   "Inhibit killing of important buffers.
+
 Add this to `kill-buffer-query-functions'."
   (if (not (member (buffer-name) mu-do-not-kill-buffer-names))
       t

@@ -470,6 +470,7 @@
 ;;;###autoload
 (defun comment-or-uncomment-sexp (&optional n)
   "Comment the sexp at point and move past it.
+
 If already inside (or before) a comment, uncomment instead.
 With a prefix argument N, comment that many sexps."
   (interactive "p")

@@ -86,8 +86,7 @@
 
 ;;; Utilities and keybindings
 (defun mu-whitespace-style-no-long-lines ()
-  "Configure `whitespace-mode' for Org.
-Disable the highlighting of overlong lines."
+  "Disable highlighting of overlong lines."
   (setq-local whitespace-style (-difference whitespace-style
                                             '(lines lines-tail))))
 

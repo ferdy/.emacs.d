@@ -132,6 +132,7 @@
   :config
   (defun mu-eww-keep-lines (regexp)
     "Show only the lines matching regexp in the web page.
+
 Call `eww-reload' to undo the filtering."
     (interactive (list (read-from-minibuffer
                         "Keep only lines matching regexp: ")))
@@ -185,6 +186,7 @@ Call `eww-reload' to undo the filtering."
 
 (defun mu-backup-display-property (invert &optional object)
   "Move the 'display property at POS to 'display-backup.
+
 Only applies if display property is an image.
 If INVERT is non-nil, move from 'display-backup to 'display
 instead.
