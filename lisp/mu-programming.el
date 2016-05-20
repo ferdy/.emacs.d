@@ -362,6 +362,12 @@
   :config (setq-default eldoc-documentation-function #'describe-char-eldoc)
   :diminish eldoc-mode)
 
+(use-package etags                      ; Tag navigation
+  :defer t
+  :config
+  ;; Do not query before reverting TAGS tables
+  (setq tags-revert-without-query t))
+
 (use-package macrostep                  ; Navigate through macros
   :ensure t
   :after lisp-mode
