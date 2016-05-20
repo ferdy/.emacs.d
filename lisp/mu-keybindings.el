@@ -34,8 +34,10 @@
           ("\\`\\?\\?\\'"   . "λ")
           ;; Prettify hydra entry points
           ("/body\\'"       . "|=")
-          ;; Drop my personal prefix
-          ("\\`mu-"  . "")))
+          ;; Drop/shorten package prefixes
+          ("\\`mu-"  . "")
+          ("projectile-"    . "proj-")
+          ("magit-"         . "ma-")))
   (which-key-declare-prefixes
     "C-c !"     "flycheck"
     "C-c @"     "outline"
@@ -68,6 +70,9 @@
     "C-c o"     "org"
     "C-c n l"   "links"
     "C-c p"     "projects"
+    "C-c p s"   "projects/search"
+    "C-c p x"   "projects/execute"
+    "C-c p 4"   "projects/other-window"
     "C-c s"     "search-and-symbols"
     "C-c t"     "toggles"
     "C-c v"     "version-control"
