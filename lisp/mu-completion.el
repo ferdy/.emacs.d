@@ -107,14 +107,14 @@ _e_: extra   _l_: list        _n_: new
 (use-package company-math               ; Backend for math symbols
   :ensure t
   :after company
-  :init
+  :config
   (add-to-list 'company-backends 'company-math-symbols-unicode)
   (add-to-list 'company-backends 'company-math-symbols-latex))
 
 (use-package company-web                ; Backend for web development
   :ensure t
   :after company
-  :init (add-to-list 'company-backends 'company-web-html))
+  :config (add-to-list 'company-backends 'company-web-html))
 
 (use-package company-auctex             ; Backend for AUCTeX
   :ensure t
@@ -129,18 +129,17 @@ _e_: extra   _l_: list        _n_: new
 (use-package company-restclient         ; Company support for restclient
   :ensure t
   :after company
-  :init (add-to-list 'company-backends 'company-restclient))
+  :config (add-to-list 'company-backends 'company-restclient))
 
 (use-package company-shell              ; Company support for shell functions
   :ensure t
   :after company
-  :init (add-to-list 'company-backends 'company-shell))
+  :config (add-to-list 'company-backends 'company-shell))
 
 (use-package company-anaconda           ; Python backend for Company
   :ensure t
-  :defer t
   :after company
-  :init (add-to-list 'company-backends 'company-anaconda))
+  :config (add-to-list 'company-backends 'company-anaconda))
 
 (provide 'mu-completion)
 
