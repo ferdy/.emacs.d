@@ -276,14 +276,12 @@
 ;;; Web development
 (use-package web-mode                   ; Major mode for editing web templates
   :ensure t
-  :mode "\\.html\\'"
-  :config
-  (setq web-mode-markup-indent-offset 2
-        web-mode-css-indent-offset 2
-        web-mode-code-indent-offset 2))
+  :defer t
+  :mode "\\.html\\'")
 
 (use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
+  :defer t
   :mode (("\\.js\\'" . js2-mode)
          ("\\.jsx\\'" . js2-jsx-mode))
   :config
@@ -299,6 +297,7 @@
 (use-package js2-refactor               ; Refactor JavaScript
   :ensure t
   :after js2-mode
+  :defer t
   :init
   (add-hook 'js2-mode-hook 'js2-refactor-mode)
   :config
@@ -336,6 +335,16 @@
   :init (add-hook 'web-mode-hook #'zencoding-mode)
   :diminish zencoding-mode)
 
+;;; Other languages
+(use-package sh-script                  ; Shell scripts
+  :defer t
+  :mode ("\\.zsh\\'" . sh-mode)
+  :config
+  ;; Use two spaces in shell scripts.
+  (setq sh-indentation 2                ; The basic indentation
+        sh-basic-offset 2               ; The offset for nested indentation
+        ))
+
 (use-package nxml-mode                  ; XML editing
   :mode "\\.xml\\'"
   :config
@@ -354,7 +363,7 @@
   :ensure t
   :commands bug-hunter-file)
 
-;;; Utilities and keybindings
+;;; Misc utilities
 (use-package eldoc                      ; Documentation in the echo area
   :defer t
   ;; Enable Eldoc for `eval-expression', too
@@ -407,6 +416,7 @@
   :ensure t
   :defer t)
 
+;;; Utilities and keybindings
 ;;;###autoload
 (defun uncomment-sexp (&optional n)
   "Uncomment a sexp around point."

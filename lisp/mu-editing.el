@@ -203,6 +203,7 @@ _C-s_: mark region
 ;;; Specific files support
 (use-package systemd                    ; Major mode for editing systemd units
   :ensure t
+  :defer t
   :mode "\\.service\\'")
 
 (use-package rst                        ; ReStructuredText
