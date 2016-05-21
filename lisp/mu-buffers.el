@@ -37,7 +37,7 @@
 (defun mu-display-buffer-fullframe (buffer alist)
   "Display BUFFER in fullscreen.
 
-ALIST is a `display-buffer' ALIST. Return the new window for BUFFER."
+ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
   (let ((window (display-buffer-pop-up-window buffer alist)))
     (when window
       (delete-other-windows window))
