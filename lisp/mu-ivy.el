@@ -49,6 +49,7 @@
 
 (use-package ivy-hydra                  ; Additional bindings for Ivy
   :ensure t
+  :defer t
   :after ivy)
 
 (use-package swiper                     ; Isearch with an overview
