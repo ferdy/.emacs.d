@@ -26,10 +26,8 @@
          ("C-c v l" . magit-log-buffer-file)
          ("C-c v p" . magit-pull))
   :config
-  ;; Be quiet
   (setq magit-save-repository-buffers 'dontask
-        magit-refs-show-commit-count 'all
-        magit-revision-show-gravatars nil)
+        magit-refs-show-commit-count 'all)
 
   ;; Use Ivy
   (setq magit-completing-read-function 'ivy-completing-read)
