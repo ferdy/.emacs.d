@@ -124,22 +124,6 @@ as well as fall backs for."
 ;; right next to point
 (setq prettify-symbols-unprettify-at-point 'right-edge)
 
-;; Improve LaTeX equations with font-lock
-(defface mu-unimportant-latex-face
-  '((t :height 0.7
-       :inherit font-lock-comment-face))
-  "Face used on less relevant math commands.")
-
-(font-lock-add-keywords
- 'latex-mode
- `((,(rx (or (and "\\" (or (any ",.!;")
-                           (and (or "left" "right"
-                                    "big" "Big")
-                                symbol-end)))
-             (any "_^")))
-    0 'mu-unimportant-latex-face prepend))
- 'end)
-
 (use-package ansi-color                 ; Colorize ANSI escape sequences
   :defer t
   :config
@@ -182,13 +166,12 @@ as well as fall backs for."
 
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
-  :init
+  :config
   (setq sml/theme nil
         sml/mode-width 'full
         sml/no-confirm-load-theme t)
 
   (sml/setup)
-  :config
   ;; More abbreviations
   (add-to-list 'sml/replacer-regexp-list
                '("^~/githubs/" ":Git:") t)
