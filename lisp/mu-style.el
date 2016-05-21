@@ -89,8 +89,6 @@ as well as fall backs for."
 ;; Disable startup echo area message
 (fset 'display-startup-echo-area-message #'ignore)
 
-(column-number-mode)                    ; Turn on column-number-mode
-
 (setq x-gtk-use-system-tooltips nil)    ; Use Emacs tooltips
 (setq history-length 1000)              ; Store more history
 (setq-default line-spacing 0.2)         ; Increase line-spacing (default 0)
@@ -179,6 +177,9 @@ as well as fall backs for."
   (load-theme 'solarized-light 'no-confirm))
 
 ;;; Mode line
+(line-number-mode)
+(column-number-mode)
+
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
   :init
