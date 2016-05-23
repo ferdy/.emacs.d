@@ -37,7 +37,8 @@
           ;; Drop/shorten package prefixes
           ("\\`mu-"  . "")
           ("projectile-"    . "proj-")
-          ("magit-"         . "ma-")))
+          ("magit-"         . "ma-")
+          ("markdown-"      . "md-")))
   (which-key-declare-prefixes
     "C-c !"     "flycheck"
     "C-c @"     "outline"
@@ -81,12 +82,12 @@
     "C-c x a"   "align")
 
   (which-key-declare-prefixes-for-mode 'markdown-mode
-    "C-c TAB" "markdown/images"
-    "C-c C-a" "markdown/links"
-    "C-c C-c" "markdown/process"
-    "C-c C-s" "markdown/style"
-    "C-c C-t" "markdown/header"
-    "C-c C-x" "markdown/structure")
+    "C-c TAB" "md/images"
+    "C-c C-a" "md/links"
+    "C-c C-c" "md/process"
+    "C-c C-s" "md/style"
+    "C-c C-t" "md/header"
+    "C-c C-x" "md/structure")
 
   (which-key-declare-prefixes-for-mode 'emacs-lisp-mode
     "C-c m"   "elisp/personal"
