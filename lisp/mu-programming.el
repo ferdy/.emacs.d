@@ -314,11 +314,8 @@
   (add-hook 'js2-mode-hook #'add-xref-js2-backend))
 
 (use-package css-mode                   ; Better CSS support
-  :mode "\\.css\\'"
-  :config
-  (setq css-indent-offset 2)
-  (add-hook 'css-mode-hook
-            (lambda () (run-hooks 'prog-mode-hook))))
+  :defer t
+  :config (setq css-indent-offset 2))
 
 (use-package css-eldoc                  ; Eldoc for CSS
   :ensure t
