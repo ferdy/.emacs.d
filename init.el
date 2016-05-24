@@ -120,7 +120,9 @@
 
 ;; Set the directory where all backup and autosave files will be saved
 (setq backup-directory-alist '((".*" . "~/.emacs.d/backup"))
+      backup-by-copying      t          ; Prefer copy to renaming
       version-control        t          ; Version number for backup files
+      kept-old-versions      0          ; Do not keep old versions
       delete-old-versions    t)
 
 (setq auto-save-list-file-prefix     "~/.emacs.d/autosave/"
