@@ -67,15 +67,17 @@
   :init
   (setq counsel-mode-override-describe-bindings t)
   (counsel-mode 1)
-  :bind (("C-s"   . counsel-grep-or-swiper)
-         ("C-r"   . counsel-grep-or-swiper)
+  :bind (("C-s" . counsel-grep-or-swiper)
+         ("C-r" . counsel-grep-or-swiper)
          ("C-c u" . counsel-unicode-char)
          ("C-c g" . counsel-git)
          ("C-c G" . counsel-git-grep)
          ("C-c k" . counsel-ag)
+         ("C-c r" . counsel-linux-app)
          ("C-x l" . counsel-locate)
          ("C-x i" . counsel-imenu)
-         ("C-c r" . counsel-linux-app))
+         ("C-x j" . counsel-bookmark)
+         ([remap bookmark-jump] . counsel-bookmark))
   :bind (:map read-expression-map
               ("C-r" . counsel-expression-history))
   :config
