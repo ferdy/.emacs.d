@@ -9,147 +9,147 @@ announce() {
 }
 
 dostep() {
-    step=$1
-    sdo=$2
-    cmd=$3
-    echo
-    echo -e $grn"step $step: $cyn$cmd$rst"
-    echo -e $cyn"running $cmd$rst"
-    echo
-    if [[ $sdo == "y" ]] ; then
-        sudo $cmd
-    else
-        $cmd
-    fi
+  step=$1
+  sdo=$2
+  cmd=$3
+  echo
+  echo -e $grn"step $step: $cyn$cmd$rst"
+  echo -e $cyn"running $cmd$rst"
+  echo
+  if [[ $sdo == "y" ]] ; then
+    sudo $cmd
+  else
+    $cmd
+  fi
 }
 
 prerequisites() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends make gcc automake autoconf"
-    dostep 2 "y" "apt-get -y install --no-install-recommends g++ git curl"
-    dostep 3 "y" "apt-get -y install --no-install-recommends gnupg"
+  dostep 1 "y" "apt-get -y install --no-install-recommends make gcc automake autoconf"
+  dostep 2 "y" "apt-get -y install --no-install-recommends g++ git curl"
+  dostep 3 "y" "apt-get -y install --no-install-recommends gnupg"
 }
 
 tls_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends gnutls-bin"
-    dostep 2 "y" "apt-get -y install --no-install-recommends ca-certificates"
+  dostep 1 "y" "apt-get -y install --no-install-recommends gnutls-bin"
+  dostep 2 "y" "apt-get -y install --no-install-recommends ca-certificates"
 }
 
 keychain_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends keychain"
+  dostep 1 "y" "apt-get -y install --no-install-recommends keychain"
 }
 
 ag_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends silversearcher-ag"
+  dostep 1 "y" "apt-get -y install --no-install-recommends silversearcher-ag"
 }
 
 scheme_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends guile-2.0"
-    dostep 2 "y" "apt-get -y install --no-install-recommends chicken-bin libchicken7 libchicken-dev"
-    dostep 3 "n" "chicken-install -s apropos chicken-doc input-parse numbers"
-    dostep 4 "n" "chicken-install -s sxml-transforms matchable scss filepath spiffy uri-common"
-    dostep 5 "n" "chicken-install -s doctype colorize multidoc defstruct atom svnwiki-sxml"
-    dostep 6 "n" "chicken-install -s rfc3339 hyde"
-    dostep 7 "n" "cd $(csi -p '(chicken-home)')"
-    dostep 8 "n" "curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx"
-    dostep 9 "n" "cd $HOME"
+  dostep 1 "y" "apt-get -y install --no-install-recommends guile-2.0"
+  dostep 2 "y" "apt-get -y install --no-install-recommends chicken-bin libchicken7 libchicken-dev"
+  dostep 3 "n" "chicken-install -s apropos chicken-doc input-parse numbers"
+  dostep 4 "n" "chicken-install -s sxml-transforms matchable scss filepath spiffy uri-common"
+  dostep 5 "n" "chicken-install -s doctype colorize multidoc defstruct atom svnwiki-sxml"
+  dostep 6 "n" "chicken-install -s rfc3339 hyde"
+  dostep 7 "n" "cd $(csi -p '(chicken-home)')"
+  dostep 8 "n" "curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx"
+  dostep 9 "n" "cd $HOME"
 }
 
 commonlisp_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends sbcl sbcl-doc"
-    dostep 2 "y" "apt-get -y install --no-install-recommends cl-clx-sbcl cl-ppcre"
-    dostep 3 "y" "apt-get -y install --no-install-recommends texinfo cl-swank"
+  dostep 1 "y" "apt-get -y install --no-install-recommends sbcl sbcl-doc"
+  dostep 2 "y" "apt-get -y install --no-install-recommends cl-clx-sbcl cl-ppcre"
+  dostep 3 "y" "apt-get -y install --no-install-recommends texinfo cl-swank"
 }
 
 clojure_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends openjdk-8-jre"
-    if [ ! -d "$HOME/bin" ]; then
-        dostep 2 "n" "mkdir -p $HOME/bin"
-    fi
-    dostep 3 "n" "wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O $HOME/bin/lein"
-    dostep 4 "n" "chmod 755 $HOME/bin/lein"
-    dostep 5 "n" "lein"
+  dostep 1 "y" "apt-get -y install --no-install-recommends openjdk-8-jre"
+  if [ ! -d "$HOME/bin" ]; then
+    dostep 2 "n" "mkdir -p $HOME/bin"
+  fi
+  dostep 3 "n" "wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O $HOME/bin/lein"
+  dostep 4 "n" "chmod 755 $HOME/bin/lein"
+  dostep 5 "n" "lein"
 }
 
 python_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends python2.7 ipython"
+  dostep 1 "y" "apt-get -y install --no-install-recommends python2.7 ipython"
 }
 
 rust_setup() {
-    dostep 1 "n" "curl -sSf https://static.rust-lang.org/rustup.sh | sh"
-    dostep 2 "n" "cargo install rustfmt"
+  dostep 1 "n" "curl -sSf https://static.rust-lang.org/rustup.sh | sh"
+  dostep 2 "n" "cargo install rustfmt"
 }
 
 latex_setup() {
-    dostep 1 "n" "cd $HOME/Downloads"
-    dostep 2 "n" "wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
-    dostep 3 "n" "tar -xzf install-tl-unx.tar.gz"
-    dostep 4 "n" "cd $(tar -tzf install-tl-unx.tar.gz | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D')"
-    dostep 5 "y" "./install-tl"
-    dostep 6 "y" "mkdir -p /opt"
-    dostep 7 "y" "ln -s /usr/local/texlive/2015/bin/* /opt/texbin"
-    dostep 8 "y" "apt-get install --no-install-recommends equivs"
-    dostep 9 "n" "mkdir -p /tmp/tl-equivs && cd /tmp/tl-equivs"
-    dostep 10 "n" "wget http://www.tug.org/texlive/files/debian-equivs-2015-ex.txt"
-    dostep 11 "n" "/bin/cp -f debian-equivs-2015-ex.txt texlive-local"
-    dostep 12 "n" "equivs-build texlive-local"
-    dostep 13 "y" "dpkg -i texlive-local_2015-1_all.deb"
-    if [ ! -d "$HOME/sources" ]; then
-        dostep 14 "n" "mkdir -p $HOME/sources"
-    fi
-    dostep 15 "n" "cd $HOME/sources"
-    dostep 16 "n" "wget http://download.savannah.gnu.org/releases/chktex/chktex-1.7.2.tar.gz"
-    dostep 17 "n" "tar xzf chktex-1.7.2.tar.gz"
-    dostep 18 "n" "rm chktex-1.7.2.tar.gz"
-    dostep 19 "n" "cd chktex-1.7.2"
-    dostep 20 "n" "./configure --enable-lacheck-replace && make"
-    dostep 21 "y" "make install"
-    dostep 22 "n" "cp /usr/local/etc/chktexrc $HOME/.chktexrc"
-    dostep 23 "n" "cd $HOME"
+  dostep 1 "n" "cd $HOME/Downloads"
+  dostep 2 "n" "wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
+  dostep 3 "n" "tar -xzf install-tl-unx.tar.gz"
+  dostep 4 "n" "cd $(tar -tzf install-tl-unx.tar.gz | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D')"
+  dostep 5 "y" "./install-tl"
+  dostep 6 "y" "mkdir -p /opt"
+  dostep 7 "y" "ln -s /usr/local/texlive/2015/bin/* /opt/texbin"
+  dostep 8 "y" "apt-get install --no-install-recommends equivs"
+  dostep 9 "n" "mkdir -p /tmp/tl-equivs && cd /tmp/tl-equivs"
+  dostep 10 "n" "wget http://www.tug.org/texlive/files/debian-equivs-2015-ex.txt"
+  dostep 11 "n" "/bin/cp -f debian-equivs-2015-ex.txt texlive-local"
+  dostep 12 "n" "equivs-build texlive-local"
+  dostep 13 "y" "dpkg -i texlive-local_2015-1_all.deb"
+  if [ ! -d "$HOME/sources" ]; then
+    dostep 14 "n" "mkdir -p $HOME/sources"
+  fi
+  dostep 15 "n" "cd $HOME/sources"
+  dostep 16 "n" "wget http://download.savannah.gnu.org/releases/chktex/chktex-1.7.2.tar.gz"
+  dostep 17 "n" "tar xzf chktex-1.7.2.tar.gz"
+  dostep 18 "n" "rm chktex-1.7.2.tar.gz"
+  dostep 19 "n" "cd chktex-1.7.2"
+  dostep 20 "n" "./configure --enable-lacheck-replace && make"
+  dostep 21 "y" "make install"
+  dostep 22 "n" "cp /usr/local/etc/chktexrc $HOME/.chktexrc"
+  dostep 23 "n" "cd $HOME"
 }
 
 pandoc_setup() {
-    dostep 1 "n" "wget https://github.com/jgm/pandoc/releases/download/1.16.0.2/pandoc-1.16.0.2-1-amd64.deb"
-    dostep 2 "y" "dpkg -i pandoc-1.16.0.2-1-amd64.deb"
-    dostep 3 "n" "rm pandoc-1.16.0.2-1-amd64.deb"
+  dostep 1 "n" "wget https://github.com/jgm/pandoc/releases/download/1.17.0.2/pandoc-1.17.0.2-1-amd64.deb"
+  dostep 2 "y" "dpkg -i pandoc-1.17.0.2-1-amd64.deb"
+  dostep 3 "n" "rm pandoc-1.17.0.2-1-amd64.deb"
 }
 
 pdftools_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends libpng-dev libz-dev"
-    dostep 2 "y" "apt-get -y install --no-install-recommends libpoppler-glib-dev"
-    dostep 3 "y" "apt-get -y install --no-install-recommends libpoppler-private-dev"
-    dostep 4 "y" "apt-get -y install --no-install-recommends imagemagick"
+  dostep 1 "y" "apt-get -y install --no-install-recommends libpng-dev libz-dev"
+  dostep 2 "y" "apt-get -y install --no-install-recommends libpoppler-glib-dev"
+  dostep 3 "y" "apt-get -y install --no-install-recommends libpoppler-private-dev"
+  dostep 4 "y" "apt-get -y install --no-install-recommends imagemagick"
 }
 
 flyspell_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends aspell aspell-en aspell-it"
+  dostep 1 "y" "apt-get -y install --no-install-recommends aspell aspell-en aspell-it"
 }
 
 wordnet_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends wordnet"
+  dostep 1 "y" "apt-get -y install --no-install-recommends wordnet"
 }
 
 langtool_setup() {
-    if [ ! -x /usr/bin/unzip ]; then
-        dostep 1 "y" "apt-get -y install --no-install-recommends unzip"
-    fi
-    dostep 2 "n" "cd $HOME"
-    dostep 3 "n" "wget https://languagetool.org/download/LanguageTool-3.2.zip"
-    dostep 4 "n" "unzip LanguageTool-3.2.zip"
-    dostep 5 "n" "mv LanguageTool-3.2 languagetool"
-    dostep 6 "n" "rm LanguageTool-3.2.zip"
+  if [ ! -x /usr/bin/unzip ]; then
+    dostep 1 "y" "apt-get -y install --no-install-recommends unzip"
+  fi
+  dostep 2 "n" "cd $HOME"
+  dostep 3 "n" "wget https://languagetool.org/download/LanguageTool-3.2.zip"
+  dostep 4 "n" "unzip LanguageTool-3.2.zip"
+  dostep 5 "n" "mv LanguageTool-3.2 languagetool"
+  dostep 6 "n" "rm LanguageTool-3.2.zip"
 }
 
 font_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends fonts-dejavu fonts-dejavu-extra"
-    dostep 2 "y" "apt-get -y install --no-install-recommends ttf-ancient-fonts"
+  dostep 1 "y" "apt-get -y install --no-install-recommends fonts-dejavu fonts-dejavu-extra"
+  dostep 2 "y" "apt-get -y install --no-install-recommends ttf-ancient-fonts"
 }
 
 cask_setup() {
-    dostep 1 "n" "curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python"
+  dostep 1 "n" "curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python"
 }
 
 shellcheck_setup() {
-    dostep 1 "y" "apt-get -y install --no-install-recommends shellcheck"
+  dostep 1 "y" "apt-get -y install --no-install-recommends shellcheck"
 }
 
 sudo -v # gets user password for next sudos
