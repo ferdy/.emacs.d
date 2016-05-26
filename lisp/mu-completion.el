@@ -117,11 +117,6 @@ _e_: extra   _l_: list        _n_: new
   :ensure t
   :init (add-hook 'sly-mode-hook 'sly-company-mode))
 
-(use-package company-restclient         ; Company support for restclient
-  :ensure t
-  :after company
-  :config (add-to-list 'company-backends 'company-restclient))
-
 (use-package company-shell              ; Company support for shell functions
   :ensure t
   :after company

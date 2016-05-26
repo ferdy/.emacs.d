@@ -326,12 +326,6 @@
   :ensure t
   :mode "\\.php\\'")
 
-(use-package zencoding-mode     ; Unfold CSS-selector-like expressions to markup
-  :ensure t
-  :defer t
-  :init (add-hook 'web-mode-hook #'zencoding-mode)
-  :diminish zencoding-mode)
-
 ;;; Other languages
 (use-package sh-script                  ; Shell scripts
   :defer t
@@ -408,10 +402,6 @@
 
   (add-hook 'compilation-filter-hook
             #'mu-colorize-compilation-buffer))
-
-(use-package restclient                 ; ReST REPL for Emacs
-  :ensure t
-  :defer t)
 
 ;;; Utilities and keybindings
 ;;;###autoload
