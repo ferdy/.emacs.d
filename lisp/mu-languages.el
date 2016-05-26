@@ -65,25 +65,7 @@
   :bind (("C-c a L d" . wordnut-search)
          ("C-c a L D" . wordnut-lookup-current-word)))
 
-(use-package synosaurus                 ; An extensible thesaurus
-  :ensure t
-  :bind (("C-c a L s" . synosaurus-lookup)
-         ("C-c a L r" . synosaurus-choose-and-replace)))
-
 ;;; Grammar and style
-(use-package langtool                   ; LanguageTool for Emacs
-  :ensure t
-  :bind (("C-c a L l w" . langtool-check)
-         ("C-c a L l W" . langtool-check-done)
-         ("C-c a L l l" . langtool-switch-default-language)
-         ("C-c a L l m" . langtool-show-message-at-point)
-         ("C-c a L l c" . langtool-correct-buffer))
-  :init
-  (setq langtool-language-tool-jar
-        "~/languagetool/languagetool-commandline.jar"
-        langtool-default-language "en-GB"
-        langtool-java-bin "/usr/bin/java"))
-
 (use-package writegood-mode             ; Find common writing problems
   :ensure t
   :bind ("C-c a L g" . writegood-mode))

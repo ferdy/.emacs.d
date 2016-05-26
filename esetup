@@ -128,17 +128,6 @@ wordnet_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends wordnet"
 }
 
-langtool_setup() {
-  if [ ! -x /usr/bin/unzip ]; then
-    dostep 1 "y" "apt-get -y install --no-install-recommends unzip"
-  fi
-  dostep 2 "n" "cd $HOME"
-  dostep 3 "n" "wget https://languagetool.org/download/LanguageTool-3.2.zip"
-  dostep 4 "n" "unzip LanguageTool-3.2.zip"
-  dostep 5 "n" "mv LanguageTool-3.2 languagetool"
-  dostep 6 "n" "rm LanguageTool-3.2.zip"
-}
-
 font_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends fonts-dejavu fonts-dejavu-extra"
   dostep 2 "y" "apt-get -y install --no-install-recommends ttf-ancient-fonts"
@@ -187,8 +176,6 @@ announce FLYSPELL
 flyspell_setup
 announce WORDNET
 wordnet_setup
-announce LANGTOOL
-langtool_setup
 announce FONT
 font_setup
 
