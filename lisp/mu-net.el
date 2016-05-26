@@ -142,36 +142,6 @@ Call `eww-reload' to undo the filtering."
       (keep-lines regexp)
       (read-only-mode 1))))
 
-(use-package sx                         ; StackExchange client for Emacs
-  :ensure t
-  :bind (("C-c a S a" . sx-ask)
-         ("C-c a S s" . sx-tab-all-questions)
-         ("C-c a S q" . sx-tab-all-questions)
-         ("C-c a S n" . sx-tab-newest)))
-
-(use-package sx-compose                 ; Write questions/answers for Stack Exchange
-  :ensure sx
-  :defer t
-  :config
-  ;; Don't fill in SX questions/answers, and use visual lines instead.  Plays
-  ;; more nicely with the website.
-  (add-hook 'sx-compose-mode-hook #'turn-off-auto-fill)
-  (add-hook 'sx-compose-mode-hook #'visual-line-mode)
-  (add-hook 'sx-compose-mode-hook
-            #'lunaryorn-whitespace-style-no-long-lines)
-
-  ;; Clean up whitespace before sending questions
-  (add-hook 'sx-compose-before-send-hook
-            (lambda () (whitespace-cleanup) t))
-
-  (bind-key "M-q" #'ignore sx-compose-mode-map))
-
-(use-package sx-question-mode           ; Show Stack
-  :ensure sx
-  :defer t
-  ;; Display questions in the same window
-  :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
-
 ;;; Utilities and keybindings
 ;; Toggle image display on/off, especially useful in eww
 (defvar-local mu-display-images t)
