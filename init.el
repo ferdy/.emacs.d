@@ -38,6 +38,7 @@
 (package-initialize)
 
 (setq load-prefer-newer t)              ; Always load newer compiled files
+(setq ad-redefinition-action 'accept)   ; Silence advice redefinition warnings
 (setq message-log-max 10000)            ; Debugging
 
 ;; Allow more than 800Kb cache during init
