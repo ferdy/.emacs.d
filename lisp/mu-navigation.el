@@ -44,10 +44,6 @@
     (add-hook hook #'outline-minor-mode))
   :diminish outline-minor-mode)
 
-(use-package goto-last-change          ; Navigate through last in-buffer changes
-  :ensure t
-  :bind ("C-c n g" . goto-last-change))
-
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (setq set-mark-command-repeat-pop t)
 

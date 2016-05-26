@@ -46,10 +46,6 @@
     (proced-toggle-auto-update 1))
   (add-hook 'proced-mode-hook 'proced-settings))
 
-(use-package vkill                      ; Visually kill programs and processes
-  :ensure t
-  :bind ("C-c a a k" . vkill))
-
 (use-package command-log-mode           ; Show event history and command history
   :ensure t
   :bind ("C-c t l" . command-log-mode))
@@ -68,10 +64,6 @@
 (use-package keychain-environment       ; Load keychain environment variables
   :ensure t
   :bind ("C-c a a s" . keychain-environment-refresh))
-
-(use-package browse-at-remote           ; Open github/gitlab/bitbucket page
-  :ensure t
-  :bind ("C-c a b" . browse-at-remote/browse))
 
 (provide 'mu-utilities)
 
