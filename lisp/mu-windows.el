@@ -69,20 +69,6 @@
   (setq ediff-window-setup-function #'ediff-setup-windows-plain
         ediff-split-window-function #'split-window-horizontally))
 
-;; Standard window commands
-(bind-keys
- ("C-c w =" . balance-windows)
- ("C-c w k" . delete-window)
- ("C-c w /" . split-window-right)
- ("C-c w -" . split-window-below)
- ("C-c w m" . delete-other-windows))
-
-(use-package windmove                   ; Move between windows with Shift+Arrow
-  :bind (("C-c w <left>"  . windmove-left)
-         ("C-c w <right>" . windmove-right)
-         ("C-c w <up>"    . windmove-up)
-         ("C-c w <down>"  . windmove-down)))
-
 ;;; Utilities and keybindings
 (defun mu--quit-side-windows (pos)
   "Quit windows on the POS side of the current frame."
