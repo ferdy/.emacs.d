@@ -58,7 +58,9 @@
   :bind (("C-c s s" . swiper-all)
          :map isearch-mode-map
          ("M-i" . swiper-from-isearch))
-  :config (setq swiper-action-recenter t))
+  :config
+  ;; Always recenter when leaving Swiper
+  (setq swiper-action-recenter t))
 
 (use-package smex                       ; Better M-x interface
   :ensure t)
