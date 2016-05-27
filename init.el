@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2016  Manuel Uberti
 
-;; Author: Manuel Uberti <manuel@boccaperta.com>
+;; Author: Manuel Uberti manuel.uberti@inventati.org
 ;; URL: https://github.com/manuel-uberti/.emacs.d
 ;; Keywords: convenience
 
@@ -129,7 +129,7 @@
 
 ;; Personal informations
 (setq user-full-name "Manuel Uberti")
-(setq user-mail-address "manuel@boccaperta.com")
+(setq user-mail-address "manuel.uberti@inventati.org")
 
 ;; The server of `emacsclient'
 (use-package server

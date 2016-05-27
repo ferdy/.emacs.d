@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2015  Manuel Uberti
 
-;; Author: Manuel Uberti <manuel@boccaperta.com>
+;; Author: Manuel Uberti manuel.uberti@inventati.org
 ;; Keywords: convenience
 
 ;; This program is free software; you can redistribute it and/or modify

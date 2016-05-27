@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2016  Manuel Uberti
 
-;; Author: Manuel Uberti <manuel@boccaperta.com>
+;; Author: Manuel Uberti manuel.uberti@inventati.org
 ;; Keywords: convenience
 
 ;;; Commentary:
