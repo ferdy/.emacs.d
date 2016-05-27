@@ -20,6 +20,7 @@
 
 ;;; Commentary:
 
+;; Conver word in DOuble CAptials
 ;; Source: https://emacs.stackexchange.com/a/13975/5514
 
 ;;; Code:
