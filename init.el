@@ -90,7 +90,11 @@
     ;; environment variables are mostly set in `.zprofile'.
     (setq exec-path-from-shell-arguments '("-l")))
 
-  (dolist (var '("EMAIL" "INFOPATH" "JAVA_OPTS"))
+  (dolist (var '("FULLNAME"             ; First and last name
+                 "EMAIL"                ; Personal email
+                 "INFOPATH"             ; Info directories
+                 "JAVA_OPTS"            ; Options for Java processes
+                 ))
     (add-to-list 'exec-path-from-shell-variables var))
 
   (exec-path-from-shell-initialize)
@@ -103,6 +107,10 @@
     (dolist (dir (nreverse (parse-colon-path (getenv "INFOPATH"))))
       (when dir
         (add-to-list 'Info-directory-list dir)))))
+
+;; Personal informations
+(setq user-full-name (getenv "FULLNAME"))
+(setq user-mail-address (getenv "EMAIL"))
 
 ;; Set separate custom file for the customize interface
 (defconst mu-custom-file (locate-user-emacs-file "custom.el")
@@ -126,10 +134,6 @@
 
 (setq auto-save-list-file-prefix     "~/.emacs.d/autosave/"
       auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
-
-;; Personal informations
-(setq user-full-name "Manuel Uberti")
-(setq user-mail-address "manuel.uberti@inventati.org")
 
 ;; The server of `emacsclient'
 (use-package server
