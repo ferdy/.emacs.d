@@ -27,7 +27,7 @@
         ispell-choices-win-default-height 5)
 
   (unless ispell-program-name
-    (warn "No spell checker available. Install hunspell.")))
+    (warn "No spell checker available.  Plese install hunspell.")))
 
 (use-package flyspell                   ; Spell checking on-the-fly
   :bind ("C-c t s" . flyspell-mode)
