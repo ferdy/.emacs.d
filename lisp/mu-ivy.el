@@ -59,7 +59,7 @@
          :map isearch-mode-map
          ("M-i" . swiper-from-isearch))
   :config
-  ;; Always recenter when leaving Swiper
+  ;; Always recentre when leaving Swiper
   (setq swiper-action-recenter t))
 
 (use-package smex                       ; Better M-x interface
