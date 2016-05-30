@@ -113,7 +113,7 @@
 (use-package browse-url                 ; Browse URLs
   :config
   (setq browse-url-browser-function 'browse-url-generic
-        browse-url-generic-program "icecat"))
+        browse-url-generic-program "iceweasel"))
 
 (use-package goto-addr                  ; Make links clickable
   :defer t
