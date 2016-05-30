@@ -22,8 +22,8 @@
 (use-package ispell                     ; Word correction
   :defer t
   :config
-  (setq ispell-program-name (executable-find "aspell")
-        ispell-dictionary "british"
+  (setq ispell-program-name (executable-find "hunspell")
+        ispell-dictionary "en_GB"
         ispell-choices-win-default-height 5)
 
   (unless ispell-program-name
@@ -40,13 +40,13 @@
   (bind-key "C-c I"
             (lambda ()
               (interactive)
-              (ispell-change-dictionary "italiano")
+              (ispell-change-dictionary "it_IT")
               (flyspell-buffer)))
 
   (bind-key "C-c E"
             (lambda ()
               (interactive)
-              (ispell-change-dictionary "british")
+              (ispell-change-dictionary "en_GB")
               (flyspell-buffer)))
 
   ;; Free M-t for transpose words

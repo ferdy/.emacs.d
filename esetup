@@ -121,7 +121,7 @@ pdftools_setup() {
 }
 
 flyspell_setup() {
-  dostep 1 "y" "apt-get -y install --no-install-recommends aspell aspell-en aspell-it"
+  dostep 1 "y" "apt-get -y install --no-install-recommends hunspell"
 }
 
 wordnet_setup() {
