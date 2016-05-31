@@ -61,7 +61,7 @@ most errors from HTML Tidy."
   :ensure t
   :defer t
   :after flycheck
-  :init (flycheck-package-setup))
+  :config (flycheck-package-setup))
 
 (use-package flycheck-cask              ; Setup Flycheck by Cask projects
   :ensure t
@@ -78,7 +78,7 @@ most errors from HTML Tidy."
   :ensure t
   :defer t
   :after rust-mode
-  :init (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 (provide 'mu-flycheck)
 

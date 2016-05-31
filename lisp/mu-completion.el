@@ -88,12 +88,12 @@ _e_: extra   _l_: list        _n_: new
 (use-package company-statistics         ; Show likelier candidates on top
   :ensure t
   :after company
-  :init (company-statistics-mode))
+  :config (company-statistics-mode))
 
 (use-package company-quickhelp          ; Show help in tooltip
   :ensure t
   :after company
-  :init (company-quickhelp-mode))
+  :config (company-quickhelp-mode))
 
 (use-package company-math               ; Backend for math symbols
   :ensure t

@@ -110,7 +110,7 @@
   :ensure t
   :defer t
   :after latex
-  :init (auctex-latexmk-setup))
+  :config (auctex-latexmk-setup))
 
 (use-package bibtex                     ; Edit and validate BibTeX files
   :defer t

@@ -47,7 +47,6 @@
 
 (use-package el-search                  ; pcase-based search for elisp
   :ensure t
-  :after elisp-mode
   :bind (:map emacs-lisp-mode-map
               ("C-c m s" . el-search-pattern)
               ("C-c m r" . el-search-query-replace)))
@@ -253,8 +252,7 @@
 (use-package cargo                      ; Control Cargo
   :ensure t
   :bind (:map rust-mode-map ("<f6>" . cargo-process-build))
-  :after rust-mode
-  :init (add-hook 'rust-mode-hook #'cargo-minor-mode))
+  :config (add-hook 'rust-mode-hook #'cargo-minor-mode))
 
 (use-package toml-mode                  ; Toml for Cargo files
   :ensure t
@@ -268,10 +266,9 @@
 
 (use-package sqlup-mode                 ; Upcase SQL keywords
   :ensure t
-  :after sql
   :bind (:map sql-mode-map
               ("C-c m u" . sqlup-capitalize-keywords-in-region))
-  :init (add-hook 'sql-mode-hook #'sqlup-mode))
+  :config (add-hook 'sql-mode-hook #'sqlup-mode))
 
 ;;; Web development
 (use-package web-mode                   ; Major mode for editing web templates
@@ -296,8 +293,6 @@
 
 (use-package js2-refactor               ; Refactor JavaScript
   :ensure t
-  :after js2-mode
-  :defer t
   :init
   (add-hook 'js2-mode-hook 'js2-refactor-mode)
   :config

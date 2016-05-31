@@ -54,7 +54,6 @@
 
 (use-package flyspell-correct           ; Better interface for corrections
   :ensure t
-  :after flyspell
   :bind (:map flyspell-mode-map
               ("C-c $" . flyspell-correct-word-generic))
   :config (setq flyspell-correct-interface 'flyspell-correct-ivy))
