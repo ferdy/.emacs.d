@@ -150,7 +150,15 @@ Add this to `kill-buffer-query-functions'."
 (add-hook 'kill-buffer-query-functions
           #'mu-do-not-kill-important-buffers)
 
-(bind-key "C-x C-k" 'kill-this-buffer)  ; Kill only the current buffer
+(bind-key "C-x C-k" #'kill-this-buffer)  ; Kill only the current buffer
+
+;;;###autoload
+(defun mu-reopen-last-killed-buffer ()
+  "Quickly reopen last killed buffer."
+  (interactive)
+  (find-file (car recentf-list)))
+
+(bind-key "C-c f o" #'mu-reopen-last-killed-buffer)
 
 (provide 'mu-buffers)
 
