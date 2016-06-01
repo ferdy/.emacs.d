@@ -324,13 +324,17 @@ region if active."
         (kill-whole-line)))))
 
 ;;;###autoload
-(defun unfill-paragraph (&optional region)
-  "Turn a multi-line paragraph or a REGION into a single line of text."
-  (interactive (progn (barf-if-buffer-read-only) '(t)))
-  (let ((fill-column (point-max)))
-    (fill-paragraph nil region)))
+(defun mu-fill-or-unfill ()
+  "Like `fill-paragraph', but unfill if used twice."
+  (interactive)
+  (let ((fill-column
+         (if (eq last-command 'mu-fill-or-unfill)
+             (progn (setq this-command nil)
+                    (point-max))
+           fill-column)))
+    (call-interactively #'fill-paragraph)))
 
-(bind-key "M-Q" #'unfill-paragraph)     ; The opposite of fill-paragraph
+(bind-key [remap fill-paragraph] #'mu-fill-or-unfill)
 
 ;;;###autoload
 (defun mu-align-repeat (start end regexp &optional justify-right after)
