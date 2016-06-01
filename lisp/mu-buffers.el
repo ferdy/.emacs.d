@@ -59,6 +59,7 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
                       "*Calendar"         ; Calendar window
                       "*cider-repl"       ; CIDER REPL
                       "*sly-mrepl"        ; Sly REPL
+                      "*scheme"           ; Inferior Scheme REPL
                       "*ielm"             ; IELM REPL
                       "*SQL"              ; SQL REPL
                       "*Cargo"            ; Cargo process buffers
