@@ -198,7 +198,8 @@
 (use-package geiser                ; Collection of modes for Scheme interpreters
   :ensure t
   :bind ("C-c d g" . run-geiser)
-  :init (setq geiser-active-implementations '(chicken guile)))
+  :init (setq geiser-active-implementations '(chicken guile)
+              geiser-chicken-compile-geiser-p nil))
 
 (use-package sicp                       ; The Wizard Book in Info format
   :ensure t
