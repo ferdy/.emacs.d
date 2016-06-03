@@ -75,6 +75,7 @@ _k_: kill        _s_: split                   _[_: wrap with [ ]
 
   (dolist (hook '(inferior-emacs-lisp-mode-hook
                   emacs-lisp-mode-hook
+                  scheme-mode-hook
                   clojure-mode-hook))
     (add-hook hook #'smartparens-strict-mode))
   :config
