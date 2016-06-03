@@ -253,7 +253,8 @@
 (use-package cargo                      ; Control Cargo
   :ensure t
   :bind (:map rust-mode-map ("<f6>" . cargo-process-build))
-  :config (add-hook 'rust-mode-hook #'cargo-minor-mode))
+  :config (add-hook 'rust-mode-hook #'cargo-minor-mode)
+  :diminish cargo-minor-mode)
 
 (use-package toml-mode                  ; Toml for Cargo files
   :ensure t
