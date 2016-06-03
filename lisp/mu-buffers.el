@@ -53,6 +53,7 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
         ;; Messages, errors, Calendar and REPLs in the bottom side window
         (,(rx bos (or "*Help"             ; Help buffers
                       "*Warnings*"        ; Emacs warnings
+                      "*Compile-Log*"     ; Emacs byte compiler log
                       "*compilation"      ; Compilation buffers
                       "*Flycheck errors*" ; Flycheck error list
                       "*shell"            ; Shell window
