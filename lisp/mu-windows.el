@@ -70,9 +70,23 @@
         ediff-split-window-function #'split-window-horizontally))
 
 ;;; Utilities and keybindings
-(defun mu--quit-side-windows (pos)
-  "Quit windows on the POS side of the current frame."
-  (dolist (window (window-at-side-list nil pos))
+(defun mu-find-side-windows (&optional side)
+  "Get all side window if any.
+
+If SIDE is non-nil only get windows on that side."
+  (let (windows)
+    (walk-window-tree
+     (lambda (window)
+       (let ((window-side (window-parameter window 'window-side)))
+         (when (and window-side (or (not side) (eq window-side side)))
+           (push window windows)))))
+    windows))
+
+;;;###autoload
+(defun mu-quit-side-windows ()
+  "Quit side windows of the current frame."
+  (interactive)
+  (dolist (window (mu-find-side-windows))
     (when (window-live-p window)
       (quit-window nil window)
       ;; When the window is still live, delete it
@@ -80,16 +94,11 @@
         (delete-window window)))))
 
 ;;;###autoload
-(defun mu-quit-bottom-side-windows ()
-  "Quit bottom side windows."
+(defun mu-switch-to-minibuffer-window ()
+  "Switch to current minibuffer window (if active)."
   (interactive)
-  (mu--quit-side-windows 'bottom))
-
-;;;###autoload
-(defun mu-quit-right-side-windows ()
-  "Quit right side windows."
-  (interactive)
-  (mu--quit-side-windows 'right))
+  (when (active-minibuffer-window)
+    (select-window (active-minibuffer-window))))
 
 ;;;###autoload
 (defun mu-toggle-current-window-dedication ()
@@ -102,9 +111,9 @@
              (if dedicated "no longer " "")
              (buffer-name))))
 
-(bind-key "C-c w b" #'mu-quit-bottom-side-windows)
-(bind-key "C-c w r" #'mu-quit-right-side-windows)
+(bind-key "C-c w q" #'mu-quit-side-windows)
 (bind-key "C-c w d" #'mu-toggle-current-window-dedication)
+(bind-key "C-c w b" #'mu-switch-to-minibuffer-window)
 
 ;; Better shrink/enlarge windows
 (bind-keys*
