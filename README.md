@@ -37,9 +37,14 @@ $ make clean
 $ cd
 $ git clone https://github.com/manuel-uberti/.emacs.d
 ```
-- put the kettle on and run ```esetup```:
+- install the dictionaries for the spell-checker:
 ```console
 $ cd .emacs.d
+$ sudo mkdir -p /usr/share/hunspell
+$ sudo cp etc/* /usr/share/hunspell
+```
+- put the kettle on and run ```esetup```:
+```console
 $ chmod +x esetup
 $ ./esetup
 ```
