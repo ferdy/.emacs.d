@@ -137,10 +137,7 @@
         '("bash" "javascript" "php" "text"
           "xml" "sh" "elisp" "lisp" "lua")
         org2blog/wp-blog-alist
-        '(("informatica.boccaperta.com"
-           :url "http://informatica.boccaperta.com/xmlrpc.php"
-           :username "manuel")
-          ("filmsinwords"
+        '(("filmsinwords"
            :url "https://filmsinwords.wordpress.com/xmlrpc.php"
            :username "manueluberti"))))
 
