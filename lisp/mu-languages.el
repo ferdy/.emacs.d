@@ -52,12 +52,11 @@
   ;; Free M-t for transpose words
   (unbind-key "M-t" flyspell-mode-map))
 
-(use-package flyspell-correct           ; Better interface for corrections
+(use-package flyspell-correct-ivy           ; Better interface for corrections
   :ensure t
   :after flyspell
   :bind (:map flyspell-mode-map
-              ("C-c $" . flyspell-correct-word-generic))
-  :config (setq flyspell-correct-interface 'flyspell-correct-ivy))
+              ("C-c $" . flyspell-correct-word-generic)))
 
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
