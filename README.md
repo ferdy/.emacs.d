@@ -7,12 +7,11 @@ This is the Emacs configuration I use everyday.
 configuration targets **Debian-based** systems
 
 - The `esetup` script helps to create the required environment and it must be
-run *before* starting Emacs for the first time
+run *before* starting Emacs for the first time. Again, it targets
+**Debian-based** systems
 
 - This configuration requires an Emacs version built from development
-  sources – see [Setup](https://github.com/manuel-uberti/.emacs.d#setup)
-
-- I use Emacs for programming (Clojure, Elisp) and writing (Org, LaTeX)
+  sources
 
 ##Setup
 On your **Debian-based** machine:
