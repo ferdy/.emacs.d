@@ -17,8 +17,14 @@
   (setq minibuffer-prompt-properties (append default dont-touch-prompt-prop))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
 
-(setq use-dialog-box nil               ; Never use dialogs for minibuffer input
-      history-length 1000              ; Store more history
+;; Allow to read from minibuffer while in minibuffer.
+(setq enable-recursive-minibuffers t)
+
+;; Show the minibuffer depth (when larger than 1)
+(minibuffer-depth-indicate-mode 1)
+
+(setq use-dialog-box nil                ; Never use dialogs for minibuffer input
+      history-length 1000               ; Store more history
       )
 
 (use-package savehist                   ; Save minibuffer history
