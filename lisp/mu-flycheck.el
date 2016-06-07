@@ -15,17 +15,8 @@
 ;; Requires: chktex
 (use-package flycheck                   ; On-the-fly syntax checker
   :ensure t
-  :bind (("C-c e"   . mu-flycheck-errors/body)
-         ("C-c t e" . flycheck-mode))
+  :bind ("C-c t e" . flycheck-mode)
   :init
-  (defhydra mu-flycheck-errors ()
-    "Flycheck errors"
-    ("n" flycheck-next-error "next")
-    ("p" flycheck-previous-error "previous")
-    ("f" flycheck-first-error "first")
-    ("l" flycheck-list-errors "list")
-    ("w" flycheck-copy-errors-as-kill "copy message"))
-
   (defun mu-flycheck-set-load-path-for-user-configuration ()
     "Set Flycheck load path for files in user configuration."
     (when (and (buffer-file-name)
