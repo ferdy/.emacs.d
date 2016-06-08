@@ -51,6 +51,12 @@
   :init (global-hardhat-mode)
   :diminish global-hardhat-mode)
 
+(use-package sudo-edit                  ; Edit files as root, through Tramp
+  :ensure t
+  :defer t
+  :bind (("C-c f s" . sudo-edit)
+         ("C-c f S" . sudo-edit-current-file)))
+
 (use-package pdf-tools                  ; Better PDF support
   :ensure t
   :init (pdf-tools-install)
@@ -137,15 +143,6 @@ Otherwise copy the non-directory part only."
           (rename-file filename new-name 1))
         (rename-buffer new-name)
         (set-visited-file-name new-name)))))
-
-(defun open-with-sudo ()
-  "Find file using `sudo' with TRAMP."
-  (unless (and buffer-file-name
-               (file-writable-p buffer-file-name))
-    (find-alternate-file
-     (concat "/sudo:root@localhost:" buffer-file-name))))
-
-(add-hook 'find-file-hook #'open-with-sudo)
 
 (bind-key "C-c f D" #'mu-delete-this-file)
 (bind-key "C-c f R" #'mu-rename-this-file-and-buffer)

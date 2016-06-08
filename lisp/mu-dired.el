@@ -14,7 +14,7 @@
 (use-package dired                      ; File manager
   :defer t
   :bind (("<C-return>" . mu-open-in-external-app)
-         ("C-c f s"    . mu-dired-get-size)
+         ("C-c f g"    . mu-dired-get-size)
          ("C-c f f"    . find-name-dired)
          ("C-c f r"    . mu-dired-recent-dirs))
   :bind (:map dired-mode-map
