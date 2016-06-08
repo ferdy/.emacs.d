@@ -63,17 +63,6 @@
           ("http://planet.clojure.in/atom.xml" lisp)
           ("http://www.scheme.dk/planet/atom.xml" lisp)
           ("https://cavallette.noblogs.org/feed" security)
-          ("https://theintercept.com/feed/?rss" press)
-          ("https://freedom.press/blog/feed" press)
-          ("https://www.hongkongfp.com/feed/" press)
-          ("https://asianfilmstrike.wordpress.com/feed/" film)
-          ("http://www.easternkicks.com/feed" film)
-          ("https://cinebeats.wordpress.com/feed/" film)
-          ("http://girishshambu.blogspot.it/feeds/posts/default?alt=rss"
-           film)
-          ("http://filmstudiesforfree.blogspot.it/feeds/posts/default?alt=rss"
-           film)
-          ("http://quod.lib.umich.edu/f/fc/longfeed.xml" film)
           ("http://dilbert.oeey.com/" comic)))
 
   ;; Increase url-queue timeout
