@@ -398,7 +398,28 @@
         (ansi-color-apply-on-region (point-min) (point-max)))))
 
   (add-hook 'compilation-filter-hook
-            #'mu-colorize-compilation-buffer))
+            #'mu-colorize-compilation-buffer)
+
+  (defun mu-send-input (input &optional nl)
+    "Send INPUT to the current process.
+
+Interactively also sends a terminating newline."
+    (interactive "MInput: \nd")
+    (process-send-string
+     (get-buffer-process (current-buffer))
+     (concat input (if nl "\n"))))
+
+  (defun mu-send-self ()
+    "Send the pressed key to the current process."
+    (interactive)
+    (mu-send-input
+     (apply #'string
+            (append (this-command-keys-vector) nil))))
+
+  (bind-key "C-c i" #'mu-send-input compilation-mode-map)
+
+  (dolist (key '("\C-d" "\C-j" "y" "n"))
+    (bind-key key #'mu-send-self compilation-mode-map)))
 
 ;;; Utilities and keybindings
 ;;;###autoload
