@@ -127,9 +127,6 @@
         custom-unlispify-menu-entries nil)
   :init (load mu-custom-file 'no-error 'no-message))
 
-(use-package no-littering               ; Keep .emacs.d clean
-  :ensure t)
-
 ;; Set the directory where all backup and autosave files will be saved
 (setq backup-directory-alist '((".*" . "~/.emacs.d/backup"))
       version-control        t          ; Version number for backup files
