@@ -103,6 +103,10 @@
     "C-c m"   "clj/personal"
     "C-c m r" "clj-refactor")
 
+  (which-key-declare-prefixes-for-mode 'haskell-mode
+    "C-c m" "haskell/personal"
+    "C-c m i" "haskell/imports")
+
   (which-key-declare-prefixes-for-mode 'rust-mode
     "C-c C-c" "rust/cargo")
 
