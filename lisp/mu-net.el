@@ -65,8 +65,10 @@
           ("https://cavallette.noblogs.org/feed" security)
           ("http://dilbert.oeey.com/" comic)))
 
-  ;; Increase url-queue timeout
-  (setf url-queue-timeout 30))
+  (setq elfeed-use-curl t)              ; Use curl to fetch te feeds
+
+  ;; Increse timeout
+  (elfeed-set-timeout 30))
 
 (use-package elfeed-search              ; List feed entries
   :ensure elfeed
