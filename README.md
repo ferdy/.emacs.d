@@ -1,8 +1,8 @@
-#.emacs.d
+# .emacs.d
 
 This is the Emacs configuration I use everyday.
 
-##Notes
+## Notes
 - I use Emacs on [Debian Jessie](https://www.debian.org) (amd64), so this
 configuration targets **Debian-based** systems
 
@@ -13,7 +13,7 @@ run *before* starting Emacs for the first time. Again, it targets
 - This configuration requires an Emacs version built from development
   sources
 
-##Setup
+## Setup
 On your **Debian-based** machine:
 
 - clone Emacs trunk:
@@ -52,7 +52,7 @@ $ ./esetup
 The first time you run Emacs, every package configured in `init.el` and in every
 file in the `lisp` directory will be automatically installed and configured.
 
-##Updates
+## Updates
 This configuration tracks latest Emacs developments. If you intend to use it, I
 highly recommend you update and build your sources at least once a week.
 
@@ -86,7 +86,7 @@ With the help of tools such as [Magit](https://github.com/magit/magit),
 [Paradox](https://github.com/Bruce-Connor/paradox) and your preferred shell,
 maintenance is simple.
 
-##Acknowledgements
+## Acknowledgements
 This configuration would not have been possible without the work of and the
 inspiration from these people:
 - [Bozhidar Batsov](https://github.com/bbatsov)
@@ -103,7 +103,7 @@ inspiration from these people:
 - [John Wiegley](https://github.com/jwiegley)
 - [Sebastian Wiesner](https://github.com/lunaryorn)
 
-##License
+## License
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by the Free
 Software Foundation; either version 3 of the License, or (at your option) any
