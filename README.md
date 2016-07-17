@@ -40,7 +40,7 @@ $ git clone https://github.com/manuel-uberti/.emacs.d
 ```console
 $ cd .emacs.d
 $ sudo mkdir -p /usr/share/hunspell
-$ sudo cp etc/* /usr/share/hunspell
+$ sudo cp etc/dictionaries/* /usr/share/hunspell
 ```
 - put the kettle on and run ```esetup```:
 ```console
