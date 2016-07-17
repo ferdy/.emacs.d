@@ -86,13 +86,13 @@ latex_setup() {
   dostep 4 "n" "cd $(tar -tzf install-tl-unx.tar.gz | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D')"
   dostep 5 "y" "./install-tl"
   dostep 6 "y" "mkdir -p /opt"
-  dostep 7 "y" "ln -s /usr/local/texlive/2015/bin/* /opt/texbin"
+  dostep 7 "y" "ln -s /usr/local/texlive/2016/bin/* /opt/texbin"
   dostep 8 "y" "apt-get install --no-install-recommends equivs"
   dostep 9 "n" "mkdir -p /tmp/tl-equivs && cd /tmp/tl-equivs"
-  dostep 10 "n" "wget http://www.tug.org/texlive/files/debian-equivs-2015-ex.txt"
-  dostep 11 "n" "/bin/cp -f debian-equivs-2015-ex.txt texlive-local"
+  dostep 10 "n" "wget http://www.tug.org/texlive/files/debian-equivs-2016-ex.txt"
+  dostep 11 "n" "/bin/cp -f debian-equivs-2016-ex.txt texlive-local"
   dostep 12 "n" "equivs-build texlive-local"
-  dostep 13 "y" "dpkg -i texlive-local_2015-1_all.deb"
+  dostep 13 "y" "dpkg -i texlive-local_2016-1_all.deb"
   if [ ! -d "$HOME/sources" ]; then
     dostep 14 "n" "mkdir -p $HOME/sources"
   fi
