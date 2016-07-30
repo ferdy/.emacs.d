@@ -74,6 +74,11 @@
   :defer t
   :ensure t)
 
+(use-package suggest                    ; Suggest Elisp functions
+  :ensure t
+  :bind (:map emacs-lisp-mode-map
+              ("C-c m o" . suggest)))
+
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
