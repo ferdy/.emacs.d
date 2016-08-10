@@ -409,6 +409,10 @@
   (setq nxml-slash-auto-complete-flag t
         nxml-auto-insert-xml-declaration-flag t))
 
+(use-package json-mode                  ; JSON editing
+  :mode "\\.json\\'"
+  :ensure t)
+
 ;;; Bugs management
 (use-package bug-reference              ; Buttonize bug references
   :defer t
