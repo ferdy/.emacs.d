@@ -97,6 +97,7 @@ inspiration from these people:
 - [Artur Malabarba](https://github.com/Malabarba)
 - [Kaushal Modi](https://github.com/kaushalmodi)
 - [Mickey Petersen](https://github.com/mickeynp)
+- [Nicolas Petton](https://github.com/NicolasPetton)
 - [Steve Purcell](https://github.com/purcell)
 - [Vasilij Schneidermann](https://github.com/wasamasa)
 - [Magnar Sveen](https://github.com/magnars)
