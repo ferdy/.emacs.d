@@ -160,6 +160,10 @@ as well as fall backs for."
 
   (load-theme 'solarized-light 'no-confirm))
 
+(use-package zerodark-theme             ; Beautiful dark theme
+  :ensure t
+  :disabled t)
+
 ;;; Mode line
 (line-number-mode)
 (column-number-mode)
