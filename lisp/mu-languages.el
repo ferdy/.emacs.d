@@ -30,24 +30,30 @@
     (warn "No spell checker available.  Plese install hunspell.")))
 
 (use-package flyspell                   ; Spell checking on-the-fly
-  :bind ("C-c t s" . flyspell-mode)
+  :bind (:map flyspell-mode-map
+              ("C-M-i" . mu-cycle-ispell-languages))
+  :init
+  (defvar mu-languages-ring nil "Languages ring for Ispell")
+
+  (let ((languages '("en_GB" "it_IT")))
+    (setq mu-languages-ring (make-ring (length languages)))
+    (dolist (elem languages) (ring-insert mu-languages-ring elem)))
+
+  (add-hook 'prog-mode-hook #'flyspell-prog-mode)
+
+  (defun mu-cycle-ispell-languages ()
+    (interactive)
+    (let ((language (ring-ref mu-languages-ring -1)))
+      (ring-insert mu-languages-ring language)
+      (ispell-change-dictionary language)))
+
+  (dolist (mode-hook '(text-mode-hook LaTeX-mode-hook))
+    (add-hook mode-hook (lambda () (flyspell-mode))))
   :config
   (setq flyspell-use-meta-tab nil
         ;; Make Flyspell less chatty
         flyspell-issue-welcome-flag nil
         flyspell-issue-message-flag nil)
-
-  (bind-key "C-c I"
-            (lambda ()
-              (interactive)
-              (ispell-change-dictionary "it_IT")
-              (flyspell-buffer)))
-
-  (bind-key "C-c E"
-            (lambda ()
-              (interactive)
-              (ispell-change-dictionary "en_GB")
-              (flyspell-buffer)))
 
   ;; Free M-t for transpose words
   (unbind-key "M-t" flyspell-mode-map))
