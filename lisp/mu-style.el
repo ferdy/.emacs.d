@@ -146,6 +146,7 @@ as well as fall backs for."
 
 (use-package solarized                  ; My default theme
   :ensure solarized-theme
+  :disabled t
   :config
   (setq solarized-use-variable-pitch nil  ; Disable variable pitch fonts
         solarized-distinct-doc-face t     ; Make doc faces stand out more
@@ -162,7 +163,7 @@ as well as fall backs for."
 
 (use-package zerodark-theme             ; Beautiful dark theme
   :ensure t
-  :disabled t)
+  :config (load-theme 'zerodark 'no-confirm))
 
 ;;; Mode line
 (line-number-mode)
