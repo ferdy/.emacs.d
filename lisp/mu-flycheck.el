@@ -43,6 +43,9 @@ most errors from HTML Tidy."
             #'mu-discard-undesired-html-tidy-error)
   (add-hook 'flycheck-mode-hook
             #'mu-flycheck-set-load-path-for-user-configuration)
+
+  ;; Enable Flycheck in programming modes
+  (add-hook 'prog-mode-hook #'flycheck-mode)
   :config
   (setq flycheck-standard-error-navigation nil
         flycheck-display-errors-function
