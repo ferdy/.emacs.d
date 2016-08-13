@@ -40,6 +40,13 @@
   :defer t
   :init (delete-selection-mode))
 
+(use-package subword                    ; Handle capitalized subwords
+  :defer t
+  ;; Do not override `transpose-words', it should not transpose subwords
+  :config (bind-key [remap transpose-words] nil subword-mode-map)
+  :init (global-subword-mode 1)
+  :diminish subword-mode)
+
 (use-package expand-region      ; Increase the selected region by semantic units
   :ensure t
   :bind ("C-=" . er/expand-region))
