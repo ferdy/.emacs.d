@@ -79,6 +79,11 @@
   :bind (:map emacs-lisp-mode-map
               ("C-c m o" . suggest)))
 
+(use-package ipretty                    ; Elisp pretty-printing
+  :ensure t
+  :bind (:map emacs-lisp-mode-map
+              ("C-c m p" . ipretty-last-sexp)))
+
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
