@@ -35,6 +35,10 @@
          ("C-c n j" . avy-goto-char-2)
          ("C-c n w" . avy-goto-word-1)))
 
+(use-package ace-link                   ; Quickly follow links with Avy
+  :ensure t
+  :init (ace-link-setup-default))
+
 (use-package outline                    ; Navigate outlines in buffers
   :defer t
   :init
