@@ -2,4 +2,4 @@
 # name: large
 # key: l
 # --
-\large{$0}
+{\large $0}
