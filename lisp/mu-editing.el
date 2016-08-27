@@ -91,12 +91,12 @@
   (defhydra mu-multiple-cursors (:hint nil)
     "
 Multiple cursors (quit with _q_)
-^Mark^                ^Edit^              ^Other^
-^----^----------------^----^--------------^-----^----------------------
-_e_:   mark more      _l_:   edit lines   _a_: vertical align
-_h_:   mark all       _C-a_: edit begs    _s_: set rect action
+^Mark^                ^Edit^                 ^Other^
+^----^----------------^----^-----------------^-----^----------------------
+_e_:   mark more      _l_:   edit lines      _a_: vertical align
+_h_:   mark all       _C-a_: edit begs       _s_: set rect action
 _n_:   mark next      _C-e_: edit ends
-_p_:   mark previous
+_p_:   mark previous  _i_:   insert numbers
 _r_:   mark regexp
 _C-s_: mark region
 "
@@ -104,6 +104,7 @@ _C-s_: mark region
     ("a" mc/vertical-align :exit t)
     ("e" mc/mark-more-like-this-extended)
     ("h" mc/mark-all-like-this-dwim)
+    ("i" mc/insert-numbers)
     ("l" mc/edit-lines :exit t)
     ("n" mc/mark-next-like-this)
     ("p" mc/mark-previous-like-this)
