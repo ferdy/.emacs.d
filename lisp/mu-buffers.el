@@ -52,10 +52,6 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
 ;; Configure `display-buffer' behaviour for some special buffers
 (setq display-buffer-alist
       `(
-        ;; Magit status window in fullscreen
-        (,(rx "*magit: ")
-         (mu-display-buffer-fullframe)
-         (reusable-frames . nil))
         ;; Messages, errors, Calendar and REPLs in the bottom side window
         (,(rx bos (or "*Help"             ; Help buffers
                       "*Warnings*"        ; Emacs warnings

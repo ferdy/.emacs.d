@@ -32,6 +32,10 @@
   ;; Use Ivy
   (setq magit-completing-read-function 'ivy-completing-read)
 
+  ;; Show status buffer in fullscreen
+  (setq magit-display-buffer-function
+        #'magit-display-buffer-fullframe-status-v1)
+
   ;; Kill Magit buffers when quitting `magit-status'
   (defun magit-quit-session (&optional kill-buffer)
     "Kill all Magit buffers on quit"
