@@ -90,10 +90,12 @@
     ;; environment variables are mostly set in `.zprofile'.
     (setq exec-path-from-shell-arguments '("-l")))
 
-  (dolist (var '("FULLNAME"             ; First and last name
-                 "EMAIL"                ; Personal email
-                 "INFOPATH"             ; Info directories
-                 "JAVA_OPTS"            ; Options for Java processes
+  (dolist (var '("FULLNAME"           ; First and last name
+                 "EMAIL"              ; Personal email
+                 "INFOPATH"           ; Info directories
+                 "JAVA_OPTS"          ; Options for Java processes
+                 "RUST_SRC_PATH"      ; Rust sources, for racer
+                 "CARGO_HOME"         ; Cargo home, for racer
                  ))
     (add-to-list 'exec-path-from-shell-variables var))
 
