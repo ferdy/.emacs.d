@@ -324,6 +324,13 @@
   :ensure t
   :bind (:map rust-mode-map ("C-c <tab>" . rust-format-buffer)))
 
+(use-package racer                      ; Completion and navigation for Rust
+  :ensure t
+  :defer t
+  :init (add-hook 'rust-mode-hook #'racer-mode)
+  :config
+  (setq racer-rust-src-path (getenv "RUST_SRC_PATH")))
+
 (use-package cargo                      ; Control Cargo
   :ensure t
   :bind (:map rust-mode-map ("<f6>" . cargo-process-build))
