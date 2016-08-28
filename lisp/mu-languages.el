@@ -13,7 +13,7 @@
 
 ;;; Translation
 (use-package po-mode                    ; Manage .po files
-  :load-path "extra"
+  :ensure t
   :defer t
   :mode "\\.po\\'"
   :config (setq po-keep-mo-file t))
