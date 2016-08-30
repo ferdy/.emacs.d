@@ -451,8 +451,11 @@
 (use-package eldoc                      ; Documentation in the echo area
   :defer t
   ;; Enable Eldoc for `eval-expression', too
-  :init (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
-  :config (setq-default eldoc-documentation-function #'describe-char-eldoc)
+  :init
+  (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
+  :config
+  (setq-default eldoc-documentation-function #'describe-char-eldoc)
+  (setq eldoc-idle-delay 0.1)           ; Show eldoc more promptly
   :diminish eldoc-mode)
 
 (use-package etags                      ; Tag navigation
