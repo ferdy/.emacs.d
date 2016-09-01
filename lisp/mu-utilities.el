@@ -65,6 +65,9 @@
   :ensure t
   :bind ("C-c a a s" . keychain-environment-refresh))
 
+(use-package ledger-mode                ; Control Ledger with Emacs
+  :ensure t)
+
 (provide 'mu-utilities)
 
 ;;; mu-utilities.el ends here
