@@ -20,7 +20,10 @@
          ("C-c o s" . org-search-view)
          ("C-c o t" . org-todo-list))
   :bind (:map org-mode-map
-              ("<return>" . mu-org-return))
+              ("<return>" . mu-org-return)
+              ;; Prefer Isearch to Swiper in Org files
+              ("C-s"      . isearch-forward)
+              ("C-r"      . isearch-backward))
   :init
   (setq org-emphasis-regexp-components ; Fix markup for ' and "
         '("     ('\"{“”"
