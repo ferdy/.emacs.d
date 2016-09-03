@@ -31,7 +31,7 @@ for variable-pitch face."
 ;; Dinamically change font size based upon screen resolution
 (when window-system
   (if (> (x-display-pixel-width) 1800)
-      (mu-setup-main-fonts 170 180)
+      (mu-setup-main-fonts 165 175)
     (mu-setup-main-fonts 130 140)))
 
 (defun mu-configure-fonts (frame)
