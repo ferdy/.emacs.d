@@ -66,7 +66,12 @@
   :bind ("C-c a a s" . keychain-environment-refresh))
 
 (use-package ledger-mode                ; Control Ledger with Emacs
-  :ensure t)
+  :ensure t
+  :mode "\\.ldg\\'"
+  :bind (:map ledger-mode-map
+              ("C-c m b" . ledger-mode-clean-buffer))
+  :init
+  (setq ledger-clear-whole-transactions t))
 
 (provide 'mu-utilities)
 
