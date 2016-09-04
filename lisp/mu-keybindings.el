@@ -120,6 +120,10 @@
     "C-c C-d" "web/dom"
     "C-c C-e" "web/element"
     "C-c C-t" "web/tags")
+
+  (which-key-declare-prefixes-for-mode 'ledger-mode
+    "C-c m"   "ledger/personal"
+    "C-c m b" "clean-buffer")
   :diminish which-key-mode)
 
 (use-package hydra                      ; Make bindings that stick
