@@ -137,8 +137,8 @@
 (setq auto-save-list-file-prefix     "~/.emacs.d/autosave/"
       auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
 
-;; The server of `emacsclient'
-(use-package server
+(use-package server                     ; The server of `emacsclient'
+  :if (not noninteractive)
   :defer t
   :config
   ;; Start server only if it is not already running
