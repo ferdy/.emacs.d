@@ -114,7 +114,7 @@
   (add-hook 'cider-repl-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'subword-mode)
 
-  ;; Run cljs-repl inside Emacs
+  ;; Set up Figwheel in ClojureScript REPL
   (setq cider-cljs-lein-repl
         "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
 
