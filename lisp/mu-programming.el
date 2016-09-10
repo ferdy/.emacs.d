@@ -123,7 +123,7 @@
       (insert "(require 'figwheel-sidecar.repl-api)
              (figwheel-sidecar.repl-api/start-figwheel!)
              (figwheel-sidecar.repl-api/cljs-repl)")
-      (cider-repl-return)))   ;; Run cljs-repl inside Emacs
+      (cider-repl-return)))
 
   (bind-key "C-c m f" #'cider-figwheel-repl)
 
