@@ -84,7 +84,8 @@
 
 (use-package paradox                    ; Better package manager interface
   :ensure t
-  :bind ("C-c a p" . paradox-list-packages)
+  :bind (("C-c a p" . paradox-list-packages)
+         ("C-c a P" . paradox-upgrade-packages))
   :config
   (setq paradox-github-token t             ; Don't ask for a token
         paradox-execute-asynchronously nil ; No async updates
