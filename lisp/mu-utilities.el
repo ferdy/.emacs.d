@@ -71,7 +71,11 @@
   :bind (:map ledger-mode-map
               ("C-c m b" . ledger-mode-clean-buffer))
   :init
-  (setq ledger-clear-whole-transactions t))
+  (setq ledger-clear-whole-transactions t
+        ledger-occur-use-face-shown nil
+        ledger-post-amount-alignment-at :decimal
+        ledger-reconcile-default-commodity "€"
+        ledger-report-auto-refresh-sticky-cursor t))
 
 (provide 'mu-utilities)
 
