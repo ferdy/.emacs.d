@@ -74,12 +74,6 @@ most errors from HTML Tidy."
   :after rust-mode
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
-(use-package flycheck-purescript        ; Flycheck for Purescript
-  :ensure t
-  :defer t
-  :after flycheck
-  :config (flycheck-purescript-setup))
-
 (provide 'mu-flycheck)
 
 ;;; mu-flycheck.el ends here
