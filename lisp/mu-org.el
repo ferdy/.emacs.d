@@ -24,33 +24,22 @@
               ;; Prefer Isearch to Swiper in Org files
               ("C-s"      . isearch-forward)
               ("C-r"      . isearch-backward))
-  :init
-  (setq org-emphasis-regexp-components ; Fix markup for ' and "
-        '("     ('\"{“”"
-          "-   .,!?;''“”\")}/\\“”"
-          "    \r\n,"
-          "."
-          1))
   :config
-  (setq org-src-fontify-natively t
-        org-log-done 'time
-        org-export-with-smart-quotes t
-        org-hide-emphasis-markers t
-        ;; Turn off preamble and postamble in HTML export
-        org-html-preamble nil
-        org-html-postamble nil
-        org-export-html-style-default ""
-        org-export-html-style-include-default nil
-        org-refile-targets '((org-agenda-files . (:maxlevel . 6)))
-        org-agenda-start-on-weekday nil
-        org-agenda-include-diary t
-        org-agenda-use-time-grid t
-        ;; Follow links by pressing ENTER on them
-        org-return-follows-link t)
+  (validate-setq org-emphasis-regexp-components ; Fix markup for ' and "
+                 '("     ('\"{“”"
+                   "-   .,!?;''“”\")}/\\“”"
+                   "    \r\n,"
+                   "."
+                   1))
+  (validate-setq org-src-fontify-natively t
+                 org-log-done 'time
+                 org-hide-emphasis-markers t
+                 ;; Follow links by pressing ENTER on them
+                 org-return-follows-link t)
 
-  (setq org-directory (expand-file-name "~/org/")
-        org-default-notes-file
-        (expand-file-name "organizer.org" org-directory))
+  (validate-setq org-directory (expand-file-name "~/org/")
+                 org-default-notes-file
+                 (expand-file-name "organizer.org" org-directory))
 
   ;; Use visual-line-mode
   (add-hook 'org-mode-hook #'visual-line-mode)
@@ -59,19 +48,9 @@
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
   ;; Define TODO workflow states
-  (setq org-todo-keywords
-        '("TODO(t)" "WAITING(w)" "INFO(i)"
-          "|" "CANCELLED(c)" "DONE(x)"))
-
-  ;; Define custom commands
-  (setq org-agenda-custom-commands
-        '(("P" "Personal Projects" ((Tags "PERSONAL")))
-          ("B" "Boccaperta" ((agenda)
-                             (tags-todo "BOCCAPERTA")))))
-
-  (setq org-latex-pdf-process         ; Use LuaTex for PDF export
-        "latexmk -pdflatex='lualatex -shell-escape
--interaction nonstopmode' -pdf -f  %f")
+  (validate-setq org-todo-keywords
+                 '("TODO(t)" "WAITING(w)" "INFO(i)"
+                   "|" "CANCELLED(c)" "DONE(x)"))
 
   ;; Disable whitespace highlighting of overlong lines in Org Mode
   (add-hook 'org-mode-hook
@@ -102,6 +81,25 @@
 
   ;; Free C-c $ (see: mu-languages.el)
   (unbind-key "C-c $" org-mode-map))
+
+(use-package ox
+  :ensure org
+  :config
+  (validate-setq org-export-with-smart-quotes t))
+
+(use-package ox-html
+  :ensure org
+  :config
+  ;; Turn off preamble and postamble in HTML export
+  (validate-setq org-html-preamble nil
+                 org-html-postamble nil))
+
+(use-package ox-latex
+  :ensure org
+  :config
+  (validate-setq org-latex-pdf-process         ; Use LuaTex for PDF export
+                 '("latexmk -pdflatex='lualatex -shell-escape
+-interaction nonstopmode' -pdf -f  %f")))
 
 (use-package org-indent ; Dynamic indentation for Org-mode
   :ensure org
