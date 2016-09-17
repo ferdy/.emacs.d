@@ -84,8 +84,7 @@
 
 (use-package ox
   :ensure org
-  :config
-  (validate-setq org-export-with-smart-quotes t))
+  :config (validate-setq org-export-with-smart-quotes t))
 
 (use-package ox-html
   :ensure org
@@ -97,7 +96,8 @@
 (use-package ox-latex
   :ensure org
   :config
-  (validate-setq org-latex-pdf-process         ; Use LuaTex for PDF export
+  ;; Use LuaTex for PDF export
+  (validate-setq org-latex-pdf-process
                  '("latexmk -pdflatex='lualatex -shell-escape
 -interaction nonstopmode' -pdf -f  %f")))
 
