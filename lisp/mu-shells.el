@@ -20,9 +20,6 @@
   (defun eshell/l (&rest args) "Same as `ls -lah'"
          (apply #'eshell/ls "-lah" args))
 
-  (validate-setq eshell-cmpl-cycle-completions nil
-                 eshell-save-history-on-exit t)
-
   (defun eshell/clear ()
     "Clear the eshell buffer."
     (interactive)
@@ -41,6 +38,14 @@
     '(progn
        (unintern 'eshell/su nil)
        (unintern 'eshell/sudo nil))))
+
+(use-package em-cmpl
+  :ensure eshell
+  :config (validate-setq eshell-cmpl-cycle-completions nil))
+
+(use-package em-hist
+  :ensure eshell
+  :config (validate-setq eshell-save-history-on-exit t))
 
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind (("C-c a s t" . shell)
