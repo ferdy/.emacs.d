@@ -63,10 +63,10 @@ as well as fall backs for."
   (unbind-key "C-x C-z")
   :config (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
 
-(setq echo-keystrokes 0.1)              ; Faster echo keystrokes
+(validate-setq echo-keystrokes 0.1)              ; Faster echo keystrokes
 
 ;; Avoid showing ?? in the mode line when we have long lines.
-(setq line-number-display-limit-width 10000)
+(validate-setq line-number-display-limit-width 10000)
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -80,20 +80,20 @@ as well as fall backs for."
 
 ;; Disable annoying prompts
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq kill-buffer-query-functions
-      (remq 'process-kill-buffer-query-function
-            kill-buffer-query-functions))
+(validate-setq kill-buffer-query-functions
+               (remq 'process-kill-buffer-query-function
+                     kill-buffer-query-functions))
 
 ;; Disable startup messages
-(setq inhibit-startup-message t
-      inhibit-startup-echo-area-message t
-      initial-scratch-message nil)
+(validate-setq ring-bell-function #'ignore
+               inhibit-startup-screen t
+               initial-scratch-message nil)
 
 ;; Disable startup echo area message
 (fset 'display-startup-echo-area-message #'ignore)
 
-(setq x-gtk-use-system-tooltips nil)    ; Use Emacs tooltips
-(setq history-length 1000)              ; Store more history
+(validate-setq x-gtk-use-system-tooltips nil) ; Use Emacs tooltips
+(validate-setq history-length 1000)           ; Store more history
 (setq-default line-spacing 0.2)         ; Increase line-spacing (default 0)
 
 ;; Configure a reasonable fill column and enable automatic filling
@@ -110,10 +110,6 @@ as well as fall backs for."
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-;; C-specific Indentation
-(setq c-default-style "linux"
-      c-basic-offset 4)
-
 (use-package page-break-lines           ; Better looking break lines
   :ensure t
   :defer t
@@ -125,7 +121,7 @@ as well as fall backs for."
 
 ;; Unprettify symbols with point on them and symbols
 ;; right next to point
-(setq prettify-symbols-unprettify-at-point 'right-edge)
+(validate-setq prettify-symbols-unprettify-at-point 'right-edge)
 
 (use-package ansi-color                 ; Colorize ANSI escape sequences
   :defer t
@@ -138,29 +134,30 @@ as well as fall backs for."
   (add-hook 'compilation-filter-hook #'mu-colorize-compilation))
 
 ;; Underline below the font bottomline instead of the baseline
-(setq x-underline-at-descent-line t)
+(validate-setq x-underline-at-descent-line t)
 
 (use-package stripe-buffer              ; Add stripes to a buffer
   :ensure t
   :init (add-hook 'dired-mode-hook #'stripe-buffer-mode))
 
 ;;; Theme
-(setq custom-safe-themes t)             ; Treat themes as safe
+(validate-setq custom-safe-themes t)    ; Treat themes as safe
 
 (use-package solarized                  ; My default theme
   :ensure solarized-theme
   :disabled t
   :config
-  (setq solarized-use-variable-pitch nil  ; Disable variable pitch fonts
-        solarized-distinct-doc-face t     ; Make doc faces stand out more
-        solarized-use-more-italic t       ; Use italic more often
-        solarized-use-less-bold t         ; Less bold, italic is enough
-        ;; Avoid all font-size changes
-        solarized-height-minus-1 1.0
-        solarized-height-plus-1 1.0
-        solarized-height-plus-2 1.0
-        solarized-height-plus-3 1.0
-        solarized-height-plus-4 1.0)
+  (validate-setq
+   solarized-use-variable-pitch nil  ; Disable variable pitch fonts
+   solarized-distinct-doc-face t     ; Make doc faces stand out more
+   solarized-use-more-italic t       ; Use italic more often
+   solarized-use-less-bold t         ; Less bold, italic is enough
+   ;; Avoid all font-size changes
+   solarized-height-minus-1 1.0
+   solarized-height-plus-1 1.0
+   solarized-height-plus-2 1.0
+   solarized-height-plus-3 1.0
+   solarized-height-plus-4 1.0)
 
   (load-theme 'solarized-light 'no-confirm))
 
@@ -175,9 +172,9 @@ as well as fall backs for."
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
   :config
-  (setq sml/theme nil
-        sml/mode-width 'full
-        sml/no-confirm-load-theme t)
+  (validate-setq sml/theme nil
+                 sml/mode-width 'full
+                 sml/no-confirm-load-theme t)
 
   (sml/setup)
   ;; More abbreviations

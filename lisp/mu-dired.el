@@ -28,16 +28,16 @@
               ([remap beginning-of-buffer] . mu-dired-back-to-top)
               ([remap end-of-buffer]       . mu-dired-jump-to-bottom))
   :config
-  (setq dired-auto-revert-buffer t    ; Revert buffers on revisiting
-        dired-listing-switches
-        "-lFaGh1v --group-directories-first"  ; Add ls switches
-        global-auto-revert-non-file-buffers t ; Auto refresh Dired
-        auto-revert-verbose nil               ; But be quiet about it
-        dired-dwim-target t                   ; Use other pane as target
-        dired-recursive-copies 'always        ; Copy dirs recursively
-        dired-recursive-deletes ' always      ; Delete dirs recursively
-        ;; -F marks links with @
-        dired-ls-F-marks-symlinks t)
+  (validate-setq dired-auto-revert-buffer t ; Revert buffers on revisiting
+                 dired-listing-switches
+                 "-lFaGh1v --group-directories-first"  ; Add ls switches
+                 global-auto-revert-non-file-buffers t ; Auto refresh Dired
+                 auto-revert-verbose nil               ; But be quiet about it
+                 dired-dwim-target t              ; Use other pane as target
+                 dired-recursive-copies 'always   ; Copy dirs recursively
+                 dired-recursive-deletes ' always ; Delete dirs recursively
+                 ;; -F marks links with @
+                 dired-ls-F-marks-symlinks t)
 
   ;; Enable dired-find-alternate-file
   (put 'dired-find-alternate-file 'disabled nil)
@@ -46,20 +46,20 @@
   (add-hook 'dired-mode-hook #'toggle-truncate-lines))
 
 (use-package find-dired                 ; Run `find' in Dired
-  :config (setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
+  :config (validate-setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
 
 (use-package dired-x                    ; Enable some nice Dired features
   :bind ("C-x C-j" . dired-jump)
   :bind (:map dired-mode-map
               ("Y" . mu-dired-rsync))
   :config
-  (setq dired-omit-verbose nil        ; Be less verbose, Dired
-        ;; Omit dotfiles with C-x M-o
-        dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+  (validate-setq dired-omit-verbose nil ; Be less verbose, Dired
+                 ;; Omit dotfiles with C-x M-o
+                 dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
   (add-hook 'dired-mode-hook #'dired-omit-mode)
 
   ;; Diminish dired-omit-mode. We need this hack, because Dired Omit Mode has
-  ;; a very peculiar way of registering its lighter explicitly in
+  ;; a very peculiar way of registering itns lighter explicitly in
   ;; `dired-omit-startup'.  We can't just use `:diminish' because the lighter
   ;; isn't there yet after dired-omit-mode is loaded.
   (add-function :after (symbol-function 'dired-omit-startup)
@@ -71,7 +71,7 @@
   :bind (:map dired-mode-map
               ("/" . dired-narrow)))
 
-;;; Utilities and keybindings
+;;; Utilities and key bindings
 ;;;###autoload
 (defun mu-dired-up ()
   "Go to previous directory."

@@ -80,6 +80,10 @@
      (when (> (time-to-number-of-days time-since-build) 7)
        (lwarn 'emacs :warning "Your Emacs build is more than a week old!")))))
 
+;;; Validation
+(use-package validate                   ; Validate options
+  :ensure t)
+
 ;;; Environment fixup
 (use-package exec-path-from-shell
   :ensure t
@@ -88,16 +92,16 @@
   (when (string-match-p "/zsh$" (getenv "SHELL"))
     ;; Use a non-interactive login shell.  A login shell, because my
     ;; environment variables are mostly set in `.zprofile'.
-    (setq exec-path-from-shell-arguments '("-l")))
+    (validate-setq exec-path-from-shell-arguments '("-l")))
 
-  (dolist (var '("FULLNAME"           ; First and last name
-                 "EMAIL"              ; Personal email
-                 "INFOPATH"           ; Info directories
-                 "JAVA_OPTS"          ; Options for Java processes
-                 "RUST_SRC_PATH"      ; Rust sources, for racer
-                 "CARGO_HOME"         ; Cargo home, for racer
-                 ))
-    (add-to-list 'exec-path-from-shell-variables var))
+  (validate-setq exec-path-from-shell-variables
+                 '("FULLNAME"           ; First and last name
+                   "EMAIL"              ; Personal email
+                   "INFOPATH"           ; Info directories
+                   "JAVA_OPTS"          ; Options for Java processes
+                   "RUST_SRC_PATH"      ; Rust sources, for racer
+                   "CARGO_HOME"         ; Cargo home, for racer
+                   ))
 
   (exec-path-from-shell-initialize)
 
@@ -111,8 +115,8 @@
         (add-to-list 'Info-directory-list dir)))))
 
 ;; Personal informations
-(setq user-full-name (getenv "FULLNAME"))
-(setq user-mail-address (getenv "EMAIL"))
+(validate-setq user-full-name (getenv "FULLNAME"))
+(validate-setq user-mail-address (getenv "EMAIL"))
 
 ;; Set separate custom file for the customize interface
 (defconst mu-custom-file (locate-user-emacs-file "custom.el")
@@ -121,12 +125,12 @@
 (use-package cus-edit
   :defer t
   :config
-  (setq custom-file mu-custom-file
-        custom-buffer-done-kill nil    ; Kill when existing
-        custom-buffer-verbose-help nil ; Remove redundant help text
-        ;; Show me the real variable name
-        custom-unlispify-tag-names nil
-        custom-unlispify-menu-entries nil)
+  (validate-setq custom-file mu-custom-file
+                 custom-buffer-done-kill nil    ; Kill when existing
+                 custom-buffer-verbose-help nil ; Remove redundant help text
+                 ;; Show me the real variable name
+                 custom-unlispify-tag-names nil
+                 custom-unlispify-menu-entries nil)
   :init (load mu-custom-file 'no-error 'no-message))
 
 ;; Set the directory where all backup and autosave files will be saved
@@ -168,7 +172,7 @@
 (use-package mu-vers-control :defer 3)
 (use-package mu-net)
 (use-package mu-utilities)
-(use-package mu-org :defer 1)
+(use-package mu-org)
 (use-package mu-flycheck :defer 1)
 (use-package mu-programming)
 (use-package mu-shells)

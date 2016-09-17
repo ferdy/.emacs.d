@@ -12,13 +12,13 @@
 ;;; Code:
 
 ;; Scrolling
-(setq scroll-conservatively 1000
-      ;; Move to beg/end of buffer before signalling an error
-      scroll-error-top-bottom t
-      ;; Ensure M-v always undoes C-v
-      scroll-preserve-screen-position 'always
-      ;; Start recentre from top
-      recenter-positions '(top middle bottom))
+(validate-setq scroll-conservatively 1000
+               ;; Move to beg/end of buffer before signalling an error
+               scroll-error-top-bottom t
+               ;; Ensure M-v always undoes C-v
+               scroll-preserve-screen-position 'always
+               ;; Start recentre from top
+               recenter-positions '(top middle bottom))
 
 (use-package bookmark                   ; Bookmarks to files and directories
   :bind
@@ -26,7 +26,7 @@
   ;; than `find-file-read-only-other-window'
   ("C-x 4 r" . bookmark-jump-other-window)
   :config
-  (setq bookmark-completion-ignore-case nil)
+  (validate-setq bookmark-completion-ignore-case nil)
   (bookmark-maybe-load-default-file))
 
 (use-package avy-jump                   ; Jump to characters in buffers
@@ -49,7 +49,7 @@
   :diminish outline-minor-mode)
 
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
-(setq set-mark-command-repeat-pop t)
+(validate-setq set-mark-command-repeat-pop t)
 
 ;;; Utilities and keybindings
 ;; Better forward and backward paragraph

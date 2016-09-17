@@ -47,9 +47,9 @@ most errors from HTML Tidy."
   ;; Enable Flycheck in programming modes
   (add-hook 'prog-mode-hook #'flycheck-mode)
   :config
-  (setq flycheck-standard-error-navigation nil
-        flycheck-display-errors-function
-        #'flycheck-display-error-messages-unless-error-list))
+  (validate-setq flycheck-standard-error-navigation nil
+                 flycheck-display-errors-function
+                 #'flycheck-display-error-messages-unless-error-list))
 
 (use-package flycheck-package          ; Check package conventions with Flycheck
   :ensure t

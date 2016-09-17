@@ -17,28 +17,28 @@
   :ensure t
   :init (which-key-mode)
   :config
-  (setq which-key-idle-delay 0.4
-        which-key-sort-order 'which-key-prefix-then-key-order
-        which-key-key-replacement-alist
-        '(("<\\([[:alnum:]-]+\\)>" . "\\1")
-          ("up"                    . "↑")
-          ("right"                 . "→")
-          ("down"                  . "↓")
-          ("left"                  . "←")
-          ("DEL"                   . "⌫")
-          ("deletechar"            . "⌦")
-          ("RET"                   . "⏎"))
-        which-key-description-replacement-alist
-        '(("Prefix Command" . "prefix")
-          ;; Lambdas
-          ("\\`\\?\\?\\'"   . "λ")
-          ;; Prettify hydra entry points
-          ("/body\\'"       . "|=")
-          ;; Drop/shorten package prefixes
-          ("\\`mu-"  . "")
-          ("projectile-"    . "proj-")
-          ("magit-"         . "ma-")
-          ("markdown-"      . "md-")))
+  (validate-setq which-key-idle-delay 0.4
+                 which-key-sort-order 'which-key-prefix-then-key-order
+                 which-key-key-replacement-alist
+                 '(("<\\([[:alnum:]-]+\\)>" . "\\1")
+                   ("up"                    . "↑")
+                   ("right"                 . "→")
+                   ("down"                  . "↓")
+                   ("left"                  . "←")
+                   ("DEL"                   . "⌫")
+                   ("deletechar"            . "⌦")
+                   ("RET"                   . "⏎"))
+                 which-key-description-replacement-alist
+                 '(("Prefix Command" . "prefix")
+                   ;; Lambdas
+                   ("\\`\\?\\?\\'"   . "λ")
+                   ;; Prettify hydra entry points
+                   ("/body\\'"       . "|=")
+                   ;; Drop/shorten package prefixes
+                   ("\\`mu-"  . "")
+                   ("projectile-"    . "proj-")
+                   ("magit-"         . "ma-")
+                   ("markdown-"      . "md-")))
   (which-key-declare-prefixes
     "C-c !"     "flycheck"
     "C-c @"     "outline"

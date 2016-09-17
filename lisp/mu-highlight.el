@@ -14,8 +14,8 @@
 (use-package paren                      ; Highlight paired delimiters
   :init (show-paren-mode)
   :config
-  (setq show-paren-when-point-inside-paren t
-        show-paren-when-point-in-periphery t))
+  (validate-setq show-paren-when-point-inside-paren t
+                 show-paren-when-point-in-periphery t))
 
 (use-package diff-hl                    ; Show changes in fringe
   :ensure t
@@ -40,9 +40,9 @@
   ;; Highlight symbol occurrences
   (add-hook 'prog-mode-hook #'highlight-symbol-mode)
   :config
-  (setq highlight-symbol-idle-delay 0.4 ; Almost immediately
-        ;; Immediately after navigation
-        highlight-symbol-on-navigation-p t)
+  (validate-setq highlight-symbol-idle-delay 0.4 ; Almost immediately
+                 ;; Immediately after navigation
+                 highlight-symbol-on-navigation-p t)
   :diminish highlight-symbol-mode)
 
 (use-package highlight-numbers          ; Fontify number literals
@@ -79,9 +79,11 @@
 
   ;; Highlight tabs, empty lines at beg/end, trailing whitespaces and overlong
   ;; portions of lines via faces.  Also indicate tabs via characters
-  (setq whitespace-style '(face indentation space-after-tab space-before-tab
-                                tab-mark empty trailing lines-tail)
-        whitespace-line-column nil)     ; Use `fill-column' for overlong lines
+  (validate-setq whitespace-style
+                 '(face indentation space-after-tab space-before-tab
+                        tab-mark empty trailing lines-tail)
+                 ;; Use `fill-column' for overlong lines
+                 whitespace-line-column nil)
   :diminish whitespace-mode)
 
 ;;; Utilities and keybindings

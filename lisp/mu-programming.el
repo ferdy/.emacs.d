@@ -105,7 +105,7 @@
 (use-package nrepl-client               ; Client for Clojure nREPL
   :ensure cider
   :defer t
-  :config (setq nrepl-hide-special-buffers t))
+  :config (validate-setq nrepl-hide-special-buffers t))
 
 (use-package cider-repl                 ; REPL interactions with CIDER
   :ensure cider
@@ -115,21 +115,22 @@
   (add-hook 'cider-repl-mode-hook #'subword-mode)
 
   ;; Set up Figwheel in ClojureScript REPL
-  (setq cider-cljs-lein-repl
-        "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+  (validate-setq
+   cider-cljs-lein-repl
+   "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
 
   ;; Increase the history size and make it permanent
-  (setq cider-repl-history-size 1000
-        cider-repl-history-file
-        (locate-user-emacs-file "cider-repl-history")
-        cider-repl-display-help-banner nil ; Disable help banner
-        cider-repl-pop-to-buffer-on-connect nil
-        cider-repl-result-prefix ";; => "))
+  (validate-setq cider-repl-history-size 1000
+                 cider-repl-history-file
+                 (locate-user-emacs-file "cider-repl-history")
+                 cider-repl-display-help-banner nil ; Disable help banner
+                 cider-repl-pop-to-buffer-on-connect nil
+                 cider-repl-result-prefix ";; => "))
 
 (use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
   :defer t
-  :config (setq cider-stacktrace-fill-column t))
+  :config (validate-setq cider-stacktrace-fill-column t))
 
 (use-package clj-refactor               ; Refactoring utilities
   :ensure t
@@ -142,10 +143,10 @@
 
   (add-hook 'clojure-mode-hook #'mu-clojure-mode-hook)
   :config
-  (setq cljr-suppress-middleware-warnings t
-        cljr-auto-sort-ns t
-        cljr-favor-prefix-notation
-        cljr-favor-private-functions)
+  (validate-setq cljr-suppress-middleware-warnings t
+                 cljr-auto-sort-ns t
+                 cljr-favor-prefix-notation
+                 cljr-favor-private-functions)
   :diminish clj-refactor-mode)
 
 ;;; Scheme
@@ -155,14 +156,15 @@
   (require 'cmuscheme)
 
   ;; Use CHICKEN Scheme
-  (setq scheme-program-name "csi")
+  (validate-setq scheme-program-name "csi")
   (add-to-list 'interpreter-mode-alist '("chicken-scheme" . scheme-mode))
 
   ;; Add custom header to .scm files
-  (setq auto-insert-alist
-        '(("\\.scm" .
-           (insert
-            "#!/bin/sh\n#| -*- scheme -*-\nexec csi -s $0 \"$@\"\n|#\n"))))
+  (validate-setq
+   auto-insert-alist
+   '(("\\.scm" .
+      (insert
+       "#!/bin/sh\n#| -*- scheme -*-\nexec csi -s $0 \"$@\"\n|#\n"))))
 
   (with-eval-after-load 'scheme
     (bind-key "C-c m s" #'run-scheme scheme-mode-map)
@@ -173,8 +175,9 @@
     (interactive "P")
     (let ((file-name (buffer-file-name)))
       (comint-check-source file-name)
-      (setq scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
-                                           (file-name-nondirectory file-name)))
+      (validate-setq
+       scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
+                                      (file-name-nondirectory file-name)))
       (comint-send-string (scheme-proc) (concat "(load \""
                                                 file-name
                                                 "\"\)\n"))
@@ -186,8 +189,9 @@
     (interactive "P")
     (let ((file-name (buffer-file-name)))
       (comint-check-source file-name)
-      (setq scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
-                                           (file-name-nondirectory file-name)))
+      (validate-setq
+       scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
+                                      (file-name-nondirectory file-name)))
       (message "compiling \"%s\" ..." file-name)
       (comint-send-string (scheme-proc) (concat "(compile-file \""
                                                 file-name
@@ -198,9 +202,7 @@
 
 (use-package geiser                ; Collection of modes for Scheme interpreters
   :ensure t
-  :bind ("C-c d g" . run-geiser)
-  :init (setq geiser-active-implementations '(chicken guile)
-              geiser-chicken-compile-geiser-p nil))
+  :bind ("C-c d g" . run-geiser))
 
 (use-package sicp                       ; The Wizard Book in Info format
   :ensure t
@@ -212,8 +214,7 @@
   :bind ("C-c d c" . sly)
   :bind (:map sly-mode-map
               ("C-c m q" . sly-quit-lisp)
-              ("C-c m h" . sly-documentation-lookup))
-  :init (setq inferior-lisp-program "/usr/bin/sbcl"))
+              ("C-c m h" . sly-documentation-lookup)))
 
 (use-package sly-macrostep              ; Macro-expansion via macrostep.el
   :ensure t
@@ -236,11 +237,11 @@
               ;; http://haskell.github.io/haskell-mode/manual/latest/Interactive-Haskell.html
               )
   :config
-  (setq haskell-tags-on-save t          ; Regenerate TAGS on save
-        haskell-process-log t           ; Show log for GHCI process
-        ;; Remove unused imports and auto-import modules
-        haskell-process-suggest-remove-import-lines t
-        haskell-process-auto-import-loaded-modules t)
+  (validate-setq haskell-tags-on-save t ; Regenerate TAGS on save
+                 haskell-process-log t  ; Show log for GHCI process
+                 ;; Remove unused imports and auto-import modules
+                 haskell-process-suggest-remove-import-lines t
+                 haskell-process-auto-import-loaded-modules t)
 
   (add-hook 'haskell-mode-hook #'haskell-decl-scan-mode) ; IMenu support
   (add-hook 'haskell-mode-hook #'interactive-haskell-mode))
@@ -268,7 +269,7 @@
               ("<f5>" . haskell-compile))
   :config
   ;; Build with Stack
-  (setq haskell-compile-cabal-build-command "stack build"))
+  (validate-setq haskell-compile-cabal-build-command "stack build"))
 
 (use-package cabal-mode                 ; Cabal files
   :ensure haskell-mode
@@ -285,7 +286,7 @@
   :init
   (add-hook 'haskell-mode-hook #'hindent-mode)
   :config
-  (setq hindent-style "gibiansky"))
+  (validate-setq hindent-style "gibiansky"))
 
 ;;; Python
 (use-package python                     ; Python editing
@@ -320,7 +321,7 @@
   :defer t
   :init (add-hook 'rust-mode-hook #'racer-mode)
   :config
-  (setq racer-rust-src-path (getenv "RUST_SRC_PATH")))
+  (validate-setq racer-rust-src-path (getenv "RUST_SRC_PATH")))
 
 (use-package cargo                      ; Control Cargo
   :ensure t
@@ -359,11 +360,11 @@
   (unbind-key "M-." js2-mode-map)
 
   ;; Disable parser errors and strict warnings
-  (setq js2-mode-show-parse-errors nil
-        js2-mode-show-strict-warnings nil)
+  (validate-setq js2-mode-show-parse-errors nil
+                 js2-mode-show-strict-warnings nil)
 
   ;; Try to highlight most ECMA built-ins
-  (setq js2-highlight-level 3))
+  (validate-setq js2-highlight-level 3))
 
 (use-package js2-refactor               ; Refactor JavaScript
   :ensure t
@@ -395,7 +396,7 @@
 
 (use-package css-mode                   ; Better CSS support
   :defer t
-  :config (setq css-indent-offset 2))
+  :config (validate-setq css-indent-offset 2))
 
 (use-package css-eldoc                  ; Eldoc for CSS
   :ensure t
@@ -412,16 +413,16 @@
   :mode ("\\.zsh\\'" . sh-mode)
   :config
   ;; Use two spaces in shell scripts.
-  (setq sh-indentation 2                ; The basic indentation
-        sh-basic-offset 2               ; The offset for nested indentation
-        ))
+  (validate-setq sh-indentation 2       ; The basic indentation
+                 sh-basic-offset 2      ; The offset for nested indentation
+                 ))
 
 (use-package nxml-mode                  ; XML editing
   :mode "\\.xml\\'"
   :config
   ;; Complete closing tags, and insert XML declarations into empty files
-  (setq nxml-slash-auto-complete-flag t
-        nxml-auto-insert-xml-declaration-flag t))
+  (validate-setq nxml-slash-auto-complete-flag t
+                 nxml-auto-insert-xml-declaration-flag t))
 
 (use-package json-mode                  ; JSON editing
   :mode "\\.json\\'"
@@ -446,14 +447,14 @@
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
   :config
   (setq-default eldoc-documentation-function #'describe-char-eldoc)
-  (setq eldoc-idle-delay 0.1)           ; Show eldoc more promptly
+  (validate-setq eldoc-idle-delay 0.1)  ; Show eldoc more promptly
   :diminish eldoc-mode)
 
 (use-package etags                      ; Tag navigation
   :defer t
   :config
   ;; Do not query before reverting TAGS tables
-  (setq tags-revert-without-query t))
+  (validate-setq tags-revert-without-query t))
 
 (use-package macrostep                  ; Navigate through macros
   :ensure t
@@ -467,18 +468,18 @@
   :bind (("C-c c C" . compile)
          ("C-c c r" . recompile))
   :config
-  (setq compilation-ask-about-save nil
-        ;; Kill old compilation processes before starting new ones
-        compilation-always-kill t
-        ;; Automatically scroll and jump to the first error
-        compilation-scroll-output 'first-error
-        compilation-auto-jump-to-first-error t
-        ;; Skip over warnings and info messages in compilation
-        compilation-skip-threshold 2
-        ;; Don't freeze when process reads from stdin
-        compilation-disable-input t
-        ;; Show three lines of context around the current message
-        compilation-context-lines 3)
+  (validate-setq compilation-ask-about-save nil
+                 ;; Kill old compilation processes before starting new ones
+                 compilation-always-kill t
+                 ;; Automatically scroll and jump to the first error
+                 compilation-scroll-output 'first-error
+                 compilation-auto-jump-to-first-error t
+                 ;; Skip over warnings and info messages in compilation
+                 compilation-skip-threshold 2
+                 ;; Don't freeze when process reads from stdin
+                 compilation-disable-input t
+                 ;; Show three lines of context around the current message
+                 compilation-context-lines 3)
 
   (defun mu-colorize-compilation-buffer ()
     "Colorize a compilation mode buffer."

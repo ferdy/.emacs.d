@@ -16,15 +16,15 @@
   :ensure t
   :defer t
   :mode "\\.po\\'"
-  :config (setq po-keep-mo-file t))
+  :config (validate-setq po-keep-mo-file t))
 
 ;;; Spell checking and dictionaries
 (use-package ispell                     ; Word correction
   :defer t
   :config
-  (setq ispell-program-name (executable-find "hunspell")
-        ispell-dictionary "en_GB"
-        ispell-choices-win-default-height 5)
+  (validate-setq ispell-program-name (executable-find "hunspell")
+                 ispell-dictionary "en_GB"
+                 ispell-choices-win-default-height 5)
 
   (unless ispell-program-name
     (warn "No spell checker available.  Plese install hunspell.")))
@@ -36,7 +36,7 @@
   (defvar mu-languages-ring nil "Languages ring for Ispell")
 
   (let ((languages '("en_GB" "it_IT")))
-    (setq mu-languages-ring (make-ring (length languages)))
+    (validate-setq mu-languages-ring (make-ring (length languages)))
     (dolist (elem languages) (ring-insert mu-languages-ring elem)))
 
   (add-hook 'prog-mode-hook #'flyspell-prog-mode)
@@ -50,10 +50,10 @@
   (dolist (mode-hook '(text-mode-hook LaTeX-mode-hook))
     (add-hook mode-hook (lambda () (flyspell-mode))))
   :config
-  (setq flyspell-use-meta-tab nil
-        ;; Make Flyspell less chatty
-        flyspell-issue-welcome-flag nil
-        flyspell-issue-message-flag nil)
+  (validate-setq flyspell-use-meta-tab nil
+                 ;; Make Flyspell less chatty
+                 flyspell-issue-welcome-flag nil
+                 flyspell-issue-message-flag nil)
 
   ;; Free M-t for transpose words
   (unbind-key "M-t" flyspell-mode-map))

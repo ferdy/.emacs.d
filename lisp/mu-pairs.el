@@ -81,9 +81,9 @@ _k_: kill        _s_: split                   _[_: wrap with [ ]
   :config
   (require 'smartparens-config)
 
-  (setq sp-autoskip-closing-pair 'always
-        ;; Don't kill entire symbol on C-k
-        sp-hybrid-kill-entire-symbol nil))
+  (validate-setq sp-autoskip-closing-pair 'always
+                 ;; Don't kill entire symbol on C-k
+                 sp-hybrid-kill-entire-symbol nil))
 
 (add-hook 'after-save-hook              ; Look for unbalanced parens when saving
           'check-parens nil t)

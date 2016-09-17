@@ -19,22 +19,18 @@
   :ensure auctex
   :defer t
   :config
-  (setq TeX-clean-confirm nil         ; No confirmation when cleaning
-        ;; Parse documents to provide completion
-        TeX-parse-self t
-        ;; Automatically save style information
-        TeX-auto-save t
-        ;; Automatically save when compiling
-        TeX-save-query nil
-        ;; Insert braces after sub- and superscripts in math mode
-        TeX-electric-sub-and-superscript t
-        ;; Don't insert magic quotes right away
-        TeX-quote-after-quote t
-        ;; Provide forward and inverse search with SyncTeX
-        TeX-source-correlate-mode t
-        TeX-source-correlate-method 'synctex
-        ;; Tune fill-paragraph
-        LaTeX-fill-break-at-separators '(\\\( \\\[))
+  (validate-setq TeX-clean-confirm nil         ; No confirmation when cleaning
+                 ;; Parse documents to provide completion
+                 TeX-parse-self t
+                 ;; Automatically save style information
+                 TeX-auto-save t
+                 ;; Insert braces after sub- and superscripts in math mode
+                 TeX-electric-sub-and-superscript t
+                 ;; Don't insert magic quotes right away
+                 TeX-quote-after-quote t
+                 ;; Provide forward and inverse search with SyncTeX
+                 TeX-source-correlate-mode t
+                 TeX-source-correlate-method 'synctex)
 
   (setq-default TeX-master nil        ; Ask for the master file
                 TeX-engine 'luatex    ; Use luatex
@@ -59,15 +55,15 @@
   :ensure auctex
   :defer t
   ;; Don't ask for confirmation when saving before processing
-  :config (setq TeX-save-query nil))
+  :config (validate-setq TeX-save-query nil))
 
 (use-package tex-style           ; Customizable variables for AUCTeX style files
   :ensure auctex
   :defer t
   :config
   ;; Enable support for csquotes
-  (setq LaTeX-csquotes-close-quote "}"
-        LaTeX-csquotes-open-quote "\\enquote{"))
+  (validate-setq LaTeX-csquotes-close-quote "}"
+                 LaTeX-csquotes-open-quote "\\enquote{"))
 
 (use-package tex-fold                   ; Fold TeX macros
   :ensure auctex
@@ -86,20 +82,23 @@
                                   symbol-end)
                              . font-lock-warning-face))))
 
-(use-package latex                      ; Support for LaTeX documents
+(use-package latex                      ; LaTeX editing
   :ensure auctex
   :defer t
   :config
-  (setq TeX-outline-extra `((,(rx (0+ space) "\\section*{") 2)
-                            (,(rx (0+ space) "\\subsection*{") 3)
-                            (,(rx (0+ space) "\\subsubsection*{") 4)
-                            (,(rx (0+ space) "\\minisec{") 5))
-        LaTeX-babel-hyphen nil        ; No language-specific hyphens please
-        LaTeX-command-style
-        '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
+  ;; Teach TeX folding about KOMA script sections
+  (validate-setq
+   TeX-outline-extra `((,(rx (0+ space) "\\section*{") 2)
+                       (,(rx (0+ space) "\\subsection*{") 3)
+                       (,(rx (0+ space) "\\subsubsection*{") 4)
+                       (,(rx (0+ space) "\\minisec{") 5))
+   ;; No language-specific hyphens please
+   LaTeX-babel-hyphen "")
 
-  ;; Easy math input
-  (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode))
+  (validate-setq LaTeX-command-style
+                 '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
+
+  (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode)) ; Easy math input
 
 (use-package latex-extra                ; Useful functionalities to LaTeX-mode
   :ensure t
@@ -140,24 +139,24 @@
         (forward-list)
         (buffer-substring-no-properties beg (1- (point))))))
 
-  (setq reftex-plug-into-AUCTeX t       ; Plug into AUCTeX
-        ;; Automatically derive labels, and prompt for confirmation
-        reftex-insert-label-flags '(t t)
-        reftex-label-alist
-        '(
-          ;; Additional label definitions for RefTeX.
-          ("definition" ?d "def:" "~\\ref{%s}"
-           mu-reftex-find-ams-environment-caption
-           ("definition" "def.") -3)
-          ("theorem" ?h "thm:" "~\\ref{%s}"
-           mu-reftex-find-ams-environment-caption
-           ("theorem" "th.") -3)
-          ("example" ?x "ex:" "~\\ref{%s}"
-           mu-reftex-find-ams-environment-caption
-           ("example" "ex") -3)
-          ;; Algorithms package
-          ("algorithm" ?a "alg:" "~\\ref{%s}"
-           "\\\\caption[[{]" ("algorithm" "alg") -3)))
+  (validate-setq reftex-plug-into-AUCTeX t ; Plug into AUCTeX
+                 ;; Automatically derive labels, and prompt for confirmation
+                 reftex-insert-label-flags '(t t)
+                 reftex-label-alist
+                 '(
+                   ;; Additional label definitions for RefTeX.
+                   ("definition" ?d "def:" "~\\ref{%s}"
+                    mu-reftex-find-ams-environment-caption
+                    ("definition" "def.") -3)
+                   ("theorem" ?h "thm:" "~\\ref{%s}"
+                    mu-reftex-find-ams-environment-caption
+                    ("theorem" "th.") -3)
+                   ("example" ?x "ex:" "~\\ref{%s}"
+                    mu-reftex-find-ams-environment-caption
+                    ("example" "ex") -3)
+                   ;; Algorithms package
+                   ("algorithm" ?a "alg:" "~\\ref{%s}"
+                    "\\\\caption[[{]" ("algorithm" "alg") -3)))
 
   ;; Provide basic RefTeX support for biblatex
   (unless (assq 'biblatex reftex-cite-format-builtin)

@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-(setq window-combination-resize t)      ; Size new windows proportionally
+(validate-setq window-combination-resize t) ; Size new windows proportionally
 
 (use-package winner                     ; Undo and redo window configurations
   :init (winner-mode))
@@ -29,22 +29,23 @@
       (golden-ratio)))
   :bind (("C-c t g" . mu-toggle-golden-ratio))
   :config
-  (setq golden-ratio-extra-commands '(windmove-up
-                                      windmove-down
-                                      windmove-left
-                                      windmove-right
-                                      ace-window
-                                      ace-delete-window
-                                      ace-select-window
-                                      ace-swap-window
-                                      ace-maximize-window)
-        ;; Exclude some modes from golden ratio
-        golden-ratio-exclude-modes '(flycheck-error-list-mode
-                                     calc-mode
-                                     dired-mode
-                                     ediff-mode)
-        ;; Exclude special buffers from golden ratio
-        golden-ratio-exclude-buffer-regexp `(,(rx bos "*which-key*" eos)))
+  (validate-setq
+   golden-ratio-extra-commands '(windmove-up
+                                 windmove-down
+                                 windmove-left
+                                 windmove-right
+                                 ace-window
+                                 ace-delete-window
+                                 ace-select-window
+                                 ace-swap-window
+                                 ace-maximize-window)
+   ;; Exclude some modes from golden ratio
+   golden-ratio-exclude-modes '(flycheck-error-list-mode
+                                calc-mode
+                                dired-mode
+                                ediff-mode)
+   ;; Exclude special buffers from golden ratio
+   golden-ratio-exclude-buffer-regexp `(,(rx bos "*which-key*" eos)))
   :diminish golden-ratio-mode)
 
 (use-package ace-window                 ; Better movements between windows
@@ -53,9 +54,9 @@
          ("C-c w w" . ace-window)
          ("C-c w s" . ace-swap-window))
   :config
-  (setq aw-keys                 ; Use home row
-        '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
-        aw-dispatch-always t)
+  (validate-setq aw-keys                 ; Use home row
+                 '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
+                 aw-dispatch-always t)
 
   ;; Make leading char more visible
   (custom-set-faces
@@ -66,8 +67,9 @@
   :defer t
   :config
   ;; Prevent Ediff from spamming the frame
-  (setq ediff-window-setup-function #'ediff-setup-windows-plain
-        ediff-split-window-function #'split-window-horizontally))
+  (validate-setq
+   ediff-window-setup-function #'ediff-setup-windows-plain
+   ediff-split-window-function #'split-window-horizontally))
 
 ;;; Utilities and keybindings
 (defun mu-find-side-windows (&optional side)

@@ -20,8 +20,8 @@
   (defun eshell/l (&rest args) "Same as `ls -lah'"
          (apply #'eshell/ls "-lah" args))
 
-  (setq eshell-cmpl-cycle-completions nil
-        eshell-save-history-on-exit t)
+  (validate-setq eshell-cmpl-cycle-completions nil
+                 eshell-save-history-on-exit t)
 
   (defun eshell/clear ()
     "Clear the eshell buffer."

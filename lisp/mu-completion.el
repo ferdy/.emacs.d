@@ -15,8 +15,8 @@
   :ensure t
   :bind ("C-c y" . mu-yasnippet/body)
   :config
-  (setq yas-verbosity 1         ; No need to be so verbose
-        yas-wrap-around-region t)
+  (validate-setq yas-verbosity 1        ; No need to be so verbose
+                 yas-wrap-around-region t)
 
   (yas-reload-all)
   (add-hook 'text-mode-hook #'yas-minor-mode)
@@ -47,7 +47,7 @@ _e_: extra   _l_: list        _n_: new
 
 (use-package abbrev                     ; Save abbreviations
   :init (abbrev-mode)
-  :config (setq save-abbrevs t)
+  :config (validate-setq save-abbrevs t)
   :diminish abbrev-mode)
 
 ;; In `completion-at-point', do not pop up completion buffers for less
@@ -57,16 +57,16 @@ _e_: extra   _l_: list        _n_: new
 (use-package hippie-exp                 ; Powerful expansion and completion
   :bind ([remap dabbrev-expand] . hippie-expand)
   :config
-  (setq hippie-expand-try-functions-list
-        '(try-expand-dabbrev
-          try-expand-dabbrev-all-buffers
-          try-expand-dabbrev-from-kill
-          try-complete-file-name-partially
-          try-complete-file-name
-          try-expand-all-abbrevs
-          try-expand-list
-          try-complete-lisp-symbol-partially
-          try-complete-lisp-symbol)))
+  (validate-setq hippie-expand-try-functions-list
+                 '(try-expand-dabbrev
+                   try-expand-dabbrev-all-buffers
+                   try-expand-dabbrev-from-kill
+                   try-complete-file-name-partially
+                   try-complete-file-name
+                   try-expand-all-abbrevs
+                   try-expand-list
+                   try-complete-lisp-symbol-partially
+                   try-complete-lisp-symbol)))
 
 (use-package pcomplete-extension        ; Enhance completion in (e)shell
   :ensure t
@@ -79,10 +79,10 @@ _e_: extra   _l_: list        _n_: new
               ("C-n" . company-select-next)
               ("C-p" . company-select-previous))
   :config
-  (setq company-tooltip-align-annotations t
-        company-tooltip-flip-when-above t
-        ;; Easy navigation to candidates with M-<n>
-        company-show-numbers t)
+  (validate-setq company-tooltip-align-annotations t
+                 company-tooltip-flip-when-above t
+                 ;; Easy navigation to candidates with M-<n>
+                 company-show-numbers t)
   :diminish company-mode)
 
 (use-package company-statistics         ; Show likelier candidates on top

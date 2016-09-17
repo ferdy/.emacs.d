@@ -15,7 +15,7 @@
   :defer t
   :config
   ;; Always follow symlinks to files in VCS repos
-  (setq vc-follow-symlinks t))
+  (validate-setq vc-follow-symlinks t))
 
 (use-package magit                      ; The best Git client out there
   :ensure t
@@ -26,15 +26,15 @@
          ("C-c v l" . magit-log-buffer-file)
          ("C-c v p" . magit-pull))
   :config
-  (setq magit-save-repository-buffers 'dontask
-        magit-refs-show-commit-count 'all)
+  (validate-setq magit-save-repository-buffers 'dontask
+                 magit-refs-show-commit-count 'all)
 
   ;; Use Ivy
-  (setq magit-completing-read-function 'ivy-completing-read)
+  (validate-setq magit-completing-read-function 'ivy-completing-read)
 
   ;; Show status buffer in fullscreen
-  (setq magit-display-buffer-function
-        #'magit-display-buffer-fullframe-status-v1)
+  (validate-setq magit-display-buffer-function
+                 #'magit-display-buffer-fullframe-status-v1)
 
   ;; Kill Magit buffers when quitting `magit-status'
   (defun magit-quit-session (&optional kill-buffer)
@@ -96,12 +96,10 @@
   :defer t
   ;; Change the default profile.  The profile itself is set up via customize,
   ;; and includes auth data, to prevent it from storing tokens in Git config
-  :config (setq gh-profile-default-profile "manuel-uberti"))
+  :config (validate-setq gh-profile-default-profile "manuel-uberti"))
 
 (use-package magit-gh-pulls             ; Show GitHub PRs in Magit
   :ensure t
-  ;; Disabling it, see https://github.com/sigma/magit-gh-pulls/issues/90
-  :disabled t
   :defer t
   :init (add-hook 'magit-mode-hook #'turn-on-magit-gh-pulls))
 

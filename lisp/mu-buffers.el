@@ -14,31 +14,35 @@
 ;; Don't let the cursor go into minibuffer prompt
 (let ((default (eval (car (get 'minibuffer-prompt-properties 'standard-value))))
       (dont-touch-prompt-prop '(cursor-intangible t)))
-  (setq minibuffer-prompt-properties (append default dont-touch-prompt-prop))
+  (setq minibuffer-prompt-properties
+        (append default dont-touch-prompt-prop))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
 
 ;; Allow to read from minibuffer while in minibuffer.
-(setq enable-recursive-minibuffers t)
+(validate-setq enable-recursive-minibuffers t)
 
 ;; Show the minibuffer depth (when larger than 1)
 (minibuffer-depth-indicate-mode 1)
 
-(setq use-dialog-box nil                ; Never use dialogs for minibuffer input
-      history-length 1000               ; Store more history
-      )
+(validate-setq use-dialog-box nil       ; Never use dialogs for minibuffer input
+               history-length 1000      ; Store more history
+               )
 
 (use-package savehist                   ; Save minibuffer history
   :init (savehist-mode t)
-  :config (setq savehist-save-minibuffer-history t
-                savehist-autosave-interval 180))
+  :config
+  (validate-setq savehist-save-minibuffer-history t
+                 savehist-autosave-interval 180))
 
-(setq kill-buffer-query-functions       ; Don't ask for confirmation
-      (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
+;; Don't ask for confirmation
+(validate-setq kill-buffer-query-functions
+               (delq 'process-kill-buffer-query-function
+                     kill-buffer-query-functions))
 
-(setq frame-resize-pixelwise t          ; Resize by pixels
-      frame-title-format
-      '(:eval (if (buffer-file-name)
-                  (abbreviate-file-name (buffer-file-name)) "%b")))
+(validate-setq frame-resize-pixelwise t ; Resize by pixels
+               frame-title-format
+               '(:eval (if (buffer-file-name)
+                           (abbreviate-file-name (buffer-file-name)) "%b")))
 
 (defun mu-display-buffer-fullframe (buffer alist)
   "Display BUFFER in fullscreen.
@@ -50,40 +54,41 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
     window))
 
 ;; Configure `display-buffer' behaviour for some special buffers
-(setq display-buffer-alist
-      `(
-        ;; Messages, errors, Calendar and REPLs in the bottom side window
-        (,(rx bos (or "*Help"             ; Help buffers
-                      "*Warnings*"        ; Emacs warnings
-                      "*Compile-Log*"     ; Emacs byte compiler log
-                      "*compilation"      ; Compilation buffers
-                      "*Flycheck errors*" ; Flycheck error list
-                      "*shell"            ; Shell window
-                      "*Calendar"         ; Calendar window
-                      "*cider-repl"       ; CIDER REPL
-                      "*sly-mrepl"        ; Sly REPL
-                      "*scheme"           ; Inferior Scheme REPL
-                      "*ielm"             ; IELM REPL
-                      "*SQL"              ; SQL REPL
-                      "*Cargo"            ; Cargo process buffers
-                      (and (1+ nonl) " output*") ; AUCTeX command output
-                      ))
-         (display-buffer-reuse-window
-          display-buffer-in-side-window)
-         (side . bottom)
-         (reusable-frames . visible)
-         (window-height . 0.4))
-        ;; Let `display-buffer' reuse visible frames for all buffers.  This must
-        ;; be the last entry in `display-buffer-alist', because it overrides any
-        ;; later entry with more specific actions.
-        ("." nil (reusable-frames . visible))))
+(validate-setq display-buffer-alist
+               `(
+                 ;; Messages, errors, Calendar and REPLs in the bottom side window
+                 (,(rx bos (or "*Help"             ; Help buffers
+                               "*Warnings*"        ; Emacs warnings
+                               "*Compile-Log*"     ; Emacs byte compiler log
+                               "*compilation"      ; Compilation buffers
+                               "*Flycheck errors*" ; Flycheck error list
+                               "*shell"            ; Shell window
+                               "*Calendar"         ; Calendar window
+                               "*cider-repl"       ; CIDER REPL
+                               "*sly-mrepl"        ; Sly REPL
+                               "*scheme"           ; Inferior Scheme REPL
+                               "*ielm"             ; IELM REPL
+                               "*SQL"              ; SQL REPL
+                               "*Cargo"            ; Cargo process buffers
+                               ;; AUCTeX command output
+                               (and (1+ nonl) " output*")
+                               ))
+                  (display-buffer-reuse-window
+                   display-buffer-in-side-window)
+                  (side . bottom)
+                  (reusable-frames . visible)
+                  (window-height . 0.4))
+                 ;; Let `display-buffer' reuse visible frames for all buffers.  This must
+                 ;; be the last entry in `display-buffer-alist', because it overrides any
+                 ;; later entry with more specific actions.
+                 ("." nil (reusable-frames . visible))))
 
 (use-package uniquify                   ; Unique buffer names
   :config
-  (setq uniquify-buffer-name-style 'post-forward
-        uniquify-separator ":"
-        ;; Ignore special buffers
-        uniquify-ignore-buffers-re "^\\*"))
+  (validate-setq uniquify-buffer-name-style 'post-forward
+                 uniquify-separator ":"
+                 ;; Ignore special buffers
+                 uniquify-ignore-buffers-re "^\\*"))
 
 (use-package ibuffer                    ; Buffer management
   :bind (([remap list-buffers] . ibuffer)
@@ -91,26 +96,25 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
          :map ibuffer-mode-map
          ("." . mu-ibuffer/body))
   :config
-  (setq ibuffer-show-empty-filter-groups nil ; Hide empty groups
-        ibuffer-formats
-        '((mark modified read-only " "
-                (name 18 18 :left :elide)
-                " "
-                (size 9 -1 :right)
-                " "
-                (mode 16 16 :left :elide)
-                " "
-                filename-and-process)
-          (mark modified read-only " "
-                (name 18 18 :left :elide)
-                " "
-                (size 9 -1 :right)
-                " "
-                (mode 16 16 :left :elide)
-                " " filename-and-process)
-          (mark " "
-                (name 16 -1)
-                " " filename)))
+  (validate-setq ibuffer-formats
+                 '((mark modified read-only " "
+                         (name 18 18 :left :elide)
+                         " "
+                         (size 9 -1 :right)
+                         " "
+                         (mode 16 16 :left :elide)
+                         " "
+                         filename-and-process)
+                   (mark modified read-only " "
+                         (name 18 18 :left :elide)
+                         " "
+                         (size 9 -1 :right)
+                         " "
+                         (mode 16 16 :left :elide)
+                         " " filename-and-process)
+                   (mark " "
+                         (name 16 -1)
+                         " " filename)))
 
   (defhydra mu-ibuffer (:hint nil)
     "
@@ -216,7 +220,7 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
   :bind ("C-c b s" . scratch))
 
 ;; Use `emacs-lisp-mode' instead of `lisp-interaction-mode' for scratch buffer
-(setq initial-major-mode 'emacs-lisp-mode)
+(validate-setq initial-major-mode 'emacs-lisp-mode)
 
 ;;; Utilities and keybindings
 ;;;###autoload

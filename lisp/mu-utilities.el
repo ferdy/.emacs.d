@@ -28,11 +28,12 @@
 (use-package time                       ; Display time
   :bind ("C-c a t t" . display-time-world)
   :config
-  (setq display-time-world-time-format "%H:%M %Z, %d. %b"
-        display-time-world-list '(("Europe/Rome" "Rome")
-                                  ("Europe/London" "London")
-                                  ("Asia/Hong_Kong" "Hong Kong")
-                                  ("Asia/Tokyo" "Tokyo"))))
+  (validate-setq
+   display-time-world-time-format "%H:%M %Z, %d. %b"
+   display-time-world-list '(("Europe/Rome" "Rome")
+                             ("Europe/London" "London")
+                             ("Asia/Hong_Kong" "Hong Kong")
+                             ("Asia/Tokyo" "Tokyo"))))
 
 (use-package calc                       ; Calculator
   :bind (("C-c a m q" . quick-calc)
@@ -54,8 +55,7 @@
   :ensure t
   :bind ("C-c t P" . pandoc-mode)
   :config
-  (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
-  (setq org-pandoc-output-format 'odt))
+  (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings))
 
 (use-package list-environment           ; List process environment variables
   :ensure t
@@ -70,12 +70,12 @@
   :mode "\\.ldg\\'"
   :bind (:map ledger-mode-map
               ("C-c m b" . ledger-mode-clean-buffer))
-  :init
-  (setq ledger-clear-whole-transactions t
-        ledger-occur-use-face-shown nil
-        ledger-post-amount-alignment-at :decimal
-        ledger-reconcile-default-commodity "€"
-        ledger-report-auto-refresh-sticky-cursor t))
+  :config
+  (validate-setq ledger-clear-whole-transactions t
+                 ledger-occur-use-face-shown nil
+                 ledger-post-amount-alignment-at :decimal
+                 ledger-reconcile-default-commodity "€"
+                 ledger-report-auto-refresh-sticky-cursor t))
 
 (provide 'mu-utilities)
 

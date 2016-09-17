@@ -14,10 +14,10 @@
 (use-package tramp                      ; Remote editing
   :bind ("C-c a r c" . tramp-cleanup-all-connections)
   :config
-  (setq tramp-default-method "ssh"
-        tramp-shell-prompt-pattern
-        "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
-        auto-save-file-name-transforms nil)
+  (validate-setq tramp-default-method "ssh"
+                 tramp-shell-prompt-pattern
+                 "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
+                 auto-save-file-name-transforms nil)
   (add-to-list 'backup-directory-alist
                (cons tramp-file-name-regexp nil)))
 
@@ -28,42 +28,42 @@
   :bind ("C-c a i" . circe)
   :config
   ;; Load and set my credentials
-  (setq mu-credentials-file "~/.ercpass")
+  (validate-setq mu-credentials-file "~/.ercpass")
 
   (defun mu-retrieve-irc-password (_)
     (with-temp-buffer
       (insert-file-contents-literally mu-credentials-file)
       (plist-get (read (buffer-string)) :my-pass)))
 
-  (setq circe-network-options
-        '(("Freenode"
-           :tls t
-           :pass mu-retrieve-irc-password)))
+  (validate-setq circe-network-options
+                 '(("Freenode"
+                    :tls t
+                    :pass mu-retrieve-irc-password)))
 
-  (setq circe-default-nick "gekkop"
-        circe-default-user "gekkop"
-        circe-default-realname "Manuel Uberti"
-        circe-default-part-message "Bye!"
-        circe-default-quit-message "Bye!"
-        circe-use-cycle-completion t
-        circe-reduce-lurker-spam t
-        circe-format-self-say "<{nick}> {body}"
-        circe-format-server-topic
-        "*** Topic Change by {userhost}: {topic-diff}"
-        circe-server-buffer-name "{network}"
-        circe-prompt-string (propertize ">> " 'face 'circe-prompt-face)))
+  (validate-setq circe-default-nick "gekkop"
+                 circe-default-user "gekkop"
+                 circe-default-realname "Manuel Uberti"
+                 circe-default-part-message "Bye!"
+                 circe-default-quit-message "Bye!"
+                 circe-use-cycle-completion t
+                 circe-reduce-lurker-spam t
+                 circe-format-self-say "<{nick}> {body}"
+                 circe-format-server-topic
+                 "*** Topic Change by {userhost}: {topic-diff}"
+                 circe-server-buffer-name "{network}"
+                 circe-prompt-string (propertize ">> " 'face 'circe-prompt-face)))
 
 (use-package elfeed                     ; RSS feed reader
   :ensure t
   :bind ("C-c a f" . elfeed)
   :config
-  (setq elfeed-feeds
-        '(("http://planet.emacsen.org/atom.xml" emacs)
-          ("http://planet.lisp.org/rss20.xml" lisp)
-          ("http://planet.clojure.in/atom.xml" lisp)
-          ("http://www.scheme.dk/planet/atom.xml" lisp)
-          ("https://cavallette.noblogs.org/feed" security)
-          ("http://dilbert.oeey.com/" comic)))
+  (validate-setq elfeed-feeds
+                 '(("http://planet.emacsen.org/atom.xml" emacs)
+                   ("http://planet.lisp.org/rss20.xml" lisp)
+                   ("http://planet.clojure.in/atom.xml" lisp)
+                   ("http://www.scheme.dk/planet/atom.xml" lisp)
+                   ("https://cavallette.noblogs.org/feed" security)
+                   ("http://dilbert.oeey.com/" comic)))
 
   (setq elfeed-use-curl t)              ; Use curl to fetch te feeds
 
@@ -87,15 +87,15 @@
   :bind (("C-c a p" . paradox-list-packages)
          ("C-c a P" . paradox-upgrade-packages))
   :config
-  (setq paradox-github-token t             ; Don't ask for a token
-        paradox-execute-asynchronously nil ; No async updates
-        paradox-spinner-type 'moon         ; Prettier spinner
-        paradox-use-homepage-buttons nil   ; Hide download button
-        paradox-hide-wiki-packages t       ; Hide packages from Emacs Wiki
-        paradox-automatically-star nil     ; Don't star packages automatically
-        ;; Show all possible counts
-        paradox-display-download-count t
-        paradox-display-star-count t)
+  (validate-setq paradox-github-token t             ; Don't ask for a token
+                 paradox-execute-asynchronously nil ; No async updates
+                 paradox-spinner-type 'moon         ; Prettier spinner
+                 paradox-use-homepage-buttons nil   ; Hide download button
+                 paradox-hide-wiki-packages t       ; Hide packages from Emacs Wiki
+                 paradox-automatically-star nil     ; Don't star packages automatically
+                 ;; Show all possible counts
+                 paradox-display-download-count t
+                 paradox-display-star-count t)
 
   ;; Don't need paradox report
   (remove-hook 'paradox-after-execute-functions
@@ -105,8 +105,8 @@
 
 (use-package browse-url                 ; Browse URLs
   :config
-  (setq browse-url-browser-function 'browse-url-generic
-        browse-url-generic-program "iceweasel"))
+  (validate-setq browse-url-browser-function 'browse-url-generic
+                 browse-url-generic-program "firefox"))
 
 (use-package goto-addr                  ; Make links clickable
   :defer t
@@ -162,8 +162,9 @@ Call `eww-reload' to undo the filtering."
 (use-package sx-question-mode           ; Show Stack
   :ensure sx
   :defer t
+  :config
   ;; Display questions in the same window
-  :config (setq sx-question-mode-display-buffer-function #'switch-to-buffer))
+  (validate-setq sx-question-mode-display-buffer-function #'switch-to-buffer))
 
 ;;; Utilities and keybindings
 ;; Toggle image display on/off, especially useful in eww
@@ -173,8 +174,8 @@ Call `eww-reload' to undo the filtering."
 (defun mu-toggle-image-display ()
   "Toggle images display on current buffer."
   (interactive)
-  (setq mu-display-images
-        (null mu-display-images))
+  (validate-setq mu-display-images
+                 (null mu-display-images))
   (mu-backup-display-property mu-display-images))
 
 (defun mu-backup-display-property (invert &optional object)

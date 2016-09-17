@@ -19,19 +19,20 @@
   :init (recentf-mode)
   :defer t
   :config
-  (setq recentf-max-saved-items 200
-        recentf-max-menu-items 15
-        recentf-exclude (list "/\\.git/.*\\'"
-                              "/elpa/.*\\'"
-                              "/tmp/"
-                              "/ssh:")))
+  (validate-setq recentf-max-saved-items 200
+                 recentf-max-menu-items 15
+                 recentf-exclude (list "/\\.git/.*\\'"
+                                       "/elpa/.*\\'"
+                                       "/tmp/"
+                                       "/ssh:")))
 
-(setq view-read-only t)                 ; View read-only
-(setq large-file-warning-threshold nil) ; No large file warning
+(validate-setq view-read-only t)                 ; View read-only
+(validate-setq large-file-warning-threshold nil) ; No large file warning
 
 (use-package ffap                       ; Find files at point
   :defer t
-  :config (setq ffap-machine-p-known 'reject)) ; Do not ping random hosts
+  ;; Do not ping random hosts
+  :config (validate-setq ffap-machine-p-known 'reject))
 
 (use-package ignoramus                  ; Ignore uninteresting files everywhere
   :ensure t
@@ -81,7 +82,7 @@
   :config
   (imagex-global-sticky-mode 1)
   (imagex-auto-adjust-mode 1)
-  (setq imagex-quiet-error t))
+  (validate-setq imagex-quiet-error t))
 
 ;;; Utilities and keybindings
 (defun mu-current-file ()

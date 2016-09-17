@@ -31,9 +31,7 @@
   :init
   (diminish 'isearch-mode)
 
-  (setq isearch-allow-scroll t        ; Scroll during search
-        ;; Use character-folding in query-replace
-        replace-character-fold t)
+  (validate-setq isearch-allow-scroll t) ; Scroll during search
 
   (defun mu-isearch-exit-other-end ()
     "Exit isearch, at the opposite end of the string."
