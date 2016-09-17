@@ -206,6 +206,11 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
     ("/" ibuffer-filter-disable "disable")
     ("b" hydra-ibuffer-main/body "back" :color blue)))
 
+(use-package ibuf-ext
+  :ensure ibuffer
+  ;; Hide empty groups
+  :config (validate-setq ibuffer-show-empty-filter-groups nil))
+
 (use-package ibuffer-vc                 ; Group buffers by VC project and status
   :ensure t
   :defer t
