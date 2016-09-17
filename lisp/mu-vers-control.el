@@ -91,18 +91,6 @@
   :ensure t
   :defer t)
 
-;;; GitHub integration
-(use-package gh                         ; GitHub API library
-  :defer t
-  ;; Change the default profile.  The profile itself is set up via customize,
-  ;; and includes auth data, to prevent it from storing tokens in Git config
-  :config (validate-setq gh-profile-default-profile "manuel-uberti"))
-
-(use-package magit-gh-pulls             ; Show GitHub PRs in Magit
-  :ensure t
-  :defer t
-  :init (add-hook 'magit-mode-hook #'turn-on-magit-gh-pulls))
-
 (provide 'mu-vers-control)
 
 ;;; mu-vers-control.el ends here
