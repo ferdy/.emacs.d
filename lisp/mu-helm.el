@@ -10,7 +10,7 @@
 ;; This file stores my Helm configuration.
 
 ;; Note: I don't use Helm anymore, but I'm keeping this file here because it
-;; took me a lot to set up Helm. Who knows, maybe some day I'll use it again.
+;; took me a lot to set up Helm.  Who knows, maybe some day I'll use it again.
 
 ;;; Code:
 
@@ -37,7 +37,7 @@
           helm-display-header-line nil)
 
     (helm-adaptive-mode 1)              ; Adaptive sorting in all sources
-    (helm-autoresize-mode 1)            ; Autoresize Helm buffer
+    (helm-autoresize-mode 1)            ; Auto-resize Helm buffer
 
     ;; Man pages at point
     (add-to-list 'helm-sources-using-default-as-input
