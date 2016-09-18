@@ -31,7 +31,11 @@
   :init
   (diminish 'isearch-mode)
 
-  (validate-setq isearch-allow-scroll t) ; Scroll during search
+  (validate-setq
+   ;; Scroll during search
+   isearch-allow-scroll t
+   ;; Fold unicode characters to ASCII while searching
+   search-default-mode #'char-fold-to-regexp)
 
   (defun mu-isearch-exit-other-end ()
     "Exit isearch, at the opposite end of the string."
