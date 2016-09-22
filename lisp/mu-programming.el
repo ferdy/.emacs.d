@@ -88,7 +88,13 @@
 (use-package cider                      ; Clojure development environment
   :ensure t
   :defer t
-  :config (add-hook 'cider-mode-hook 'eldoc-mode))
+  :config
+  (add-hook 'cider-mode-hook 'eldoc-mode)
+
+  ;; Set up Figwheel in ClojureScript REPL
+  (validate-setq
+   cider-cljs-lein-repl
+   "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
 
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
@@ -114,11 +120,6 @@
   (add-hook 'cider-repl-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'subword-mode)
 
-  ;; Set up Figwheel in ClojureScript REPL
-  (validate-setq
-   cider-cljs-lein-repl
-   "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
-
   ;; Increase the history size and make it permanent
   (validate-setq cider-repl-history-size 1000
                  cider-repl-history-file
@@ -129,8 +130,7 @@
 
 (use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
-  :defer t
-  :config (validate-setq cider-stacktrace-fill-column t))
+  :defer t)
 
 (use-package clj-refactor               ; Refactoring utilities
   :ensure t
