@@ -63,7 +63,8 @@
                    ("http://planet.clojure.in/atom.xml" lisp)
                    ("http://www.scheme.dk/planet/atom.xml" lisp)
                    ("https://cavallette.noblogs.org/feed" security)
-                   ("http://dilbert.oeey.com/" comic)))
+                   ("http://dilbert.oeey.com/" comic)
+                   ("http://www.goodmath.org/blog/feed/" math)))
 
   (setq elfeed-use-curl t)              ; Use curl to fetch te feeds
 
