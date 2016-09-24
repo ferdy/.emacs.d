@@ -173,7 +173,7 @@
 (use-package mu-vers-control :defer 3)
 (use-package mu-net)
 (use-package mu-utilities)
-(use-package mu-org)
+(use-package mu-org :defer 2)
 (use-package mu-flycheck :defer 1)
 (use-package mu-programming)
 (use-package mu-shells)
