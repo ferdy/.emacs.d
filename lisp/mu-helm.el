@@ -17,67 +17,70 @@
 ;;; Core setup
 (use-package helm                       ; The ubiquitous Helm
   :ensure t
+  :bind (:map helm-map
+              ("C-i" . helm-execute-persistent-action)
+              ("C-z" . helm-select-action))
+  :config
+  (validate-setq
+   helm-move-to-line-cycle-in-source t ; Cycle Helm candidates
+   ;; Scroll 8 lines using M-<next>/M-<prior>
+   helm-scroll-amount 8
+   ;; Cleaner Helm interface
+   helm-display-header-line nil)
+
+  (helm-adaptive-mode 1)                ; Adaptive sorting in all sources
+  (helm-autoresize-mode 1)              ; Auto-resize Helm buffer
+
+  ;; Man pages at point
+  (add-to-list 'helm-sources-using-default-as-input
+               'helm-source-man-pages))
+
+(use-package helm-mode                  ; Helm-mode
+  :ensure helm
   :init (helm-mode 1)
   :config
-  (progn
-    (bind-keys :map helm-map
-               ("C-i" . helm-execute-persistent-action)
-               ("C-z" . helm-select-action))
-
-    (setq helm-move-to-line-cycle-in-source t ; Cycle Helm candidates
-          ;; Scroll 8 lines using M-<next>/M-<prior>
-          helm-scroll-amount 8
-          ;; Fuzzy matching
-          helm-mode-fuzzy-match t
-          helm-completion-in-region-fuzzy-match t
-          helm-M-x-fuzzy-match t
-          helm-semantic-fuzzy-match t
-          helm-lisp-fuzzy-completion t
-          ;; Cleaner Helm interface
-          helm-display-header-line nil)
-
-    (helm-adaptive-mode 1)              ; Adaptive sorting in all sources
-    (helm-autoresize-mode 1)            ; Auto-resize Helm buffer
-
-    ;; Man pages at point
-    (add-to-list 'helm-sources-using-default-as-input
-                 'helm-source-man-pages))
+  (validate-setq
+   ;; Fuzzy matching
+   helm-mode-fuzzy-match t
+   helm-completion-in-region-fuzzy-match t)
   :diminish helm-mode)
 
 (use-package helm-config                ; Applications library for `helm.el'
   :ensure helm
   :after helm
   :config
-  (progn
-    (bind-key "C-c h" helm-command-prefix)
-    (unbind-key "C-x c")))
+  (bind-key "C-c h" helm-command-prefix)
+  (unbind-key "C-x c"))
 
 (use-package helm-command               ; M-x in Helm
   :ensure helm
-  :bind ([remap execute-extended-command] . helm-M-x))
+  :bind ([remap execute-extended-command] . helm-M-x)
+  :config
+  (validate-setq helm-M-x-fuzzy-match t))
+
+(use-package helm-elisp
+  :ensure helm
+  :config (validate-setq helm-lisp-fuzzy-completion t))
 
 (use-package helm-files                 ; Find files with Helm
   :ensure helm
   :bind (([remap find-file] . helm-find-files)
-         ("C-x C-r"         . helm-recentf))
+         ("C-x C-r"         . helm-recentf)
+         :map helm-find-files-map
+         ("C-k" . helm-ff-persistent-delete))
   :config
-  (progn
-    (bind-key "C-k" #'helm-ff-persistent-delete helm-find-files-map)
-
-    ;; `helm-recentf-fuzzy-match' is set via Customize
-    ;; Reason: https://emacs.stackexchange.com/a/106/5514
-    (setq helm-ff-file-name-history-use-recentf t
-          helm-ff-newfile-prompt-p nil  ; Don't prompt for new buffer
-          helm-idle-delay 0.1
-          helm-input-idle-delay 0.1
-          ;; Don't show boring files
-          helm-ff-skip-boring-files t
-          ;; Search for library in `require' and `declare-function' sexp
-          helm-ff-search-library-in-sexp t
-          ;; Auto-complete in find-files
-          helm-ff-auto-update-initial-value t
-          ;; Sort directories first
-          helm-find-files-sort-directories t)))
+  ;; `helm-recentf-fuzzy-match' is set via Customize
+  ;; Reason: https://emacs.stackexchange.com/a/106/5514
+  (validate-setq
+   helm-ff-file-name-history-use-recentf t
+   helm-ff-newfile-prompt-p nil         ; Don't prompt for new buffer
+   helm-input-idle-delay 0.1
+   ;; Don't show boring files
+   helm-ff-skip-boring-files t
+   ;; Search for library in `require' and `declare-function' sexp
+   helm-ff-search-library-in-sexp t
+   ;; Auto-complete in find-files
+   helm-ff-auto-update-initial-value t))
 
 (use-package helm-misc                  ; Misc Helm commands
   :ensure helm
@@ -85,12 +88,10 @@
 
 (use-package helm-buffers               ; Manage buffers with Helm
   :ensure helm
-  :bind ("C-c C-b" . helm-buffers-list)
-  :config
-  (progn
-    (setq helm-buffers-fuzzy-matching t)
-    (bind-key "C-k" #'helm-buffer-run-kill-persistent
-              helm-buffer-map)))
+  :bind (("C-c C-b" . helm-buffers-list)
+         :map helm-buffer-map
+         ("C-k" . helm-buffer-run-kill-persistent))
+  :config (validate-setq helm-buffers-fuzzy-matching t))
 
 (use-package helm-ring                  ; Helm commands for rings
   :ensure helm
@@ -102,8 +103,10 @@
   :ensure helm
   :bind (("C-c n i" . helm-imenu-in-all-buffers)
          ("C-c n t" . helm-imenu))
-  :config (setq helm-imenu-fuzzy-match t
-                helm-imenu-execute-action-at-once-if-one nil))
+  :config
+  (validate-setq
+   helm-imenu-fuzzy-match t
+   helm-imenu-execute-action-at-once-if-one nil))
 
 (use-package helm-register              ; Display registers with Helm
   :ensure helm
@@ -121,13 +124,13 @@
   :ensure t
   :after projectile
   :init (helm-projectile-on)
-  :config (setq projectile-switch-project-action #'helm-projectile))
+  :config (validate-setq projectile-switch-project-action #'helm-projectile))
 
 (use-package ace-jump-helm-line         ; Ace-jump to a candidate
   :ensure t
   :after helm
   :bind ("C-'" . ace-jump-helm-line)
-  :config (setq ace-jump-helm-line-default-action 'select))
+  :config (validate-setq ace-jump-helm-line-default-action 'select))
 
 ;;; Programming
 (use-package helm-eval                  ; Evaluate expressions with Helm
@@ -139,7 +142,7 @@
   :ensure helm
   :bind (("C-c h a" . helm-apropos)
          ("C-c h l" . helm-locate-library))
-  :config (setq helm-apropos-fuzzy-match t))
+  :config (validate-setq helm-apropos-fuzzy-match t))
 
 (use-package cljr-helm                  ; Helm interface for clj-refactor
   :ensure t
@@ -181,68 +184,69 @@
          ("C-c M-i" . helm-multi-swoop)
          ("C-x M-i" . helm-multi-swoop-all))
   :config
-  (progn
-    ;; When doing isearch, hand the word over to helm-swoop
-    (bind-key "M-i" #'helm-swoop-from-isearch isearch-mode-map)
-    ;; From helm-swoop to helm-multi-swoop-all
-    (bind-key "M-i" #'helm-multi-swoop-all-from-helm-swoop
-              helm-swoop-map)
+  ;; When doing isearch, hand the word over to helm-swoop
+  (bind-key "M-i" #'helm-swoop-from-isearch isearch-mode-map)
+  ;; From helm-swoop to helm-multi-swoop-all
+  (bind-key "M-i" #'helm-multi-swoop-all-from-helm-swoop
+            helm-swoop-map)
 
-    ;; Move up and down like isearch
-    (bind-keys :map helm-swoop-map
-               ("C-r" . helm-previous-line)
-               ("C-s" . helm-next-line))
+  ;; Move up and down like isearch
+  (bind-keys :map helm-swoop-map
+             ("C-r" . helm-previous-line)
+             ("C-s" . helm-next-line))
 
-    (bind-keys :map helm-multi-swoop-map
-               ("C-r" . helm-previous-line)
-               ("C-s" . helm-next-line))
+  (bind-keys :map helm-multi-swoop-map
+             ("C-r" . helm-previous-line)
+             ("C-s" . helm-next-line))
 
-    (setq helm-multi-swoop-edit-save t  ; Save when done with editing
-          ;; If this value is t, split window inside the current window
-          helm-swoop-split-with-multiple-windows nil
-          ;; Split direction
-          helm-swoop-split-direction 'split-window-vertically
-          ;; If nil, boost invoke speed in exchange for text color
-          helm-swoop-speed-or-color nil
-          ;; Go to the opposite side from the end or beginning of line
-          helm-swoop-move-to-line-cycle t
-          ;; Optional face for line numbers
-          helm-swoop-use-line-number-face t)
+  (validate-setq
+   helm-multi-swoop-edit-save t  ; Save when done with editing
+   ;; If this value is t, split window inside the current window
+   helm-swoop-split-with-multiple-windows nil
+   ;; Split direction
+   helm-swoop-split-direction 'split-window-vertically
+   ;; If nil, boost invoke speed in exchange for text color
+   helm-swoop-speed-or-color nil
+   ;; Go to the opposite side from the end or beginning of line
+   helm-swoop-move-to-line-cycle t
+   ;; Optional face for line numbers
+   helm-swoop-use-line-number-face t)
 
-    ;; Match/Search methods (Fuzzy matching)
-    (defvar helm-c-source-swoop-match-functions
-      '(helm-mm-exact-match
-        helm-mm-match
-        helm-fuzzy-match))
-    (setq helm-c-source-swoop-search-functions
-          '(helm-mm-exact-search
-            helm-mm-search
-            helm-candidates-in-buffer-search-default-fn
-            helm-fuzzy-search))))
+  ;; Match/Search methods (Fuzzy matching)
+  (defvar helm-c-source-swoop-match-functions
+    '(helm-mm-exact-match
+      helm-mm-match
+      helm-fuzzy-match))
+
+  (validate-setq helm-c-source-swoop-search-functions
+                 '(helm-mm-exact-search
+                   helm-mm-search
+                   helm-candidates-in-buffer-search-default-fn
+                   helm-fuzzy-search)))
 
 (use-package helm-ag                    ; Helm frontend for Ag
   :ensure t
   :bind ("C-c h s" . helm-do-ag)
-  :config (setq helm-ag-fuzzy-match t
-                helm-ag-insert-at-point 'symbol
-                helm-ag-source-type 'file-line))
+  :config
+  (validate-setq
+   helm-ag-fuzzy-match t
+   helm-ag-insert-at-point 'symbol))
 
 ;;; Completion
 (use-package helm-company               ; Show Company candidates through Helm
   :ensure t
   :after company
   :config
-  (progn
-    ;; Use Company for completion
-    (bind-key [remap completion-at-point] #'helm-company company-mode-map)
-    (bind-key "C-:" #'helm-company company-mode-map)
-    (bind-key "C-:" #'helm-company company-active-map)))
+  ;; Use Company for completion
+  (bind-key [remap completion-at-point] #'helm-company company-mode-map)
+  (bind-key "C-:" #'helm-company company-mode-map)
+  (bind-key "C-:" #'helm-company company-active-map))
 
 (use-package helm-c-yasnippet           ; Helm source for Yasnippet
   :ensure t
   :after yasnippet
   :init (bind-key "C-c h y" #'helm-yas-complete)
-  :config (setq helm-yas-space-match-any-greedy t))
+  :config (validate-setq helm-yas-space-match-any-greedy t))
 
 ;;; Languages
 (use-package helm-flyspell              ; Use Flyspell with Helm
@@ -268,21 +272,20 @@
   :ensure helm
   :defer t
   :init
-  (progn
-    ;; Shell history
-    (add-hook 'eshell-mode-hook
-              (lambda ()
-                (bind-key "C-c C-l"
-                          #'helm-eshell-history
-                          eshell-mode-map)))
-    (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)
+  ;; Shell history
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (bind-key "C-c C-l"
+                        #'helm-eshell-history
+                        eshell-mode-map)))
+  (bind-key "C-c C-l" #'helm-comint-input-ring shell-mode-map)
 
-    ;; Completion with helm
-    (add-hook 'eshell-mode-hook
-              (lambda ()
-                (bind-key [remap eshell-pcomplete]
-                          'helm-esh-pcomplete
-                          eshell-mode-map)))))
+  ;; Completion with helm
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (bind-key [remap eshell-pcomplete]
+                        'helm-esh-pcomplete
+                        eshell-mode-map))))
 
 ;;; Version control tools
 (use-package helm-gitignore        ; Generate .gitignore files with gitignore.io
