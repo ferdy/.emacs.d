@@ -18,8 +18,9 @@
   ;; Remove dead projects when Emacs is idle
   (run-with-idle-timer 10 nil #'projectile-cleanup-known-projects)
 
-  (validate-setq projectile-completion-system 'ivy
-                 projectile-find-dir-includes-top-level t)
+  (validate-setq
+   projectile-completion-system 'ivy
+   projectile-find-dir-includes-top-level t)
 
   (projectile-register-project-type 'lein-cljs '("project.clj")
                                     "lein cljsbuild once"
