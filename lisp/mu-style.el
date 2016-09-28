@@ -167,29 +167,6 @@ as well as fall backs for."
   (validate-setq zerodark-use-high-contrast-in-mode-line nil)
   (load-theme 'zerodark 'no-confirm))
 
-;;; Mode line
-(line-number-mode)
-(column-number-mode)
-
-(use-package smart-mode-line            ; Better mode-line
-  :ensure t
-  :disabled t
-  :config
-  (validate-setq sml/theme nil
-                 sml/mode-width 'full
-                 sml/no-confirm-load-theme t)
-
-  (sml/setup)
-  ;; More abbreviations
-  (add-to-list 'sml/replacer-regexp-list
-               '("^~/githubs/" ":Git:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^:Doc:boccaperta/" ":Ba:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^:Doc:books/" ":Bks:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^~/projects/" ":Prj:") t))
-
 (provide 'mu-style)
 
 ;;; mu-style.el ends here
