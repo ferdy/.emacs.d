@@ -173,6 +173,7 @@ as well as fall backs for."
 
 (use-package smart-mode-line            ; Better mode-line
   :ensure t
+  :disabled t
   :config
   (validate-setq sml/theme nil
                  sml/mode-width 'full
