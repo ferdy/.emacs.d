@@ -8,7 +8,7 @@
 ;;; Commentary:
 
 ;; This file stores my modeline configuration.
-;; It needs the font from https://github.com/domtronn/all-the-icons.el
+;; It needs the fonts from https://github.com/domtronn/all-the-icons.el
 
 ;;; Code:
 
@@ -30,18 +30,23 @@
 (defvar zerodark-modeline-position "%l:%c %p "
   "Mode line construct for displaying the position in the buffer.")
 
-(defvar zerodark-modeline-modified '(:eval (if (buffer-modified-p (current-buffer))
-                                               (all-the-icons-faicon "floppy-o" :height 1 :v-adjust 0)
-                                             (all-the-icons-faicon "check" :height 1 :v-adjust 0))))
+(defvar zerodark-modeline-modified
+  '(:eval (if (buffer-modified-p (current-buffer))
+              (all-the-icons-faicon "floppy-o" :height 1 :v-adjust 0)
+            (all-the-icons-faicon "check" :height 1 :v-adjust 0))))
 
-(defvar zerodark-modeline-ro '(:eval (if buffer-read-only (propertize "RO " 'face 'bold) "")))
+(defvar zerodark-modeline-ro
+  '(:eval (if buffer-read-only (propertize "RO " 'face 'bold) "")))
 
-(defvar zerodark-buffer-coding '(:eval (unless (eq buffer-file-coding-system (default-value 'buffer-file-coding-system))
-                                         mode-line-mule-info)))
+(defvar zerodark-buffer-coding
+  '(:eval (unless (eq buffer-file-coding-system
+                      (default-value 'buffer-file-coding-system))
+            mode-line-mule-info)))
 
-(defvar zerodark-modeline-vc '(vc-mode ("   "
-                                        (:eval (all-the-icons-faicon "code-fork" :height 1 :v-adjust 0))
-                                        (:eval (s-truncate 25 vc-mode)))))
+(defvar zerodark-modeline-vc
+  '(vc-mode ("   "
+             (:eval (all-the-icons-faicon "code-fork" :height 1 :v-adjust 0))
+             (:eval (s-truncate 25 vc-mode)))))
 
 (setq-default mode-line-format
               `("%e"
@@ -65,16 +70,18 @@
       (mode-line-inactive-fg "#687080"))
   (custom-theme-set-faces
    'zerodark
-   `(mode-line ((,class (:background ,mode-line-bg
-                                     :height 0.9
-                                     :foreground ,mode-line-fg
-                                     :box ,(list :line-width 6
-                                                 :color mode-line-bg)))))
-   `(mode-line-inactive ((,class (:background ,mode-line-inactive-bg
-                                              :height 0.9
-                                              :foreground ,mode-line-inactive-fg
-                                              :box ,(list :line-width 6
-                                                          :color mode-line-inactive-bg)))))))
+   `(mode-line
+     ((,class (:background ,mode-line-bg
+                           :height 0.9
+                           :foreground ,mode-line-fg
+                           :box ,(list :line-width 6
+                                       :color mode-line-bg)))))
+   `(mode-line-inactive
+     ((,class (:background ,mode-line-inactive-bg
+                           :height 0.9
+                           :foreground ,mode-line-inactive-fg
+                           :box ,(list :line-width 6
+                                       :color mode-line-inactive-bg)))))))
 
 (provide 'mu-modeline)
 
