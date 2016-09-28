@@ -163,9 +163,7 @@ as well as fall backs for."
 
 (use-package zerodark-theme             ; Beautiful dark theme
   :ensure t
-  :config
-  (validate-setq zerodark-use-high-contrast-in-mode-line nil)
-  (load-theme 'zerodark 'no-confirm))
+  :config (load-theme 'zerodark 'no-confirm))
 
 (provide 'mu-style)
 
