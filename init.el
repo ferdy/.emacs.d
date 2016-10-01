@@ -155,7 +155,6 @@
 ;;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (use-package mu-style)
-(use-package mu-modeline)
 (use-package mu-keybindings)
 (use-package mu-pairs)
 (use-package mu-highlight)
