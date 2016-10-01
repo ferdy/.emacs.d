@@ -91,7 +91,10 @@
 
   (which-key-declare-prefixes-for-mode 'emacs-lisp-mode
     "C-c m"   "elisp/personal"
-    "C-c m e" "eval")
+    "C-c m m" "macroexpand"
+    "C-c m e" "eval"
+    "C-c m r" "refs"
+    "C-c m s" "el-search")
 
   (which-key-declare-prefixes-for-mode 'scheme-mode
     "C-c m"  "scheme/personal")

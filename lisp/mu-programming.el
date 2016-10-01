@@ -48,8 +48,8 @@
 (use-package el-search                  ; pcase-based search for elisp
   :ensure t
   :bind (:map emacs-lisp-mode-map
-              ("C-c m s" . el-search-pattern)
-              ("C-c m r" . el-search-query-replace)))
+              ("C-c m s s" . el-search-pattern)
+              ("C-c m s r" . el-search-query-replace)))
 
 (use-package ert                        ; Elisp Regression Test
   :defer t
@@ -83,6 +83,15 @@
   :ensure t
   :bind (:map emacs-lisp-mode-map
               ("C-c m p" . ipretty-last-sexp)))
+
+(use-package elisp-refs
+  :ensure t
+  :bind (:map emacs-lisp-mode-map
+              ("C-c m r f" . elisp-refs-function)
+              ("C-c m r m" . elisp-refs-macro)
+              ("C-c m r v" . elisp-refs-variable)
+              ("C-c m r s" . elisp-refs-symbol)
+              ("C-c m r p" . elisp-refs-special)))
 
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
