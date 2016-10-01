@@ -30,7 +30,8 @@
 (use-package counsel-projectile         ; Ivy integration for Projectile
   :ensure t
   :bind (:map projectile-command-map
-              ("p" . counsel-projectile)))
+              ("p" . counsel-projectile)
+              ("P" . counsel-projectile-switch-project)))
 
 (provide 'mu-project)
 
