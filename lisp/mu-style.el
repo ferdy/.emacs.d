@@ -163,7 +163,9 @@ as well as fall backs for."
 
 (use-package zerodark-theme             ; Beautiful dark theme
   :ensure t
-  :config (load-theme 'zerodark 'no-confirm))
+  :config
+  (load-theme 'zerodark 'no-confirm)
+  (zerodark-setup-modeline-format))
 
 (provide 'mu-style)
 
