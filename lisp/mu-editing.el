@@ -258,6 +258,7 @@ _C-s_: mark region
 
 ;;; Utilities and keybindings
 (bind-key "C-c x i" #'indent-region)
+(bind-key "C-c t v" #'visual-line-mode)
 
 ;; Kill entire line with prefix argument
 (defmacro bol-with-prefix (function)
