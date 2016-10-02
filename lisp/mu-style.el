@@ -143,7 +143,13 @@ as well as fall backs for."
 ;;; Theme
 (validate-setq custom-safe-themes t)    ; Treat themes as safe
 
-(use-package solarized                  ; My default theme
+(use-package zerodark-theme             ; Default theme
+  :ensure t
+  :config
+  (load-theme 'zerodark 'no-confirm)
+  (zerodark-setup-modeline-format))
+
+(use-package solarized                  ; Preferred light theme
   :ensure solarized-theme
   :disabled t
   :config
@@ -160,12 +166,6 @@ as well as fall backs for."
    solarized-height-plus-4 1.0)
 
   (load-theme 'solarized-light 'no-confirm))
-
-(use-package zerodark-theme             ; Beautiful dark theme
-  :ensure t
-  :config
-  (load-theme 'zerodark 'no-confirm)
-  (zerodark-setup-modeline-format))
 
 (provide 'mu-style)
 
