@@ -20,10 +20,7 @@
          ("C-c o s" . org-search-view)
          ("C-c o t" . org-todo-list))
   :bind (:map org-mode-map
-              ("<return>" . mu-org-return)
-              ;; Prefer Isearch to Swiper in Org files
-              ("C-s"      . isearch-forward)
-              ("C-r"      . isearch-backward))
+              ("<return>" . mu-org-return))
   :config
   (validate-setq org-emphasis-regexp-components ; Fix markup for ' and "
                  '("     ('\"{“”"
@@ -40,9 +37,6 @@
   (validate-setq org-directory (expand-file-name "~/org/")
                  org-default-notes-file
                  (expand-file-name "organizer.org" org-directory))
-
-  ;; Use visual-line-mode
-  (add-hook 'org-mode-hook #'visual-line-mode)
 
   ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
