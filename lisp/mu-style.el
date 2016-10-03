@@ -147,7 +147,7 @@ as well as fall backs for."
   :ensure t
   :config
   (load-theme 'zerodark 'no-confirm)
-  (zerodark-setup-modeline-format))
+  (zerodark-setup-modeline-format-alt))
 
 (use-package solarized                  ; Preferred light theme
   :ensure solarized-theme
