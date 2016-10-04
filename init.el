@@ -135,12 +135,14 @@
   :init (load mu-custom-file 'no-error 'no-message))
 
 ;; Set the directory where all backup and autosave files will be saved
-(setq backup-directory-alist '((".*" . "~/.emacs.d/backup"))
-      version-control        t          ; Version number for backup files
-      delete-old-versions    t)
+(validate-setq
+ backup-directory-alist '((".*" . "~/.emacs.d/backup"))
+ version-control        t          ; Version number for backup files
+ delete-old-versions    t)
 
-(setq auto-save-list-file-prefix     "~/.emacs.d/autosave/"
-      auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
+(validate-setq
+ auto-save-list-file-prefix     "~/.emacs.d/autosave/"
+ auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
 
 (use-package server                     ; The server of `emacsclient'
   :if (not noninteractive)
@@ -150,7 +152,8 @@
   (unless (server-running-p)
     (server-mode)))
 
-(setq confirm-kill-emacs #'y-or-n-p)    ; Confirm before quitting Emacs
+;; Confirm before quitting Emacs
+(validate-setq confirm-kill-emacs #'y-or-n-p )
 
 ;;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
