@@ -153,7 +153,7 @@
     (server-mode)))
 
 ;; Confirm before quitting Emacs
-(validate-setq confirm-kill-emacs #'y-or-n-p )
+(validate-setq confirm-kill-emacs #'y-or-n-p)
 
 ;;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
