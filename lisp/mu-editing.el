@@ -70,7 +70,15 @@
 
 (use-package visual-fill-column         ; Wrap at fill column
   :ensure t
-  :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode))
+  :init
+  ;; Turn on whenever visual line mode is on, and in all text or prog mode
+  ;; buffers to get centered text
+  (dolist (hook '(visual-line-mode-hook
+                  prog-mode-hook
+                  text-mode-hook))
+    (add-hook hook #'visual-fill-column-mode))
+  ;; Centre text by default
+  :config (setq-default visual-fill-column-center-text t))
 
 (use-package aggressive-indent          ; Automatically indent code
   :ensure t
