@@ -68,9 +68,19 @@
   (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
   (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode))
 
-(use-package visual-fill-column         ; Wrap at fill column
+(use-package visual-fill-column         ; Fill column wrapping
   :ensure t
-  :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode))
+  :defer t
+  :init
+  ;; Turn on whenever visual line mode is on, and in all text or prog mode
+  ;; buffers to get centered text
+  (dolist (hook '(visual-line-mode-hook
+                  prog-mode-hook
+                  text-mode-hook))
+    (add-hook hook #'visual-fill-column-mode))
+  ;; Center text by default, and move the fringes close to the text.
+  :config (setq-default visual-fill-column-center-text t
+                        visual-fill-column-fringes-outside-margins nil))
 
 (use-package aggressive-indent          ; Automatically indent code
   :ensure t
