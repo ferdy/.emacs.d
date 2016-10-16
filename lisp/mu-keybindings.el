@@ -113,6 +113,14 @@
   (which-key-declare-prefixes-for-mode 'rust-mode
     "C-c C-c" "rust/cargo")
 
+  (which-key-declare-prefixes-for-mode 'scala-mode
+    "C-c C-b" "ensime/build"
+    "C-c C-d" "ensime/debug"
+    "C-c C-r" "ensime/refactor"
+    "C-c C-v" "ensime/misc"
+    "C-c m"   "scala/personal"
+    "C-c m b" "scala/build")
+
   (which-key-declare-prefixes-for-mode 'js2-mode
     "C-c m"   "js/personal"
     "C-c m r" "refactor")
