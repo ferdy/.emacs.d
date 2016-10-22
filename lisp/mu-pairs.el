@@ -90,7 +90,7 @@ _k_: kill        _s_: split                   _[_: wrap with [ ]
 
 (use-package embrace                    ; Wrap semantic units with pairs
   :ensure t
-  :bind ("C-c e" . mu-embrace/body)
+  :bind ("C-c x e" . mu-embrace/body)
   :init
   (defhydra mu-embrace (:hint nil)
     "
