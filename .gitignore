@@ -49,3 +49,4 @@ network-security.data
 /.cask/
 /autosave/
 /backup/
+/ensime/
