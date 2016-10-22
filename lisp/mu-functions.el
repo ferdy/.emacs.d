@@ -125,4 +125,9 @@ Examples:
 
 (provide 'mu-functions)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-functions.el ends here

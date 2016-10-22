@@ -78,4 +78,9 @@
 
 (provide 'mu-utilities)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-utilities.el ends here

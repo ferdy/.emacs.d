@@ -87,4 +87,9 @@ most errors from HTML Tidy."
 
 (provide 'mu-flycheck)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-flycheck.el ends here

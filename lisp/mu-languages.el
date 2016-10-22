@@ -121,4 +121,9 @@
 
 (provide 'mu-languages)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-languages.el ends here

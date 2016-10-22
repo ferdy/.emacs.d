@@ -116,4 +116,9 @@
 
 (provide 'mu-shells)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-shells.el ends here

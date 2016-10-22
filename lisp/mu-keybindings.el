@@ -160,4 +160,9 @@ If PAIR is an opening pair, the closing pair will be inserted as well."
 
 (provide 'mu-keybindings)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-keybindings ends here

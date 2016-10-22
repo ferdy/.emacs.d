@@ -95,4 +95,9 @@
 
 (provide 'mu-ivy)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-ivy.el ends here

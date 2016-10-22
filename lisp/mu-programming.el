@@ -693,4 +693,9 @@ With a prefix argument N, comment that many sexps."
 
 (provide 'mu-programming)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-programming.el ends here

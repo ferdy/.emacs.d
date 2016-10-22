@@ -138,4 +138,9 @@ If SIDE is non-nil only get windows on that side."
 
 (provide 'mu-windows)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-windows.el ends here

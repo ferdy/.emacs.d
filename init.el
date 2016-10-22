@@ -182,4 +182,9 @@
 (use-package mu-shells)
 (use-package mu-functions)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; init.el ends here

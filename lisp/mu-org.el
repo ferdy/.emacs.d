@@ -194,4 +194,9 @@
 
 (provide 'mu-org)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-org.el ends here

@@ -106,4 +106,9 @@ Add (_a_), change (_c_) or delete (_d_) a pair.  Quit with _q_.
 
 (provide 'mu-pairs)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-pairs.el ends here

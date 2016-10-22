@@ -206,4 +206,9 @@ buffer."
 
 (provide 'mu-net)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-net.el ends here

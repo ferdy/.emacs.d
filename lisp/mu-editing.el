@@ -556,4 +556,9 @@ Otherwise insert the date as Mar 04, 2014."
 
 (provide 'mu-editing)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-editing.el ends here

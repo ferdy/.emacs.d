@@ -94,4 +94,9 @@
 
 (provide 'mu-highlight)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-highlight.el ends here

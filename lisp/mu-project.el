@@ -35,4 +35,9 @@
 
 (provide 'mu-project)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-project.el ends here

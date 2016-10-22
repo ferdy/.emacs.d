@@ -298,4 +298,9 @@
 
 (provide 'mu-helm)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-helm.el ends here

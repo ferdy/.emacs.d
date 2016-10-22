@@ -129,4 +129,9 @@ _e_: extra   _l_: list        _n_: new
 
 (provide 'mu-completion)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-completion.el ends here

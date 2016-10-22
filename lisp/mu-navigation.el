@@ -130,4 +130,9 @@ This is the same as using \\[set-mark-command] with the prefix argument."
 
 (provide 'mu-navigation)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-navigation.el ends here

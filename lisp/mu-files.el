@@ -155,4 +155,9 @@ Otherwise copy the non-directory part only."
 
 (provide 'mu-files)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-files.el ends here

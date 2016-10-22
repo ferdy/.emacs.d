@@ -181,4 +181,9 @@
 
 (provide 'mu-latex)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-latex.el ends here

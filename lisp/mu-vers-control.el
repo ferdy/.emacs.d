@@ -93,4 +93,9 @@
 
 (provide 'mu-vers-control)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-vers-control.el ends here

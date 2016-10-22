@@ -193,4 +193,9 @@ The app is chosen from your OS's preference."
 
 (provide 'mu-dired)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-dired.el ends here

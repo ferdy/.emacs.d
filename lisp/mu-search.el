@@ -55,4 +55,9 @@
 
 (provide 'mu-search)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-search.el ends here

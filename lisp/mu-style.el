@@ -169,4 +169,9 @@ as well as fall backs for."
 
 (provide 'mu-style)
 
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-style.el ends here
