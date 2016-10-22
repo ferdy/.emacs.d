@@ -406,7 +406,8 @@ the REPL in a new frame instead."
   ;; Enable Ensime for all Scala buffers
   (add-hook 'scala-mode-hook #'ensime-mode)
   ;; Compile on save
-  (validate-setq ensime-sbt-perform-on-save "test:compile"))
+  (validate-setq ensime-sbt-perform-on-save "test:compile"
+                 ensime-startup-snapshot-notification nil))
 
 (use-package ensime-expand-region       ; Integrate Ensime into expand-region
   :ensure ensime
