@@ -54,34 +54,37 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
     window))
 
 ;; Configure `display-buffer' behaviour for some special buffers
-(validate-setq display-buffer-alist
-               `(
-                 ;; Messages, errors, Calendar and REPLs in the bottom side window
-                 (,(rx bos (or "*Help"             ; Help buffers
-                               "*Warnings*"        ; Emacs warnings
-                               "*Compile-Log*"     ; Emacs byte compiler log
-                               "*compilation"      ; Compilation buffers
-                               "*Flycheck errors*" ; Flycheck error list
-                               "*shell"            ; Shell window
-                               "*Calendar"         ; Calendar window
-                               "*cider-repl"       ; CIDER REPL
-                               "*sly-mrepl"        ; Sly REPL
-                               "*scheme"           ; Inferior Scheme REPL
-                               "*ielm"             ; IELM REPL
-                               "*SQL"              ; SQL REPL
-                               "*Cargo"            ; Cargo process buffers
-                               ;; AUCTeX command output
-                               (and (1+ nonl) " output*")
-                               ))
-                  (display-buffer-reuse-window
-                   display-buffer-in-side-window)
-                  (side . bottom)
-                  (reusable-frames . visible)
-                  (window-height . 0.4))
-                 ;; Let `display-buffer' reuse visible frames for all buffers.  This must
-                 ;; be the last entry in `display-buffer-alist', because it overrides any
-                 ;; later entry with more specific actions.
-                 ("." nil (reusable-frames . visible))))
+(validate-setq
+ display-buffer-alist
+ `(
+   ;; Messages, errors, Calendar and REPLs in the bottom side window
+   (,(rx bos (or "*Help"             ; Help buffers
+                 "*Warnings*"        ; Emacs warnings
+                 "*Compile-Log*"     ; Emacs byte compiler log
+                 "*compilation"      ; Compilation buffers
+                 "*Flycheck errors*" ; Flycheck error list
+                 "*shell"            ; Shell window
+                 "*Calendar"         ; Calendar window
+                 "*cider-repl"       ; CIDER REPL
+                 "*sly-mrepl"        ; Sly REPL
+                 "*scheme"           ; Inferior Scheme REPL
+                 "*ielm"             ; IELM REPL
+                 "*sbt"              ; SBT REPL and compilation buffer
+                 "*ensime-update*"   ; Server update from Ensime
+                 "*SQL"              ; SQL REPL
+                 "*Cargo"            ; Cargo process buffers
+                 ;; AUCTeX command output
+                 (and (1+ nonl) " output*")
+                 ))
+    (display-buffer-reuse-window
+     display-buffer-in-side-window)
+    (side . bottom)
+    (reusable-frames . visible)
+    (window-height . 0.4))
+   ;; Let `display-buffer' reuse visible frames for all buffers.  This must
+   ;; be the last entry in `display-buffer-alist', because it overrides any
+   ;; later entry with more specific actions.
+   ("." nil (reusable-frames . visible))))
 
 (use-package uniquify                   ; Unique buffer names
   :config
