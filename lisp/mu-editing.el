@@ -257,6 +257,11 @@ _C-s_: mark region
       ;; Save the contents of the clipboard to kill ring before killing
       save-interprogram-paste-before-kill t)
 
+(use-package mu-licenses
+  :bind (("C-c i l a" . mu-insert-apache2)
+         ("C-c i l g" . mu-insert-gpl3)
+         ("C-c i l m" . mu-insert-mit/x11)))
+
 ;;; Utilities and keybindings
 (bind-key "C-c x i" #'indent-region)
 (bind-key "C-c t v" #'visual-line-mode)
