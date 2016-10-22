@@ -25,10 +25,10 @@
 ;; (:my-pass "password")
 (use-package circe                      ; Light IRC client
   :ensure t
-  :bind ("C-c a i" . circe)
+  :bind ("C-c a w i" . circe)
   :config
   ;; Load and set my credentials
-  (validate-setq mu-credentials-file "~/.ercpass")
+  (setq mu-credentials-file "~/.ercpass")
 
   (defun mu-retrieve-irc-password (_)
     (with-temp-buffer
