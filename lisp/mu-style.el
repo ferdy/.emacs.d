@@ -143,15 +143,8 @@ as well as fall backs for."
 ;;; Theme
 (validate-setq custom-safe-themes t)    ; Treat themes as safe
 
-(use-package zerodark-theme             ; Default theme
-  :ensure t
-  :config
-  (load-theme 'zerodark 'no-confirm)
-  (zerodark-setup-modeline-format-alt))
-
-(use-package solarized                  ; Preferred light theme
+(use-package solarized                  ; Default theme
   :ensure solarized-theme
-  :disabled t
   :config
   (validate-setq
    solarized-use-variable-pitch nil  ; Disable variable pitch fonts
@@ -166,6 +159,26 @@ as well as fall backs for."
    solarized-height-plus-4 1.0)
 
   (load-theme 'solarized-light 'no-confirm))
+
+;;; The mode line
+(line-number-mode)
+(column-number-mode)
+
+(use-package smart-mode-line            ; Better mode-line
+  :ensure t
+  :config
+  (setq sml/theme nil
+        sml/mode-width 'full
+        sml/no-confirm-load-theme t)
+
+  (sml/setup)
+  ;; More abbreviations
+  (add-to-list 'sml/replacer-regexp-list
+               '("^~/githubs/" ":Git:") t)
+  (add-to-list 'sml/replacer-regexp-list
+               '("^:Doc:books/" ":Bks:") t)
+  (add-to-list 'sml/replacer-regexp-list
+               '("^~/projects/" ":Prj:") t))
 
 (provide 'mu-style)
 
