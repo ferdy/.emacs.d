@@ -167,8 +167,7 @@ _C-s_: mark region
 
 (use-package writeroom-mode             ; Distraction-free interface
   :ensure t
-  :bind ("C-c t r" . writeroom-mode)
-  :init (add-hook 'writeroom-mode #'visual-line-mode))
+  :bind ("C-c t r" . writeroom-mode))
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :bind ("C-c x t" . tildify-region)
