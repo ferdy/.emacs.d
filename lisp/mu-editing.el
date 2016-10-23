@@ -72,14 +72,6 @@
   :ensure t
   :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode))
 
-(use-package aggressive-indent          ; Automatically indent code
-  :ensure t
-  :bind ("C-c t i" . aggressive-indent-mode)
-  :init (global-aggressive-indent-mode 1)
-  :config
-  (add-to-list 'aggressive-indent-excluded-modes
-               'cider-repl-mode))
-
 (use-package align                      ; Align text in buffers
   :bind (("C-c x a a" . align)
          ("C-c x a c" . align-current)))
