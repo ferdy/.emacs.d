@@ -59,8 +59,7 @@ most errors from HTML Tidy."
   (validate-setq flycheck-standard-error-navigation nil
                  flycheck-display-errors-function
                  #'flycheck-display-error-messages-unless-error-list
-                 flycheck-scalastylerc "scalastyle_config.xml")
-  :diminish flycheck-mode)
+                 flycheck-scalastylerc "scalastyle_config.xml"))
 
 (use-package flycheck-package          ; Check package conventions with Flycheck
   :ensure t
