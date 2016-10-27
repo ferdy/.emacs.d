@@ -60,9 +60,7 @@
   (package-install 'use-package)
   (package-install 'dash))
 
-(eval-when-compile
-  (require 'use-package))
-
+(require 'use-package)
 (require 'dash)
 (require 'subr-x)
 (require 'time-date)
