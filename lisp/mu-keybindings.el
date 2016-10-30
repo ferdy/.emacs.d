@@ -17,6 +17,11 @@
   :ensure t
   :init (which-key-mode)
   :config
+  ;; Fix for `master' build
+  ;; https://github.com/justbur/emacs-which-key/issues/153#issuecomment-257145977
+  (defalias 'display-buffer-in-major-side-window
+    'window--make-major-side-window)
+
   (validate-setq which-key-idle-delay 0.4
                  which-key-sort-order 'which-key-prefix-then-key-order
                  which-key-key-replacement-alist
@@ -39,6 +44,7 @@
                    ("projectile-"    . "proj-")
                    ("magit-"         . "ma-")
                    ("markdown-"      . "md-")))
+
   (which-key-declare-prefixes
     "C-c !"     "flycheck"
     "C-c @"     "outline"
