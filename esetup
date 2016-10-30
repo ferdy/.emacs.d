@@ -84,6 +84,8 @@ scala_setup() {
   dostep 2 "y" "apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823"
   dostep 3 "y" "apt-get update"
   dostep 4 "y" "apt-get install sbt"
+  dostep 5 "y" "curl -L -o /usr/local/bin/amm https://git.io/vP4Gw"
+  dostep 6 "y" "chmod +x /usr/local/bin/amm"
 }
 
 latex_setup() {
@@ -169,7 +171,7 @@ announce PYTHON
 python_setup
 announce RUST
 rust_setup
-announce SCALE
+announce SCALA
 scala_setup
 announce CASK
 cask_setup
