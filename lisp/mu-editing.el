@@ -178,10 +178,6 @@ _C-s_: mark region
             (lambda () (setq-local tildify-space-string "~")))
   :diminish tildify-mode)
 
-(use-package table                      ; Edit table in text files
-  :defer t
-  :init (add-hook 'text-mode-hook #'table-recognize))
-
 (use-package wrap-region                ; Wrap a region with symbols and tags
   :ensure t
   :bind ("C-c t W" . wrap-region-mode)
