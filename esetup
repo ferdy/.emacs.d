@@ -61,7 +61,7 @@ commonlisp_setup() {
 }
 
 clojure_setup() {
-  dostep 1 "y" "apt-get -y install --no-install-recommends openjdk-8-jre"
+  dostep 1 "y" "apt-get -y install --no-install-recommends openjdk-8-jdk openjdk-8-source"
   if [ ! -d "$HOME/bin" ]; then
     dostep 2 "n" "mkdir -p $HOME/bin"
   fi
