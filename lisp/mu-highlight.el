@@ -32,8 +32,9 @@
 (use-package highlight-symbol           ; Highlight and jump to symbols
   :ensure t
   :bind (("C-c s %" . highlight-symbol-query-replace)
-         ("C-c n n" . highlight-symbol-next-in-defun)
-         ("C-c n p" . highlight-symbol-prev-in-defun))
+         ("C-c s o" . highlight-symbol-occur)
+         ("C-c s n" . highlight-symbol-next-in-defun)
+         ("C-c s p" . highlight-symbol-prev-in-defun))
   :init
   ;; Navigate occurrences of the symbol under point with M-n and M-p
   (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
