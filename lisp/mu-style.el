@@ -160,28 +160,9 @@ as well as fall backs for."
 
   (load-theme 'solarized-light 'no-confirm))
 
-(use-package punpun-theme               ; Minimal light theme
-  :ensure t)
-
 ;;; The mode line
 (line-number-mode)
 (column-number-mode)
-
-(use-package smart-mode-line            ; Better mode-line
-  :ensure t
-  :config
-  (setq sml/theme nil
-        sml/mode-width 'full
-        sml/no-confirm-load-theme t)
-
-  (sml/setup)
-  ;; More abbreviations
-  (add-to-list 'sml/replacer-regexp-list
-               '("^~/githubs/" ":Git:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^:Doc:books/" ":Bks:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^~/projects/" ":Prj:") t))
 
 (provide 'mu-style)
 
