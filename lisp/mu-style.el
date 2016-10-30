@@ -160,6 +160,9 @@ as well as fall backs for."
 
   (load-theme 'solarized-light 'no-confirm))
 
+(use-package punpun-theme               ; Minimal light theme
+  :ensure t)
+
 ;;; The mode line
 (line-number-mode)
 (column-number-mode)
