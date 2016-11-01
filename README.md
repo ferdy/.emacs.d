@@ -94,6 +94,7 @@ inspiration from these people:
 - [Bozhidar Batsov](https://github.com/bbatsov)
 - [Joe Brock](https://github.com/DebianJoe)
 - [Sacha Chua](https://github.com/sachac)
+- [Sam Halliday](https://github.com/fommil)
 - [Wilfred Hughes](https://github.com/Wilfred)
 - [Oleh Krehel](https://github.com/abo-abo)
 - [Artur Malabarba](https://github.com/Malabarba)
