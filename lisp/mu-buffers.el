@@ -70,6 +70,7 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
                  "*scheme"           ; Inferior Scheme REPL
                  "*ielm"             ; IELM REPL
                  "*sbt"              ; SBT REPL and compilation buffer
+                 "*Scala"            ; Scala REPL
                  "*ensime-update*"   ; Server update from Ensime
                  "*SQL"              ; SQL REPL
                  "*Cargo"            ; Cargo process buffers
