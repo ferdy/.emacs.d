@@ -233,115 +233,6 @@
   :ensure t
   :defer t)
 
-;;; Haskell
-(use-package haskell-mode               ; Haskell major mode
-  :ensure t
-  :defer t
-  :bind (:map haskell-mode-map
-              ("M-." . haskell-mode-jump-to-def-or-tag)
-              ("C-c m i j" . haskell-navigate-imports)
-              ("C-c m i s" . haskell-sort-imports)
-              ("C-c m i a" . haskell-align-imports)
-              ;; Recommended Haskell Mode bindings, see
-              ;; http://haskell.github.io/haskell-mode/manual/latest/Interactive-Haskell.html
-              )
-  :config
-  (validate-setq haskell-tags-on-save t ; Regenerate TAGS on save
-                 haskell-process-log t  ; Show log for GHCI process
-                 ;; Remove unused imports and auto-import modules
-                 haskell-process-suggest-remove-import-lines t
-                 haskell-process-auto-import-loaded-modules t)
-
-  (add-hook 'haskell-mode-hook #'haskell-decl-scan-mode) ; IMenu support
-  (add-hook 'haskell-mode-hook #'interactive-haskell-mode))
-
-(use-package haskell                    ; Interactive Haskell
-  :ensure haskell-mode
-  :defer t
-  :bind (:map haskell-mode-map
-              ("C-c C-l" . haskell-process-load-file)
-              ("C-`" . haskell-interactive-bring)
-              ("C-c C-t" . haskell-process-do-type)
-              ("C-c C-i" . haskell-process-do-info)
-              ("C-c C-c" . haskell-process-cabal-build)
-              ("C-c C-k" . haskell-interactive-mode-clear)
-              ("C-c c" . haskell-process-cabal)
-              :map interactive-haskell-mode-map
-              ("C-c m t" . haskell-mode-show-type-at))
-  :init (add-hook 'haskell-mode-hook 'interactive-haskell-mode))
-
-(use-package haskell-compile            ; Haskell compilation
-  :ensure haskell-mode
-  :defer t
-  :bind (:map haskell-mode-map
-              ("C-c m c" . haskell-compile)
-              ("<f5>" . haskell-compile))
-  :config
-  ;; Build with Stack
-  (validate-setq haskell-compile-cabal-build-command "stack build"))
-
-(use-package cabal-mode                 ; Cabal files
-  :ensure haskell-mode
-  :defer t
-  :bind (:map haskell-cabal-mode-map
-              ("C-`" . haskell-interactive-bring)
-              ("C-c C-k" . haskell-interactive-mode-clear)
-              ("C-c C-c" . haskell-process-cabal-build)
-              ("C-c c" . haskell-process-cabal)))
-
-(use-package hindent                    ; Haskell indentation
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'haskell-mode-hook #'hindent-mode)
-  :config
-  (validate-setq hindent-style "gibiansky"))
-
-;;; Python
-(use-package python                     ; Python editing
-  :defer t
-  :config
-  ;; PEP 8 compliant filling rules, 79 chars maximum
-  (add-hook 'python-mode-hook (lambda () (setq fill-column 79)))
-  (add-hook 'python-mode-hook #'subword-mode)
-
-  (let ((ipython (executable-find "ipython")))
-    (if ipython
-        (setq python-shell-interpreter ipython)
-      (warn "IPython is missing, falling back to default python"))))
-
-(use-package anaconda-mode              ; Powerful Python backend for Emacs
-  :ensure t
-  :defer t
-  :after python
-  :init (add-hook 'python-mode-hook #'anaconda-mode))
-
-(use-package pip-requirements           ; requirements.txt files
-  :ensure t
-  :defer t)
-
-;;; Rust
-(use-package rust-mode                  ; Rust major mode
-  :ensure t
-  :bind (:map rust-mode-map ("C-c <tab>" . rust-format-buffer)))
-
-(use-package racer                      ; Completion and navigation for Rust
-  :ensure t
-  :defer t
-  :init (add-hook 'rust-mode-hook #'racer-mode)
-  :config
-  (validate-setq racer-rust-src-path (getenv "RUST_SRC_PATH")))
-
-(use-package cargo                      ; Control Cargo
-  :ensure t
-  :bind (:map rust-mode-map ("<f6>" . cargo-process-build))
-  :init (add-hook 'rust-mode-hook #'cargo-minor-mode)
-  :diminish cargo-minor-mode)
-
-(use-package toml-mode                  ; Toml for Cargo files
-  :ensure t
-  :defer t)
-
 ;;; Scala
 (use-package scala-mode                 ; Scala editing
   :ensure t
@@ -424,6 +315,51 @@ the REPL in a new frame instead."
 (use-package ensime-expand-region       ; Integrate Ensime into expand-region
   :ensure ensime
   :after ensime)
+
+;;; Rust
+(use-package rust-mode                  ; Rust major mode
+  :ensure t
+  :bind (:map rust-mode-map ("C-c <tab>" . rust-format-buffer)))
+
+(use-package racer                      ; Completion and navigation for Rust
+  :ensure t
+  :defer t
+  :init (add-hook 'rust-mode-hook #'racer-mode)
+  :config
+  (validate-setq racer-rust-src-path (getenv "RUST_SRC_PATH")))
+
+(use-package cargo                      ; Control Cargo
+  :ensure t
+  :bind (:map rust-mode-map ("<f6>" . cargo-process-build))
+  :init (add-hook 'rust-mode-hook #'cargo-minor-mode)
+  :diminish cargo-minor-mode)
+
+(use-package toml-mode                  ; Toml for Cargo files
+  :ensure t
+  :defer t)
+
+;;; Python
+(use-package python                     ; Python editing
+  :defer t
+  :config
+  ;; PEP 8 compliant filling rules, 79 chars maximum
+  (add-hook 'python-mode-hook (lambda () (setq fill-column 79)))
+  (add-hook 'python-mode-hook #'subword-mode)
+
+  (let ((ipython (executable-find "ipython")))
+    (if ipython
+        (setq python-shell-interpreter ipython)
+      (warn "IPython is missing, falling back to default python"))))
+
+(use-package anaconda-mode              ; Powerful Python backend for Emacs
+  :ensure t
+  :defer t
+  :after python
+  :init (add-hook 'python-mode-hook #'anaconda-mode))
+
+(use-package pip-requirements           ; requirements.txt files
+  :ensure t
+  :defer t)
 
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
