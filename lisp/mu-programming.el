@@ -411,17 +411,6 @@ the REPL in a new frame instead."
 
   (add-hook 'js2-mode-hook #'add-xref-js2-backend))
 
-(use-package purescript-mode            ; Purescript editing
-  :ensure t
-  :defer t)
-
-(use-package psc-ide                    ; IDE for Purescript
-  :ensure t
-  :defer t
-  :init
-  (add-hook 'purescript-mode-hook #'psc-ide-mode)
-  (add-hook 'purescript-mode-hook #'turn-on-purescript-indentation))
-
 (use-package css-mode                   ; Better CSS support
   :defer t
   :config (validate-setq css-indent-offset 2))
