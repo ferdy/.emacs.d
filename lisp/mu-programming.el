@@ -347,8 +347,11 @@
   :ensure t
   :defer t
   :config
-  (validate-setq scala-indent:default-run-on-strategy
-                 scala-indent:operator-strategy)
+  (validate-setq
+   scala-indent:default-run-on-strategy
+   scala-indent:operator-strategy
+   scala-indent:use-javadoc-style t
+   scala-indent:align-parameters t)
 
   (defun mu-newline-and-indent-with-asterisk ()
     (interactive)
@@ -356,7 +359,16 @@
     (scala-indent:insert-asterisk-on-multiline-comment))
 
   (bind-key "RET" #'mu-newline-and-indent-with-asterisk
-            scala-mode-map))
+            scala-mode-map)
+
+  ;; Prefer Smartparens for parents handling
+  (remove-hook 'post-self-insert-hook
+               'scala-indent:indent-on-parentheses)
+
+  (sp-local-pair 'scala-mode "(" nil
+                 :post-handlers '(("||\n[i]" "RET")))
+  (sp-local-pair 'scala-mode "{" nil
+                 :post-handlers '(("||\n[i]" "RET") ("| " "SPC"))))
 
 (use-package sbt-mode                   ; Scala build tool
   :ensure t
