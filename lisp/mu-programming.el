@@ -252,7 +252,7 @@
   (bind-key "RET" #'mu-newline-and-indent-with-asterisk
             scala-mode-map)
 
-  ;; Prefer Smartparens for parents handling
+  ;; Prefer Smartparens for parentheses handling
   (remove-hook 'post-self-insert-hook
                'scala-indent:indent-on-parentheses)
 
