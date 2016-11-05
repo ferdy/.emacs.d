@@ -182,11 +182,7 @@
 
 (use-package interleave             ; Take notes in org files while reading PDFs
   :ensure t
-  :bind ("C-c o i" . interleave))
-
-(use-package ox-mediawiki               ; Export to mediawiki format
-  :ensure t
-  :after org)
+  :bind ("C-c o i" . interleave-mode))
 
 ;;; Utilities and keybindings
 (bind-key "<f5>"                        ; Open organizer file
