@@ -299,6 +299,7 @@ the REPL in a new frame instead."
   :ensure t
   :after scala-mode
   :bind (:map ensime-mode-map
+              ("C-c C-q" . ensime-shutdown)
               ("C-c m E" . ensime-reload)
               ;; Free M-n and M-p again
               ("M-n" . nil)
