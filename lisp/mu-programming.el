@@ -304,7 +304,7 @@ the REPL in a new frame instead."
               ;; Free M-n and M-p again
               ("M-n" . nil)
               ("M-p" . nil)
-              ("<f5>" . ensime-sbt-do-compile)
+              ("<f6>" . ensime-sbt-do-compile)
               :map scala-mode-map ("C-c m e" . ensime))
   :config
   ;; Enable Ensime for all Scala buffers
