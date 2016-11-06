@@ -207,6 +207,7 @@ as well as fall backs for."
                 mode-line-remote
                 mode-line-frame-identification
                 mode-line-buffer-identification " " mode-line-position
+                " "
                 (projectile-mode mu-projectile-mode-line)
                 (vc-mode (:propertize (:eval vc-mode) face italic))
                 " "
