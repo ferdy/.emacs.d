@@ -70,11 +70,6 @@
   :bind (("C-c a L d" . wordnut-search)
          ("C-c a L D" . wordnut-lookup-current-word)))
 
-;;; Grammar and style
-(use-package writegood-mode             ; Find common writing problems
-  :ensure t
-  :bind ("C-c a L g" . writegood-mode))
-
 ;;; Utilities and keybindings
 ;;;###autoload
 (defun mu--wordreference (languages &optional word)
