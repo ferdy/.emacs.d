@@ -53,8 +53,7 @@ most errors from HTML Tidy."
   (add-hook 'flycheck-mode-hook
             #'mu-flycheck-set-load-path-for-user-configuration)
 
-  ;; Enable Flycheck in programming modes
-  (add-hook 'prog-mode-hook #'flycheck-mode)
+  (global-flycheck-mode)
   :config
   (validate-setq flycheck-standard-error-navigation nil
                  flycheck-display-errors-function
@@ -82,6 +81,19 @@ most errors from HTML Tidy."
   :defer t
   :after rust-mode
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+;; TODO remove when this is merged https://github.com/flycheck/flycheck/pull/939
+(flycheck-define-checker proselint
+  "A linter for prose."
+  :command ("proselint" source-inplace)
+  :error-patterns
+  ((warning line-start (file-name) ":" line ":" column ": "
+            (id (one-or-more (not (any " "))))
+            (message (one-or-more not-newline)
+                     (zero-or-more "\n" (any " ") (one-or-more not-newline)))
+            line-end))
+  :modes (text-mode markdown-mode gfm-mode))
+(add-to-list 'flycheck-checkers 'proselint)
 
 (provide 'mu-flycheck)
 
