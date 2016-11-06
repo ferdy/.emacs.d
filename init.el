@@ -155,6 +155,7 @@
 
 ;;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(use-package mu-flycheck)
 (use-package mu-style)
 (use-package mu-keybindings)
 (use-package mu-pairs)
@@ -175,7 +176,6 @@
 (use-package mu-net)
 (use-package mu-utilities)
 (use-package mu-org :defer 2)
-(use-package mu-flycheck :defer 1)
 (use-package mu-programming)
 (use-package mu-shells)
 (use-package mu-functions)
