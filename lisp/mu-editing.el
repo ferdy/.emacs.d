@@ -110,7 +110,8 @@ _C-s_: mark region
         ;; Simplify the MC mode line indicator
         '(:propertize (:eval (concat " " (number-to-string
                                           (mc/num-cursors))))
-                      face font-lock-warning-face)))
+                      face font-lock-warning-face))
+  :diminish multiple-cursors-mode)
 
 (use-package saveplace                  ; Save point position in files
   :init (save-place-mode 1))
