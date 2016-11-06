@@ -178,15 +178,6 @@ as well as fall backs for."
   "Mode line format for Projectile.")
 (put 'mu-projectile-mode-line 'risky-local-variable t)
 
-(defvar mu-vc-mode-line
-  '(" " (:propertize
-         ;; Strip the backend name from the VC status information
-         (:eval (let ((backend (symbol-name (vc-backend (buffer-file-name)))))
-                  (substring vc-mode (+ (length backend) 2))))
-         face font-lock-variable-name-face))
-  "Mode line format for VC Mode.")
-(put 'mu-vc-mode-line 'risky-local-variable t)
-
 (setq-default mode-line-format
               '("%e" mode-line-front-space
                 ;; Standard info about the current buffer
