@@ -72,6 +72,8 @@ clojure_setup() {
 
 python_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends python2.7 ipython"
+  dostep 2 "y" "apt-get -y install --no-install-recommends python-pip"
+  dostep 3 "y" "pip install proselint"
 }
 
 rust_setup() {
