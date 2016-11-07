@@ -245,17 +245,17 @@ _C-s_: mark region
               tab-width 8)
 
 ;; Make Tab complete if the line is indented
-(setq tab-always-indent 'complete)
+(validate-setq tab-always-indent 'complete)
 
 ;; Indicate empty lines at the end of a buffer in the fringe, but require a
 ;; final new line
-(setq indicate-empty-lines t
-      require-final-newline t)
+(validate-setq indicate-empty-lines t
+               require-final-newline t)
 
-(setq kill-ring-max 200                 ; More killed items
-      kill-do-not-save-duplicates t     ; No duplicates in kill ring
-      ;; Save the contents of the clipboard to kill ring before killing
-      save-interprogram-paste-before-kill t)
+(validate-setq kill-ring-max 200                 ; More killed items
+               kill-do-not-save-duplicates t     ; No duplicates in kill ring
+               ;; Save the contents of the clipboard to kill ring before killing
+               save-interprogram-paste-before-kill t)
 
 (use-package mu-licenses
   :bind (("C-c i l a" . mu-insert-apache2)
