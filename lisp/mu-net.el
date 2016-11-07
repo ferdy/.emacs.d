@@ -67,7 +67,7 @@
                    ("http://dilbert.oeey.com/" comic)
                    ("http://www.goodmath.org/blog/feed/" math)))
 
-  (setq elfeed-use-curl t)              ; Use curl to fetch te feeds
+  (validate-setq elfeed-use-curl t)     ; Use curl to fetch the feeds
 
   ;; Increse timeout
   (elfeed-set-timeout 30))

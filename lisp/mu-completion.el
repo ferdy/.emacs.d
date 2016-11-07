@@ -52,7 +52,7 @@ _e_: extra   _l_: list        _n_: new
 
 ;; In `completion-at-point', do not pop up completion buffers for less
 ;; than five candidates. Cycle instead.
-(setq completion-cycle-threshold 5)
+(validate-setq completion-cycle-threshold 5)
 
 (use-package hippie-exp                 ; Powerful expansion and completion
   :bind ([remap dabbrev-expand] . hippie-expand)

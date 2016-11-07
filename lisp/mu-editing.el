@@ -125,9 +125,9 @@ _C-s_: mark region
 (use-package autorevert                 ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
   :config
-  (setq auto-revert-verbose nil
-        ;; Revert Dired buffers, too
-        global-auto-revert-non-file-buffers t)
+  (validate-setq auto-revert-verbose nil
+                 ;; Revert Dired buffers, too
+                 global-auto-revert-non-file-buffers t)
   :diminish auto-revert-mode)
 
 (use-package auto-insert                ; Automatic insertion into new files
@@ -139,9 +139,9 @@ _C-s_: mark region
   :bind ("C-c i c" . copyright-update)
   :config
   ;; Use ranges to denote consecutive years
-  (setq copyright-year-ranges t
-        ;; Limit copyright changes to my own copyright
-        copyright-names-regexp (regexp-quote user-full-name)))
+  (validate-setq copyright-year-ranges t
+                 ;; Limit copyright changes to my own copyright
+                 copyright-names-regexp (regexp-quote user-full-name)))
 
 (use-package dubcaps-mode               ; DOuble CApitals to Single Capitals
   :load-path "extra"
@@ -238,7 +238,8 @@ _C-s_: mark region
                      " ")))
   (add-hook 'markdown-mode-hook #'auto-fill-mode))
 
-(setq next-line-add-newlines t)    ; C-n adds new line when at the end of a line
+;; C-n adds new line when at the end of a line
+(validate-setq next-line-add-newlines t)
 
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil
