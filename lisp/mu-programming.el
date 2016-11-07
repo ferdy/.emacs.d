@@ -436,10 +436,30 @@ the REPL in a new frame instead."
 
 (use-package nxml-mode                  ; XML editing
   :mode "\\.xml\\'"
+  :bind (:map nxml-mode-map
+              ("C-c m f" . mu-xml-format))
   :config
   ;; Complete closing tags, and insert XML declarations into empty files
   (validate-setq nxml-slash-auto-complete-flag t
-                 nxml-auto-insert-xml-declaration-flag t))
+                 nxml-auto-insert-xml-declaration-flag t)
+
+  (defun mu-xml-format ()
+    "Format an XML buffer with `xmllint'"
+    (interactive)
+    (shell-command-on-region
+     ;; beginning and end of buffer
+     (point-min)
+     (point-max)
+     ;; command and parameters
+     "xmllint -format -"
+     ;; output buffer
+     (current-buffer)
+     ;; replace?
+     t
+     ;; name of the error buffer
+     "*Xmllint Error Buffer*"
+     ;; show error buffer?
+     t)))
 
 (use-package json-mode                  ; JSON editing
   :mode "\\.json\\'"
