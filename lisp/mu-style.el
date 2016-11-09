@@ -164,62 +164,49 @@ as well as fall backs for."
 (line-number-mode)
 (column-number-mode)
 
-(setq-default mode-line-position
-              '((-3 "%p") (size-indication-mode ("/" (-4 "%I")))
-                " "
-                (line-number-mode
-                 ("%l" (column-number-mode ":%c")))))
+(use-package which-func                 ; Current function name
+  :defer 1
+  :config
+  (which-function-mode)
+  (validate-setq
+   which-func-unknown "⊥"               ; The default is really boring…
+   which-func-format
+   `((:propertize (" ➤ " which-func-current)
+                  local-map ,which-func-keymap
+                  face which-func
+                  mouse-face mode-line-highlight
+                  help-echo "mouse-1: go to beginning\n\
+mouse-2: toggle rest visibility\n\
+mouse-3: go to end"))))
 
-(defvar mu-projectile-mode-line
-  '(:propertize
-    (:eval (when (ignore-errors (projectile-project-root))
-             (concat " " (projectile-project-name))))
-    face font-lock-constant-face)
-  "Mode line format for Projectile.")
-(put 'mu-projectile-mode-line 'risky-local-variable t)
+(use-package spaceline-config           ; A beautiful mode line
+  :ensure spaceline
+  :config
+  (spaceline-compile
+   'mu
+   ;; Left side of the mode line (all the important stuff)
+   '(((buffer-modified buffer-size input-method) :face highlight-face)
+     '(buffer-id remote-host buffer-encoding-abbrev)
+     ((point-position line-column buffer-position selection-info)
+      :separator " | ")
+     major-mode
+     process
+     (flycheck-error flycheck-warning flycheck-info)
+     (python-pyvenv :fallback python-pyenv)
+     ((which-function projectile-root) :separator " @ ")
+     ((minor-modes :separator spaceline-minor-modes-separator) :when active))
+   ;; Right segment (the unimportant stuff)
+   '((version-control :when active)))
 
-(validate-setq
- flycheck-mode-line
- '(:eval
-   (pcase flycheck-last-status-change
-     (`not-checked nil)
-     (`no-checker (propertize " -" 'face 'warning))
-     (`running (propertize " ✷" 'face 'success))
-     (`errored (propertize " !" 'face 'error))
-     (`finished
-      (let* ((error-counts (flycheck-count-errors flycheck-current-errors))
-             (no-errors (cdr (assq 'error error-counts)))
-             (no-warnings (cdr (assq 'warning error-counts)))
-             (face (cond (no-errors 'error)
-                         (no-warnings 'warning)
-                         (t 'success))))
-        (propertize (format " %s/%s" (or no-errors 0) (or no-warnings 0))
-                    'face face)))
-     (`interrupted " -")
-     (`suspicious '(propertize " ?" 'face 'warning)))))
+  (setq-default mode-line-format '("%e" (:eval (spaceline-ml-mu)))))
 
-(setq-default mode-line-format
-              '("%e" mode-line-front-space
-                ;; Standard info about the current buffer
-                mode-line-mule-info
-                mode-line-client
-                mode-line-modified
-                mode-line-remote
-                mode-line-frame-identification
-                mode-line-buffer-identification " " mode-line-position
-                " "
-                (projectile-mode mu-projectile-mode-line)
-                (vc-mode (:propertize (:eval vc-mode) face italic))
-                " "
-                (flycheck-mode flycheck-mode-line) ; Flycheck status
-                (multiple-cursors-mode mc/mode-line) ; Number of cursors
-                ;; And the modes, which we don't really care for anyway
-                " " mode-line-misc-info mode-line-modes mode-line-end-spaces)
-              mode-line-remote
-              '(:eval
-                (when-let (host (file-remote-p default-directory 'host))
-                  (propertize (concat "@" host) 'face
-                              '(italic warning)))))
+(use-package powerline                  ; The work-horse of Spaceline
+  :ensure t
+  :after spaceline-config
+  :config (validate-setq
+           powerline-height (truncate (* 1.0 (frame-char-height)))
+           powerline-default-separator 'utf-8))
+
 
 (provide 'mu-style)
 
