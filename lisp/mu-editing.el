@@ -83,10 +83,6 @@
   :config (setq-default visual-fill-column-center-text t
                         visual-fill-column-fringes-outside-margins nil))
 
-(use-package visual-fill-column         ; Wrap at fill column
-  :ensure t
-  :init (add-hook 'visual-line-mode-hook #'visual-fill-column-mode))
-
 (use-package align                      ; Align text in buffers
   :bind (("C-c x a a" . align)
          ("C-c x a c" . align-current)))
