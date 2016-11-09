@@ -79,7 +79,7 @@
                   prog-mode-hook
                   text-mode-hook))
     (add-hook hook #'visual-fill-column-mode))
-  ;; Center text by default, and move the fringes close to the text.
+  ;; Centre text by default, and move the fringes close to the text.
   :config (setq-default visual-fill-column-center-text t
                         visual-fill-column-fringes-outside-margins nil))
 
