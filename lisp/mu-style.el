@@ -207,7 +207,6 @@ mouse-3: go to end"))))
            powerline-height (truncate (* 1.0 (frame-char-height)))
            powerline-default-separator 'utf-8))
 
-
 (provide 'mu-style)
 
 ;; Local Variables:
