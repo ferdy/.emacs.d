@@ -40,11 +40,6 @@
   (add-hook 'emacs-lisp-mode-hook
             #'mu-add-use-package-to-imenu))
 
-(use-package elisp-slime-nav            ; Navigate elisp code with M-. & M-,
-  :ensure t
-  :init (add-hook 'emacs-lisp-mode-hook #'elisp-slime-nav-mode)
-  :diminish elisp-slime-nav-mode)
-
 (use-package el-search                  ; pcase-based search for elisp
   :ensure t
   :bind (:map emacs-lisp-mode-map
