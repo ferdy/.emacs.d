@@ -377,8 +377,7 @@ the REPL in a new frame instead."
 (use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
   :defer t
-  :mode (("\\.js\\'" . js2-mode)
-         ("\\.jsx\\'" . js2-jsx-mode))
+  :mode ("\\.js\\'" . js2-mode)
   :config
   (unbind-key "M-." js2-mode-map)
 
@@ -395,6 +394,10 @@ the REPL in a new frame instead."
   (add-hook 'js2-mode-hook 'js2-refactor-mode)
   :config
   (js2r-add-keybindings-with-prefix "C-c m r"))
+
+(use-package rjsx-mode                  ; JSX mode
+  :ensure t
+  :mode ("\\.jsx\\'" . rjsx-mode))
 
 (use-package xref-js2                   ; Navigate JS with ag & js2-mode's AST
   :ensure t
