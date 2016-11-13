@@ -18,6 +18,25 @@
   (set-face-attribute 'Info-quoted nil :family 'unspecified
                       :inherit font-lock-constant-face))
 
+;;; Online Help
+(use-package find-func                  ; Find function/variable definitions
+  :bind (("C-c h F"   . find-function)
+         ("C-c h 4 F" . find-function-other-window)
+         ("C-c h K"   . find-function-on-key)
+         ("C-c h V"   . find-variable)
+         ("C-c h 4 V" . find-variable-other-window)))
+
+(use-package man                        ; Manpage viewer
+  :defer t
+  :bind ("C-c h m" . man))
+
+(use-package info                       ; Info manual viewer
+  :defer t
+  :config
+  ;; Fix `Info-quoted' face
+  (set-face-attribute 'Info-quoted nil :family 'unspecified
+                      :inherit font-lock-type-face))
+
 ;; Let apropos commands perform more extensive searches than default
 (setq apropos-do-all t)
 
@@ -75,6 +94,15 @@
                  ledger-occur-use-face-shown nil
                  ledger-reconcile-default-commodity "€"
                  ledger-report-auto-refresh-sticky-cursor t))
+
+;;; Utilities and keybindings
+(defun mu-describe-symbol-at-point ()
+  "Describe the symbol at point if any."
+  (interactive)
+  (when-let (symbol (symbol-at-point))
+    (describe-symbol symbol)))
+
+(bind-key "C-c h ." #'mu-describe-symbol-at-point)
 
 (provide 'mu-utilities)
 
