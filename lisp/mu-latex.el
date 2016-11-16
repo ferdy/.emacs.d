@@ -132,31 +132,32 @@
     (if (not (looking-at (rx (zero-or-more space) "[")))
         (error "Environment %s has no title" environment)
       (let ((beg (match-end 0)))
-        ;; Move point onto the title start bracket and move over to the end,
-        ;; skipping any other brackets in between, and eventually extract the text
+        ;; Move point onto the title start bracket and move to the end, skipping
+        ;; any other brackets in between, and eventually extract the text
         ;; between the brackets
         (goto-char (1- beg))
         (forward-list)
         (buffer-substring-no-properties beg (1- (point))))))
 
-  (validate-setq reftex-plug-into-AUCTeX t ; Plug into AUCTeX
-                 ;; Automatically derive labels, and prompt for confirmation
-                 reftex-insert-label-flags '(t t)
-                 reftex-label-alist
-                 '(
-                   ;; Additional label definitions for RefTeX.
-                   ("definition" ?d "def:" "~\\ref{%s}"
-                    mu-reftex-find-ams-environment-caption
-                    ("definition" "def.") -3)
-                   ("theorem" ?h "thm:" "~\\ref{%s}"
-                    mu-reftex-find-ams-environment-caption
-                    ("theorem" "th.") -3)
-                   ("example" ?x "ex:" "~\\ref{%s}"
-                    mu-reftex-find-ams-environment-caption
-                    ("example" "ex") -3)
-                   ;; Algorithms package
-                   ("algorithm" ?a "alg:" "~\\ref{%s}"
-                    "\\\\caption[[{]" ("algorithm" "alg") -3)))
+  (validate-setq
+   reftex-plug-into-AUCTeX t ; Plug into AUCTeX
+   ;; Automatically derive labels, and prompt for confirmation
+   reftex-insert-label-flags '(t t)
+   reftex-label-alist
+   '(
+     ;; Additional label definitions for RefTeX.
+     ("definition" ?d "def:" "~\\ref{%s}"
+      mu-reftex-find-ams-environment-caption
+      ("definition" "def.") -3)
+     ("theorem" ?h "thm:" "~\\ref{%s}"
+      mu-reftex-find-ams-environment-caption
+      ("theorem" "th.") -3)
+     ("example" ?x "ex:" "~\\ref{%s}"
+      mu-reftex-find-ams-environment-caption
+      ("example" "ex") -3)
+     ;; Algorithms package
+     ("algorithm" ?a "alg:" "~\\ref{%s}"
+      "\\\\caption[[{]" ("algorithm" "alg") -3)))
 
   ;; Provide basic RefTeX support for biblatex
   (unless (assq 'biblatex reftex-cite-format-builtin)
