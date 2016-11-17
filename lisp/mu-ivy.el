@@ -17,26 +17,28 @@
          ("C-x C-r" . ivy-switch-buffer))
   :init (ivy-mode 1)
   :config
-  (validate-setq ivy-count-format ""             ; Suppress counter
-                 ivy-extra-directories nil       ; Do not show "./" and "../"
-                 ivy-virtual-abbreviate 'full    ; Show full file path
-                 ;; Show recently killed buffers when calling `ivy-switch-buffer'
-                 ivy-use-virtual-buffers t
-                 ;; Always ignore buffers set in `ivy-ignore-buffers'
-                 ivy-use-ignore-default 'always
-                 ;; Ignore some buffers in `ivy-switch-buffer'
-                 ivy-ignore-buffers '("company-statistics-cache.el"
-                                      ".elfeed/index"))
+  (validate-setq
+   ivy-count-format ""             ; Suppress counter
+   ivy-extra-directories nil       ; Do not show "./" and "../"
+   ivy-virtual-abbreviate 'full    ; Show full file path
+   ;; Show recently killed buffers when calling `ivy-switch-buffer'
+   ivy-use-virtual-buffers t
+   ;; Always ignore buffers set in `ivy-ignore-buffers'
+   ivy-use-ignore-default 'always
+   ;; Ignore some buffers in `ivy-switch-buffer'
+   ivy-ignore-buffers '("company-statistics-cache.el"
+                        ".elfeed/index"))
 
   ;; Speed up my workflow with prearranged windows
-  (validate-setq ivy-views '(("boccaperta + ba-server [–]"
-                              (vert
-                               (sexp (bookmark-jump "boccaperta"))
-                               (sexp (bookmark-jump "ba-server"))))
-                             ("desktop + ba-server [–]"
-                              (vert
-                               (sexp (bookmark-jump "desktop"))
-                               (sexp (bookmark-jump "ba-server"))))))
+  (validate-setq
+   ivy-views '(("boccaperta + ba-server [–]"
+                (vert
+                 (sexp (bookmark-jump "boccaperta"))
+                 (sexp (bookmark-jump "ba-server"))))
+               ("desktop + ba-server [–]"
+                (vert
+                 (sexp (bookmark-jump "desktop"))
+                 (sexp (bookmark-jump "ba-server"))))))
 
   (defun ivy-insert-action (x)
     "Insert X at point."
@@ -72,30 +74,36 @@
 
 (use-package counsel                    ; Completion functions with Ivy
   :ensure t
-  :init
-  (counsel-mode 1)
+  :init (counsel-mode)
   :bind (("C-s"   . counsel-grep-or-swiper)
          ("C-r"   . counsel-grep-or-swiper)
          ("C-c u" . counsel-unicode-char)
-         ("C-c g" . counsel-git)
-         ("C-c G" . counsel-git-grep)
+         ("C-c g" . counsel-git-grep)
+         ("C-c G" . counsel-git-log)
          ("C-c k" . counsel-ag)
          ("C-c r" . counsel-linux-app)
          ("C-x l" . counsel-locate)
          ("C-x i" . counsel-imenu)
          ("C-x j" . counsel-bookmark)
-         ([remap bookmark-jump] . counsel-bookmark))
+         ([remap execute-extended-command] . counsel-M-x)
+         ([remap find-file]                . counsel-find-file)
+         ([remap bookmark-jump]            . counsel-bookmark)
+         ([remap describe-function]        . counsel-describe-function)
+         ([remap describe-variable]        . counsel-describe-variable)
+         ([remap info-lookup-symbol]       . counsel-info-lookup-symbol)
+         ([remap completion-at-point]      . counsel-company))
   :bind (:map read-expression-map
               ("C-r" . counsel-expression-history))
   :config
-  (validate-setq counsel-mode-override-describe-bindings t
-                 counsel-find-file-at-point t
-                 counsel-find-file-ignore-regexp
-                 (concat
-                  ;; File names beginning with # or .
-                  "\\(?:\\`[#.]\\)"
-                  ;; File names ending with # or ~
-                  "\\|\\(?:\\`.+?[#~]\\'\\)"))
+  (validate-setq
+   counsel-mode-override-describe-bindings t
+   counsel-find-file-at-point t
+   counsel-find-file-ignore-regexp
+   (concat
+    ;; File names beginning with # or .
+    "\\(?:\\`[#.]\\)"
+    ;; File names ending with # or ~
+    "\\|\\(?:\\`.+?[#~]\\'\\)"))
   :diminish counsel-mode)
 
 (provide 'mu-ivy)
