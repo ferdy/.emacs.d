@@ -41,7 +41,7 @@
      ("magit-"         . "ma-")
      ("markdown-"      . "md-")))
 
-  (which-key-declare-prefixes
+  (which-key-add-key-based-replacements
     "C-c !"     "flycheck"
     "C-c @"     "outline"
     "C-c 8"     "typo"
@@ -83,7 +83,7 @@
     "C-c x"     "text"
     "C-c x a"   "align")
 
-  (which-key-declare-prefixes-for-mode 'markdown-mode
+  (which-key-add-major-mode-key-based-replacements 'markdown-mode
     "C-c TAB" "md/images"
     "C-c C-a" "md/links"
     "C-c C-c" "md/process"
@@ -91,31 +91,31 @@
     "C-c C-t" "md/header"
     "C-c C-x" "md/structure")
 
-  (which-key-declare-prefixes-for-mode 'emacs-lisp-mode
+  (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
     "C-c m"   "elisp/personal"
     "C-c m m" "macroexpand"
     "C-c m e" "eval"
     "C-c m r" "refs"
     "C-c m s" "el-search")
 
-  (which-key-declare-prefixes-for-mode 'scheme-mode
+  (which-key-add-major-mode-key-based-replacements 'scheme-mode
     "C-c m"  "scheme/personal")
 
-  (which-key-declare-prefixes-for-mode 'sly-mode
+  (which-key-add-major-mode-key-based-replacements 'sly-mode
     "C-c m"  "clisp/personal")
 
-  (which-key-declare-prefixes-for-mode 'clojure-mode
+  (which-key-add-major-mode-key-based-replacements 'clojure-mode
     "C-c m"   "clj/personal"
     "C-c m r" "clj-refactor")
 
-  (which-key-declare-prefixes-for-mode 'haskell-mode
+  (which-key-add-major-mode-key-based-replacements 'haskell-mode
     "C-c m" "haskell/personal"
     "C-c m i" "haskell/imports")
 
-  (which-key-declare-prefixes-for-mode 'rust-mode
+  (which-key-add-major-mode-key-based-replacements 'rust-mode
     "C-c C-c" "rust/cargo")
 
-  (which-key-declare-prefixes-for-mode 'scala-mode
+  (which-key-add-major-mode-key-based-replacements 'scala-mode
     "C-c C-b" "ensime/build"
     "C-c C-d" "ensime/debug"
     "C-c C-r" "ensime/refactor"
@@ -123,18 +123,18 @@
     "C-c m"   "scala/personal"
     "C-c m b" "scala/build")
 
-  (which-key-declare-prefixes-for-mode 'js2-mode
+  (which-key-add-major-mode-key-based-replacements 'js2-mode
     "C-c m"   "js/personal"
     "C-c m r" "refactor")
 
-  (which-key-declare-prefixes-for-mode 'web-mode
+  (which-key-add-major-mode-key-based-replacements 'web-mode
     "C-c C-a" "web/attributes"
     "C-c C-b" "web/blocks"
     "C-c C-d" "web/dom"
     "C-c C-e" "web/element"
     "C-c C-t" "web/tags")
 
-  (which-key-declare-prefixes-for-mode 'ledger-mode
+  (which-key-add-major-mode-key-based-replacements 'ledger-mode
     "C-c m"   "ledger/personal"
     "C-c m b" "clean-buffer")
   :diminish which-key-mode)
