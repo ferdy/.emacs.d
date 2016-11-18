@@ -34,26 +34,6 @@ for variable-pitch face."
       (mu-setup-main-fonts 150 160)
     (mu-setup-main-fonts 130 140)))
 
-(defun mu-configure-fonts (frame)
-  "Set up fonts for FRAME.
-
-Configure various overrides for symbols, greek letters,
-as well as fall backs for."
-  ;; Define a font set stack for symbols, greek and math characters
-  (dolist (script '(symbol greek mathematical))
-    (set-fontset-font t script (font-spec :family "Symbola")
-                      frame 'prepend)
-    (set-fontset-font t script (font-spec :family "DejaVu Sans Mono")
-                      frame 'prepend))
-
-  ;; Fallbacks for math and generic symbols
-  (set-fontset-font t nil (font-spec :family "Symbola")
-                    frame 'append))
-
-(-when-let (frame (selected-frame))
-  (mu-configure-fonts frame))
-(add-hook 'after-make-frame-functions #'mu-configure-fonts)
-
 ;;; Interface
 (use-package frame                      ; Frames
   :bind ("C-c w f" . toggle-frame-fullscreen)
