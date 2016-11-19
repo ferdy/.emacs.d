@@ -213,11 +213,6 @@ _C-s_: mark region
      ("/* " " */" "#" (javascript-mode css-mode))
      ("`" "`" nil markdown-mode))))
 
-(use-package hungry-delete              ; Delete useless white spaces
-  :ensure t
-  :init (global-hungry-delete-mode)
-  :diminish hungry-delete-mode)
-
 (use-package aggressive-indent          ; Automatically indent code
   :ensure t
   :bind ("C-c t i" . aggressive-indent-mode)
