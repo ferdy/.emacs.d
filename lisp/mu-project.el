@@ -13,7 +13,7 @@
 
 (use-package projectile                 ; Project management
   :ensure t
-  :init (projectile-global-mode)
+  :init (projectile-mode)
   :config
   ;; Remove dead projects when Emacs is idle
   (run-with-idle-timer 10 nil #'projectile-cleanup-known-projects)
