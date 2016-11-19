@@ -33,7 +33,7 @@
               ("p" . counsel-projectile)
               ("P" . counsel-projectile-switch-project)))
 
-(use-package projectile-ripgrep
+(use-package projectile-ripgrep         ; Search projects with ripgrep
   :ensure t
   :bind (:map projectile-command-map
               ("s r" . projectile-ripgrep)))
