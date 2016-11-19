@@ -80,7 +80,7 @@
          ("C-c u" . counsel-unicode-char)
          ("C-c g" . counsel-git-grep)
          ("C-c G" . counsel-git-log)
-         ("C-c k" . counsel-ag)
+         ("C-c k" . counsel-rg)
          ("C-c r" . counsel-linux-app)
          ("C-x l" . counsel-locate)
          ("C-x i" . counsel-imenu)
