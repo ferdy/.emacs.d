@@ -1,4 +1,4 @@
-;;; mu-project.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-projectile.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2016  Manuel Uberti
 
@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores my configuration for project management utilities.
+;; This file stores my configuration for Projectile and related extensions.
 
 ;;; Code:
 
@@ -38,11 +38,11 @@
   :bind (:map projectile-command-map
               ("s r" . projectile-ripgrep)))
 
-(provide 'mu-project)
+(provide 'mu-projectile)
 
 ;; Local Variables:
 ;; coding: utf-8
 ;; indent-tabs-mode: nil
 ;; End:
 
-;;; mu-project.el ends here
+;;; mu-projectile.el ends here

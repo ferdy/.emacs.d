@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores my configuration for Flycheck.
+;; This file stores my configuration for Flycheck and related extensions.
 
 ;;; Code:
 
@@ -15,7 +15,7 @@
 ;; Requires: chktex
 (use-package flycheck                   ; On-the-fly syntax checker
   :ensure t
-  :bind (("C-c e" . mu-flycheck-errors/body)
+  :bind (("C-c e"   . mu-flycheck-errors/body)
          ("C-c t e" . flycheck-mode))
   :init
   (defhydra mu-flycheck-errors ()
