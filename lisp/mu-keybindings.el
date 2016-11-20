@@ -61,8 +61,6 @@
     "C-c a w"   "eww"
     "C-c b"     "buffers"
     "C-c c"     "compile-and-comments"
-    "C-c C-e"   "eclim"
-    "C-c C-g"   "gradle"
     "C-c d"     "develop"
     "C-c e"     "errors"
     "C-c e v"   "evalator"
