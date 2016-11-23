@@ -35,6 +35,7 @@
          ("M-g"     . avy-goto-line)
          ("C-c n b" . avy-pop-mark)
          ("C-c n j" . avy-goto-char-2)
+         ("C-c n t" . avy-goto-char-timer)
          ("C-c n w" . avy-goto-word-1)))
 
 (use-package ace-link                   ; Quickly follow links with Avy
