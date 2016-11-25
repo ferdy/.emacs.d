@@ -97,6 +97,7 @@
   :config
   (validate-setq
    counsel-mode-override-describe-bindings t
+   counsel-grep-post-action-hook '(recenter)
    counsel-find-file-at-point t
    counsel-find-file-ignore-regexp
    (concat
