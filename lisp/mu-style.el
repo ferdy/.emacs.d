@@ -125,6 +125,7 @@ for variable-pitch face."
 
 (use-package solarized                  ; Default theme
   :ensure solarized-theme
+  :disabled t
   :config
   (validate-setq
    solarized-use-variable-pitch nil  ; Disable variable pitch fonts
@@ -139,6 +140,11 @@ for variable-pitch face."
    solarized-height-plus-4 1.0)
 
   (load-theme 'solarized-light 'no-confirm))
+
+(use-package zerodark-theme
+  :ensure t
+  :init (load-theme 'zerodark 'no-confirm)
+  :config (zerodark-setup-modeline-format))
 
 ;;; The mode line
 (line-number-mode)
