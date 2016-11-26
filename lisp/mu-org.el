@@ -110,36 +110,6 @@
       > _ \n \n))
   :config (setq auto-insert-query nil))
 
-(use-package metaweblog                 ; Access metaweblog based weblogs
-  :ensure t
-  :defer t)
-
-(use-package xml-rpc                    ; Clientside XML-RPC
-  :ensure t
-  :defer t)
-
-(use-package htmlize               ; Convert buffer text and decorations to HTML
-  :ensure t
-  :defer t)
-
-(use-package org2blog                   ; Blog from Org mode to Wordpress
-  :ensure t
-  :bind (("C-c o w" . org2blog/wp-new-entry)
-         ("C-c o p" . org2blog/wp-post-buffer))
-  :config
-  (setq org2blog/wp-use-sourcecode-shortcode t
-        org2blog/wp-sourcecode-langs
-        '("bash" "javascript" "php" "text"
-          "xml" "sh" "elisp" "lisp" "lua")
-        org2blog/wp-blog-alist
-        '(("filmsinwords"
-           :url "https://filmsinwords.wordpress.com/xmlrpc.php"
-           :username "manueluberti"))))
-
-(use-package org2blog-autoloads         ; Autoloads from `ox-wp.el'
-  :ensure org2blog
-  :after org2blog)
-
 ;; ox-pandoc needs latest Pandoc.
 ;; If latest Pandoc is not available via apt-get,
 ;; install it from here: https://github.com/jgm/pandoc/releases/latest
