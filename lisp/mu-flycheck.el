@@ -93,7 +93,7 @@ most errors from HTML Tidy."
             (message (one-or-more not-newline)
                      (zero-or-more "\n" (any " ") (one-or-more not-newline)))
             line-end))
-  :modes (text-mode markdown-mode gfm-mode))
+  :modes (text-mode markdown-mode gfm-mode org-mode))
 (add-to-list 'flycheck-checkers 'proselint)
 
 (provide 'mu-flycheck)
