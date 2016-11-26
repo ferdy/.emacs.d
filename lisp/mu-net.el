@@ -40,18 +40,19 @@
                     :tls t
                     :pass mu-retrieve-irc-password)))
 
-  (validate-setq circe-default-nick "gekkop"
-                 circe-default-user "gekkop"
-                 circe-default-realname "Manuel Uberti"
-                 circe-default-part-message "Bye!"
-                 circe-default-quit-message "Bye!"
-                 circe-use-cycle-completion t
-                 circe-reduce-lurker-spam t
-                 circe-format-self-say "<{nick}> {body}"
-                 circe-format-server-topic
-                 "*** Topic Change by {userhost}: {topic-diff}"
-                 circe-server-buffer-name "{network}"
-                 circe-prompt-string (propertize ">> " 'face 'circe-prompt-face)))
+  (validate-setq
+   circe-default-nick "gekkop"
+   circe-default-user "gekkop"
+   circe-default-realname "Manuel Uberti"
+   circe-default-part-message "Bye!"
+   circe-default-quit-message "Bye!"
+   circe-use-cycle-completion t
+   circe-reduce-lurker-spam t
+   circe-format-self-say "<{nick}> {body}"
+   circe-format-server-topic
+   "*** Topic Change by {userhost}: {topic-diff}"
+   circe-server-buffer-name "{network}"
+   circe-prompt-string (propertize ">> " 'face 'circe-prompt-face)))
 
 (use-package elfeed                     ; RSS feed reader
   :ensure t
