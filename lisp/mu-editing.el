@@ -79,11 +79,7 @@
                   prog-mode-hook
                   text-mode-hook))
     (add-hook hook #'visual-fill-column-mode))
-  ;; Centre text by default, and move the fringes close to the text.
   :config
-  (setq-default visual-fill-column-center-text t
-                visual-fill-column-fringes-outside-margins nil)
-
   ;; Split windows vertically despite large margins, because Emacs otherwise
   ;; refuses to vertically split windows with large margins
   (validate-setq split-window-preferred-function
