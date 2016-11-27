@@ -57,8 +57,7 @@ most errors from HTML Tidy."
   :config
   (validate-setq flycheck-standard-error-navigation nil
                  flycheck-display-errors-function
-                 #'flycheck-display-error-messages-unless-error-list)
-  :diminish (flycheck-mode))
+                 #'flycheck-display-error-messages-unless-error-list))
 
 (use-package flycheck-package          ; Check package conventions with Flycheck
   :ensure t
