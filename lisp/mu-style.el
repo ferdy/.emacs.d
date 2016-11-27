@@ -143,8 +143,7 @@ for variable-pitch face."
 
 (use-package zerodark-theme
   :ensure t
-  :init (load-theme 'zerodark 'no-confirm)
-  :config (zerodark-setup-modeline-format))
+  :init (load-theme 'zerodark 'no-confirm))
 
 ;;; The mode line
 (line-number-mode)
