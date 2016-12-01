@@ -148,6 +148,7 @@ for variable-pitch face."
 ;;; The mode line
 (line-number-mode)
 (column-number-mode)
+(size-indication-mode)
 
 (provide 'mu-style)
 
