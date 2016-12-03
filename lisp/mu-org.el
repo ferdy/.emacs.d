@@ -15,6 +15,7 @@
   :ensure t
   :bind (("C-c o a" . org-agenda-list)
          ("C-c o c" . org-capture)
+         ("C-c o i" . mu-insert-checkbox)
          ("C-c o l" . org-store-link)
          ("C-c o f" . org-cycle-agenda-files)
          ("C-c o s" . org-search-view)
@@ -74,7 +75,12 @@
       (org-return)))
 
   ;; Free C-c $ (see: mu-languages.el)
-  (unbind-key "C-c $" org-mode-map))
+  (unbind-key "C-c $" org-mode-map)
+
+  (defun mu-insert-checkbox ()
+    "Insert a bullet point with a checkbox."
+    (interactive)
+    (insert "- [ ] ")))
 
 (use-package ox
   :ensure org
@@ -152,7 +158,7 @@
 
 (use-package interleave             ; Take notes in org files while reading PDFs
   :ensure t
-  :bind ("C-c o i" . interleave-mode))
+  :commands interleave)
 
 ;;; Utilities and keybindings
 (bind-key "<f5>"                        ; Open organizer file
