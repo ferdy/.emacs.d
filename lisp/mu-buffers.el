@@ -77,11 +77,15 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
                  ;; AUCTeX command output
                  (and (1+ nonl) " output*")
                  ))
-    (display-buffer-reuse-window
-     display-buffer-in-side-window)
+    (display-buffer-reuse-window display-buffer-in-side-window)
     (side . bottom)
     (reusable-frames . visible)
     (window-height . 0.4))
+   ("\\.pdf$*"
+    (display-buffer-reuse-window display-buffer-in-side-window)
+    (side . right)
+    (reusable-frames . visible)
+    (window-width . 0.5))
    ;; Let `display-buffer' reuse visible frames for all buffers.  This must
    ;; be the last entry in `display-buffer-alist', because it overrides any
    ;; later entry with more specific actions.
