@@ -106,18 +106,19 @@ latex_setup() {
   dostep 11 "n" "/bin/cp -f debian-equivs-2016-ex.txt texlive-local"
   dostep 12 "n" "equivs-build texlive-local"
   dostep 13 "y" "dpkg -i texlive-local_2016-1_all.deb"
+  dostep 14 "y" "/opt/texbin/tlmgr option docfiles 1"
   if [ ! -d "$HOME/sources" ]; then
-    dostep 14 "n" "mkdir -p $HOME/sources"
+    dostep 15 "n" "mkdir -p $HOME/sources"
   fi
-  dostep 15 "n" "cd $HOME/sources"
-  dostep 16 "n" "wget http://download.savannah.gnu.org/releases/chktex/chktex-1.7.2.tar.gz"
-  dostep 17 "n" "tar xzf chktex-1.7.2.tar.gz"
-  dostep 18 "n" "rm chktex-1.7.2.tar.gz"
-  dostep 19 "n" "cd chktex-1.7.2"
-  dostep 20 "n" "./configure --enable-lacheck-replace && make"
-  dostep 21 "y" "make install"
-  dostep 22 "n" "cp /usr/local/etc/chktexrc $HOME/.chktexrc"
-  dostep 23 "n" "cd $HOME"
+  dostep 16 "n" "cd $HOME/sources"
+  dostep 17 "n" "wget http://download.savannah.gnu.org/releases/chktex/chktex-1.7.2.tar.gz"
+  dostep 18 "n" "tar xzf chktex-1.7.2.tar.gz"
+  dostep 19 "n" "rm chktex-1.7.2.tar.gz"
+  dostep 20 "n" "cd chktex-1.7.2"
+  dostep 21 "n" "./configure --enable-lacheck-replace && make"
+  dostep 22 "y" "make install"
+  dostep 23 "n" "cp /usr/local/etc/chktexrc $HOME/.chktexrc"
+  dostep 24 "n" "cd $HOME"
 }
 
 pandoc_setup() {
