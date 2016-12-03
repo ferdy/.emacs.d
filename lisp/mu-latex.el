@@ -11,13 +11,13 @@
 
 ;;; Code:
 
-(use-package tex-site                   ; Startup LaTeX mode
-  :ensure auctex
-  :mode ("\\.tex\\'" . TeX-latex-mode))
+;; Manually set TeX Live binaries directory
+(setenv "PATH" (concat (getenv "PATH") ":/opt/texbin"))
+(validate-setq exec-path (append exec-path '("/opt/texbin")))
 
 (use-package tex                        ; TeX editing
   :ensure auctex
-  :defer t
+  :mode ("\\.tex\\'" . TeX-latex-mode)
   :config
   (validate-setq
    TeX-clean-confirm nil         ; No confirmation when cleaning
