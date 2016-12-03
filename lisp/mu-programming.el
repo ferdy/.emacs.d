@@ -432,22 +432,14 @@ the REPL in a new frame instead."
                  nxml-auto-insert-xml-declaration-flag t)
 
   (defun mu-xml-format ()
-    "Format an XML buffer with `xmllint'"
+    "Format an XML buffer with `xmllint'."
     (interactive)
-    (shell-command-on-region
-     ;; beginning and end of buffer
-     (point-min)
-     (point-max)
-     ;; command and parameters
-     "xmllint -format -"
-     ;; output buffer
-     (current-buffer)
-     ;; replace?
-     t
-     ;; name of the error buffer
-     "*Xmllint Error Buffer*"
-     ;; show error buffer?
-     t)))
+    (shell-command-on-region (point-min) (point-max)
+                             "xmllint -format -"
+                             (current-buffer)
+                             t
+                             "*Xmllint Error Buffer*"
+                             t)))
 
 (use-package json-mode                  ; JSON editing
   :mode "\\.json\\'"
