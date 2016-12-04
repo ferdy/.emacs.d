@@ -305,6 +305,7 @@ the REPL in a new frame instead."
   (add-hook 'scala-mode-hook #'ensime-mode)
   ;; Compile on save
   (validate-setq ensime-sbt-perform-on-save "test:compile"
+                 ensime-startup-notification nil
                  ensime-startup-snapshot-notification nil))
 
 (use-package ensime-expand-region       ; Integrate Ensime into expand-region
