@@ -42,6 +42,10 @@
   ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
+  ;; Use Org structures and tables in message mode
+  (add-hook 'message-mode-hook 'turn-on-orgtbl)
+  (add-hook 'message-mode-hook 'turn-on-orgstruct++)
+
   ;; Define TODO workflow states
   (validate-setq org-todo-keywords
                  '("TODO(t)" "WAITING(w)" "INFO(i)"
