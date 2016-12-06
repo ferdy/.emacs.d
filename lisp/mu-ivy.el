@@ -96,6 +96,7 @@
               ("C-r" . counsel-expression-history))
   :config
   (validate-setq
+   counsel-bookmark-avoid-dired t
    counsel-mode-override-describe-bindings t
    counsel-grep-post-action-hook '(recenter)
    counsel-find-file-at-point t
