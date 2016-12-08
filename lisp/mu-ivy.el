@@ -18,7 +18,7 @@
   :init (ivy-mode 1)
   :config
   (validate-setq
-   ivy-count-format ""                  ; Suppress counter
+   ivy-count-format "%d/%d "            ; Show current match and matches
    ivy-extra-directories nil            ; Do not show "./" and "../"
    ivy-virtual-abbreviate 'full         ; Show full file path
    ;; Show recently killed buffers when calling `ivy-switch-buffer'
