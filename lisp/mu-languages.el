@@ -58,7 +58,7 @@
   ;; Free M-t for transpose words
   (unbind-key "M-t" flyspell-mode-map))
 
-(use-package flyspell-correct-ivy           ; Better interface for corrections
+(use-package flyspell-correct-ivy       ; Better interface for corrections
   :ensure t
   :after flyspell
   :bind (:map flyspell-mode-map
