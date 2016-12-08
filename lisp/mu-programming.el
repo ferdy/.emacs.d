@@ -437,10 +437,8 @@ the REPL in a new frame instead."
     (interactive)
     (shell-command-on-region (point-min) (point-max)
                              "xmllint -format -"
-                             (current-buffer)
-                             t
-                             "*Xmllint Error Buffer*"
-                             t)))
+                             (current-buffer) t
+                             "*Xmllint Error Buffer*" t)))
 
 (use-package json-mode                  ; JSON editing
   :mode "\\.json\\'"
