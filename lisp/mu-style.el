@@ -123,25 +123,7 @@ for variable-pitch face."
 ;;; Theme
 (validate-setq custom-safe-themes t)    ; Treat themes as safe
 
-(use-package solarized                  ; Default theme
-  :ensure solarized-theme
-  :disabled t
-  :config
-  (validate-setq
-   solarized-use-variable-pitch nil  ; Disable variable pitch fonts
-   solarized-distinct-doc-face t     ; Make doc faces stand out more
-   solarized-use-more-italic t       ; Use italic more often
-   solarized-use-less-bold t         ; Less bold, italic is enough
-   ;; Avoid all font-size changes
-   solarized-height-minus-1 1.0
-   solarized-height-plus-1 1.0
-   solarized-height-plus-2 1.0
-   solarized-height-plus-3 1.0
-   solarized-height-plus-4 1.0)
-
-  (load-theme 'solarized-light 'no-confirm))
-
-(use-package zerodark-theme
+(use-package zerodark-theme             ; Default theme
   :ensure t
   :init (load-theme 'zerodark 'no-confirm))
 
