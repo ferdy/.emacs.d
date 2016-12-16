@@ -85,6 +85,7 @@
          ("C-x l" . counsel-locate)
          ("C-x i" . counsel-imenu)
          ("C-x j" . counsel-bookmark)
+         ("C-c h h" . counsel-command-history)
          ([remap execute-extended-command] . counsel-M-x)
          ([remap find-file]                . counsel-find-file)
          ([remap bookmark-jump]            . counsel-bookmark)
