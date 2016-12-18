@@ -531,10 +531,10 @@ Interactively also sends a terminating newline."
 (use-package hideshow                   ; Fold/unfold code
   :bind ("C-<tab>" . hs-toggle-hiding)
   :config
-  (defun hs-clojure-hide-namespace-and-folds ()
+  (defun mu-hs-clojure-hideshow ()
     "Hide the first (ns ...) expression in the file.
 
-Also all the (^:fold ...) expressions."
+Also hide all the (^:fold ...) expressions."
     (interactive)
     (hs-life-goes-on
      (save-excursion
@@ -546,13 +546,13 @@ Also all the (^:fold ...) expressions."
          (hs-hide-block)
          (forward-line)))))
 
-  (defun hs-clojure-mode-hook ()
+  (defun mu-hs-clojure-mode-hook ()
     "Activate `hs-minor-mode' in `clojure-mode'."
     (interactive)
     (hs-minor-mode 1)
-    (hs-clojure-hide-namespace-and-folds))
+    (mu-hs-clojure-hideshow))
 
-  (add-hook 'clojure-mode-hook 'hs-clojure-mode-hook))
+  (add-hook 'clojure-mode-hook 'mu-hs-clojure-mode-hook))
 
 ;;; Utilities and keybindings
 ;;;###autoload
