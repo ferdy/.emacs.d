@@ -552,7 +552,8 @@ Also hide all the (^:fold ...) expressions."
     (hs-minor-mode 1)
     (mu-hs-clojure-hideshow))
 
-  (add-hook 'clojure-mode-hook 'mu-hs-clojure-mode-hook))
+  (add-hook 'clojure-mode-hook 'mu-hs-clojure-mode-hook)
+  :diminish (hs-minor-mode))
 
 ;;; Utilities and keybindings
 ;;;###autoload
