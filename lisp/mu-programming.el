@@ -528,6 +528,32 @@ Interactively also sends a terminating newline."
   (dolist (key '("\C-d" "\C-j" "y" "n"))
     (bind-key key #'mu-send-self compilation-mode-map)))
 
+(use-package hideshow                   ; Fold/unfold code
+  :bind ("C-<tab>" . hs-toggle-hiding)
+  :config
+  (defun hs-clojure-hide-namespace-and-folds ()
+    "Hide the first (ns ...) expression in the file.
+
+Also all the (^:fold ...) expressions."
+    (interactive)
+    (hs-life-goes-on
+     (save-excursion
+       (goto-char (point-min))
+       (when (ignore-errors (re-search-forward "^(ns "))
+         (hs-hide-block))
+
+       (while (ignore-errors (re-search-forward "\\^:fold"))
+         (hs-hide-block)
+         (forward-line)))))
+
+  (defun hs-clojure-mode-hook ()
+    "Activate `hs-minor-mode' in `clojure-mode'."
+    (interactive)
+    (hs-minor-mode 1)
+    (hs-clojure-hide-namespace-and-folds))
+
+  (add-hook 'clojure-mode-hook 'hs-clojure-mode-hook))
+
 ;;; Utilities and keybindings
 ;;;###autoload
 (defun uncomment-sexp (&optional n)
