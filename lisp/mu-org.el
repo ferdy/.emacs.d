@@ -43,8 +43,8 @@
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
   ;; Use Org structures and tables in message mode
-  (add-hook 'message-mode-hook 'turn-on-orgtbl)
-  (add-hook 'message-mode-hook 'turn-on-orgstruct++)
+  (add-hook 'message-mode-hook #'turn-on-orgtbl)
+  (add-hook 'message-mode-hook #'turn-on-orgstruct++)
 
   ;; Define TODO workflow states
   (validate-setq org-todo-keywords
@@ -52,8 +52,7 @@
                    "|" "CANCELLED(c)" "DONE(x)"))
 
   ;; Disable whitespace highlighting of overlong lines in Org Mode
-  (add-hook 'org-mode-hook
-            #'mu-whitespace-style-no-long-lines)
+  (add-hook 'org-mode-hook #'mu-whitespace-style-no-long-lines)
 
   ;; Use F12 to toggle image visualization
   (bind-key "<f12>"

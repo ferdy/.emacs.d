@@ -105,7 +105,10 @@
   :defer t
   :init
   (add-hook 'clojure-mode-hook #'cider-mode)
-  (add-hook 'clojure-mode-hook #'subword-mode))
+  (add-hook 'clojure-mode-hook #'subword-mode)
+  (add-hook 'clojure-mode-hook (lambda ()
+                                 (when (fboundp 'flycheck-mode)
+                                   (flycheck-mode -1)))))
 
 (use-package clojure-mode-extra-font-locking ; Font-locking for Clojure mode
   :ensure t
@@ -392,7 +395,7 @@ the REPL in a new frame instead."
 (use-package js2-refactor               ; Refactor JavaScript
   :ensure t
   :init
-  (add-hook 'js2-mode-hook 'js2-refactor-mode)
+  (add-hook 'js2-mode-hook #'js2-refactor-mode)
   :config
   (js2r-add-keybindings-with-prefix "C-c m r"))
 
@@ -552,7 +555,7 @@ Also hide all the (^:fold ...) expressions."
     (hs-minor-mode 1)
     (mu-hs-clojure-hideshow))
 
-  (add-hook 'clojure-mode-hook 'mu-hs-clojure-mode-hook)
+  (add-hook 'clojure-mode-hook #'mu-hs-clojure-mode-hook)
   :diminish (hs-minor-mode))
 
 ;;; Utilities and keybindings
