@@ -218,10 +218,10 @@
 ;;; Common Lisp
 (use-package sly                        ; Sylvester the Cat's Common Lisp IDE
   :ensure t
-  :bind ("C-c d c" . sly)
-  :bind (:map sly-mode-map
-              ("C-c m q" . sly-quit-lisp)
-              ("C-c m h" . sly-documentation-lookup)))
+  :bind (("C-c d c" . sly)
+         :map sly-mode-map
+         ("C-c m q" . sly-quit-lisp)
+         ("C-c m h" . sly-documentation-lookup)))
 
 (use-package sly-macrostep              ; Macro-expansion via macrostep.el
   :ensure t
@@ -329,7 +329,8 @@ the REPL in a new frame instead."
 
 (use-package cargo                      ; Control Cargo
   :ensure t
-  :bind (:map rust-mode-map ("<f6>" . cargo-process-build))
+  :bind (:map rust-mode-map
+              ("<f6>" . cargo-process-build))
   :init (add-hook 'rust-mode-hook #'cargo-minor-mode)
   :diminish cargo-minor-mode)
 
@@ -394,6 +395,7 @@ the REPL in a new frame instead."
 
 (use-package js2-refactor               ; Refactor JavaScript
   :ensure t
+  :defer t
   :init
   (add-hook 'js2-mode-hook #'js2-refactor-mode)
   :config
@@ -418,7 +420,6 @@ the REPL in a new frame instead."
 
 ;;; Other languages
 (use-package sh-script                  ; Shell scripts
-  :defer t
   :mode ("\\.zsh\\'" . sh-mode)
   :config
   ;; Use two spaces in shell scripts.
