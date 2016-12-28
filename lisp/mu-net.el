@@ -58,15 +58,19 @@
   :ensure t
   :bind ("C-c a f" . elfeed)
   :config
-  (validate-setq elfeed-feeds
-                 '(("http://planet.emacsen.org/atom.xml" emacs)
-                   ("http://planet.lisp.org/rss20.xml" lisp)
-                   ("http://planet.clojure.in/atom.xml" lisp)
-                   ("http://www.scheme.dk/planet/atom.xml" lisp)
-                   ("http://typelevel.org/blog/feed.rss" scala)
-                   ("https://cavallette.noblogs.org/feed" security)
-                   ("http://dilbert.oeey.com/" comic)
-                   ("http://www.goodmath.org/blog/feed/" math)))
+  (validate-setq
+   elfeed-feeds
+   '(("http://planet.emacsen.org/atom.xml" emacs)
+     ("http://planet.lisp.org/rss20.xml" lisp)
+     ("http://planet.clojure.in/atom.xml" lisp)
+     ("http://www.scheme.dk/planet/atom.xml" lisp)
+     ("http://typelevel.org/blog/feed.rss" scala)
+     ("https://cavallette.noblogs.org/feed" security)
+     ("http://dilbert.oeey.com/" comic)
+     ("http://moviemezzanine.com/feed/" cinema)
+     ("https://cinebeats.wordpress.com/feed/" cinema)
+     ("http://www.vcinemashow.com/feed/" cinema)
+     ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)))
 
   (validate-setq elfeed-use-curl t)     ; Use curl to fetch the feeds
 
