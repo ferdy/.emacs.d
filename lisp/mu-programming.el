@@ -105,10 +105,7 @@
   :defer t
   :init
   (add-hook 'clojure-mode-hook #'cider-mode)
-  (add-hook 'clojure-mode-hook #'subword-mode)
-  (add-hook 'clojure-mode-hook (lambda ()
-                                 (when (fboundp 'flycheck-mode)
-                                   (flycheck-mode -1)))))
+  (add-hook 'clojure-mode-hook #'subword-mode))
 
 (use-package clojure-mode-extra-font-locking ; Font-locking for Clojure mode
   :ensure t
