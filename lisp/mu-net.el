@@ -70,7 +70,8 @@
      ("http://moviemezzanine.com/feed/" cinema)
      ("https://cinebeats.wordpress.com/feed/" cinema)
      ("http://www.vcinemashow.com/feed/" cinema)
-     ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)))
+     ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)
+     ("http://lwlies.com/feed/" cinema)))
 
   (validate-setq elfeed-use-curl t)     ; Use curl to fetch the feeds
 
