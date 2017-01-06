@@ -90,6 +90,10 @@ scala_setup() {
   dostep 4 "y" "apt-get install sbt"
   dostep 5 "y" "curl -L -o /usr/local/bin/amm https://git.io/vP4Gw"
   dostep 6 "y" "chmod +x /usr/local/bin/amm"
+  dostep 7 "n" "curl https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh | sh"
+  dostep 8 "y" "ln -s /home/manuel/.conscript/bin/cs /usr/local/bin/cs"
+  dostep 9 "n" "cs foundweekends/giter8"
+  dostep 10 "y" "ln -s /home/manuel/.conscript/bin/g8 /usr/local/bin/g8"
 }
 
 latex_setup() {
