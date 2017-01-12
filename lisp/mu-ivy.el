@@ -14,7 +14,9 @@
 (use-package ivy                        ; Incremental Vertical completYon
   :ensure t
   :bind (("C-c C-r" . ivy-resume)
-         ("C-x C-r" . ivy-switch-buffer))
+         ("C-x C-r" . ivy-switch-buffer)
+         :map ivy-minibuffer-map
+         ("<return>" . ivy-alt-done))
   :init (ivy-mode 1)
   :config
   (validate-setq
