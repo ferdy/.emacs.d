@@ -31,17 +31,6 @@
    ivy-ignore-buffers '("company-statistics-cache.el"
                         ".elfeed/index"))
 
-  ;; Speed up my workflow with prearranged windows
-  (validate-setq
-   ivy-views '(("boccaperta + ba-server [–]"
-                (vert
-                 (sexp (bookmark-jump "boccaperta"))
-                 (sexp (bookmark-jump "ba-server"))))
-               ("desktop + ba-server [–]"
-                (vert
-                 (sexp (bookmark-jump "desktop"))
-                 (sexp (bookmark-jump "ba-server"))))))
-
   (defun ivy-insert-action (x)
     "Insert X at point."
     (with-ivy-window
