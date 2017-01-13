@@ -78,7 +78,7 @@ python_setup() {
 }
 
 rust_setup() {
-  dostep 1 "n" "curl -sSf https://static.rust-lang.org/rustup.sh | sh"
+  dostep 1 "n" "curl https://sh.rustup.rs -sSf | sh"
   dostep 2 "n" "cargo install rustfmt cargo-release racer tokei ripgrep"
   dostep 3 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
 }
