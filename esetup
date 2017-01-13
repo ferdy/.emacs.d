@@ -79,8 +79,12 @@ python_setup() {
 
 rust_setup() {
   dostep 1 "n" "curl https://sh.rustup.rs -sSf | sh"
-  dostep 2 "n" "cargo install rustfmt cargo-release racer tokei ripgrep"
-  dostep 3 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
+  dostep 2 "n" "cargo install rustfmt"
+  dostep 3 "n" "cargo install cargo-release"
+  dostep 4 "n" "cargo install racer"
+  dostep 5 "n" "cargo install tokei"
+  dostep 6 "n" "cargo install ripgrep"
+  dostep 7 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
 }
 
 scala_setup() {
