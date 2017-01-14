@@ -103,6 +103,9 @@
   (which-key-add-major-mode-key-based-replacements 'rust-mode
     "C-c C-c" "rust/cargo")
 
+  (which-key-add-major-mode-key-based-replacements 'racer-mode
+    "C-c m" "racer/personal")
+
   (which-key-add-major-mode-key-based-replacements 'scala-mode
     "C-c C-b" "ensime/build"
     "C-c C-d" "ensime/debug"

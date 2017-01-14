@@ -320,6 +320,9 @@ the REPL in a new frame instead."
 (use-package racer                      ; Completion and navigation for Rust
   :ensure t
   :defer t
+  :bind (:map racer-mode-map
+              ("C-c m h" . racer-describe)
+              ("C-c m d" . racer-debug))
   :init (add-hook 'rust-mode-hook #'racer-mode)
   :config
   (validate-setq racer-rust-src-path (getenv "RUST_SRC_PATH")))
