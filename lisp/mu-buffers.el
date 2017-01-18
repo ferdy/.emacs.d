@@ -1,4 +1,4 @@
-;;; mu-buffers.el --- Part of my Emacs configuration  -*- lexical-binding: t; -*-
+;;; mu-buffers.el --- Part of my Emacs configuration -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2016  Manuel Uberti
 
