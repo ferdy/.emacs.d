@@ -228,10 +228,6 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
                     (unless (eq ibuffer-sorting-mode 'alphabetic)
                       (ibuffer-do-sort-by-alphabetic)))))
 
-(use-package scratch                    ; Mode-specific scratch buffers
-  :ensure t
-  :bind ("C-c b s" . scratch))
-
 ;; Use `emacs-lisp-mode' instead of `lisp-interaction-mode' for scratch buffer
 (validate-setq initial-major-mode 'emacs-lisp-mode)
 
