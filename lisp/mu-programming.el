@@ -208,10 +208,6 @@
   :ensure t
   :bind ("C-c d g" . run-geiser))
 
-(use-package sicp                       ; The Wizard Book in Info format
-  :ensure t
-  :defer t)
-
 ;;; Common Lisp
 (use-package sly                        ; Sylvester the Cat's Common Lisp IDE
   :ensure t

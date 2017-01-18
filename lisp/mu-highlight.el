@@ -87,10 +87,6 @@
                  whitespace-line-column nil)
   :diminish whitespace-mode)
 
-(use-package focus                      ; Dim the text of surrounding sections
-  :ensure t
-  :bind ("C-c t h" . focus-mode))
-
 ;;; Utilities and keybindings
 (defun mu-whitespace-style-no-long-lines ()
   "Disable highlighting of overlong lines."
