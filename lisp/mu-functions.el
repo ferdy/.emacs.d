@@ -123,6 +123,14 @@ Examples:
     (with-temp-buffer
       (shell-command ton t))))
 
+(defun mu-print-debug-version-info ()
+  "Print version of Emacs and 7 characters of the commit hash."
+  (interactive)
+  (message
+   (format "GNU Emacs %s (commit %s)"
+           emacs-version
+           (substring (emacs-repository-get-version) 0 7))))
+
 (provide 'mu-functions)
 
 ;; Local Variables:
