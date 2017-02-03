@@ -359,6 +359,7 @@ the REPL in a new frame instead."
 
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
+  :mode ("\\.sql\\'" . sql-mode)
   :bind (("C-c d s" . sql-connect)
          :map sql-mode-map
          ("C-c m p" . sql-set-product)))
