@@ -123,8 +123,8 @@ Examples:
     (with-temp-buffer
       (shell-command ton t))))
 
-(defun mu-print-debug-version-info ()
-  "Print version of Emacs and 7 characters of the commit hash."
+(defun mu-emacs-debug-version ()
+  "Show version of Emacs and 7 characters of the commit hash."
   (interactive)
   (message
    (format "GNU Emacs %s (commit %s)"
