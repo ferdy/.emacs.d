@@ -123,6 +123,7 @@ Examples:
     (with-temp-buffer
       (shell-command ton t))))
 
+;;;###autoload
 (defun mu-emacs-debug-version ()
   "Show version of Emacs and 7 characters of the commit hash."
   (interactive)
