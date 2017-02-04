@@ -33,13 +33,13 @@
   :bind (:map flyspell-mode-map
               ("C-M-i" . mu-cycle-ispell-languages))
   :init
+  (add-hook 'prog-mode-hook #'flyspell-prog-mode)
+
   (defvar mu-languages-ring nil "Languages ring for Ispell")
 
   (let ((languages '("en_GB" "it_IT")))
     (validate-setq mu-languages-ring (make-ring (length languages)))
     (dolist (elem languages) (ring-insert mu-languages-ring elem)))
-
-  (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
   (defun mu-cycle-ispell-languages ()
     (interactive)
@@ -68,7 +68,9 @@
   :ensure t
   :defer t
   :init (add-hook 'text-mode-hook #'guess-language-mode)
-  :config (validate-setq guess-language-languages '(en it))
+  :config
+  (validate-setq guess-language-languages '(en it)
+                 guess-language-min-paragraph-length 30)
   :diminish guess-language-mode)
 
 ;;; Dictionaries and synonyms
