@@ -66,6 +66,7 @@
 
 (use-package guess-language         ; Automatically detect language for Flyspell
   :ensure t
+  :disabled t
   :defer t
   :init (add-hook 'text-mode-hook #'guess-language-mode)
   :config
