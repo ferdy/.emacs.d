@@ -18,7 +18,7 @@
   :mode "\\.po\\'"
   :config (validate-setq po-keep-mo-file t))
 
-;;; Spell checking and dictionaries
+;;; Spell checking
 (use-package ispell                     ; Word correction
   :defer t
   :config
@@ -63,6 +63,14 @@
   :after flyspell
   :bind (:map flyspell-mode-map
               ("C-c $" . flyspell-correct-word-generic)))
+
+(use-package guess-language         ; Automatically detect language for Flyspell
+  :ensure t
+  :defer t
+  :config
+  (validate-setq guess-language-languages '(en it))
+
+  (add-hook 'text-mode-hook (lambda () (guess-language-mode 1))))
 
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
