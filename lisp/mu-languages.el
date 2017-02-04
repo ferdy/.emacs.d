@@ -67,10 +67,9 @@
 (use-package guess-language         ; Automatically detect language for Flyspell
   :ensure t
   :defer t
-  :config
-  (validate-setq guess-language-languages '(en it))
-
-  (add-hook 'text-mode-hook (lambda () (guess-language-mode 1))))
+  :init (add-hook 'text-mode-hook #'guess-language-mode)
+  :config (validate-setq guess-language-languages '(en it))
+  :diminish guess-language-mode)
 
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
