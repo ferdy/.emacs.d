@@ -89,10 +89,11 @@
          ("C-c a L l l" . langtool-switch-default-language)
          ("C-c a L l m" . langtool-show-message-at-point)
          ("C-c a L l c" . langtool-correct-buffer))
-  :init (setq langtool-language-tool-jar
-              "~/languagetool/languagetool-commandline.jar"
-              langtool-default-language "en-GB"
-              langtool-java-bin "/usr/bin/java"))
+  :config
+  (validate-setq langtool-language-tool-jar
+                 "~/languagetool/languagetool-commandline.jar"
+                 langtool-default-language "en-GB"
+                 langtool-java-bin "/usr/bin/java"))
 
 ;;; Utilities and keybindings
 ;;;###autoload

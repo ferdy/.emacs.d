@@ -48,15 +48,15 @@
   ;; Set `magit-repository-directories' for `magit-status'
   (defun mu-magit-set-repo-dirs-from-projectile ()
     "Set `magit-repository-directories' with known Projectile projects."
-    (setq magit-repository-directories
-          (mapcar
-           (lambda (dir)
-             (substring dir 0 -1))
-           (cl-remove-if-not
-            (lambda (project)
-              (unless (file-remote-p project)
-                (file-directory-p (concat project "/.git/"))))
-            (projectile-relevant-known-projects)))))
+    (validate-setq magit-repository-directories
+                   (mapcar
+                    (lambda (dir)
+                      (substring dir 0 -1))
+                    (cl-remove-if-not
+                     (lambda (project)
+                       (unless (file-remote-p project)
+                         (file-directory-p (concat project "/.git/"))))
+                     (projectile-relevant-known-projects)))))
 
   (with-eval-after-load 'projectile
     (mu-magit-set-repo-dirs-from-projectile))

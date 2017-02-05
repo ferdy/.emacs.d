@@ -44,8 +44,8 @@
             (lambda () (setq ispell-parser 'tex)))
 
   ;; Use pdf-tools to open PDF files
-  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
-        TeX-source-correlate-start-server t)
+  (validate-setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+                 TeX-source-correlate-start-server t)
 
   ;; Update PDF buffers after successful LaTeX runs
   (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
@@ -158,20 +158,6 @@
      ;; Algorithms package
      ("algorithm" ?a "alg:" "~\\ref{%s}"
       "\\\\caption[[{]" ("algorithm" "alg") -3)))
-
-  ;; Provide basic RefTeX support for biblatex
-  (unless (assq 'biblatex reftex-cite-format-builtin)
-    (add-to-list 'reftex-cite-format-builtin
-                 '(biblatex "The biblatex package"
-                            ((?\C-m . "\\cite[]{%l}")
-                             (?t    . "\\textcite{%l}")
-                             (?a    . "\\autocite[]{%l}")
-                             (?p    . "\\parencite{%l}")
-                             (?f    . "\\footcite[][]{%l}")
-                             (?F    . "\\fullcite[]{%l}")
-                             (?x    . "[]{%l}")
-                             (?X    . "{%l}"))))
-    (setq reftex-cite-format 'biblatex))
   :diminish reftex-mode)
 
 (use-package latex-unicode-math-mode    ; Input method for Unicode math symbols

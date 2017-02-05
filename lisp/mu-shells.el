@@ -54,7 +54,7 @@
   :config
   ;; Do not echo input back at me
   (defun mu-shell-turn-echo-off ()
-    (setq comint-process-echoes t))
+    (validate-setq comint-process-echoes t))
 
   (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off))
 
