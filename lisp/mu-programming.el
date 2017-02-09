@@ -374,7 +374,12 @@ the REPL in a new frame instead."
 (use-package web-mode                   ; Major mode for editing web templates
   :ensure t
   :defer t
-  :mode "\\.html\\'")
+  :init
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html\\.twig\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.ftl?\\'" . web-mode)))
 
 (use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
