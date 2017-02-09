@@ -415,6 +415,10 @@ the REPL in a new frame instead."
   :ensure t
   :mode "\\.php\\'")
 
+(use-package yaml-mode                  ; Edit YAML files
+  :ensure t
+  :mode "\\.yaml\\'")
+
 ;;; Other languages
 (use-package sh-script                  ; Shell scripts
   :mode ("\\.zsh\\'" . sh-mode)
