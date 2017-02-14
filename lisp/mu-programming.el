@@ -153,6 +153,9 @@
                  cljr-favor-private-functions)
   :diminish clj-refactor-mode)
 
+(use-package clojure-snippets           ; Yasnippets for Clojure
+  :ensure t)
+
 ;;; Scheme
 (use-package scheme                     ; Configuration for Scheme
   :defer t
