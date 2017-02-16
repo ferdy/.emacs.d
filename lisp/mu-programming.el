@@ -154,7 +154,9 @@
   :diminish clj-refactor-mode)
 
 (use-package clojure-snippets           ; Yasnippets for Clojure
-  :ensure t)
+  :ensure t
+  :defer t
+  :after clojure-mode)
 
 ;;; Scheme
 (use-package scheme                     ; Configuration for Scheme
