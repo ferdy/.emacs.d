@@ -31,7 +31,8 @@
   :ensure t
   :bind (:map projectile-command-map
               ("p" . counsel-projectile)
-              ("P" . counsel-projectile-switch-project)))
+              ("P" . counsel-projectile-switch-project)
+              ("r" . counsel-projectile-rg)))
 
 (use-package projectile-ripgrep         ; Search projects with ripgrep
   :ensure t
