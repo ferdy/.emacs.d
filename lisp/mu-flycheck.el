@@ -73,6 +73,7 @@ most errors from HTML Tidy."
 
 (use-package flycheck-clojure           ; Backend for Clojure
   :ensure t
+  :disabled t
   :defer t
   :after flycheck
   :init (flycheck-clojure-setup))
