@@ -28,7 +28,7 @@ for variable-pitch face."
                       :height variable-pitch-height
                       :weight 'regular))
 
-;; Dinamically change font size based upon screen resolution
+;; Dynamically change font size based on screen resolution
 (when window-system
   (if (> (x-display-pixel-width) 1800)
       (mu-setup-main-fonts 150 160)
