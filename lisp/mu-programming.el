@@ -13,7 +13,7 @@
 
 ;;; Emacs Lisp
 (use-package ielm                       ; Emacs Lisp REPL
-  :bind ("C-c a z" . ielm)
+  :bind ("C-c d i" . ielm)
   :config (bind-key "C-c C-q" #'comint-send-eof inferior-emacs-lisp-mode-map))
 
 (use-package elisp-mode                 ; Emacs Lisp editing
