@@ -67,11 +67,9 @@
      ("http://typelevel.org/blog/feed.rss" scala)
      ("https://cavallette.noblogs.org/feed" security)
      ("http://dilbert.oeey.com/" comic)
-     ("http://moviemezzanine.com/feed/" cinema)
      ("https://cinebeats.wordpress.com/feed/" cinema)
      ("http://www.vcinemashow.com/feed/" cinema)
-     ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)
-     ("http://lwlies.com/feed/" cinema)))
+     ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)))
 
   (validate-setq elfeed-use-curl t)     ; Use curl to fetch the feeds
 
