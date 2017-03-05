@@ -125,7 +125,8 @@
   (add-hook 'cider-repl-mode-hook #'subword-mode)
 
   ;; Increase the history size and make it permanent
-  (validate-setq cider-repl-history-size 1000
+  (validate-setq cider-repl-wrap-history t
+                 cider-repl-history-size 1000
                  cider-repl-history-file
                  (locate-user-emacs-file "cider-repl-history")
                  cider-repl-display-help-banner nil ; Disable help banner
