@@ -19,9 +19,9 @@
          ("C-c o l" . org-store-link)
          ("C-c o f" . org-cycle-agenda-files)
          ("C-c o s" . org-search-view)
-         ("C-c o t" . org-todo-list))
-  :bind (:map org-mode-map
-              ("<return>" . mu-org-return))
+         ("C-c o t" . org-todo-list)
+         :map org-mode-map
+         ("<return>" . mu-org-return))
   :config
   (validate-setq org-emphasis-regexp-components ; Fix markup for ' and "
                  '("     ('\"{“”"
