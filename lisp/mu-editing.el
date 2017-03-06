@@ -214,6 +214,9 @@ _C-s_: mark region
   :bind ("C-c t i" . aggressive-indent-mode)
   :init (global-aggressive-indent-mode 1)
   :config
+  ;; Free C-c C-q, used in Org and in CIDER
+  (unbind-key "C-c C-q" aggressive-indent-mode-map)
+             
   (add-to-list 'aggressive-indent-excluded-modes
                'cider-repl-mode))
 
