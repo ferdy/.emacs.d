@@ -82,8 +82,7 @@
          ([remap bookmark-jump]            . counsel-bookmark)
          ([remap describe-function]        . counsel-describe-function)
          ([remap describe-variable]        . counsel-describe-variable)
-         ([remap info-lookup-symbol]       . counsel-info-lookup-symbol)
-         ([remap completion-at-point]      . counsel-company))
+         ([remap info-lookup-symbol]       . counsel-info-lookup-symbol))
   :bind (:map read-expression-map
               ("C-r" . counsel-expression-history))
   :config

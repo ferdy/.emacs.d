@@ -50,6 +50,7 @@
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind (("C-c a s t" . shell)
          (:map shell-mode-map
+               ("<tab"    . completion-at-point)
                ("C-c C-l" . counsel-shell-history)))
   :config
   ;; Do not echo input back at me
