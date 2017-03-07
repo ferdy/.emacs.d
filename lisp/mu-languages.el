@@ -69,10 +69,10 @@
   :defer t
   :init (add-hook 'text-mode-hook #'guess-language-mode)
   :config
-  (setq guess-language-langcodes '((en . ("en_GB" "English"))
-                                   (it . ("it_IT" "Italian")))
-        guess-language-languages '(en it)
-        guess-language-min-paragraph-length 45)
+  (validate-setq guess-language-langcodes '((en . ("en_GB" "English"))
+                                            (it . ("it_IT" "Italian")))
+                 guess-language-languages '(en it)
+                 guess-language-min-paragraph-length 45)
   :diminish guess-language-mode)
 
 ;;; Dictionaries and synonyms
