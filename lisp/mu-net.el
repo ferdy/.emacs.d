@@ -67,10 +67,7 @@
      ("https://jobs.braveclojure.com/jobs.rss" lisp)
      ("http://typelevel.org/blog/feed.rss" scala)
      ("https://cavallette.noblogs.org/feed" security)
-     ("http://dilbert.oeey.com/" comic)
-     ("https://cinebeats.wordpress.com/feed/" cinema)
-     ("http://www.vcinemashow.com/feed/" cinema)
-     ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)))
+     ("http://dilbert.oeey.com/" comic)))
 
   (validate-setq elfeed-use-curl t)     ; Use curl to fetch the feeds
 
