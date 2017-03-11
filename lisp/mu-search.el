@@ -53,6 +53,11 @@
   :bind (("C-c s r" . vr/query-replace)
          ("C-c s R" . vr/replace)))
 
+(use-package ez-query-replace           ; Better query replace
+  :ensure t
+  :bind (([remap query-replace] . ez-query-replace)
+         ("C-c M-%" . ez-query-replace-repeat)))
+
 (provide 'mu-search)
 
 ;; Local Variables:
