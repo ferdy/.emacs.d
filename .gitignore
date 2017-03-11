@@ -17,6 +17,7 @@
 # Cache files and settings for packages
 .#*
 .org-id-locations
+.historian
 network-security.data
 /tutorial/
 /.emacs.desktop*
