@@ -51,6 +51,10 @@
   :defer t
   :bind ("C-c n p" . ivy-pages))
 
+(use-package ivy-historian              ; Store minibuffer candidates
+  :ensure t
+  :init (ivy-historian-mode +1))
+
 (use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind (("C-c s s" . swiper-all)
