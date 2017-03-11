@@ -40,8 +40,8 @@ _e_: extra   _l_: list        _n_: new
     ("n" yas-new-snippet)
     ("t" yas-tryout-snippet)
     ("l" yas-describe-tables)
-    ("g" yas/global-mode)
-    ("m" yas/minor-mode)
+    ("g" yas-global-mode)
+    ("m" yas-minor-mode)
     ("a" yas-reload-all))
   :diminish yas-minor-mode)
 
