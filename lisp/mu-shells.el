@@ -62,8 +62,8 @@
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s T" . ansi-term)
   :init
-  ;; Always use Zsh
-  (defvar mu-term-shell "/usr/bin/zsh")
+  ;; Always use Fish
+  (defvar mu-term-shell "/usr/bin/fish")
 
   (defadvice ansi-term (before force-bash)
     (interactive (list mu-term-shell)))
@@ -94,6 +94,10 @@
     (goto-address-mode)               ; Clickable URLs
     (bind-key "C-y" #'mu-term-paste term-raw-map))
   (add-hook 'term-mode-hook 'mu-term-hook))
+
+(use-package fish-mode                  ; Handle Fish shell scripts
+  :ensure t
+  :mode ("\\.fish\\'" . fish-mode))
 
 ;;; Utilities and keybindings
 (custom-set-variables
