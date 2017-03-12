@@ -97,9 +97,14 @@
 
 (use-package fish-mode                  ; Handle Fish shell scripts
   :ensure t
-  :mode ("\\.fish\\'" . fish-mode))
+  :mode ("\\.fish\\'" . fish-mode)
+  :config
+  ;; Run fish_indent before save
+  (add-hook 'fish-mode-hook
+            (lambda ()
+              (add-hook 'before-save-hook 'fish_indent-before-save))))
 
-;;; Utilities and keybindings
+;;; Utilities and key bindings
 (custom-set-variables
  '(comint-scroll-to-bottom-on-input t)    ; Always insert at the bottom
  '(comint-scroll-to-bottom-on-output nil) ; Always add output at the bottom
