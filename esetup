@@ -101,6 +101,11 @@ scala_setup() {
   dostep 10 "y" "ln -s /home/manuel/.conscript/bin/g8 /usr/local/bin/g8"
 }
 
+javascript_setup() {
+  dostep 1 "y" "apt-get install --no-install-recommends npm"
+  dostep 2 "y" "npm -g install js-beautify"
+}
+
 latex_setup() {
   dostep 1 "n" "cd $HOME/Downloads"
   dostep 2 "n" "wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
@@ -187,6 +192,8 @@ announce RUST
 rust_setup
 announce SCALA
 scala_setup
+announce JAVASCRIPT
+javascript_setup
 announce CASK
 cask_setup
 announce SHELLCHECK
