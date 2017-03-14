@@ -67,7 +67,8 @@
      ("https://jobs.braveclojure.com/jobs.rss" lisp)
      ("http://typelevel.org/blog/feed.rss" scala)
      ("https://cavallette.noblogs.org/feed" security)
-     ("http://dilbert.oeey.com/" comic)))
+     ("http://dilbert.oeey.com/" comic)
+     ("https://xkcd.com/rss.xml" comic)))
 
   (validate-setq elfeed-use-curl t)     ; Use curl to fetch the feeds
 
