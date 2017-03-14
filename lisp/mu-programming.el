@@ -421,6 +421,16 @@ the REPL in a new frame instead."
   :commands (turn-on-css-eldoc)
   :init (add-hook 'css-mode-hook #'turn-on-css-eldoc))
 
+(use-package web-beautify               ; Pretty format HTML/CSS/JS files
+  :ensure t
+  :init
+  (with-eval-after-load 'js2-mode
+    (bind-key "C-c m f" #'web-beautify-js js2-mode-map))
+  (with-eval-after-load 'web-mode
+    (bind-key "C-c m f" #'web-beautify-html web-mode-map))
+  (with-eval-after-load 'css-mode
+    (bind-key "C-c m f" #'web-beautify-css css-mode-map)))
+
 (use-package php-mode                   ; Better PHP support
   :ensure t
   :mode "\\.php\\'")
