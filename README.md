@@ -47,8 +47,10 @@ $ sudo cp etc/dictionaries/* /usr/share/hunspell
 - put the kettle on and run ```esetup```:
 ```console
 $ chmod +x esetup
-$ ./esetup
+$ ./esetup -y
 ```
+Note: you run `esetup` without the `-y` option to step through the installation process.
+
 - run Emacs
 
 The first time you run Emacs, every package configured in `init.el` and in every
