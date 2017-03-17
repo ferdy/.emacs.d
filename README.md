@@ -54,8 +54,8 @@ The first time you run Emacs, every package configured in `init.el` and in every
 file in the `lisp` directory will be automatically installed and configured.
 
 ## Updates
-This configuration tracks latest Emacs developments. If you intend to use it, I
-highly recommend you update and build your sources at least once a week.
+This configuration tracks latest Emacs developments, so I highly recommend you 
+update and build your sources at least once a week.
 
 You can use [Magit](https://github.com/magit/magit); `magit-status` is bound
 to <kbd>C-c v v</kbd>. Or you can do it with the command line:
