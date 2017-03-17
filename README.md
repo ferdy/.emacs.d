@@ -3,8 +3,7 @@
 This is the Emacs configuration I use everyday.
 
 ## Notes
-- I use Emacs on [Debian Jessie](https://www.debian.org) (amd64), so this
-configuration targets **Debian-based** systems
+- This configuration targets **Debian-based** systems
 
 - The `esetup` script helps to create the required environment and it must be
 run *before* starting Emacs for the first time. Again, it targets
@@ -16,8 +15,6 @@ to install some of the required packages
   sources
 
 ## Setup
-On your **Debian-based** machine:
-
 - clone Emacs trunk:
 ```console
 $ git clone git://git.savannah.gnu.org/emacs.git
