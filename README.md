@@ -1,6 +1,8 @@
 # .emacs.d
 
-This is the Emacs configuration I use everyday.
+This is the Emacs configuration I use everyday. I mainly use Emacs for
+**Clojure** and **LaTeX**, but there is a handy setup for other programming
+languages and tools as well.
 
 ## Notes
 - This configuration targets **Debian-based** systems
