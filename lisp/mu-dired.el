@@ -25,6 +25,7 @@
               ("M-<down>" . mu-dired-down)
               ("M-n"      . mu-dired-down)
               ("!"        . mu-sudired)
+              ("e"        . mu-ediff-files)
               ([remap beginning-of-buffer] . mu-dired-back-to-top)
               ([remap end-of-buffer]       . mu-dired-jump-to-bottom))
   :config
@@ -190,6 +191,28 @@ The app is chosen from your OS's preference."
                          :sort nil
                          :initial-input nil)))
       (dired dir))))
+
+;;;###autoload
+(defun mu-ediff-files ()
+  "Ediff files from Dired."
+  (interactive)
+  (let ((files (dired-get-marked-files))
+        (wnd (current-window-configuration)))
+    (if (<= (length files) 2)
+        (let ((file1 (car files))
+              (file2 (if (cdr files)
+                         (cadr files)
+                       (read-file-name
+                        "file: "
+                        (dired-dwim-target-directory)))))
+          (if (file-newer-than-file-p file1 file2)
+              (ediff-files file2 file1)
+            (ediff-files file1 file2))
+          (add-hook 'ediff-after-quit-hook-internal
+                    (lambda ()
+                      (setq ediff-after-quit-hook-internal nil)
+                      (set-window-configuration wnd))))
+      (error "no more than 2 files should be marked"))))
 
 (provide 'mu-dired)
 
