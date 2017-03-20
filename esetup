@@ -114,10 +114,12 @@ rust_setup() {
   dostep 2 "n" "rustup component add rust-src"
   dostep 3 "n" "cargo install rustfmt"
   dostep 4 "n" "cargo install cargo-release"
-  dostep 5 "n" "cargo install racer"
-  dostep 6 "n" "cargo install tokei"
-  dostep 7 "n" "cargo install ripgrep"
-  dostep 8 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
+  dostep 5 "n" "cargo install cargo-outdated"
+  dostep 6 "n" "cargo install cargo-update"
+  dostep 7 "n" "cargo install racer"
+  dostep 8 "n" "cargo install tokei"
+  dostep 9 "n" "cargo install ripgrep"
+  dostep 10 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
 }
 
 scala_setup() {
