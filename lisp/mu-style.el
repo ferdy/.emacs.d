@@ -49,10 +49,15 @@ for variable-pitch face."
 (validate-setq line-number-display-limit-width 10000)
 
 ;; Turn off mouse interface early in startup to avoid momentary display
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
+(when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
+
+;; Leave menu on when in Unity, since it is in the window title anyway
+(when (fboundp 'menu-bar-mode)
+  (if (string-equal "Unity" (getenv "DESKTOP_ENVIRONMENT"))
+      (menu-bar-mode +1)
+    (menu-bar-mode -1)))
 
 ;; Turn off annoying settings
 (blink-cursor-mode -1)
