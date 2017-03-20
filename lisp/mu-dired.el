@@ -60,7 +60,7 @@
   (add-hook 'dired-mode-hook #'dired-omit-mode)
 
   ;; Diminish dired-omit-mode. We need this hack, because Dired Omit Mode has
-  ;; a very peculiar way of registering itns lighter explicitly in
+  ;; a very peculiar way of registering its lighter explicitly in
   ;; `dired-omit-startup'.  We can't just use `:diminish' because the lighter
   ;; isn't there yet after dired-omit-mode is loaded.
   (add-function :after (symbol-function 'dired-omit-startup)
