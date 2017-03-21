@@ -17,8 +17,7 @@
          ("C-x C-r" . ivy-switch-buffer)
          :map ivy-minibuffer-map
          ("<return>" . ivy-alt-done)
-         ("C-o" . hydra-ivy/body)
-         ("M-o" . ivy-dispatching-done-hydra))
+         ("C-o" . hydra-ivy/body))
   :init (ivy-mode 1)
   :config
   (validate-setq
