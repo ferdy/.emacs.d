@@ -37,13 +37,13 @@
                  #'magit-display-buffer-fullframe-status-v1)
 
   ;; Kill Magit buffers when quitting `magit-status'
-  (defun magit-quit-session (&optional kill-buffer)
+  (defun mu-magit-quit-session (&optional kill-buffer)
     "Kill all Magit buffers on quit"
     (interactive)
     (magit-restore-window-configuration kill-buffer)
     (mu-kill-buffers "^\\*magit"))
 
-  (bind-key "q" #'magit-quit-session magit-status-mode-map)
+  (bind-key "q" #'mu-magit-quit-session magit-status-mode-map)
 
   ;; Set `magit-repository-directories' for `magit-status'
   (defun mu-magit-set-repo-dirs-from-projectile ()
