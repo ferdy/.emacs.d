@@ -48,9 +48,7 @@
     (ivy-set-action 'kill-buffer)
     (ivy-done))
 
-  (bind-keys :map ivy-switch-buffer-map
-             ("C-k" . mu-ivy-kill-buffer)
-             
+  (bind-key "C-k" #'mu-ivy-kill-buffer ivy-switch-buffer-map)             
   :diminish ivy-mode)
 
 (use-package ivy-hydra                  ; Additional bindings for Ivy
