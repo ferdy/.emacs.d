@@ -16,7 +16,9 @@
   :bind (("C-c C-r" . ivy-resume)
          ("C-x C-r" . ivy-switch-buffer)
          :map ivy-minibuffer-map
-         ("<return>" . ivy-alt-done))
+         ("<return>" . ivy-alt-done)
+         ("C-o" . hydra-ivy/body)
+         ("M-o" . ivy-dispatching-done-hydra))
   :init (ivy-mode 1)
   :config
   (validate-setq
@@ -39,6 +41,16 @@
   (ivy-set-actions
    t
    '(("I" ivy-insert-action "insert")))
+
+  ;; Bind C-k to kill buffer from `ivy-switch-buffer'
+  (defun mu-ivy-kill-buffer ()
+    (interactive)
+    (ivy-set-action 'kill-buffer)
+    (ivy-done))
+
+  (bind-keys :map ivy-switch-buffer-map
+             ("C-k" . mu-ivy-kill-buffer)
+             
   :diminish ivy-mode)
 
 (use-package ivy-hydra                  ; Additional bindings for Ivy
