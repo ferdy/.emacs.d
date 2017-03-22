@@ -39,7 +39,7 @@
 
   (ivy-set-actions
    t
-   '(("I" ivy-insert-action "insert")))
+   '(("i" ivy-insert-action "insert")))
 
   ;; Bind C-k to kill buffer from `ivy-switch-buffer'
   (defun mu-ivy-kill-buffer ()
