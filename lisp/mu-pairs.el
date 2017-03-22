@@ -88,22 +88,6 @@ _k_: kill        _s_: split                   _[_: wrap with [ ]
 (add-hook 'after-save-hook              ; Look for unbalanced parens when saving
           'check-parens nil t)
 
-(use-package embrace                    ; Wrap semantic units with pairs
-  :ensure t
-  :bind ("C-c x e" . mu-embrace/body)
-  :init
-  (defhydra mu-embrace (:hint nil)
-    "
-Add (_a_), change (_c_) or delete (_d_) a pair.  Quit with _q_.
-"
-    ("q" nil)
-    ("a" embrace-add)
-    ("c" embrace-change)
-    ("d" embrace-delete))
-  :config
-  (add-hook 'LaTeX-mode-hook 'embrace-LaTeX-mode-hook)
-  (add-hook 'org-mode-hook 'embrace-org-mode-hook))
-
 (provide 'mu-pairs)
 
 ;; Local Variables:
