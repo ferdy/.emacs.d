@@ -85,8 +85,8 @@ _k_: kill        _s_: split                   _[_: wrap with [ ]
                  ;; Don't kill entire symbol on C-k
                  sp-hybrid-kill-entire-symbol nil))
 
-(add-hook 'after-save-hook              ; Look for unbalanced parens when saving
-          'check-parens nil t)
+;; Look for unbalanced parens when saving
+(add-hook 'after-save-hook 'check-parens nil t)
 
 (provide 'mu-pairs)
 

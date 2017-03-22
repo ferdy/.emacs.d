@@ -27,7 +27,7 @@
           (balance-windows))
       (golden-ratio-mode)
       (golden-ratio)))
-  :bind (("C-c t g" . mu-toggle-golden-ratio))
+  :bind ("C-c t g" . mu-toggle-golden-ratio)
   :config
   (validate-setq
    golden-ratio-extra-commands '(windmove-up

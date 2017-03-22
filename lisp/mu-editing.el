@@ -132,7 +132,7 @@ _C-s_: mark region
 (use-package super-save                 ; Autosave buffers when they lose focus
   :ensure t
   :init (super-save-mode)
-  :config (setq super-save-auto-save-when-idle t)
+  :config (validate-setq super-save-auto-save-when-idle t)
   :diminish super-save-mode)
 
 (use-package autorevert                 ; Auto-revert buffers of changed files
@@ -216,7 +216,7 @@ _C-s_: mark region
   :config
   ;; Free C-c C-q, used in Org and in CIDER
   (unbind-key "C-c C-q" aggressive-indent-mode-map)
-             
+
   (add-to-list 'aggressive-indent-excluded-modes
                'cider-repl-mode))
 
