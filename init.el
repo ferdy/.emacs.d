@@ -1,6 +1,6 @@
 ;;; init.el --- Emacs configuration of Manuel Uberti -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2016  Manuel Uberti
+;; Copyright (C) 2017  Manuel Uberti
 
 ;; Author: Manuel Uberti manuel.uberti@inventati.org
 ;; URL: https://github.com/manuel-uberti/.emacs.d
