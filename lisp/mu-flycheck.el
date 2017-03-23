@@ -71,13 +71,6 @@ most errors from HTML Tidy."
   :defer t
   :init (add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
 
-(use-package flycheck-clojure           ; Backend for Clojure
-  :ensure t
-  :disabled t
-  :defer t
-  :after flycheck
-  :init (flycheck-clojure-setup))
-
 (use-package flycheck-rust              ; Flycheck setup for Rust
   :ensure t
   :defer t
