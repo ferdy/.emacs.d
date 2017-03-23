@@ -105,7 +105,7 @@ Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
 
 ;;;###autoload
 (defun jump-to-mark ()
-  "Jumps to the local mark, respecting the mark-ring' order.
+  "Jumps to the local mark, respecting the 'mark-ring' order.
 
 This is the same as using \\[set-mark-command] with the prefix argument."
   (interactive)
