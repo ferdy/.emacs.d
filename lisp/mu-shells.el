@@ -57,7 +57,7 @@
   (defun mu-shell-turn-echo-off ()
     (validate-setq comint-process-echoes t))
 
-  (add-hook 'shell-mode-hook 'mu-shell-turn-echo-off))
+  (add-hook 'shell-mode-hook #'mu-shell-turn-echo-off))
 
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s T" . ansi-term)
