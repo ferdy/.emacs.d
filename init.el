@@ -88,11 +88,6 @@
   :ensure t
   :if (display-graphic-p)
   :config
-  (when (string-match-p "/zsh$" (getenv "SHELL"))
-    ;; Use a non-interactive login shell.  A login shell, because my
-    ;; environment variables are mostly set in `.zprofile'.
-    (validate-setq exec-path-from-shell-arguments '("-l")))
-
   (validate-setq exec-path-from-shell-variables
                  '("FULLNAME"           ; First and last name
                    "EMAIL"              ; Personal email
