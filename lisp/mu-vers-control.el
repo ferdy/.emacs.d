@@ -21,10 +21,11 @@
   :ensure t
   :bind (("C-c v c" . magit-clone)
          ("C-c v C" . magit-checkout)
-         ("C-c v v" . magit-status)
+         ("C-c v d" . magit-dispatch-popup)         
          ("C-c v g" . magit-blame)
          ("C-c v l" . magit-log-buffer-file)
-         ("C-c v p" . magit-pull))
+         ("C-c v p" . magit-pull)
+         ("C-c v v" . magit-status))
   :config
   (validate-setq magit-save-repository-buffers 'dontask
                  magit-refs-show-commit-count 'all)
