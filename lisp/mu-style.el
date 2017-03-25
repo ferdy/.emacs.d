@@ -17,10 +17,10 @@
 ;; - Fira Sans (https://github.com/mozilla/Fira/)
 (set-face-attribute 'default nil
                     :family "Source Code Pro"
-                    :height 130)
+                    :height 135)
 (set-face-attribute 'variable-pitch nil
                     :family "Fira Sans"
-                    :height 140
+                    :height 145
                     :weight 'regular)
 
 ;;; Interface
