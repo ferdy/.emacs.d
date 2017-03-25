@@ -75,6 +75,10 @@ ag_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends silversearcher-ag"
 }
 
+scheme_curl() {
+  curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
+}
+
 scheme_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends guile-2.0"
   dostep 2 "y" "apt-get -y install --no-install-recommends chicken-bin libchicken7 libchicken-dev"
@@ -83,7 +87,7 @@ scheme_setup() {
   dostep 5 "n" "chicken-install -s doctype colorize multidoc defstruct atom svnwiki-sxml"
   dostep 6 "n" "chicken-install -s rfc3339 hyde webkit"
   dostep 7 "n" "cd $(csi -p '(chicken-home)')"
-  dostep 8 "n" "curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx"
+  dostep 8 "n" "scheme_curl"
   dostep 9 "n" "cd $HOME"
 }
 
@@ -106,11 +110,16 @@ clojure_setup() {
 python_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends python2.7 ipython"
   dostep 2 "y" "apt-get -y install --no-install-recommends python-pip"
-  dostep 3 "y" "pip install proselint"
+  dostep 3 "y" "pip install setuptools"
+  dostep 4 "y" "pip install proselint"
+}
+
+rust_curl() {
+  curl https://sh.rustup.rs -sSf \| sh
 }
 
 rust_setup() {
-  dostep 1 "n" "curl https://sh.rustup.rs -sSf | sh"
+  dostep 1 "n" "rust_curl"
   dostep 2 "n" "rustup component add rust-src"
   dostep 3 "n" "cargo install rustfmt"
   dostep 4 "n" "cargo install cargo-release"
@@ -122,14 +131,22 @@ rust_setup() {
   dostep 10 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
 }
 
+scala_deb() {
+  sudo echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+}
+
+scala_curl() {
+  curl https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh | sh
+}
+
 scala_setup() {
-  dostep 1 "y" "echo \"deb https://dl.bintray.com/sbt/debian /\" | sudo tee -a /etc/apt/sources.list.d/sbt.list"
+  dostep 1 "n" "scala_deb"
   dostep 2 "y" "apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823"
   dostep 3 "y" "apt-get update"
   dostep 4 "y" "apt-get install sbt"
   dostep 5 "y" "curl -L -o /usr/local/bin/amm https://git.io/vP4Gw"
   dostep 6 "y" "chmod +x /usr/local/bin/amm"
-  dostep 7 "n" "curl https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh | sh"
+  dostep 7 "n" "scala_curl"
   dostep 8 "y" "ln -s /home/manuel/.conscript/bin/cs /usr/local/bin/cs"
   dostep 9 "n" "cs foundweekends/giter8"
   dostep 10 "y" "ln -s /home/manuel/.conscript/bin/g8 /usr/local/bin/g8"
@@ -144,11 +161,15 @@ css_setup() {
   dostep 1 "y" "npm install -g stylelint"
 }
 
+latex_sed() {
+  cd $(tar -tzf install-tl-unx.tar.gz | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D')
+}
+
 latex_setup() {
   dostep 1 "n" "cd $HOME/Downloads"
   dostep 2 "n" "wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
   dostep 3 "n" "tar -xzf install-tl-unx.tar.gz"
-  dostep 4 "n" "cd $(tar -tzf install-tl-unx.tar.gz | sed -e 'N;s/^\(.*\).*\n\1.*$/\1\n\1/;D')"
+  dostep 4 "n" "latex_sed"
   dostep 5 "y" "./install-tl"
   dostep 6 "y" "mkdir -p /opt"
   dostep 7 "y" "ln -s /usr/local/texlive/2016/bin/* /opt/texbin"
@@ -199,8 +220,12 @@ font_setup() {
   dostep 2 "y" "apt-get -y install --no-install-recommends ttf-ancient-fonts"
 }
 
+cask_curl() {
+  curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
+}
+
 cask_setup() {
-  dostep 1 "n" "curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python"
+  dostep 1 "n" "cask_curl"
 }
 
 shellcheck_setup() {
