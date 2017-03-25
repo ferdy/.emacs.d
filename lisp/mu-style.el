@@ -15,24 +15,13 @@
 ;; Fonts used:
 ;; - Source Code Pro (https://github.com/adobe-fonts/source-code-pro)
 ;; - Fira Sans (https://github.com/mozilla/Fira/)
-(defun mu-setup-main-fonts (default-height variable-pitch-height)
-  "Set up default fonts.
-
-Use DEFAULT-HEIGHT for default face and VARIABLE-PITCH-HEIGHT
-for variable-pitch face."
-  (set-face-attribute 'default nil
-                      :family "Source Code Pro"
-                      :height default-height)
-  (set-face-attribute 'variable-pitch nil
-                      :family "Fira Sans"
-                      :height variable-pitch-height
-                      :weight 'regular))
-
-;; Dynamically change font size based on screen resolution
-(when window-system
-  (if (> (x-display-pixel-width) 1800)
-      (mu-setup-main-fonts 150 160)
-    (mu-setup-main-fonts 130 140)))
+(set-face-attribute 'default nil
+                    :family "Source Code Pro"
+                    :height 130)
+(set-face-attribute 'variable-pitch nil
+                    :family "Fira Sans"
+                    :height 140
+                    :weight 'regular)
 
 ;;; Interface
 (use-package frame                      ; Frames
@@ -49,15 +38,10 @@ for variable-pitch face."
 (validate-setq line-number-display-limit-width 10000)
 
 ;; Turn off mouse interface early in startup to avoid momentary display
+(when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
-
-;; Leave menu on when in Unity, since it is in the window title anyway
-(when (fboundp 'menu-bar-mode)
-  (if (string-equal "Unity" (getenv "DESKTOP_ENVIRONMENT"))
-      (menu-bar-mode +1)
-    (menu-bar-mode -1)))
 
 ;; Turn off annoying settings
 (blink-cursor-mode -1)
