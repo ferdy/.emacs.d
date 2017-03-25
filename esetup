@@ -154,7 +154,7 @@ scala_setup() {
 
 javascript_setup() {
   dostep 1 "y" "apt-get install --no-install-recommends npm"
-  dostep 2 "y" "npm -g install js-beautify"  
+  dostep 2 "y" "npm -g install js-beautify"
 }
 
 css_setup() {
