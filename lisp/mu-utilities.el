@@ -84,17 +84,6 @@
   :ensure t
   :bind ("C-c a a s" . keychain-environment-refresh))
 
-(use-package ledger-mode                ; Control Ledger with Emacs
-  :ensure t
-  :mode "\\.ldg\\'"
-  :bind (:map ledger-mode-map
-              ("C-c m b" . ledger-mode-clean-buffer))
-  :config
-  (validate-setq ledger-clear-whole-transactions t
-                 ledger-occur-use-face-shown nil
-                 ledger-reconcile-default-commodity "€"
-                 ledger-report-auto-refresh-sticky-cursor t))
-
 ;;; Utilities and keybindings
 (defun mu-describe-symbol-at-point ()
   "Describe the symbol at point if any."
