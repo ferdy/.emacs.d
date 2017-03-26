@@ -30,6 +30,10 @@
     (let ((inhibit-read-only t))
       (erase-buffer)))
 
+  (defun eshell/d ()
+    "Open a dired instance of the current working directory."
+    (dired "."))
+
   (add-hook
    'eshell-mode-hook
    (lambda ()
