@@ -11,10 +11,6 @@
 
 ;;; Code:
 
-;; Manually set TeX Live binaries directory
-(setenv "PATH" (concat (getenv "PATH") ":/opt/texbin"))
-(validate-setq exec-path (append exec-path '("/opt/texbin")))
-
 (use-package tex                        ; TeX editing
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
