@@ -31,9 +31,9 @@ packages."
 If WITH-PACKAGES is given and non-nil include 3rd party packages
 into the count."
   (interactive "P")
-  (let ((cloc (executable-find "cloc")))
-    (unless cloc
-      (user-error "Please install cloc"))
+  (let ((tokei (executable-find "tokei")))
+    (unless tokei
+      (user-error "Please install tokei"))
     (with-current-buffer (get-buffer-create " *LoC Emacs configuration*")
       (text-mode)
       (read-only-mode)
@@ -42,7 +42,7 @@ into the count."
             (files (mu-all-init-files with-packages)))
         (erase-buffer)
         (goto-char (point-min))
-        (apply #'call-process cloc nil t t "--quiet" files))
+        (apply #'call-process tokei nil t t files))
       (pop-to-buffer (current-buffer)))))
 
 (defmacro with-timer (&rest forms)
