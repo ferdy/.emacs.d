@@ -120,6 +120,8 @@
 (use-package cider-repl                 ; REPL interactions with CIDER
   :ensure cider
   :defer t
+  :bind (:map cider-repl-mode-map
+              ("C-c C-o" . cider-repl-clear-buffer))
   :config
   (add-hook 'cider-repl-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'subword-mode)
