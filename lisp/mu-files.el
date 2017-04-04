@@ -46,6 +46,13 @@
   (dolist (ext '(".fls" ".out" ".aux"))
     (add-to-list 'ignoramus-file-endings ext))
 
+  (validate-setq ignoramus-file-basename-beginnings
+                 '(
+                   ".#"                                   ; emacs
+                   "._"                                   ; thumbnails
+                   "_cgo_export."                         ; go
+                   ))
+
   (ignoramus-setup))
 
 (use-package hardhat                    ; Protect user-writable files
