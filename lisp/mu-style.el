@@ -13,10 +13,10 @@
 
 ;;; Fonts setup
 ;; Fonts used:
-;; - Source Code Pro (https://github.com/adobe-fonts/source-code-pro)
+;; - Iosevka (https://github.com/be5invis/Iosevka)
 ;; - Fira Sans (https://github.com/mozilla/Fira/)
 (set-face-attribute 'default nil
-                    :family "Source Code Pro"
+                    :family "Iosevka"
                     :height 135)
 (set-face-attribute 'variable-pitch nil
                     :family "Fira Sans"
