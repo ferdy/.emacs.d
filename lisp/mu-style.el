@@ -17,7 +17,7 @@
 ;; - Fira Sans (https://github.com/mozilla/Fira/)
 (set-face-attribute 'default nil
                     :family "Iosevka"
-                    :height 135)
+                    :height 140)
 (set-face-attribute 'variable-pitch nil
                     :family "Fira Sans"
                     :height 145
