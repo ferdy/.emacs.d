@@ -49,7 +49,7 @@
     (ivy-set-action 'kill-buffer)
     (ivy-done))
 
-  (bind-key "C-k" #'mu-ivy-kill-buffer ivy-switch-buffer-map)             
+  (bind-key "C-k" #'mu-ivy-kill-buffer ivy-switch-buffer-map)
   :diminish ivy-mode)
 
 (use-package ivy-hydra                  ; Additional bindings for Ivy
@@ -72,8 +72,11 @@
          :map isearch-mode-map
          ("M-i" . swiper-from-isearch))
   :config
-  ;; Always recentre when leaving Swiper
-  (validate-setq swiper-action-recenter t))
+  (validate-setq
+   ;; Always recentre when leaving Swiper
+   swiper-action-recenter t
+   ;; Jump to the beginning of match when leaving Swiper
+   swiper-goto-start-of-match t))
 
 (use-package smex                       ; Better M-x interface
   :ensure t)
