@@ -31,10 +31,15 @@
   :ensure t
   :bind ("M-SPC" . shrink-whitespace))
 
+(use-package hungry-delete              ; Delete all whitespaces
+  :ensure t
+  :bind (("C-c <backspace>" . hungry-delete-backward)
+         ("C-c <deletechar>" . hungry-delete-forward)))
+
 (use-package undo-tree                  ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode)
-  :config (validate-setq undo-tree-visualizer-timestamps t)                          
+  :config (validate-setq undo-tree-visualizer-timestamps t)
   :diminish undo-tree-mode)
 
 (use-package delsel                     ; Delete the selection instead of insert
