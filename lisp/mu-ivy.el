@@ -16,7 +16,7 @@
   :bind (("C-c C-r" . ivy-resume)
          ("C-x C-r" . ivy-switch-buffer)
          :map ivy-minibuffer-map
-         ("<return>" . ivy-alt-done)
+         ("RET" . ivy-alt-done)
          ("C-o" . hydra-ivy/body))
   :init (ivy-mode 1)
   :config
@@ -57,14 +57,10 @@
   :defer t
   :after ivy)
 
-(use-package ivy-pages                  ; Jump to pages with Ivy
+(use-package ivy-pages                 ; Jump to pages with Ivy
   :ensure t
   :defer t
   :bind ("C-c n p" . ivy-pages))
-
-(use-package ivy-historian              ; Store minibuffer candidates
-  :ensure t
-  :init (ivy-historian-mode +1))
 
 (use-package swiper                     ; Isearch with an overview
   :ensure t
