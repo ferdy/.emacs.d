@@ -21,7 +21,7 @@
          ("C-c o s" . org-search-view)
          ("C-c o t" . org-todo-list)
          :map org-mode-map
-         ("<return>" . mu-org-return))
+         ("RET" . mu-org-return))
   :config
   (validate-setq org-emphasis-regexp-components ; Fix markup for ' and "
                  '("     ('\"{“”"
