@@ -460,17 +460,6 @@ Including `indent-buffer', which should not be called automatically on save."
 (bind-key "C-c t c" #'cleanup-buffer)
 
 ;;;###autoload
-(defun mu-fill-buffer ()
-  "Fill entire buffer."
-  (interactive)
-  (save-excursion
-    (save-restriction
-      (widen)
-      (fill-region (point-min) (point-max)))))
-
-(bind-key "C-c t f" #'mu-fill-buffer)
-
-;;;###autoload
 (defun narrow-or-widen-dwim (p)
   "Widen if buffer is narrowed, narrow-dwim otherwise.
 Dwim means: region, org-src-block, org-subtree, or defun,

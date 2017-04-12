@@ -121,6 +121,20 @@
 (column-number-mode)
 (size-indication-mode)
 
+;;; Utilities and key bindings
+(defun mu-reset-fonts ()
+  "Reset fonts to my preferences."
+  (interactive)
+  (set-face-attribute 'default nil
+                      :family "Source Code Pro"
+                      :height 135)
+  (set-face-attribute 'variable-pitch nil
+                      :family "Fira Sans"
+                      :height 145
+                      :weight 'regular))
+
+(bind-key "C-c t f" #'mu-reset-fonts)
+
 (provide 'mu-style)
 
 ;; Local Variables:
