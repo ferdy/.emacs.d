@@ -35,7 +35,7 @@ $ make clean
 - clone this repo to your home directory:
 ```console
 $ cd
-$ git clone https://github.com/manuel-uberti/.emacs.d
+$ git clone git@github.com:manuel-uberti/.emacs.d.git
 ```
 - install the dictionaries for the spell-checker:
 ```console
