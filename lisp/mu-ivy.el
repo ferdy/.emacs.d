@@ -34,15 +34,6 @@
    ivy-ignore-buffers '("company-statistics-cache.el"
                         ".elfeed/index"))
 
-  (defun ivy-insert-action (x)
-    "Insert X at point."
-    (with-ivy-window
-      (insert x)))
-
-  (ivy-set-actions
-   t
-   '(("i" ivy-insert-action "insert")))
-
   ;; Bind C-k to kill buffer from `ivy-switch-buffer'
   (defun mu-ivy-kill-buffer ()
     (interactive)
