@@ -112,7 +112,6 @@ python_setup() {
   dostep 2 "y" "apt-get -y install --no-install-recommends python-pip"
   dostep 3 "y" "pip install setuptools"
   dostep 4 "y" "pip install proselint"
-  dostep 5 "y" "pip install --upgrade dtags"
 }
 
 rust_curl() {
