@@ -23,8 +23,8 @@
    projectile-find-dir-includes-top-level t)
 
   (projectile-register-project-type 'lein-cljs '("project.clj")
-                                    "lein cljsbuild once"
-                                    "lein cljsbuild test")
+                                    :compile "lein cljsbuild once"
+                                    :test "lein cljsbuild test")
   :diminish projectile-mode)
 
 (use-package counsel-projectile         ; Ivy integration for Projectile
