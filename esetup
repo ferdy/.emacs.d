@@ -160,6 +160,7 @@ javascript_setup() {
 
 css_setup() {
   dostep 1 "y" "npm install -g stylelint stylelint-scss"
+  dostep 2 "y" "npm install stylelint-config-standard --save-dev"
 }
 
 latex_setup() {
