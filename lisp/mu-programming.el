@@ -98,7 +98,10 @@
   ;; Set up Figwheel in ClojureScript REPL
   (validate-setq
    cider-cljs-lein-repl
-   "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
+   "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+
+  ;; Set up ClojureScript REPL with Boot
+  (validate-setq cider-boot-parameters "repl -s -H :: wait dev"))
 
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
