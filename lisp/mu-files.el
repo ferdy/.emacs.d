@@ -161,6 +161,24 @@ Otherwise copy the non-directory part only."
 (bind-key "C-c f v l" #'add-file-local-variable)
 (bind-key "C-c f v p" #'add-file-local-variable-prop-line)
 
+(defun mu-reload-dir-locals-for-current-buffer ()
+  "Reload dir locals for the current buffer."
+  (interactive)
+  (let ((enable-local-variables :all))
+    (hack-dir-local-variables-non-file-buffer)))
+
+(defun mu-reload-dir-locals-for-all-buffers-in-this-directory ()
+  "Reload dir-locals for all buffers in current buffer's `default-directory'."
+  (interactive)
+  (let ((dir default-directory))
+    (dolist (buffer (buffer-list))
+      (with-current-buffer buffer
+        (when (equal default-directory dir))
+        (mu-reload-dir-locals-for-current-buffer)))))
+
+(bind-key "C-c f v r" #'mu-reload-dir-locals-for-current-buffer)
+(bind-key "C-c f v r" #'mu-reload-dir-locals-for-all-buffers-in-this-directory)
+
 (provide 'mu-files)
 
 ;; Local Variables:
