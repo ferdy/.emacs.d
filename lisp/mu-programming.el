@@ -130,7 +130,7 @@
                  cider-repl-history-size 1000
                  cider-repl-history-file
                  (locate-user-emacs-file "cider-repl-history")
-                 cider-repl-display-help-banner nil ; Disable help banner
+                 cider-repl-display-help-banner nil
                  cider-repl-pop-to-buffer-on-connect nil
                  cider-repl-result-prefix ";; => "))
 
