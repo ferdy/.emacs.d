@@ -64,17 +64,6 @@
   :bind (:map flyspell-mode-map
               ("C-c $" . flyspell-correct-word-generic)))
 
-(use-package guess-language         ; Automatically detect language for Flyspell
-  :ensure t
-  :defer t
-  :init (add-hook 'text-mode-hook #'guess-language-mode)
-  :config
-  (validate-setq guess-language-langcodes '((en . ("en_GB" "English"))
-                                            (it . ("it_IT" "Italian")))
-                 guess-language-languages '(en it)
-                 guess-language-min-paragraph-length 45)
-  :diminish guess-language-mode)
-
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
   :ensure t
