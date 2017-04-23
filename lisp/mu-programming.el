@@ -405,15 +405,28 @@ the REPL in a new frame instead."
                  js2-mode-show-strict-warnings nil)
 
   ;; Try to highlight most ECMA built-ins
-  (validate-setq js2-highlight-level 3))
+  (validate-setq js2-highlight-level 3)
+
+  ;; Better Imenu in j2-mode
+  (add-hook 'js2-mode-hook #'js2-imenu-extras-mode))
 
 (use-package js2-refactor               ; Refactor JavaScript
   :ensure t
   :defer t
-  :init
-  (add-hook 'js2-mode-hook #'js2-refactor-mode)
+  :init (add-hook 'js2-mode-hook #'js2-refactor-mode)
+  :bind (:map j2-mode-map
+              ("C-k" . js2r-kill)
+              ("M-." . nil))
+  :config (js2r-add-keybindings-with-prefix "C-c m r"))
+
+(use-package xref-js2                 ; Jump to references with Ag in JavaScript
+  :ensure t
+  :after js2-mode
   :config
-  (js2r-add-keybindings-with-prefix "C-c m r"))
+  (add-hook
+   'js2-mode-hook
+   (lambda ()
+     (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
 
 (use-package rjsx-mode                  ; JSX mode
   :ensure t
