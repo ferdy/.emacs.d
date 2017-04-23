@@ -412,7 +412,7 @@ the REPL in a new frame instead."
 
 (use-package js2-refactor               ; Refactor JavaScript
   :ensure t
-  :defer t
+  :after js2-mode
   :init (add-hook 'js2-mode-hook #'js2-refactor-mode)
   :bind (:map j2-mode-map
               ("C-k" . js2r-kill)
