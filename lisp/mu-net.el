@@ -90,15 +90,16 @@
   :bind (("C-c a p" . paradox-list-packages)
          ("C-c a P" . paradox-upgrade-packages))
   :config
-  (validate-setq paradox-github-token t             ; Don't ask for a token
-                 paradox-execute-asynchronously nil ; No async updates
-                 paradox-spinner-type 'moon         ; Prettier spinner
-                 paradox-use-homepage-buttons nil   ; Hide download button
-                 paradox-hide-wiki-packages t       ; Hide packages from Emacs Wiki
-                 paradox-automatically-star nil     ; Don't star packages automatically
-                 ;; Show all possible counts
-                 paradox-display-download-count t
-                 paradox-display-star-count t)
+  (validate-setq
+   paradox-github-token t             ; Don't ask for a token
+   paradox-execute-asynchronously nil ; No async updates
+   paradox-spinner-type 'moon         ; Prettier spinner
+   paradox-use-homepage-buttons nil   ; Hide download button
+   paradox-hide-wiki-packages t       ; Hide packages from Emacs Wiki
+   paradox-automatically-star nil     ; Don't star packages automatically
+   ;; Show all possible counts
+   paradox-display-download-count t
+   paradox-display-star-count t)
 
   ;; Don't need paradox report
   (remove-hook 'paradox-after-execute-functions
@@ -109,7 +110,7 @@
 (use-package browse-url                 ; Browse URLs
   :config
   (validate-setq browse-url-browser-function 'browse-url-generic
-                 browse-url-generic-program "firefox"))
+                 browse-url-generic-program "opera"))
 
 (use-package goto-addr                  ; Make links clickable
   :defer t
