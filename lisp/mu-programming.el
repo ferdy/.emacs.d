@@ -553,55 +553,7 @@ the REPL in a new frame instead."
         (ansi-color-apply-on-region (point-min) (point-max)))))
 
   (add-hook 'compilation-filter-hook
-            #'mu-colorize-compilation-buffer)
-
-  (defun mu-send-input (input &optional nl)
-    "Send INPUT to the current process.
-
-Interactively also sends a terminating newline."
-    (interactive "MInput: \nd")
-    (process-send-string
-     (get-buffer-process (current-buffer))
-     (concat input (if nl "\n"))))
-
-  (defun mu-send-self ()
-    "Send the pressed key to the current process."
-    (interactive)
-    (mu-send-input
-     (apply #'string
-            (append (this-command-keys-vector) nil))))
-
-  (bind-key "C-c i" #'mu-send-input compilation-mode-map)
-
-  (dolist (key '("\C-d" "\C-j" "y" "n"))
-    (bind-key key #'mu-send-self compilation-mode-map)))
-
-(use-package hideshow                   ; Fold/unfold code
-  :bind ("C-<tab>" . hs-toggle-hiding)
-  :config
-  (defun mu-hs-clojure-hideshow ()
-    "Hide the first (ns ...) expression in the file.
-
-Also hide all the (^:fold ...) expressions."
-    (interactive)
-    (hs-life-goes-on
-     (save-excursion
-       (goto-char (point-min))
-       (when (ignore-errors (re-search-forward "^(ns "))
-         (hs-hide-block))
-
-       (while (ignore-errors (re-search-forward "\\^:fold"))
-         (hs-hide-block)
-         (forward-line)))))
-
-  (defun mu-hs-clojure-mode-hook ()
-    "Activate `hs-minor-mode' in `clojure-mode'."
-    (interactive)
-    (hs-minor-mode 1)
-    (mu-hs-clojure-hideshow))
-
-  (add-hook 'clojure-mode-hook #'mu-hs-clojure-mode-hook)
-  :diminish (hs-minor-mode))
+            #'mu-colorize-compilation-buffer))
 
 ;;; Utilities and keybindings
 ;;;###autoload
