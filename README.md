@@ -1,12 +1,10 @@
 # .emacs.d
 
-This is the Emacs configuration I use everyday. I mainly use Emacs for
-**Clojure** and **LaTeX**, but there is a handy setup for other programming
-languages and tools as well.
+This is the Emacs configuration I use everyday.
 
 ## Notes
 - This configuration targets **Debian-based** systems and requires an Emacs
-  version built from **development sources**.
+version built from **development sources**.
 
 - The `esetup` script helps to create the required environment and it must be
 run **before** starting Emacs for the first time.
@@ -52,7 +50,7 @@ The first time you run Emacs, every package configured in `init.el` and in every
 file in the `lisp` directory will be automatically installed and configured.
 
 ## Updates
-This configuration tracks latest Emacs developments, so I highly recommend you 
+This configuration tracks latest Emacs developments, so I highly recommend you
 update and build your sources at least once a week.
 
 You can use [Magit](https://github.com/magit/magit); `magit-status` is bound
