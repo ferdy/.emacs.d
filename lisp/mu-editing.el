@@ -226,6 +226,10 @@ _C-s_: mark region
   (add-to-list 'aggressive-indent-excluded-modes
                'cider-repl-mode))
 
+(use-package iedit                      ; Edit multiple regions at the same time
+  :ensure t
+  :bind* ("C-." . iedit-mode))
+
 ;;; Specific files support
 (use-package systemd                    ; Major mode for editing systemd units
   :ensure t
