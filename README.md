@@ -5,16 +5,11 @@ This is the Emacs configuration I use everyday. I mainly use Emacs for
 languages and tools as well.
 
 ## Notes
-- This configuration targets **Debian-based** systems
+- This configuration targets **Debian-based** systems and requires an Emacs
+  version built from **development sources**.
 
 - The `esetup` script helps to create the required environment and it must be
-run *before* starting Emacs for the first time. Again, it targets
-**Debian-based** systems. On [Debian Jessie](https://www.debian.org) you will
-need to configure [jessie-backports](https://backports.debian.org/Instructions/)
-to install some of the required packages
-
-- This configuration requires an Emacs version built from development
-  sources
+run **before** starting Emacs for the first time.
 
 ## Setup
 - clone Emacs trunk:
