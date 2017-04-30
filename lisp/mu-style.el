@@ -114,48 +114,12 @@
 
 (use-package zerodark-theme             ; Default theme
   :ensure t
-  :disabled t
   :init (load-theme 'zerodark 'no-confirm))
-
-(use-package solarized                  ; Default theme
-  :ensure solarized-theme
-  :config
-  (validate-setq
-   solarized-use-variable-pitch nil  ; Disable variable pitch fonts
-   solarized-distinct-doc-face t     ; Make doc faces stand out more
-   solarized-use-more-italic t       ; Use italic more often
-   solarized-use-less-bold t         ; Less bold, italic is enough
-   ;; Avoid all font-size changes
-   solarized-height-minus-1 1.0
-   solarized-height-plus-1 1.0
-   solarized-height-plus-2 1.0
-   solarized-height-plus-3 1.0
-   solarized-height-plus-4 1.0)
-
-  (load-theme 'solarized-light 'no-confirm))
 
 ;;; The mode line
 (line-number-mode)
 (column-number-mode)
-
-(use-package smart-mode-line            ; Better mode-line
-  :ensure t
-  :config
-  (setq sml/theme nil
-        sml/mode-width 'full
-        sml/name-width '(30 . 35)
-        sml/no-confirm-load-theme t)
-
-  (sml/setup)
-  ;; More abbreviations
-  (add-to-list 'sml/replacer-regexp-list
-               '("^~/7bridges/" ":7b:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^~/githubs/" ":Git:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^:Doc:books/" ":Bks:") t)
-  (add-to-list 'sml/replacer-regexp-list
-               '("^~/projects/" ":Prj:") t))
+(size-indication-mode)
 
 ;;; Utilities and key bindings
 (defun mu-reset-fonts ()
