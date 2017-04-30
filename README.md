@@ -41,7 +41,7 @@ $ sudo cp etc/dictionaries/* /usr/share/hunspell
 $ chmod +x esetup
 $ ./esetup -y
 ```
-Note: you can run `esetup` without the `-y` option to step through the
+*Note*: you can run `esetup` without the `-y` option to step through the
 installation process.
 
 - run Emacs
