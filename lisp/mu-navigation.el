@@ -33,7 +33,6 @@
 (use-package avy-jump                   ; Jump to characters in buffers
   :ensure avy
   :bind (("C-c j"   . avy-goto-word-1)
-         ("M-g"     . avy-goto-line)
          ("C-c n b" . avy-pop-mark)
          ("C-c n j" . avy-goto-char-2)
          ("C-c n t" . avy-goto-char-timer)
@@ -49,6 +48,16 @@
   (dolist (hook '(text-mode-hook prog-mode-hook))
     (add-hook hook #'outline-minor-mode))
   :diminish outline-minor-mode)
+
+(use-package dumb-jump                  ; Jump to definitions
+  :ensure t
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g j" . dumb-jump-go)
+         ("M-g x" . dumb-jump-go-prefer-external)
+         ("M-g z" . dumb-jump-go-prefer-external-other-window))
+  :config
+  (validate-setq dumb-jump-selector 'ivy
+                 dumb-jump-prefer-searcher 'rg))
 
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (validate-setq set-mark-command-repeat-pop t)
