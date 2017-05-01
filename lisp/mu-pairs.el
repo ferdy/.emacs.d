@@ -14,7 +14,7 @@
 (use-package lispy                      ; vi-like Paredit
   :ensure t
   :init
-  (dolist (hook '(emacs-lisp-mode-hooks
+  (dolist (hook '(emacs-lisp-mode-hook
                   clojure-mode-hook
                   lisp-mode-hook
                   scheme-mode-hook))
