@@ -151,6 +151,7 @@
   (add-hook 'clojure-mode-hook #'mu-clojure-mode-hook)
   :config
   (validate-setq cljr-suppress-middleware-warnings t
+                 cljr-add-ns-to-blank-clj-files nil
                  cljr-auto-sort-ns t
                  cljr-favor-prefix-notation
                  cljr-favor-private-functions)
