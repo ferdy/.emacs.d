@@ -126,13 +126,14 @@
   (add-hook 'cider-repl-mode-hook #'eldoc-mode)
   (add-hook 'cider-repl-mode-hook #'subword-mode)
 
-  (validate-setq cider-repl-wrap-history t
-                 cider-repl-history-size 1000
-                 cider-repl-history-file
-                 (locate-user-emacs-file "cider-repl-history")
-                 cider-repl-display-help-banner nil
-                 cider-repl-pop-to-buffer-on-connect nil
-                 cider-repl-result-prefix ";; => "))
+  (validate-setq
+   cider-repl-wrap-history t
+   cider-repl-history-size 1000
+   cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
+   cider-repl-display-help-banner nil
+   cider-repl-pop-to-buffer-on-connect nil
+   cider-repl-result-prefix ";; => "
+   cider-repl-use-pretty-printing t))
 
 (use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
