@@ -139,8 +139,13 @@
 
 ;; These keybindings make it easier to type curly braces and square brackets
 ;; with an Italian keyboard layout
-(bind-key "C-è" #'lispy-brackets)
-(bind-key "C-à" #'lispy-braces)
+(defun mu-insert-pair (pair)
+  "Insert PAIR using Smartparens."
+  (insert pair)
+  (sp-insert-pair))
+
+(bind-key "C-è" (lambda () (interactive) (mu-insert-pair "[")))
+(bind-key "C-à" (lambda () (interactive) (mu-insert-pair "{")))
 
 (provide 'mu-keybindings)
 
