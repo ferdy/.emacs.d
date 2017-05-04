@@ -21,7 +21,7 @@
   :ensure t
   :bind (("C-c v c" . magit-clone)
          ("C-c v C" . magit-checkout)
-         ("C-c v d" . magit-dispatch-popup)         
+         ("C-c v d" . magit-dispatch-popup)
          ("C-c v g" . magit-blame)
          ("C-c v l" . magit-log-buffer-file)
          ("C-c v p" . magit-pull)
