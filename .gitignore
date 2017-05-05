@@ -18,6 +18,7 @@
 .#*
 .org-id-locations
 .historian
+recentf~
 network-security.data
 /tutorial/
 /.emacs.desktop*
