@@ -115,7 +115,7 @@
 (defconst mu-custom-file (locate-user-emacs-file "custom.el")
   "File used to store settings from Customization UI.")
 
-(use-package cus-edit
+(use-package cus-edit                   ; Set up custom.el
   :defer t
   :config
   (validate-setq custom-file mu-custom-file
