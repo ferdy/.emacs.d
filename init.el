@@ -83,9 +83,33 @@
 (use-package validate                   ; Validate options
   :ensure t)
 
+(use-package exec-path-from-shell       ; Set up environment variables
+  :ensure t
+  :if (display-graphic-p)
+  :config
+  (validate-setq exec-path-from-shell-variables
+                 '("FULLNAME"           ; First and last name
+                   "EMAIL"              ; Personal email
+                   "INFOPATH"           ; Info directories
+                   "JAVA_OPTS"          ; Options for Java processes
+                   "RUST_SRC_PATH"      ; Rust sources, for racer
+                   "CARGO_HOME"         ; Cargo home, for racer
+                   ))
+
+  (exec-path-from-shell-initialize)
+
+  ;; Re-initialize the `Info-directory-list' from $INFOPATH.  Since package.el
+  ;; already initializes info, we need to explicitly add the $INFOPATH
+  ;; directories to `Info-directory-list'.  We reverse the list of info paths
+  ;; to prepend them in proper order subsequently
+  (with-eval-after-load 'info
+    (dolist (dir (nreverse (parse-colon-path (getenv "INFOPATH"))))
+      (when dir
+        (add-to-list 'Info-directory-list dir)))))
+
 ;; Personal informations
-(validate-setq user-full-name "Manuel Uberti")
-(validate-setq user-mail-address "manuel.uberti@inventati.org")
+(validate-setq user-full-name (getenv "FULLNAME"))
+(validate-setq user-mail-address (getenv "EMAIL"))
 
 ;; Set separate custom file for the customize interface
 (defconst mu-custom-file (locate-user-emacs-file "custom.el")
