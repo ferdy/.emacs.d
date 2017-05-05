@@ -481,7 +481,9 @@ the REPL in a new frame instead."
   :config
   ;; Complete closing tags, and insert XML declarations into empty files
   (validate-setq nxml-slash-auto-complete-flag t
-                 nxml-auto-insert-xml-declaration-flag t)
+                 nxml-auto-insert-xml-declaration-flag t
+                 ;; Treat elements (with children) as sexps
+                 nxml-sexp-element-flag t)
 
   (defun mu-xml-format ()
     "Format an XML buffer with `xmllint'."
