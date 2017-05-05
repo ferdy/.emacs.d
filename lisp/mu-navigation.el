@@ -49,16 +49,6 @@
     (add-hook hook #'outline-minor-mode))
   :diminish outline-minor-mode)
 
-(use-package dumb-jump                  ; Jump to definitions
-  :ensure t
-  :bind (("M-g o" . dumb-jump-go-other-window)
-         ("M-g j" . dumb-jump-go)
-         ("M-g x" . dumb-jump-go-prefer-external)
-         ("M-g z" . dumb-jump-go-prefer-external-other-window))
-  :config
-  (validate-setq dumb-jump-selector 'ivy
-                 dumb-jump-prefer-searcher 'rg))
-
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (validate-setq set-mark-command-repeat-pop t)
 
