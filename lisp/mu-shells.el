@@ -11,10 +11,6 @@
 
 ;;; Code:
 
-(use-package shell-switcher
-  :ensure t
-  :init (validate-setq shell-switcher-mode t))
-
 (use-package eshell                     ; Emacs command shell
   :bind ("C-c a s e" . eshell)
   :config
