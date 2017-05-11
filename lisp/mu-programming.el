@@ -104,8 +104,17 @@
   :ensure cider
   :defer t
   :config
-  ;; Do not show connection details in the mode line
-  (validate-setq cider-mode-line-show-connection nil))
+  (require 'cider-client)
+
+  (defun mu-cider-modeline-info ()
+    "Customize `cider-mode' modeline: C is connected, D is not connected."
+    (if-let ((current-connection (ignore-errors (cider-current-connection))))
+        "C"
+      "D"))
+
+  ;; Customize CIDER mode line
+  (validate-setq
+   cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-modeline-info)))))
 
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
