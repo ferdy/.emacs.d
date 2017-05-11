@@ -25,7 +25,8 @@
 
   (projectile-register-project-type 'lein-cljs '("project.clj")
                                     :compile "lein cljsbuild once"
-                                    :test "lein cljsbuild test"))
+                                    :test "lein cljsbuild test")
+  :diminish projectile-mode)
 
 (use-package counsel-projectile         ; Ivy integration for Projectile
   :ensure t

@@ -108,8 +108,8 @@
 
   (defun mu-cider-modeline-info ()
     "Customize `cider-mode' modeline: C is connected, D is not connected."
-    (if-let ((current-connection (ignore-errors (cider-current-connection))))
-        "C"
+    (if (cider-current-connection)
+        (projectile-project-name)
       "D"))
 
   ;; Customize CIDER mode line
