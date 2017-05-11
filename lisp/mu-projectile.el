@@ -20,12 +20,12 @@
 
   (validate-setq
    projectile-completion-system 'ivy
-   projectile-find-dir-includes-top-level t)
+   projectile-find-dir-includes-top-level t
+   projectile-mode-line '(:eval (format " Proj[%s]" (projectile-project-name))))
 
   (projectile-register-project-type 'lein-cljs '("project.clj")
                                     :compile "lein cljsbuild once"
-                                    :test "lein cljsbuild test")
-  :diminish projectile-mode)
+                                    :test "lein cljsbuild test"))
 
 (use-package counsel-projectile         ; Ivy integration for Projectile
   :ensure t
