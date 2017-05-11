@@ -100,6 +100,13 @@
    cider-cljs-lein-repl
    "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
 
+(use-package cider-mode
+  :ensure cider
+  :defer t
+  :config
+  ;; Do not show connection details in the mode line
+  (validate-setq cider-mode-line-show-connection nil))
+
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
   :defer t
