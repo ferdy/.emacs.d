@@ -107,9 +107,6 @@
   (require 'cider-client)
 
   (defun mu-cider-modeline-info ()
-    "Customize `cider-mode' modeline.
-
-Either show current project or D when not connected."
     (if (cider-current-connection)
         (projectile-project-name)
       "D"))
