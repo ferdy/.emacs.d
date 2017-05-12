@@ -109,7 +109,7 @@
   (defun mu-cider-modeline-info ()
     (if (cider-current-connection)
         (projectile-project-name)
-      "D"))
+      "-"))
 
   ;; Customize CIDER mode line
   (validate-setq
