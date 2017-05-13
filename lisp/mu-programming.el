@@ -100,20 +100,20 @@
    cider-cljs-lein-repl
    "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
 
-(use-package cider-mode
+(use-package cider-mode                 ; CIDER mode for REPL interaction
   :ensure cider
   :defer t
   :config
   (require 'cider-client)
 
-  (defun mu-cider-modeline-info ()
+  (defun mu-cider-mode-line-info ()
     (if (cider-current-connection)
         (projectile-project-name)
       "-"))
 
-  ;; Customize CIDER mode line
+  ;; Simplify CIDER mode-line indicator
   (validate-setq
-   cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-modeline-info)))))
+   cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-mode-line-info)))))
 
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
