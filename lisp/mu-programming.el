@@ -155,6 +155,11 @@
   :ensure cider
   :defer t)
 
+(use-package cider-interaction          ; Various CIDER interactions
+  :ensure cider
+  :bind (:map cider-mode-map
+              ("C-c m l" . cider-load-all-files)))
+
 (use-package clj-refactor               ; Refactoring utilities
   :ensure t
   :defer t
