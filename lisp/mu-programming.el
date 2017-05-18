@@ -103,6 +103,8 @@
 (use-package cider-mode                 ; CIDER mode for REPL interaction
   :ensure cider
   :defer t
+  :bind(:map cider-mode-map
+             ("C-c m l" . cider-load-all-files))
   :config
   (require 'cider-client)
 
@@ -154,11 +156,6 @@
 (use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
   :defer t)
-
-(use-package cider-interaction          ; Various CIDER interactions
-  :ensure cider
-  :bind (:map cider-mode-map
-              ("C-c m l" . cider-load-all-files)))
 
 (use-package clj-refactor               ; Refactoring utilities
   :ensure t
