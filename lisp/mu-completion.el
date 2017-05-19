@@ -68,10 +68,6 @@ _e_: extra   _l_: list        _n_: new
                    try-complete-lisp-symbol-partially
                    try-complete-lisp-symbol)))
 
-(use-package pcomplete-extension        ; Enhance completion in (e)shell
-  :ensure t
-  :after eshell)
-
 (use-package company                    ; Auto-completion
   :ensure t
   :init (global-company-mode)
