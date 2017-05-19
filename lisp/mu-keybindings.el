@@ -55,7 +55,6 @@
     "C-c e"     "errors"
     "C-c e v"   "evalator"
     "C-c f"     "files"
-    "C-c i"     "insertion"
     "C-c m"     "major mode"
     "C-c n"     "navigation"
     "C-c o"     "org"

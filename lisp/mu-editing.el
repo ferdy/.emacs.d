@@ -149,13 +149,8 @@ _C-s_: mark region
                  global-auto-revert-non-file-buffers t)
   :diminish auto-revert-mode)
 
-(use-package auto-insert                ; Automatic insertion into new files
-  :defer t
-  :bind ("C-c i a" . auto-insert))
-
 (use-package copyright                  ; Deal with copyright notices
   :defer t
-  :bind ("C-c i c" . copyright-update)
   :config
   ;; Use ranges to denote consecutive years
   (validate-setq copyright-year-ranges t
@@ -169,7 +164,6 @@ _C-s_: mark region
 
 (use-package typo                       ; Automatically use typographic quotes
   :ensure t
-  :bind ("C-c i t" . typo-change-language)
   :init
   (setq-default typo-language "English")
 
@@ -274,11 +268,6 @@ _C-s_: mark region
                kill-do-not-save-duplicates t     ; No duplicates in kill ring
                ;; Save the contents of the clipboard to kill ring before killing
                save-interprogram-paste-before-kill t)
-
-(use-package mu-licenses
-  :bind (("C-c i l a" . mu-insert-apache2)
-         ("C-c i l g" . mu-insert-gpl3)
-         ("C-c i l m" . mu-insert-mit/x11)))
 
 ;;; Utilities and keybindings
 (bind-key "C-c x i" #'indent-region)
@@ -563,8 +552,7 @@ Otherwise insert the date as Mar 04, 2014."
  ([remap kill-whole-line]        . mu-smart-kill-whole-line)
  ([remap move-beginning-of-line] . mu-back-to-indentation-or-beginning-of-line)
  ("C-<backspace>"                . mu-smart-backward-kill-line)
- ("C-S-j"                        . mu-smart-open-line)
- ("C-c i d"                      . mu-insert-current-date))
+ ("C-S-j"                        . mu-smart-open-line))
 
 (provide 'mu-editing)
 
