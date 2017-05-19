@@ -109,8 +109,12 @@
   (require 'cider-client)
 
   (defun mu-cider-mode-line-info ()
-    (if (cider-current-connection)
-        (projectile-project-name)
+    (if-let ((current-connection (ignore-errors (cider-current-connection))))
+        (with-current-buffer current-connection
+          (concat
+           cider-repl-type
+           (format
+            ":%s" (or (cider--project-name nrepl-project-dir) "<no project>"))))
       "-"))
 
   ;; Simplify CIDER mode-line indicator
