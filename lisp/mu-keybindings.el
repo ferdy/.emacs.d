@@ -41,7 +41,6 @@
     "C-c a"     "applications"
     "C-c a a"   "admin"
     "C-c a L"   "languages"
-    "C-c a L l" "langtool"
     "C-c a L t" "translations"
     "C-c a m"   "math"
     "C-c a r"   "remote"
