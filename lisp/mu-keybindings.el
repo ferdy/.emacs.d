@@ -44,7 +44,6 @@
     "C-c a m"   "math"
     "C-c a r"   "remote"
     "C-c a s"   "shells"
-    "C-c a S"   "sx"
     "C-c a t"   "time-and-date"
     "C-c a w"   "eww"
     "C-c b"     "buffers"
