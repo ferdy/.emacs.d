@@ -47,6 +47,9 @@
 (blink-cursor-mode -1)
 (tooltip-mode -1)
 
+;; Cursor stretches to the current glyph's width
+(validate-setq x-stretch-cursor t)
+
 ;; Disable annoying prompts
 (fset 'yes-or-no-p 'y-or-n-p)
 (validate-setq kill-buffer-query-functions
