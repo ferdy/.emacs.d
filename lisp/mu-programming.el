@@ -95,10 +95,12 @@
   :config
   (add-hook 'cider-mode-hook 'eldoc-mode)
 
-  ;; Set up Figwheel in ClojureScript REPL
   (validate-setq
+   ;; Set up Figwheel in ClojureScript REPL
    cider-cljs-lein-repl
-   "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"))
+   "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))"
+   ;; Do not offer to open ClojureScript app in browser
+   cider-offer-to-open-cljs-app-in-browser nil))
 
 (use-package cider-mode                 ; CIDER mode for REPL interaction
   :ensure cider
