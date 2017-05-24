@@ -38,7 +38,7 @@
                       :inherit font-lock-type-face))
 
 ;; Let apropos commands perform more extensive searches than default
-(setq apropos-do-all t)
+(validate-setq apropos-do-all t)
 
 (use-package calendar                   ; Display a calendar
   :bind ("C-c a t c" . calendar)
@@ -83,15 +83,6 @@
 (use-package keychain-environment       ; Load keychain environment variables
   :ensure t
   :bind ("C-c a a s" . keychain-environment-refresh))
-
-;;; Utilities and keybindings
-(defun mu-describe-symbol-at-point ()
-  "Describe the symbol at point if any."
-  (interactive)
-  (when-let (symbol (symbol-at-point))
-    (describe-symbol symbol)))
-
-(bind-key "C-c h ." #'mu-describe-symbol-at-point)
 
 (provide 'mu-utilities)
 
