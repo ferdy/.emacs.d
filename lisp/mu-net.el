@@ -67,8 +67,6 @@
      ("https://cavallette.noblogs.org/feed" security)
      ("http://dilbert.oeey.com/" comic)
      ("https://xkcd.com/rss.xml" comic)
-     ("http://existentialcomics.com/rss.xml" comic)
-     ("http://nedroid.com/feed/" comic)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.savagechickens.com/feed" comic)
      ("http://www.qwantz.com/rssfeed.php" comic)))
