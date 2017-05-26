@@ -37,9 +37,6 @@
   (set-face-attribute 'Info-quoted nil :family 'unspecified
                       :inherit font-lock-type-face))
 
-;; Let apropos commands perform more extensive searches than default
-(validate-setq apropos-do-all t)
-
 (use-package calendar                   ; Display a calendar
   :bind ("C-c a t c" . calendar)
   :config (setq calendar-week-start-day 1)) ; Start on Monday
