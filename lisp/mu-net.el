@@ -65,6 +65,7 @@
      ("http://planet.clojure.in/atom.xml" lisp)
      ("http://www.scheme.dk/planet/atom.xml" lisp)
      ("https://cavallette.noblogs.org/feed" security)
+     ("https://tacticaltech.org/rss.xml" security)
      ("http://dilbert.oeey.com/" comic)
      ("https://xkcd.com/rss.xml" comic)
      ("http://www.commitstrip.com/en/feed/" comic)
