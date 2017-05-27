@@ -108,6 +108,10 @@
             (lambda ()
               (add-hook 'before-save-hook 'fish_indent-before-save))))
 
+(use-package shx                        ; Enhance comint-mode
+  :ensure t
+  :init (shx-global-mode 1))
+
 ;;; Utilities and key bindings
 (custom-set-variables
  '(comint-scroll-to-bottom-on-input t)    ; Always insert at the bottom
