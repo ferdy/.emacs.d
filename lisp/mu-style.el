@@ -117,11 +117,37 @@
 
 (use-package zerodark-theme             ; Default theme
   :ensure t
+  :disabled t
   :init (load-theme 'zerodark 'no-confirm))
+
+(use-package solarized                  ; Default theme
+  :ensure solarized-theme
+  :config
+  (validate-setq
+   solarized-use-variable-pitch nil  ; Disable variable pitch fonts
+   solarized-distinct-doc-face t     ; Make doc faces stand out more
+   solarized-use-more-italic t       ; Use italic more often
+   solarized-use-less-bold t         ; Less bold, italic is enough
+   ;; Avoid all font-size changes
+   solarized-height-minus-1 1.0
+   solarized-height-plus-1 1.0
+   solarized-height-plus-2 1.0
+   solarized-height-plus-3 1.0
+   solarized-height-plus-4 1.0)
+
+  (load-theme 'solarized-light 'no-confirm))
 
 ;;; The mode line
 (line-number-mode)
 (column-number-mode)
+(set-face-attribute 'mode-line nil
+                    :inverse-video nil
+                    :height 0.9
+                    :box '(:line-width 6 :color "#eee8d5" :style nil))
+(set-face-attribute 'mode-line-inactive nil
+                    :inverse-video nil
+                    :height 0.9
+                    :box '(:line-width 6 :color "#eee8d5" :style nil))
 
 ;;; Utilities and key bindings
 (defun mu-reset-fonts ()
