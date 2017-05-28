@@ -115,11 +115,6 @@
 ;;; Theme
 (validate-setq custom-safe-themes t)    ; Treat themes as safe
 
-(use-package zerodark-theme             ; Default theme
-  :ensure t
-  :disabled t
-  :init (load-theme 'zerodark 'no-confirm))
-
 (use-package solarized                  ; Default theme
   :ensure solarized-theme
   :config
