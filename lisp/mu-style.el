@@ -142,7 +142,7 @@
 (column-number-mode)
 
 ;; Increase mode-line size with a border (box) of the same colour and
-;; and reduce font size by tweaking height
+;; reduce font size by tweaking height
 (set-face-attribute 'mode-line nil
                     :inverse-video nil
                     :height 0.9
