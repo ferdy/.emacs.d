@@ -137,9 +137,12 @@
 
   (load-theme 'solarized-light 'no-confirm))
 
-;;; The mode line
+;;; The mode-line
 (line-number-mode)
 (column-number-mode)
+
+;; Increase mode-line size with a border (box) of the same colour and
+;; and reduce font size by tweaking height
 (set-face-attribute 'mode-line nil
                     :inverse-video nil
                     :height 0.9
@@ -147,7 +150,7 @@
 (set-face-attribute 'mode-line-inactive nil
                     :inverse-video nil
                     :height 0.9
-                    :box '(:line-width 6 :color "#eee8d5" :style nil))
+                    :box '(:line-width 6 :color "#fdf6e3" :style nil))
 
 ;;; Utilities and key bindings
 (defun mu-reset-fonts ()
