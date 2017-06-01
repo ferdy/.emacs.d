@@ -69,11 +69,6 @@
   :defer t
   :ensure t)
 
-(use-package suggest                    ; Suggest Elisp functions
-  :ensure t
-  :bind (:map emacs-lisp-mode-map
-              ("C-c m o" . suggest)))
-
 (use-package ipretty                    ; Elisp pretty-printing
   :ensure t
   :bind (:map emacs-lisp-mode-map
