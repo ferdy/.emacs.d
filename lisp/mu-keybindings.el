@@ -91,10 +91,6 @@
     "C-c m"   "clj/personal"
     "C-c m r" "clj-refactor")
 
-  (which-key-add-major-mode-key-based-replacements 'haskell-mode
-    "C-c m" "haskell/personal"
-    "C-c m i" "haskell/imports")
-
   (which-key-add-major-mode-key-based-replacements 'rust-mode
     "C-c C-c" "rust/cargo")
 
@@ -119,10 +115,6 @@
     "C-c C-d" "web/dom"
     "C-c C-e" "web/element"
     "C-c C-t" "web/tags")
-
-  (which-key-add-major-mode-key-based-replacements 'ledger-mode
-    "C-c m"   "ledger/personal"
-    "C-c m b" "clean-buffer")
   :diminish which-key-mode)
 
 (use-package hydra                      ; Make bindings that stick
