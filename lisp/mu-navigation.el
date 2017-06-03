@@ -51,6 +51,10 @@
     (add-hook hook #'outline-minor-mode))
   :diminish outline-minor-mode)
 
+(use-package beginend                   ; Redefine M-< and M-> for some modes
+  :ensure t
+  :init (beginend-setup-all))
+
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (validate-setq set-mark-command-repeat-pop t)
 
