@@ -159,10 +159,6 @@
   :ensure t
   :after org)
 
-(use-package interleave             ; Take notes in org files while reading PDFs
-  :ensure t
-  :commands interleave)
-
 ;;; Utilities and keybindings
 (bind-key "<f5>"                        ; Open organizer file
           (lambda () (interactive) (find-file "~/org/organizer.org")))

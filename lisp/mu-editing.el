@@ -157,11 +157,6 @@ _C-s_: mark region
                  ;; Limit copyright changes to my own copyright
                  copyright-names-regexp (regexp-quote user-full-name)))
 
-(use-package dubcaps-mode               ; DOuble CApitals to Single Capitals
-  :load-path "extra"
-  :init (add-hook 'text-mode-hook #'dubcaps-mode)
-  :diminish dubcaps-mode)
-
 (use-package typo                       ; Automatically use typographic quotes
   :ensure t
   :init

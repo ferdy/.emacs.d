@@ -74,15 +74,6 @@
   :bind (:map emacs-lisp-mode-map
               ("C-c m p" . ipretty-last-sexp)))
 
-(use-package elisp-refs
-  :ensure t
-  :bind (:map emacs-lisp-mode-map
-              ("C-c m r f" . elisp-refs-function)
-              ("C-c m r m" . elisp-refs-macro)
-              ("C-c m r v" . elisp-refs-variable)
-              ("C-c m r s" . elisp-refs-symbol)
-              ("C-c m r p" . elisp-refs-special)))
-
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
