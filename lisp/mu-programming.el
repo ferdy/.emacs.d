@@ -40,12 +40,6 @@
   (add-hook 'emacs-lisp-mode-hook
             #'mu-add-use-package-to-imenu))
 
-(use-package el-search                  ; pcase-based search for elisp
-  :ensure t
-  :bind (:map emacs-lisp-mode-map
-              ("C-c m s s" . el-search-pattern)
-              ("C-c m s r" . el-search-query-replace)))
-
 (use-package ert                        ; Elisp Regression Test
   :defer t
   :after elisp-mode)
@@ -68,11 +62,6 @@
 (use-package cask-mode                  ; Major mode for Cask files
   :defer t
   :ensure t)
-
-(use-package ipretty                    ; Elisp pretty-printing
-  :ensure t
-  :bind (:map emacs-lisp-mode-map
-              ("C-c m p" . ipretty-last-sexp)))
 
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
