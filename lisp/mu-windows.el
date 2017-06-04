@@ -13,12 +13,6 @@
 
 (validate-setq window-combination-resize t) ; Size new windows proportionally
 
-(use-package windmove
-  :bind (("C-c <up>"    . windmove-up)
-         ("C-c <down>"  . windmove-down)
-         ("C-c <left>"  . windmove-left)
-         ("C-c <right>" . windmove-right)))
-
 (use-package golden-ratio               ; Automatically resize windows
   :ensure t
   :init
@@ -50,6 +44,12 @@
    ;; Exclude special buffers from golden ratio
    golden-ratio-exclude-buffer-regexp `(,(rx bos "*which-key*" eos)))
   :diminish golden-ratio-mode)
+
+(use-package windmove                   ; Quickly move between windows
+  :bind (("C-c <up>"    . windmove-up)
+         ("C-c <down>"  . windmove-down)
+         ("C-c <left>"  . windmove-left)
+         ("C-c <right>" . windmove-right)))
 
 (use-package ace-window                 ; Better movements between windows
   :ensure t
