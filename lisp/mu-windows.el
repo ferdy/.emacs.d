@@ -13,8 +13,11 @@
 
 (validate-setq window-combination-resize t) ; Size new windows proportionally
 
-(use-package winner                     ; Undo and redo window configurations
-  :init (winner-mode))
+(use-package windmove
+  :bind (("C-c <up>"    . windmove-up)
+         ("C-c <down>"  . windmove-down)
+         ("C-c <left>"  . windmove-left)
+         ("C-c <right>" . windmove-right)))
 
 (use-package golden-ratio               ; Automatically resize windows
   :ensure t
