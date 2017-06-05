@@ -152,8 +152,8 @@
   (validate-setq cljr-suppress-middleware-warnings t
                  cljr-add-ns-to-blank-clj-files nil
                  cljr-auto-sort-ns t
-                 cljr-favor-prefix-notation
-                 cljr-favor-private-functions)
+                 cljr-favor-prefix-notation cljr-favor-private-functions
+                 cljr-warn-on-eval nil)
   :diminish clj-refactor-mode)
 
 (use-package clojure-snippets           ; Yasnippets for Clojure
