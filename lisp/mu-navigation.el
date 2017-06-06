@@ -53,7 +53,9 @@
 
 (use-package beginend                   ; Redefine M-< and M-> for some modes
   :ensure t
-  :init (beginend-setup-all))
+  :init (beginend-setup-all)
+  :diminish (beginend-magit-status-mode
+             beginend-dired-mode))
 
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (validate-setq set-mark-command-repeat-pop t)
