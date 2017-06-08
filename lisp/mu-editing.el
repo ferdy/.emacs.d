@@ -233,6 +233,9 @@ _C-s_: mark region
   :ensure t
   :mode ("\\.md\\'" . markdown-mode)
   :config
+  ;; Do not hide URLs
+  (validate-setq markdown-hidden-urls nil)
+
   ;; Process Markdown with Pandoc, using a custom stylesheet for nice output
   (let ((stylesheet (expand-file-name
                      (locate-user-emacs-file "etc/pandoc.css"))))
