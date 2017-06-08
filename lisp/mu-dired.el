@@ -25,9 +25,7 @@
               ("M-<down>" . mu-dired-down)
               ("M-n"      . mu-dired-down)
               ("!"        . mu-sudired)
-              ("e"        . mu-ediff-files)
-              ([remap beginning-of-buffer] . mu-dired-back-to-top)
-              ([remap end-of-buffer]       . mu-dired-jump-to-bottom))
+              ("e"        . mu-ediff-files))
   :config
   (validate-setq dired-auto-revert-buffer t ; Revert buffers on revisiting
                  dired-listing-switches
@@ -107,20 +105,6 @@ The app is chosen from your OS's preference."
     (if (file-directory-p file)
         (find-alternate-file file)
       (find-file file))))
-
-;;;###autoload
-(defun mu-dired-back-to-top ()
-  "Move point to the first file or directory listed."
-  (interactive)
-  (beginning-of-buffer)
-  (dired-next-line 2))
-
-;;;###autoload
-(defun mu-dired-jump-to-bottom ()
-  "Move point to the last file or directory listed."
-  (interactive)
-  (end-of-buffer)
-  (dired-next-line -1))
 
 ;;;###autoload
 (defun mu-sudired ()
@@ -212,7 +196,7 @@ The app is chosen from your OS's preference."
                     (lambda ()
                       (setq ediff-after-quit-hook-internal nil)
                       (set-window-configuration wnd))))
-      (error "no more than 2 files should be marked"))))
+      (error "No more than 2 files should be marked"))))
 
 (provide 'mu-dired)
 
