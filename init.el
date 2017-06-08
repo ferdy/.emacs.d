@@ -159,7 +159,7 @@
 (use-package mu-editing)
 (use-package mu-navigation)
 (use-package mu-search)
-(use-package mu-flycheck :defer 1)
+(use-package mu-flycheck)
 (use-package mu-files :defer 2)
 (use-package mu-dired :defer 2)
 (use-package mu-completion :defer 3)
