@@ -53,8 +53,7 @@ most errors from HTML Tidy."
   (add-hook 'flycheck-mode-hook
             #'mu-flycheck-set-load-path-for-user-configuration)
 
-  ;; Enable Flycheck for programming buffers only
-  (add-hook 'prog-mode-hook #'flycheck-mode)
+  (global-flycheck-mode)
   :config
   (validate-setq flycheck-standard-error-navigation nil
                  flycheck-display-errors-function
@@ -77,6 +76,12 @@ most errors from HTML Tidy."
   :defer t
   :after rust-mode
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+
+(use-package flycheck-vale              ; Flycheck for Vale
+  :ensure t
+  :defer t
+  :after flycheck
+  :config (flycheck-vale-setup))
 
 (provide 'mu-flycheck)
 
