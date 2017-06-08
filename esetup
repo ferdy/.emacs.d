@@ -111,7 +111,6 @@ python_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends python2.7 ipython"
   dostep 2 "y" "apt-get -y install --no-install-recommends python-pip"
   dostep 3 "y" "pip install setuptools"
-  dostep 4 "y" "pip install proselint"
 }
 
 rust_curl() {
@@ -201,10 +200,6 @@ cask_setup() {
   dostep 1 "n" "cask_curl"
 }
 
-shellcheck_setup() {
-  dostep 1 "y" "apt-get -y install --no-install-recommends shellcheck"
-}
-
 sudo -v # gets user password for next sudos
 
 if [ "$1" == "-y" ]; then
@@ -238,8 +233,6 @@ announce CSS
 css_setup
 announce CASK
 cask_setup
-announce SHELLCHECK
-shellcheck_setup
 announce LaTeX
 latex_setup
 announce PANDOC
