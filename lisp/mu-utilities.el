@@ -18,17 +18,11 @@
   (set-face-attribute 'Info-quoted nil :family 'unspecified
                       :inherit font-lock-constant-face))
 
-;;; Online Help
-(use-package find-func                  ; Find function/variable definitions
-  :bind (("C-c h F"   . find-function)
-         ("C-c h 4 F" . find-function-other-window)
-         ("C-c h K"   . find-function-on-key)
-         ("C-c h V"   . find-variable)
-         ("C-c h 4 V" . find-variable-other-window)))
-
-(use-package man                        ; Manpage viewer
-  :defer t
-  :bind ("C-c h m" . man))
+(use-package helpful                    ; A better *help* buffer
+  :ensure t
+  :bind (("C-c h c" . helpful-command)
+         ("C-c h f" . helpful-function)
+         ("C-c h m" . helpful-macro)))
 
 (use-package info                       ; Info manual viewer
   :defer t
