@@ -136,6 +136,9 @@
 (line-number-mode)
 (column-number-mode)
 
+;; Show buffer position percentage starting from top
+(validate-setq mode-line-percent-position '(-3 "%o"))
+
 ;; Increase mode-line size with a border (box) of the same colour and
 ;; reduce font size by tweaking height
 (set-face-attribute 'mode-line nil
