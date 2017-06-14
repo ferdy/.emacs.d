@@ -127,7 +127,8 @@ rust_setup() {
   dostep 7 "n" "cargo install racer"
   dostep 8 "n" "cargo install tokei"
   dostep 9 "n" "cargo install ripgrep"
-  dostep 10 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
+  dostep 10 "n" "cargo install --git https://github.com/sharkdp/fd"
+  dostep 11 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
 }
 
 scala_deb() {
