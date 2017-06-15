@@ -215,38 +215,6 @@ _C-s_: mark region
   (add-to-list 'aggressive-indent-excluded-modes
                'cider-repl-mode))
 
-;;; Specific files support
-(use-package systemd                    ; Major mode for editing systemd units
-  :ensure t
-  :defer t
-  :mode "\\.service\\'")
-
-(use-package rst                        ; ReStructuredText
-  :defer t
-  :bind (:map rst-mode-map
-              ("C-="     . nil)
-              ;; For similarity with AUCTeX and Markdown
-              ("C-c C-j" . rst-insert-list)
-              ("M-RET"   . rst-insert-list)))
-
-(use-package markdown-mode              ; Edit markdown files
-  :ensure t
-  :mode ("\\.md\\'" . markdown-mode)
-  :config
-  ;; Do not hide URLs
-  (setq-default markdown-hide-urls nil)
-
-  ;; Process Markdown with Pandoc, using a custom stylesheet for nice output
-  (let ((stylesheet (expand-file-name
-                     (locate-user-emacs-file "etc/pandoc.css"))))
-    (setq markdown-command
-          (mapconcat #'shell-quote-argument
-                     `("pandoc" "--toc" "--section-divs"
-                       "--css" ,(concat "file://" stylesheet)
-                       "--standalone" "-f" "markdown" "-t" "html5")
-                     " ")))
-  (add-hook 'markdown-mode-hook #'auto-fill-mode))
-
 ;; C-n adds new line when at the end of a line
 (validate-setq next-line-add-newlines t)
 
