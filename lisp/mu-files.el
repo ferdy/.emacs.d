@@ -17,6 +17,14 @@
          ("C-c f l" . find-file-literally)))
 
 (use-package recentf                    ; Manage recent files
+  :demand t
+  :config
+  (add-to-list 'recentf-exclude "^/\\(?:ssh\\|su\\|sudo\\)?:")
+
+  (validate-setq recentf-max-saved-items 200
+                 recentf-max-menu-items 15))
+
+(use-package recentf                    ; Manage recent files
   :init (recentf-mode)
   :defer t
   :config
