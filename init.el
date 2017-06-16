@@ -136,7 +136,7 @@
  auto-save-list-file-prefix     "~/.emacs.d/autosave/"
  auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
 
-(use-package no-littering
+(use-package no-littering               ; Keep .emacs.d clean
   :ensure t
   :config
   (require 'recentf)
