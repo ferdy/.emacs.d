@@ -136,13 +136,14 @@
  auto-save-list-file-prefix     "~/.emacs.d/autosave/"
  auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
 
-(use-package server                     ; The server of `emacsclient'
-  :if (not noninteractive)
-  :defer t
+(use-package no-littering
   :config
-  ;; Start server only if it is not already running
-  (unless (server-running-p)
-    (server-mode)))
+  (require 'recentf)
+  (add-to-list 'recentf-exclude no-littering-var-directory)
+  (add-to-list 'recentf-exclude no-littering-etc-directory))
+
+(use-package server                     ; The server of `emacsclient'
+  :config (or (server-running-p) (server-mode)))
 
 ;; Confirm before quitting Emacs
 (validate-setq confirm-kill-emacs #'y-or-n-p)
