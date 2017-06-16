@@ -137,6 +137,7 @@
  auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
 
 (use-package no-littering
+  :ensure t
   :config
   (require 'recentf)
   (add-to-list 'recentf-exclude no-littering-var-directory)

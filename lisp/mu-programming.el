@@ -415,8 +415,6 @@ the REPL in a new frame instead."
   :ensure t
   :after js2-mode
   :init (add-hook 'js2-mode-hook #'js2-refactor-mode)
-  :bind (:map j2-mode-map
-              ("C-k" . js2r-kill))
   :config (js2r-add-keybindings-with-prefix "C-c m r"))
 
 (use-package xref-js2                 ; Jump to references with Ag in JavaScript
