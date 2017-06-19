@@ -116,9 +116,6 @@
   :ensure t
   :mode ("\\.md\\'" . markdown-mode)
   :config
-  ;; Do not hide URLs
-  (setq-default markdown-hide-urls nil)
-
   (validate-setq markdown-fontify-code-blocks-natively t)
 
   ;; Don't change font in code blocks
