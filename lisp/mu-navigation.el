@@ -53,9 +53,14 @@
 
 (use-package beginend                   ; Redefine M-< and M-> for some modes
   :ensure t
-  :init (beginend-setup-all)
-  :diminish (beginend-magit-status-mode
-             beginend-dired-mode))
+  :config (beginend-global-mode)
+  :diminish (beginend-global-mode
+             beginend-dired-mode
+             beginend-elfeed-search-mode
+             beginend-ibuffer-mode
+             beginend-magit-status-mode
+             beginend-prog-mode
+             beginend-vc-dir-mode))
 
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (validate-setq set-mark-command-repeat-pop t)
