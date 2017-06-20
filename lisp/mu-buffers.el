@@ -120,7 +120,13 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
                          " " filename-and-process)
                    (mark " "
                          (name 16 -1)
-                         " " filename))))
+                         " " filename)))
+
+  ;; Do not show empty groups
+  (validate-setq ibuffer-show-empty-filter-groups nil)
+
+  ;; Do not prompt when executing killing buffers operations
+  (validate-setq ibuffer-expert t))
 
 (use-package ibuf-ext
   :ensure ibuffer
