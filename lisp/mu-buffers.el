@@ -44,15 +44,6 @@
                '(:eval (if (buffer-file-name)
                            (abbreviate-file-name (buffer-file-name)) "%b")))
 
-(defun mu-display-buffer-fullframe (buffer alist)
-  "Display BUFFER in fullscreen.
-
-ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
-  (let ((window (display-buffer-pop-up-window buffer alist)))
-    (when window
-      (delete-other-windows window))
-    window))
-
 ;; Configure `display-buffer' behaviour for some special buffers
 (validate-setq
  display-buffer-alist
@@ -129,11 +120,6 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
                    (mark " "
                          (name 16 -1)
                          " " filename))))
-
-(use-package ibuf-ext
-  :ensure ibuffer
-  ;; Hide empty groups
-  :config (validate-setq ibuffer-show-empty-filter-groups nil))
 
 (use-package ibuffer-vc                 ; Group buffers by VC project and status
   :ensure t
