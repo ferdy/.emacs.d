@@ -98,10 +98,18 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
                  ;; Ignore special buffers
                  uniquify-ignore-buffers-re "^\\*"))
 
+(use-package ibuf-ext                   ; Extensions for Ibuffer
+  :config
+  ;; Do not show empty groups
+  (validate-setq ibuffer-show-empty-filter-groups nil))
+
 (use-package ibuffer                    ; Buffer management
   :bind (([remap list-buffers] . ibuffer)
          ("C-c b i"            . ibuffer))
   :config
+  ;; Do not prompt when executing killing buffers operations
+  (validate-setq ibuffer-expert t)
+
   (validate-setq ibuffer-formats
                  '((mark modified read-only " "
                          (name 18 18 :left :elide)
@@ -120,13 +128,7 @@ ALIST is a `display-buffer' ALIST.  Return the new window for BUFFER."
                          " " filename-and-process)
                    (mark " "
                          (name 16 -1)
-                         " " filename)))
-
-  ;; Do not show empty groups
-  (validate-setq ibuffer-show-empty-filter-groups nil)
-
-  ;; Do not prompt when executing killing buffers operations
-  (validate-setq ibuffer-expert t))
+                         " " filename))))
 
 (use-package ibuf-ext
   :ensure ibuffer
