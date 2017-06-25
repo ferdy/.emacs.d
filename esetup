@@ -174,9 +174,10 @@ pandoc_setup() {
 }
 
 pdftools_setup() {
-  dostep 1 "y" "apt-get -y install --no-install-recommends libpng-dev libz-dev"
-  dostep 2 "y" "apt-get -y install --no-install-recommends libpoppler-glib-dev"
-  dostep 3 "y" "apt-get -y install --no-install-recommends libpoppler-private-dev"
+  dostep 1 "y" "apt-get -y install --no-install-recommends libpng-dev"
+  dostep 2 "y" "apt-get -y install --no-install-recommends zlib1g-dev"
+  dostep 3 "y" "apt-get -y install --no-install-recommends libpoppler-glib-dev"
+  dostep 4 "y" "apt-get -y install --no-install-recommends libpoppler-private-dev"
   dostep 4 "y" "apt-get -y install --no-install-recommends imagemagick"
 }
 
