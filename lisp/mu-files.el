@@ -75,10 +75,39 @@
 
 (use-package pdf-tools                  ; Better PDF support
   :ensure t
-  :init (pdf-tools-install)
   :bind (:map pdf-view-mode-map
               ("M-w" . pdf-view-kill-ring-save)
-              ("M-g" . pdf-view-goto-page)))
+              ("M-g" . pdf-view-goto-page))
+  :init(pdf-tools-install)
+  :config
+  ;; Workaround to re-open last viewed page:
+  ;; https://github.com/politza/pdf-tools/issues/18#issuecomment-269515117
+  (defun mu-pdf-set-last-viewed-bookmark ()
+    (interactive)
+    (when (eq major-mode 'pdf-view-mode)
+      (bookmark-set (mu-pdf-generate-bookmark-name))))
+
+  (defun mu-pdf-jump-last-viewed-bookmark ()
+    (bookmark-set "fake")
+    (when (mu-pdf-has-last-viewed-bookmark)
+      (bookmark-jump (mu-pdf-generate-bookmark-name))))
+
+  (defun mu-pdf-has-last-viewed-bookmark ()
+    (assoc (mu-pdf-generate-bookmark-name) bookmark-alist))
+
+  (defun mu-pdf-generate-bookmark-name ()
+    (concat "PDF-LAST-VIEWED: " (buffer-file-name)))
+
+  (defun mu-pdf-set-all-last-viewed-bookmarks ()
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf (mu-pdf-set-last-viewed-bookmark))))
+
+  (add-hook 'kill-buffer-hook 'mu-pdf-set-last-viewed-bookmark)
+  (add-hook 'pdf-view-mode-hook 'mu-pdf-jump-last-viewed-bookmark)
+
+  ;; As `save-place-mode' does
+  (unless noninteractive
+    (add-hook 'kill-emacs-hook #'mu-pdf-set-all-last-viewed-bookmarks)))
 
 (use-package archive-mode                   ; Browse archive files
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
