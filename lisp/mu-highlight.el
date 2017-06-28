@@ -51,11 +51,6 @@
   :defer t
   :init (add-hook 'prog-mode-hook #'highlight-numbers-mode))
 
-(use-package hl-todo                    ; Highlight TODOs in buffers
-  :ensure t
-  :defer t
-  :init (global-hl-todo-mode))
-
 (use-package rainbow-mode               ; Highlight colors
   :ensure t
   :bind ("C-c t R" . rainbow-mode)
