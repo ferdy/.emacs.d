@@ -82,6 +82,9 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+(use-package iso-transl                 ; Fix dead characters
+  :demand t)
+
 (use-package page-break-lines           ; Better looking break lines
   :ensure t
   :defer t
