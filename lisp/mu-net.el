@@ -70,7 +70,6 @@
      ("https://xkcd.com/rss.xml" comic)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.savagechickens.com/feed" comic)
-     ("http://www.qwantz.com/rssfeed.php" comic)
      ("http://reverseshot.org/archive/entry/rss" cinema)))
 
   (validate-setq elfeed-use-curl t)     ; Use curl to fetch the feeds
