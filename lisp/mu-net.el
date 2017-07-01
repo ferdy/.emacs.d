@@ -67,7 +67,6 @@
      ("https://cavallette.noblogs.org/feed" security)
      ("https://tacticaltech.org/rss.xml" security)
      ("http://dilbert.oeey.com/" comic)
-     ("https://xkcd.com/rss.xml" comic)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.savagechickens.com/feed" comic)
      ("http://reverseshot.org/archive/entry/rss" cinema)))
