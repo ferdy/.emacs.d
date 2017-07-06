@@ -159,7 +159,7 @@
   (interactive)
   (set-face-attribute 'default nil
                       :family "Source Code Pro"
-                      :height 135)
+                      :height 140)
   (set-face-attribute 'variable-pitch nil
                       :family "Fira Sans"
                       :height 145

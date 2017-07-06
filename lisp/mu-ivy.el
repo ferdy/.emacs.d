@@ -32,9 +32,7 @@
    ivy-use-ignore-default 'always
    ;; Ignore some buffers in `ivy-switch-buffer'
    ivy-ignore-buffers '("company-statistics-cache.el"
-                        ".elfeed/index")
-   ;; Make prompt selectable to ease non-existent candidate selection
-   ivy-use-selectable-prompt t)
+                        ".elfeed/index"))
 
   ;; Bind C-k to kill buffer from `ivy-switch-buffer'
   (defun mu-ivy-kill-buffer ()
