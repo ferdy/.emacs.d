@@ -530,8 +530,7 @@ the REPL in a new frame instead."
               ("C-c m m e" . macrostep-expand)))
 
 (use-package compile                    ; Compile from Emacs
-  :bind (("C-c c C" . compile)
-         ("C-c c r" . recompile))
+  :defer t
   :config
   (validate-setq compilation-ask-about-save nil
                  ;; Kill old compilation processes before starting new ones

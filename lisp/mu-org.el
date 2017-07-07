@@ -47,9 +47,42 @@
   (add-hook 'message-mode-hook #'turn-on-orgstruct++)
 
   ;; Define TODO workflow states
-  (validate-setq org-todo-keywords
-                 '("TODO(t)" "WAITING(w)" "INFO(i)"
-                   "|" "CANCELLED(c)" "DONE(x)"))
+  (validate-setq
+   org-todo-keywords '("TODO(t)" "WAITING(w)" "|" "CANCELLED(c)" "DONE(d)"))
+
+  ;; Define Agenda files for GTD
+  (validate-setq
+   org-agenda-files '("~/org/gtd/gtd.org"
+                      "~/org/gtd/inbox.org"
+                      "~/org/gtd/tickler.org"))
+
+  ;; Define refile targets for GTD
+  (setq
+   org-refile-targets '(("~/org/gtd/gtd.org" :maxlevel . 3)
+                        ("~/org/gtd/someday.org" :level . 1)
+                        ("~/org/gtd/tickler.org" :maxlevel . 2)))
+  (setq
+   org-agenda-custom-commands
+   '(("o" "At the office" tags-todo "@office"
+      ((org-agenda-overriding-header "Office")
+       (org-agenda-skip-function
+        #'mu-org-agenda-skip-all-siblings-but-first)))))
+
+  (defun mu-org-agenda-skip-all-siblings-but-first ()
+    "Skip all but the first non-done entry."
+    (let (should-skip-entry)
+      (unless (org-current-is-todo)
+        (setq should-skip-entry t))
+      (save-excursion
+        (while (and (not should-skip-entry) (org-goto-sibling t))
+          (when (org-current-is-todo)
+            (setq should-skip-entry t))))
+      (when should-skip-entry
+        (or (outline-next-heading)
+            (goto-char (point-max))))))
+
+  (defun org-current-is-todo ()
+    (string= "TODO" (org-get-todo-state)))
 
   ;; Disable whitespace highlighting of overlong lines in Org Mode
   (add-hook 'org-mode-hook #'mu-whitespace-style-no-long-lines)
@@ -84,6 +117,16 @@
     "Insert a bullet point with a checkbox."
     (interactive)
     (insert "- [ ] ")))
+
+(use-package org-capture                ; Fast note taking in Org
+  :config
+  (setq
+   org-capture-templates '(("t" "Todo [inbox]" entry
+                            (file+headline "~/org/gtd/inbox.org" "Tasks")
+                            "* TODO %i%?")
+                           ("T" "Tickler" entry
+                            (file+headline "~/org/gtd/tickler.org" "Tickler")
+                            "* %i%? \n %U"))))
 
 (use-package ox
   :ensure org
