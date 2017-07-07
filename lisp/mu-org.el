@@ -37,7 +37,7 @@
 
   (validate-setq org-directory (expand-file-name "~/org/")
                  org-default-notes-file
-                 (expand-file-name "organizer.org" org-directory))
+                 (expand-file-name "gtd/gtd.org" org-directory))
 
   ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
@@ -204,7 +204,7 @@
 
 ;;; Utilities and keybindings
 (bind-key "<f5>"                        ; Open organizer file
-          (lambda () (interactive) (find-file "~/org/organizer.org")))
+          (lambda () (interactive) (find-file "~/org/gtd/gtd.org")))
 
 (provide 'mu-org)
 
