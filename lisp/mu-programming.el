@@ -406,8 +406,8 @@
                              "*Xmllint Error Buffer*" t)))
 
 (use-package json-mode                  ; JSON editing
-  :mode "\\.json\\'"
-  :ensure t)
+  :ensure t
+  :mode "\\.json\\'")
 
 ;;; Bugs management
 (use-package bug-reference              ; Buttonize bug references
