@@ -131,27 +131,6 @@ rust_setup() {
   dostep 11 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
 }
 
-scala_deb() {
-  sudo echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
-}
-
-scala_curl() {
-  curl https://raw.githubusercontent.com/foundweekends/conscript/master/setup.sh | sh
-}
-
-scala_setup() {
-  dostep 1 "n" "scala_deb"
-  dostep 2 "y" "apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823"
-  dostep 3 "y" "apt-get update"
-  dostep 4 "y" "apt-get install sbt"
-  dostep 5 "y" "curl -L -o /usr/local/bin/amm https://git.io/vP4Gw"
-  dostep 6 "y" "chmod +x /usr/local/bin/amm"
-  dostep 7 "n" "scala_curl"
-  dostep 8 "y" "ln -s /home/manuel/.conscript/bin/cs /usr/local/bin/cs"
-  dostep 9 "n" "cs foundweekends/giter8"
-  dostep 10 "y" "ln -s /home/manuel/.conscript/bin/g8 /usr/local/bin/g8"
-}
-
 javascript_setup() {
   dostep 1 "y" "apt-get install --no-install-recommends npm nodejs"
   dostep 2 "y" "npm -g install js-beautify"
@@ -227,8 +206,6 @@ announce PYTHON
 python_setup
 announce RUST
 rust_setup
-announce SCALA
-scala_setup
 announce JAVASCRIPT
 javascript_setup
 announce CSS
