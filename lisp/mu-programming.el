@@ -263,6 +263,11 @@
   :ensure t
   :defer t)
 
+;;; Idris
+(use-package idris-mode                 ; Idris editing
+  :ensure t
+  :mode ("\\.idr\\'" . idris-mode))
+
 ;;; Python
 (use-package python                     ; Python editing
   :defer t
