@@ -107,6 +107,16 @@ clojure_setup() {
   dostep 5 "n" "lein"
 }
 
+idris_setup() {
+  dostep 1 "y" apt-get update
+  dostep 2 "y" apt-get install -y software-properties-common
+  dostep 3 "y" add-apt-repository -y ppa:hvr/ghc
+  dostep 4 "y" apt-get update
+  dostep 5 "y" apt-get install -y cabal-install-1.22 ghc-7.10.3
+  dostep 6 "n" cabal update
+  dostep 7 "n" cabal install idris --program-prefix=/usr/local
+}
+
 python_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends python2.7 ipython"
   dostep 2 "y" "apt-get -y install --no-install-recommends python-pip"
@@ -202,6 +212,8 @@ announce SCHEME
 scheme_setup
 announce COMMONLISP
 commonlisp_setup
+announce IDRIS
+idris_setup
 announce PYTHON
 python_setup
 announce RUST
