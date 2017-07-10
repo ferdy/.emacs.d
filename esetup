@@ -114,7 +114,7 @@ idris_setup() {
   dostep 4 "y" apt-get update
   dostep 5 "y" apt-get install -y cabal-install-1.22 ghc-7.10.3
   dostep 6 "n" cabal update
-  dostep 7 "n" cabal install idris --program-prefix=/usr/local
+  dostep 7 "n" cabal install idris
 }
 
 python_setup() {
