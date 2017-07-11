@@ -117,6 +117,10 @@ idris_setup() {
   dostep 7 "n" cabal install idris
 }
 
+haskell_setup() {
+  dostep 1 "n" curl -sSL https://get.haskellstack.org/ | sh
+}
+
 python_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends python2.7 ipython"
   dostep 2 "y" "apt-get -y install --no-install-recommends python-pip"
@@ -214,6 +218,8 @@ announce COMMONLISP
 commonlisp_setup
 announce IDRIS
 idris_setup
+announce HASKELL
+haskell_setup
 announce PYTHON
 python_setup
 announce RUST
