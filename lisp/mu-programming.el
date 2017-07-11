@@ -268,6 +268,12 @@
   :ensure t
   :mode ("\\.idr\\'" . idris-mode))
 
+;;; Haskell
+(use-package intero                     ; Development mode for Haskell
+  :ensure t
+  :mode ("\\.hs\\'" . intero-mode)
+  :config (add-hook 'haskell-mode-hook 'intero-mode))
+
 ;;; Python
 (use-package python                     ; Python editing
   :defer t
