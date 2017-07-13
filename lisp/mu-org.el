@@ -126,7 +126,7 @@
                             "* TODO %i%?")
                            ("T" "Tickler" entry
                             (file+headline "~/org/gtd/tickler.org" "Tickler")
-                            "* %i%? \n %U"))))
+                            "* %i%? \n %^t"))))
 
 (use-package ox
   :ensure org
