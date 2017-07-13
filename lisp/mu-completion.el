@@ -19,8 +19,7 @@
                  yas-wrap-around-region t)
 
   (yas-reload-all)
-  (add-hook 'text-mode-hook #'yas-minor-mode)
-  (add-hook 'prog-mode-hook #'yas-minor-mode)
+  (yas-global-mode)
 
   (defhydra mu-yasnippet (:hint nil)
     "
