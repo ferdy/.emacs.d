@@ -266,7 +266,10 @@
 ;;; Idris
 (use-package idris-mode                 ; Idris editing
   :ensure t
-  :mode ("\\.idr\\'" . idris-mode))
+  :mode ("\\.idr\\'" . idris-mode)
+  :config
+  (bind-key "C-c C-q" #'idris-quit idris-mode-map)
+  (bind-key "C-c C-q" #'idris-quit idris-repl-mode-map))
 
 ;;; Haskell
 (use-package intero                     ; Development mode for Haskell
