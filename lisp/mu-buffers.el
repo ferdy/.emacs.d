@@ -65,6 +65,7 @@
                  "*ensime-update*"   ; Server update from Ensime
                  "*SQL"              ; SQL REPL
                  "*Cargo"            ; Cargo process buffers
+                 "*idris-repl"       ; Idris REPL
                  ;; AUCTeX command output
                  (and (1+ nonl) " output*")
                  ))
