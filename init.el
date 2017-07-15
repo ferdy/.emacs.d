@@ -88,7 +88,8 @@
   :if (display-graphic-p)
   :config
   (validate-setq exec-path-from-shell-variables
-                 '("FULLNAME"           ; First and last name
+                 '("PATH"               ; Full path
+                   "FULLNAME"           ; First and last name
                    "EMAIL"              ; Personal email
                    "INFOPATH"           ; Info directories
                    "JAVA_OPTS"          ; Options for Java processes
