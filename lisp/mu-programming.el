@@ -276,8 +276,8 @@
 ;;; Haskell
 (use-package intero                     ; Development mode for Haskell
   :ensure t
-  :mode ("\\.hs\\'" . intero-mode)
-  :config (add-hook 'haskell-mode-hook 'intero-mode))
+  :mode ("\\.hs\\'" . haskell-mode)
+  :config (intero-global-mode))
 
 ;;; Python
 (use-package python                     ; Python editing
