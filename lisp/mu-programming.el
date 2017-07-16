@@ -276,7 +276,6 @@
 ;;; Haskell
 (use-package intero                     ; Development mode for Haskell
   :ensure t
-  :mode ("\\.hs\\'" . haskell-mode)
   :config (intero-global-mode))
 
 ;;; Python
