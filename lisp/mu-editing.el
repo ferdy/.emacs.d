@@ -215,6 +215,12 @@ _C-s_: mark region
   (add-to-list 'aggressive-indent-excluded-modes
                'cider-repl-mode))
 
+(use-package copy-as-format            ; Copy using format for GitHub/Slack/etc.
+  :ensure t
+  :bind (("C-c c g" . copy-as-format-github)
+         ("C-c c r" . copy-as-format-rst)
+         ("C-c c s" . copy-as-format-slack)))
+
 ;; C-n adds new line when at the end of a line
 (validate-setq next-line-add-newlines t)
 
