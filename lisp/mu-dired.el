@@ -70,6 +70,10 @@
   :bind (:map dired-mode-map
               ("/" . dired-narrow)))
 
+(use-package dired-collapse             ; Collapse unique nested paths
+  :ensure t
+  :config (add-hook 'dired-mode-hook #'dired-collapse-mode))
+
 ;;; Utilities and key bindings
 ;;;###autoload
 (defun mu-dired-up ()
