@@ -14,6 +14,8 @@
 (use-package eshell                     ; Emacs command shell
   :bind ("C-c a s e" . eshell)
   :config
+  (validate-setq eshell-scroll-to-bottom-on-input 'all)
+
   ;; Handy aliases
   (defalias 'ff 'find-file)
 
@@ -30,6 +32,10 @@
     "Open a dired instance of the current working directory."
     (dired "."))
 
+  (defun eshell/gs (&rest args)
+    (magit-status (pop args) nil)
+    (eshell/echo))                      ; The echo command suppresses output
+
   (add-hook
    'eshell-mode-hook
    (lambda ()
@@ -41,7 +47,21 @@
   (with-eval-after-load "em-unix"
     '(progn
        (unintern 'eshell/su nil)
-       (unintern 'eshell/sudo nil))))
+       (unintern 'eshell/sudo nil)))
+
+  (defun mu-eshell-quit-or-delete-char (arg)
+    (interactive "p")
+    (if (and (eolp) (looking-back eshell-prompt-regexp))
+        (progn
+          (eshell-life-is-too-much)
+          (ignore-errors
+            (delete-window)))
+      (delete-forward-char arg)))
+
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (bind-key "C-d"
+                        #'mu-eshell-quit-or-delete-char eshell-mode-map))))
 
 (use-package em-cmpl
   :ensure eshell
@@ -49,7 +69,7 @@
 
 (use-package em-hist
   :ensure eshell
-  :config (validate-setq eshell-save-history-on-exit t))
+  :config (validate-setq eshell-hist-ignoredups t))
 
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind (("C-c a s t" . shell)
