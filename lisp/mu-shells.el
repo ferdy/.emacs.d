@@ -14,8 +14,6 @@
 (use-package eshell                     ; Emacs command shell
   :bind ("C-c a s e" . eshell)
   :config
-  (validate-setq eshell-scroll-to-bottom-on-input 'all)
-
   ;; Handy aliases
   (defalias 'ff 'find-file)
 
@@ -51,17 +49,21 @@
 
   (defun mu-eshell-quit-or-delete-char (arg)
     (interactive "p")
-    (if (and (eolp) (looking-back eshell-prompt-regexp))
+    (if (and (eolp) (looking-back eshell-prompt-regexp nil nil))
         (progn
           (eshell-life-is-too-much)
           (ignore-errors
             (delete-window)))
-      (delete-forward-char arg)))
+      (delete-char arg)))
 
   (add-hook 'eshell-mode-hook
             (lambda ()
               (bind-key "C-d"
                         #'mu-eshell-quit-or-delete-char eshell-mode-map))))
+
+(use-package esh-mode
+  :ensure eshell
+  :config (validate-setq eshell-scroll-to-bottom-on-input 'all))
 
 (use-package em-cmpl
   :ensure eshell
