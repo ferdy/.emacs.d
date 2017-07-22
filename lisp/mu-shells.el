@@ -12,8 +12,19 @@
 ;;; Code:
 
 (use-package eshell                     ; Emacs command shell
-  :bind ("C-c a s e" . eshell)
+  :bind ("C-c a s e" . eshell-here)
   :config
+  (defun eshell-here ()
+    "Open eshell in the directory associated with the current buffer's file.
+The eshell is renamed to match that directory to make multiple windows easier."
+    (interactive)
+    (let* ((parent (if (buffer-file-name)
+                       (file-name-directory (buffer-file-name))
+                     default-directory))
+           (name   (car (last (split-string parent "/" t)))))
+      (eshell "new")
+      (rename-buffer (concat "*eshell: " name "*"))))
+
   ;; Handy aliases
   (defalias 'ff 'find-file)
 
@@ -61,6 +72,14 @@
               (bind-key "C-d"
                         #'mu-eshell-quit-or-delete-char eshell-mode-map))))
 
+(use-package em-banner
+  :ensure eshell
+  :config
+  (validate-setq
+   eshell-banner-message (concat "Welcome to Eshell, "
+                                 (capitalize user-login-name)
+                                 "!\n\n")))
+
 (use-package esh-mode
   :ensure eshell
   :config (validate-setq eshell-scroll-to-bottom-on-input 'all))
@@ -72,6 +91,23 @@
 (use-package em-hist
   :ensure eshell
   :config (validate-setq eshell-hist-ignoredups t))
+
+(use-package em-term
+  :ensure eshell
+  :config
+  (add-to-list 'eshell-visual-commands "ssh")
+  (add-to-list 'eshell-visual-commands "htop")
+  (add-to-list 'eshell-visual-commands "top")
+  (add-to-list 'eshell-visual-commands "tail")
+  (add-to-list 'eshell-visual-commands "npm"))
+
+(use-package em-cmpl
+  :ensure eshell
+  :config
+  (add-to-list 'eshell-command-completions-alist
+               '("gunzip" "gz\\'"))
+  (add-to-list 'eshell-command-completions-alist
+               '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'")))
 
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind (("C-c a s t" . shell)
