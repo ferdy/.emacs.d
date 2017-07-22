@@ -36,12 +36,6 @@ The eshell is renamed to match that directory to make multiple windows easier."
   (defun eshell/l (&rest args) "Same as `ls -lah'"
          (apply #'eshell/ls "-lah" args))
 
-  (defun eshell/clear ()
-    "Clear the eshell buffer."
-    (interactive)
-    (let ((inhibit-read-only t))
-      (erase-buffer)))
-
   (defun eshell/d ()
     "Open a dired instance of the current working directory."
     (dired "."))
