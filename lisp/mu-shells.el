@@ -11,6 +11,11 @@
 
 ;;; Code:
 
+(use-package shell-switcher             ; Fast switching between shell buffers
+  :ensure t
+  :bind (("C-'"   . shell-switcher-switch-buffer)
+         ("C-M-'" . shell-switcher-new-shell)))
+
 (use-package eshell                     ; Emacs command shell
   :bind ("C-c a s e" . eshell-here)
   :config
