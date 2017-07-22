@@ -58,6 +58,7 @@ The eshell is renamed to match that directory to make multiple windows easier."
        (unintern 'eshell/sudo nil)))
 
   (defun mu-eshell-quit-or-delete-char (arg)
+    "Use C-d to either delete forward char or exit Eshell."
     (interactive "p")
     (if (and (eolp) (looking-back eshell-prompt-regexp nil nil))
         (progn
