@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores my configuration for eshell, shell and ansi-term.
+;; This file stores my configuration for EShell, shell and ansi-term.
 
 ;;; Code:
 
@@ -20,8 +20,8 @@
   :bind ("C-c a s e" . eshell-here)
   :config
   (defun eshell-here ()
-    "Open eshell in the directory associated with the current buffer's file.
-The eshell is renamed to match that directory to make multiple windows easier."
+    "Open EShell in the directory associated with the current buffer's file.
+The EShell is renamed to match that directory to make multiple windows easier."
     (interactive)
     (let* ((parent (if (buffer-file-name)
                        (file-name-directory (buffer-file-name))
@@ -58,7 +58,7 @@ The eshell is renamed to match that directory to make multiple windows easier."
        (unintern 'eshell/sudo nil)))
 
   (defun mu-eshell-quit-or-delete-char (arg)
-    "Use C-d to either delete forward char or exit Eshell."
+    "Use C-d to either delete forward char or exit EShell."
     (interactive "p")
     (if (and (eolp) (looking-back eshell-prompt-regexp nil nil))
         (progn
@@ -76,7 +76,7 @@ The eshell is renamed to match that directory to make multiple windows easier."
   :ensure eshell
   :config
   (validate-setq
-   eshell-banner-message (concat "Welcome to Eshell, "
+   eshell-banner-message (concat "Welcome to EShell, "
                                  (capitalize user-login-name)
                                  "!\n\n")))
 
