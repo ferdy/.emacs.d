@@ -221,6 +221,10 @@ _C-s_: mark region
          ("C-c c r" . copy-as-format-rst)
          ("C-c c s" . copy-as-format-slack)))
 
+(use-package unfill                     ; Smart fill/unfill paragraph
+  :ensure t
+  :bind ([remap fill-paragraph] . unfill-toggle))
+
 ;; C-n adds new line when at the end of a line
 (validate-setq next-line-add-newlines t)
 
@@ -316,19 +320,6 @@ region if active."
       (while (search-forward-regexp regex nil t)
         (move-beginning-of-line nil)
         (kill-whole-line)))))
-
-;;;###autoload
-(defun mu-fill-or-unfill ()
-  "Like `fill-paragraph', but unfill if used twice."
-  (interactive)
-  (let ((fill-column
-         (if (eq last-command 'mu-fill-or-unfill)
-             (progn (setq this-command nil)
-                    (point-max))
-           fill-column)))
-    (call-interactively #'fill-paragraph)))
-
-(bind-key [remap fill-paragraph] #'mu-fill-or-unfill)
 
 ;;;###autoload
 (defun mu-align-repeat (start end regexp &optional justify-right after)
