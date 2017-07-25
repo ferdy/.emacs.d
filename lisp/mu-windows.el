@@ -13,6 +13,14 @@
 
 (validate-setq window-combination-resize t) ; Size new windows proportionally
 
+(use-package eyebrowse                  ; Easy workspaces creation and switching
+  :ensure t
+  :config
+  (validate-setq eyebrowse-switch-back-and-forth t
+                 eyebrowse-wrap-around t)
+
+  (eyebrowse-mode t))
+
 (use-package golden-ratio               ; Automatically resize windows
   :ensure t
   :init
