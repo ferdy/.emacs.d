@@ -16,8 +16,10 @@
 (use-package eyebrowse                  ; Easy workspaces creation and switching
   :ensure t
   :config
-  (validate-setq eyebrowse-switch-back-and-forth t
-                 eyebrowse-wrap-around t)
+  (validate-setq
+   eyebrowse-mode-line-separator " "
+   eyebrowse-switch-back-and-forth t
+   eyebrowse-wrap-around t)
 
   (eyebrowse-mode t))
 
