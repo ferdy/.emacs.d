@@ -131,8 +131,7 @@
    cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
    cider-repl-display-help-banner nil
    cider-repl-pop-to-buffer-on-connect nil
-   cider-repl-result-prefix ";; => "
-   cider-repl-use-pretty-printing t))
+   cider-repl-result-prefix ";; => "))
 
 (use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
