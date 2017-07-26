@@ -54,7 +54,7 @@
 (use-package rainbow-mode               ; Highlight colors
   :ensure t
   :bind ("C-c t R" . rainbow-mode)
-  :config (add-hook 'css-mode-hook #'rainbow-mode))
+  :init (add-hook 'css-mode-hook #'rainbow-mode))
 
 (use-package rainbow-delimiters         ; Highlight parens
   :ensure t
