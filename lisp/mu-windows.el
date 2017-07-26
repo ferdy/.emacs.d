@@ -16,11 +16,7 @@
 (use-package eyebrowse                  ; Easy workspaces creation and switching
   :ensure t
   :config
-  (validate-setq
-   eyebrowse-mode-line-separator " "
-   eyebrowse-switch-back-and-forth t
-   eyebrowse-wrap-around t)
-
+  (validate-setq eyebrowse-mode-line-separator " ")
   (eyebrowse-mode t))
 
 (use-package golden-ratio               ; Automatically resize windows
