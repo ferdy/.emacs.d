@@ -97,14 +97,6 @@
   (which-key-add-major-mode-key-based-replacements 'racer-mode
     "C-c m" "racer/personal")
 
-  (which-key-add-major-mode-key-based-replacements 'scala-mode
-    "C-c C-b" "ensime/build"
-    "C-c C-d" "ensime/debug"
-    "C-c C-r" "ensime/refactor"
-    "C-c C-v" "ensime/misc"
-    "C-c m"   "scala/personal"
-    "C-c m b" "scala/build")
-
   (which-key-add-major-mode-key-based-replacements 'js2-mode
     "C-c m"   "js/personal"
     "C-c m r" "refactor")
