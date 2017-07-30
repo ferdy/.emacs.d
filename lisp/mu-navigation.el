@@ -66,7 +66,7 @@
 (validate-setq set-mark-command-repeat-pop t)
 
 ;; Focus new help windows when opened
-(setq-default  help-window-select t)
+(setq-default help-window-select t)
 
 ;;; Utilities and keybindings
 ;; Better forward and backward paragraph
