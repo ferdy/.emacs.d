@@ -85,9 +85,6 @@
 ;; Hide the cursor in inactive windows
 (setq-default cursor-in-non-selected-windows t)
 
-;; Should make Emacs snappier
-(add-hook 'focus-out-hook #'garbage-collect)
-
 (use-package iso-transl                 ; Fix dead characters
   :demand t)
 
