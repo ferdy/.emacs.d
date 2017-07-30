@@ -65,7 +65,7 @@
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (validate-setq set-mark-command-repeat-pop t)
 
-;; ; Focus new help windows when opened
+;; Focus new help windows when opened
 (setq-default  help-window-select t)
 
 ;;; Utilities and keybindings
