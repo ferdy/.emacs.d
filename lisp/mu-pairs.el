@@ -25,7 +25,13 @@
   :config
   (setq sp-autoskip-closing-pair 'always
         ;; Don't kill entire symbol on C-k
-        sp-hybrid-kill-entire-symbol nil))
+        sp-hybrid-kill-entire-symbol nil
+        ;; Disable debug messages
+        sp-message-width nil
+        ;; Do not escape quotes automatically
+        sp-autoescape-string-quote nil
+        ;; Keep pair content overlay on backward movement
+        sp-cancel-autoskip-on-backward-movement nil))
 
 (use-package smartparens-config         ; Configure Smartparens
   :ensure smartparens
@@ -65,6 +71,33 @@
               ("M-q" . sp-indent-defun))
   :config
   (sp-pair "(" ")" :wrap "M-("))
+
+(with-eval-after-load 'smartparens
+  (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
+  (sp-local-pair 'minibuffer-inactive-mode "`" nil :actions nil)
+  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+  (sp-local-pair 'emacs-lisp-mode "`" nil :actions nil)
+  (sp-local-pair 'lisp-interaction-mode "'" nil :actions nil)
+  (sp-local-pair 'lisp-interaction-mode "`" nil :actions nil)
+  (sp-local-pair 'clojure-mode "'" nil :actions nil)
+  (sp-local-pair 'clojure-mode "`" nil :actions nil)
+  (sp-local-pair 'scheme-mode "'" nil :actions nil)
+  (sp-local-pair 'scheme-mode "`" nil :actions nil)
+  (sp-local-pair 'inferior-scheme-mode "'" nil :actions nil)
+  (sp-local-pair 'inferior-scheme-mode "`" nil :actions nil)
+
+  (sp-local-pair 'LaTeX-mode "\"" nil :actions nil)
+  (sp-local-pair 'LaTeX-mode "'" nil :actions nil)
+  (sp-local-pair 'LaTeX-mode "`" nil :actions nil)
+  (sp-local-pair 'latex-mode "\"" nil :actions nil)
+  (sp-local-pair 'latex-mode "'" nil :actions nil)
+  (sp-local-pair 'latex-mode "`" nil :actions nil)
+  (sp-local-pair 'TeX-mode "\"" nil :actions nil)
+  (sp-local-pair 'TeX-mode "'" nil :actions nil)
+  (sp-local-pair 'TeX-mode "`" nil :actions nil)
+  (sp-local-pair 'tex-mode "\"" nil :actions nil)
+  (sp-local-pair 'tex-mode "'" nil :actions nil)
+  (sp-local-pair 'tex-mode "`" nil :actions nil))
 
 ;; Look for unbalanced parens when saving
 (add-hook 'after-save-hook 'check-parens nil t)
