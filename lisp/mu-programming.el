@@ -445,6 +445,10 @@
   (validate-setq eldoc-idle-delay 0.1)  ; Show eldoc more promptly
   :diminish eldoc-mode)
 
+(use-package devdocs                    ; Search devdocs.io
+  :ensure t
+  :bind ("C-c s d" . devdocs-search))
+
 (use-package etags                      ; Tag navigation
   :defer t
   :config
