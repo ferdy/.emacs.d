@@ -26,6 +26,9 @@
   :ensure t
   :bind ("C-c a f" . elfeed)
   :config
+  (validate-setq elfeed-use-curl t)     ; Use curl to fetch the feeds
+  (elfeed-set-timeout 30)               ; Increase timeout
+
   (validate-setq
    elfeed-feeds
    '(("https://asiaincinema.com/feed/" cinema)
@@ -52,12 +55,7 @@
      ("http://www.slantmagazine.com/rss" cinema)
      ("http://www.thecinegogue.com/feed/" cinema)
      ("http://www.thecinephiliacs.net/feeds/posts/default" cinema)
-     ("http://www.vcinemashow.com/feed/" cinema)))
-
-  (validate-setq elfeed-use-curl t)     ; Use curl to fetch the feeds
-
-  ;; Increse timeout
-  (elfeed-set-timeout 30))
+     ("http://www.vcinemashow.com/feed/" cinema))))
 
 (use-package elfeed-search              ; List feed entries
   :ensure elfeed
