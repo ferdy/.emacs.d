@@ -35,6 +35,7 @@
      ("https://asianfilmstrike.wordpress.com/feed/" cinema)
      ("https://cavallette.noblogs.org/feed" security)
      ("http://chinafilminsider.com/feed/" cinema)
+     ("https://cinebeats.wordpress.com/feed/" cinema)
      ("http://cleojournal.com/feed/" cinema)
      ("http://dilbert.oeey.com/" comic)
      ("https://feeds.feedburner.com/birthmoviesdeath" cinema)
