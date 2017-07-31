@@ -49,8 +49,6 @@
     "C-c b"     "buffers"
     "C-c c"     "compile-and-comments"
     "C-c d"     "develop"
-    "C-c e"     "errors"
-    "C-c e v"   "evalator"
     "C-c f"     "files"
     "C-c m"     "major mode"
     "C-c n"     "navigation"
