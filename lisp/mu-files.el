@@ -24,17 +24,6 @@
   (validate-setq recentf-max-saved-items 200
                  recentf-max-menu-items 15))
 
-(use-package recentf                    ; Manage recent files
-  :init (recentf-mode)
-  :defer t
-  :config
-  (validate-setq recentf-max-saved-items 200
-                 recentf-max-menu-items 15
-                 recentf-exclude (list "/\\.git/.*\\'"
-                                       "/elpa/.*\\'"
-                                       "/tmp/"
-                                       "/ssh:")))
-
 (validate-setq view-read-only t)                 ; View read-only
 (validate-setq large-file-warning-threshold nil) ; No large file warning
 
