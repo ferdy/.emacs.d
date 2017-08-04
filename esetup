@@ -144,7 +144,8 @@ rust_setup() {
   dostep 8 "n" "cargo install tokei"
   dostep 9 "n" "cargo install ripgrep"
   dostep 10 "n" "cargo install --git https://github.com/sharkdp/fd"
-  dostep 11 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
+  dostep 11 "n" "cargo install --git https://github.com/ogham/exa"
+  dostep 12 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
 }
 
 javascript_setup() {
