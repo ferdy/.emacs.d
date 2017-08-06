@@ -27,7 +27,31 @@
                  ispell-choices-win-default-height 5)
 
   (unless ispell-program-name
-    (warn "No spell checker available.  Plese install hunspell.")))
+    (warn "No spell checker available.  Plese install hunspell."))
+
+  (defun ispell-word-then-abbrev (p)
+    "Call `ispell-word', then create an abbrev for it.
+With prefix P, create local abbrev. Otherwise it will
+be global."
+    (interactive "P")
+    (let (bef aft)
+      (save-excursion
+        (while (progn
+                 (backward-word)
+                 (and (setq bef (thing-at-point 'word))
+                      (not (ispell-word nil 'quiet)))))
+        (setq aft (thing-at-point 'word)))
+      (when (and aft bef (not (equal aft bef)))
+        (setq aft (downcase aft))
+        (setq bef (downcase bef))
+        (define-abbrev
+          (if p local-abbrev-table global-abbrev-table)
+          bef aft)
+        (write-abbrev-file)
+        (message "\"%s\" now expands to \"%s\" %sally"
+                 bef aft (if p "loc" "glob")))))
+
+  (bind-key "C-i" #'ispell-word-then-abbrev ctl-x-map))
 
 (use-package flyspell                   ; Spell checking on-the-fly
   :bind (:map flyspell-mode-map
