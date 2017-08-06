@@ -42,7 +42,10 @@
   (put 'dired-find-alternate-file 'disabled nil)
 
   ;; Handle long file names
-  (add-hook 'dired-mode-hook #'toggle-truncate-lines))
+  (add-hook 'dired-mode-hook #'toggle-truncate-lines)
+
+  ;; Hide details
+  (add-hook 'dired-mode-hook #'dired-hide-details-mode))
 
 (use-package find-dired                 ; Run `find' in Dired
   :config (validate-setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
@@ -54,7 +57,7 @@
   :config
   (validate-setq dired-omit-verbose nil ; Be less verbose, Dired
                  ;; Omit dotfiles with C-x M-o
-                 dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+                 dired-omit-files (concat dired-omit-files "^\\...+$"))
   (add-hook 'dired-mode-hook #'dired-omit-mode)
 
   ;; Diminish dired-omit-mode. We need this hack, because Dired Omit Mode has
