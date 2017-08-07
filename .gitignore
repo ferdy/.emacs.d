@@ -52,3 +52,6 @@ network-security.data
 /autosave/
 /backup/
 /ensime/
+
+# borg directories
+/lib/
