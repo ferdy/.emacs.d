@@ -80,8 +80,8 @@
 (use-package cider-mode                 ; CIDER mode for REPL interaction
   :ensure cider
   :defer t
-  :bind(:map cider-mode-map
-             ("C-c m l" . cider-load-all-files))
+  :bind (:map cider-mode-map
+              ("C-c m l" . cider-load-all-files))
   :config
   (require 'cider-client)
 
