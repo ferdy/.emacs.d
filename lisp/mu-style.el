@@ -94,8 +94,15 @@
   :init (global-page-break-lines-mode)
   :diminish page-break-lines-mode)
 
-;;; Prettify symbols
-(global-prettify-symbols-mode 1)
+(use-package prog-mode
+  :config
+  (global-prettify-symbols-mode 1)      ; Prettify symbols
+
+  ;; Visually indicate buffer boundaries
+  (defun mu-indicate-buffer-boundaries-left ()
+    (setq indicate-buffer-boundaries 'left))
+
+  (add-hook 'prog-mode-hook #'mu-indicate-buffer-boundaries-left))
 
 ;; Unprettify symbols with point on them and symbols
 ;; right next to point
