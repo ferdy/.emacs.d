@@ -199,9 +199,9 @@
 
 (setq-default mode-line-format
               '("%e" mode-line-front-space
-                ;; Standard info about the current buffer
-                mu-eyebrowse-mode-line
+                mu-eyebrowse-mode-line  ; Current workspace
                 " "
+                ;; Standard info about the current buffer
                 mode-line-mule-info
                 mode-line-client
                 mode-line-modified
@@ -212,7 +212,7 @@
                 mu-projectile-mode-line ; Project information
                 (vc-mode mu-vc-mode-line) ; VC information
                 (multiple-cursors-mode mc/mode-line) ; Number of cursors
-                ;; And the modes, which I don't really care for anyway
+                ;; And the modes
                 " " mode-line-modes mode-line-end-spaces))
 
 ;;; Utilities and key bindings
