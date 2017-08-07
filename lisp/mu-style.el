@@ -102,7 +102,8 @@
   (defun mu-indicate-buffer-boundaries-left ()
     (setq indicate-buffer-boundaries 'left))
 
-  (add-hook 'prog-mode-hook #'mu-indicate-buffer-boundaries-left))
+  (dolist (hook '(prog-mode-hook text-mode-hook))
+    (add-hook hook #'mu-indicate-buffer-boundaries-left)))
 
 ;; Unprettify symbols with point on them and symbols
 ;; right next to point
