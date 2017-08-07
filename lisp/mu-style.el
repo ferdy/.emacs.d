@@ -164,6 +164,12 @@
 ;; Show buffer position percentage starting from top
 (validate-setq mode-line-percent-position '(-3 "%o"))
 
+(defvar mu-eyebrowse-mode-line
+  '(:propertize
+    (:eval (eyebrowse-mode-line-indicator)))
+  "Mode line format for Eyebrowse.")
+(put 'mu-eyebrowse-mode-line 'risky-local-variable t)
+
 (defvar mu-projectile-mode-line
   '(:propertize
     (:eval (when (ignore-errors (projectile-project-root))
@@ -184,6 +190,8 @@
 (setq-default mode-line-format
               '("%e" mode-line-front-space
                 ;; Standard info about the current buffer
+                mu-eyebrowse-mode-line
+                " "
                 mode-line-mule-info
                 mode-line-client
                 mode-line-modified
@@ -194,9 +202,6 @@
                 mu-projectile-mode-line ; Project information
                 (vc-mode mu-vc-mode-line) ; VC information
                 (multiple-cursors-mode mc/mode-line) ; Number of cursors
-                ;; Misc information, notably battery state and function name
-                " "
-                mode-line-misc-info
                 ;; And the modes, which I don't really care for anyway
                 " " mode-line-modes mode-line-end-spaces))
 
