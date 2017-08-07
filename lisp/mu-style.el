@@ -176,7 +176,7 @@
                     (if (and tag (< 0 (length tag))) tag
                       (when num (int-to-string num)))
                     "]")))
-         (propertize str 'face 'bold)))))
+         str))))
   "Mode line format for Eyebrowse.")
 (put 'mu-eyebrowse-mode-line 'risky-local-variable t)
 
