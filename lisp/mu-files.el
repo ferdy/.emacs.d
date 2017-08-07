@@ -117,11 +117,6 @@
   (imagex-auto-adjust-mode 1)
   (validate-setq imagex-quiet-error t))
 
-(use-package systemd                    ; Major mode for editing systemd units
-  :ensure t
-  :defer t
-  :mode "\\.service\\'")
-
 (use-package rst                        ; ReStructuredText
   :defer t
   :bind (:map rst-mode-map
