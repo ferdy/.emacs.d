@@ -17,6 +17,7 @@
   :ensure t
   :config
   (validate-setq eyebrowse-mode-line-separator " "
+                 eyebrowse-mode-line-style 'always
                  eyebrowse-new-workspace t)
 
   (eyebrowse-mode t))
