@@ -15,10 +15,13 @@
 
 (use-package eyebrowse                  ; Easy workspaces creation and switching
   :ensure t
+  :bind (("C-c C-è" . eyebrowse-next-window-config)
+         ("C-c C-+" . eyebrowse-prev-window-config))
   :config
   (validate-setq eyebrowse-mode-line-separator " "
                  eyebrowse-mode-line-style 'always
-                 eyebrowse-new-workspace t)
+                 eyebrowse-new-workspace t
+                 eyebrowse-wrap-around t)
 
   (eyebrowse-mode t))
 
