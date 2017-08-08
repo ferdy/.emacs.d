@@ -17,13 +17,12 @@
   :ensure t
   :bind (("C-c C-è" . eyebrowse-next-window-config)
          ("C-c C-+" . eyebrowse-prev-window-config))
+  :init (eyebrowse-mode t)
   :config
   (validate-setq eyebrowse-mode-line-separator " "
                  eyebrowse-mode-line-style 'always
                  eyebrowse-new-workspace t
-                 eyebrowse-wrap-around t)
-
-  (eyebrowse-mode t))
+                 eyebrowse-wrap-around t))
 
 (use-package golden-ratio               ; Automatically resize windows
   :ensure t
