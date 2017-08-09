@@ -43,6 +43,9 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'horizontal-scroll-bar-mode) (horizontal-scroll-bar-mode -1))
 
+;; Do not pop up *Messages* when clicking on the minibuffer
+(bind-key [mouse-1] #'ignore minibuffer-inactive-mode-map)
+
 ;; Turn off annoying settings
 (blink-cursor-mode -1)
 (tooltip-mode -1)
