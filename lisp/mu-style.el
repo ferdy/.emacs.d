@@ -178,8 +178,9 @@
                     " ["
                     (if (and tag (< 0 (length tag))) tag
                       (when num (int-to-string num)))
-                    "]")))
-         str))))
+                    "] ")))
+         str)))
+    face font-lock-negation-char-face)
   "Mode line format for Eyebrowse.")
 (put 'mu-eyebrowse-mode-line 'risky-local-variable t)
 
@@ -196,12 +197,13 @@
          ;; Strip the backend name from the VC status information
          (:eval (let ((backend (symbol-name (vc-backend (buffer-file-name)))))
                   (substring vc-mode (+ (length backend) 2))))
-         face font-lock-variable-name-face))
+         face font-lock-keyword-face))
   "Mode line format for VC Mode.")
 (put 'mu-vc-mode-line 'risky-local-variable t)
 
 (setq-default mode-line-format
               '("%e" mode-line-front-space
+                mu-eyebrowse-mode-line ; Current workspace
                 ;; Standard info about the current buffer
                 mode-line-mule-info
                 mode-line-client
@@ -210,7 +212,6 @@
                 mode-line-frame-identification
                 mode-line-buffer-identification " " mode-line-position
                 ;; Some specific information about the current buffer:
-                mu-eyebrowse-mode-line ; Current workspace
                 mu-projectile-mode-line ; Project information
                 (vc-mode mu-vc-mode-line) ; VC information
                 (multiple-cursors-mode mc/mode-line) ; Number of cursors
