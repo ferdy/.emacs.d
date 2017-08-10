@@ -56,6 +56,11 @@
      ("http://www.slantmagazine.com/rss" cinema)
      ("http://www.thecinegogue.com/feed/" cinema)
      ("http://www.thecinephiliacs.net/feeds/posts/default" cinema)
+     ("https://www.theguardian.com/uk/commentisfree/rss" news)
+     ("https://www.theguardian.com/uk/culture/rss" news)
+     ("https://www.theguardian.com/uk/environment/rss" news)
+     ("https://www.theguardian.com/uk-news/rss" news)
+     ("https://www.theguardian.com/world/rss" news)
      ("http://www.vcinemashow.com/feed/" cinema))))
 
 (use-package elfeed-search              ; List feed entries
