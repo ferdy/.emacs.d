@@ -170,14 +170,6 @@ _C-s_: mark region
     (add-hook hook 'typo-mode))
   :diminish typo-mode)
 
-(use-package string-edit                ; Edit strings in a separate buffer
-  :ensure t
-  :bind ("C-c x s" . string-edit-at-point))
-
-(use-package string-inflection          ; Cycle cases
-  :ensure t
-  :bind ("C-c x c" . string-inflection-cycle))
-
 (use-package writeroom-mode             ; Distraction-free interface
   :ensure t
   :bind ("C-c t r" . writeroom-mode))
