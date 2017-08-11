@@ -152,10 +152,11 @@ _C-s_: mark region
 (use-package copyright                  ; Deal with copyright notices
   :defer t
   :config
-  ;; Use ranges to denote consecutive years
-  (validate-setq copyright-year-ranges t
-                 ;; Limit copyright changes to my own copyright
-                 copyright-names-regexp (regexp-quote user-full-name)))
+  (validate-setq
+   ;; Use ranges to denote consecutive years
+   copyright-year-ranges t
+   ;; Limit copyright changes to my own copyright
+   copyright-names-regexp (regexp-quote user-full-name)))
 
 (use-package typo                       ; Automatically use typographic quotes
   :ensure t
