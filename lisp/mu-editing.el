@@ -13,11 +13,6 @@
 
 (prefer-coding-system 'utf-8)
 
-(use-package zop-to-char                ; Better zap-to-char
-  :ensure t
-  :bind (("M-z" . zop-to-char)
-         ("M-Z" . zop-up-to-char)))
-
 (use-package whitespace-cleanup-mode    ; Cleanup whitespace in buffers
   :ensure t
   :bind (("C-c t w" . whitespace-cleanup-mode)
@@ -183,19 +178,6 @@ _C-s_: mark region
   (add-hook 'latex-mode-hook
             (lambda () (setq-local tildify-space-string "~")))
   :diminish tildify-mode)
-
-(use-package wrap-region                ; Wrap a region with symbols and tags
-  :ensure t
-  :bind ("C-c t W" . wrap-region-mode)
-  :config
-  (wrap-region-add-wrappers
-   '(("*" "*" nil org-mode)
-     ("~" "~" nil org-mode)
-     ("/" "/" nil org-mode)
-     ("=" "=" nil org-mode)
-     ("_" "_" nil org-mode)
-     ("/* " " */" "#" (javascript-mode css-mode))
-     ("`" "`" nil markdown-mode))))
 
 (use-package aggressive-indent          ; Automatically indent code
   :ensure t
