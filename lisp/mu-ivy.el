@@ -69,7 +69,7 @@
    ;; Jump to the beginning of match when leaving Swiper
    swiper-goto-start-of-match t))
 
-(use-package amex                       ; Better M-x interface
+(use-package smex                       ; Better M-x interface
   :ensure t)
 
 (use-package counsel                    ; Completion functions with Ivy
