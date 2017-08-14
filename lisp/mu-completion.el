@@ -44,6 +44,9 @@ _e_: extra   _l_: list        _n_: new
     ("a" yas-reload-all))
   :diminish yas-minor-mode)
 
+(use-package yasnippet-snippets         ; Collection of snippets
+  :ensure t)
+
 (use-package abbrev                     ; Save abbreviations
   :init (abbrev-mode)
   :config (validate-setq save-abbrevs t)
