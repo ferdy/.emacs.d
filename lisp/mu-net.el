@@ -39,6 +39,7 @@
      ("http://cleojournal.com/feed/" cinema)
      ("http://dilbert.oeey.com/" comic)
      ("https://feeds.feedburner.com/birthmoviesdeath" cinema)
+     ("https://feeds2.feedburner.com/PatrickRothfuss" books)
      ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)
      ("http://outlawvern.com/feed/" cinema)
      ("http://planet.clojure.in/atom.xml" lisp)
