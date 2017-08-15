@@ -200,6 +200,10 @@ _C-s_: mark region
   :ensure t
   :bind ([remap fill-paragraph] . unfill-toggle))
 
+(use-package string-edit                ; Edit strings in a separate buffer
+  :ensure t
+  :bind ("C-c x s" . string-edit-at-point))
+
 ;; C-n adds new line when at the end of a line
 (validate-setq next-line-add-newlines t)
 
