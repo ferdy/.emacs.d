@@ -127,22 +127,24 @@
                  custom-unlispify-menu-entries nil)
   :init (load mu-custom-file 'no-error 'no-message))
 
-;; Set the directory where all backup and autosave files will be saved
-(validate-setq
- backup-directory-alist '((".*" . "~/.emacs.d/backup"))
- version-control        t          ; Version number for backup files
- delete-old-versions    t)
-
-(validate-setq
- auto-save-list-file-prefix     "~/.emacs.d/autosave/"
- auto-save-file-name-transforms '((".*" "~/.emacs.d/autosave/" t)))
-
 (use-package no-littering               ; Keep .emacs.d clean
   :ensure t
   :config
   (require 'recentf)
   (add-to-list 'recentf-exclude no-littering-var-directory)
-  (add-to-list 'recentf-exclude no-littering-etc-directory))
+  (add-to-list 'recentf-exclude no-littering-etc-directory)
+
+  (validate-setq create-lockfiles nil
+                 delete-old-versions t
+                 kept-new-versions 6
+                 kept-old-versions 2
+                 version-control t)
+
+  (validate-setq
+   backup-directory-alist
+   `((".*" . ,(no-littering-expand-var-file-name "backup/")))
+   auto-save-file-name-transforms
+   `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
 
 (use-package server                     ; The server of `emacsclient'
   :config (or (server-running-p) (server-mode)))
