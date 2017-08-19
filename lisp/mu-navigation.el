@@ -69,8 +69,7 @@
          ("M-g i" . dumb-jump-go-prompt)
          ("M-g x" . dumb-jump-go-prefer-external)
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
-  :config
-  (validate-setq dumb-jump-selector 'ivy))
+  :config (validate-setq dumb-jump-selector 'ivy))
 
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (validate-setq set-mark-command-repeat-pop t)
