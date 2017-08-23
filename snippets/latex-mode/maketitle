@@ -1,8 +1,0 @@
-# -*- mode: snippet -*-
-# name: maketitle
-# key: mt
-# --
-\begingroup
-\let\newpage\relax
-\maketitle
-\endgroup

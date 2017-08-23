@@ -1,4 +1,0 @@
-# name: colnum
-# key: colnum
-# --
-#+TBLFM: \$1=vlen(@I\$1..0);EN

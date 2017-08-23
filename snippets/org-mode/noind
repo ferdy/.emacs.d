@@ -1,7 +1,0 @@
-# name: noind
-# key: noind
-# --
-# * Local Variables
-# Local Variables:
-# eval: (org-indent-mode -1)
-# End:
