@@ -81,7 +81,7 @@
   :ensure cider
   :defer t
   :bind (:map cider-mode-map
-              ("C-c m l" . cider-load-all-files))
+              ("C-c m l" . cider-load-all-project-ns))
   :config
   (require 'cider-client)
 
