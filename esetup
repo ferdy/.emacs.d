@@ -88,7 +88,7 @@ scheme_setup() {
   dostep 6 "n" "chicken-install -s rfc3339 hyde webkit"
   dostep 7 "n" "cd $(csi -p '(chicken-home)')"
   dostep 8 "n" "scheme_curl"
-  dostep 9 "n" "cd $HOME"
+  dostep 9 "n" "cd"
 }
 
 commonlisp_setup() {
@@ -99,11 +99,11 @@ commonlisp_setup() {
 
 clojure_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends openjdk-8-jdk openjdk-8-source"
-  if [ ! -d "$HOME/bin" ]; then
-    dostep 2 "n" "mkdir -p $HOME/bin"
+  if [ ! -d "~/bin" ]; then
+    dostep 2 "n" "mkdir -p ~/bin"
   fi
-  dostep 3 "n" "wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O $HOME/bin/lein"
-  dostep 4 "n" "chmod 755 $HOME/bin/lein"
+  dostep 3 "n" "wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O ~/bin/lein"
+  dostep 4 "n" "chmod 755 ~/bin/lein"
   dostep 5 "n" "lein"
 }
 
@@ -145,7 +145,7 @@ rust_setup() {
   dostep 9 "n" "cargo install ripgrep"
   dostep 10 "n" "cargo install --git https://github.com/sharkdp/fd"
   dostep 11 "n" "cargo install --git https://github.com/ogham/exa"
-  dostep 12 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
+  dostep 12 "y" "ln -s ~/.cargo/bin/rg /usr/local/bin/rg"
   dostep 13 "n" "git clone --depth 1 git@github.com:lotabout/skim.git ~/.skim"
   dostep 14 "n" "~/.skim/install"
   dostep 15 "y" "sudo cp ~/.skim/bin/sk /usr/local/bin"
@@ -207,7 +207,7 @@ if [ "$1" == "-y" ]; then
   all="-y"
 fi
 
-cd "$HOME"
+cd
 announce PREREQUISITES
 prerequisites
 announce TLS
