@@ -146,6 +146,9 @@ rust_setup() {
   dostep 10 "n" "cargo install --git https://github.com/sharkdp/fd"
   dostep 11 "n" "cargo install --git https://github.com/ogham/exa"
   dostep 12 "y" "ln -s $HOME/.cargo/bin/rg /usr/local/bin/rg"
+  dostep 13 "n" "git clone --depth 1 git@github.com:lotabout/skim.git ~/.skim"
+  dostep 14 "n" "~/.skim/install"
+  dostep 15 "y" "sudo cp ~/.skim/bin/sk /usr/local/bin"
 }
 
 javascript_setup() {
