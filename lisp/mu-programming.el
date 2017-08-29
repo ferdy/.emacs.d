@@ -160,11 +160,6 @@
   :defer t
   :after clojure-mode)
 
-(use-package datomic-snippets           ; Yasnippets for Datomic
-  :ensure t
-  :defer t
-  :after clojure-mode)
-
 ;;; Scheme
 (use-package scheme                     ; Configuration for Scheme
   :defer t
