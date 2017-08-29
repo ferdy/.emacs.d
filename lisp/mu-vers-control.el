@@ -12,7 +12,7 @@
 ;;; Code:
 
 (use-package vc-hooks                   ; Simple version control
-  :defer t
+  :bind ("C-c v r" . vc-refresh-state)
   :config
   ;; Always follow symlinks to files in VCS repos
   (validate-setq vc-follow-symlinks t))
