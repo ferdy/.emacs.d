@@ -57,9 +57,18 @@ dostep() {
 
 prerequisites() {
   dostep 1 "y" "apt-get -y install --no-install-recommends make gcc automake autoconf"
-  dostep 2 "y" "apt-get -y install --no-install-recommends g++ git git-flow curl"
+  dostep 2 "y" "apt-get -y install --no-install-recommends g++ git curl"
   dostep 3 "y" "apt-get -y install --no-install-recommends gnupg autojump"
   dostep 4 "y" "apt-get -y install --no-install-recommends libxml2-utils"
+}
+
+git_flow_setup() {
+  dostep 1 "n" "wget https://github.com/petervanderdoes/gitflow-avh/archive/master.zip"
+  dostep 2 "n" "unzip master.zip"
+  dostep 3 "n" "cd gitflow-avh-master"
+  dostep 4 "y" "make install"
+  dostep 5 "n" "cd .."
+  dostep 6 "n" "rm -rf master.zip gitflow-avh-master"
 }
 
 tls_setup() {
@@ -210,6 +219,8 @@ fi
 cd
 announce PREREQUISITES
 prerequisites
+announce GIT-FLOW
+git_flow_setup
 announce TLS
 tls_setup
 announce KEYCHAIN
