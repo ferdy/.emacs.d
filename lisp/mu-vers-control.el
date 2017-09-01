@@ -73,6 +73,11 @@
   :diminish (magit-wip-after-save-local-mode
              magit-wip-before-change-mode))
 
+(use-package magit-gitflow              ; gitflow extension for Magit
+  :ensure t
+  :after magit
+  :config (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))
+
 (use-package git-commit                 ; Git commit message mode
   :ensure t
   :init (global-git-commit-mode)
