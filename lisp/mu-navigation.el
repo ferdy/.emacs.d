@@ -53,20 +53,17 @@
 
 (use-package beginend                   ; Redefine M-< and M-> for some modes
   :ensure t
-  :config (beginend-global-mode)
-  :diminish (beginend-bs-mode
-             beginend-compilation-mode
-             beginend-dired-mode
-             beginend-elfeed-search-mode
-             beginend-global-mode
-             beginend-ibuffer-mode
-             beginend-magit-status-mode
-             beginend-message-mode
-             beginend-occur-mode
-             beginend-org-agenda-mode
-             beginend-prog-mode
-             beginend-recentf-dialog-mode
-             beginend-vc-dir-mode))
+  :config
+  (defun mu-diminish-all-beginend-modes ()
+    "Diminish all lighters `beginend-global-mode' activates."
+    (interactive)
+    (mapc (lambda (pair)
+            (diminish (cdr pair)))
+          beginend-modes))
+
+  (beginend-global-mode)
+
+  (add-hook 'beginend-global-mode-hook #'ejmr-diminish-all-beginend-modes))
 
 (use-package dumb-jump                  ; Jump to definitions
   :ensure t
