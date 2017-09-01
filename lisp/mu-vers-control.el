@@ -76,7 +76,8 @@
 (use-package magit-gitflow              ; gitflow extension for Magit
   :ensure t
   :after magit
-  :config (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))
+  :config (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
+  :diminish magit-gitflow-mode)
 
 (use-package git-commit                 ; Git commit message mode
   :ensure t
