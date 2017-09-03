@@ -48,7 +48,7 @@
   :defer t
   :after ivy)
 
-(use-package ivy-pages                 ; Jump to pages with Ivy
+(use-package ivy-pages                  ; Jump to pages with Ivy
   :ensure t
   :defer t
   :bind ("C-c n p" . ivy-pages))
