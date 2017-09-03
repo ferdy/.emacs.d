@@ -285,16 +285,6 @@
         (setq python-shell-interpreter ipython)
       (warn "IPython is missing, falling back to default python"))))
 
-(use-package anaconda-mode              ; Powerful Python backend for Emacs
-  :ensure t
-  :defer t
-  :after python
-  :init (add-hook 'python-mode-hook #'anaconda-mode))
-
-(use-package pip-requirements           ; requirements.txt files
-  :ensure t
-  :defer t)
-
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
   :mode ("\\.sql\\'" . sql-mode)

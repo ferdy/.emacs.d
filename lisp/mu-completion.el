@@ -124,11 +124,6 @@ _e_: extra   _l_: list        _n_: new
   :after company
   :config (add-to-list 'company-backends 'company-shell))
 
-(use-package company-anaconda           ; Python backend for Company
-  :ensure t
-  :after company
-  :config (add-to-list 'company-backends 'company-anaconda))
-
 (use-package company-restclient         ; Company support for restclient
   :ensure t
   :after company
