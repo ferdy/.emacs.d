@@ -20,7 +20,8 @@
 
 (use-package helpful                    ; A better *help* buffer
   :ensure t
-  :bind (("C-c h c" . helpful-command)
+  :bind (("C-c h C" . helpful-callable)
+         ("C-c h c" . helpful-command)
          ("C-c h f" . helpful-function)
          ("C-c h m" . helpful-macro)))
 
