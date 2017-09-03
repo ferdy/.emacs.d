@@ -13,7 +13,7 @@
 
 (use-package ivy                        ; Incremental Vertical completYon
   :ensure t
-  :bind (("C-c C-r" . ivy-resume)
+  :bind (("C-c r"   . ivy-resume)
          ("C-x C-r" . ivy-switch-buffer)
          :map ivy-minibuffer-map
          ("RET" . ivy-alt-done)
