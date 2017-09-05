@@ -89,6 +89,11 @@ be global."
   :bind (:map flyspell-mode-map
               ("C-c $" . flyspell-correct-word-generic)))
 
+(use-package auto-correct               ; Automatically fix past corrections
+  :ensure t
+  :init (auto-correct-mode)
+  :diminish auto-correct-mode)
+
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
   :ensure t
