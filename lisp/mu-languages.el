@@ -100,6 +100,10 @@ be global."
   :bind (("C-c a L d" . wordnut-search)
          ("C-c a L D" . wordnut-lookup-current-word)))
 
+(use-package sdcv-mode
+  :load-path "extra"
+  :bind ("C-c a L s" . sdcv-search))
+
 (provide 'mu-languages)
 
 ;; Local Variables:
