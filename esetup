@@ -194,7 +194,7 @@ flyspell_setup() {
 }
 
 wordnet_setup() {
-  dostep 1 "y" "apt-get -y install --no-install-recommends wordnet sdcv"
+  dostep 1 "y" "apt-get -y install --no-install-recommends wordnet"
 }
 
 font_setup() {
