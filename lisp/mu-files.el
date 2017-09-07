@@ -98,6 +98,10 @@
   (unless noninteractive
     (add-hook 'kill-emacs-hook #'mu-pdf-set-all-last-viewed-bookmarks)))
 
+(use-package nov                        ; EPUB reader
+  :ensure t
+  :config (push '("\\.epub\\'" . nov-mode) auto-mode-alist))
+
 (use-package archive-mode                   ; Browse archive files
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
 
