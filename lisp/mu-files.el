@@ -67,7 +67,7 @@
   :bind (:map pdf-view-mode-map
               ("M-w" . pdf-view-kill-ring-save)
               ("M-g" . pdf-view-goto-page))
-  :init(pdf-tools-install)
+  :init (pdf-tools-install)
   :config
   ;; Workaround to re-open last viewed page:
   ;; https://github.com/politza/pdf-tools/issues/18#issuecomment-269515117
