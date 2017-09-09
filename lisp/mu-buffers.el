@@ -49,7 +49,8 @@
  display-buffer-alist
  `(
    ;; Messages, errors, Calendar and REPLs in the bottom side window
-   (,(rx bos (or "*Help"             ; Help buffers
+   (,(rx bos (or "*Man"              ; Man buffers
+                 "*Help"             ; Help buffers
                  "*Warnings*"        ; Emacs warnings
                  "*Compile-Log*"     ; Emacs byte compiler log
                  "*compilation"      ; Compilation buffers
