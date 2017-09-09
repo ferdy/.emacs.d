@@ -57,7 +57,8 @@
   :config
   (validate-setq dired-omit-verbose nil ; Be less verbose, Dired
                  ;; Omit dotfiles with C-x M-o
-                 dired-omit-files (concat dired-omit-files "^\\...+$"))
+                 dired-omit-files (concat dired-omit-files "^\\...+$")
+                 dired-clean-confirm-killing-deleted-buffers nil)
   (add-hook 'dired-mode-hook #'dired-omit-mode)
 
   ;; Diminish dired-omit-mode. We need this hack, because Dired Omit Mode has
