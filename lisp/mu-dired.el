@@ -15,8 +15,7 @@
   :defer t
   :bind (("<C-return>" . mu-open-in-external-app)
          ("C-c f g"    . mu-dired-get-size)
-         ("C-c f f"    . find-name-dired)
-         ("C-c f r"    . mu-dired-recent-dirs))
+         ("C-c f f"    . find-name-dired))
   :bind (:map dired-mode-map
               ("M-<up>"   . mu-dired-up)
               ("M-p"      . mu-dired-up)
@@ -24,8 +23,7 @@
               ("RET"      . find-file-reuse-dir-buffer)
               ("M-<down>" . mu-dired-down)
               ("M-n"      . mu-dired-down)
-              ("!"        . mu-sudired)
-              ("e"        . mu-ediff-files))
+              ("!"        . mu-sudired))
   :config
   (validate-setq dired-auto-revert-buffer t ; Revert buffers on revisiting
                  dired-listing-switches
@@ -52,8 +50,6 @@
 
 (use-package dired-x                    ; Enable some nice Dired features
   :bind ("C-x C-j" . dired-jump)
-  :bind (:map dired-mode-map
-              ("Y" . mu-dired-rsync))
   :config
   (validate-setq dired-omit-verbose nil ; Be less verbose, Dired
                  ;; Omit dotfiles with C-x M-o
@@ -132,75 +128,6 @@ The app is chosen from your OS's preference."
        (progn
          (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
          (match-string 1))))))
-
-;;;###autoload
-(defun mu-dired-rsync (dest)
-  "Copy files with `rysnc' to DEST."
-  (interactive
-   (list
-    (expand-file-name
-     (read-file-name
-      "Rsync to:"
-      (dired-dwim-target-directory)))))
-  ;; Store all selected files into "files" list
-  (let ((files (dired-get-marked-files
-                nil current-prefix-arg))
-        (mu-rsync-command
-         "rsync -arvz --progress "))
-    ;; Add all selected file names as arguments to the rsync command
-    (dolist (file files)
-      (setq mu-rsync-command
-            (concat mu-rsync-command
-                    (shell-quote-argument file)
-                    " ")))
-    ;; Append the destination
-    (setq mu-rsync-command
-          (concat mu-rsync-command
-                  (shell-quote-argument dest)))
-    ;; Run the async shell command
-    (async-shell-command mu-rsync-command "*rsync*")
-    ;; Finally, switch to that window
-    (other-window 1)))
-
-;;;###autoload
-(defun mu-dired-recent-dirs ()
-  "List recently used directories and open the selected one in dired."
-  (interactive)
-  (let ((recent-dirs
-         (delete-dups
-          (mapcar (lambda (file)
-                    (if (file-directory-p file)
-                        file
-                      (file-name-directory file)))
-                  recentf-list))))
-    (let ((dir (ivy-read "Directory: "
-                         recent-dirs
-                         :re-builder #'ivy--regex
-                         :sort nil
-                         :initial-input nil)))
-      (dired dir))))
-
-;;;###autoload
-(defun mu-ediff-files ()
-  "Ediff files from Dired."
-  (interactive)
-  (let ((files (dired-get-marked-files))
-        (wnd (current-window-configuration)))
-    (if (<= (length files) 2)
-        (let ((file1 (car files))
-              (file2 (if (cdr files)
-                         (cadr files)
-                       (read-file-name
-                        "file: "
-                        (dired-dwim-target-directory)))))
-          (if (file-newer-than-file-p file1 file2)
-              (ediff-files file2 file1)
-            (ediff-files file1 file2))
-          (add-hook 'ediff-after-quit-hook-internal
-                    (lambda ()
-                      (setq ediff-after-quit-hook-internal nil)
-                      (set-window-configuration wnd))))
-      (error "No more than 2 files should be marked"))))
 
 (provide 'mu-dired)
 
