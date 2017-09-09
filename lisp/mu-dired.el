@@ -28,8 +28,6 @@
   (validate-setq dired-auto-revert-buffer t ; Revert buffers on revisiting
                  dired-listing-switches
                  "-lFaGh1v --group-directories-first"  ; Add ls switches
-                 global-auto-revert-non-file-buffers t ; Auto refresh Dired
-                 auto-revert-verbose nil               ; But be quiet about it
                  dired-dwim-target t              ; Use other pane as target
                  dired-recursive-copies 'always   ; Copy dirs recursively
                  dired-recursive-deletes ' always ; Delete dirs recursively
