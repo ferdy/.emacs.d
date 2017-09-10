@@ -54,6 +54,7 @@
      ("http://www.rogerebert.com/feed/" cinema)
      ("http://www.savagechickens.com/feed" comic)
      ("http://www.scheme.dk/planet/atom.xml" lisp)
+     ("http://www.signature-reads.com/feed/" books)
      ("http://www.slantmagazine.com/rss" cinema)
      ("http://www.thecinegogue.com/feed/" cinema)
      ("http://www.thecinephiliacs.net/feeds/posts/default" cinema)
