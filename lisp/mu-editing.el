@@ -204,6 +204,11 @@ _C-s_: mark region
   :ensure t
   :bind ("C-c x s" . string-edit-at-point))
 
+(use-package fancy-narrow               ; narrow-to-region with more eye candy
+  :ensure t
+  :init (fancy-narrow-mode)
+  :diminish fancy-narrow-mode)
+
 ;; C-n adds new line when at the end of a line
 (validate-setq next-line-add-newlines t)
 
@@ -389,37 +394,6 @@ Including `indent-buffer', which should not be called automatically on save."
   (indent-buffer))
 
 (bind-key "C-c t c" #'cleanup-buffer)
-
-;;;###autoload
-(defun narrow-or-widen-dwim (p)
-  "Widen if buffer is narrowed, narrow-dwim otherwise.
-Dwim means: region, org-src-block, org-subtree, or defun,
-whichever applies first.  Narrowing to org-src-block actually
-calls `org-edit-src-code'.
-
-With prefix P, don't widen, just narrow even if buffer is
-already narrowed."
-  (interactive "P")
-  (declare (interactive-only))
-  (cond ((and (buffer-narrowed-p) (not p)) (widen))
-        ((region-active-p)
-         (narrow-to-region (region-beginning) (region-end)))
-        ((derived-mode-p 'org-mode)
-         ;; `org-edit-src-code' is not a real narrowing
-         ;; command. Remove this first conditional if you
-         ;; don't want it.
-         (cond ((ignore-errors (org-edit-src-code))
-                (delete-other-windows))
-               ((ignore-errors (org-narrow-to-block) t))
-               (t (org-narrow-to-subtree))))
-        ((derived-mode-p 'latex-mode)
-         (LaTeX-narrow-to-environment))
-        (t (narrow-to-defun))))
-
-(bind-key "C-x n" #'narrow-or-widen-dwim)
-
-(with-eval-after-load 'latex
-  (bind-key "C-x n" nil LaTeX-mode-map))
 
 ;;;###autoload
 (defun mu-smart-kill-whole-line (&optional arg)
