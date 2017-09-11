@@ -121,6 +121,10 @@
                      " ")))
   (add-hook 'markdown-mode-hook #'auto-fill-mode))
 
+(use-package dockerfile-mode            ; Edit docker's Dockerfiles
+  :ensure t
+  :mode ("Dockerfile\\'" . dockerfile-mode))
+
 ;;; Utilities and keybindings
 (defun mu-current-file ()
   "Gets the \"file\" of the current buffer.
