@@ -364,10 +364,6 @@
   (with-eval-after-load 'css-mode
     (bind-key "C-c m f" #'web-beautify-css css-mode-map)))
 
-(use-package php-mode                   ; Better PHP support
-  :ensure t
-  :mode "\\.php\\'")
-
 (use-package yaml-mode                  ; Edit YAML files
   :ensure t
   :mode "\\.yaml\\'")
