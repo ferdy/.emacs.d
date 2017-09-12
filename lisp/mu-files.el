@@ -70,7 +70,7 @@
 
 (use-package nov                        ; EPUB reader
   :ensure t
-  :config (push '("\\.epub\\'" . nov-mode) auto-mode-alist))
+  :mode ("\\.epub\\'" . nov-mode))
 
 (use-package archive-mode                   ; Browse archive files
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
