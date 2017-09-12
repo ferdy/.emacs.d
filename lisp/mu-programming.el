@@ -301,13 +301,8 @@
 ;;; Web development
 (use-package web-mode                   ; Major mode for editing web templates
   :ensure t
-  :defer t
-  :init
-  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.html\\.twig\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.ftl?\\'" . web-mode)))
+  :mode ("\\.html?\\'"
+         "\\.php\\'"))
 
 (use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
