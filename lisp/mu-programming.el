@@ -302,7 +302,8 @@
 (use-package web-mode                   ; Major mode for editing web templates
   :ensure t
   :mode ("\\.html?\\'"
-         "\\.php\\'"))
+         "\\.php\\'"
+         "\\.tpl\\'"))
 
 (use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
