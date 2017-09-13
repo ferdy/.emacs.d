@@ -63,10 +63,11 @@
 
 (use-package pdf-tools                  ; Better PDF support
   :ensure t
+  :mode ("\\.pdf\\'" . pdf-view-mode)
   :bind (:map pdf-view-mode-map
               ("M-w" . pdf-view-kill-ring-save)
               ("M-g" . pdf-view-goto-page))
-  :init (pdf-tools-install))
+  :config (pdf-tools-install))
 
 (use-package nov                        ; EPUB reader
   :ensure t
