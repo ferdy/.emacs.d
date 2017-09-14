@@ -70,6 +70,9 @@
 
   ;; Refresh `magit-status' after saving a buffer
   (add-hook 'after-save-hook #'magit-after-save-refresh-status)
+
+  ;; Free C-c C-w for Eyebrowse
+  (unbind-key "C-c C-w" git-commit-mode-map)
   :diminish (magit-wip-after-save-local-mode
              magit-wip-before-change-mode))
 
