@@ -23,15 +23,13 @@
                   clojure-mode-hook))
     (add-hook hook #'smartparens-strict-mode))
   :config
-  (setq sp-autoskip-closing-pair 'always
-        ;; Don't kill entire symbol on C-k
-        sp-hybrid-kill-entire-symbol nil
-        ;; Disable debug messages
-        sp-message-width nil
-        ;; Do not escape quotes automatically
-        sp-autoescape-string-quote nil
-        ;; Keep pair content overlay on backward movement
-        sp-cancel-autoskip-on-backward-movement nil))
+  (validate-setq sp-autoskip-closing-pair 'always
+                 ;; Don't kill entire symbol on C-k
+                 sp-hybrid-kill-entire-symbol nil
+                 ;; Disable debug messages
+                 sp-message-width nil
+                 ;; Keep pair content overlay on backward movement
+                 sp-cancel-autoskip-on-backward-movement nil))
 
 (use-package smartparens-config         ; Configure Smartparens
   :ensure smartparens
@@ -98,6 +96,10 @@
   (sp-local-pair 'tex-mode "\"" nil :actions nil)
   (sp-local-pair 'tex-mode "'" nil :actions nil)
   (sp-local-pair 'tex-mode "`" nil :actions nil))
+
+(use-package syntactic-close            ; Automatically insert closing delimiter
+  :ensure t
+  :bind ("C-c x c" . syntactic-close))
 
 ;; Look for unbalanced parens when saving
 (add-hook 'after-save-hook 'check-parens nil t)
