@@ -146,16 +146,16 @@ current Projectile project, or to the current buffer's
 `default-directory', if the file is not part of any project.
 Otherwise copy the non-directory part only."
   (interactive "P")
-  (if-let ((file-name (mu-current-file))
-           (name-to-copy
-            (cond
-             ((zerop (prefix-numeric-value arg)) file-name)
-             ((consp arg)
-              (let* ((projectile-require-project-root nil)
-                     (directory (and (fboundp 'projectile-project-root)
-                                     (projectile-project-root))))
-                (file-relative-name file-name directory)))
-             (t (file-name-nondirectory file-name)))))
+  (if-let* ((file-name (mu-current-file))
+            (name-to-copy
+             (cond
+              ((zerop (prefix-numeric-value arg)) file-name)
+              ((consp arg)
+               (let* ((projectile-require-project-root nil)
+                      (directory (and (fboundp 'projectile-project-root)
+                                      (projectile-project-root))))
+                 (file-relative-name file-name directory)))
+              (t (file-name-nondirectory file-name)))))
       (progn
         (kill-new name-to-copy)
         (message "%s" name-to-copy))
