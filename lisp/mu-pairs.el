@@ -23,13 +23,14 @@
                   clojure-mode-hook))
     (add-hook hook #'smartparens-strict-mode))
   :config
-  (validate-setq sp-autoskip-closing-pair 'always
-                 ;; Don't kill entire symbol on C-k
-                 sp-hybrid-kill-entire-symbol nil
-                 ;; Disable debug messages
-                 sp-message-width nil
-                 ;; Keep pair content overlay on backward movement
-                 sp-cancel-autoskip-on-backward-movement nil))
+  (validate-setq
+   sp-autoskip-closing-pair 'always
+   ;; Don't kill entire symbol on C-k
+   sp-hybrid-kill-entire-symbol nil
+   ;; Disable debug messages
+   sp-message-width nil
+   ;; Keep pair content overlay on backward movement
+   sp-cancel-autoskip-on-backward-movement nil))
 
 (use-package smartparens-config         ; Configure Smartparens
   :ensure smartparens

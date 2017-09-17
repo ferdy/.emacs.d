@@ -60,9 +60,10 @@
                      kill-buffer-query-functions))
 
 ;; Disable startup messages
-(validate-setq ring-bell-function #'ignore
-               inhibit-startup-screen t
-               initial-scratch-message nil)
+(validate-setq
+ ring-bell-function #'ignore
+ inhibit-startup-screen t
+ initial-scratch-message nil)
 
 ;; Disable startup echo area message
 (fset 'display-startup-echo-area-message #'ignore)

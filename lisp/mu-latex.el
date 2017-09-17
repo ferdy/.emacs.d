@@ -28,9 +28,11 @@
    TeX-source-correlate-mode t
    TeX-source-correlate-method 'synctex)
 
-  (setq-default TeX-master nil        ; Ask for the master file
-                TeX-engine 'luatex    ; Use luatex
-                )
+  (setq-default
+   ;; Ask for the master file
+   TeX-master nil
+   ;; Use luatex
+   TeX-engine 'luatexxs)
 
   ;; Move to chktex
   (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
@@ -39,9 +41,10 @@
   (add-hook 'tex-mode-hook
             (lambda () (setq ispell-parser 'tex)))
 
-  ;; Use pdf-tools to open PDF files
-  (validate-setq TeX-view-program-selection '((output-pdf "PDF Tools"))
-                 TeX-source-correlate-start-server t)
+  (validate-setq
+   ;; Use pdf-tools to open PDF files
+   TeX-view-program-selection '((output-pdf "PDF Tools"))
+   TeX-source-correlate-start-server t)
 
   ;; Update PDF buffers after successful LaTeX runs
   (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
@@ -57,9 +60,10 @@
   :ensure auctex
   :defer t
   :config
-  ;; Enable support for csquotes
-  (validate-setq LaTeX-csquotes-close-quote "}"
-                 LaTeX-csquotes-open-quote "\\enquote{"))
+  (validate-setq
+   ;; Enable support for csquotes
+   LaTeX-csquotes-close-quote "}"
+   LaTeX-csquotes-open-quote "\\enquote{"))
 
 (use-package tex-fold                   ; Fold TeX macros
   :ensure auctex
@@ -82,8 +86,8 @@
   :ensure auctex
   :defer t
   :config
-  ;; Teach TeX folding about KOMA script sections
   (validate-setq
+   ;; Teach TeX folding about KOMA script sections
    TeX-outline-extra `((,(rx (0+ space) "\\section*{") 2)
                        (,(rx (0+ space) "\\subsection*{") 3)
                        (,(rx (0+ space) "\\subsubsection*{") 4)

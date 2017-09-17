@@ -24,9 +24,11 @@
 ;; Show the minibuffer depth (when larger than 1)
 (minibuffer-depth-indicate-mode 1)
 
-(validate-setq use-dialog-box nil       ; Never use dialogs for minibuffer input
-               history-length 1000      ; Store more history
-               )
+(validate-setq
+ ;; Never use dialogs for minibuffer input
+ use-dialog-box nil
+ ;; Store more history
+ history-length 1000)
 
 (use-package savehist                   ; Save minibuffer history
   :init (savehist-mode t)
@@ -65,8 +67,7 @@
                  "*Cargo"            ; Cargo process buffers
                  "*idris-repl"       ; Idris REPL
                  ;; AUCTeX command output
-                 (and (1+ nonl) " output*")
-                 ))
+                 (and (1+ nonl) " output*")))
     (display-buffer-reuse-window display-buffer-in-side-window)
     (side . bottom)
     (reusable-frames . visible)
@@ -160,8 +161,7 @@ Add this to `kill-buffer-query-functions'."
     nil))
 
 ;; Don't kill important buffers
-(add-hook 'kill-buffer-query-functions
-          #'mu-do-not-kill-important-buffers)
+(add-hook 'kill-buffer-query-functions #'mu-do-not-kill-important-buffers)
 
 (bind-key "C-x C-k" #'kill-this-buffer)  ; Kill only the current buffer
 

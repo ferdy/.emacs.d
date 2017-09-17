@@ -21,8 +21,9 @@
   :config
   (add-to-list 'recentf-exclude "^/\\(?:ssh\\|su\\|sudo\\)?:")
 
-  (validate-setq recentf-max-saved-items 200
-                 recentf-max-menu-items 15))
+  (validate-setq
+   recentf-max-saved-items 200
+   recentf-max-menu-items 15))
 
 (validate-setq view-read-only t)                 ; View read-only
 (validate-setq large-file-warning-threshold nil) ; No large file warning

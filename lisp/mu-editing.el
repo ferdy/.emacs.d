@@ -44,7 +44,8 @@
 (use-package subword                    ; Handle capitalized subwords
   :defer t
   ;; Do not override `transpose-words', it should not transpose subwords
-  :config (bind-key [remap transpose-words] nil subword-mode-map)
+  :bind (:map subword-mode-map
+              ([remap transpose-words] . nil))
   :init (global-subword-mode 1)
   :diminish subword-mode)
 
@@ -71,7 +72,6 @@
 
 (use-package visual-fill-column         ; Fill column wrapping
   :ensure t
-  :defer t
   :bind ("C-c t v" . visual-fill-column-mode)
   :init
   ;; Turn on whenever visual line mode is on, and in all text or prog mode
@@ -221,13 +221,15 @@ _C-s_: mark region
 
 ;; Indicate empty lines at the end of a buffer in the fringe, but require a
 ;; final new line
-(validate-setq indicate-empty-lines t
-               require-final-newline t)
+(validate-setq
+ indicate-empty-lines t
+ require-final-newline t)
 
-(validate-setq kill-ring-max 200                 ; More killed items
-               kill-do-not-save-duplicates t     ; No duplicates in kill ring
-               ;; Save the contents of the clipboard to kill ring before killing
-               save-interprogram-paste-before-kill t)
+(validate-setq
+ kill-ring-max 200                      ; More killed items
+ kill-do-not-save-duplicates t          ; No duplicates in kill ring
+ ;; Save the contents of the clipboard to kill ring before killing
+ save-interprogram-paste-before-kill t)
 
 ;;; Utilities and keybindings
 (bind-key "C-c x i" #'indent-region)
@@ -235,7 +237,7 @@ _C-s_: mark region
 
 ;; Kill entire line with prefix argument
 (defmacro bol-with-prefix (function)
-  "Define a new function which calls FUNCTION.
+  "Define a new function which will call FUNCTION.
 
 Except it moves to beginning of line before calling FUNCTION when
 called with a prefix argument.  The FUNCTION still receives the

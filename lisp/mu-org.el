@@ -29,15 +29,16 @@
                    "    \r\n,"
                    "."
                    1))
-  (validate-setq org-src-fontify-natively t
-                 org-log-done 'time
-                 org-hide-emphasis-markers t
-                 ;; Follow links by pressing ENTER on them
-                 org-return-follows-link t)
 
-  (validate-setq org-directory (expand-file-name "~/org/")
-                 org-default-notes-file
-                 (expand-file-name "gtd/gtd.org" org-directory))
+  (validate-setq
+   org-src-fontify-natively t
+   org-log-done 'time
+   org-hide-emphasis-markers t
+   ;; Follow links by pressing ENTER on them
+   org-return-follows-link t
+   org-directory(expand-file-name "~/org/")
+   org-default-notes-file
+   (expand-file-name "gtd/gtd.org" org-directory))
 
   ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
@@ -61,28 +62,6 @@
    org-refile-targets '(("~/org/gtd/gtd.org" :maxlevel . 3)
                         ("~/org/gtd/someday.org" :level . 1)
                         ("~/org/gtd/tickler.org" :maxlevel . 2)))
-  (setq
-   org-agenda-custom-commands
-   '(("o" "At the office" tags-todo "@office"
-      ((org-agenda-overriding-header "Office")
-       (org-agenda-skip-function
-        #'mu-org-agenda-skip-all-siblings-but-first)))))
-
-  (defun mu-org-agenda-skip-all-siblings-but-first ()
-    "Skip all but the first non-done entry."
-    (let (should-skip-entry)
-      (unless (org-current-is-todo)
-        (setq should-skip-entry t))
-      (save-excursion
-        (while (and (not should-skip-entry) (org-goto-sibling t))
-          (when (org-current-is-todo)
-            (setq should-skip-entry t))))
-      (when should-skip-entry
-        (or (outline-next-heading)
-            (goto-char (point-max))))))
-
-  (defun org-current-is-todo ()
-    (string= "TODO" (org-get-todo-state)))
 
   ;; Disable whitespace highlighting of overlong lines in Org Mode
   (add-hook 'org-mode-hook #'mu-whitespace-style-no-long-lines)
@@ -168,12 +147,12 @@
 (use-package ox-pandoc                  ; Export Org documents via Pandoc
   :ensure t
   :config
-  (validate-setq org-pandoc-options '((standalone . t)) ; Default options
-                 ;; Special settings for beamer-pdf and latex-pdf exporters
-                 org-pandoc-options-for-beamer-pdf
-                 '((latex-engine . "lualatex"))
-                 org-pandoc-options-for-latex-pdf
-                 '((latex-engine . "lualatex")))
+  (validate-setq
+   ;; Default options
+   org-pandoc-options '((standalone . t))
+   ;; Special settings for beamer-pdf and latex-pdf exporters
+   org-pandoc-options-for-beamer-pdf '((latex-engine . "lualatex"))
+   org-pandoc-options-for-latex-pdf '((latex-engine . "lualatex")))
 
   ;; Use external css for html5
   (let ((stylesheet (expand-file-name
@@ -184,12 +163,13 @@
 (use-package ox-reveal                  ; Slideshows with Reveal.js
   :ensure t
   :config
-  (validate-setq org-reveal-root "file:///home/manuel/reveal.js"
-                 ;; Hide some controls
-                 org-reveal-control ""
-                 org-reveal-progress nil
-                 org-reveal-overview nil
-                 org-reveal-slide-number ""))
+  (validate-setq
+   org-reveal-root "file:///home/manuel/reveal.js"
+   ;; Hide some controls
+   org-reveal-control ""
+   org-reveal-progress nil
+   org-reveal-overview nil
+   org-reveal-slide-number ""))
 
 (use-package org-bullets                ; Bullets as UTF-8 characters
   :ensure t

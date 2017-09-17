@@ -148,11 +148,12 @@
 
   (add-hook 'clojure-mode-hook #'mu-clojure-mode-hook)
   :config
-  (validate-setq cljr-suppress-middleware-warnings t
-                 cljr-add-ns-to-blank-clj-files nil
-                 cljr-auto-sort-ns t
-                 cljr-favor-prefix-notation cljr-favor-private-functions
-                 cljr-warn-on-eval nil)
+  (validate-setq
+   cljr-suppress-middleware-warnings t
+   cljr-add-ns-to-blank-clj-files nil
+   cljr-auto-sort-ns t
+   cljr-favor-prefix-notation cljr-favor-private-functions
+   cljr-warn-on-eval nil)
   :diminish clj-refactor-mode)
 
 (use-package clojure-snippets           ; Yasnippets for Clojure
@@ -312,9 +313,10 @@
   :config
   (unbind-key "M-." js2-mode-map)
 
-  ;; Disable parser errors and strict warnings
-  (validate-setq js2-mode-show-parse-errors nil
-                 js2-mode-show-strict-warnings nil)
+  (validate-setq
+   ;; Disable parser errors and strict warnings
+   js2-mode-show-parse-errors nil
+   js2-mode-show-strict-warnings nil)
 
   ;; Try to highlight most ECMA built-ins
   (validate-setq js2-highlight-level 3)
@@ -372,21 +374,24 @@
 (use-package sh-script                  ; Shell scripts
   :mode ("\\.zsh\\'" . sh-mode)
   :config
-  ;; Use two spaces in shell scripts.
-  (validate-setq sh-indentation 2       ; The basic indentation
-                 sh-basic-offset 2      ; The offset for nested indentation
-                 ))
+
+  (validate-setq
+   ;; Use two spaces in shell scripts.
+   sh-indentation 2
+   ;; The offset for nested indentation
+   sh-basic-offset 2))
 
 (use-package nxml-mode                  ; XML editing
   :mode "\\.xml\\'"
   :bind (:map nxml-mode-map
               ("C-c m f" . mu-xml-format))
   :config
-  ;; Complete closing tags, and insert XML declarations into empty files
-  (validate-setq nxml-slash-auto-complete-flag t
-                 nxml-auto-insert-xml-declaration-flag t
-                 ;; Treat elements (with children) as sexps
-                 nxml-sexp-element-flag t)
+  (validate-setq
+   ;; Complete closing tags, and insert XML declarations into empty files
+   nxml-slash-auto-complete-flag t
+   nxml-auto-insert-xml-declaration-flag t
+   ;; Treat elements (with children) as sexps
+   nxml-sexp-element-flag t)
 
   (defun mu-xml-format ()
     "Format an XML buffer with `xmllint'."
@@ -439,18 +444,19 @@
 (use-package compile                    ; Compile from Emacs
   :defer t
   :config
-  (validate-setq compilation-ask-about-save nil
-                 ;; Kill old compilation processes before starting new ones
-                 compilation-always-kill t
-                 ;; Automatically scroll and jump to the first error
-                 compilation-scroll-output 'first-error
-                 compilation-auto-jump-to-first-error t
-                 ;; Skip over warnings and info messages in compilation
-                 compilation-skip-threshold 2
-                 ;; Don't freeze when process reads from stdin
-                 compilation-disable-input t
-                 ;; Show three lines of context around the current message
-                 compilation-context-lines 3)
+  (validate-setq
+   compilation-ask-about-save nil
+   ;; Kill old compilation processes before starting new ones
+   compilation-always-kill t
+   ;; Automatically scroll and jump to the first error
+   compilation-scroll-output 'first-error
+   compilation-auto-jump-to-first-error t
+   ;; Skip over warnings and info messages in compilation
+   compilation-skip-threshold 2
+   ;; Don't freeze when process reads from stdin
+   compilation-disable-input t
+   ;; Show three lines of context around the current message
+   compilation-context-lines 3)
 
   (defun mu-colorize-compilation-buffer ()
     "Colorize a compilation mode buffer."

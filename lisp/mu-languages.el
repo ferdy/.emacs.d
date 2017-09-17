@@ -22,9 +22,10 @@
 (use-package ispell                     ; Word correction
   :defer t
   :config
-  (validate-setq ispell-program-name (executable-find "hunspell")
-                 ispell-dictionary "en_GB"
-                 ispell-choices-win-default-height 5)
+  (validate-setq
+   ispell-program-name (executable-find "hunspell")
+   ispell-dictionary "en_GB"
+   ispell-choices-win-default-height 5)
 
   (unless ispell-program-name
     (warn "No spell checker available.  Plese install hunspell."))
@@ -74,10 +75,11 @@ be global."
   (dolist (mode-hook '(text-mode-hook LaTeX-mode-hook))
     (add-hook mode-hook (lambda () (flyspell-mode))))
   :config
-  (validate-setq flyspell-use-meta-tab nil
-                 ;; Make Flyspell less chatty
-                 flyspell-issue-welcome-flag nil
-                 flyspell-issue-message-flag nil)
+  (validate-setq
+   flyspell-use-meta-tab nil
+   ;; Make Flyspell less chatty
+   flyspell-issue-welcome-flag nil
+   flyspell-issue-message-flag nil)
 
   ;; Free M-t for transpose words
   (unbind-key "M-t" flyspell-mode-map)

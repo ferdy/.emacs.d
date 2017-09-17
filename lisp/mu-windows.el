@@ -19,10 +19,11 @@
          ("C-c C-+" . eyebrowse-next-window-config))
   :init (eyebrowse-mode t)
   :config
-  (validate-setq eyebrowse-mode-line-separator " "
-                 eyebrowse-mode-line-style 'always
-                 eyebrowse-new-workspace t
-                 eyebrowse-wrap-around t))
+  (validate-setq
+   eyebrowse-mode-line-separator " "
+   eyebrowse-mode-line-style 'always
+   eyebrowse-new-workspace t
+   eyebrowse-wrap-around t))
 
 (use-package golden-ratio               ; Automatically resize windows
   :ensure t
