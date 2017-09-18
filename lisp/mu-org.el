@@ -34,6 +34,7 @@
    org-src-fontify-natively t
    org-log-done 'time
    org-hide-emphasis-markers t
+   org-highlight-latex-and-related '(latex)
    ;; Follow links by pressing ENTER on them
    org-return-follows-link t
    org-directory(expand-file-name "~/org/")
