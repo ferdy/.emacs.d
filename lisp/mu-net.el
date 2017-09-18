@@ -51,6 +51,7 @@
      ("http://www.avclub.com/feeds/rss/?tags=film" cinema)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
+     ("https://www.hongkongfp.com/feed" news)
      ("http://www.rogerebert.com/feed/" cinema)
      ("http://www.savagechickens.com/feed" comic)
      ("http://www.scheme.dk/planet/atom.xml" lisp)
