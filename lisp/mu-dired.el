@@ -107,7 +107,7 @@ app. The app is chosen from your OS's preference."
    ;; Do not ask for confirmation when killing deleted buffers
    dired-clean-confirm-killing-deleted-buffers nil
    ;; Omit dotfiles with C-x M-o
-   dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+   dired-omit-files (concat dired-omit-files "\\|^\\..+$\\|^\\...+$"))
 
   (add-hook 'dired-mode-hook #'dired-omit-mode)
 
