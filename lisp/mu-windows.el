@@ -151,6 +151,7 @@ If SIDE is non-nil only get windows on that side."
 
 (bind-key "C-c w t" #'mu-window-split-toggle)
 
+;;;###autoload
 (defun mu-ediff-dwim ()
   "Do ediff as I mean.
 
