@@ -339,10 +339,6 @@
    (lambda ()
      (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
 
-(use-package rjsx-mode                  ; JSX mode
-  :ensure t
-  :mode ("\\.jsx\\'" . rjsx-mode))
-
 (use-package css-mode                   ; Better CSS support
   :defer t
   :config (validate-setq css-indent-offset 2))
