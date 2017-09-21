@@ -49,6 +49,7 @@
      ("http://sensesofcinema.com/feed/" cinema)
      ("https://teleport-city.com/feed/" cinema)
      ("http://www.avclub.com/feeds/rss/?tags=film" cinema)
+     ("https://www.badlefthook.com/rss" sport)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
      ("https://www.hongkongfp.com/feed" news)
