@@ -24,7 +24,8 @@
          ("C-c h c" . helpful-command)
          ("C-c h f" . helpful-function)
          ("C-c h k" . helpful-key)
-         ("C-c h m" . helpful-macro)))
+         ("C-c h m" . helpful-macro)
+         ("C-c h s" . helpful-symbol)))
 
 (use-package info                       ; Info manual viewer
   :defer t
