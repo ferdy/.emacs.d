@@ -42,6 +42,9 @@ _e_: extra   _l_: list        _n_: new
     ("g" yas-global-mode)
     ("m" yas-minor-mode)
     ("a" yas-reload-all))
+
+  ;; Remove warning
+  (add-to-list 'warning-suppress-types '(yasnippet backquote-change)
   :diminish yas-minor-mode)
 
 (use-package yasnippet-snippets         ; Collection of snippets
