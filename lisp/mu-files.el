@@ -127,6 +127,9 @@
   :ensure t
   :mode ("Dockerfile\\'" . dockerfile-mode))
 
+(use-package docker-tramp              ; TRAMP integration for docker containers
+  :ensure t)
+
 ;;; Utilities and keybindings
 (defun mu-current-file ()
   "Gets the \"file\" of the current buffer.
