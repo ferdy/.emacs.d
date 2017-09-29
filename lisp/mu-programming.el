@@ -86,7 +86,7 @@
   (require 'cider-client)
 
   (defun mu-cider-mode-line-info ()
-    (if-let ((current-connection (ignore-errors (cider-current-connection))))
+    (if-let* ((current-connection (ignore-errors (cider-current-connection))))
         (with-current-buffer current-connection
           (concat
            cider-repl-type
