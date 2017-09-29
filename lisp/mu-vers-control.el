@@ -30,6 +30,9 @@
   (validate-setq magit-save-repository-buffers 'dontask
                  magit-refs-show-commit-count 'all)
 
+  ;; Show refined hunks during diffs
+  (set-default 'magit-diff-refine-hunk t)
+
   ;; Use Ivy
   (validate-setq magit-completing-read-function 'ivy-completing-read)
 
