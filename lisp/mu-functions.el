@@ -99,6 +99,14 @@ With negative argument, convert previous words."
            emacs-version
            (substring (emacs-repository-get-version) 0 7))))
 
+;;;###autoload
+(defun what-face (pos)
+  "Show face at POS (point)."
+  (interactive "d")
+  (let ((face (or (get-char-property pos 'read-face-name)
+                  (get-char-property pos 'face))))
+    (if face (message "Face: %s" face) (message "No face at %d" pos))))
+
 (provide 'mu-functions)
 
 ;; Local Variables:
