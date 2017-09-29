@@ -44,7 +44,7 @@ _e_: extra   _l_: list        _n_: new
     ("a" yas-reload-all))
 
   ;; Remove warning
-  (add-to-list 'warning-suppress-types '(yasnippet backquote-change)
+  (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
   :diminish yas-minor-mode)
 
 (use-package yasnippet-snippets         ; Collection of snippets
