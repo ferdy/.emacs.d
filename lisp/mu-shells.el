@@ -109,6 +109,10 @@ The EShell is renamed to match that directory to make multiple windows easier."
   (add-to-list 'eshell-command-completions-alist
                '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'")))
 
+(use-package eshell-bookmark            ; Bookmarks for EShell buffers
+  :ensure t
+  :config (add-hook 'eshell-mode-hook 'eshell-bookmark-setup))
+
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind (("C-c a s t" . shell)
          (:map shell-mode-map
