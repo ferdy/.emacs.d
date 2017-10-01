@@ -44,6 +44,14 @@ The EShell is renamed to match that directory to make multiple windows easier."
     (magit-status (pop args) nil)
     (eshell/echo))                      ; The echo command suppresses output
 
+  (defun eshell/clear ()
+    "Clear `eshell' buffer, comint-style."
+    (interactive)
+    (let ((input (eshell-get-old-input)))
+      (eshell/clear-scrollback)
+      (eshell-emit-prompt)
+      (insert input)))
+
   (add-hook
    'eshell-mode-hook
    (lambda ()
