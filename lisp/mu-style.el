@@ -133,37 +133,13 @@
 ;;; Theme
 (validate-setq custom-safe-themes t)    ; Treat themes as safe
 
-(use-package solarized                  ; Default theme
-  :ensure solarized-theme
-  :config
-  (validate-setq
-   solarized-use-variable-pitch nil  ; Disable variable pitch fonts
-   solarized-distinct-doc-face t     ; Make doc faces stand out more
-   solarized-use-more-italic t       ; Use italic more often
-   solarized-use-less-bold t         ; Less bold, italic is enough
-   ;; Avoid all font-size changes
-   solarized-height-minus-1 1.0
-   solarized-height-plus-1 1.0
-   solarized-height-plus-2 1.0
-   solarized-height-plus-3 1.0
-   solarized-height-plus-4 1.0)
-
-  (load-theme 'solarized-light 'no-confirm))
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :init (load-theme 'sanityinc-tomorrow-night 'no-confirm))
 
 ;;; The mode-line
 (line-number-mode)
 (column-number-mode)
-
-;; Increase mode-line size with a border (box) of the same colour and
-;; reduce font size by tweaking height
-(set-face-attribute 'mode-line nil
-                    :inverse-video nil
-                    :height 0.9
-                    :box '(:line-width 6 :color "#eee8d5" :style nil))
-(set-face-attribute 'mode-line-inactive nil
-                    :inverse-video nil
-                    :height 0.9
-                    :box '(:line-width 6 :color "#fdf6e3" :style nil))
 
 ;; Show buffer position percentage starting from top
 (validate-setq mode-line-percent-position '(-3 "%o"))
