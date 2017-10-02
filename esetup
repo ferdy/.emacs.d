@@ -166,11 +166,6 @@ javascript_setup() {
   dostep 3 "y" "ln -s /usr/bin/nodejs /usr/local/bin/node"
 }
 
-css_setup() {
-  dostep 1 "y" "npm install -g stylelint stylelint-scss"
-  dostep 2 "y" "npm install stylelint-config-standard --save-dev"
-}
-
 latex_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends texlive-full"
 }
@@ -243,8 +238,6 @@ announce RUST
 rust_setup
 announce JAVASCRIPT
 javascript_setup
-announce CSS
-css_setup
 announce CASK
 cask_setup
 announce LaTeX
