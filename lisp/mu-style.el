@@ -100,7 +100,30 @@
 
 (use-package prog-mode
   ;; Prettify symbols
-  :config (global-prettify-symbols-mode 1))
+  :config
+  (global-prettify-symbols-mode 1)
+
+  (defvar mu-clojure-prettify-alist '())
+
+  (add-to-list 'mu-clojure-prettify-alist
+               '("<=" . (?· (Br . Bl) ?≤)))
+  (add-to-list 'mu-clojure-prettify-alist
+               '(">=" . (?· (Br . Bl) ?≥)))
+  (add-to-list 'mu-clojure-prettify-alist
+               '("->" . (?- (Br . Bc) ?- (Br . Bc) ?>)))
+  (add-to-list 'mu-clojure-prettify-alist
+               '("->>" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s
+                               (Bl . Bl) ?- (Bc . Br) ?- (Bc . Bc) ?>
+                               (Bc . Bl) ?- (Br . Br) ?>)))
+
+  (eval-after-load 'clojure-mode
+    '(setq clojure--prettify-symbols-alist
+           (append mu-clojure-prettify-alist
+                   clojure--prettify-symbols-alist)))
+  (eval-after-load 'lisp-mode
+    '(setq lisp-prettify-symbols-alist
+           (append mu-clojure-prettify-alist
+                   lisp-prettify-symbols-alist)))  )
 
 ;; Unprettify symbols with point on them and symbols
 ;; right next to point
