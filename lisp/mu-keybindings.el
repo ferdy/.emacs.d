@@ -110,8 +110,8 @@
 (use-package hydra                      ; Make bindings that stick
   :ensure t)
 
-(bind-key "M-=" 'count-words)    ; Use count-words instead of count-words-region
-(bind-key "C-z" 'undo)           ; C-z for undo
+(bind-key "M-=" #'count-words)   ; Use count-words instead of count-words-region
+(bind-key "C-z" #'undo)          ; C-z for undo
 
 ;; These keybindings make it easier to type curly braces and square brackets
 ;; with an Italian keyboard layout
