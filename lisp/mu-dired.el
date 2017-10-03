@@ -124,6 +124,10 @@ app. The app is chosen from your OS's preference."
   :bind (:map dired-mode-map
               ("/" . dired-narrow)))
 
+(use-package diredfl                    ; Add colours to Dired
+  :ensure t
+  :config (diredfl-global-mode))
+
 (provide 'mu-dired)
 
 ;; Local Variables:
