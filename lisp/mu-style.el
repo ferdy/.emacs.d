@@ -124,11 +124,10 @@
   (with-eval-after-load 'lisp-mode
     (validate-setq lisp-prettify-symbols-alist
                    (append mu-clojure-prettify-alist
-                           lisp-prettify-symbols-alist))))
+                           lisp-prettify-symbols-alist)))
 
-;; Unprettify symbols with point on them and symbols
-;; right next to point
-(validate-setq prettify-symbols-unprettify-at-point 'right-edge)
+  ;; Unprettify symbols with point on them and next to them
+  (validate-setq prettify-symbols-unprettify-at-point 'right-edge))
 
 (use-package ansi-color                 ; Colorize ANSI escape sequences
   :defer t
