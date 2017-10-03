@@ -107,11 +107,6 @@
   :config
   (validate-setq markdown-fontify-code-blocks-natively t)
 
-  ;; Don't change font in code blocks
-  (set-face-attribute 'markdown-code-face nil
-                      :inherit nil
-                      :background "#fb8ff133d514")
-
   ;; Process Markdown with Pandoc, using a custom stylesheet for nice output
   (let ((stylesheet (expand-file-name
                      (locate-user-emacs-file "etc/pandoc.css"))))
