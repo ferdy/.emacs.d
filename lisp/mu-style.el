@@ -103,6 +103,7 @@
   :config
   (global-prettify-symbols-mode 1)
 
+  ;; Add some pretty symbols to Clojure and Lisp modes
   (defvar mu-clojure-prettify-alist '())
 
   (add-to-list 'mu-clojure-prettify-alist
