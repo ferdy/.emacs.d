@@ -116,14 +116,14 @@
                                (Bl . Bl) ?- (Bc . Br) ?- (Bc . Bc) ?>
                                (Bc . Bl) ?- (Br . Br) ?>)))
 
-  (eval-after-load 'clojure-mode
-    '(setq clojure--prettify-symbols-alist
-           (append mu-clojure-prettify-alist
-                   clojure--prettify-symbols-alist)))
-  (eval-after-load 'lisp-mode
-    '(setq lisp-prettify-symbols-alist
-           (append mu-clojure-prettify-alist
-                   lisp-prettify-symbols-alist)))  )
+  (with-eval-after-load 'clojure-mode
+    (validate-setq clojure--prettify-symbols-alist
+                   (append mu-clojure-prettify-alist
+                           clojure--prettify-symbols-alist)))
+  (with-eval-after-load 'lisp-mode
+    (validate-setq lisp-prettify-symbols-alist
+                   (append mu-clojure-prettify-alist
+                           lisp-prettify-symbols-alist))))
 
 ;; Unprettify symbols with point on them and symbols
 ;; right next to point
