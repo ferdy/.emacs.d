@@ -56,7 +56,7 @@ be global."
 
 (use-package flyspell                   ; Spell checking on-the-fly
   :bind (:map flyspell-mode-map
-              ("C-M-s" . mu-cycle-ispell-languages))
+              ("C-M-l" . mu-cycle-ispell-languages))
   :init
   (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
