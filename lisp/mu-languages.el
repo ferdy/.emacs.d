@@ -56,7 +56,7 @@ be global."
 
 (use-package flyspell                   ; Spell checking on-the-fly
   :bind (:map flyspell-mode-map
-              ("C-M-i" . mu-cycle-ispell-languages))
+              ("C-M-s" . mu-cycle-ispell-languages))
   :init
   (add-hook 'prog-mode-hook #'flyspell-prog-mode)
 
@@ -83,6 +83,8 @@ be global."
 
   ;; Free M-t for transpose words
   (unbind-key "M-t" flyspell-mode-map)
+  ;; Free C-M-i for completion-at-point
+  (unbind-key "C-M-i" flyspell-mode-map)
   :diminish flyspell-mode)
 
 (use-package flyspell-correct-ivy       ; Better interface for corrections
