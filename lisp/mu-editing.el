@@ -209,10 +209,6 @@ _C-s_: mark region
   :init (fancy-narrow-mode)
   :diminish fancy-narrow-mode)
 
-(use-package multi-line                 ; Single-line <-> multi-line statements
-  :ensure t
-  :bind ("C-c x l" . multi-line))
-
 ;; C-n adds new line when at the end of a line
 (validate-setq next-line-add-newlines t)
 
