@@ -127,6 +127,9 @@ The EShell is renamed to match that directory to make multiple windows easier."
                ("<tab>"   . completion-at-point)
                ("C-c C-l" . counsel-shell-history)))
   :config
+  ;; Prefer Bash to Fish for compatibility reasons
+  (validate-setq explicit-shell-file-name "/bin/bash")
+
   ;; Do not echo input back at me
   (defun mu-shell-turn-echo-off ()
     (validate-setq comint-process-echoes t))
