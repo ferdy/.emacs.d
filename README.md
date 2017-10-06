@@ -2,12 +2,16 @@
 
 This is the Emacs configuration I use everyday.
 
-## Notes
-- This configuration targets **Debian-based** and **Ubuntu-based** systems and
-requires an Emacs version built from **development sources**.
+It targets **Debian-based** and **Ubuntu-based** systems and requires an Emacs
+version built from **development sources**.
 
-- The `esetup` script helps to create the required environment and it must be
-run **before** starting Emacs for the first time.
+You can find it useful if you plan to work with:
+
+- Clojure and ClojureScript
+- Git
+- LaTeX
+- Org mode
+- Markdown
 
 ## Setup
 - clone Emacs trunk:
