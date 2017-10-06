@@ -124,9 +124,11 @@ The EShell is renamed to match that directory to make multiple windows easier."
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind (("C-c a s t" . shell)
          (:map shell-mode-map
-               ("<tab>"   . completion-at-point)
-               ("C-c C-l" . counsel-shell-history)))
+               ("<tab>"   . completion-at-point)))
   :config
+  (unbind-key "C-c C-l" shell-mode-map)
+  (bind-key "C-c C-l" #'counsel-shell-history shell-mode-map)
+
   ;; Prefer Bash to Fish for compatibility reasons
   (validate-setq explicit-shell-file-name "/bin/bash")
 
