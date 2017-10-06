@@ -3,8 +3,8 @@
 This is the Emacs configuration I use everyday.
 
 ## Notes
-- This configuration targets **Debian-based** systems and requires an Emacs
-version built from **development sources**.
+- This configuration targets **Debian-based** and **Ubuntu-based** systems and
+requires an Emacs version built from **development sources**.
 
 - The `esetup` script helps to create the required environment and it must be
 run **before** starting Emacs for the first time.
