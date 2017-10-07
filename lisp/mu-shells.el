@@ -144,8 +144,8 @@ The EShell is renamed to match that directory to make multiple windows easier."
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s T" . ansi-term)
   :init
-  ;; Always use Fish
-  (defvar mu-term-shell "/usr/bin/fish")
+  ;; Always use Bash
+  (defvar mu-term-shell "/bin/bash")
 
   (defadvice ansi-term (before force-bash)
     (interactive (list mu-term-shell)))
