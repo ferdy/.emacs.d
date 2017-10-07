@@ -41,6 +41,9 @@
    org-default-notes-file
    (expand-file-name "gtd/gtd.org" org-directory))
 
+  ;; Force title font size to override theme setting
+  (set-face-attribute 'org-document-title nil :height 1.0)
+
   ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
 
