@@ -57,7 +57,6 @@
                  "*Compile-Log*"     ; Emacs byte compiler log
                  "*compilation"      ; Compilation buffers
                  "*Flycheck errors*" ; Flycheck error list
-                 "*shell"            ; Shell window
                  "*Calendar"         ; Calendar window
                  "*cider-repl"       ; CIDER REPL
                  "*sly-mrepl"        ; Sly REPL
@@ -72,7 +71,10 @@
     (side . bottom)
     (reusable-frames . visible)
     (window-height . 0.4))
-   ("\\.pdf$*"
+   (,(rx bos "*shell")
+    (display-buffer-same-window)
+    (reusable-frames . nil))
+   (,(rx bos "*pdf")
     (display-buffer-reuse-window display-buffer-in-side-window)
     (side . right)
     (reusable-frames . visible)
