@@ -27,7 +27,19 @@
   (defun mu-shell-turn-echo-off ()
     (validate-setq comint-process-echoes t))
 
-  (add-hook 'shell-mode-hook #'mu-shell-turn-echo-off))
+  (add-hook 'shell-mode-hook #'mu-shell-turn-echo-off)
+
+  (defun mu-comint-delchar-or-eof-or-kill-buffer (arg)
+    "C-d to kill buffer if process is dead."
+    (interactive "p")
+    (if (null (get-buffer-process (current-buffer)))
+        (kill-buffer)
+      (comint-delchar-or-maybe-eof arg)))
+
+  (add-hook 'shell-mode-hook
+            (lambda ()
+              (bind-key "C-d" #'mu-comint-delchar-or-eof-or-kill-buffer
+                        shell-mode-map))))
 
 (use-package shell-switcher             ; Fast switching between shell buffers
   :ensure t
