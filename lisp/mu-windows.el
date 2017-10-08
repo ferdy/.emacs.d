@@ -25,38 +25,6 @@
    eyebrowse-new-workspace t
    eyebrowse-wrap-around t))
 
-(use-package golden-ratio               ; Automatically resize windows
-  :ensure t
-  :init
-  (defun mu-toggle-golden-ratio ()
-    (interactive)
-    (if (bound-and-true-p golden-ratio-mode)
-        (progn
-          (golden-ratio-mode -1)
-          (balance-windows))
-      (golden-ratio-mode)
-      (golden-ratio)))
-  :bind ("C-c t g" . mu-toggle-golden-ratio)
-  :config
-  (validate-setq
-   golden-ratio-extra-commands '(windmove-up
-                                 windmove-down
-                                 windmove-left
-                                 windmove-right
-                                 ace-window
-                                 ace-delete-window
-                                 ace-select-window
-                                 ace-swap-window
-                                 ace-maximize-window)
-   ;; Exclude some modes from golden ratio
-   golden-ratio-exclude-modes '(flycheck-error-list-mode
-                                calc-mode
-                                dired-mode
-                                ediff-mode)
-   ;; Exclude special buffers from golden ratio
-   golden-ratio-exclude-buffer-regexp `(,(rx bos "*which-key*" eos)))
-  :diminish golden-ratio-mode)
-
 (use-package windmove                   ; Quickly move between windows
   :bind (("C-c <up>"    . windmove-up)
          ("C-c <down>"  . windmove-down)
