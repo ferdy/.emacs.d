@@ -7,7 +7,7 @@
 
 ;;; Commentary:
 
-;; This file stores my configuration for EShell, shell and ansi-term.
+;; This file stores my configuration for shell, EShell and ansi-term.
 
 ;;; Code:
 
@@ -41,6 +41,10 @@
             (lambda ()
               (bind-key "C-d" #'mu-comint-delchar-or-eof-or-kill-buffer
                         shell-mode-map))))
+
+(use-package shx                        ; Enhance comint-mode
+  :ensure t
+  :init (shx-global-mode 1))
 
 (use-package shell-switcher             ; Fast switching between shell buffers
   :ensure t
@@ -196,10 +200,6 @@ The EShell is renamed to match that directory to make multiple windows easier."
   (add-hook 'fish-mode-hook
             (lambda ()
               (add-hook 'before-save-hook 'fish_indent-before-save))))
-
-(use-package shx                        ; Enhance comint-mode
-  :ensure t
-  :init (shx-global-mode 1))
 
 ;;; Utilities and key bindings
 (custom-set-variables
