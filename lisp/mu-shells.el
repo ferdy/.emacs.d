@@ -11,6 +11,24 @@
 
 ;;; Code:
 
+(use-package shell                 ; Specialized comint.el for running the shell
+  :bind (("C-c a s t" . shell)
+         ("<f1>"      . shell)
+         (:map shell-mode-map
+               ("<tab>" . completion-at-point)))
+  :config
+  (unbind-key "C-c C-l" shell-mode-map)
+  (bind-key "C-c C-l" #'counsel-shell-history shell-mode-map)
+
+  ;; Prefer Bash to Fish for compatibility reasons
+  (validate-setq explicit-shell-file-name "/bin/bash")
+
+  ;; Do not echo input back at me
+  (defun mu-shell-turn-echo-off ()
+    (validate-setq comint-process-echoes t))
+
+  (add-hook 'shell-mode-hook #'mu-shell-turn-echo-off))
+
 (use-package shell-switcher             ; Fast switching between shell buffers
   :ensure t
   :bind (("C-'"   . shell-switcher-switch-buffer)
@@ -120,23 +138,6 @@ The EShell is renamed to match that directory to make multiple windows easier."
 (use-package eshell-bookmark            ; Bookmarks for EShell buffers
   :ensure t
   :config (add-hook 'eshell-mode-hook 'eshell-bookmark-setup))
-
-(use-package shell                 ; Specialized comint.el for running the shell
-  :bind (("C-c a s t" . shell)
-         (:map shell-mode-map
-               ("<tab>" . completion-at-point)))
-  :config
-  (unbind-key "C-c C-l" shell-mode-map)
-  (bind-key "C-c C-l" #'counsel-shell-history shell-mode-map)
-
-  ;; Prefer Bash to Fish for compatibility reasons
-  (validate-setq explicit-shell-file-name "/bin/bash")
-
-  ;; Do not echo input back at me
-  (defun mu-shell-turn-echo-off ()
-    (validate-setq comint-process-echoes t))
-
-  (add-hook 'shell-mode-hook #'mu-shell-turn-echo-off))
 
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s T" . ansi-term)
