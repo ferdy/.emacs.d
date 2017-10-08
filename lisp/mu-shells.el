@@ -29,8 +29,9 @@
 
   (add-hook 'shell-mode-hook #'mu-shell-turn-echo-off)
 
+  ;; C-d to kill buffer if process is dead
   (defun mu-comint-delchar-or-eof-or-kill-buffer (arg)
-    "C-d to kill buffer if process is dead."
+    "Kill the buffer is process is dead, otherwise delete ARG."
     (interactive "p")
     (if (null (get-buffer-process (current-buffer)))
         (kill-buffer)
