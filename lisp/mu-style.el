@@ -146,11 +146,6 @@
   :ensure t
   :init (add-hook 'dired-mode-hook #'stripe-buffer-mode))
 
-(use-package beacon                     ; Highlight cursor on scrolling
-  :ensure t
-  :init (beacon-mode 1)
-  :diminish beacon-mode)
-
 ;;; Theme
 (validate-setq custom-safe-themes t)    ; Treat themes as safe
 
