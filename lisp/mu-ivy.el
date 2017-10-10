@@ -99,7 +99,7 @@
   ;; Use ripgrep instead of regular grep
   (validate-setq
    counsel-grep-base-command
-   "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
+   "rg -i -M 120 --no-heading --line-number --color never %s .")
 
   (validate-setq
    counsel-bookmark-avoid-dired t
