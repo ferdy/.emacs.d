@@ -93,8 +93,7 @@
    paradox-use-homepage-buttons nil   ; Hide download button
    paradox-hide-wiki-packages t       ; Hide packages from Emacs Wiki
    paradox-automatically-star nil     ; Don't star packages automatically
-   ;; Show all possible counts
-   paradox-display-download-count t
+   paradox-display-download-count t   ; Show all possible counts
    paradox-display-star-count t)
 
   ;; Don't need paradox report
