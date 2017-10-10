@@ -48,6 +48,7 @@
      ("http://planet.lisp.org/rss20.xml" lisp)
      ("http://reverseshot.org/archive/entry/rss" cinema)
      ("http://sensesofcinema.com/feed/" cinema)
+     ("http://sensesofcinema.podbean.com/feed/" cinema)
      ("https://teleport-city.com/feed/" cinema)
      ("https://www.badlefthook.com/rss" sport)
      ("http://www.commitstrip.com/en/feed/" comic)
