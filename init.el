@@ -119,12 +119,12 @@
 (use-package cus-edit                   ; Set up custom.el
   :defer t
   :config
-  (validate-setq custom-file mu-custom-file
-                 custom-buffer-done-kill nil    ; Kill when existing
-                 custom-buffer-verbose-help nil ; Remove redundant help text
-                 ;; Show me the real variable name
-                 custom-unlispify-tag-names nil
-                 custom-unlispify-menu-entries nil)
+  (validate-setq
+   custom-file mu-custom-file
+   custom-buffer-done-kill nil          ; Kill when existing
+   custom-buffer-verbose-help nil       ; Remove redundant help text
+   custom-unlispify-tag-names nil       ; Show me the real variable name
+   custom-unlispify-menu-entries nil)
   :init (load mu-custom-file 'no-error 'no-message))
 
 (use-package no-littering               ; Keep .emacs.d clean
@@ -134,11 +134,12 @@
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory)
 
-  (validate-setq create-lockfiles nil
-                 delete-old-versions t
-                 kept-new-versions 6
-                 kept-old-versions 2
-                 version-control t)
+  (validate-setq
+   create-lockfiles nil
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)
 
   (validate-setq
    backup-directory-alist
