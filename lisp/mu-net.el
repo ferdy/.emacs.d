@@ -26,7 +26,10 @@
   :ensure t
   :bind ("C-c a f" . elfeed)
   :config
-  (validate-setq elfeed-use-curl t)     ; Use curl to fetch the feeds
+  (validate-setq
+   elfeed-use-curl t                    ; Use curl to fetch the feeds
+   elfeed-search-title-max-width 80)
+
   (elfeed-set-timeout 30)               ; Increase timeout
 
   (validate-setq
