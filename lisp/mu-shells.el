@@ -46,11 +46,6 @@
   :ensure t
   :init (shx-global-mode 1))
 
-(use-package shell-switcher             ; Fast switching between shell buffers
-  :ensure t
-  :bind (("C-'"   . shell-switcher-switch-buffer)
-         ("C-M-'" . shell-switcher-new-shell)))
-
 (use-package eshell                     ; Emacs command shell
   :bind ("C-c a s e" . eshell-here)
   :config
@@ -151,6 +146,11 @@ The EShell is renamed to match that directory to make multiple windows easier."
                '("gunzip" "gz\\'"))
   (add-to-list 'eshell-command-completions-alist
                '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'")))
+
+(use-package shell-switcher             ; Fast switching between shell buffers
+  :ensure t
+  :bind (("C-'"   . shell-switcher-switch-buffer)
+         ("C-M-'" . shell-switcher-new-shell)))
 
 (use-package eshell-bookmark            ; Bookmarks for EShell buffers
   :ensure t
