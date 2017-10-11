@@ -118,10 +118,6 @@ _e_: extra   _l_: list        _n_: new
   (add-hook 'company-mode-hook #'yas-minor-mode)
   (company-auctex-init))
 
-(use-package sly-company                ; Backend for Sly
-  :ensure t
-  :init (add-hook 'sly-mode-hook 'sly-company-mode))
-
 (use-package company-shell              ; Company support for shell functions
   :ensure t
   :after company

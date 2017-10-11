@@ -70,10 +70,6 @@
               ("M-g" . pdf-view-goto-page))
   :config (pdf-tools-install))
 
-(use-package nov                        ; EPUB reader
-  :ensure t
-  :mode ("\\.epub\\'" . nov-mode))
-
 (use-package archive-mode                   ; Browse archive files
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
 
@@ -84,14 +80,6 @@
 
 (use-package image-file                 ; Visit images as images
   :init (auto-image-file-mode))
-
-(use-package image+                     ; Better image management
-  :ensure t
-  :after image
-  :config
-  (imagex-global-sticky-mode 1)
-  (imagex-auto-adjust-mode 1)
-  (validate-setq imagex-quiet-error t))
 
 (use-package rst                        ; ReStructuredText
   :defer t

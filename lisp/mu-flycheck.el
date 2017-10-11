@@ -58,11 +58,6 @@ most errors from HTML Tidy."
   :after flycheck
   :config (flycheck-package-setup))
 
-(use-package flycheck-cask              ; Setup Flycheck by Cask projects
-  :ensure t
-  :defer t
-  :init (add-hook 'flycheck-mode-hook #'flycheck-cask-setup))
-
 (use-package flycheck-rust              ; Flycheck setup for Rust
   :ensure t
   :defer t

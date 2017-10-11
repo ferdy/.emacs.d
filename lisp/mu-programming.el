@@ -40,29 +40,6 @@
   (add-hook 'emacs-lisp-mode-hook
             #'mu-add-use-package-to-imenu))
 
-(use-package ert                        ; Elisp Regression Test
-  :defer t
-  :after elisp-mode)
-
-(use-package buttercup                  ; Behavior-Driven elisp testing
-  :ensure t
-  :defer t
-  :init
-  (defun mu-is-buttercup-buffer ()
-    (and (buffer-file-name)
-         (string-match-p (rx "/test-" (1+ (not (any "/"))) ".el" eos)
-                         (buffer-file-name))))
-
-  ;; Load buttercup automatically for proper indentation in specs
-  (add-hook 'emacs-lisp-mode-hook
-            (lambda ()
-              (when (mu-is-buttercup-buffer)
-                (require 'buttercup)))))
-
-(use-package cask-mode                  ; Major mode for Cask files
-  :defer t
-  :ensure t)
-
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
@@ -160,77 +137,6 @@
   :ensure t
   :defer t
   :after clojure-mode)
-
-;;; Scheme
-(use-package scheme                     ; Configuration for Scheme
-  :defer t
-  :config
-  (require 'cmuscheme)
-
-  ;; Use CHICKEN Scheme
-  (validate-setq scheme-program-name "csi")
-  (add-to-list 'interpreter-mode-alist '("chicken-scheme" . scheme-mode))
-
-  ;; Add custom header to .scm files
-  (validate-setq
-   auto-insert-alist
-   '(("\\.scm" .
-      (insert
-       "#!/bin/sh\n#| -*- scheme -*-\nexec csi -s $0 \"$@\"\n|#\n"))))
-
-  (with-eval-after-load 'scheme
-    (bind-key "C-c m s" #'run-scheme scheme-mode-map)
-    (bind-key "C-c m l" #'scheme-load-current-file scheme-mode-map)
-    (bind-key "C-c m f" #'scheme-compile-current-file scheme-mode-map))
-
-  (defun scheme-load-current-file (&optional switch)
-    (interactive "P")
-    (let ((file-name (buffer-file-name)))
-      (comint-check-source file-name)
-      (validate-setq
-       scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
-                                      (file-name-nondirectory file-name)))
-      (comint-send-string (scheme-proc) (concat "(load \""
-                                                file-name
-                                                "\"\)\n"))
-      (if switch
-          (switch-to-scheme t)
-        (message "\"%s\" loaded." file-name) ) ) )
-
-  (defun scheme-compile-current-file (&optional switch)
-    (interactive "P")
-    (let ((file-name (buffer-file-name)))
-      (comint-check-source file-name)
-      (validate-setq
-       scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
-                                      (file-name-nondirectory file-name)))
-      (message "compiling \"%s\" ..." file-name)
-      (comint-send-string (scheme-proc) (concat "(compile-file \""
-                                                file-name
-                                                "\"\)\n"))
-      (if switch
-          (switch-to-scheme t)
-        (message "\"%s\" compiled and loaded." file-name)))))
-
-(use-package geiser                ; Collection of modes for Scheme interpreters
-  :ensure t
-  :bind ("C-c d g" . run-geiser))
-
-;;; Common Lisp
-(use-package sly                        ; Sylvester the Cat's Common Lisp IDE
-  :ensure t
-  :bind (("C-c d c" . sly)
-         :map sly-mode-map
-         ("C-c m q" . sly-quit-lisp)
-         ("C-c m h" . sly-documentation-lookup)))
-
-(use-package sly-macrostep              ; Macro-expansion via macrostep.el
-  :ensure t
-  :defer t)
-
-(use-package sly-quicklisp              ; QUICKLISP support for Sly
-  :ensure t
-  :defer t)
 
 ;;; Rust
 (use-package rust-mode                  ; Rust major mode
