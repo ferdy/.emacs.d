@@ -357,9 +357,8 @@
   (add-hook 'compilation-filter-hook
             #'mu-colorize-compilation-buffer))
 
-;;; Utilities and keybindings
+;;; Keybindings
 (bind-key* "C-;" #'comment-line)
-
 (bind-key "C-c t d" #'toggle-debug-on-error)
 
 (provide 'mu-programming)
