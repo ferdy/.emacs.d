@@ -179,19 +179,6 @@
   :ensure t
   :config (intero-global-mode))
 
-;;; Python
-(use-package python                     ; Python editing
-  :defer t
-  :config
-  ;; PEP 8 compliant filling rules, 79 chars maximum
-  (add-hook 'python-mode-hook (lambda () (setq fill-column 79)))
-  (add-hook 'python-mode-hook #'subword-mode)
-
-  (let ((ipython (executable-find "ipython")))
-    (if ipython
-        (setq python-shell-interpreter ipython)
-      (warn "IPython is missing, falling back to default python"))))
-
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
   :mode ("\\.sql\\'" . sql-mode)
