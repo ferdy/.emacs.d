@@ -48,7 +48,6 @@
                  '(
                    ".#"                                   ; emacs
                    "._"                                   ; thumbnails
-                   "_cgo_export."                         ; go
                    ))
 
   (ignoramus-setup))
