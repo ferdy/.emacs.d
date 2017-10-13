@@ -53,7 +53,6 @@
      ("http://sensesofcinema.com/feed/" cinema)
      ("http://sensesofcinema.podbean.com/feed/" cinema)
      ("https://teleport-city.com/feed/" cinema)
-     ("https://www.badlefthook.com/rss" sport)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
      ("https://www.hongkongfp.com/feed" news)
