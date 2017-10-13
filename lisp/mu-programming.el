@@ -164,21 +164,6 @@
   :ensure t
   :defer t)
 
-;;; Idris
-(use-package idris-mode                 ; Idris editing
-  :ensure t
-  :mode ("\\.idr\\'" . idris-mode)
-  :config
-  (bind-key "C-c C-q" #'idris-quit idris-mode-map)
-  (bind-keys :map idris-repl-mode-map
-             ("C-c C-o" . idris-repl-clear-buffer)
-             ("C-c C-q" . idris-quit)))
-
-;;; Haskell
-(use-package intero                     ; Development mode for Haskell
-  :ensure t
-  :config (intero-global-mode))
-
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
   :mode ("\\.sql\\'" . sql-mode)
