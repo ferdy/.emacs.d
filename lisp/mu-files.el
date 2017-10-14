@@ -113,6 +113,10 @@
   :ensure t
   :mode ("Dockerfile\\'" . dockerfile-mode))
 
+(use-package docker-compose-mode        ; Edit docker-compose files
+  :ensure t
+  :mode ("docker-compose.yml\\'". docker-compose-mode))
+
 (use-package docker-tramp              ; TRAMP integration for docker containers
   :ensure t)
 
