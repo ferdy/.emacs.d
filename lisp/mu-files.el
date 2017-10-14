@@ -116,6 +116,10 @@
 (use-package docker-tramp              ; TRAMP integration for docker containers
   :ensure t)
 
+(use-package apt-sources-list           ; Edit APT source.list files
+  :ensure t
+  :mode ("\\.list\\'" . apt-sources-list-mode))
+
 ;;; Utilities and keybindings
 (defun mu-current-file ()
   "Gets the \"file\" of the current buffer.
