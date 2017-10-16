@@ -36,10 +36,7 @@
   :bind (("C-x o"   . ace-window)
          ("C-c w w" . ace-window)
          ("C-c w s" . ace-swap-window))
-  :config
-  (validate-setq aw-keys                 ; Use home row
-                 '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
-                 aw-dispatch-always t))
+  :config (validate-setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 (use-package ediff-wind                 ; Ediff window management
   :defer t
