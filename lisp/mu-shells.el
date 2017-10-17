@@ -46,7 +46,6 @@
   :ensure t
   :init (shx-global-mode 1))
 
-
 (use-package bash-completion            ; Bash completion for shell-mode
   :ensure t
   :config (bash-completion-setup))
