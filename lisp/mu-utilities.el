@@ -29,13 +29,6 @@
          ("C-c h s" . helpful-symbol)
          ("C-c h v" . helpful-variable)))
 
-(use-package info                       ; Info manual viewer
-  :defer t
-  :config
-  ;; Fix `Info-quoted' face
-  (set-face-attribute 'Info-quoted nil :family 'unspecified
-                      :inherit font-lock-type-face))
-
 (use-package calendar                   ; Display a calendar
   :bind ("C-c a t c" . calendar)
   :config (setq calendar-week-start-day 1)) ; Start on Monday
