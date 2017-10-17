@@ -46,6 +46,11 @@
   :ensure t
   :init (shx-global-mode 1))
 
+
+(use-package bash-completion            ; Bash completion for shell-mode
+  :ensure t
+  :config (bash-completion-setup))
+
 (use-package eshell                     ; Emacs command shell
   :bind ("C-c a s e" . eshell-here)
   :config
