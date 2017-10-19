@@ -158,7 +158,7 @@ The EShell is renamed to match that directory to make multiple windows easier."
 
 (use-package eshell-bookmark            ; Bookmarks for EShell buffers
   :ensure t
-  :config (add-hook 'eshell-mode-hook 'eshell-bookmark-setup))
+  :config (add-hook 'eshell-mode-hook #'eshell-bookmark-setup))
 
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s T" . ansi-term)

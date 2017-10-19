@@ -103,7 +103,6 @@
    "rg -i -M 120 --no-heading --line-number --color never %s .")
 
   (validate-setq
-   counsel-bookmark-avoid-dired t
    counsel-mode-override-describe-bindings t
    counsel-grep-post-action-hook '(recenter)
    counsel-find-file-at-point t
