@@ -40,7 +40,7 @@
     "C-c 8 >"   "typo/right-brackets"
     "C-c a"     "applications"
     "C-c a a"   "admin"
-    "C-c a L"   "languages"
+    "C-c a l"   "languages"
     "C-c a m"   "math"
     "C-c a r"   "remote"
     "C-c a s"   "shells"

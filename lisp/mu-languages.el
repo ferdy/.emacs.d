@@ -101,8 +101,8 @@ be global."
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
   :ensure t
-  :bind (("C-c a L d" . wordnut-search)
-         ("C-c a L D" . wordnut-lookup-current-word)))
+  :bind (("C-c a l d" . wordnut-search)
+         ("C-c a l D" . wordnut-lookup-current-word)))
 
 (provide 'mu-languages)
 
