@@ -167,7 +167,11 @@
 ;;; Haskell
 (use-package intero                     ; Development mode for Haskell
   :ensure t
-  :config (intero-global-mode))
+  :config
+  (intero-global-mode)
+
+  (add-hook 'haskell-mode-hook #'eldoc-mode)
+  (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation))
 
 ;;; Idris
 (use-package idris-mode                 ; Idris editing
