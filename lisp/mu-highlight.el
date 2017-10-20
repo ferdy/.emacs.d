@@ -30,24 +30,14 @@
   (unless (display-graphic-p)
     (diff-hl-margin-mode)))
 
-(use-package highlight-symbol           ; Highlight and jump to symbols
+(use-package symbol-overlay             ; Highlight symbols
   :ensure t
-  :bind (("C-c s %" . highlight-symbol-query-replace)
-         ("C-c s o" . highlight-symbol-occur)
-         ("C-c s n" . highlight-symbol-next-in-defun)
-         ("C-c s p" . highlight-symbol-prev-in-defun))
-  :init
-  ;; Navigate occurrences of the symbol under point with M-n and M-p
-  (add-hook 'prog-mode-hook #'highlight-symbol-nav-mode)
-  ;; Highlight symbol occurrences
-  (add-hook 'prog-mode-hook #'highlight-symbol-mode)
-  :config
-  (validate-setq
-   ;; Highlight symbol almost immediately
-   highlight-symbol-idle-delay 0.4
-   ;; Immediately after navigation
-   highlight-symbol-on-navigation-p t)
-  :diminish highlight-symbol-mode)
+  :bind (:map symbol-overlay-mode-map
+              ("M-n" . symbol-overlay-jump-next)
+              ("M-p" . symbol-overlay-jump-prev))
+  :init (dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook))
+          (add-hook hook #'symbol-overlay-mode))
+  :diminish symbol-overlay-mode)
 
 (use-package highlight-numbers          ; Fontify number literals
   :ensure t
