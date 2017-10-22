@@ -144,6 +144,14 @@
   :config
   (intero-global-mode)
 
+  (bind-keys :map intero-mode-map
+             ("C-c C-q" . intero-destroy)
+             ("C-c m r" . intero-restart))
+
+  (bind-keys :map intero-repl-mode-map
+             ("C-c C-q" . intero-destroy)
+             ("C-c m r" . intero-restart))
+
   (add-hook 'haskell-mode-hook #'eldoc-mode)
   (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation))
 
