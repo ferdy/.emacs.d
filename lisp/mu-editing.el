@@ -460,11 +460,40 @@ Otherwise insert the date as Mar 04, 2014."
   (interactive "P")
   (insert (format-time-string (if iso "%F" "%b %d, %Y"))))
 
+;;;###autoload
+(defun mu-open-line-with-reindent (n)
+  "A version of `open-line' which reindents the start and end positions.
+If there is a fill prefix and/or a `left-margin', insert them
+on the new line if the line would have been blank.
+With arg N, insert N newlines."
+  (interactive "*p")
+  (let* ((do-fill-prefix (and fill-prefix (bolp)))
+         (do-left-margin (and (bolp) (> (current-left-margin) 0)))
+         (loc (point-marker))
+         ;; Don't expand an abbrev before point.
+         (abbrev-mode nil))
+    (delete-horizontal-space t)
+    (newline n)
+    (indent-according-to-mode)
+    (when (eolp)
+      (delete-horizontal-space t))
+    (goto-char loc)
+    (while (> n 0)
+      (cond ((bolp)
+             (if do-left-margin (indent-to (current-left-margin)))
+             (if do-fill-prefix (insert-and-inherit fill-prefix))))
+      (forward-line 1)
+      (setq n (1- n)))
+    (goto-char loc)
+    (end-of-line)
+    (indent-according-to-mode)))
+
 (bind-keys
  ([remap kill-whole-line]        . mu-smart-kill-whole-line)
  ([remap move-beginning-of-line] . mu-back-to-indentation-or-beginning-of-line)
  ("RET"                          . newline-and-indent)
  ("S-RET"                        . mu-smart-open-line)
+ ("C-o"                          . mu-open-line-with-reindent)
  ("C-<backspace>"                . mu-smart-backward-kill-line))
 
 (provide 'mu-editing)
