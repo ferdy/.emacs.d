@@ -179,17 +179,6 @@ _C-s_: mark region
             (lambda () (setq-local tildify-space-string "~")))
   :diminish tildify-mode)
 
-(use-package aggressive-indent          ; Automatically indent code
-  :ensure t
-  :bind ("C-c t i" . aggressive-indent-mode)
-  :init (global-aggressive-indent-mode 1)
-  :config
-  ;; Free C-c C-q, used in Org and in CIDER
-  (unbind-key "C-c C-q" aggressive-indent-mode-map)
-
-  (add-to-list 'aggressive-indent-excluded-modes
-               'cider-repl-mode))
-
 (use-package copy-as-format            ; Copy using format for GitHub/Slack/etc.
   :ensure t
   :bind (("C-c c g" . copy-as-format-github)
