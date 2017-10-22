@@ -97,9 +97,11 @@
   :bind (:map read-expression-map
               ("C-r" . counsel-expression-history))
   :config
-  ;; Use ripgrep instead of regular grep
   (validate-setq
+   ;; Use ripgrep instead of regular grep
    counsel-grep-base-command
+   "rg -i -M 120 --no-heading --line-number --color never %s ."
+   counsel-rg-base-command
    "rg -i -M 120 --no-heading --line-number --color never %s .")
 
   (validate-setq
