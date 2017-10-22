@@ -13,13 +13,17 @@
 
 (prefer-coding-system 'utf-8)
 
+(electric-indent-mode 1)
+
+(use-package electric                   ; Electric modes package
+  :config (add-hook 'after-init-hook #'electric-indent-mode))
+
 (use-package whitespace-cleanup-mode    ; Cleanup whitespace in buffers
   :ensure t
   :bind (("C-c t w" . whitespace-cleanup-mode)
          ("C-c x w" . whitespace-cleanup))
-  :init
-  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-    (add-hook hook #'whitespace-cleanup-mode))
+  :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
+          (add-hook hook #'whitespace-cleanup-mode))
   :diminish whitespace-cleanup-mode)
 
 (use-package shrink-whitespace          ; Better whitespace removal
@@ -218,7 +222,8 @@ _C-s_: mark region
  kill-ring-max 200                      ; More killed items
  kill-do-not-save-duplicates t          ; No duplicates in kill ring
  ;; Save the contents of the clipboard to kill ring before killing
- save-interprogram-paste-before-kill t)
+ save-interprogram-paste-before-kill t
+ mouse-yank-at-point t)
 
 ;;; Utilities and keybindings
 (bind-key "C-c x i" #'indent-region)
@@ -407,7 +412,7 @@ With prefix ARG, kill that many lines."
 (defun mu-smart-open-line ()
   "Insert empty line after the current line."
   (interactive)
-  (move-end-of-line nil)
+  (move-end-of-line 1)
   (newline-and-indent))
 
 ;;;###autoload
@@ -458,8 +463,9 @@ Otherwise insert the date as Mar 04, 2014."
 (bind-keys
  ([remap kill-whole-line]        . mu-smart-kill-whole-line)
  ([remap move-beginning-of-line] . mu-back-to-indentation-or-beginning-of-line)
- ("C-<backspace>"                . mu-smart-backward-kill-line)
- ("C-S-j"                        . mu-smart-open-line))
+ ("RET"                          . newline-and-indent)
+ ("S-RET"                        . mu-smart-open-line)
+ ("C-<backspace>"                . mu-smart-backward-kill-line))
 
 (provide 'mu-editing)
 
