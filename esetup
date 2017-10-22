@@ -84,28 +84,6 @@ ag_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends silversearcher-ag"
 }
 
-scheme_curl() {
-  curl http://3e8.org/pub/chicken-doc/chicken-doc-repo.tgz | sudo tar zx
-}
-
-scheme_setup() {
-  dostep 1 "y" "apt-get -y install --no-install-recommends guile-2.0"
-  dostep 2 "y" "apt-get -y install --no-install-recommends chicken-bin libchicken7 libchicken-dev"
-  dostep 3 "n" "chicken-install -s apropos chicken-doc input-parse numbers"
-  dostep 4 "n" "chicken-install -s sxml-transforms matchable scss filepath spiffy uri-common"
-  dostep 5 "n" "chicken-install -s doctype colorize multidoc defstruct atom svnwiki-sxml"
-  dostep 6 "n" "chicken-install -s rfc3339 hyde webkit"
-  dostep 7 "n" "cd $(csi -p '(chicken-home)')"
-  dostep 8 "n" "scheme_curl"
-  dostep 9 "n" "cd"
-}
-
-commonlisp_setup() {
-  dostep 1 "y" "apt-get -y install --no-install-recommends sbcl sbcl-doc"
-  dostep 2 "y" "apt-get -y install --no-install-recommends cl-clx-sbcl cl-ppcre"
-  dostep 3 "y" "apt-get -y install --no-install-recommends texinfo cl-swank"
-}
-
 clojure_setup() {
   dostep 1 "y" "apt-get -y install --no-install-recommends openjdk-8-jdk openjdk-8-source"
   if [ ! -d "~/bin" ]; then
@@ -225,10 +203,6 @@ announce AG
 ag_setup
 announce CLOJURE
 clojure_setup
-announce SCHEME
-scheme_setup
-announce COMMONLISP
-commonlisp_setup
 announce IDRIS
 idris_setup
 announce HASKELL
