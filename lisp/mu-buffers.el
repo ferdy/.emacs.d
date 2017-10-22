@@ -65,6 +65,7 @@
                  "*SQL"              ; SQL REPL
                  "*Cargo"            ; Cargo process buffers
                  "*idris-repl"       ; Idris REPL
+                 "*intero"           ; Intero REPL
                  ;; AUCTeX command output
                  (and (1+ nonl) " output*")))
     (display-buffer-reuse-window display-buffer-in-side-window)
