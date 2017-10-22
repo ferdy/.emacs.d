@@ -21,16 +21,6 @@
    which-key-idle-delay 0.4
    which-key-sort-order 'which-key-prefix-then-key-order)
 
-  ;; Prettify some symbols
-  (add-to-list 'which-key-replacement-alist '(("up" . nil) . ("↑" . nil)))
-  (add-to-list 'which-key-replacement-alist '(("right" . nil) . ("→" . nil)))
-  (add-to-list 'which-key-replacement-alist '(("down" . nil) . ("↓" . nil)))
-  (add-to-list 'which-key-replacement-alist '(("left" . nil) . ("←" . nil)))
-  (add-to-list 'which-key-replacement-alist '(("DEL" . nil) . ("⌫" . nil)))
-  (add-to-list 'which-key-replacement-alist
-               '(("deletechar" . nil) . ("⌦" . nil)))
-  (add-to-list 'which-key-replacement-alist '(("RET" . nil) . ("⏎" . nil)))
-
   (which-key-add-key-based-replacements
     "C-c !"     "flycheck"
     "C-c @"     "outline"
@@ -79,15 +69,12 @@
     "C-c m r" "refs"
     "C-c m s" "el-search")
 
-  (which-key-add-major-mode-key-based-replacements 'scheme-mode
-    "C-c m"  "scheme/personal")
-
-  (which-key-add-major-mode-key-based-replacements 'sly-mode
-    "C-c m"  "clisp/personal")
-
   (which-key-add-major-mode-key-based-replacements 'clojure-mode
     "C-c m"   "clj/personal"
     "C-c m r" "clj-refactor")
+
+  (which-key-add-major-mode-key-based-replacements 'haskell-mode
+    "C-c m" "haskell/personal")
 
   (which-key-add-major-mode-key-based-replacements 'rust-mode
     "C-c C-c" "rust/cargo")
