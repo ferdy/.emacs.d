@@ -8,10 +8,10 @@ version built from **development sources**.
 You can find it useful if you plan to work with:
 
 - Clojure and ClojureScript
+- Haskell and Idris
 - Rust
 - Git
 - LaTeX
-- Org mode
 - Markdown
 
 ## Setup
