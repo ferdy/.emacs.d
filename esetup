@@ -127,9 +127,10 @@ idris_setup() {
 }
 
 haskell_setup() {
-  dostep 1 "n" curl -sSL https://get.haskellstack.org/ | sh
-  dostep 2 "n" cabal install happy
-  dostep 3 "n" cabal install hlint
+  dostep 1 "n" wget -qO- https://get.haskellstack.org/ | sh
+  dostep 2 "n" slack install hindent
+  dostep 3 "n" cabal install happy
+  dostep 4 "n" cabal install hlint
 }
 
 python_setup() {

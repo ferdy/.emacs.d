@@ -173,6 +173,11 @@
   (add-hook 'haskell-mode-hook #'eldoc-mode)
   (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation))
 
+(use-package hindent                    ; Use hindent to indent Haskell code
+  :ensure t
+  :config (add-hook 'haskell-mode-hook #'hindent-mode)
+  :diminish hindent-mode)
+
 ;;; Idris
 (use-package idris-mode                 ; Idris editing
   :ensure t
