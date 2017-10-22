@@ -138,6 +138,30 @@
   :defer t
   :after clojure-mode)
 
+;;; Haskell
+(use-package intero                     ; Development mode for Haskell
+  :ensure t
+  :config
+  (intero-global-mode)
+
+  (add-hook 'haskell-mode-hook #'eldoc-mode)
+  (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation))
+
+(use-package hindent                    ; Use hindent to indent Haskell code
+  :ensure t
+  :config (add-hook 'haskell-mode-hook #'hindent-mode)
+  :diminish hindent-mode)
+
+;;; Idris
+(use-package idris-mode                 ; Idris editing
+  :ensure t
+  :mode ("\\.idr\\'" . idris-mode)
+  :config
+  (bind-key "C-c C-q" #'idris-quit idris-mode-map)
+  (bind-keys :map idris-repl-mode-map
+             ("C-c C-o" . idris-repl-clear-buffer)
+             ("C-c C-q" . idris-quit)))
+
 ;;; Rust
 (use-package rust-mode                  ; Rust major mode
   :ensure t
@@ -163,30 +187,6 @@
 (use-package toml-mode                  ; Toml for Cargo files
   :ensure t
   :defer t)
-
-;;; Haskell
-(use-package intero                     ; Development mode for Haskell
-  :ensure t
-  :config
-  (intero-global-mode)
-
-  (add-hook 'haskell-mode-hook #'eldoc-mode)
-  (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation))
-
-(use-package hindent                    ; Use hindent to indent Haskell code
-  :ensure t
-  :config (add-hook 'haskell-mode-hook #'hindent-mode)
-  :diminish hindent-mode)
-
-;;; Idris
-(use-package idris-mode                 ; Idris editing
-  :ensure t
-  :mode ("\\.idr\\'" . idris-mode)
-  :config
-  (bind-key "C-c C-q" #'idris-quit idris-mode-map)
-  (bind-keys :map idris-repl-mode-map
-             ("C-c C-o" . idris-repl-clear-buffer)
-             ("C-c C-q" . idris-quit)))
 
 ;;; Databases
 (use-package sql                        ; SQL editing and REPL
