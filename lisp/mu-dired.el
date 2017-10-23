@@ -17,13 +17,14 @@
          ("C-c f g"    . mu-dired-get-size)
          ("C-c f f"    . find-name-dired))
   :bind (:map dired-mode-map
-              ("M-<up>"   . mu-dired-up)
-              ("M-p"      . mu-dired-up)
-              ("^"        . mu-dired-up)
-              ("RET"      . find-file-reuse-dir-buffer)
-              ("M-<down>" . mu-dired-down)
-              ("M-n"      . mu-dired-down)
-              ("!"        . mu-sudired))
+              ("M-<up>"      . mu-dired-up)
+              ("M-p"         . mu-dired-up)
+              ("^"           . mu-dired-up)
+              ("<backspace>" . mu-dired-up)
+              ("RET"         . find-file-reuse-dir-buffer)
+              ("M-<down>"    . mu-dired-down)
+              ("M-n"         . mu-dired-down)
+              ("!"           . mu-sudired))
   :config
   (validate-setq
    dired-auto-revert-buffer t           ; Revert buffers on revisiting
