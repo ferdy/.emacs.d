@@ -46,6 +46,7 @@
      ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)
      ("http://outlawvern.com/feed/" cinema)
      ("http://planet.clojure.in/atom.xml" lisp)
+     ("https://planet.haskell.org/atom.xml" haskell)
      ("http://planet.emacsen.org/atom.xml" emacs)
      ("http://reverseshot.org/archive/entry/rss" cinema)
      ("http://sensesofcinema.com/feed/" cinema)
