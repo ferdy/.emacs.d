@@ -100,7 +100,7 @@ With negative argument, convert previous words."
            (substring (emacs-repository-get-version) 0 7))))
 
 ;;;###autoload
-(defun what-face (pos)
+(defun mu-face-at-point (pos)
   "Show face at POS (point)."
   (interactive "d")
   (let ((face (or (get-char-property pos 'read-face-name)
