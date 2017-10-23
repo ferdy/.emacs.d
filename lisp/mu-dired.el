@@ -99,6 +99,12 @@ app. The app is chosen from your OS's preference."
 (use-package find-dired                 ; Run `find' in Dired
   :config (validate-setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
 
+(use-package dired-aux                  ; Other Dired customizations
+  :after dired
+  :config
+  ;; Ask for creation of missing directories when copying/moving
+  (validate-setq dired-create-destination-dirs 'ask))
+
 (use-package dired-x                    ; Enable some nice Dired features
   :bind ("C-x C-j" . dired-jump)
   :config
