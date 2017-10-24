@@ -44,6 +44,7 @@
      ("https://feeds2.feedburner.com/PatrickRothfuss" books)
      ("https://film.avclub.com/rss" cinema)
      ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)
+     ("https://haskellweekly.news/haskell-weekly.atom" haskell)
      ("http://outlawvern.com/feed/" cinema)
      ("http://planet.clojure.in/atom.xml" lisp)
      ("https://planet.haskell.org/atom.xml" haskell)
