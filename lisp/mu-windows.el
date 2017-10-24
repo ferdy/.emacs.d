@@ -15,8 +15,6 @@
 
 (use-package eyebrowse                  ; Easy workspaces creation and switching
   :ensure t
-  :bind (("C-c C-è" . eyebrowse-prev-window-config)
-         ("C-c C-+" . eyebrowse-next-window-config))
   :init (eyebrowse-mode t)
   :config
   (validate-setq
