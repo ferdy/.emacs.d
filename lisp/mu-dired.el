@@ -17,18 +17,17 @@
          ("C-c f g"    . mu-dired-get-size)
          ("C-c f f"    . find-name-dired))
   :bind (:map dired-mode-map
-              ("M-<up>"      . mu-dired-up)
               ("M-p"         . mu-dired-up)
               ("^"           . mu-dired-up)
               ("<backspace>" . mu-dired-up)
-              ("RET"         . find-file-reuse-dir-buffer)
-              ("M-<down>"    . mu-dired-down)
               ("M-n"         . mu-dired-down)
-              ("!"           . mu-sudired))
+              ("RET"         . find-file-reuse-dir-buffer)
+              ("!"           . mu-sudired)
+              ("<prior>"     . beginend-dired-mode-goto-beginning)
+              ("<next>"      . beginend-dired-mode-goto-end))
   :config
   (validate-setq
    dired-auto-revert-buffer t           ; Revert buffers on revisiting
-   ;; Add ls switches
    dired-listing-switches "-lFaGh1v --group-directories-first"
    dired-dwim-target t                  ; Use other pane as target
    dired-recursive-copies 'always       ; Copy dirs recursively
