@@ -87,36 +87,3 @@ $ make clean
 With the help of tools such as [Magit](https://github.com/magit/magit),
 [Paradox](https://github.com/Bruce-Connor/paradox) and your preferred shell,
 maintenance is simple.
-
-## Acknowledgements
-This configuration would not have been possible without the work of and the
-inspiration from these people:
-- [Bozhidar Batsov](https://github.com/bbatsov)
-- [Joe Brock](https://github.com/DebianJoe)
-- [Sacha Chua](https://github.com/sachac)
-- [Sam Halliday](https://github.com/fommil)
-- [Wilfred Hughes](https://github.com/Wilfred)
-- [Oleh Krehel](https://github.com/abo-abo)
-- [Artur Malabarba](https://github.com/Malabarba)
-- [Kaushal Modi](https://github.com/kaushalmodi)
-- [Mickey Petersen](https://github.com/mickeynp)
-- [Nicolas Petton](https://github.com/NicolasPetton)
-- [Steve Purcell](https://github.com/purcell)
-- [Vasilij Schneidermann](https://github.com/wasamasa)
-- [Magnar Sveen](https://github.com/magnars)
-- [John Wiegley](https://github.com/jwiegley)
-- [Sebastian Wiesner](https://github.com/lunaryorn)
-
-## License
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by the Free
-Software Foundation; either version 3 of the License, or (at your option) any
-later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with GNU
-Emacs; see the file COPYING. If not, write to the Free Software Foundation,
-Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
