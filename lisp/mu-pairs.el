@@ -1,6 +1,6 @@
 ;;; mu-smartparens.el --- Part of my Emacs Setup  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2017  Manuel Uberti
+;; Copyright (C) 2014-2017  Manuel Uberti
 
 ;; Author: Manuel Uberti manuel.uberti@inventati.org
 ;; Keywords: convenience
