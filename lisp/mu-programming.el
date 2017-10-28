@@ -159,8 +159,7 @@
   (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)
 
   (with-eval-after-load 'flycheck-mode
-    (flycheck-add-next-checker 'intero
-                           '(warning . haskell-hlint))))
+    (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
 
 (use-package hindent                    ; Use hindent to indent Haskell code
   :ensure t
