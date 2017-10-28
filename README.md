@@ -21,8 +21,10 @@ You can find this configuration useful if you plan to work with:
 This is how I build and install Emacs on my Debian and Ubuntu machines.
 
 If you are using a different operative system, you need to understand how to
-install the required dependencies.
-
+install the required dependencies. Otherwise just run:
+```console
+$ sudo apt-get build-dep emacs24
+```
 Once ready:
 
 - clone Emacs trunk:
@@ -32,7 +34,6 @@ $ git clone git://git.savannah.gnu.org/emacs.git
 - build Emacs trunk:
 ```console
 $ cd emacs
-$ sudo apt-get build-dep emacs24
 $ ./autogen.sh
 $ ./autogen.sh git
 $ ./configure --host=x86_64-debian-linux-gnu
