@@ -3,7 +3,7 @@
 This is the Emacs configuration I use everyday.
 
 It requires an Emacs version built from development sources and a bunch of
-external tools. I have a
+external tools. I devised a
 [script](https://github.com/manuel-uberti/.emacs.d/blob/master/esetup) to
 prepare the right environment for my configuration, but your mileage might vary.
 
