@@ -17,6 +17,14 @@ You can find this configuration useful if you plan to work with:
 - Markdown
 
 ## Initial setup
+
+This is how I build and install Emacs on my Debian and Ubuntu machines.
+
+If you are using a different operative system, you need to understand how to
+install the required dependencies.
+
+Once ready:
+
 - clone Emacs trunk:
 ```console
 $ git clone git://git.savannah.gnu.org/emacs.git
