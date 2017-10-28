@@ -2,8 +2,10 @@
 
 This is the Emacs configuration I use everyday.
 
-It targets **Debian-based** and **Ubuntu-based** systems and requires an Emacs
-version built from **development sources**.
+It requires an Emacs version built from development sources and a bunch of
+external tools. I have a
+[script](https://github.com/manuel-uberti/.emacs.d/blob/master/esetup) to
+prepare the right environment for my configuration, but your mileage might vary.
 
 You can find it useful if you plan to work with:
 
@@ -14,7 +16,7 @@ You can find it useful if you plan to work with:
 - LaTeX
 - Markdown
 
-## Setup
+## Day 0 setup
 - clone Emacs trunk:
 ```console
 $ git clone git://git.savannah.gnu.org/emacs.git
@@ -54,7 +56,7 @@ installation process.
 The first time you run Emacs, every package configured in `init.el` and in every
 file in the `lisp` directory will be automatically installed and configured.
 
-## Updates
+## Keeping it up-to-date
 This configuration tracks latest Emacs developments, so I highly recommend you
 update and build your sources at least once a week.
 
