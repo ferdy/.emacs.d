@@ -43,14 +43,6 @@ $ cd .emacs.d
 $ sudo mkdir -p /usr/share/hunspell
 $ sudo cp etc/dictionaries/* /usr/share/hunspell
 ```
-- put the kettle on and run ```esetup```:
-```console
-$ chmod +x esetup
-$ ./esetup -y
-```
-*Note*: you can run `esetup` without the `-y` option to step through the
-installation process.
-
 - run Emacs
 
 The first time you run Emacs, every package configured in `init.el` and in every
