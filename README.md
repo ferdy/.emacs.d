@@ -16,7 +16,7 @@ You can find this configuration useful if you plan to work with:
 - LaTeX
 - Markdown
 
-## Day 0 setup
+## Initial setup
 - clone Emacs trunk:
 ```console
 $ git clone git://git.savannah.gnu.org/emacs.git
@@ -56,7 +56,7 @@ installation process.
 The first time you run Emacs, every package configured in `init.el` and in every
 file in the `lisp` directory will be automatically installed and configured.
 
-## Keeping it up-to-date
+## Updates
 This configuration tracks latest Emacs developments, so I highly recommend you
 update and build your sources at least once a week.
 
