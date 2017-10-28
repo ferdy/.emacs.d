@@ -121,6 +121,7 @@
     (validate-setq clojure--prettify-symbols-alist
                    (append mu-clojure-prettify-alist
                            clojure--prettify-symbols-alist)))
+
   (with-eval-after-load 'lisp-mode
     (validate-setq lisp-prettify-symbols-alist
                    (append mu-clojure-prettify-alist
