@@ -155,11 +155,15 @@
              ("C-c C-q" . intero-destroy)
              ("C-c m r" . intero-restart))
 
-  (add-hook 'haskell-mode-hook #'eldoc-mode)
-  (add-hook 'haskell-mode-hook #'turn-on-haskell-indentation)
-
   (with-eval-after-load 'flycheck-mode
     (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
+
+(use-package haskell-mode               ; Haskell editing
+  :ensure intero
+  :mode ("\\.ghci\\'" . haskell-mode)
+  :config
+  (add-hook 'haskell-mode-hook #'eldoc-mode)
+  (add-hook 'haskell-mode-hook #'haskell-indentation-mode))
 
 (use-package hindent                    ; Use hindent to indent Haskell code
   :ensure t
