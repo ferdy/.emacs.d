@@ -62,7 +62,6 @@
      ("http://www.slantmagazine.com/rss" cinema)
      ("http://www.thecinegogue.com/feed/" cinema)
      ("http://www.thecinephiliacs.net/feeds/posts/default" cinema)
-     ("https://www.theguardian.com/sport/boxing/rss" sport)
      ("https://www.theguardian.com/uk/commentisfree/rss" news)
      ("https://www.theguardian.com/uk/culture/rss" news)
      ("https://www.theguardian.com/uk/environment/rss" news)
