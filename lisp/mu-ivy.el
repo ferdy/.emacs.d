@@ -49,11 +49,6 @@
   :defer t
   :after ivy)
 
-(use-package ivy-pages                  ; Jump to pages with Ivy
-  :ensure t
-  :defer t
-  :bind ("C-c n p" . ivy-pages))
-
 (use-package ivy-historian              ; Store minibuffer candidates
   :ensure t
   :init (ivy-historian-mode +1))
