@@ -231,8 +231,6 @@
   :defer t
   :mode ("\\.js\\'" . js2-mode)
   :config
-  (unbind-key "M-." js2-mode-map)
-
   (validate-setq
    ;; Disable parser errors and strict warnings
    js2-mode-show-parse-errors nil
@@ -243,21 +241,6 @@
 
   ;; Better Imenu in j2-mode
   (add-hook 'js2-mode-hook #'js2-imenu-extras-mode))
-
-(use-package js2-refactor               ; Refactor JavaScript
-  :ensure t
-  :after js2-mode
-  :init (add-hook 'js2-mode-hook #'js2-refactor-mode)
-  :config (js2r-add-keybindings-with-prefix "C-c m r"))
-
-(use-package xref-js2                 ; Jump to references with Ag in JavaScript
-  :ensure t
-  :after js2-mode
-  :config
-  (add-hook
-   'js2-mode-hook
-   (lambda ()
-     (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))))
 
 (use-package css-mode                   ; Better CSS support
   :defer t
