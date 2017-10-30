@@ -212,6 +212,14 @@
                 ;; And the modes
                 " " mode-line-modes mode-line-end-spaces))
 
+(defmacro rename-modeline (package-name mode new-name)
+  "Rename PACKAGE-NAME with MODE into NEW-NAME in the modeline."
+  `(eval-after-load ,package-name
+     '(defadvice ,mode (after rename-modeline activate)
+        (setq mode-name ,new-name))))
+
+(rename-modeline "js2-mode" js2-mode "JS2")
+
 ;;; Utilities and key bindings
 (defun mu-reset-fonts ()
   "Reset fonts to my preferences."

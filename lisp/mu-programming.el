@@ -228,7 +228,6 @@
 
 (use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
-  :defer t
   :mode ("\\.js\\'" . js2-mode)
   :config
   (validate-setq
