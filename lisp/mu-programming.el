@@ -213,6 +213,10 @@
          :map sql-mode-map
          ("C-c m p" . sql-set-product)))
 
+(use-package sql-indent                 ; Indent SQL statements
+  :ensure t
+  :after sql)
+
 (use-package sqlup-mode                 ; Upcase SQL keywords
   :ensure t
   :bind (:map sql-mode-map
