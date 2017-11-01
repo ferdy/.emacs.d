@@ -27,8 +27,11 @@
          ("C-c v p" . magit-pull)
          ("C-c v v" . magit-status))
   :config
-  (validate-setq magit-save-repository-buffers 'dontask
-                 magit-refs-show-commit-count 'all)
+  (validate-setq
+   magit-save-repository-buffers 'dontask
+   magit-refs-show-commit-count 'all
+   magit-branch-prefer-remote-upstream '("master")
+   magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")))
 
   ;; Show refined hunks during diffs
   (set-default 'magit-diff-refine-hunk t)
