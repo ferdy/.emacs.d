@@ -82,8 +82,17 @@
   (add-hook 'clojure-mode-hook #'cider-mode)
   (add-hook 'clojure-mode-hook #'subword-mode)
   :config
+  ;; Fix indentation of some common macros
   (define-clojure-indent
-    (for-all 1)))
+    (for-all 1)
+    (defroutes 'defun)
+    (GET 2)
+    (POST 2)
+    (PUT 2)
+    (DELETE 2)
+    (HEAD 2)
+    (ANY 2)
+    (context 2)))
 
 (use-package clojure-mode-extra-font-locking ; Font-locking for Clojure mode
   :ensure t
