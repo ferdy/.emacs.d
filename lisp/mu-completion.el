@@ -80,12 +80,17 @@ _e_: extra   _l_: list        _n_: new
   (validate-setq company-tooltip-align-annotations t
                  company-tooltip-flip-when-above t
                  ;; Easy navigation to candidates with M-<n>
-                 company-show-numbers t
-                 ;; Ignore case
-                 company-dabbrev-ignore-case t
-                 ;; Do not downcase completion
-                 company-dabbrev-downcase nil)
+                 company-show-numbers t)
   :diminish company-mode)
+
+(use-package company-dabbrev            ; dabbrev-like Company backend
+  :after company
+  :config
+  (validate-setq
+   ;; Ignore case
+   company-dabbrev-ignore-case t
+   ;; Do not downcase completion
+   company-dabbrev-downcase nil))
 
 (use-package company-statistics         ; Show likelier candidates on top
   :ensure t
