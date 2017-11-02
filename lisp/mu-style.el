@@ -161,6 +161,17 @@
 ;; Show buffer position percentage starting from top
 (validate-setq mode-line-percent-position '(-3 "%o"))
 
+;; Increase mode-line size with a border (box) of the same colour and
+;; reduce font size by tweaking height
+(set-face-attribute 'mode-line nil
+                    :inverse-video nil
+                    :height 0.9
+                    :box '(:line-width 6 :color "#373b41" :style nil))
+(set-face-attribute 'mode-line-inactive nil
+                    :inverse-video nil
+                    :height 0.9
+                    :box '(:line-width 8 :color "#282a2e" :style nil))
+
 (defvar mu-eyebrowse-mode-line
   '(:propertize
     (:eval
@@ -169,12 +180,10 @@
               (tag (when num
                      (nth 2 (assoc num (eyebrowse--get 'window-configs)))))
               (str (concat
-                    " ["
                     (if (and tag (< 0 (length tag))) tag
                       (when num (int-to-string num)))
-                    "] ")))
-         str)))
-    face font-lock-negation-char-face)
+                    " ")))
+         str))))
   "Mode line format for Eyebrowse.")
 (put 'mu-eyebrowse-mode-line 'risky-local-variable t)
 
@@ -198,6 +207,7 @@
 (setq-default mode-line-format
               '("%e" mode-line-front-space
                 mu-eyebrowse-mode-line ; Current workspace
+                "· "
                 ;; Standard info about the current buffer
                 mode-line-mule-info
                 mode-line-client
