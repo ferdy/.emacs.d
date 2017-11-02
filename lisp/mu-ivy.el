@@ -95,9 +95,9 @@
   (validate-setq
    ;; Use ripgrep instead of regular grep
    counsel-grep-base-command
-   "rg -i -M 120 --no-heading --line-number --color never %s"
+   "rg -i -M 120 --no-heading --line-number --color never %s %s"
    counsel-rg-base-command
-   "rg -i -M 120 --no-heading --line-number --color never %s")
+   "rg -i -M 120 --no-heading --line-number --color never %s .")
 
   (validate-setq
    counsel-mode-override-describe-bindings t
