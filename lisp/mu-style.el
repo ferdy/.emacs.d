@@ -180,6 +180,7 @@
               (tag (when num
                      (nth 2 (assoc num (eyebrowse--get 'window-configs)))))
               (str (concat
+                    " "
                     (if (and tag (< 0 (length tag))) tag
                       (when num (int-to-string num)))
                     " ")))
