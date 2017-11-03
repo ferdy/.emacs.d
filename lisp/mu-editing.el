@@ -13,8 +13,6 @@
 
 (prefer-coding-system 'utf-8)
 
-(electric-indent-mode 1)
-
 (use-package electric                   ; Electric modes package
   :config (add-hook 'after-init-hook #'electric-indent-mode))
 
