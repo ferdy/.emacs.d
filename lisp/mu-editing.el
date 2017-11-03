@@ -200,10 +200,6 @@ _C-s_: mark region
   :init (fancy-narrow-mode)
   :diminish fancy-narrow-mode)
 
-(use-package dynamic-spaces          ; Better management of multiple whitespaces
-  :ensure t
-  :config (dynamic-spaces-global-mode 1))
-
 ;; C-n adds new line when at the end of a line
 (validate-setq next-line-add-newlines t)
 
