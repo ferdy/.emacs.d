@@ -15,8 +15,9 @@
   :ensure t
   :bind ("C-c y" . mu-yasnippet/body)
   :config
-  (validate-setq yas-verbosity 1        ; No need to be so verbose
-                 yas-wrap-around-region t)
+  (validate-setq
+   yas-verbosity 1                      ; No need to be so verbose
+   yas-wrap-around-region t)
 
   (yas-reload-all)
   (yas-global-mode)
@@ -59,16 +60,17 @@ _e_: extra   _l_: list        _n_: new
 (use-package hippie-exp                 ; Powerful expansion and completion
   :bind ([remap dabbrev-expand] . hippie-expand)
   :config
-  (validate-setq hippie-expand-try-functions-list
-                 '(try-expand-dabbrev
-                   try-expand-dabbrev-all-buffers
-                   try-expand-dabbrev-from-kill
-                   try-complete-file-name-partially
-                   try-complete-file-name
-                   try-expand-all-abbrevs
-                   try-expand-list
-                   try-complete-lisp-symbol-partially
-                   try-complete-lisp-symbol)))
+  (validate-setq
+   hippie-expand-try-functions-list
+   '(try-expand-dabbrev
+     try-expand-dabbrev-all-buffers
+     try-expand-dabbrev-from-kill
+     try-complete-file-name-partially
+     try-complete-file-name
+     try-expand-all-abbrevs
+     try-expand-list
+     try-complete-lisp-symbol-partially
+     try-complete-lisp-symbol)))
 
 (use-package company                    ; Auto-completion
   :ensure t

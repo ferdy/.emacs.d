@@ -141,9 +141,10 @@ _C-s_: mark region
 (use-package autorevert                 ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
   :config
-  (validate-setq auto-revert-verbose nil
-                 ;; Revert Dired buffers, too
-                 global-auto-revert-non-file-buffers t)
+  (validate-setq
+   auto-revert-verbose nil
+   ;; Revert Dired buffers, too
+   global-auto-revert-non-file-buffers t)
   :diminish auto-revert-mode)
 
 (use-package copyright                  ; Deal with copyright notices

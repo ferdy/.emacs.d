@@ -105,8 +105,9 @@
 
 (use-package browse-url                 ; Browse URLs
   :config
-  (validate-setq browse-url-browser-function 'browse-url-generic
-                 browse-url-generic-program "opera"))
+  (validate-setq
+   browse-url-browser-function 'browse-url-generic
+   browse-url-generic-program "opera"))
 
 (use-package goto-addr                  ; Make links clickable
   :defer t
@@ -143,8 +144,7 @@ Call `eww-reload' to undo the filtering."
 (defun mu-toggle-image-display ()
   "Toggle images display on current buffer."
   (interactive)
-  (validate-setq mu-display-images
-                 (null mu-display-images))
+  (validate-setq mu-display-images (null mu-display-images))
   (mu-backup-display-property mu-display-images))
 
 (defun mu-backup-display-property (invert &optional object)

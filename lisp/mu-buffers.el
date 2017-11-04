@@ -33,18 +33,20 @@
 (use-package savehist                   ; Save minibuffer history
   :init (savehist-mode t)
   :config
-  (validate-setq savehist-save-minibuffer-history t
-                 savehist-autosave-interval 180))
+  (validate-setq
+   savehist-save-minibuffer-history t
+   savehist-autosave-interval 180))
 
 ;; Don't ask for confirmation
 (validate-setq kill-buffer-query-functions
                (delq 'process-kill-buffer-query-function
                      kill-buffer-query-functions))
 
-(validate-setq frame-resize-pixelwise t ; Resize by pixels
-               frame-title-format
-               '(:eval (if (buffer-file-name)
-                           (abbreviate-file-name (buffer-file-name)) "%b")))
+(validate-setq
+ frame-resize-pixelwise t               ; Resize by pixels
+ frame-title-format '(:eval (if (buffer-file-name)
+                                (abbreviate-file-name (buffer-file-name))
+                              "%b")))
 
 ;; Configure `display-buffer' behaviour for some special buffers
 (validate-setq
@@ -87,10 +89,11 @@
 
 (use-package uniquify                   ; Unique buffer names
   :config
-  (validate-setq uniquify-buffer-name-style 'post-forward
-                 uniquify-separator ":"
-                 ;; Ignore special buffers
-                 uniquify-ignore-buffers-re "^\\*"))
+  (validate-setq
+   uniquify-buffer-name-style 'post-forward
+   uniquify-separator ":"
+   ;; Ignore special buffers
+   uniquify-ignore-buffers-re "^\\*"))
 
 (use-package ibuf-ext                   ; Extensions for Ibuffer
   :config
