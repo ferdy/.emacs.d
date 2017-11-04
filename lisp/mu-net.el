@@ -52,6 +52,7 @@
      ("http://reverseshot.org/archive/entry/rss" cinema)
      ("http://sensesofcinema.com/feed/" cinema)
      ("http://sensesofcinema.podbean.com/feed/" cinema)
+     ("http://theseventhart.org/feed" cinema)
      ("https://teleport-city.com/feed/" cinema)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
