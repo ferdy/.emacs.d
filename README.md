@@ -59,7 +59,7 @@ file in the `lisp` directory will be automatically installed and configured.
 
 ## Updates
 This configuration tracks latest Emacs developments, so I highly recommend you
-update and build your sources at least once a week.
+update and build your sources once a week.
 
 You can use [Magit](https://github.com/magit/magit); `magit-status` is bound
 to <kbd>C-c v v</kbd>. Or you can do it with the command line:
