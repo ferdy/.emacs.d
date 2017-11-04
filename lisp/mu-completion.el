@@ -77,10 +77,11 @@ _e_: extra   _l_: list        _n_: new
               ("C-n" . company-select-next)
               ("C-p" . company-select-previous))
   :config
-  (validate-setq company-tooltip-align-annotations t
-                 company-tooltip-flip-when-above t
-                 ;; Easy navigation to candidates with M-<n>
-                 company-show-numbers t)
+  (validate-setq
+   company-tooltip-align-annotations t
+   company-tooltip-flip-when-above t
+   ;; Easy navigation to candidates with M-<n>
+   company-show-numbers t)
   :diminish company-mode)
 
 (use-package company-dabbrev            ; dabbrev-like Company backend
