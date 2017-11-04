@@ -115,6 +115,22 @@ If SIDE is non-nil only get windows on that side."
 (bind-key "C-c w t" #'mu-window-split-toggle)
 
 ;;;###autoload
+(defun split-window-func-with-other-buffer (split-function)
+  "Split window with SPLIT-FUNCTION and show (other-buffer) in the new window."
+  (lambda (&optional arg)
+    (interactive "P")
+    (funcall split-function)
+    (let ((target-window (next-window)))
+      (set-window-buffer target-window (other-buffer))
+      (unless arg
+        (select-window target-window)))))
+
+(bind-key* "C-x 2"
+           (split-window-func-with-other-buffer 'split-window-vertically))
+(bind-key* "C-x 3"
+           (split-window-func-with-other-buffer 'split-window-horizontally))
+
+;;;###autoload
 (defun mu-ediff-dwim ()
   "Do ediff as I mean.
 
