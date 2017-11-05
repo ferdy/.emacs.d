@@ -52,13 +52,22 @@ be global."
         (message "\"%s\" now expands to \"%s\" %sally"
                  bef aft (if p "loc" "glob")))))
 
-  (bind-key "C-i" #'mu-ispell-word-then-abbrev ctl-x-map))
+  (bind-key "C-i" #'mu-ispell-word-then-abbrev ctl-x-map)
+
+  ;; Disable ispell process message
+  (advice-add #'ispell-init-process :around #'mu-message-off-advice))
 
 (use-package flyspell                   ; Spell checking on-the-fly
   :bind (:map flyspell-mode-map
               ("C-M-l" . mu-cycle-ispell-languages))
   :init
   (add-hook 'prog-mode-hook #'flyspell-prog-mode)
+
+  (defun mu-current-dictionary-mode-line (language)
+    "Return the current dictionary from LANGUAGE for the mode line."
+    (interactive)
+    (let ((dict (upcase (substring language 0 2))))
+      (concat " " dict)))
 
   (defvar mu-languages-ring nil "Languages ring for Ispell")
 
@@ -67,10 +76,15 @@ be global."
     (dolist (elem languages) (ring-insert mu-languages-ring elem)))
 
   (defun mu-cycle-ispell-languages ()
+    "Cycle ispell languages in `mu-languages-ring'.
+
+Change dictionary and mode line lighter accordingly."
     (interactive)
     (let ((language (ring-ref mu-languages-ring -1)))
       (ring-insert mu-languages-ring language)
-      (ispell-change-dictionary language)))
+      (ispell-change-dictionary language)
+      (validate-setq flyspell-mode-line-string
+                     (mu-current-dictionary-mode-line language))))
 
   (dolist (mode-hook '(text-mode-hook LaTeX-mode-hook))
     (add-hook mode-hook (lambda () (flyspell-mode))))
@@ -81,11 +95,13 @@ be global."
    flyspell-issue-welcome-flag nil
    flyspell-issue-message-flag nil)
 
+  (validate-setq flyspell-mode-line-string
+                 (mu-current-dictionary-mode-line ispell-dictionary))
+
   ;; Free M-t for transpose words
   (unbind-key "M-t" flyspell-mode-map)
   ;; Free C-M-i for completion-at-point
-  (unbind-key "C-M-i" flyspell-mode-map)
-  :diminish flyspell-mode)
+  (unbind-key "C-M-i" flyspell-mode-map))
 
 (use-package flyspell-correct-ivy       ; Better interface for corrections
   :ensure t
