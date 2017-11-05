@@ -72,7 +72,7 @@ be global."
 
   (defvar mu-languages-ring nil "Languages ring for Ispell")
 
-  (let ((languages '("en_GB" "it_IT")))
+  (let ((languages '("it_IT" "en_GB")))
     (validate-setq mu-languages-ring (make-ring (length languages)))
     (dolist (elem languages) (ring-insert mu-languages-ring elem)))
 
@@ -85,7 +85,8 @@ Change dictionary and mode line lighter accordingly."
       (ring-insert mu-languages-ring language)
       (ispell-change-dictionary language)
       (validate-setq flyspell-mode-line-string
-                     (mu-current-dictionary-mode-line language))))
+                     (mu-current-dictionary-mode-line language))
+      (force-mode-line-update)))
 
   (dolist (mode-hook '(text-mode-hook LaTeX-mode-hook))
     (add-hook mode-hook (lambda () (flyspell-mode))))
