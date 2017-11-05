@@ -160,6 +160,11 @@ The EShell is renamed to match that directory to make multiple windows easier."
   :ensure t
   :config (add-hook 'eshell-mode-hook #'eshell-bookmark-setup))
 
+(use-package fish-completion            ; Add Fish completion to EShell
+  :ensure t
+  :when (executable-find "fish")
+  :config (add-hook 'eshell-mode-hook #'fish-completion-mode))
+
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s T" . ansi-term)
   :init
