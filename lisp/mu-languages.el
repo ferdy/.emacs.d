@@ -53,10 +53,7 @@ be global."
         (message "\"%s\" now expands to \"%s\" %sally"
                  bef aft (if p "loc" "glob")))))
 
-  (bind-key "C-i" #'mu-ispell-word-then-abbrev ctl-x-map)
-
-  ;; Disable ispell process message
-  (advice-add #'ispell-init-process :around #'mu-message-off-advice))
+  (bind-key "C-i" #'mu-ispell-word-then-abbrev ctl-x-map))
 
 (use-package flyspell                   ; Spell checking on-the-fly
   :bind (:map flyspell-mode-map

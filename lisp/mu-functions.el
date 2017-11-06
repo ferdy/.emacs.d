@@ -107,16 +107,6 @@ With negative argument, convert previous words."
                   (get-char-property pos 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
-;;;###autoload
-(defun mu-message-off-advice (oldfun &rest args)
-  "Quiet down messages in adviced OLDFUN, applying ARGS if present."
-  (let ((message-off (make-symbol "message-off")))
-    (unwind-protect
-        (progn
-          (advice-add #'message :around #'ignore (list 'name message-off))
-          (apply oldfun args))
-      (advice-remove #'message message-off))))
-
 (provide 'mu-functions)
 
 ;; Local Variables:
