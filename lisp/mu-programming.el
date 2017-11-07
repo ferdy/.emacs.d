@@ -34,11 +34,9 @@
 
   (defun mu-add-use-package-to-imenu ()
     "Add `use-package' declarations to `imenu'."
-    (add-to-list 'imenu-generic-expression
-                 mu-use-package-imenu-expression))
+    (add-to-list 'imenu-generic-expression mu-use-package-imenu-expression))
 
-  (add-hook 'emacs-lisp-mode-hook
-            #'mu-add-use-package-to-imenu))
+  (add-hook 'emacs-lisp-mode-hook #'mu-add-use-package-to-imenu))
 
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
@@ -288,7 +286,7 @@
 
   (validate-setq
    ;; Use two spaces in shell scripts.
-   sh-indentation 2
+   sh-basic-offset 2
    ;; The offset for nested indentation
    sh-basic-offset 2))
 
@@ -376,8 +374,7 @@
       (let ((inhibit-read-only t))
         (ansi-color-apply-on-region (point-min) (point-max)))))
 
-  (add-hook 'compilation-filter-hook
-            #'mu-colorize-compilation-buffer))
+  (add-hook 'compilation-filter-hook #'mu-colorize-compilation-buffer))
 
 ;;; Keybindings
 (bind-key* "C-;" #'comment-line)
