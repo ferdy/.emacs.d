@@ -161,17 +161,6 @@
 ;; Show buffer position percentage starting from top
 (validate-setq mode-line-percent-position '(-3 "%o"))
 
-;; Increase mode-line size with a border (box) of the same colour and
-;; reduce font size by tweaking height
-(set-face-attribute 'mode-line nil
-                    :inverse-video nil
-                    :height 0.9
-                    :box '(:line-width 6 :color "#373b41" :style nil))
-(set-face-attribute 'mode-line-inactive nil
-                    :inverse-video nil
-                    :height 0.9
-                    :box '(:line-width 8 :color "#282a2e" :style nil))
-
 (defvar mu-eyebrowse-mode-line
   '(:propertize
     (:eval
