@@ -151,13 +151,6 @@
 (use-package ox-pandoc                  ; Export Org documents via Pandoc
   :ensure t
   :config
-  (validate-setq
-   ;; Default options
-   org-pandoc-options '((standalone . t))
-   ;; Special settings for beamer-pdf and latex-pdf exporters
-   org-pandoc-options-for-beamer-pdf '((latex-engine . "lualatex"))
-   org-pandoc-options-for-latex-pdf '((latex-engine . "lualatex")))
-
   ;; Use external css for html5
   (let ((stylesheet (expand-file-name
                      (locate-user-emacs-file "etc/pandoc.css"))))
