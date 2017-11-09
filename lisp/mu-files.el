@@ -69,6 +69,12 @@
               ("M-g" . pdf-view-goto-page))
   :config (pdf-tools-install))
 
+(use-package pdf-view                   ; View PDF documents
+  :after pdf-tools
+  :config
+  ;; Zoom by 10% instead of default 25%
+  (validate-setq pdf-view-resize-factor 1.1))
+
 (use-package archive-mode                   ; Browse archive files
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
 
