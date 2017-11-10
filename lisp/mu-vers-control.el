@@ -30,6 +30,7 @@
   (validate-setq
    magit-save-repository-buffers 'dontask
    magit-refs-show-commit-count 'all
+   magit-log-section-commit-count 0     ; Do not show recent commits
    magit-branch-prefer-remote-upstream '("master")
    magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")))
 
