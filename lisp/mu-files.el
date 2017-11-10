@@ -195,7 +195,7 @@ Otherwise copy the non-directory part only."
 (bind-key "C-c f R" #'mu-rename-this-file-and-buffer)
 (bind-key "C-c f w" #'mu-copy-filename-as-kill)
 
-;;; Additional bindings for built-ins
+;; Additional bindings for built-ins
 (bind-key "C-c f v d" #'add-dir-local-variable)
 (bind-key "C-c f v l" #'add-file-local-variable)
 (bind-key "C-c f v p" #'add-file-local-variable-prop-line)
@@ -217,6 +217,9 @@ Otherwise copy the non-directory part only."
 
 (bind-key "C-c f v r" #'mu-reload-dir-locals-for-current-buffer)
 (bind-key "C-c f v r" #'mu-reload-dir-locals-for-all-buffers-in-this-directory)
+
+;; Follow file updates similarly to tail -f
+(bind-key "C-c t t" #'auto-revert-tail-mode)
 
 (provide 'mu-files)
 
