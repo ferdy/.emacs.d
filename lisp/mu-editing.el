@@ -150,6 +150,7 @@ _C-s_: mark region
 
 (use-package autorevert                 ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
+  :bind ("C-c t t" . auto-revert-tail-mode)
   :config
   (validate-setq
    auto-revert-verbose nil

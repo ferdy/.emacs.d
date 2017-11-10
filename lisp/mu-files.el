@@ -218,9 +218,6 @@ Otherwise copy the non-directory part only."
 (bind-key "C-c f v r" #'mu-reload-dir-locals-for-current-buffer)
 (bind-key "C-c f v r" #'mu-reload-dir-locals-for-all-buffers-in-this-directory)
 
-;; Follow file updates similarly to tail -f
-(bind-key "C-c t t" #'auto-revert-tail-mode)
-
 (provide 'mu-files)
 
 ;; Local Variables:
