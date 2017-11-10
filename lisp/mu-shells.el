@@ -103,8 +103,19 @@ The EShell is renamed to match that directory to make multiple windows easier."
   (with-eval-after-load "em-unix"
     '(progn
        (unintern 'eshell/su nil)
-       (unintern 'eshell/sudo nil)))
+       (unintern 'eshell/sudo nil))))
 
+(use-package em-banner                  ; EShell login banner
+  :ensure eshell
+  :config
+  (validate-setq
+   eshell-banner-message (concat "Welcome to EShell, "
+                                 (capitalize user-login-name)
+                                 "!\n\n")))
+
+(use-package em-prompt                  ; EShell command prompts
+  :ensure eshell
+  :config
   (defun mu-eshell-quit-or-delete-char (arg)
     "Use C-d to either delete forward char or exit EShell."
     (interactive "p")
@@ -120,27 +131,25 @@ The EShell is renamed to match that directory to make multiple windows easier."
               (bind-key "C-d"
                         #'mu-eshell-quit-or-delete-char eshell-mode-map))))
 
-(use-package em-banner
-  :ensure eshell
-  :config
-  (validate-setq
-   eshell-banner-message (concat "Welcome to EShell, "
-                                 (capitalize user-login-name)
-                                 "!\n\n")))
-
-(use-package esh-mode
+(use-package esh-mode                   ; EShell UI customizations
   :ensure eshell
   :config (validate-setq eshell-scroll-to-bottom-on-input 'all))
 
-(use-package em-cmpl
+(use-package em-cmpl                    ; EShell TAB completion
   :ensure eshell
-  :config (validate-setq eshell-cmpl-cycle-completions nil))
+  :config
+  (validate-setq eshell-cmpl-cycle-completions nil)
 
-(use-package em-hist
+  (add-to-list 'eshell-command-completions-alist
+               '("gunzip" "gz\\'"))
+  (add-to-list 'eshell-command-completions-alist
+               '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'")))
+
+(use-package em-hist                    ; EShell History management
   :ensure eshell
   :config (validate-setq eshell-hist-ignoredups t))
 
-(use-package em-term
+(use-package em-term                    ; Handle visual commands in EShell
   :ensure eshell
   :config
   (add-to-list 'eshell-visual-commands "ssh")
@@ -148,14 +157,6 @@ The EShell is renamed to match that directory to make multiple windows easier."
   (add-to-list 'eshell-visual-commands "top")
   (add-to-list 'eshell-visual-commands "tail")
   (add-to-list 'eshell-visual-commands "npm"))
-
-(use-package em-cmpl
-  :ensure eshell
-  :config
-  (add-to-list 'eshell-command-completions-alist
-               '("gunzip" "gz\\'"))
-  (add-to-list 'eshell-command-completions-alist
-               '("tar" "\\(\\.tar|\\.tgz\\|\\.tar\\.gz\\)\\'")))
 
 (use-package shell-switcher             ; Fast switching between shell buffers
   :ensure t
