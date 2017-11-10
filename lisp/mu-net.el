@@ -15,6 +15,7 @@
   :bind ("C-c a r c" . tramp-cleanup-all-connections)
   :config
   (validate-setq
+   tramp-verbose 1                      ; Make TRAMP less chatty
    tramp-default-method "ssh"
    tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
    auto-save-file-name-transforms nil)
