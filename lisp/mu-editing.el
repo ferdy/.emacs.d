@@ -154,7 +154,9 @@ _C-s_: mark region
   (validate-setq
    auto-revert-verbose nil
    ;; Revert Dired buffers, too
-   global-auto-revert-non-file-buffers t)
+   global-auto-revert-non-file-buffers t
+   ;; Auto-revert files opened via TRAMP
+   auto-revert-remote-files t)
   :diminish auto-revert-mode)
 
 (use-package copyright                  ; Deal with copyright notices
