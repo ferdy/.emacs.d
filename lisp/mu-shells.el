@@ -40,7 +40,13 @@
   (add-hook 'shell-mode-hook
             (lambda ()
               (bind-key "C-d" #'mu-comint-delchar-or-eof-or-kill-buffer
-                        shell-mode-map))))
+                        shell-mode-map)))
+
+  ;; Disable confirmation prompt when quitting Emacs with a shell running
+  (add-hook 'shell-mode-hook
+            (lambda ()
+              (set-process-query-on-exit-flag
+               (get-buffer-process (current-buffer)) nil))))
 
 (use-package shx                        ; Enhance comint-mode
   :ensure t
