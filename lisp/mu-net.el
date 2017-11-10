@@ -15,13 +15,12 @@
   :bind ("C-c a r c" . tramp-cleanup-all-connections)
   :config
   (validate-setq
-   tramp-verbose 1                      ; Make TRAMP less chatty
+   tramp-verbose 1                      ; Reduce verbosity
    tramp-default-method "ssh"
    tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
    auto-save-file-name-transforms nil)
 
-  (add-to-list 'backup-directory-alist
-               (cons tramp-file-name-regexp nil)))
+  (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil)))
 
 (use-package elfeed                     ; RSS feed reader
   :ensure t
