@@ -72,6 +72,8 @@ _e_: extra   _l_: list        _n_: new
      try-complete-lisp-symbol-partially
      try-complete-lisp-symbol)))
 
+(add-to-list 'completion-styles 'initials t)
+
 (use-package company                    ; Auto-completion
   :ensure t
   :init (global-company-mode)
@@ -84,6 +86,11 @@ _e_: extra   _l_: list        _n_: new
    company-tooltip-flip-when-above t
    ;; Easy navigation to candidates with M-<n>
    company-show-numbers t)
+
+  (setq-default
+   company-backends '((company-capf company-dabbrev-code) company-dabbrev)
+   company-dabbrev-other-buffers 'all
+   company-tooltip-align-annotations t)
   :diminish company-mode)
 
 (use-package company-dabbrev            ; dabbrev-like Company backend
