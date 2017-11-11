@@ -41,9 +41,6 @@
   ;; Handle long file names
   (add-hook 'dired-mode-hook #'toggle-truncate-lines)
 
-  ;; Hide details
-  (add-hook 'dired-mode-hook #'dired-hide-details-mode)
-
   (defun mu-dired-up ()
     "Go to previous directory."
     (interactive)
