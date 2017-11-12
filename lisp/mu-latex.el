@@ -32,7 +32,7 @@
    ;; Ask for the master file
    TeX-master nil
    ;; Use luatex
-   TeX-engine 'luatexxs)
+   TeX-engine 'luatex)
 
   ;; Move to chktex
   (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
@@ -47,7 +47,7 @@
    TeX-source-correlate-start-server t)
 
   ;; Update PDF buffers after successful LaTeX runs
-  (add-hook 'TeX-after-TeX-LaTeX-command-finished-hook
+  (add-hook 'TeX-after-compilation-finished-function
             #'TeX-revert-document-buffer))
 
 (use-package tex-buf                    ; External commands for AUCTeX
