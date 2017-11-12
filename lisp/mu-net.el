@@ -12,7 +12,7 @@
 ;;; Code:
 
 (use-package tramp                      ; Remote editing
-  :bind ("C-c a r c" . tramp-cleanup-all-connections)
+  :bind ("C-c a t c" . tramp-cleanup-all-buffers)
   :config
   (validate-setq
    tramp-verbose 1                      ; Reduce verbosity
