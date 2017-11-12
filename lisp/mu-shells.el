@@ -20,8 +20,11 @@
   (unbind-key "C-c C-l" shell-mode-map)
   (bind-key "C-c C-l" #'counsel-shell-history shell-mode-map)
 
-  ;; Prefer Bash to Fish for compatibility reasons
-  (validate-setq explicit-shell-file-name "/bin/bash")
+  (validate-setq
+   ;; Prefer Bash to Fish for compatibility reasons
+   explicit-shell-file-name "/bin/bash"
+   ;; Fix find-dired
+   shell-file-name "/bin/bash")
 
   ;; Do not echo input back at me
   (defun mu-shell-turn-echo-off ()
