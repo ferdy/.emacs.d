@@ -93,7 +93,7 @@ app. The app is chosen from your OS's preference."
            (match-string 1)))))))
 
 (use-package find-dired                 ; Run `find' in Dired
-  :config (validate-setq find-ls-option '("-exec ls -ld {} \\+" . "-ld")))
+  :config (validate-setq find-name-arg "-iname"))
 
 (use-package dired-aux                  ; Other Dired customizations
   :after dired
