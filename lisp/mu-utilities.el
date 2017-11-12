@@ -30,17 +30,16 @@
          ("C-c h v" . helpful-variable)))
 
 (use-package calendar                   ; Display a calendar
-  :bind ("C-c a t c" . calendar)
   :config (setq calendar-week-start-day 1)) ; Start on Monday
 
 (use-package time                       ; Display time
-  :bind ("C-c a t t" . display-time-world)
-  :config (validate-setq
-           display-time-world-time-format "%H:%M %Z, %d. %b"
-           display-time-world-list '(("Europe/Rome" "Rome")
-                                     ("Europe/London" "London")
-                                     ("Asia/Hong_Kong" "Hong Kong")
-                                     ("Asia/Tokyo" "Tokyo"))))
+  :config
+  (validate-setq
+   display-time-world-time-format "%H:%M %Z, %d. %b"
+   display-time-world-list '(("Europe/Rome" "Rome")
+                             ("Europe/London" "London")
+                             ("Asia/Hong_Kong" "Hong Kong")
+                             ("Asia/Tokyo" "Tokyo"))))
 
 (use-package calc                       ; Calculator
   :bind (("C-c a m q" . quick-calc)
