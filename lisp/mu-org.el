@@ -118,9 +118,10 @@
 (use-package ox-html
   :ensure org
   :config
-  ;; Turn off preamble and postamble in HTML export
-  (validate-setq org-html-preamble nil
-                 org-html-postamble nil))
+  (validate-setq
+   ;; Turn off preamble and postamble in HTML export
+   org-html-preamble nil
+   org-html-postamble nil))
 
 (use-package ox-latex
   :ensure org
@@ -172,8 +173,7 @@
   :ensure t
   :init (add-hook 'org-mode-hook #'org-bullets-mode)
   :config
-  (validate-setq org-bullets-bullet-list
-                 '("◉" "○" "●" "►" "◇" "◎")))
+  (validate-setq org-bullets-bullet-list '("◉" "○" "●" "►" "◇" "◎")))
 
 (use-package org-pdfview                ; Link to PDF files
   :ensure t
