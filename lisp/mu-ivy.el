@@ -89,8 +89,6 @@
          ([remap describe-function]        . counsel-describe-function)
          ([remap describe-variable]        . counsel-describe-variable)
          ([remap info-lookup-symbol]       . counsel-info-lookup-symbol))
-  :bind (:map read-expression-map
-              ("C-r" . counsel-expression-history))
   :config
   (validate-setq
    ;; Use ripgrep instead of regular grep
@@ -103,12 +101,11 @@
    counsel-mode-override-describe-bindings t
    counsel-grep-post-action-hook '(recenter)
    counsel-find-file-at-point t
-   counsel-find-file-ignore-regexp
-   (concat
-    ;; File names beginning with # or .
-    "\\(?:\\`[#.]\\)"
-    ;; File names ending with # or ~
-    "\\|\\(?:\\`.+?[#~]\\'\\)"))
+   counsel-find-file-ignore-regexp (concat
+                                    ;; File names beginning with # or .
+                                    "\\(?:\\`[#.]\\)"
+                                    ;; File names ending with # or ~
+                                    "\\|\\(?:\\`.+?[#~]\\'\\)"))
   :diminish counsel-mode)
 
 (provide 'mu-ivy)
