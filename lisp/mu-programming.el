@@ -235,7 +235,15 @@
   :ensure t
   :mode ("\\.html?\\'"
          "\\.php\\'"
-         "\\.tpl\\'"))
+         "\\.tpl\\'"
+         "\\.jsx\\'")
+  :config
+  ;; Better JSX syntax-highlighting in web-mode
+  (defadvice web-mode-highlight-part (around tweak-jsx activate)
+    (if (equal web-mode-content-type "jsx")
+        (let ((web-mode-enable-part-face nil))
+          ad-do-it)
+      ad-do-it)))
 
 (use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
