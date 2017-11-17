@@ -88,7 +88,9 @@
          ([remap bookmark-jump]            . counsel-bookmark)
          ([remap describe-function]        . counsel-describe-function)
          ([remap describe-variable]        . counsel-describe-variable)
-         ([remap info-lookup-symbol]       . counsel-info-lookup-symbol))
+         ([remap info-lookup-symbol]       . counsel-info-lookup-symbol)
+         :map read-expression-map
+         ("C-r" . counsel-minibuffer-history))
   :config
   (validate-setq
    ;; Use ripgrep instead of regular grep
