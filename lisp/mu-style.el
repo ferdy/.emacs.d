@@ -28,11 +28,10 @@
   :bind ("C-c w f" . toggle-frame-fullscreen)
   :init
   ;; Kill `suspend-frame'
-  (unbind-key "C-z")
   (unbind-key "C-x C-z")
   :config (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
 
-(validate-setq echo-keystrokes 0.1)              ; Faster echo keystrokes
+(validate-setq echo-keystrokes 0.1)     ; Faster echo keystrokes
 
 ;; Avoid showing ?? in the mode line when we have long lines.
 (validate-setq line-number-display-limit-width 10000)
