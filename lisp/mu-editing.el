@@ -200,12 +200,6 @@ _C-s_: mark region
             (lambda () (setq-local tildify-space-string "~")))
   :diminish tildify-mode)
 
-(use-package copy-as-format            ; Copy using format for GitHub/Slack/etc.
-  :ensure t
-  :bind (("C-c c g" . copy-as-format-github)
-         ("C-c c r" . copy-as-format-rst)
-         ("C-c c s" . copy-as-format-slack)))
-
 (use-package unfill                     ; Smart fill/unfill paragraph
   :ensure t
   :bind ([remap fill-paragraph] . unfill-toggle))
