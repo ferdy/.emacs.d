@@ -55,9 +55,7 @@
 
 (use-package swiper                     ; Isearch with an overview
   :ensure t
-  :bind (("C-c s s" . swiper-all)
-         :map isearch-mode-map
-         ("M-i" . swiper-from-isearch))
+  :bind ("C-c s s" . swiper-all)
   :config
   (validate-setq
    ;; Always recentre when leaving Swiper
@@ -82,7 +80,6 @@
          ("C-c u"   . counsel-unicode-char)
          ("C-x j"   . counsel-bookmark)
          ("C-x l"   . counsel-locate)
-         ("M-i"     . counsel-imenu)
          ([remap execute-extended-command] . counsel-M-x)
          ([remap find-file]                . counsel-find-file)
          ([remap bookmark-jump]            . counsel-bookmark)

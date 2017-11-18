@@ -65,6 +65,11 @@
   :ensure t
   :bind ("C-=" . er/expand-region))
 
+(use-package change-inner              ; Change contents based on semantic units
+  :ensure t
+  :bind (("M-i" . change-inner)
+         ("M-o" . change-outer)))
+
 (use-package easy-kill                  ; Better kill text
   :ensure t
   :bind (([remap kill-ring-save] . easy-kill)
