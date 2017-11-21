@@ -95,7 +95,27 @@ app. The app is chosen from your OS's preference."
 (use-package find-dired                 ; Run `find' in Dired
   :config
   ;; Prefer case-insensitive search
-  (validate-setq find-name-arg "-iname"))
+  (validate-setq find-name-arg "-iname")
+
+  (defun mu-find-by-date (dir args)
+    "Find file in DIR with given ARGS and sort the result by date."
+    (interactive (list (read-directory-name "Run find in directory: " nil "" t)
+                       (read-string "Run find (with args): " find-args
+                                    '(find-args-history . 1))))
+    (validate-setq
+     find-ls-option '("-exec ls -lt {} + | cut -d ' ' -f5-" . "-lt"))
+    (find-dired dir args)
+    (validate-setq find-ls-option '("-ls" . "-dilsb")))
+
+  (defun mu-find-by-size (dir args)
+    "Find file in DIR with given ARGS and sort the result by size."
+    (interactive (list (read-directory-name "Run find in directory: " nil "" t)
+                       (read-string "Run find (with args): " find-args
+                                    '(find-args-history . 1))))
+    (validate-setq
+     find-ls-option '("-exec ls -lSr {} + | cut -d ' ' -f5-" . "-lSr"))
+    (find-dired dir args)
+    (validate-setq find-ls-option '("-ls" . "-dilsb"))))
 
 (use-package dired-aux                  ; Other Dired customizations
   :after dired
