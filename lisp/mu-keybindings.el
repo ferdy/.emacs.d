@@ -110,6 +110,9 @@
 (bind-key "C-è" (lambda () (interactive) (mu-insert-pair "[")))
 (bind-key "C-à" (lambda () (interactive) (mu-insert-pair "{")))
 
+;; Disable C-x C-n to avoid the disabled command buffer
+(unbind-key "C-x C-n" global-map)
+
 (provide 'mu-keybindings)
 
 ;; Local Variables:
