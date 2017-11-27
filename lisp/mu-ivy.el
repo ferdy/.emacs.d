@@ -99,6 +99,7 @@
   (validate-setq
    counsel-mode-override-describe-bindings t
    counsel-describe-function-function 'helpful-function
+   counsel-describe-variable-function 'helpful-variable
    counsel-grep-post-action-hook '(recenter)
    counsel-find-file-at-point t
    counsel-find-file-ignore-regexp (concat
