@@ -53,11 +53,13 @@
 
 (add-hook 'emacs-startup-hook 'mu-set-gc-threshold)
 
-;; Bootstrap `use-package' and `dash'
+;; Bootstrap `use-package', `diminish' and `dash'
 (unless (and (package-installed-p 'use-package)
+             (package-installed-p 'diminish)
              (package-installed-p 'dash))
   (package-refresh-contents)
   (package-install 'use-package)
+  (package-install 'diminish)
   (package-install 'dash))
 
 (require 'use-package)
