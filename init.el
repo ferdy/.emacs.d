@@ -180,6 +180,9 @@
 (use-package mu-programming)
 (use-package mu-shells)
 
+;; Immediately visit my main GTD file
+(find-file "~/org/gtd/gtd.org")
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; indent-tabs-mode: nil
