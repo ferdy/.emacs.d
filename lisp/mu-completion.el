@@ -87,10 +87,8 @@ _e_: extra   _l_: list        _n_: new
    ;; Easy navigation to candidates with M-<n>
    company-show-numbers t)
 
-  (setq-default
-   company-backends '((company-capf company-dabbrev-code) company-dabbrev)
-   company-dabbrev-other-buffers 'all
-   company-tooltip-align-annotations t)
+  (setq-default company-dabbrev-other-buffers 'all
+                company-tooltip-align-annotations t)
   :diminish company-mode)
 
 (use-package company-dabbrev            ; dabbrev-like Company backend
