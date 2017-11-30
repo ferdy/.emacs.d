@@ -78,7 +78,10 @@
 (use-package adaptive-wrap              ; Better line wrap
   :ensure t
   :defer t
-  :init (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode))
+  :config
+  (setq-default adaptive-wrap-extra-indent 2)
+
+  (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode))
 
 (use-package aggressive-fill-paragraph  ; Automatically fill paragrah
   :ensure t
