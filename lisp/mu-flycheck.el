@@ -26,10 +26,7 @@
                         flycheck-emacs-lisp-load-path))))
 
   (defun mu-discard-undesired-html-tidy-error (err)
-    "Discard ERR if it is undesired.
-
-Tidy is very verbose, so we prevent Flycheck from highlighting
-most errors from HTML Tidy."
+    "Discard ERR if it is undesired."
     ;; A non-nil result means to inhibit further processing (i.e. highlighting)
     ;; of the error
     (and (eq (flycheck-error-checker err) 'html-tidy)

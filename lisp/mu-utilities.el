@@ -41,12 +41,8 @@
                              ("Asia/Hong_Kong" "Hong Kong")
                              ("Asia/Tokyo" "Tokyo"))))
 
-(use-package calc                       ; Calculator
-  :bind (("C-c a m q" . quick-calc)
-         ("C-c a m c" . calc)))
-
 (use-package proced                     ; Manage processes
-  :bind ("C-c a a p" . proced)
+  :defer t
   :config
   ;; Auto-update proced buffer
   (defun proced-settings ()
@@ -60,11 +56,11 @@
 
 (use-package list-environment           ; List process environment variables
   :ensure t
-  :bind ("C-c a a l" . list-environment))
+  :defer t)
 
 (use-package keychain-environment       ; Load keychain environment variables
   :ensure t
-  :bind ("C-c a a s" . keychain-environment-refresh))
+  :defer t)
 
 (provide 'mu-utilities)
 
