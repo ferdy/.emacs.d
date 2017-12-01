@@ -52,8 +52,7 @@
     (dired-find-alternate-file))
 
   (defun mu-open-in-external-app ()
-    "Open the file where point is or the marked files in external
-app. The app is chosen from your OS's preference."
+    "Open the file(s) at point with an external application."
     (interactive)
     (let* ((file-list
             (dired-get-marked-files)))
