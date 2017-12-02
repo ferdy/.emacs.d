@@ -11,6 +11,20 @@
 
 ;;; Code:
 
+;; Remove the warning if a buffer or file does not exist, so you can create them
+(setq confirm-nonexistent-file-or-buffer nil)
+
+(defun create-non-existent-directory ()
+  "Create given file's parent directories exist if they do exit."
+  (let ((parent-directory (file-name-directory buffer-file-name))
+        (message
+         (format "Directory `%s' does not exist! Create it?" parent-directory)))
+    (when (and (not (file-exists-p parent-directory))
+               (y-or-n-p message))
+      (make-directory parent-directory t))))
+
+(add-to-list 'find-file-not-found-functions #'create-non-existent-directory)
+
 (use-package files                      ; Core commands for files
   :bind (("C-c f z" . revert-buffer)
          ("C-c f /" . revert-buffer)
