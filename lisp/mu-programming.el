@@ -75,7 +75,10 @@
 
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
-  :defer t
+  :mode (("\\.boot$" . clojure-mode)
+         ("\\.clj$"  . clojure-mode)
+         ("\\.cljs$" . clojurescript-mode)
+         ("\\.edn$"  . clojure-mode))
   :init
   (add-hook 'clojure-mode-hook #'cider-mode)
   (add-hook 'clojure-mode-hook #'subword-mode)
@@ -139,8 +142,23 @@
    cljr-suppress-middleware-warnings t
    cljr-add-ns-to-blank-clj-files nil
    cljr-auto-sort-ns t
-   cljr-favor-prefix-notation cljr-favor-private-functions
+   cljr-favor-prefix-notation nil
+   cljr-favor-private-functions nil
    cljr-warn-on-eval nil)
+
+  (validate-setq
+   cljr-clojure-test-declaration "[clojure.test :refer :all]"
+   cljr-cljs-clojure-test-declaration
+   "[cljs.test :refer-macros [deftest is use-fixtures]]")
+
+  (with-eval-after-load 'clj-refactor
+    (add-to-list 'cljr-magic-require-namespaces
+                 '("s"  . "clojure.string")))
+
+  (advice-add 'cljr-add-require-to-ns :after
+              (lambda (&rest _)
+                (yas-next-field)
+                (yas-next-field)))
   :diminish clj-refactor-mode)
 
 (use-package clojure-snippets           ; Yasnippets for Clojure
