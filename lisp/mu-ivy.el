@@ -53,6 +53,11 @@
   :ensure t
   :init (ivy-historian-mode +1))
 
+(use-package ivy-xref                   ; Ivy interface for xref results
+  :ensure t
+  :config
+  (validate-setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
+
 (use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind ("C-c s s" . swiper-all)
