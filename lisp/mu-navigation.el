@@ -156,6 +156,34 @@ This is the same as using \\[set-mark-command] with the prefix argument."
     (dotimes (i 10)
       (when (= p (point)) ad-do-it))))
 
+(validate-setq set-mark-command-repeat-pop t)
+
+(defun super-next-line ()
+  "Move 5 lines down."
+  (interactive)
+  (ignore-errors (forward-line 5)))
+
+(defun super-previous-line ()
+  "Move 5 lines up."
+  (interactive)
+  (ignore-errors (forward-line -5)))
+
+(defun super-backward-char ()
+  "Move point 5 characters back."
+  (interactive)
+  (ignore-errors (backward-char 5)))
+
+(defun super-forward-char ()
+  "Move point 5 characters forward."
+  (interactive)
+  (ignore-errors (forward-char 5)))
+
+(bind-keys
+ ("C-S-n" . super-next-line)
+ ("C-S-p" . super-previous-line)
+ ("C-S-b" . super-backward-char)
+ ("C-S-f" . super-forward-char))
+
 (provide 'mu-navigation)
 
 ;; Local Variables:
