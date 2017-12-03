@@ -108,10 +108,7 @@
   (with-eval-after-load 'info
     (dolist (dir (nreverse (parse-colon-path (getenv "INFOPATH"))))
       (when dir
-        (add-to-list 'Info-directory-list dir))))
-
-  ;; Let Emacs handle pin entry
-  (setenv "GPG_AGENT_INFO" nil))
+        (add-to-list 'Info-directory-list dir)))))
 
 ;; Personal informations
 (validate-setq user-full-name (getenv "FULLNAME"))
