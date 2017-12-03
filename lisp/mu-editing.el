@@ -510,6 +510,20 @@ With arg N, insert N newlines."
  ("C-o"                          . mu-open-line-with-reindent)
  ("C-<backspace>"                . mu-smart-backward-kill-line))
 
+(defhydra hydra-zoom ()
+  "zoom"
+  ("+" text-scale-increase "in")
+  ("=" text-scale-increase "in")
+  ("-" text-scale-decrease "out")
+  ("_" text-scale-decrease "out")
+  ("0" (text-scale-adjust 0) "reset")
+  ("q" nil "quit" :color blue))
+
+(bind-keys ("C-x C-0" . hydra-zoom/body)
+           ("C-x C-=" . hydra-zoom/body)
+           ("C-x C--" . hydra-zoom/body)
+           ("C-x C-+" . hydra-zoom/body))
+
 (provide 'mu-editing)
 
 ;; Local Variables:
