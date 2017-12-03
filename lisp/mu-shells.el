@@ -17,6 +17,8 @@
          (:map shell-mode-map
                ("<tab>" . completion-at-point)))
   :config
+  (dirtrack-mode)
+
   (unbind-key "C-c C-l" shell-mode-map)
   (bind-key "C-c C-l" #'counsel-shell-history shell-mode-map)
 
@@ -31,6 +33,8 @@
     (validate-setq comint-process-echoes t))
 
   (add-hook 'shell-mode-hook #'mu-shell-turn-echo-off)
+  (add-hook 'after-save-hook
+            #'executable-make-buffer-file-executable-if-script-p)
 
   ;; C-d to kill buffer if process is dead
   (defun mu-comint-delchar-or-eof-or-kill-buffer (arg)
@@ -106,7 +110,9 @@ The EShell is renamed to match that directory to make multiple windows easier."
   (with-eval-after-load "em-unix"
     '(progn
        (unintern 'eshell/su nil)
-       (unintern 'eshell/sudo nil))))
+       (unintern 'eshell/sudo nil)))
+
+  (add-hook 'eshell-mode-hook #'with-editor-export-editor))
 
 (use-package em-banner                  ; EShell login banner
   :ensure eshell
