@@ -53,17 +53,22 @@
 
 (add-hook 'emacs-startup-hook 'mu-set-gc-threshold)
 
-;; Bootstrap `use-package', `diminish' and `dash'
-(unless (and (package-installed-p 'use-package)
-             (package-installed-p 'diminish)
-             (package-installed-p 'dash))
-  (package-refresh-contents)
-  (package-install 'use-package)
-  (package-install 'diminish)
-  (package-install 'dash))
+;; Bootstrap `use-package'
+;; (unless (package-installed-p 'use-package)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
 
-(require 'use-package)
-(require 'dash)
+;; (eval-when-compile (require 'use-package))
+
+(add-to-list 'load-path "~/githubs/use-package")
+(load "~/githubs/use-package/use-package.el")
+
+(use-package diminish                   ; Hide modes in the mode-line
+  :ensure t)
+
+(use-package dash                       ; A modern list library
+  :ensure t)
+
 (require 'subr-x)
 (require 'time-date)
 
