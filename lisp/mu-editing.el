@@ -216,9 +216,6 @@ _C-s_: mark region
   :init (fancy-narrow-mode)
   :diminish fancy-narrow-mode)
 
-;; C-n adds new line when at the end of a line
-(validate-setq next-line-add-newlines t)
-
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil
               tab-width 8)
