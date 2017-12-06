@@ -54,16 +54,11 @@
 (add-hook 'emacs-startup-hook 'mu-set-gc-threshold)
 
 ;; Bootstrap `use-package'
-;; (unless (package-installed-p 'use-package)
-;;   (package-refresh-contents)
-;;   (package-install 'use-package))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
-;; (eval-when-compile (require 'use-package))
-
-;; Temporarily load use-package from cloned repository
-;; See: https://github.com/melpa/melpa/pull/5167
-(add-to-list 'load-path "~/githubs/use-package")
-(load "~/githubs/use-package/use-package.el")
+(eval-when-compile (require 'use-package))
 
 (use-package diminish                   ; Hide modes in the mode-line
   :ensure t)
