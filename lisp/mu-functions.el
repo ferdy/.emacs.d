@@ -107,6 +107,17 @@ With negative argument, convert previous words."
                   (get-char-property pos 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
+;;;###autoload
+(defun toggle-touchpad ()
+  "Enable/disable touchpad using the external tool `tt'."
+  (interactive)
+  (let ((cmd "tt"))
+    (if (not (executable-find "tt"))
+        (error "Install touchpad with: sudo pip install touchpad")
+      (start-process-shell-command
+       cmd nil
+       (concat "nohup 1>/dev/null 2>/dev/null " cmd)))))
+
 (provide 'mu-functions)
 
 ;; Local Variables:
