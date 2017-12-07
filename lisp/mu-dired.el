@@ -152,6 +152,10 @@
   :ensure t
   :config (diredfl-global-mode))
 
+(use-package dired-du                   ; Recursively show directories size
+  :ensure t
+  :after dired)
+
 (provide 'mu-dired)
 
 ;; Local Variables:
