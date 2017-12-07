@@ -35,13 +35,7 @@
    ivy-ignore-buffers '("company-statistics-cache.el"
                         ".elfeed/index"))
 
-  ;; Bind C-k to kill buffer from `ivy-switch-buffer'
-  (defun mu-ivy-kill-buffer ()
-    (interactive)
-    (ivy-set-action 'kill-buffer)
-    (ivy-done))
-
-  (bind-key "C-k" #'mu-ivy-kill-buffer ivy-switch-buffer-map)
+  (validate-setq ivy-sort-matches-functions-alist '((t . nil)))
   :diminish ivy-mode)
 
 (use-package ivy-hydra                  ; Additional bindings for Ivy
@@ -66,7 +60,9 @@
    ;; Always recentre when leaving Swiper
    swiper-action-recenter t
    ;; Jump to the beginning of match when leaving Swiper
-   swiper-goto-start-of-match t))
+   swiper-goto-start-of-match t
+   ;; C-k C-g to go back to where the research started
+   swiper-stay-on-quit t))
 
 (use-package smex                       ; Better M-x interface
   :ensure t)
