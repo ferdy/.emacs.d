@@ -11,6 +11,22 @@
 
 ;;; Code:
 
+(use-package pcomplete                  ; Programmable completion
+  :config
+  (defvar pcomplete-man-user-commands
+    (split-string
+     (shell-command-to-string
+      "apropos -s 1 .|while read -r a b; do echo \" $a\";done;"))
+    "p-completion candidates for `man' command")
+
+  (defun pcomplete/man ()
+    "Completion rules for the `man' command."
+    (pcomplete-here pcomplete-man-user-commands)))
+
+(use-package pcmpl-git                  ; pcomplete for git
+  :ensure t
+  :after pcomplete)
+
 (use-package yasnippet                  ; Snippets
   :ensure t
   :bind ("C-c y" . mu-yasnippet/body)
