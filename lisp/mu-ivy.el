@@ -32,9 +32,7 @@
    ;; Always ignore buffers set in `ivy-ignore-buffers'
    ivy-use-ignore-default 'always
    ;; Ignore some buffers in `ivy-switch-buffer'
-   ivy-ignore-buffers '("company-statistics-cache.el" ".elfeed/index")
-   ;; Sort candidates like `ido-switch-buffer'
-   ivy-sort-matches-functions-alist '((t . nil)))
+   ivy-ignore-buffers '("company-statistics-cache.el" ".elfeed/index"))
   :diminish ivy-mode)
 
 (use-package ivy-hydra                  ; Additional bindings for Ivy
