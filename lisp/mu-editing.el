@@ -19,7 +19,8 @@
 (use-package aggressive-indent          ; Automatically indent code
   :ensure t
   :bind ("C-c t i" . aggressive-indent-mode)
-  :init (global-aggressive-indent-mode 1)
+  :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook clojure-mode-hook))
+          (add-hook hook #'aggressive-indent-mode))
   :config
   ;; Free C-c C-q, used in Org and in CIDER
   (unbind-key "C-c C-q" aggressive-indent-mode-map)
