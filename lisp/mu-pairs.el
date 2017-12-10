@@ -68,8 +68,7 @@
               ("C-M-t"       . sp-transpose-sexp))
   :bind (:map smartparens-strict-mode-map
               ("M-q" . sp-indent-defun))
-  :config
-  (sp-pair "(" ")" :wrap "M-("))
+  :init (sp-pair "(" ")" :wrap "M-("))
 
 (with-eval-after-load 'smartparens
   (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
