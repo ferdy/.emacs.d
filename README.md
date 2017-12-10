@@ -10,7 +10,8 @@ prepare the right environment for my needs, but your mileage may vary.
 You can find this configuration useful if you plan to work with:
 
 - Clojure and ClojureScript
-- Haskell and Idris
+- Haskell
+- Idris
 - Elm
 - Rust
 - Git
