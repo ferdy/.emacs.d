@@ -11,6 +11,7 @@ You can find this configuration useful if you plan to work with:
 
 - Clojure and ClojureScript
 - Haskell and Idris
+- Elm
 - Rust
 - Git
 - LaTeX

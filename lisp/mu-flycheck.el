@@ -61,11 +61,17 @@
   :after rust-mode
   :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
-(use-package flycheck-vale              ; Flycheck for Vale
+(use-package flycheck-vale              ; Flycheck setup for Vale
   :ensure t
   :defer t
   :after flycheck
   :config (flycheck-vale-setup))
+
+(use-package flycheck-elm               ; Flycheck setup for Elm
+  :ensure t
+  :defer t
+  :after flycheck
+  :config (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 
 (provide 'mu-flycheck)
 

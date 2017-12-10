@@ -195,6 +195,14 @@
   :config (add-hook 'haskell-mode-hook #'hindent-mode)
   :diminish hindent-mode)
 
+;;; Elm
+(use-package elm-mode                   ; Elm editing
+  :ensure t
+  :config
+  (setq-default elm-format-on-save t)
+  (add-to-list 'company-backends 'company-elm)
+  :diminish elm-indent-mode)
+
 ;;; Idris
 (use-package idris-mode                 ; Idris editing
   :ensure t
