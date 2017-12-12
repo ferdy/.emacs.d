@@ -99,6 +99,7 @@
    counsel-describe-function-function 'helpful-function
    counsel-describe-variable-function 'helpful-variable
    counsel-grep-post-action-hook '(recenter)
+   counsel-yank-pop-preselect-last t
    counsel-find-file-at-point t
    counsel-find-file-ignore-regexp (concat
                                     ;; File names beginning with # or .
