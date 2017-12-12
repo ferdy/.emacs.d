@@ -61,8 +61,6 @@
                  "*Flycheck errors*" ; Flycheck error list
                  "*Calendar"         ; Calendar window
                  "*cider-repl"       ; CIDER REPL
-                 "*sly-mrepl"        ; Sly REPL
-                 "*scheme"           ; Inferior Scheme REPL
                  "*ielm"             ; IELM REPL
                  "*SQL"              ; SQL REPL
                  "*Cargo"            ; Cargo process buffers
