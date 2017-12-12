@@ -73,7 +73,7 @@
     (display-buffer-reuse-window display-buffer-in-side-window)
     (side . bottom)
     (reusable-frames . visible)
-    (window-height . 0.4))
+    (window-height . 0.45))
    (,(rx bos "*shell")
     (display-buffer-same-window)
     (reusable-frames . nil))
