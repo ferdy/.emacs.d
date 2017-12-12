@@ -38,6 +38,7 @@
     "C-c c"     "compile-and-comments"
     "C-c d"     "develop"
     "C-c f"     "files"
+    "C-c h"     "helpful"
     "C-c m"     "major mode"
     "C-c n"     "navigation"
     "C-c o"     "org"

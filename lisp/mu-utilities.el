@@ -21,6 +21,7 @@
 (use-package helpful                    ; A better *help* buffer
   :ensure t
   :bind (("C-c h a" . helpful-at-point)
+         ("C-c h b" . helpful-kill-buffers)
          ("C-c h C" . helpful-callable)
          ("C-c h c" . helpful-command)
          ("C-c h f" . helpful-function)
