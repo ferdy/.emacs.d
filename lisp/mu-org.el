@@ -96,6 +96,9 @@
   ;; Free C-c $ (see: mu-languages.el)
   (unbind-key "C-c $" org-mode-map)
 
+  ;; Free C-' (see: mu-editing.el)
+  (unbind-key "C-'" org-mode-map)
+
   (defun mu-insert-checkbox ()
     "Insert a bullet point with a checkbox."
     (interactive)

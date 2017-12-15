@@ -100,7 +100,9 @@ Change dictionary and mode line lighter accordingly."
   ;; Free M-t for transpose words
   (unbind-key "M-t" flyspell-mode-map)
   ;; Free C-M-i for completion-at-point
-  (unbind-key "C-M-i" flyspell-mode-map))
+  (unbind-key "C-M-i" flyspell-mode-map)
+  ;; Free C-. (see: mu-editing.el)
+  (unbind-key "C-." flyspell-mode-map))
 
 (use-package flyspell-correct-ivy       ; Better interface for corrections
   :ensure t

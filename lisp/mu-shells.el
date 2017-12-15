@@ -167,11 +167,6 @@ The EShell is renamed to match that directory to make multiple windows easier."
   (add-to-list 'eshell-visual-commands "tail")
   (add-to-list 'eshell-visual-commands "npm"))
 
-(use-package shell-switcher             ; Fast switching between shell buffers
-  :ensure t
-  :bind (("C-'"   . shell-switcher-switch-buffer)
-         ("C-M-'" . shell-switcher-new-shell)))
-
 (use-package eshell-bookmark            ; Bookmarks for EShell buffers
   :ensure t
   :config (add-hook 'eshell-mode-hook #'eshell-bookmark-setup))

@@ -111,42 +111,69 @@
   :bind (("C-c x a a" . align)
          ("C-c x a c" . align-current)))
 
+;; Free C-m and make it different from RET
+(define-key input-decode-map [?\C-m] [C-m])
+
 (use-package multiple-cursors        ; Easily place multiple cursors in a buffer
   :ensure t
-  :bind ("C-c x m" . mu-multiple-cursors/body)
+  :bind (("C-'" . set-rectangular-region-anchor)
+         ("<C-m> ^"     . mc/edit-beginnings-of-lines)
+         ("<C-m> $"     . mc/edit-ends-of-lines)
+         ("<C-m> '"     . mc/edit-ends-of-lines)
+         ("<C-m> R"     . mc/reverse-regions)
+         ("<C-m> S"     . mc/sort-regions)
+         ("<C-m> W"     . mc/mark-all-words-like-this)
+         ("<C-m> Y"     . mc/mark-all-symbols-like-this)
+         ("<C-m> a"     . mc/mark-all-like-this-dwim)
+         ("<C-m> c"     . mc/mark-all-dwim)
+         ("<C-m> l"     . mc/insert-letters)
+         ("<C-m> n"     . mc/insert-numbers)
+         ("<C-m> r"     . mc/mark-all-in-region-regexp)
+         ("<C-m> t"     . mc/mark-sgml-tag-pair)
+         ("<C-m> w"     . mc/mark-next-like-this-word)
+         ("<C-m> x"     . mc/mark-more-like-this-extended)
+         ("<C-m> y"     . mc/mark-next-like-this-symbol)
+         ("<C-m> C-SPC" . mc/mark-pop)
+         ("<C-m> ("     . mc/mark-all-symbols-like-this-in-defun)
+         ("<C-m> C-("   . mc/mark-all-words-like-this-in-defun)
+         ("<C-m> M-("   . mc/mark-all-like-this-in-defun)
+         ("<C-m> ["     . mc/vertical-align-with-space)
+         ("<C-m> {"     . mc/vertical-align)
+         ("S-<down-mouse-1>")
+         ("S-<mouse-1>" . mc/add-cursor-on-click))
+  :bind (:map selected-keymap
+              ("C-'" . mc/edit-lines)
+              ("c"   . mc/edit-lines)
+              ("."   . mc/mark-next-like-this)
+              ("<"   . mc/unmark-next-like-this)
+              ("C->" . mc/skip-to-next-like-this)
+              (","   . mc/mark-previous-like-this)
+              (">"   . mc/unmark-previous-like-this)
+              ("C-<" . mc/skip-to-previous-like-this)
+              ("y"   . mc/mark-next-symbol-like-this)
+              ("Y"   . mc/mark-previous-symbol-like-this)
+              ("w"   . mc/mark-next-word-like-this)
+              ("W"   . mc/mark-previous-word-like-this))
   :init
-  (defhydra mu-multiple-cursors (:hint nil)
-    "
-Multiple cursors (quit with _q_)
-^Mark^                ^Edit^                 ^Other^
-^----^----------------^----^-----------------^-----^----------------------
-_e_:   mark more      _l_:   edit lines      _a_: vertical align
-_h_:   mark all       _C-a_: edit begs       _s_: set rect action
-_n_:   mark next      _C-e_: edit ends
-_p_:   mark previous  _i_:   insert numbers
-_r_:   mark regexp
-_C-s_: mark region
-"
-    ("q" nil)
-    ("a" mc/vertical-align :exit t)
-    ("e" mc/mark-more-like-this-extended)
-    ("h" mc/mark-all-like-this-dwim)
-    ("i" mc/insert-numbers)
-    ("l" mc/edit-lines :exit t)
-    ("n" mc/mark-next-like-this)
-    ("p" mc/mark-previous-like-this)
-    ("r" vr/mc-mark)
-    ("s" set-rectangular-region-anchor)
-    ("C-a" mc/edit-beginnings-of-lines :exit t)
-    ("C-e" mc/edit-ends-of-lines :exit t)
-    ("C-s" mc/mark-all-in-region))
-  :config
   (setq mc/mode-line
         ;; Simplify the MC mode line indicator
         '(:propertize (:eval (concat " " (number-to-string
                                           (mc/num-cursors))))
                       face font-lock-warning-face))
   :diminish multiple-cursors-mode)
+
+(use-package mc-extras
+  :ensure t
+  :bind (("C-. M-C-f" . mc/mark-next-sexps)
+         ("C-. M-C-b" . mc/mark-previous-sexps)
+         ("C-. <"     . mc/mark-all-above)
+         ("C-. >"     . mc/mark-all-below)
+         ("C-. C-d"   . mc/remove-current-cursor)
+         ("C-. C-k"   . mc/remove-cursors-at-eol)
+         ("C-. d"     . mc/remove-duplicated-cursors)
+         ("C-. C-."   . mc/freeze-fake-cursors-dwim)
+         ("C-. ."     . mc/move-to-column)
+         ("C-. ~"     . mc/compare-chars)))
 
 (use-package saveplace                  ; Save point position in files
   :init (save-place-mode 1))
