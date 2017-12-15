@@ -116,7 +116,7 @@
 
 (use-package multiple-cursors        ; Easily place multiple cursors in a buffer
   :ensure t
-  :bind (("C-'" . set-rectangular-region-anchor)
+  :bind (("C-'"         . set-rectangular-region-anchor)
          ("<C-m> ^"     . mc/edit-beginnings-of-lines)
          ("<C-m> $"     . mc/edit-ends-of-lines)
          ("<C-m> '"     . mc/edit-ends-of-lines)
@@ -138,9 +138,7 @@
          ("<C-m> C-("   . mc/mark-all-words-like-this-in-defun)
          ("<C-m> M-("   . mc/mark-all-like-this-in-defun)
          ("<C-m> ["     . mc/vertical-align-with-space)
-         ("<C-m> {"     . mc/vertical-align)
-         ("S-<down-mouse-1>")
-         ("S-<mouse-1>" . mc/add-cursor-on-click))
+         ("<C-m> {"     . mc/vertical-align))
   :bind (:map selected-keymap
               ("C-'" . mc/edit-lines)
               ("c"   . mc/edit-lines)
@@ -162,7 +160,7 @@
                       face font-lock-warning-face))
   :diminish multiple-cursors-mode)
 
-(use-package mc-extras
+(use-package mc-extras                  ; Extra functions for multiple-cursors
   :ensure t
   :bind (("C-. M-C-f" . mc/mark-next-sexps)
          ("C-. M-C-b" . mc/mark-previous-sexps)
