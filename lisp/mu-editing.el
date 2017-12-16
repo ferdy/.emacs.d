@@ -168,10 +168,17 @@
          ("C-. >"     . mc/mark-all-below)
          ("C-. C-d"   . mc/remove-current-cursor)
          ("C-. C-k"   . mc/remove-cursors-at-eol)
-         ("C-. d"     . mc/remove-duplicated-cursors)
-         ("C-. C-."   . mc/freeze-fake-cursors-dwim)
-         ("C-. ."     . mc/move-to-column)
+         ("C-. M-d"   . mc/remove-duplicated-cursors)
+         ("C-. |"     . mc/move-to-column)
          ("C-. ~"     . mc/compare-chars)))
+
+(use-package mc-freeze
+  :ensure mc-extras
+  :bind ("C-. C-f" . mc/freeze-fake-cursors-dwim))
+
+(use-package mc-rect
+  :ensure mc-extras
+  :bind ("C-\"" . mc/rect-rectangle-to-multiple-cursors))
 
 (use-package saveplace                  ; Save point position in files
   :init (save-place-mode 1))
