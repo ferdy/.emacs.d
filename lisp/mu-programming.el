@@ -192,12 +192,7 @@
 
 (use-package hindent                    ; Use hindent to indent Haskell code
   :ensure t
-  :config
-  ;; https://github.com/commercialhaskell/hindent/pull/471
-  ;; Remove when that PR is merged
-  (validate-setq hindent-extra-args nil)
-
-  (add-hook 'haskell-mode-hook #'hindent-mode)
+  :config (add-hook 'haskell-mode-hook #'hindent-mode)
   :diminish hindent-mode)
 
 ;;; Elm
