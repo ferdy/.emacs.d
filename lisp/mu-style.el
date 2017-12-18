@@ -149,7 +149,7 @@
 ;;; Theme
 (validate-setq custom-safe-themes t)    ; Treat themes as safe
 
-(use-package color-theme-sanityinc-tomorrow
+(use-package color-theme-sanityinc-tomorrow ; Default theme
   :ensure t
   :init (load-theme 'sanityinc-tomorrow-night 'no-confirm))
 
