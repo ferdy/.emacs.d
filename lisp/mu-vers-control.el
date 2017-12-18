@@ -33,6 +33,12 @@
    magit-branch-prefer-remote-upstream '("master")
    magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")))
 
+  ;; Hide "Recent Commits"
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'magit-insert-unpushed-to-upstream
+                          'magit-insert-unpushed-to-upstream-or-recent
+                          'replace)
+
   ;; Show refined hunks during diffs
   (set-default 'magit-diff-refine-hunk t)
 
