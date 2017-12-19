@@ -223,9 +223,11 @@
     (add-hook hook 'typo-mode))
   :diminish typo-mode)
 
-(use-package writeroom-mode             ; Distraction-free interface
+(use-package olivetti                   ; Distraction-free interface
   :ensure t
-  :bind ("C-c t r" . writeroom-mode))
+  :bind ("C-c t r" . olivetti-mode)
+  :config (validate-setq olivetti-hide-mode-line t)
+  :diminish olivetti-mode)
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :bind ("C-c x t" . tildify-region)
