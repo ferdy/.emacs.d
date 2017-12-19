@@ -34,7 +34,7 @@
               ("p" . counsel-projectile)
               ("P" . counsel-projectile-switch-project)
               ("r" . counsel-projectile-rg))
-  :init (counsel-projectile-on))
+  :init (counsel-projectile-mode))
 
 (use-package projectile-ripgrep         ; Search projects with ripgrep
   :ensure t
