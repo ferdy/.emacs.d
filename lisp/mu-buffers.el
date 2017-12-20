@@ -53,19 +53,20 @@
  display-buffer-alist
  `(
    ;; Messages, errors, Calendar and REPLs in the bottom side window
-   (,(rx bos (or "*Man"              ; Man buffers
-                 "*Help"             ; Help buffers
-                 "*Warnings*"        ; Emacs warnings
-                 "*Compile-Log*"     ; Emacs byte compiler log
-                 "*compilation"      ; Compilation buffers
-                 "*Flycheck errors*" ; Flycheck error list
-                 "*Calendar"         ; Calendar window
-                 "*cider-repl"       ; CIDER REPL
-                 "*ielm"             ; IELM REPL
-                 "*SQL"              ; SQL REPL
-                 "*Cargo"            ; Cargo process buffers
-                 "*idris-repl"       ; Idris REPL
-                 "*intero"           ; Intero REPL
+   (,(rx bos (or "*Apropos"             ; Apropos buffers
+                 "*Man"                 ; Man buffers
+                 "*Help"                ; Help buffers
+                 "*Warnings*"           ; Emacs warnings
+                 "*Compile-Log*"        ; Emacs byte compiler log
+                 "*compilation"         ; Compilation buffers
+                 "*Flycheck errors*"    ; Flycheck error list
+                 "*Calendar"            ; Calendar window
+                 "*cider-repl"          ; CIDER REPL
+                 "*intero"              ; Intero REPL
+                 "*idris-repl"          ; Idris REPL
+                 "*ielm"                ; IELM REPL
+                 "*SQL"                 ; SQL REPL
+                 "*Cargo"               ; Cargo process buffers
                  ;; AUCTeX command output
                  (and (1+ nonl) " output*")))
     (display-buffer-reuse-window display-buffer-in-side-window)
