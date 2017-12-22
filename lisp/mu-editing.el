@@ -246,11 +246,6 @@
   :ensure t
   :bind ("C-c x s" . string-edit-at-point))
 
-(use-package fancy-narrow               ; narrow-to-region with more eye candy
-  :ensure t
-  :init (fancy-narrow-mode)
-  :diminish fancy-narrow-mode)
-
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil
               tab-width 8)
