@@ -111,7 +111,7 @@
 
 (use-package counsel-tramp          ; Ivy interface for SSH and Docker via TRAMP
   :ensure t
-  :bind ("C-c a t" . counsel-tramp))
+  :bind ("C-c a t t" . counsel-tramp))
 
 (provide 'mu-ivy)
 
