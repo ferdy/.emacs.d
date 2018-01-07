@@ -25,6 +25,7 @@
    ivy-count-format "(%d/%d) "          ; Show current match and matches
    ivy-extra-directories nil            ; Do not show "./" and "../"
    ivy-virtual-abbreviate 'full         ; Show full file path
+   ivy-dynamic-exhibit-delay-ms 150
    ;; Jump back to first candidate when on the last one
    ivy-wrap t
    ;; Show recently killed buffers when calling `ivy-switch-buffer'
