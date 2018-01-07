@@ -31,8 +31,7 @@
 (use-package counsel-projectile         ; Ivy integration for Projectile
   :ensure t
   :bind (:map projectile-command-map
-              ("p" . counsel-projectile)
-              ("P" . counsel-projectile-switch-project)
+              ("p" . counsel-projectile-switch-project)
               ("r" . counsel-projectile-rg))
   :init (counsel-projectile-mode))
 
