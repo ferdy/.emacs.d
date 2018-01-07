@@ -146,6 +146,10 @@
   :ensure t
   :init (add-hook 'dired-mode-hook #'stripe-buffer-mode))
 
+(use-package dimmer                     ; Highlight the selected buffer
+  :ensure t
+  :init (dimmer-mode))
+
 ;;; Theme
 (validate-setq custom-safe-themes t)    ; Treat themes as safe
 
