@@ -111,6 +111,10 @@
   :bind (("C-c x a a" . align)
          ("C-c x a c" . align-current)))
 
+(use-package ialign                     ; Visual align-regexp
+  :ensure t
+  :bind ("C-c x a i" . ialign))
+
 ;; Free C-m and make it different from RET
 (define-key input-decode-map [?\C-m] [C-m])
 
