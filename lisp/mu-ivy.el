@@ -69,7 +69,6 @@
   :init (counsel-mode)
   :bind (("C-s"     . counsel-grep-or-swiper)
          ("C-r"     . counsel-grep-or-swiper)
-         ("C-c h h" . counsel-command-history)
          ("C-c g"   . counsel-git-grep)
          ("C-c G"   . counsel-git-log)
          ("C-c i"   . counsel-apropos)
@@ -77,13 +76,6 @@
          ("C-c l"   . counsel-find-library)
          ("C-c u"   . counsel-unicode-char)
          ("C-x j"   . counsel-bookmark)
-         ("C-x l"   . counsel-locate)
-         ([remap execute-extended-command] . counsel-M-x)
-         ([remap find-file]                . counsel-find-file)
-         ([remap bookmark-jump]            . counsel-bookmark)
-         ([remap describe-function]        . counsel-describe-function)
-         ([remap describe-variable]        . counsel-describe-variable)
-         ([remap info-lookup-symbol]       . counsel-info-lookup-symbol)
          :map read-expression-map
          ("C-r" . counsel-minibuffer-history))
   :config
