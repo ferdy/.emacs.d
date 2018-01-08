@@ -70,7 +70,7 @@
 (require 'time-date)
 
 ;;; Initialization
-(when (version< emacs-version "26")
+(when (version< emacs-version "27")
   (warn "This configuration needs Emacs trunk, but this is %s!" emacs-version))
 
 (setq inhibit-default-init t)           ; Disable the site default settings
