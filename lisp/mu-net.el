@@ -1,6 +1,6 @@
 ;;; mu-net.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2014-2017  Manuel Uberti
+;; Copyright (C) 2014-2018  Manuel Uberti
 
 ;; Author: Manuel Uberti manuel.uberti@inventati.org
 ;; Keywords: convenience
