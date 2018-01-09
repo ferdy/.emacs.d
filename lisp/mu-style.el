@@ -102,30 +102,6 @@
   :config
   (global-prettify-symbols-mode 1)
 
-  ;; Add some pretty symbols to Clojure and Lisp modes
-  (defvar mu-clojure-prettify-alist '())
-
-  (add-to-list 'mu-clojure-prettify-alist
-               '("<=" . (?· (Br . Bl) ?≤)))
-  (add-to-list 'mu-clojure-prettify-alist
-               '(">=" . (?· (Br . Bl) ?≥)))
-  (add-to-list 'mu-clojure-prettify-alist
-               '("->" . (?- (Br . Bc) ?- (Br . Bc) ?>)))
-  (add-to-list 'mu-clojure-prettify-alist
-               '("->>" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s
-                               (Bl . Bl) ?- (Bc . Br) ?- (Bc . Bc) ?>
-                               (Bc . Bl) ?- (Br . Br) ?>)))
-
-  (with-eval-after-load 'clojure-mode
-    (validate-setq clojure--prettify-symbols-alist
-                   (append mu-clojure-prettify-alist
-                           clojure--prettify-symbols-alist)))
-
-  (with-eval-after-load 'lisp-mode
-    (validate-setq lisp-prettify-symbols-alist
-                   (append mu-clojure-prettify-alist
-                           lisp-prettify-symbols-alist)))
-
   ;; Unprettify symbols with point on them and next to them
   (validate-setq prettify-symbols-unprettify-at-point 'right-edge))
 
@@ -145,10 +121,6 @@
 (use-package stripe-buffer              ; Add stripes to a buffer
   :ensure t
   :init (add-hook 'dired-mode-hook #'stripe-buffer-mode))
-
-(use-package dimmer                     ; Highlight the selected buffer
-  :ensure t
-  :init (dimmer-mode))
 
 ;;; Theme
 (validate-setq custom-safe-themes t)    ; Treat themes as safe
