@@ -334,8 +334,8 @@ prefix argument."
 
 ;;;###autoload
 (defun flush-kill-lines (regex)
-  "Flush lines matching REGEX and append to kill ring.  Restrict to \
-region if active."
+  "Flush lines matching REGEX and append to kill ring.  Restrict to region\
+if active."
   (interactive "sFlush kill regex: ")
   (save-excursion
     (save-restriction
@@ -345,71 +345,6 @@ region if active."
       (while (search-forward-regexp regex nil t)
         (move-beginning-of-line nil)
         (kill-whole-line)))))
-
-;;;###autoload
-(defun mu-align-repeat (start end regexp &optional justify-right after)
-  "Repeat alignment from START to END respecting the given REGEXP.
-If JUSTIFY-RIGHT is non nil justify to the right instead of the
-left.  If AFTER is non-nil, add whitespace to the left instead of
-the right."
-  (interactive "r\nsAlign regexp: ")
-  (let ((complete-regexp (if after
-                             (concat regexp "\\([ \t]*\\)")
-                           (concat "\\([ \t]*\\)" regexp)))
-        (group (if justify-right -1 1)))
-    (align-regexp start end complete-regexp group 1 t)))
-
-;;;###autoload
-(defun mu-align-repeat-decimal (start end)
-  "Align from START to END a table of numbers.
-Use decimal points and dollar signs (both optional)."
-  (interactive "r")
-  (require 'align)
-  (align-region start end nil
-                '((nil (regexp . "\\([\t ]*\\)\\$?\\([\t ]+[0-9]+\\)\\.?")
-                       (repeat . t)
-                       (group 1 2)
-                       (spacing 1 1)
-                       (justify nil t)))
-                nil))
-
-(defmacro mu-create-align-repeat-x
-    (name regexp &optional justify-right default-after)
-  (let ((new-func (intern (concat "mu-align-repeat-" name))))
-    `(defun ,new-func (start end switch)
-       (interactive "r\nP")
-       (let ((after (not (eq (if switch t nil) (if ,default-after t nil)))))
-         (mu-align-repeat start end ,regexp ,justify-right after)))))
-
-(mu-create-align-repeat-x "comma" "," nil t)
-(mu-create-align-repeat-x "semicolon" ";" nil t)
-(mu-create-align-repeat-x "colon" ":" nil t)
-(mu-create-align-repeat-x "equal" "=")
-(mu-create-align-repeat-x "math-oper" "[+\\-*/]")
-(mu-create-align-repeat-x "ampersand" "&")
-(mu-create-align-repeat-x "bar" "|")
-(mu-create-align-repeat-x "left-paren" "(")
-(mu-create-align-repeat-x "right-paren" ")" t)
-
-(bind-key "C-c x a r" #'mu-align-repeat)
-(bind-key "C-c x a m" #'mu-align-repeat-math-oper)
-(bind-key "C-c x a ." #'mu-align-repeat-decimal)
-(bind-key "C-c x a ," #'mu-align-repeat-comma)
-(bind-key "C-c x a ;" #'mu-align-repeat-semicolon)
-(bind-key "C-c x a :" #'mu-align-repeat-colon)
-(bind-key "C-c x a =" #'mu-align-repeat-equal)
-(bind-key "C-c x a &" #'mu-align-repeat-ampersand)
-(bind-key "C-c x a |" #'mu-align-repeat-bar)
-(bind-key "C-c x a (" #'mu-align-repeat-left-paren)
-(bind-key "C-c x a )" #'mu-align-repeat-right-paren)
-
-(defun mu-align-whitespace (start end)
-  "Align columns from START to END by whitespace."
-  (interactive "r")
-  (align-regexp start end
-                "\\(\\s-*\\)\\s-" 1 0 t))
-
-(bind-key "C-c x a SPC" #'mu-align-whitespace)
 
 (bind-key [remap just-one-space] #'cycle-spacing)
 
