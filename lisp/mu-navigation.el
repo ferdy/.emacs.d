@@ -79,6 +79,9 @@
 ;; Focus new help windows when opened
 (setq-default help-window-select t)
 
+;; Keep popping on C-SPC
+(validate-setq set-mark-command-repeat-pop t)
+
 ;;; Utilities and keybindings
 ;; Better forward and backward paragraph
 ;;;###autoload
@@ -118,45 +121,6 @@
 (bind-keys*
  ("M-a" . mu-backward-paragraph)
  ("M-e" . mu-forward-paragraph))
-
-;; Better mark commands
-;;;###autoload
-(defun push-mark-no-activate ()
-  "Pushes 'point' to 'mark-ring' and does not activate the region.
-
-Equivalent to \\[set-mark-command] when \\[transient-mark-mode] is disabled"
-  (interactive)
-  (push-mark (point) t nil)
-  (message "Pushed mark to ring"))
-
-;;;###autoload
-(defun jump-to-mark ()
-  "Jumps to the local mark, respecting the 'mark-ring' order.
-
-This is the same as using \\[set-mark-command] with the prefix argument."
-  (interactive)
-  (set-mark-command 1))
-
-;;;###autoload
-(defun exchange-point-and-mark-no-activate ()
-  "Identical to \\[exchange-point-and-mark] but will not activate the region."
-  (interactive)
-  (exchange-point-and-mark)
-  (deactivate-mark nil))
-
-(bind-key "C-+" 'push-mark-no-activate)
-(bind-key "M-+" 'jump-to-mark)
-(bind-key [remap exchange-point-and-mark]
-          'exchange-point-and-mark-no-activate global-map)
-
-;; When popping the mark, continue popping until the cursor
-;; actually moves
-(defadvice pop-to-mark-command (around ensure-new-position activate)
-  (let ((p (point)))
-    (dotimes (i 10)
-      (when (= p (point)) ad-do-it))))
-
-(validate-setq set-mark-command-repeat-pop t)
 
 (defun super-next-line ()
   "Move 5 lines down."
