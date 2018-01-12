@@ -398,16 +398,7 @@
    ;; Don't freeze when process reads from stdin
    compilation-disable-input t
    ;; Show three lines of context around the current message
-   compilation-context-lines 3)
-
-  (defun mu-colorize-compilation-buffer ()
-    "Colorize a compilation mode buffer."
-    (interactive)
-    (when (eq major-mode 'compilation-mode)
-      (let ((inhibit-read-only t))
-        (ansi-color-apply-on-region (point-min) (point-max)))))
-
-  (add-hook 'compilation-filter-hook #'mu-colorize-compilation-buffer))
+   compilation-context-lines 3))
 
 ;;; Keybindings
 (bind-key* "C-;" #'comment-line)
