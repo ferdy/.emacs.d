@@ -160,11 +160,6 @@
                 (yas-next-field)))
   :diminish clj-refactor-mode)
 
-(use-package clojure-snippets           ; Yasnippets for Clojure
-  :ensure t
-  :defer t
-  :after clojure-mode)
-
 ;;; Haskell
 (use-package intero                     ; Development mode for Haskell
   :ensure t
