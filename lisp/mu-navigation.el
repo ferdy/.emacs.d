@@ -148,6 +148,27 @@
  ("C-S-b" . super-backward-char)
  ("C-S-f" . super-forward-char))
 
+(defun goto-prev-line-with-same-indentation ()
+  "Move to previous line with the same indentation as the current."
+  (interactive)
+  (back-to-indentation)
+  (re-search-backward
+   (s-concat "^" (s-repeat (current-column) " ") "[^ \t\r\n\v\f]"))
+  (back-to-indentation))
+
+(defun goto-next-line-with-same-indentation ()
+  "Move to next line with the same indentation as the current."
+  (interactive)
+  (back-to-indentation)
+  (re-search-forward
+   (s-concat "^" (s-repeat (current-column) " ") "[^ \t\r\n\v\f]")
+   nil nil (if (= 0 (current-column)) 2 1))
+  (back-to-indentation))
+
+(bind-keys
+ ("C-þ" . goto-prev-line-with-same-indentation)
+ ("C-ñ" . goto-next-line-with-same-indentation))
+
 (provide 'mu-navigation)
 
 ;; Local Variables:
