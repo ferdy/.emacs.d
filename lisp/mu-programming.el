@@ -183,6 +183,7 @@
   :config
   (add-hook 'haskell-mode-hook #'eldoc-mode)
   (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
+  (add-hook 'haskell-mode-hook #'haskell-auto-insert-module-template)
 
   (with-eval-after-load 'haskell-mode
     (bind-key "C-c m h" #'hoogle haskell-mode-map)))
