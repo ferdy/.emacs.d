@@ -182,7 +182,10 @@
   :mode ("\\.ghci\\'" . haskell-mode)
   :config
   (add-hook 'haskell-mode-hook #'eldoc-mode)
-  (add-hook 'haskell-mode-hook #'haskell-indentation-mode))
+  (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
+
+  (with-eval-after-load 'haskell-mode
+    (bind-key "C-c m h" #'hoogle haskell-mode-map)))
 
 (use-package hindent                    ; Use hindent to indent Haskell code
   :ensure t
