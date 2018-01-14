@@ -67,9 +67,6 @@
                         ("~/org/gtd/someday.org" :level . 1)
                         ("~/org/gtd/tickler.org" :maxlevel . 2)))
 
-  ;; Disable whitespace highlighting of overlong lines in Org Mode
-  (add-hook 'org-mode-hook #'mu-whitespace-style-no-long-lines)
-
   ;; Use F12 to toggle image visualization
   (bind-key "<f12>"
             (lambda () (interactive) (org-toggle-inline-images t))

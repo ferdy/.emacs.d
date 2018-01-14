@@ -57,30 +57,22 @@
 (use-package hi-lock                    ; Custom regexp highlights
   :init (global-hi-lock-mode))
 
-(use-package whitespace                 ; Highlight bad whitespace
-  :init
-  (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-    (add-hook hook #'mu-whitespace-mode-local))
-  :config
-  (defun mu-whitespace-mode-local ()
-    "Enable `whitespace-mode' after local variables where set up."
-    (add-hook 'hack-local-variables-hook #'whitespace-mode nil 'local))
+;; Display trailing white spaces
+(setq-default show-trailing-whitespace t)
 
-  (validate-setq
-   ;; Highlight tabs, empty lines at beg/end, trailing whitespaces and overlong
-   ;; portions of lines via faces.  Also indicate tabs via characters
-   whitespace-style
-   '(face indentation space-after-tab space-before-tab
-          tab-mark empty trailing lines-tail)
-   ;; Use `fill-column' for overlong lines
-   whitespace-line-column nil)
-  :diminish whitespace-mode)
+(defun mu-no-trailing-whitespace ()
+  "Turn off display of trailing whitespace in this buffer."
+  (setq show-trailing-whitespace nil))
 
-;;; Utilities and keybindings
-(defun mu-whitespace-style-no-long-lines ()
-  "Disable highlighting of overlong lines."
-  (setq-local whitespace-style (-difference whitespace-style
-                                            '(lines lines-tail))))
+;; But don't show trailing white space in some modes
+(dolist (hook '(special-mode-hook
+                Info-mode-hook
+                eww-mode-hook
+                term-mode-hook
+                comint-mode-hook
+                compilation-mode-hook
+                minibuffer-setup-hook))
+  (add-hook hook #'mu-no-trailing-whitespace))
 
 (provide 'mu-highlight)
 
