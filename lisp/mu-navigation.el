@@ -122,21 +122,25 @@
  ("M-a" . mu-backward-paragraph)
  ("M-e" . mu-forward-paragraph))
 
+;;;###autoload
 (defun super-next-line ()
   "Move 5 lines down."
   (interactive)
   (ignore-errors (forward-line 5)))
 
+;;;###autoload
 (defun super-previous-line ()
   "Move 5 lines up."
   (interactive)
   (ignore-errors (forward-line -5)))
 
+;;;###autoload
 (defun super-backward-char ()
   "Move point 5 characters back."
   (interactive)
   (ignore-errors (backward-char 5)))
 
+;;;###autoload
 (defun super-forward-char ()
   "Move point 5 characters forward."
   (interactive)
@@ -148,6 +152,7 @@
  ("C-S-b" . super-backward-char)
  ("C-S-f" . super-forward-char))
 
+;;;###autoload
 (defun goto-prev-line-with-same-indentation ()
   "Move to previous line with the same indentation as the current."
   (interactive)
@@ -156,6 +161,7 @@
    (s-concat "^" (s-repeat (current-column) " ") "[^ \t\r\n\v\f]"))
   (back-to-indentation))
 
+;;;###autoload
 (defun goto-next-line-with-same-indentation ()
   "Move to next line with the same indentation as the current."
   (interactive)
