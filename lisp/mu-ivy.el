@@ -92,12 +92,17 @@
    counsel-describe-variable-function 'helpful-variable
    counsel-grep-post-action-hook '(recenter)
    counsel-yank-pop-preselect-last t
-   counsel-find-file-at-point t
+   counsel-find-file-at-point t)
+
+  (validate-setq
    counsel-find-file-ignore-regexp (concat
                                     ;; File names beginning with # or .
                                     "\\(?:\\`[#.]\\)"
                                     ;; File names ending with # or ~
                                     "\\|\\(?:\\`.+?[#~]\\'\\)"))
+
+  (validate-setq counsel-linux-app-format-function
+                 #'counsel-linux-app-format-function-name-only)
   :diminish counsel-mode)
 
 (use-package counsel-tramp          ; Ivy interface for SSH and Docker via TRAMP
