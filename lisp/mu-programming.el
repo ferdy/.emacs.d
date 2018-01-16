@@ -126,6 +126,14 @@
   :ensure cider
   :defer t)
 
+(use-package cider-util                 ; Common utilities
+  :ensure cider
+  :config
+  ;; Set Clojure and Java sources for better stacktrace navigation
+  (setq cider-jdk-src-paths '("~/sources/clojure/clojure-1.8.0-sources"
+                              "~/sources/clojure/clojure-1.9.0-sources"
+                              "~/sources/java/openjdk-8-src")))
+
 (use-package clj-refactor               ; Refactoring utilities
   :ensure t
   :defer t
