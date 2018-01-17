@@ -20,10 +20,11 @@
   :defer t
   :interpreter ("emacs" . emacs-lisp-mode)
   :bind (:map emacs-lisp-mode-map
-              ("C-c m e r" . eval-region)
+              ("C-c C-k" . eval-buffer)
               ("C-c m e b" . eval-buffer)
+              ("C-c m e f" . eval-defun)
               ("C-c m e e" . eval-last-sexp)
-              ("C-c m e f" . eval-defun))
+              ("C-c m e r" . eval-region))
   :config
   (defconst mu-use-package-imenu-expression
     `("Use Package" ,(rx "(use-package" (optional "-with-elapsed-timer")
