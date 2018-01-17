@@ -74,6 +74,7 @@
          ("C-c i"   . counsel-apropos)
          ("C-c k"   . counsel-rg)
          ("C-c l"   . counsel-find-library)
+         ("C-c n i" . counsel-imenu)
          ("C-c u"   . counsel-unicode-char)
          ("C-x j"   . counsel-bookmark)
          :map read-expression-map
