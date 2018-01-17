@@ -35,7 +35,8 @@
 (setq package-archives
       ;; Package archives, the usual suspects
       '(("GNU ELPA" . "http://elpa.gnu.org/packages/")
-        ("MELPA"    . "https://melpa.org/packages/")))
+        ("MELPA"    . "https://melpa.org/packages/")
+        ("ORG"      . "https://orgmode.org/elpa/")))
 (package-initialize)
 
 (setq load-prefer-newer t)              ; Always load newer compiled files
