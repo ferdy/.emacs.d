@@ -57,23 +57,6 @@
 (use-package hi-lock                    ; Custom regexp highlights
   :init (global-hi-lock-mode))
 
-;; Display trailing white spaces
-(setq-default show-trailing-whitespace t)
-
-(defun mu-no-trailing-whitespace ()
-  "Turn off display of trailing whitespace in this buffer."
-  (setq show-trailing-whitespace nil))
-
-;; But don't show trailing white space in some modes
-(dolist (hook '(special-mode-hook
-                Info-mode-hook
-                eww-mode-hook
-                term-mode-hook
-                comint-mode-hook
-                compilation-mode-hook
-                minibuffer-setup-hook))
-  (add-hook hook #'mu-no-trailing-whitespace))
-
 (provide 'mu-highlight)
 
 ;; Local Variables:
