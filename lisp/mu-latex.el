@@ -143,21 +143,19 @@
    reftex-plug-into-AUCTeX t ; Plug into AUCTeX
    ;; Automatically derive labels, and prompt for confirmation
    reftex-insert-label-flags '(t t)
-   reftex-label-alist
-   '(
-     ;; Additional label definitions for RefTeX.
-     ("definition" ?d "def:" "~\\ref{%s}"
-      mu-reftex-find-ams-environment-caption
-      ("definition" "def.") -3)
-     ("theorem" ?h "thm:" "~\\ref{%s}"
-      mu-reftex-find-ams-environment-caption
-      ("theorem" "th.") -3)
-     ("example" ?x "ex:" "~\\ref{%s}"
-      mu-reftex-find-ams-environment-caption
-      ("example" "ex") -3)
-     ;; Algorithms package
-     ("algorithm" ?a "alg:" "~\\ref{%s}"
-      "\\\\caption[[{]" ("algorithm" "alg") -3)))
+   ;; Additional label definitions for RefTeX.
+   reftex-label-alist '(("definition" ?d "def:" "~\\ref{%s}"
+                         mu-reftex-find-ams-environment-caption
+                         ("definition" "def.") -3)
+                        ("theorem" ?h "thm:" "~\\ref{%s}"
+                         mu-reftex-find-ams-environment-caption
+                         ("theorem" "th.") -3)
+                        ("example" ?x "ex:" "~\\ref{%s}"
+                         mu-reftex-find-ams-environment-caption
+                         ("example" "ex") -3)
+                        ;; Algorithms package
+                        ("algorithm" ?a "alg:" "~\\ref{%s}"
+                         "\\\\caption[[{]" ("algorithm" "alg") -3)))
   :diminish reftex-mode)
 
 (use-package latex-unicode-math-mode    ; Input method for Unicode math symbols
