@@ -33,7 +33,6 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (setq package-archives
-      ;; Package archives, the usual suspects
       '(("GNU ELPA" . "http://elpa.gnu.org/packages/")
         ("MELPA"    . "https://melpa.org/packages/")
         ("ORG"      . "https://orgmode.org/elpa/")))
@@ -75,14 +74,6 @@
   (warn "This configuration needs Emacs trunk, but this is %s!" emacs-version))
 
 (setq inhibit-default-init t)           ; Disable the site default settings
-
-;; Warn if the current build is more than a week old
-(run-with-idle-timer
- 2 nil
- (lambda ()
-   (let ((time-since-build (time-subtract (current-time) emacs-build-time)))
-     (when (> (time-to-number-of-days time-since-build) 7)
-       (lwarn 'emacs :warning "Your Emacs build is more than a week old!")))))
 
 ;;; Validation
 (use-package validate                   ; Validate options
