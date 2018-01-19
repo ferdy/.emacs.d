@@ -14,8 +14,8 @@
 (use-package org                        ; The almighty Org
   :ensure t
   :bind (("C-c o a" . org-agenda-list)
+         ("C-c o b" . mu-insert-checkbox)
          ("C-c o c" . org-capture)
-         ("C-c o i" . mu-insert-checkbox)
          ("C-c o l" . org-store-link)
          ("C-c o f" . org-cycle-agenda-files)
          ("C-c o s" . org-search-view)
@@ -178,6 +178,10 @@
 (use-package org-pdfview                ; Link to PDF files
   :ensure t
   :after org)
+
+(use-package org-cliplink               ; Insert links from the clipboard
+  :ensure t
+  :bind ("C-c o i" . org-cliplink))
 
 ;;; Utilities and keybindings
 (bind-key "<f5>"                        ; Open organizer file
