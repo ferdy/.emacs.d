@@ -144,10 +144,16 @@ The EShell is renamed to match that directory to make multiple windows easier."
   :ensure eshell
   :config (validate-setq eshell-scroll-to-bottom-on-input 'all))
 
+(use-package em-smart                   ; Smart display of output
+  :config
+  (add-hook 'eshell-mode-hook #'eshell-smart-initialize)
+
+  (add-to-list 'eshell-smart-display-navigate-list #'counsel-esh-history))
+
 (use-package em-cmpl                    ; EShell TAB completion
   :ensure eshell
   :config
-  (validate-setq eshell-cmpl-cycle-completions nil)
+  (add-hook 'eshell-mode-hook #'eshell-cmpl-initialize)
 
   (add-to-list 'eshell-command-completions-alist
                '("gunzip" "gz\\'"))
