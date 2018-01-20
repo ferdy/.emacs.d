@@ -32,8 +32,7 @@
    dired-dwim-target t                  ; Use other pane as target
    dired-recursive-copies 'always       ; Copy dirs recursively
    dired-recursive-deletes ' always     ; Delete dirs recursively
-   ;; -F marks links with @
-   dired-ls-F-marks-symlinks t)
+   dired-ls-F-marks-symlinks t)         ; -F marks links with @
 
   ;; Enable dired-find-alternate-file
   (put 'dired-find-alternate-file 'disabled nil)
@@ -119,8 +118,11 @@
 (use-package dired-aux                  ; Other Dired customizations
   :after dired
   :config
-  ;; Ask for creation of missing directories when copying/moving
-  (validate-setq dired-create-destination-dirs 'ask))
+  (validate-setq
+   ;; Ask for creation of missing directories when copying/moving
+   dired-create-destination-dirs 'ask
+   ;; Search only file names when point is on a file name
+   dired-isearch-filenames'dwim))
 
 (use-package dired-x                    ; Enable some nice Dired features
   :bind ("C-x C-j" . dired-jump)
