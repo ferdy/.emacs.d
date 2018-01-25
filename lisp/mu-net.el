@@ -92,7 +92,6 @@
    paradox-execute-asynchronously nil ; No async updates
    paradox-spinner-type 'moon         ; Prettier spinner
    paradox-use-homepage-buttons nil   ; Hide download button
-   paradox-hide-wiki-packages t       ; Hide packages from Emacs Wiki
    paradox-automatically-star nil     ; Don't star packages automatically
    paradox-display-download-count t   ; Show all possible counts
    paradox-display-star-count t)
