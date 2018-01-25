@@ -61,14 +61,6 @@
   :ensure t
   :bind ("C-c f s" . sudo-edit))
 
-(use-package pdf-tools                  ; Better PDF support
-  :ensure t
-  :mode ("\\.pdf\\'" . pdf-view-mode)
-  :bind (:map pdf-view-mode-map
-              ("M-w" . pdf-view-kill-ring-save)
-              ("M-g" . pdf-view-goto-page))
-  :config (pdf-tools-install))
-
 (use-package pdf-view                   ; View PDF documents
   :after pdf-tools
   :config
