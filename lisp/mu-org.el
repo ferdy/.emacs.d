@@ -175,6 +175,10 @@
   :config
   (validate-setq org-bullets-bullet-list '("◉" "○" "●" "►" "◇" "◎")))
 
+(use-package org-pdfview                ; Link to PDF files
+  :ensure t
+  :after org)
+
 (use-package org-cliplink               ; Insert links from the clipboard
   :ensure t
   :bind ("C-c o i" . org-cliplink))

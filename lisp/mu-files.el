@@ -61,6 +61,11 @@
   :ensure t
   :bind ("C-c f s" . sudo-edit))
 
+(use-package pdf-tools                  ; Better PDF support
+  :ensure t
+  :demand t
+  :config (pdf-tools-install))
+
 (use-package pdf-view                   ; View PDF documents
   :after pdf-tools
   :config
