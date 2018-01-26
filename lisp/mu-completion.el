@@ -106,8 +106,7 @@ _e_: extra   _l_: list        _n_: new
    ;; Easy navigation to candidates with M-<n>
    company-show-numbers t)
 
-  (setq-default company-dabbrev-other-buffers 'all
-                company-tooltip-align-annotations t)
+  (setq-default company-tooltip-align-annotations t)
   :diminish company-mode)
 
 (use-package company-dabbrev            ; dabbrev-like Company backend
@@ -150,7 +149,10 @@ _e_: extra   _l_: list        _n_: new
 (use-package company-shell              ; Company support for shell functions
   :ensure t
   :after company
-  :config (add-to-list 'company-backends 'company-shell))
+  :config
+  (add-to-list 'company-backends 'company-shell)
+  (add-to-list 'company-backends 'company-fish-shell)
+  (add-to-list 'company-backends 'company-shell-env))
 
 (use-package company-restclient         ; Company support for restclient
   :ensure t
