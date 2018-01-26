@@ -31,11 +31,15 @@
 
 ;;; Package setup
 (require 'package)
-(setq package-enable-at-startup nil)
+
+(setq package-enable-at-startup nil
+      package--init-file-ensured t)
+
 (setq package-archives
       '(("GNU ELPA" . "http://elpa.gnu.org/packages/")
         ("MELPA"    . "https://melpa.org/packages/")
         ("ORG"      . "https://orgmode.org/elpa/")))
+
 (package-initialize)
 
 (setq load-prefer-newer t)              ; Always load newer compiled files
@@ -43,15 +47,20 @@
 (setq message-log-max 10000)            ; Debugging
 
 ;; Allow more than 800Kb cache during init
-(setq gc-cons-threshold 50000000)
+(setq gc-cons-threshold 402653184
+      gc-cons-percentage 0.6)
 
-;; Reset threshold to its default after Emacs has startup, because a large
-;; GC threshold equates to longer delays whenever GC happens
 (defun mu-set-gc-threshold ()
-  "Reset `gc-cons-threshold' to its default value."
-  (setq gc-cons-threshold 800000))
+  "Reset `gc-cons-threshold' and `gc-cons-percentage' to their default values."
+  (setq gc-cons-threshold 16777216
+        gc-cons-percentage 0.1))
 
-(add-hook 'emacs-startup-hook 'mu-set-gc-threshold)
+(defvar mu--file-name-handler-alist file-name-handler-alist)
+(setq file-name-handler-alist nil)
+
+(defun mu-set-file-name-handler-alist ()
+  "Reset `file-name-handler-alist' to its default value."
+  (setq file-name-handler-alist mu--file-name-handler-alist))
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
@@ -175,6 +184,10 @@
 (use-package mu-org)
 (use-package mu-programming)
 (use-package mu-shells)
+
+;; Reset default values
+(add-hook 'emacs-startup-hook #'mu-set-gc-threshold)
+(add-hook 'emacs-startup-hook #'mu-set-file-name-handler-alist)
 
 ;; Immediately visit my main GTD file
 (find-file "~/org/gtd/gtd.org")
