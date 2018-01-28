@@ -91,6 +91,7 @@
    paradox-github-token t             ; Don't ask for a token
    paradox-execute-asynchronously nil ; No async updates
    paradox-spinner-type 'moon         ; Prettier spinner
+   paradox-hide-wiki-packages t       ; Hide Emacs Wiki packages
    paradox-use-homepage-buttons nil   ; Hide download button
    paradox-automatically-star nil     ; Don't star packages automatically
    paradox-display-download-count t   ; Show all possible counts
