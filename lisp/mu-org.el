@@ -147,8 +147,8 @@
   :config (validate-setq auto-insert-query nil))
 
 ;; ox-pandoc needs latest Pandoc.
-;; If latest Pandoc is not available via apt-get,
-;; install it from here: https://github.com/jgm/pandoc/releases/latest
+;; If latest Pandoc is not available via apt, install it from
+;; https://github.com/jgm/pandoc/releases/latest
 (use-package ox-pandoc                  ; Export Org documents via Pandoc
   :ensure t
   :config
@@ -157,17 +157,6 @@
                      (locate-user-emacs-file "etc/pandoc.css"))))
     (validate-setq org-pandoc-options-for-html5
                    `((css . ,(concat "file://" stylesheet))))))
-
-(use-package ox-reveal                  ; Slideshows with Reveal.js
-  :ensure t
-  :config
-  (validate-setq
-   org-reveal-root "file:///home/manuel/reveal.js"
-   ;; Hide some controls
-   org-reveal-control ""
-   org-reveal-progress nil
-   org-reveal-overview nil
-   org-reveal-slide-number ""))
 
 (use-package org-bullets                ; Bullets as UTF-8 characters
   :ensure t
