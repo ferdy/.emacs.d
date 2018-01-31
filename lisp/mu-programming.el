@@ -149,6 +149,7 @@
   (validate-setq
    cljr-suppress-middleware-warnings t
    cljr-add-ns-to-blank-clj-files nil
+   cljr-add-ns-to-blank-clj-files t
    cljr-auto-sort-ns t
    cljr-favor-prefix-notation nil
    cljr-favor-private-functions nil
