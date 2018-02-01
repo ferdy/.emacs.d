@@ -146,9 +146,6 @@
       > _ \n \n))
   :config (validate-setq auto-insert-query nil))
 
-;; ox-pandoc needs latest Pandoc.
-;; If latest Pandoc is not available via apt, install it from
-;; https://github.com/jgm/pandoc/releases/latest
 (use-package ox-pandoc                  ; Export Org documents via Pandoc
   :ensure t
   :config
