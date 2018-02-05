@@ -490,6 +490,10 @@ With arg N, insert N newlines."
            ("C-x C--" . hydra-zoom/body)
            ("C-x C-+" . hydra-zoom/body))
 
+(bind-keys :map prog-mode-map
+           ("C-c d c" . comment-region)
+           ("C-c d u" . uncomment-region))
+
 (provide 'mu-editing)
 
 ;; Local Variables:
