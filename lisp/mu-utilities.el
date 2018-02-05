@@ -18,6 +18,10 @@
   (set-face-attribute 'Info-quoted nil :family 'unspecified
                       :inherit font-lock-constant-face))
 
+(use-package info-colors                ; Extra colours for Info-mode
+  :ensure t
+  :config (add-hook 'Info-selection-hook #'info-colors-fontify-node))
+
 (use-package helpful                    ; A better *help* buffer
   :ensure t
   :bind (("C-c h a" . helpful-at-point)
