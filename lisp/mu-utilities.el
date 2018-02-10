@@ -26,13 +26,13 @@
   :ensure t
   :bind (("C-c h a" . helpful-at-point)
          ("C-c h b" . helpful-kill-buffers)
-         ("C-c h C" . helpful-callable)
-         ("C-c h c" . helpful-command)
-         ("C-c h f" . helpful-function)
-         ("C-c h k" . helpful-key)
          ("C-c h m" . helpful-macro)
          ("C-c h s" . helpful-symbol)
-         ("C-c h v" . helpful-variable)))
+         ("C-h f" . helpful-callable)
+         ("C-h C" . helpful-command)
+         ("C-h F" . helpful-function)
+         ("C-h k" . helpful-key)
+         ("C-h v" . helpful-variable)))
 
 (use-package calendar                   ; Display a calendar
   :config (setq calendar-week-start-day 1)) ; Start on Monday
