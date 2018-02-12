@@ -176,12 +176,18 @@ Else call `ediff-buffers'."
   (interactive)
   (push (current-window-configuration) mu-saved-window-configuration))
 
+(defun mu-restore-window-configuration (config)
+  "Kill current buffer and restore window configuration in CONFIG."
+  (interactive)
+  (kill-this-buffer)
+  (set-window-configuration config))
+
 (defun mu-pop-window-configuration ()
   "Restore previous window configuration."
   (interactive)
   (let ((config (pop mu-saved-window-configuration)))
     (if config
-        (set-window-configuration config)
+        (mu-restore-window-configuration config)
       (if (> (length (window-list)) 1)
           (delete-window)
         (bury-buffer)))))

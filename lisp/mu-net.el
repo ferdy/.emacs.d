@@ -86,8 +86,19 @@
 (use-package paradox                    ; Better package manager interface
   :ensure t
   :bind (("C-c a p" . paradox-list-packages)
-         ("C-c a P" . paradox-upgrade-packages))
+         :map paradox-menu-mode-map
+         ("q" . mu-pop-window-configuration))
   :config
+  (defun mu-paradox-open ()
+    "Open Paradox after storing current window configuration."
+    (interactive)
+    (mu-push-window-configuration)
+    (paradox-list-packages))
+
+  ;; Use a single full frame for ibuffer
+  (with-eval-after-load 'paradox
+    (fullframe paradox-list-packages mu-pop-window-configuration))
+
   (validate-setq
    paradox-github-token t             ; Don't ask for a token
    paradox-execute-asynchronously nil ; No async updates

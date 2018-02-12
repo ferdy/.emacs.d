@@ -100,12 +100,12 @@
   (validate-setq ibuffer-show-empty-filter-groups nil))
 
 (use-package ibuffer                    ; Buffer management
-  :bind (("C-x C-b" . ibuffer-open)
+  :bind (("C-x C-b" . mu-ibuffer-open)
          ([remap list-buffers] . ibuffer)
          :map ibuffer-mode-map
          ("q" . mu-pop-window-configuration))
   :config
-  (defun ibuffer-open ()
+  (defun mu-ibuffer-open ()
     "Open Ibuffer after storing current window configuration."
     (interactive)
     (mu-push-window-configuration)
@@ -117,7 +117,7 @@
 
   ;; Use a single full frame for ibuffer
   (with-eval-after-load 'ibuffer
-    (fullframe ibuffer ibuffer-quit))
+    (fullframe ibuffer mu-pop-window-configuration))
 
   ;; Use human readable Size column instead of original one
   (define-ibuffer-column size-h
