@@ -103,8 +103,13 @@
   :bind (([remap list-buffers] . ibuffer)
          ("C-c b i"            . ibuffer))
   :config
-  ;; Do not prompt when executing killing buffers operations
-  (validate-setq ibuffer-expert t)
+  (validate-setq
+   ibuffer-expert t              ; Do not prompt when on kill buffers operations
+   ibuffer-filter-group-name-face 'font-lock-doc-face)
+
+  ;; Use a single full frame for ibuffer
+  (with-eval-after-load 'ibuffer
+    (fullframe ibuffer ibuffer-quit))
 
   ;; Use human readable Size column instead of original one
   (define-ibuffer-column size-h
@@ -136,7 +141,6 @@
 
 (use-package ibuffer-vc                 ; Group buffers by VC project and status
   :ensure t
-  :defer t
   :init (add-hook 'ibuffer-hook
                   (lambda ()
                     (ibuffer-vc-set-filter-groups-by-vc-root)
