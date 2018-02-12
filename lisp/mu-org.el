@@ -13,7 +13,7 @@
 
 (use-package org                        ; The almighty Org
   :ensure t
-  :bind (("C-c o a" . org-agenda-list)
+  :bind (("C-c o a" . mu-org-agenda-open)
          ("C-c o b" . mu-insert-checkbox)
          ("C-c o c" . org-capture)
          ("C-c o l" . org-store-link)
@@ -23,6 +23,16 @@
          :map org-mode-map
          ("RET" . mu-org-return))
   :config
+  (defun mu-org-agenda-open ()
+    ""
+    (interactive)
+    (mu-push-window-configuration)
+    (org-agenda-list))
+
+  ;; Use a single full frame for org-agenda
+  (with-eval-after-load 'org
+    (fullframe org-agenda-list mu-pop-window-configuration))
+
   (validate-setq org-emphasis-regexp-components ; Fix markup for ' and "
                  '("     ('\"{“”"
                    "-   .,!?;''“”\")}/\\“”"
@@ -158,8 +168,7 @@
 (use-package org-bullets                ; Bullets as UTF-8 characters
   :ensure t
   :init (add-hook 'org-mode-hook #'org-bullets-mode)
-  :config
-  (validate-setq org-bullets-bullet-list '("◉" "○" "●" "►" "◇" "◎")))
+  :config (validate-setq org-bullets-bullet-list '("◉" "○" "●" "►" "◇" "◎")))
 
 (use-package org-pdfview                ; Link to PDF files
   :ensure t
@@ -168,6 +177,10 @@
 (use-package org-cliplink               ; Insert links from the clipboard
   :ensure t
   :bind ("C-c o i" . org-cliplink))
+
+(use-package org-alert                  ; Notify org deadlines via notify-send
+  :ensure t
+  :config (setq alert-default-style 'libnotify))
 
 ;;; Utilities and keybindings
 (bind-key "<f5>"                        ; Open organizer file

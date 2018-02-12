@@ -95,7 +95,7 @@
     (mu-push-window-configuration)
     (paradox-list-packages))
 
-  ;; Use a single full frame for ibuffer
+  ;; Use a single full frame for Paradox
   (with-eval-after-load 'paradox
     (fullframe paradox-list-packages mu-pop-window-configuration))
 
