@@ -100,9 +100,17 @@
   (validate-setq ibuffer-show-empty-filter-groups nil))
 
 (use-package ibuffer                    ; Buffer management
-  :bind (([remap list-buffers] . ibuffer)
-         ("C-c b i"            . ibuffer))
+  :bind (("C-x C-b" . ibuffer-open)
+         ([remap list-buffers] . ibuffer)
+         :map ibuffer-mode-map
+         ("q" . mu-pop-window-configuration))
   :config
+  (defun ibuffer-open ()
+    "Open Ibuffer after storing current window configuration."
+    (interactive)
+    (mu-push-window-configuration)
+    (ibuffer))
+
   (validate-setq
    ibuffer-expert t              ; Do not prompt when on kill buffers operations
    ibuffer-filter-group-name-face 'font-lock-doc-face)
