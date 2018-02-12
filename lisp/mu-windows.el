@@ -169,6 +169,23 @@ Else call `ediff-buffers'."
 
 (bind-key "C-c w e" #'mu-ediff-dwim)
 
+(defvar mu-saved-window-configuration nil)
+
+(defun mu-push-window-configuration ()
+  "Save current window configuration."
+  (interactive)
+  (push (current-window-configuration) mu-saved-window-configuration))
+
+(defun mu-pop-window-configuration ()
+  "Restore previous window configuration."
+  (interactive)
+  (let ((config (pop mu-saved-window-configuration)))
+    (if config
+        (set-window-configuration config)
+      (if (> (length (window-list)) 1)
+          (delete-window)
+        (bury-buffer)))))
+
 (provide 'mu-windows)
 
 ;; Local Variables:
