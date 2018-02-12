@@ -1,4 +1,4 @@
-;;; mu-style.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
+;;; mu-windows.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2014-2018  Manuel Uberti
 
@@ -183,7 +183,7 @@ Else call `ediff-buffers'."
   (set-window-configuration config))
 
 (defun mu-pop-window-configuration ()
-  "Restore previous window configuration."
+  "Restore previous window configuration, if existing, clear current window."
   (interactive)
   (let ((config (pop mu-saved-window-configuration)))
     (if config
