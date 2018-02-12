@@ -13,6 +13,10 @@
 
 (validate-setq window-combination-resize t) ; Size new windows proportionally
 
+(use-package fullframe                 ; Generalized execution in a single frame
+  :ensure t
+  :defer t)
+
 (use-package eyebrowse                  ; Easy workspaces creation and switching
   :ensure t
   :init (eyebrowse-mode t)
