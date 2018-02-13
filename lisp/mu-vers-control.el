@@ -54,10 +54,6 @@
                    (magit-restore-window-configuration t)
                    (mu-kill-buffers "^\\*magit")))
 
-  ;; Show status buffer in fullscreen
-  (with-eval-after-load 'magit
-    (fullframe magit-status mu-quit-magit-session))
-
   (add-hook 'projectile-switch-project-hook
             #'mu-magit-set-repo-dirs-from-projectile)
 
