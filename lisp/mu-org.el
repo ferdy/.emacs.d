@@ -178,10 +178,6 @@
   :ensure t
   :bind ("C-c o i" . org-cliplink))
 
-(use-package org-alert                  ; Notify org deadlines via notify-send
-  :ensure t
-  :config (setq alert-default-style 'libnotify))
-
 ;;; Utilities and keybindings
 (bind-key "<f5>"                        ; Open organizer file
           (lambda () (interactive) (find-file "~/org/gtd/gtd.org")))

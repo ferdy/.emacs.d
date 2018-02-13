@@ -118,10 +118,6 @@
 ;; Underline below the font bottomline instead of the baseline
 (validate-setq x-underline-at-descent-line t)
 
-(use-package stripe-buffer              ; Add stripes to a buffer
-  :ensure t
-  :init (add-hook 'dired-mode-hook #'stripe-buffer-mode))
-
 ;;; Theme
 (validate-setq custom-safe-themes t)    ; Treat themes as safe
 
