@@ -163,9 +163,7 @@
 (defun mu-kill-buffers (regexp)
   "Kill buffers matching REGEXP without asking for confirmation."
   (interactive "sKill buffers matching this regular expression: ")
-  (cl-letf (((symbol-function 'kill-buffer-ask)
-             (lambda (buffer) (kill-buffer buffer))))
-    (kill-matching-buffers regexp)))
+  (kill-matching-buffers regexp nil 'no-ask))
 
 ;; Don't kill the important buffers
 (defconst mu-do-not-kill-buffer-names '("*scratch*" "*Messages*")

@@ -65,8 +65,6 @@
   (with-eval-after-load 'magit
     (fullframe magit-status mu-quit-magit-session))
 
-  (bind-key "q" #'mu-quit-magit-session magit-status-mode-map)
-
   (add-hook 'projectile-switch-project-hook
             #'mu-magit-set-repo-dirs-from-projectile)
 
