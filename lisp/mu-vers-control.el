@@ -49,13 +49,10 @@
    magit-display-buffer-function#'magit-display-buffer-fullframe-status-v1)
 
   ;; Kill Magit buffers when quitting `magit-status'
-  (defun mu-magit-quit-session (&optional kill-buffer)
-    "Kill all Magit buffers on quit"
-    (interactive)
-    (magit-mode-bury-buffer t)
-    (mu-kill-buffers "\\*magit"))
-
-  (bind-key "q" #'mu-magit-quit-session magit-status-mode-map)
+  (validate-setq magit-bury-buffer-function
+                 (lambda (con)
+                   (magit-restore-window-configuration t)
+                   (mu-kill-buffers "^\\*magit")))
 
   ;; Show status buffer in fullscreen
   (with-eval-after-load 'magit

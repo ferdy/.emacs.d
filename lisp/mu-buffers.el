@@ -161,9 +161,10 @@
 ;;; Utilities and keybindings
 ;;;###autoload
 (defun mu-kill-buffers (regexp)
-  "Kill buffers matching REGEXP without asking for confirmation."
-  (interactive "sKill buffers matching this regular expression: ")
-  (kill-matching-buffers regexp nil 'no-ask))
+  "Kill buffers whose names match REGEXP, without asking."
+  (interactive)
+  (cl-letf (((symbol-function 'kill-buffer-ask) #'kill-buffer))
+    (kill-matching-buffers regexp nil 'no-ask)))
 
 ;; Don't kill the important buffers
 (defconst mu-do-not-kill-buffer-names '("*scratch*" "*Messages*")
