@@ -48,12 +48,6 @@
    ;; Show status buffer in fullscreen
    magit-display-buffer-function#'magit-display-buffer-fullframe-status-v1)
 
-  ;; Kill Magit buffers when quitting `magit-status'
-  (validate-setq magit-bury-buffer-function
-                 (lambda (con)
-                   (magit-restore-window-configuration t)
-                   (mu-kill-buffers "^\\*magit")))
-
   (add-hook 'projectile-switch-project-hook
             #'mu-magit-set-repo-dirs-from-projectile)
 
