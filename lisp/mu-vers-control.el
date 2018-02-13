@@ -42,12 +42,11 @@
   ;; Show refined hunks during diffs
   (set-default 'magit-diff-refine-hunk t)
 
-  ;; Use Ivy
-  (validate-setq magit-completing-read-function 'ivy-completing-read)
-
-  ;; Show status buffer in fullscreen
   (validate-setq
-   magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+   ;; Use Ivy
+   magit-completing-read-function 'ivy-completing-read
+   ;; Show status buffer in fullscreen
+   magit-display-buffer-function#'magit-display-buffer-fullframe-status-v1)
 
   ;; Kill Magit buffers when quitting `magit-status'
   (defun mu-magit-quit-session (&optional kill-buffer)
