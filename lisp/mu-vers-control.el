@@ -25,7 +25,7 @@
          ("C-c v g" . magit-blame)
          ("C-c v l" . magit-log-buffer-file)
          ("C-c v p" . magit-pull)
-         ("C-c v v" . mu-magit-open))
+         ("C-c v v" . magit-status))
   :config
   (validate-setq
    magit-save-repository-buffers 'dontask
@@ -49,17 +49,14 @@
   (validate-setq
    magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 
-  (defun mu-magit-open ()
-    "Open Magit status after storing current window configuration."
+  ;; Kill Magit buffers when quitting `magit-status'
+  (defun mu-magit-quit-session (&optional kill-buffer)
+    "Kill all Magit buffers on quit"
     (interactive)
-    (mu-push-window-configuration)
-    (magit-status))
+    (magit-mode-bury-buffer t)
+    (mu-kill-buffers "\\*magit"))
 
-  (defun mu-quit-magit-session ()
-    "Kill all Magit related buffers when closing Magit status."
-    (interactive)
-    (mu-pop-window-configuration)
-    (mu-kill-buffers "^\\*magit"))
+  (bind-key "q" #'mu-magit-quit-session magit-status-mode-map)
 
   ;; Show status buffer in fullscreen
   (with-eval-after-load 'magit
