@@ -183,7 +183,7 @@ Else call `ediff-buffers'."
   (set-window-configuration config))
 
 (defun mu-pop-window-configuration ()
-  "Restore previous window configuration, if existing, clear current window."
+  "Restore previous window configuration and clear current window."
   (interactive)
   (let ((config (pop mu-saved-window-configuration)))
     (if config
