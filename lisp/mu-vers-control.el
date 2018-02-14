@@ -60,13 +60,13 @@
   ;; Free C-c C-w for Eyebrowse
   (unbind-key "C-c C-w" git-commit-mode-map)
 
-  (defun mu-magit-kill-buffers ()
+  (defun mu-magit-kill-buffers (param)
     "Kill all Magit buffers."
-    (interactive)
     (let ((buffers (magit-mode-get-buffers)))
-      (mapc #'kill-buffer (cl-remove-if 'buffer-base-buffer buffers))))
+      (magit-restore-window-configuration)
+      (mapc #'kill-buffer buffers)))
 
-  (bind-key "q" #'mu-magit-kill-buffers magit-status-mode-map)
+  (validate-setq magit-bury-buffer-function #'mu-magit-kill-buffers)
   :diminish (magit-wip-after-save-local-mode
              magit-wip-before-change-mode))
 
