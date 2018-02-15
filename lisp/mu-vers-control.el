@@ -46,7 +46,7 @@
    ;; Use Ivy
    magit-completing-read-function 'ivy-completing-read
    ;; Show status buffer in fullscreen
-   magit-display-buffer-function#'magit-display-buffer-fullframe-status-v1)
+   magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 
   (add-hook 'projectile-switch-project-hook
             #'mu-magit-set-repo-dirs-from-projectile)
