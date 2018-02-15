@@ -35,11 +35,6 @@
               ("r" . counsel-projectile-rg))
   :init (counsel-projectile-mode))
 
-(use-package projectile-ripgrep         ; Search projects with ripgrep
-  :ensure t
-  :bind (:map projectile-command-map
-              ("s r" . projectile-ripgrep)))
-
 (provide 'mu-projectile)
 
 ;; Local Variables:
