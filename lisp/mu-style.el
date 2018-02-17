@@ -76,15 +76,6 @@
 (add-hook 'text-mode-hook #'auto-fill-mode)
 (diminish 'auto-fill-function)
 
-;; Give us narrowing back!
-(put 'narrow-to-region 'disabled nil)
-(put 'narrow-to-page 'disabled nil)
-(put 'narrow-to-defun 'disabled nil)
-
-;; Same for region casing
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
 ;; Hide the cursor in inactive windows
 (setq-default cursor-in-non-selected-windows t)
 
