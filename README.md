@@ -4,7 +4,7 @@ This is the Emacs configuration I use everyday.
 
 It requires an Emacs version built from development sources and a bunch of
 external tools. I devised a
-[script](https://github.com/manuel-uberti/scripts/blob/master/esetup) to
+[script](https://github.com/manuel-uberti/scripts/blob/master/env-setup) to
 prepare the right environment for my needs, but your mileage may vary.
 
 You can find this configuration useful if you plan to work with:
