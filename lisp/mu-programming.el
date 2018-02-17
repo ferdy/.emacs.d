@@ -363,10 +363,6 @@
   (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
   (add-hook 'text-mode-hook #'bug-reference-mode))
 
-(use-package bug-hunter                 ; Find bugs in Emacs configuration
-  :ensure t
-  :commands bug-hunter-file)
-
 ;;; Misc utilities
 (use-package eldoc                      ; Documentation in the echo area
   :defer t
