@@ -12,7 +12,8 @@
 ;;; Code:
 
 (use-package vc-hooks                   ; Simple version control
-  :bind ("C-c v r" . vc-refresh-state)
+  :bind (("S-<f5>" . vc-revert)
+         ("C-c v r" . vc-refresh-state))
   :config
   ;; Always follow symlinks to files in VCS repos
   (validate-setq vc-follow-symlinks t))
@@ -56,13 +57,14 @@
   ;; Free C-c C-w for Eyebrowse
   (unbind-key "C-c C-w" git-commit-mode-map)
 
-  (defun mu-magit-kill-buffers (param)
+  (defun mu-magit-kill-buffers ()
     "Kill all Magit buffers."
+    (interactive)
     (let ((buffers (magit-mode-get-buffers)))
       (magit-restore-window-configuration)
       (mapc #'kill-buffer buffers)))
 
-  (validate-setq magit-bury-buffer-function #'mu-magit-kill-buffers)
+  (bind-key "q" #'mu-magit-kill-buffers magit-status-mode-map)
   :diminish (magit-wip-after-save-local-mode
              magit-wip-before-change-mode))
 
