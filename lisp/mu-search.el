@@ -20,29 +20,6 @@
 ;; Truncate lines during grep
 (add-hook 'grep-mode-hook #'toggle-truncate-lines)
 
-(use-package "isearch"                  ; Search buffers
-  ;; Defer because `isearch' is not a feature and we don't want to `require' it
-  :defer t
-  :bind (:map isearch-mode-map
-              ("<C-return>" . mu-isearch-exit-other-end))
-  ;; `:diminish' doesn't work for isearch, because it uses eval-after-load on
-  ;; the feature name, but isearch.el does not provide any feature.  For the
-  ;; same reason we have to use `:init', but isearch is always loaded anyways.
-  :init
-  (diminish 'isearch-mode)
-
-  (validate-setq
-   ;; Scroll during search
-   isearch-allow-scroll t
-   ;; Fold unicode characters to ASCII while searching
-   search-default-mode #'char-fold-to-regexp)
-
-  (defun mu-isearch-exit-other-end ()
-    "Exit isearch, at the opposite end of the string."
-    (interactive)
-    (isearch-exit)
-    (goto-char isearch-other-end)))
-
 (use-package wgrep                      ; Editable grep buffer
   :ensure t
   :defer t
