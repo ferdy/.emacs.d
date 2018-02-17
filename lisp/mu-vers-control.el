@@ -31,7 +31,9 @@
    magit-save-repository-buffers 'dontask
    magit-refs-show-commit-count 'all
    magit-branch-prefer-remote-upstream '("master")
-   magit-branch-adjust-remote-upstream-alist '(("origin/master" "master")))
+   magit-branch-adjust-remote-upstream-alist '(("origin/master" "master"))
+   magit-completing-read-function 'ivy-completing-read
+   magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 
   ;; Hide "Recent Commits"
   (magit-add-section-hook 'magit-status-sections-hook
@@ -41,12 +43,6 @@
 
   ;; Show refined hunks during diffs
   (set-default 'magit-diff-refine-hunk t)
-
-  (validate-setq
-   ;; Use Ivy
-   magit-completing-read-function 'ivy-completing-read
-   ;; Show status buffer in fullscreen
-   magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
 
   (add-hook 'projectile-switch-project-hook
             #'mu-magit-set-repo-dirs-from-projectile)
