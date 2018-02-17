@@ -409,6 +409,10 @@
    ;; Show three lines of context around the current message
    compilation-context-lines 3))
 
+(use-package eros                       ; Display evaluation result as overlay
+  :ensure t
+  :config (eros-mode 1))
+
 ;;; Keybindings
 (bind-key* "C-;" #'comment-line)
 (bind-key "C-c t d" #'toggle-debug-on-error)
