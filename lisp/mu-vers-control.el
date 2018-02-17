@@ -1,6 +1,6 @@
 ;;; mu-vers-control.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
-;; Copyright (2014-C) 2018  Manuel Uberti
+;; Copyright (C) 2014-2018  Manuel Uberti
 
 ;; Author: Manuel Uberti manuel.uberti@inventati.org
 ;; Keywords: convenience
