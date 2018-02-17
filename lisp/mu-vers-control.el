@@ -58,7 +58,7 @@
   (unbind-key "C-c C-w" git-commit-mode-map)
 
   (defun mu-magit-kill-buffers ()
-    "Kill all Magit buffers."
+    "Restore window configuration and kill all Magit buffers."
     (interactive)
     (let ((buffers (magit-mode-get-buffers)))
       (magit-restore-window-configuration)
