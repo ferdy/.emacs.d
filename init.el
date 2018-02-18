@@ -32,8 +32,7 @@
 ;;; Package setup
 (require 'package)
 
-(setq package-enable-at-startup nil
-      package--init-file-ensured t)
+(setq package-enable-at-startup nil)
 
 (setq package-archives
       '(("GNU ELPA" . "http://elpa.gnu.org/packages/")
