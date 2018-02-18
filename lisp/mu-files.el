@@ -12,8 +12,7 @@
 ;;; Code:
 
 (use-package files                      ; Core commands for files
-  :bind (("C-c f z" . revert-buffer)
-         ("C-c f /" . revert-buffer)
+  :bind (("<f5>" . revert-buffer)
          ("C-c f l" . find-file-literally)))
 
 (use-package recentf                    ; Manage recent files
