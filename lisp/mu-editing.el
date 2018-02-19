@@ -494,6 +494,10 @@ With arg N, insert N newlines."
            ("C-c d c" . comment-region)
            ("C-c d u" . uncomment-region))
 
+;; Enable upcase-/downcase-region
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
 (provide 'mu-editing)
 
 ;; Local Variables:
