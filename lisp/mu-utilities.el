@@ -12,7 +12,8 @@
 ;;; Code:
 
 (use-package info                       ; Info, the documentation browser
-  :bind ("C-h C-i" . info-lookup-symbol)
+  :bind (("C-h C-a" . info-apropos)
+         ("C-h C-i" . info-lookup-symbol))
   :config
   ;; Fix `Info-quoted' face by going back to the default face.
   (set-face-attribute 'Info-quoted nil :family 'unspecified
