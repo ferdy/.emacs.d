@@ -13,11 +13,7 @@
 
 (use-package info                       ; Info, the documentation browser
   :bind (("C-h C-a" . info-apropos)
-         ("C-h C-i" . info-lookup-symbol))
-  :config
-  ;; Fix `Info-quoted' face by going back to the default face.
-  (set-face-attribute 'Info-quoted nil :family 'unspecified
-                      :inherit font-lock-constant-face))
+         ("C-h C-i" . info-lookup-symbol)))
 
 (use-package info-colors                ; Extra colours for Info-mode
   :ensure t
