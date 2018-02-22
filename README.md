@@ -2,21 +2,18 @@
 
 This is the Emacs configuration I use everyday.
 
-It requires an Emacs version built from development sources and a bunch of
-external tools. I devised a
+It requires an Emacs version built from development sources and some external
+tools to work as expected. I devised a
 [script](https://github.com/manuel-uberti/scripts/blob/master/env-setup) to
 prepare the right environment for my needs, but your mileage may vary.
 
-This configuration is particularly suited for:
+This configuration is carefully set up to work with:
 
-- Clojure and ClojureScript
-- Haskell
-- Idris
-- Elm
-- Rust
-- Git
-- LaTeX
-- Markdown
+- [Clojure and ClojureScript](https://github.com/clojure-emacs/cider)
+- [Haskell](https://github.com/commercialhaskell/intero)
+- [Git](https://magit.vc/)
+- [LaTeX](https://www.gnu.org/software/auctex/)
+- [Org mode](https://orgmode.org/)
 
 ## Initial setup
 
