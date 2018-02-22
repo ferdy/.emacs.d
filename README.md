@@ -7,7 +7,7 @@ external tools. I devised a
 [script](https://github.com/manuel-uberti/scripts/blob/master/env-setup) to
 prepare the right environment for my needs, but your mileage may vary.
 
-You can find this configuration useful if you plan to work with:
+This configuration is particularly suited for:
 
 - Clojure and ClojureScript
 - Haskell
