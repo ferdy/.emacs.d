@@ -54,13 +54,6 @@
   (setq gc-cons-threshold 16777216
         gc-cons-percentage 0.1))
 
-(defvar mu--file-name-handler-alist file-name-handler-alist)
-(setq file-name-handler-alist nil)
-
-(defun mu-set-file-name-handler-alist ()
-  "Reset `file-name-handler-alist' to its default value."
-  (setq file-name-handler-alist mu--file-name-handler-alist))
-
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -177,7 +170,6 @@
 
 ;; Reset default values
 (add-hook 'emacs-startup-hook #'mu-set-gc-threshold)
-(add-hook 'emacs-startup-hook #'mu-set-file-name-handler-alist)
 
 ;; Immediately visit my main GTD file
 (find-file "~/org/gtd/gtd.org")
