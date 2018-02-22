@@ -66,8 +66,7 @@
 (use-package counsel                    ; Completion functions with Ivy
   :ensure t
   :init (counsel-mode)
-  :bind (("C-s"     . counsel-grep-or-swiper)
-         ("C-r"     . counsel-grep-or-swiper)
+  :bind (("C-c b"   . counsel-ibuffer)
          ("C-c g"   . counsel-git-grep)
          ("C-c G"   . counsel-git-log)
          ("C-c i"   . counsel-apropos)
@@ -75,6 +74,8 @@
          ("C-c l"   . counsel-find-library)
          ("C-c n i" . counsel-imenu)
          ("C-c u"   . counsel-unicode-char)
+         ("C-r"     . counsel-grep-or-swiper)
+         ("C-s"     . counsel-grep-or-swiper)
          ("C-x j"   . counsel-bookmark)
          :map read-expression-map
          ("C-r" . counsel-minibuffer-history))
