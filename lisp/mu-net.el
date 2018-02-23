@@ -14,6 +14,10 @@
 (use-package tramp                      ; Remote editing
   :bind ("C-c a t c" . tramp-cleanup-all-buffers)
   :config
+  ;; Without this change, tramp ends up sending hundreds of shell commands to
+  ;; the remote side to ask what the temporary directory is.
+  (put 'temporary-file-directory 'standard-value '("/tmp"))
+
   (validate-setq
    tramp-verbose 1                      ; Reduce verbosity
    tramp-default-method "ssh"
