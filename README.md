@@ -53,9 +53,8 @@ $ sudo cp etc/dictionaries/* /usr/share/hunspell
 ```
 - run Emacs
 
-The first time you run Emacs, all the packages I use will be automatically
-installed and set up thanks to
-[use-package](https://github.com/jwiegley/use-package).
+The first time you run Emacs the packages I use will be automatically installed
+and set up thanks to [use-package](https://github.com/jwiegley/use-package).
 
 ## Updates
 This configuration tracks latest Emacs developments, so I highly recommend you
