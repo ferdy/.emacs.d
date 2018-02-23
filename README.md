@@ -53,8 +53,9 @@ $ sudo cp etc/dictionaries/* /usr/share/hunspell
 ```
 - run Emacs
 
-The first time you run Emacs, every package configured in `init.el` and in every
-file in the `lisp` directory will be automatically installed and configured.
+The first time you run Emacs, all the packages I use will be automatically
+installed from [MELPA](https://melpa.org) and readily set up thanks to
+[use-package](https://github.com/jwiegley/use-package).
 
 ## Updates
 This configuration tracks latest Emacs developments, so I highly recommend you
