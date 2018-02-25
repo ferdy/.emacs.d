@@ -13,46 +13,20 @@
 
 (use-package org                        ; The almighty Org
   :ensure t
-  :bind (("C-c o a" . mu-org-agenda-open)
-         ("C-c o b" . mu-insert-checkbox)
-         ("C-c o c" . org-capture)
+  :bind (("C-c o b" . mu-insert-checkbox)
          ("C-c o l" . org-store-link)
          ("C-c o f" . org-cycle-agenda-files)
-         ("C-c o s" . org-search-view)
-         ("C-c o t" . org-todo-list)
          :map org-mode-map
          ("RET" . mu-org-return))
   :config
-  (defun mu-org-agenda-open ()
-    ""
-    (interactive)
-    (mu-push-window-configuration)
-    (org-agenda-list))
-
-  ;; Use a single full frame for org-agenda
-  (with-eval-after-load 'org
-    (fullframe org-agenda-list mu-pop-window-configuration))
-
-  (validate-setq org-emphasis-regexp-components ; Fix markup for ' and "
-                 '("     ('\"{“”"
-                   "-   .,!?;''“”\")}/\\“”"
-                   "    \r\n,"
-                   "."
-                   1))
-
   (validate-setq
    org-src-fontify-natively t
    org-log-done 'time
    org-hide-emphasis-markers t
    org-highlight-latex-and-related '(latex)
-   ;; Follow links by pressing ENTER on them
    org-return-follows-link t
-   org-directory(expand-file-name "~/org/")
-   org-default-notes-file
-   (expand-file-name "gtd/gtd.org" org-directory))
-
-  ;; Force title font size to override theme setting
-  (set-face-attribute 'org-document-title nil :height 1.0)
+   org-directory (expand-file-name "~/org/")
+   org-default-notes-file (expand-file-name "gtd/gtd.org" org-directory))
 
   ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
   (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
@@ -111,7 +85,27 @@
     (interactive)
     (insert "- [ ] ")))
 
-(use-package org-capture                ; Fast note taking in Org
+(use-package org-agenda                 ; Dynamic task and appointment lists
+  :after org
+  :bind (("C-c o a" . mu-org-agenda-open)
+         ("C-c o s" . org-search-view)
+         ("C-c o t" . org-todo-list))
+  :config
+  (validate-setq org-agenda-restore-windows-after-quit t)
+
+  (defun mu-org-agenda-open ()
+    "Open Org agenda after storing the current window configuration."
+    (interactive)
+    (mu-push-window-configuration)
+    (org-agenda-list))
+
+  ;; Use a single full frame for org-agenda
+  (with-eval-after-load 'org-agenda
+    (fullframe org-agenda-list mu-pop-window-configuration)))
+
+(use-package org-capture                ; Fast note taking
+  :after org
+  :bind ("C-c o c" . org-capture)
   :config
   (setq
    org-capture-templates '(("t" "Todo [inbox]" entry
@@ -120,6 +114,12 @@
                            ("T" "Tickler" entry
                             (file+headline "~/org/gtd/tickler.org" "Tickler")
                             "* %i%? \n %^t"))))
+
+(use-package org-faces                  ; Faces definitions
+  :after org
+  :config
+  ;; Force title font size to override theme setting
+  (set-face-attribute 'org-document-title nil :height 1.0))
 
 (use-package ox
   :ensure org
@@ -152,7 +152,7 @@
   (auto-insert-mode)
   (define-auto-insert '("\\.org\\'" . "Org skeleton")
     '("Short description: "
-      "#+STARTUP: showall\n"
+      "#+startup: showall\n"
       > _ \n \n))
   :config (validate-setq auto-insert-query nil))
 
