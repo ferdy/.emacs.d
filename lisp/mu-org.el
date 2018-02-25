@@ -40,16 +40,14 @@
    org-todo-keywords '("TODO(t)" "WAITING(w)" "|" "CANCELLED(c)" "DONE(d)"))
 
   ;; Define Agenda files for GTD
-  (validate-setq
-   org-agenda-files '("~/org/gtd/gtd.org"
-                      "~/org/gtd/inbox.org"
-                      "~/org/gtd/tickler.org"))
+  (validate-setq org-agenda-files '("~/org/gtd/gtd.org"
+                                    "~/org/gtd/inbox.org"
+                                    "~/org/gtd/tickler.org"))
 
   ;; Define refile targets for GTD
-  (setq
-   org-refile-targets '(("~/org/gtd/gtd.org" :maxlevel . 3)
-                        ("~/org/gtd/someday.org" :level . 1)
-                        ("~/org/gtd/tickler.org" :maxlevel . 2)))
+  (setq org-refile-targets '(("~/org/gtd/gtd.org" :maxlevel . 3)
+                             ("~/org/gtd/someday.org" :level . 1)
+                             ("~/org/gtd/tickler.org" :maxlevel . 2)))
 
   ;; Use F12 to toggle image visualization
   (bind-key "<f12>"
