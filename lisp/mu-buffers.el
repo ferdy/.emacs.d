@@ -106,7 +106,7 @@
          ("q" . mu-pop-window-configuration))
   :config
   (defun mu-ibuffer-open ()
-    "Open Ibuffer after storing current window configuration."
+    "Open Ibuffer after storing the current window configuration."
     (interactive)
     (mu-push-window-configuration)
     (ibuffer))
