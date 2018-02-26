@@ -120,10 +120,11 @@ If SIDE is non-nil only get windows on that side."
 
 (defvar mu-saved-window-configuration nil)
 
-(defun mu-push-window-configuration ()
-  "Save current window configuration."
+(defun mu-save-wins-then-call (func &optional args)
+  "Save current window configuration, then call FUNC with optional ARGS."
   (interactive)
-  (push (current-window-configuration) mu-saved-window-configuration))
+  (push (current-window-configuration) mu-saved-window-configuration)
+  (funcall func args))
 
 (defun mu-restore-window-configuration (config)
   "Kill current buffer and restore the window configuration in CONFIG."
@@ -140,12 +141,6 @@ If SIDE is non-nil only get windows on that side."
       (if (> (length (window-list)) 1)
           (delete-window)
         (bury-buffer)))))
-
-(defun mu-save-win-conf-and-open (func &optional args)
-  "Save current window configuration and call FUNC with optional ARGS."
-  (interactive)
-  (mu-push-window-configuration)
-  (funcall func args))
 
 (provide 'mu-windows)
 

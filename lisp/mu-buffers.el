@@ -112,7 +112,7 @@
   (defun mu-ibuffer-open ()
     "Save window configuration and call `ibuffer'."
     (interactive)
-    (mu-save-win-conf-and-open 'ibuffer))
+    (mu-save-wins-then-call 'ibuffer))
 
   ;; Use a single full frame for ibuffer
   (with-eval-after-load 'ibuffer
