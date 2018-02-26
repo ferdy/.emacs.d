@@ -13,9 +13,6 @@
 
 (validate-setq window-combination-resize t) ; Size new windows proportionally
 
-(use-package winner                     ; Restore old window configurations
-  :init (winner-mode t))
-
 (use-package fullframe                 ; Generalized execution in a single frame
   :ensure t
   :defer t)
@@ -121,12 +118,34 @@ If SIDE is non-nil only get windows on that side."
 
 (bind-key "C-c w t" #'mu-window-split-toggle)
 
-(defun mu-pop-window-configuration ()
-  "Kill current buffer and restore the previous window configuration."
+(defvar mu-saved-window-configuration nil)
+
+(defun mu-push-window-configuration ()
+  "Save current window configuration."
+  (interactive)
+  (push (current-window-configuration) mu-saved-window-configuration))
+
+(defun mu-restore-window-configuration (config)
+  "Kill current buffer and restore the window configuration in CONFIG."
   (interactive)
   (kill-this-buffer)
-  (let ((inhibit-message t))
-    (winner-undo)))
+  (set-window-configuration config))
+
+(defun mu-pop-window-configuration ()
+  "Restore the previous window configuration and clear current window."
+  (interactive)
+  (let ((config (pop mu-saved-window-configuration)))
+    (if config
+        (mu-restore-window-configuration config)
+      (if (> (length (window-list)) 1)
+          (delete-window)
+        (bury-buffer)))))
+
+(defun mu-save-win-conf-and-open (func &optional args)
+  "Save current window configuration and call FUNC with optional ARGS."
+  (interactive)
+  (mu-push-window-configuration)
+  (funcall func args))
 
 (provide 'mu-windows)
 
