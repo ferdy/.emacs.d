@@ -15,7 +15,6 @@
   :ensure t
   :bind (("C-c o b" . mu-insert-checkbox)
          ("C-c o l" . org-store-link)
-         ("C-c o f" . org-cycle-agenda-files)
          :map org-mode-map
          ("RET" . mu-org-return))
   :config
