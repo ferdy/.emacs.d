@@ -89,16 +89,10 @@
 
 (use-package paradox                    ; Better package manager interface
   :ensure t
-  :bind (("C-c a p" . mu-paradox-open)
+  :bind (("C-c a p" . paradox-list-packages)
          :map paradox-menu-mode-map
          ("q" . mu-pop-window-configuration))
   :config
-  (defun mu-paradox-open ()
-    "Open Paradox after storing current window configuration."
-    (interactive)
-    (mu-push-window-configuration)
-    (paradox-list-packages nil))
-
   ;; Use a single full frame for Paradox
   (with-eval-after-load 'paradox
     (fullframe paradox-list-packages mu-pop-window-configuration))

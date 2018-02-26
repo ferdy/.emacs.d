@@ -85,17 +85,11 @@
 
 (use-package org-agenda                 ; Dynamic task and appointment lists
   :after org
-  :bind (("C-c o a" . mu-org-agenda-open)
+  :bind (("C-c o a" . org-agenda-list)
          ("C-c o s" . org-search-view)
          ("C-c o t" . org-todo-list))
   :config
   (validate-setq org-agenda-restore-windows-after-quit t)
-
-  (defun mu-org-agenda-open ()
-    "Open Org agenda after storing the current window configuration."
-    (interactive)
-    (mu-push-window-configuration)
-    (org-agenda-list))
 
   ;; Use a single full frame for org-agenda
   (with-eval-after-load 'org-agenda
