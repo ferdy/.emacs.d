@@ -192,7 +192,10 @@
 (use-package minions                    ; A minor-mode menu for the mode line
   :ensure t
   :init (minions-mode)
-  :config (validate-setq minions-direct '(cider-mode)))
+  :config
+  (validate-setq
+   minions-mode-line-lighter "*"
+   minions-direct '(cider-mode)))
 
 ;;; Utilities and key bindings
 (defun mu-reset-fonts ()
