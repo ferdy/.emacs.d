@@ -185,12 +185,14 @@
 (use-package semantic/util-modes        ; Semantic minor modes
   :config
   ;; These settings are necessary to make minions (see below) work.
-  (validate-setq semantic-update-mode-line nil
-                 semantic-minor-modes-format nil))
+  (validate-setq
+   semantic-update-mode-line nil
+   semantic-minor-modes-format nil))
 
 (use-package minions                    ; A minor-mode menu for the mode line
   :ensure t
-  :init (minions-mode))
+  :init (minions-mode)
+  :config (validate-setq minions-direct '(cider-mode)))
 
 ;;; Utilities and key bindings
 (defun mu-reset-fonts ()
