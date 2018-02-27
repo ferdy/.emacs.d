@@ -116,7 +116,7 @@
   :ensure t
   :init (load-theme 'sanityinc-tomorrow-night 'no-confirm))
 
-;;; The mode-line
+;;; The mode line
 (line-number-mode)
 (column-number-mode)
 
@@ -175,12 +175,22 @@
                 " " mode-line-modes mode-line-end-spaces))
 
 (defmacro rename-modeline (package-name mode new-name)
-  "Rename PACKAGE-NAME with MODE into NEW-NAME in the modeline."
+  "Rename PACKAGE-NAME with MODE into NEW-NAME in the mode line."
   `(eval-after-load ,package-name
      '(defadvice ,mode (after rename-modeline activate)
         (setq mode-name ,new-name))))
 
 (rename-modeline "js2-mode" js2-mode "JS2")
+
+(use-package semantic/util-modes        ; Semantic minor modes
+  :config
+  ;; These settings are necessary to make minions (see below) work.
+  (validate-setq semantic-update-mode-line nil
+                 semantic-minor-modes-format nil))
+
+(use-package minions                    ; A minor-mode menu for the mode line
+  :ensure t
+  :init (minions-mode))
 
 ;;; Utilities and key bindings
 (defun mu-reset-fonts ()
