@@ -52,11 +52,13 @@
 (validate-setq
  display-buffer-alist
  `(
-   ;; Messages, errors, Calendar and REPLs in the bottom side window
+   ;; Messages, errors, processes, Calendar and REPLs in the bottom side window
    (,(rx bos (or "*Apropos"             ; Apropos buffers
                  "*Man"                 ; Man buffers
                  "*Help"                ; Help buffers
                  "*Warnings*"           ; Emacs warnings
+                 "*Process List*"       ; Processes
+                 "*Proced"              ; Proced processes list
                  "*Compile-Log*"        ; Emacs byte compiler log
                  "*compilation"         ; Compilation buffers
                  "*Flycheck errors*"    ; Flycheck error list
