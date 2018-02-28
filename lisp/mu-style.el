@@ -16,9 +16,11 @@
 ;; - Iosevka (https://github.com/be5invis/Iosevka)
 ;; - Fira Sans (https://github.com/mozilla/Fira/)
 (set-face-attribute 'default nil
-                    :family "Iosevka")
+                    :family "Iosevka"
+                    :height 150)
 (set-face-attribute 'variable-pitch nil
                     :family "Fira Sans"
+                    :height 145
                     :weight 'regular)
 
 ;;; Interface
