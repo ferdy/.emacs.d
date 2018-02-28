@@ -32,8 +32,7 @@
   :bind (("C-c t w" . whitespace-cleanup-mode)
          ("C-c x w" . whitespace-cleanup))
   :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-          (add-hook hook #'whitespace-cleanup-mode))
-  :diminish whitespace-cleanup-mode)
+          (add-hook hook #'whitespace-cleanup-mode)))
 
 (use-package shrink-whitespace          ; Better whitespace removal
   :ensure t
@@ -47,8 +46,7 @@
 (use-package undo-tree                  ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode)
-  :config (validate-setq undo-tree-visualizer-timestamps t)
-  :diminish undo-tree-mode)
+  :config (validate-setq undo-tree-visualizer-timestamps t))
 
 (use-package delsel                     ; Delete the selection instead of insert
   :defer t
@@ -59,8 +57,7 @@
   ;; Do not override `transpose-words', it should not transpose subwords
   :bind (:map subword-mode-map
               ([remap transpose-words] . nil))
-  :init (global-subword-mode 1)
-  :diminish subword-mode)
+  :init (global-subword-mode 1))
 
 (use-package expand-region      ; Increase the selected region by semantic units
   :ensure t
@@ -161,8 +158,7 @@
         ;; Simplify the MC mode line indicator
         '(:propertize (:eval (concat " " (number-to-string
                                           (mc/num-cursors))))
-                      face font-lock-warning-face))
-  :diminish multiple-cursors-mode)
+                      face font-lock-warning-face)))
 
 (use-package mc-extras                  ; Extra functions for multiple-cursors
   :ensure t
@@ -190,8 +186,7 @@
 (use-package super-save                 ; Autosave buffers when they lose focus
   :ensure t
   :init (super-save-mode)
-  :config (validate-setq super-save-auto-save-when-idle t)
-  :diminish super-save-mode)
+  :config (validate-setq super-save-auto-save-when-idle t))
 
 (use-package autorevert                 ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
@@ -202,8 +197,7 @@
    ;; Revert Dired buffers, too
    global-auto-revert-non-file-buffers t
    ;; Auto-revert files opened via TRAMP
-   auto-revert-remote-files t)
-  :diminish auto-revert-mode)
+   auto-revert-remote-files t))
 
 (use-package copyright                  ; Deal with copyright notices
   :defer t
@@ -224,14 +218,12 @@
   (dolist (hook '(org-mode-hook
                   markdown-mode-hook
                   rst-mode-hook))
-    (add-hook hook 'typo-mode))
-  :diminish typo-mode)
+    (add-hook hook 'typo-mode)))
 
 (use-package olivetti                   ; Distraction-free interface
   :ensure t
   :bind ("C-c t r" . olivetti-mode)
-  :config (validate-setq olivetti-hide-mode-line t)
-  :diminish olivetti-mode)
+  :config (validate-setq olivetti-hide-mode-line t))
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :bind ("C-c x t" . tildify-region)
@@ -239,8 +231,7 @@
   :config
   ;; Use the right space for LaTeX
   (add-hook 'latex-mode-hook
-            (lambda () (setq-local tildify-space-string "~")))
-  :diminish tildify-mode)
+            (lambda () (setq-local tildify-space-string "~"))))
 
 (use-package unfill                     ; Smart fill/unfill paragraph
   :ensure t

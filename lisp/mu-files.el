@@ -53,8 +53,7 @@
 
 (use-package hardhat                    ; Protect user-writable files
   :ensure t
-  :init (global-hardhat-mode)
-  :diminish global-hardhat-mode)
+  :init (global-hardhat-mode))
 
 (use-package sudo-edit                  ; Edit files as root, through Tramp
   :ensure t

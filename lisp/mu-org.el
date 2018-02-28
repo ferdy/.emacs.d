@@ -135,8 +135,7 @@
 (use-package org-indent ; Dynamic indentation for Org-mode
   :ensure org
   :bind ("C-c t o" . org-indent-mode)
-  :init (add-hook 'org-mode-hook #'org-indent-mode)
-  :diminish org-indent-mode)
+  :init (add-hook 'org-mode-hook #'org-indent-mode))
 
 (use-package autoinsert                 ; Auto insert custom text
   :init

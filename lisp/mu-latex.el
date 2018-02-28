@@ -155,14 +155,12 @@
                          ("example" "ex") -3)
                         ;; Algorithms package
                         ("algorithm" ?a "alg:" "~\\ref{%s}"
-                         "\\\\caption[[{]" ("algorithm" "alg") -3)))
-  :diminish reftex-mode)
+                         "\\\\caption[[{]" ("algorithm" "alg") -3))))
 
 (use-package latex-unicode-math-mode    ; Input method for Unicode math symbols
   :ensure t
   :defer t
-  :init (add-hook 'LaTeX-mode-hook 'latex-unicode-mode)
-  :diminish latex-unicode-mode)
+  :init (add-hook 'LaTeX-mode-hook 'latex-unicode-mode))
 
 (provide 'mu-latex)
 

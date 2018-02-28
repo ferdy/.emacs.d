@@ -44,25 +44,11 @@
   :defer t
   :init
   (dolist (hook '(text-mode-hook prog-mode-hook))
-    (add-hook hook #'outline-minor-mode))
-  :diminish outline-minor-mode)
+    (add-hook hook #'outline-minor-mode)))
 
 (use-package beginend                   ; Redefine M-< and M-> for some modes
   :ensure t
-  :config (beginend-global-mode)
-  :diminish (beginend-bs-mode
-             beginend-compilation-mode
-             beginend-dired-mode
-             beginend-elfeed-search-mode
-             beginend-global-mode
-             beginend-ibuffer-mode
-             beginend-magit-status-mode
-             beginend-message-mode
-             beginend-occur-mode
-             beginend-org-agenda-mode
-             beginend-prog-mode
-             beginend-recentf-dialog-mode
-             beginend-vc-dir-mode))
+  :config (beginend-global-mode))
 
 (use-package dumb-jump                  ; Jump to definitions
   :ensure t

@@ -64,9 +64,7 @@
       (magit-restore-window-configuration)
       (mapc #'kill-buffer buffers)))
 
-  (bind-key "q" #'mu-magit-kill-buffers magit-status-mode-map)
-  :diminish (magit-wip-after-save-local-mode
-             magit-wip-before-change-mode))
+  (bind-key "q" #'mu-magit-kill-buffers magit-status-mode-map))
 
 (use-package magit-gitflow              ; gitflow extension for Magit
   :ensure t
@@ -76,8 +74,7 @@
   (unbind-key "C-f" magit-gitflow-mode-map)
   (bind-key "C-c v f" #'magit-gitflow-popup magit-gitflow-mode-map)
 
-  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow)
-  :diminish magit-gitflow-mode)
+  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))
 
 (use-package git-commit                 ; Git commit message mode
   :ensure t

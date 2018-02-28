@@ -83,8 +83,7 @@
 (use-package page-break-lines           ; Better looking break lines
   :ensure t
   :defer t
-  :init (global-page-break-lines-mode)
-  :diminish page-break-lines-mode)
+  :init (global-page-break-lines-mode))
 
 (use-package prog-mode
   ;; Prettify symbols
@@ -180,20 +179,14 @@
 
 (rename-modeline "js2-mode" js2-mode "JS2")
 
-(use-package semantic/util-modes        ; Semantic minor modes
-  :config
-  ;; These settings are necessary to make minions (see below) work.
-  (validate-setq
-   semantic-update-mode-line nil
-   semantic-minor-modes-format nil))
-
 (use-package minions                    ; A minor-mode menu for the mode line
   :ensure t
   :init (minions-mode)
   :config
   (validate-setq
-   minions-mode-line-lighter "*"
-   minions-direct '(cider-mode)))
+   minions-mode-line-lighter "#"
+   minions-direct '(flycheck-mode
+                    cider-mode)))
 
 ;;; Utilities and key bindings
 (defun mu-reset-fonts ()

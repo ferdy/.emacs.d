@@ -90,8 +90,7 @@
     "C-c C-b" "web/blocks"
     "C-c C-d" "web/dom"
     "C-c C-e" "web/element"
-    "C-c C-t" "web/tags")
-  :diminish which-key-mode)
+    "C-c C-t" "web/tags"))
 
 (use-package hydra                      ; Make bindings that stick
   :ensure t)

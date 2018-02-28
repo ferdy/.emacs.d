@@ -167,8 +167,7 @@
   (advice-add 'cljr-add-require-to-ns :after
               (lambda (&rest _)
                 (yas-next-field)
-                (yas-next-field)))
-  :diminish clj-refactor-mode)
+                (yas-next-field))))
 
 ;;; Haskell
 (use-package intero                     ; Development mode for Haskell
@@ -200,16 +199,14 @@
 
 (use-package hindent                    ; Use hindent to indent Haskell code
   :ensure t
-  :config (add-hook 'haskell-mode-hook #'hindent-mode)
-  :diminish hindent-mode)
+  :config (add-hook 'haskell-mode-hook #'hindent-mode))
 
 ;;; Elm
 (use-package elm-mode                   ; Elm editing
   :ensure t
   :config
   (setq-default elm-format-on-save t)
-  (add-to-list 'company-backends 'company-elm)
-  :diminish elm-indent-mode)
+  (add-to-list 'company-backends 'company-elm))
 
 ;;; Idris
 (use-package idris-mode                 ; Idris editing
@@ -240,8 +237,7 @@
   :ensure t
   :bind (:map rust-mode-map
               ("<f6>" . cargo-process-build))
-  :init (add-hook 'rust-mode-hook #'cargo-minor-mode)
-  :diminish cargo-minor-mode)
+  :init (add-hook 'rust-mode-hook #'cargo-minor-mode))
 
 (use-package toml-mode                  ; Toml for Cargo files
   :ensure t
@@ -371,8 +367,8 @@
   (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
   :config
   (setq-default eldoc-documentation-function #'describe-char-eldoc)
-  (validate-setq eldoc-idle-delay 0.1)  ; Show eldoc more promptly
-  :diminish eldoc-mode)
+  ;; Show eldoc more promptly
+  (validate-setq eldoc-idle-delay 0.1))
 
 (use-package etags                      ; Tag navigation
   :defer t

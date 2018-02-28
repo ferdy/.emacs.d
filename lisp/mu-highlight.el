@@ -36,8 +36,7 @@
               ("M-n" . symbol-overlay-jump-next)
               ("M-p" . symbol-overlay-jump-prev))
   :init (dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook))
-          (add-hook hook #'symbol-overlay-mode))
-  :diminish symbol-overlay-mode)
+          (add-hook hook #'symbol-overlay-mode)))
 
 (use-package highlight-numbers          ; Fontify number literals
   :ensure t

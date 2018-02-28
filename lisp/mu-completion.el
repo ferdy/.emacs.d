@@ -61,16 +61,14 @@ _e_: extra   _l_: list        _n_: new
     ("l" yas-describe-tables)
     ("g" yas-global-mode)
     ("m" yas-minor-mode)
-    ("a" yas-reload-all))
-  :diminish yas-minor-mode)
+    ("a" yas-reload-all)))
 
 (use-package yasnippet-snippets         ; Collection of snippets
   :ensure t)
 
 (use-package abbrev                     ; Save abbreviations
   :init (abbrev-mode)
-  :config (validate-setq save-abbrevs t)
-  :diminish abbrev-mode)
+  :config (validate-setq save-abbrevs t))
 
 ;; In `completion-at-point', do not pop up completion buffers for less
 ;; than five candidates. Cycle instead.
@@ -106,8 +104,7 @@ _e_: extra   _l_: list        _n_: new
    ;; Easy navigation to candidates with M-<n>
    company-show-numbers t)
 
-  (setq-default company-tooltip-align-annotations t)
-  :diminish company-mode)
+  (setq-default company-tooltip-align-annotations t))
 
 (use-package company-dabbrev            ; dabbrev-like Company backend
   :after company
