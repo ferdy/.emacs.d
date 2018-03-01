@@ -75,9 +75,11 @@
     (side . bottom)
     (reusable-frames . visible)
     (window-height . 0.45))
+   ;; Open shell in a single window
    (,(rx bos "*shell")
     (display-buffer-same-window)
     (reusable-frames . nil))
+   ;; Open PDFs in the right side window
    (,(rx bos "*pdf")
     (display-buffer-reuse-window display-buffer-in-side-window)
     (side . right)
@@ -85,7 +87,7 @@
     (window-width . 0.5))
    ;; Let `display-buffer' reuse visible frames for all buffers.  This must
    ;; be the last entry in `display-buffer-alist', because it overrides any
-   ;; later entry with more specific actions.
+   ;; previous entry with more specific actions.
    ("." nil (reusable-frames . visible))))
 
 (use-package uniquify                   ; Unique buffer names
@@ -119,6 +121,7 @@
   ;; Use a single full frame for ibuffer
   (with-eval-after-load 'ibuffer
     (fullframe ibuffer mu-pop-window-configuration))
+
 
   ;; Use human readable Size column instead of original one
   (define-ibuffer-column size-h
