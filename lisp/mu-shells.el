@@ -12,11 +12,22 @@
 ;;; Code:
 
 (use-package shell                 ; Specialized comint.el for running the shell
-  :bind (("C-c a s t" . shell)
-         ("<f1>"      . shell)
+  :bind (("<f1>"      . mu-shell-open)
+         ("C-c a s t" . mu-shell-open)
          (:map shell-mode-map
                ("<tab>" . completion-at-point)))
   :config
+  (defun mu-shell-open ()
+    "Save window configuration and call `shell'."
+    (interactive)
+    (mu-save-wins-then-call 'shell))
+
+  ;; Use a single full frame for shell
+  (with-eval-after-load 'shell
+    (fullframe shell mu-pop-window-configuration))
+
+  (bind-key "C-c C-q" #'mu-pop-window-configuration shell-mode-map)
+
   (dirtrack-mode)
 
   (unbind-key "C-c C-l" shell-mode-map)
