@@ -49,10 +49,10 @@
 
   ;; C-d to kill buffer if process is dead
   (defun mu-comint-delchar-or-eof-or-kill-buffer (arg)
-    "Kill the buffer is process is dead, otherwise delete ARG."
+    "Restore window configuration if process is dead, otherwise delete ARG."
     (interactive "p")
     (if (null (get-buffer-process (current-buffer)))
-        (kill-buffer)
+        (mu-pop-window-configuration)
       (comint-delchar-or-maybe-eof arg)))
 
   (add-hook 'shell-mode-hook
