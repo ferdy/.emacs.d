@@ -47,7 +47,6 @@
   (add-hook 'after-save-hook
             #'executable-make-buffer-file-executable-if-script-p)
 
-  ;; C-d to kill buffer if process is dead
   (defun mu-comint-delchar-or-eof-or-kill-buffer (arg)
     "Restore window configuration if process is dead, otherwise delete ARG."
     (interactive "p")
