@@ -13,7 +13,7 @@
 
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind (("<f1>"      . mu-shell-open)
-         ("C-c a s t" . mu-shell-open)
+         ("C-c a s s" . mu-shell-open)
          (:map shell-mode-map
                ("<tab>" . completion-at-point)))
   :config
@@ -188,7 +188,7 @@ The EShell is renamed to match that directory to make multiple windows easier."
   :config (add-hook 'eshell-mode-hook #'fish-completion-mode))
 
 (use-package ansi-term                  ; Powerful terminal emulator
-  :bind ("C-c a s T" . ansi-term)
+  :bind ("C-c a s t" . ansi-term)
   :init
   ;; Always use Bash
   (defvar mu-term-shell "/bin/bash")
