@@ -64,6 +64,10 @@
   :ensure t
   :defer t)
 
+(use-package daemons                    ; Manage init system daemons (services)
+  :ensure t
+  :commands daemons)
+
 (provide 'mu-utilities)
 
 ;; Local Variables:
