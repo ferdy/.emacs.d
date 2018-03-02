@@ -28,8 +28,25 @@
 
 (use-package elfeed                     ; RSS feed reader
   :ensure t
-  :bind ("C-c a f" . elfeed)
+  :bind (("C-c a f" . mu-elfeed-open)
+         :map elfeed-search-mode-map
+         ("q" . mu-elfeed-quit))
   :config
+  (defun mu-elfeed-open ()
+    "Save window configuration and call `elfeed'."
+    (interactive)
+    (mu-save-wins-then-call 'elfeed))
+
+  (defun mu-elfeed-quit ()
+    "Save feeds database and then restore window configuration."
+    (interactive)
+    (elfeed-db-save)
+    (mu-pop-window-configuration))
+
+  ;; Use a single full frame for elfeed
+  (with-eval-after-load 'elfeed
+    (fullframe elfeed mu-elfeed-quit))
+
   (validate-setq
    elfeed-use-curl t                    ; Use curl to fetch the feeds
    elfeed-search-title-max-width 80)
