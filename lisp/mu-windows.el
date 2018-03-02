@@ -121,10 +121,12 @@ If SIDE is non-nil only get windows on that side."
 (defvar mu-saved-window-configuration nil)
 
 (defun mu-save-wins-then-call (func &optional args)
-  "Save current window configuration, then call FUNC with optional ARGS."
+  "Save current window configuration, then call FUNC optionally with ARGS."
   (interactive)
   (push (current-window-configuration) mu-saved-window-configuration)
-  (funcall func args))
+  (if args
+      (funcall func args)
+    (funcall func)))
 
 (defun mu-restore-window-configuration (config)
   "Kill current buffer and restore the window configuration in CONFIG."
