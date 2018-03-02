@@ -41,8 +41,9 @@
 
 (use-package elisp-def             ; Macro-aware go-to-definition for Emacs Lisp
   :ensure t
-  :config (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
-            (add-hook hook #'elisp-def-mode)))
+  :bind (:map emacs-lisp-mode-map
+              ("M-." . elisp-def)
+              ("M-," . xref-pop-marker-stack)))
 
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
