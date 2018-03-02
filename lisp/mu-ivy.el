@@ -107,6 +107,12 @@
   :ensure t
   :bind ("C-c a t t" . counsel-tramp))
 
+(use-package counsel-css                ; Ivy interface for CSS selectors
+  :ensure t
+  :bind (:map css-mode-map
+              ("C-c m s" . counsel-css))
+  :config (add-hook 'css-mode-hook 'counsel-css-imenu-setup))
+
 (provide 'mu-ivy)
 
 ;; Local Variables:
