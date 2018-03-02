@@ -122,7 +122,6 @@
   (with-eval-after-load 'ibuffer
     (fullframe ibuffer mu-pop-window-configuration))
 
-
   ;; Use human readable Size column instead of original one
   (define-ibuffer-column size-h
     (:name "Size" :inline t)
