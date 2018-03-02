@@ -39,6 +39,11 @@
 
   (add-hook 'emacs-lisp-mode-hook #'mu-add-use-package-to-imenu))
 
+(use-package elisp-def             ; Macro-aware go-to-definition for Emacs Lisp
+  :ensure t
+  :config (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+            (add-hook hook #'elisp-def-mode)))
+
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
