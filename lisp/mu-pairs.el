@@ -1,4 +1,4 @@
-;;; mu-smartparens.el --- Part of my Emacs Setup  -*- lexical-binding: t; -*-
+;;; mu-smartparens.el --- Part of my Emacs setup -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2014-2018  Manuel Uberti
 

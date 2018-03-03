@@ -1,4 +1,4 @@
-;;; mu-ivy.el --- Part of my Emacs configuration  -*- lexical-binding: t; -*-
+;;; mu-ivy.el --- Part of my Emacs configuration -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2014-2018  Manuel Uberti
 

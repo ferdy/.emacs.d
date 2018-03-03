@@ -113,7 +113,7 @@
   (defun mu-paradox-open ()
     "Save window configuration and call `paradox-list-packages'."
     (interactive)
-    (mu-save-wins-then-call 'paradox-list-packages nil))
+    (mu-save-wins-then-call 'paradox-list-packages "nil"))
 
   ;; Use a single full frame for Paradox
   (with-eval-after-load 'paradox

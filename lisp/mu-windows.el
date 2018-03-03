@@ -124,9 +124,13 @@ If SIDE is non-nil only get windows on that side."
   "Save current window configuration, then call FUNC optionally with ARGS."
   (interactive)
   (push (current-window-configuration) mu-saved-window-configuration)
-  (if args
-      (funcall func args)
-    (funcall func)))
+  (cond
+   ;; We have arguments for the function
+   ((bound-and-true-p args) (funcall func args))
+   ;; The function expects exactly one argument, and we want it to be nil
+   ((equal args "nil") (funcall func nil))
+   ;; The function does not expect arguments
+   (t (funcall func))))
 
 (defun mu-restore-window-configuration (config)
   "Kill current buffer and restore the window configuration in CONFIG."
