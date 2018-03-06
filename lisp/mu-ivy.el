@@ -80,6 +80,8 @@
          ("C-r" . counsel-minibuffer-history))
   :config
   (validate-setq
+   ;; Use ripgrep for counsel-git
+   counsel-git-cmd "rg --files"
    ;; Use ripgrep instead of regular grep
    counsel-grep-base-command
    "rg -i -M 120 --no-heading --line-number --color never %s %s"
