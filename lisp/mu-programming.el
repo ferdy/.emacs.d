@@ -53,7 +53,13 @@
   (add-hook 'cider-mode-hook 'eldoc-mode)
 
   ;; Do not offer to open ClojureScript app in browser
-  (validate-setq cider-offer-to-open-cljs-app-in-browser nil))
+  (validate-setq cider-offer-to-open-cljs-app-in-browser nil)
+
+  ;; Temporary fix
+  ;; See: https://github.com/clojure-emacs/cider/issues/2230
+  (defun cider-check-figwheel-requirements ()
+    "Check whether we can start a Figwheel ClojureScript REPL."
+    t))
 
 (use-package cider-mode                 ; CIDER mode for REPL interaction
   :ensure cider
