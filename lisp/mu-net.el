@@ -79,6 +79,8 @@
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
      ("https://www.hongkongfp.com/feed" news)
+     ("http://www.internazionale.it/subscribe/backstage/" news)
+     ("http://www.lastampa.it/italia/politica/rss.xml" news)
      ("http://www.rogerebert.com/feed/" cinema)
      ("http://www.savagechickens.com/feed" comic)
      ("http://www.signature-reads.com/feed/" books)
@@ -89,7 +91,6 @@
      ("https://www.theguardian.com/uk-news/rss" news)
      ("https://www.theguardian.com/world/rss" news)
      ("http://www.vcinemashow.com/feed/" cinema)
-     ("http://xml2.corriereobjects.it/rss/homepage.xml" news)
      ("http://xml2.corriereobjects.it/rss/politica.xml" news))))
 
 (use-package elfeed-search              ; List feed entries
