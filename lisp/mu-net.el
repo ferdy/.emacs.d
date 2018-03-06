@@ -89,9 +89,6 @@
      ("https://www.theguardian.com/uk-news/rss" news)
      ("https://www.theguardian.com/world/rss" news)
      ("http://www.vcinemashow.com/feed/" cinema)
-     ("http://xml2.corriereobjects.it/rss/ambiente.xml" news)
-     ("http://xml2.corriereobjects.it/rss/editoriali.xml" news)
-     ("http://xml2.corriereobjects.it/rss/esteri.xml" news)
      ("http://xml2.corriereobjects.it/rss/homepage.xml" news)
      ("http://xml2.corriereobjects.it/rss/politica.xml" news))))
 
