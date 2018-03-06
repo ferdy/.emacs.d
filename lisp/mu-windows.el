@@ -148,6 +148,17 @@ If SIDE is non-nil only get windows on that side."
           (delete-window)
         (bury-buffer)))))
 
+;; Move point to new window when splitting windows
+(bind-key "C-x 2" #'(lambda ()
+                      (interactive)
+                      (split-window-below)
+                      (other-window 1)))
+
+(bind-key "C-x 3" #'(lambda ()
+                      (interactive)
+                      (split-window-right)
+                      (other-window 1)))
+
 (provide 'mu-windows)
 
 ;; Local Variables:
