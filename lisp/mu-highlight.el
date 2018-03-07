@@ -13,10 +13,7 @@
 
 (use-package paren                      ; Highlight paired delimiters
   :init (show-paren-mode)
-  :config
-  (validate-setq
-   show-paren-when-point-inside-paren t
-   show-paren-when-point-in-periphery t))
+  :config (validate-setq show-paren-when-point-inside-paren t))
 
 (use-package diff-hl                    ; Show changes in fringe
   :ensure t
