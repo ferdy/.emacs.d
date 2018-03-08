@@ -155,6 +155,17 @@
   "Mode line format for VC Mode.")
 (put 'mu-vc-mode-line 'risky-local-variable t)
 
+;; Increase mode-line size with a border (box) of the same colour and
+;; reduce font size by tweaking height
+(set-face-attribute 'mode-line nil
+                    :inverse-video nil
+                    :height 0.9
+                    :box '(:line-width 6 :color "#373b41" :style nil))
+(set-face-attribute 'mode-line-inactive nil
+                    :inverse-video nil
+                    :height 0.9
+                    :box '(:line-width 8 :color "#282a2e" :style nil))
+
 (setq-default mode-line-format
               '("%e" mode-line-front-space
                 mu-eyebrowse-mode-line ; Current workspace
