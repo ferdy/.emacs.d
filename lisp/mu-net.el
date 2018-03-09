@@ -12,7 +12,6 @@
 ;;; Code:
 
 (use-package tramp                      ; Remote editing
-  :bind ("C-c a t c" . tramp-cleanup-all-buffers)
   :config
   ;; Without this change, tramp ends up sending hundreds of shell commands to
   ;; the remote side to ask what the temporary directory is.
