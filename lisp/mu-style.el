@@ -113,7 +113,14 @@
 
 (use-package color-theme-sanityinc-tomorrow ; Default theme
   :ensure t
-  :init (load-theme 'sanityinc-tomorrow-night 'no-confirm))
+  :config
+  (load-theme 'sanityinc-tomorrow-night 'no-confirm)
+  (let ((line (face-attribute 'mode-line :underline)))
+    (set-face-attribute 'mode-line nil :overline line)
+    (set-face-attribute 'mode-line-inactive nil :overline line)
+    (set-face-attribute 'mode-line-inactive nil :underline line)
+    (set-face-attribute 'mode-line nil :box nil)
+    (set-face-attribute 'mode-line-inactive nil :box nil)))
 
 ;;; The mode line
 (line-number-mode)
@@ -125,63 +132,35 @@
 (defvar mu-eyebrowse-mode-line
   '(:propertize
     (:eval
-     (when (bound-and-true-p eyebrowse-mode)
+     (when (and (bound-and-true-p eyebrowse-mode)
+                (< 1 (length (eyebrowse--get 'window-configs))))
        (let* ((num (eyebrowse--get 'current-slot))
               (tag (when num
                      (nth 2 (assoc num (eyebrowse--get 'window-configs)))))
               (str (concat
                     " "
-                    (if (and tag (< 0 (length tag))) tag
+                    (if (and tag (< 0 (length tag)))
+                        tag
                       (when num (int-to-string num)))
                     " ")))
-         str))))
+         str)))
+    face (:background "#81a2be" :foreground "#373b41"))
   "Mode line format for Eyebrowse.")
+
 (put 'mu-eyebrowse-mode-line 'risky-local-variable t)
 
-(defvar mu-projectile-mode-line
-  '(:propertize
-    (:eval (when (ignore-errors (projectile-project-root))
-             (concat " " (projectile-project-name))))
-    face font-lock-constant-face)
-  "Mode line format for Projectile.")
-(put 'mu-projectile-mode-line 'risky-local-variable t)
-
-(defvar mu-vc-mode-line
-  '(" " (:propertize
-         ;; Strip the backend name from the VC status information
-         (:eval (let ((backend (symbol-name (vc-backend (buffer-file-name)))))
-                  (substring vc-mode (+ (length backend) 2))))
-         face font-lock-keyword-face))
-  "Mode line format for VC Mode.")
-(put 'mu-vc-mode-line 'risky-local-variable t)
-
-;; Increase mode-line size with a border (box) of the same colour and
-;; reduce font size by tweaking height
-(set-face-attribute 'mode-line nil
-                    :inverse-video nil
-                    :height 0.9
-                    :box '(:line-width 6 :color "#373b41" :style nil))
-(set-face-attribute 'mode-line-inactive nil
-                    :inverse-video nil
-                    :height 0.9
-                    :box '(:line-width 8 :color "#282a2e" :style nil))
-
 (setq-default mode-line-format
-              '("%e" mode-line-front-space
-                mu-eyebrowse-mode-line ; Current workspace
-                "· "
-                ;; Standard info about the current buffer
+              '("%e"
+                mu-eyebrowse-mode-line
+                mode-line-front-space
                 mode-line-mule-info
                 mode-line-client
                 mode-line-modified
                 mode-line-remote
                 mode-line-frame-identification
                 mode-line-buffer-identification " " mode-line-position
-                ;; Some specific information about the current buffer:
-                mu-projectile-mode-line ; Project information
-                (vc-mode mu-vc-mode-line) ; VC information
-                (multiple-cursors-mode mc/mode-line) ; Number of cursors
-                ;; And the modes
+                (vc-mode vc-mode)
+                (multiple-cursors-mode mc/mode-line)
                 " " mode-line-modes mode-line-end-spaces))
 
 (defmacro rename-modeline (package-name mode new-name)
@@ -200,6 +179,12 @@
    minions-mode-line-lighter "#"
    minions-direct '(flycheck-mode
                     cider-mode)))
+
+(use-package moody                      ; Tabs and ribbons for the mode line
+  :ensure t
+  :config
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode))
 
 ;;; Utilities and key bindings
 (defun mu-reset-fonts ()
