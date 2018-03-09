@@ -39,12 +39,6 @@
 
   (add-hook 'emacs-lisp-mode-hook #'mu-add-use-package-to-imenu))
 
-(use-package elisp-def             ; Macro-aware go-to-definition for Emacs Lisp
-  :ensure t
-  :bind (:map emacs-lisp-mode-map
-              ("M-." . elisp-def)
-              ("M-," . xref-pop-marker-stack)))
-
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
@@ -377,14 +371,6 @@
   :config
   ;; Do not query before reverting TAGS tables
   (validate-setq tags-revert-without-query t))
-
-(use-package macrostep                  ; Navigate through macros
-  :ensure t
-  :after lisp-mode
-  :bind (:map emacs-lisp-mode-map
-              ("C-c m m e" . macrostep-expand))
-  :bind (:map lisp-interaction-mode-map
-              ("C-c m m e" . macrostep-expand)))
 
 (use-package compile                    ; Compile from Emacs
   :defer t
