@@ -132,8 +132,7 @@
 (defvar mu-eyebrowse-mode-line
   '(:propertize
     (:eval
-     (when (and (bound-and-true-p eyebrowse-mode)
-                (< 1 (length (eyebrowse--get 'window-configs))))
+     (when (bound-and-true-p eyebrowse-mode)
        (let* ((num (eyebrowse--get 'current-slot))
               (tag (when num
                      (nth 2 (assoc num (eyebrowse--get 'window-configs)))))
