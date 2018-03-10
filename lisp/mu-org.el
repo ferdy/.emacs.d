@@ -168,7 +168,7 @@
   :ensure t
   :bind ("C-c o i" . org-cliplink))
 
-;;; Utilities and keybindings
+;;; Utilities and key bindings
 (bind-key "<f6>"                        ; Open organizer file
           (lambda ()
             (interactive)

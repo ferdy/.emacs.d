@@ -161,7 +161,7 @@
 ;; Use `emacs-lisp-mode' instead of `lisp-interaction-mode' for scratch buffer
 (validate-setq initial-major-mode 'emacs-lisp-mode)
 
-;;; Utilities and keybindings
+;;; Utilities and key bindings
 ;; Don't kill the important buffers
 (defconst mu-do-not-kill-buffer-names '("*scratch*" "*Messages*")
   "Names of buffers that should not be killed.")

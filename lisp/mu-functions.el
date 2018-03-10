@@ -13,7 +13,6 @@
 
 (defun mu-all-init-files (&optional with-packages)
   "Return a list of all Emacs Lisp files in my configuration.
-
 If WITH-PACKAGES is given and non-nil include 3rd party
 packages."
   (append (list user-init-file)
@@ -27,7 +26,6 @@ packages."
 ;;;###autoload
 (defun mu-count-config-lines (&optional with-packages)
   "Show a buffer with LoC statistics for my Emacs config.
-
 If WITH-PACKAGES is given and non-nil include 3rd party packages
 into the count."
   (interactive "P")
@@ -58,14 +56,12 @@ into the count."
 
 (defun mu--string-to-acronym (string)
   "Convert STRING into an acronym.
-
 An acronym must be uppercase and have each letter followed by a dot."
   (s-upcase (s-append "." (s-join "." (delete "" (s-split "" string))))))
 
 ;;;###autoload
 (defun mu-word-to-acronym (arg)
   "Convert word at or next to point to its acronym.
-
 With numerical argument ARG, convert the next ARG-1 words as well.
 With negative argument, convert previous words."
   (interactive "p")

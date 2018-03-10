@@ -261,14 +261,13 @@
  save-interprogram-paste-before-kill t
  mouse-yank-at-point t)
 
-;;; Utilities and keybindings
+;;; Utilities and key bindings
 (bind-key "C-c x i" #'indent-region)
 (bind-key "C-c t v" #'visual-line-mode)
 
 ;; Kill entire line with prefix argument
 (defmacro bol-with-prefix (function)
   "Define a new function which will call FUNCTION.
-
 Except it moves to beginning of line before calling FUNCTION when
 called with a prefix argument.  The FUNCTION still receives the
 prefix argument."

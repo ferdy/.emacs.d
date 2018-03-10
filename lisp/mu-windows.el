@@ -48,10 +48,9 @@
    ediff-window-setup-function #'ediff-setup-windows-plain
    ediff-split-window-function #'split-window-horizontally))
 
-;;; Utilities and keybindings
+;;; Utilities and key bindings
 (defun mu-find-side-windows (&optional side)
   "Get all side window if any.
-
 If SIDE is non-nil only get windows on that side."
   (let (windows)
     (walk-window-tree

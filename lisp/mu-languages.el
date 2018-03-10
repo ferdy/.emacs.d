@@ -32,7 +32,6 @@
 
   (defun mu-ispell-word-then-abbrev (p)
     "Call `ispell-word', then create an abbrev for it.
-
 With prefix P, create local abbrev. Otherwise it will
 be global."
     (interactive "P")
@@ -75,7 +74,6 @@ be global."
 
   (defun mu-cycle-ispell-languages ()
     "Cycle ispell languages in `mu-languages-ring'.
-
 Change dictionary and mode line lighter accordingly."
     (interactive)
     (let ((language (ring-ref mu-languages-ring -1)))

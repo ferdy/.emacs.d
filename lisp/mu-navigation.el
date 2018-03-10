@@ -82,7 +82,7 @@
 ;; Keep popping on C-SPC
 (validate-setq set-mark-command-repeat-pop t)
 
-;;; Utilities and keybindings
+;;; Utilities and key bindings
 ;; Better forward and backward paragraph
 ;;;###autoload
 (defun mu-forward-paragraph (&optional n)
