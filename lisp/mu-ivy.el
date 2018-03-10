@@ -105,6 +105,25 @@
   (validate-setq counsel-linux-app-format-function
                  #'counsel-linux-app-format-function-name-only))
 
+;;; Utilities and key bindings
+;;;###autoload
+(defun mu-counsel-search-project (initial-input &optional use-current-dir)
+  "Search using `counsel-rg' from the project root for INITIAL-INPUT.
+If there is no project root, or if the prefix argument
+USE-CURRENT-DIR is set, then search from the current directory
+instead."
+  (interactive (list (thing-at-point 'symbol)
+                     current-prefix-arg))
+  (let ((current-prefix-arg)
+        (dir (if use-current-dir
+                 default-directory
+               (condition-case err
+                   (projectile-project-root)
+                 (error default-directory)))))
+    (funcall 'counsel-rg initial-input dir)))
+
+(bind-key* "M-?" #'mu-counsel-search-project)
+
 (provide 'mu-ivy)
 
 ;; Local Variables:
