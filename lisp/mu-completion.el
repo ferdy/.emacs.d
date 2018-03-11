@@ -75,7 +75,7 @@ _e_: extra   _l_: list        _n_: new
 (validate-setq completion-cycle-threshold 5)
 
 (use-package hippie-exp                 ; Powerful expansion and completion
-  :bind ([remap dabbrev-expand] . hippie-expand)
+  :bind ("C-c /" . hippie-expand)
   :config
   (validate-setq
    hippie-expand-try-functions-list
@@ -96,7 +96,8 @@ _e_: extra   _l_: list        _n_: new
   :init (global-company-mode)
   :bind (:map company-active-map
               ("C-n" . company-select-next)
-              ("C-p" . company-select-previous))
+              ("C-p" . company-select-previous)
+              ("M-/" . company-other-backend))
   :config
   (validate-setq
    company-tooltip-align-annotations t
