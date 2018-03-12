@@ -77,7 +77,7 @@
 (diminish 'auto-fill-function)
 
 ;; Hide the cursor in inactive windows
-(setq-default cursor-in-non-selected-windows t)
+(setq-default cursor-in-non-selected-windows nil)
 
 (use-package iso-transl                 ; Fix dead characters
   :demand t)
