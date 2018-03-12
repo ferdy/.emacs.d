@@ -197,6 +197,25 @@
   :ensure t
   :config (add-hook 'haskell-mode-hook #'hindent-mode))
 
+;;; PureScript
+(use-package purescript-mode            ; PureScript editing mode
+  :ensure t
+  :defer t)
+
+(use-package psc-ide                    ; Minor mode for psc-ide
+  :ensure t
+  :after purescript-mode
+  :config (add-hook 'purescript-mode-hook
+                    (lambda ()
+                      (psc-ide-mode)
+                      (turn-on-purescript-indentation))))
+
+(use-package psci                       ; PureScript REPL
+  :ensure t
+  :bind (:map purescript-mode-map
+              ("C-c C-z" . psci))
+  :config (add-hook 'purescript-mode-hook 'inferior-psci-mode))
+
 ;;; Idris
 (use-package idris-mode                 ; Idris editing
   :ensure t
