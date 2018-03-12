@@ -99,7 +99,7 @@
   :defer t
   :config
   (defun mu-colorize-compilation ()
-    "Colorize from `compilation-filter-start' to `point-max'."
+    "Colourize from `compilation-filter-start' to `point-max'."
     (let ((inhibit-read-only t))
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
 
