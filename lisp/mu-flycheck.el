@@ -67,12 +67,6 @@
   :after flycheck
   :config (flycheck-vale-setup))
 
-(use-package flycheck-elm               ; Flycheck setup for Elm
-  :ensure t
-  :defer t
-  :after flycheck
-  :config (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
-
 (provide 'mu-flycheck)
 
 ;; Local Variables:
