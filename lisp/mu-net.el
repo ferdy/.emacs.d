@@ -37,9 +37,10 @@
     (mu-save-wins-then-call 'elfeed))
 
   (defun mu-elfeed-quit ()
-    "Save feeds database and then restore window configuration."
+    "Save feeds database, kill log buffer and restore window configuration."
     (interactive)
     (elfeed-db-save)
+    (kill-buffer "*elfeed-log*")
     (mu-pop-window-configuration))
 
   ;; Use a single full frame for elfeed
@@ -109,6 +110,7 @@
 (use-package paradox                    ; Better package manager interface
   :ensure t
   :bind (("C-c a p" . mu-paradox-open)
+         ("C-c a P" . paradox-upgrade-packages)
          :map paradox-menu-mode-map
          ("q" . mu-pop-window-configuration))
   :config
