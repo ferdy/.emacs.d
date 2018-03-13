@@ -90,8 +90,7 @@
      ("https://www.theguardian.com/uk/environment/rss" news)
      ("https://www.theguardian.com/uk-news/rss" news)
      ("https://www.theguardian.com/world/rss" news)
-     ("http://www.vcinemashow.com/feed/" cinema)
-     ("http://xml2.corriereobjects.it/rss/politica.xml" news))))
+     ("http://www.vcinemashow.com/feed/" cinema))))
 
 (use-package elfeed-search              ; List feed entries
   :ensure elfeed
