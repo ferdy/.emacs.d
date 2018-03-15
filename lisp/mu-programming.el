@@ -179,6 +179,9 @@
              ("C-c C-q" . intero-destroy)
              ("C-c m r" . intero-restart))
 
+  ;; This binding is for mu-counsel-search-project
+  (unbind-key "M-?" intero-mode-map)
+
   (with-eval-after-load 'flycheck-mode
     (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
 
@@ -195,7 +198,17 @@
 
 (use-package hindent                    ; Use hindent to indent Haskell code
   :ensure t
-  :config (add-hook 'haskell-mode-hook #'hindent-mode))
+  :config
+  (add-hook 'haskell-mode-hook #'hindent-mode)
+
+  (with-eval-after-load 'hindent
+    (when (require 'nadvice)
+      (defun mu-hindent--before-save-wrapper (oldfun &rest args)
+        (with-demoted-errors "Error invoking hindent: %s"
+          (let ((debug-on-error nil))
+            (apply oldfun args))))
+      (advice-add
+       'hindent--before-save :around 'mu-hindent--before-save-wrapper))))
 
 ;;; Idris
 (use-package idris-mode                 ; Idris editing
