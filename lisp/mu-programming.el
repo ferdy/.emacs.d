@@ -201,6 +201,7 @@
   :config
   (add-hook 'haskell-mode-hook #'hindent-mode)
 
+  ;; Suppress errors when hindent--before-save fails
   (with-eval-after-load 'hindent
     (when (require 'nadvice)
       (defun mu-hindent--before-save-wrapper (oldfun &rest args)
