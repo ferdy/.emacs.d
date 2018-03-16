@@ -123,6 +123,11 @@
     (set-face-attribute 'mode-line-inactive nil :box nil)))
 
 ;;; The mode line
+;; Slightly decrease the font in the mode line
+(set-face-attribute 'mode-line nil
+                    :family "Iosevka"
+                    :height 140)
+
 (line-number-mode)
 (column-number-mode)
 
