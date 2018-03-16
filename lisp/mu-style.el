@@ -200,7 +200,10 @@
   (set-face-attribute 'variable-pitch nil
                       :family "Fira Sans"
                       :height 145
-                      :weight 'regular))
+                      :weight 'regular)
+  (set-face-attribute 'mode-line nil
+                      :family "Iosevka"
+                      :height 140))
 
 (bind-key "C-c t f" #'mu-reset-fonts)
 
