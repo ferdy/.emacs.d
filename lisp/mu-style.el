@@ -180,7 +180,7 @@
   :init (minions-mode)
   :config
   (validate-setq
-   minions-mode-line-lighter "#"
+   minions-mode-line-lighter "λ="
    minions-direct '(flycheck-mode
                     cider-mode)))
 
