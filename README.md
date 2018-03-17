@@ -7,7 +7,8 @@ tools to work as expected. I devised a
 [script](https://github.com/manuel-uberti/scripts/blob/master/env-setup) to
 prepare the proper environment, but your mileage may vary.
 
-This configuration is carefully crafted to work with:
+I am a functional programmer and I love writing, therefore this configuration
+is finely honed to work with:
 
 - [Clojure and ClojureScript](https://github.com/clojure-emacs/cider)
 - [Haskell](https://github.com/commercialhaskell/intero)
@@ -15,7 +16,10 @@ This configuration is carefully crafted to work with:
 - [LaTeX](https://www.gnu.org/software/auctex/)
 - [Org mode](https://orgmode.org/)
 
-## Initial setup
+There is a reasonable setup for other programming languages and utilities, just
+have a look inside the `lisp` directory if you want to know more.
+
+## First steps
 
 This is how I build and install Emacs on my Debian and Ubuntu machines.
 
