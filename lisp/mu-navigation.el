@@ -175,6 +175,7 @@
  ("C-þ" . goto-prev-line-with-same-indentation)
  ("C-ñ" . goto-next-line-with-same-indentation))
 
+;;;###autoload
 (defun goto-line-with-line-numbers ()
   "Display line numbers temporarily when using `goto-line'."
   (interactive)
