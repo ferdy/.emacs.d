@@ -175,6 +175,14 @@
  ("C-þ" . goto-prev-line-with-same-indentation)
  ("C-ñ" . goto-next-line-with-same-indentation))
 
+(defun goto-line-with-line-numbers ()
+  "Display line numbers temporarily before calling `goto-line'."
+  (interactive)
+  (let ((display-line-numbers t))
+    (call-interactively #'goto-line)))
+
+(bind-key [remap goto-line] #'goto-line-with-line-numbers)
+
 (provide 'mu-navigation)
 
 ;; Local Variables:
