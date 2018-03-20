@@ -176,13 +176,13 @@
  ("C-ñ" . goto-next-line-with-same-indentation))
 
 ;;;###autoload
-(defun goto-line-with-line-numbers ()
+(defun mu-goto-line-with-line-numbers ()
   "Display line numbers temporarily when using `goto-line'."
   (interactive)
   (let ((display-line-numbers t))
     (call-interactively #'goto-line)))
 
-(bind-key [remap goto-line] #'goto-line-with-line-numbers)
+(bind-key [remap goto-line] #'mu-goto-line-with-line-numbers)
 
 (provide 'mu-navigation)
 
