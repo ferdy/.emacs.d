@@ -176,7 +176,7 @@
  ("C-ñ" . goto-next-line-with-same-indentation))
 
 (defun goto-line-with-line-numbers ()
-  "Display line numbers temporarily before calling `goto-line'."
+  "Display line numbers temporarily when using `goto-line'."
   (interactive)
   (let ((display-line-numbers t))
     (call-interactively #'goto-line)))
