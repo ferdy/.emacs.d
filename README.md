@@ -21,10 +21,9 @@ have a look inside the `lisp` directory if you want to know more.
 
 ## First steps
 
-This is how I build and install Emacs on my Debian and Ubuntu machines.
-
-If you are using a different operative system, you need to understand how to
-install the required dependencies. Otherwise just run:
+This is how I build and install Emacs on Ubuntu. If you are using a different
+operative system, you need to understand how to install the required
+dependencies. Otherwise just run:
 ```console
 $ sudo apt-get build-dep emacs24
 ```
