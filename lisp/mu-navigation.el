@@ -12,6 +12,8 @@
 ;;; Code:
 
 ;; Scrolling
+(pixel-scroll-mode -1)                  ; Disable pixel-scroll-mode
+
 (validate-setq
  scroll-conservatively 1000
  ;; Move to beg/end of buffer before signalling an error
