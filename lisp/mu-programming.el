@@ -101,7 +101,8 @@
   :ensure cider
   :defer t
   :bind (:map cider-repl-mode-map
-              ("C-c C-o" . cider-repl-clear-buffer))
+              ("C-c C-o" . cider-repl-clear-buffer)
+              ("C-c t p" . cider-toggle-pretty-printing))
   :config
   (add-hook 'cider-repl-mode-hook #'company-mode)
   (add-hook 'cider-repl-mode-hook #'eldoc-mode)
@@ -112,7 +113,8 @@
    cider-repl-history-size 1000
    cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
    cider-repl-display-help-banner nil
-   cider-repl-result-prefix ";; => "))
+   cider-repl-result-prefix ";; => "
+   cider-repl-use-pretty-printing t))
 
 (use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
