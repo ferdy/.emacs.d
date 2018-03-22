@@ -92,11 +92,6 @@
     (ANY 2)
     (context 2)))
 
-(use-package clojure-mode-extra-font-locking ; Font-locking for Clojure mode
-  :ensure t
-  :defer t
-  :after clojure-mode)
-
 (use-package nrepl-client               ; Client for Clojure nREPL
   :ensure cider
   :defer t
@@ -158,7 +153,12 @@
 
   (with-eval-after-load 'clj-refactor
     (add-to-list 'cljr-magic-require-namespaces
-                 '("s"  . "clojure.string")))
+                 '(("io"   . "clojure.java.io")
+                   ("json" . "cheshire.core")
+                   ("set"  . "clojure.set")
+                   ("str"  . "clojure.string")
+                   ("walk" . "clojure.walk")
+                   ("zip"  . "clojure.zip"))))
 
   (advice-add 'cljr-add-require-to-ns :after
               (lambda (&rest _)
