@@ -153,15 +153,6 @@
    cljr-cljs-clojure-test-declaration
    "[cljs.test :refer-macros [deftest is use-fixtures]]")
 
-  (with-eval-after-load 'clj-refactor
-    (add-to-list 'cljr-magic-require-namespaces
-                 '(("io"   . "clojure.java.io")
-                   ("json" . "cheshire.core")
-                   ("set"  . "clojure.set")
-                   ("str"  . "clojure.string")
-                   ("walk" . "clojure.walk")
-                   ("zip"  . "clojure.zip"))))
-
   (advice-add 'cljr-add-require-to-ns :after
               (lambda (&rest _)
                 (yas-next-field)
