@@ -42,7 +42,7 @@
                  '(("Freenode"
                     :tls t
                     :pass mu-retrieve-irc-password
-                    :channels ("#emacs" "#haskell" "#haskell-beginners"))))
+                    :channels ("#emacs" "#haskell"))))
 
   (validate-setq
    circe-default-nick "manuel-uberti"
