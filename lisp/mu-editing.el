@@ -462,7 +462,7 @@ With arg N, insert N newlines."
  ([remap kill-whole-line]        . mu-smart-kill-whole-line)
  ([remap move-beginning-of-line] . mu-back-to-indentation-or-beginning-of-line)
  ("RET"                          . newline-and-indent)
- ("C-c RET"                      . mu-smart-open-line)
+ ("S-<return>"                   . mu-smart-open-line)
  ("C-o"                          . mu-open-line-with-reindent)
  ("C-<backspace>"                . mu-smart-backward-kill-line))
 

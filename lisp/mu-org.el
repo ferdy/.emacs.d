@@ -71,11 +71,10 @@
            (org-return-follows-link (and follow (not (or (bolp) (eolp))))))
       (org-return)))
 
-  ;; Free C-c $ (see: mu-languages.el)
-  (unbind-key "C-c $" org-mode-map)
 
-  ;; Free C-' (see: mu-editing.el)
-  (unbind-key "C-'" org-mode-map)
+  (unbind-key "C-c $" org-mode-map)     ; Free C-c $ (see: mu-languages.el)
+  (unbind-key "C-'" org-mode-map)       ; Free C-' (see: mu-editing.el)
+  (unbind-key "S-<return>" org-mode-map) ; Free S-RET (see: mu-editing.el)
 
   (defun mu-insert-checkbox ()
     "Insert a bullet point with a checkbox."
