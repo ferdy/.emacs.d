@@ -37,7 +37,7 @@
         ("MELPA"    . "https://melpa.org/packages/")
         ("ORG"      . "https://orgmode.org/elpa/")))
 
-(package-initialize)
+(package-activate-all)
 
 (setq load-prefer-newer t)              ; Always load newer compiled files
 (setq ad-redefinition-action 'accept)   ; Silence advice redefinition warnings
