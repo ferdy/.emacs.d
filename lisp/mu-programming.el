@@ -92,6 +92,9 @@
     (ANY 2)
     (context 2)))
 
+(use-package clojure-mode-extra-font-locking ; Extra font-locking for Clojure
+  :ensure clojure-mode)
+
 (use-package nrepl-client               ; Client for Clojure nREPL
   :ensure cider
   :defer t
