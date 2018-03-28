@@ -7,11 +7,10 @@ tools to work as expected. I devised a
 [script](https://github.com/manuel-uberti/scripts/blob/master/env-setup) to
 prepare the proper environment, but your mileage may vary.
 
-I am a functional programmer and I love writing, therefore this configuration
-is finely honed to work with:
+This configuration is finely honed to work with:
 
-- [Clojure and ClojureScript](https://github.com/clojure-emacs/cider)
 - [Haskell](https://github.com/commercialhaskell/intero)
+- [Clojure and ClojureScript](https://github.com/clojure-emacs/cider)
 - [Git](https://magit.vc/)
 - [LaTeX](https://www.gnu.org/software/auctex/)
 - [Org mode](https://orgmode.org/)
