@@ -11,33 +11,51 @@
 
 ;;; Code:
 
-;;; Emacs Lisp
-(use-package ielm                       ; Emacs Lisp REPL
-  :bind ("C-c d i" . ielm)
-  :config (bind-key "C-c C-q" #'comint-send-eof inferior-emacs-lisp-mode-map))
-
-(use-package elisp-mode                 ; Emacs Lisp editing
-  :defer t
-  :interpreter ("emacs" . emacs-lisp-mode)
-  :bind (:map emacs-lisp-mode-map
-              ("C-c C-k" . eval-buffer)
-              ("C-c m e b" . eval-buffer)
-              ("C-c m e f" . eval-defun)
-              ("C-c m e e" . eval-last-sexp)
-              ("C-c m e r" . eval-region))
+;;; Haskell
+(use-package intero                     ; Development mode for Haskell
+  :ensure t
   :config
-  (defconst mu-use-package-imenu-expression
-    `("Use Package" ,(rx "(use-package" (optional "-with-elapsed-timer")
-                         symbol-end (1+ (syntax whitespace)) symbol-start
-                         (group-n 1 (1+ (or (syntax word) (syntax symbol))))
-                         symbol-end) 1)
-    "IMenu expression for `use-package' declarations.")
+  (intero-global-mode)
 
-  (defun mu-add-use-package-to-imenu ()
-    "Add `use-package' declarations to `imenu'."
-    (add-to-list 'imenu-generic-expression mu-use-package-imenu-expression))
+  (bind-keys :map intero-mode-map
+             ("C-c C-q" . intero-destroy)
+             ("C-c m r" . intero-restart))
 
-  (add-hook 'emacs-lisp-mode-hook #'mu-add-use-package-to-imenu))
+  (bind-keys :map intero-repl-mode-map
+             ("C-c C-q" . intero-destroy)
+             ("C-c m r" . intero-restart))
+
+  ;; This binding is for mu-counsel-search-project
+  (unbind-key "M-?" intero-mode-map)
+
+  (with-eval-after-load 'flycheck-mode
+    (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
+
+(use-package haskell-mode               ; Haskell editing
+  :ensure intero
+  :mode ("\\.ghci\\'" . haskell-mode)
+  :config
+  (add-hook 'haskell-mode-hook #'eldoc-mode)
+  (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
+  (add-hook 'haskell-mode-hook #'haskell-auto-insert-module-template)
+
+  (with-eval-after-load 'haskell-mode
+    (bind-key "C-c m h" #'hoogle haskell-mode-map)))
+
+(use-package hindent                    ; Use hindent to indent Haskell code
+  :ensure t
+  :config
+  (add-hook 'haskell-mode-hook #'hindent-mode)
+
+  ;; Suppress errors when hindent--before-save fails
+  (with-eval-after-load 'hindent
+    (when (require 'nadvice)
+      (defun mu-hindent--before-save-wrapper (oldfun &rest args)
+        (with-demoted-errors "Error invoking hindent: %s"
+          (let ((debug-on-error nil))
+            (apply oldfun args))))
+      (advice-add
+       'hindent--before-save :around 'mu-hindent--before-save-wrapper))))
 
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
@@ -161,51 +179,33 @@
                 (yas-next-field)
                 (yas-next-field))))
 
-;;; Haskell
-(use-package intero                     ; Development mode for Haskell
-  :ensure t
+;;; Emacs Lisp
+(use-package ielm                       ; Emacs Lisp REPL
+  :bind ("C-c d i" . ielm)
+  :config (bind-key "C-c C-q" #'comint-send-eof inferior-emacs-lisp-mode-map))
+
+(use-package elisp-mode                 ; Emacs Lisp editing
+  :defer t
+  :interpreter ("emacs" . emacs-lisp-mode)
+  :bind (:map emacs-lisp-mode-map
+              ("C-c C-k" . eval-buffer)
+              ("C-c m e b" . eval-buffer)
+              ("C-c m e f" . eval-defun)
+              ("C-c m e e" . eval-last-sexp)
+              ("C-c m e r" . eval-region))
   :config
-  (intero-global-mode)
+  (defconst mu-use-package-imenu-expression
+    `("Use Package" ,(rx "(use-package" (optional "-with-elapsed-timer")
+                         symbol-end (1+ (syntax whitespace)) symbol-start
+                         (group-n 1 (1+ (or (syntax word) (syntax symbol))))
+                         symbol-end) 1)
+    "IMenu expression for `use-package' declarations.")
 
-  (bind-keys :map intero-mode-map
-             ("C-c C-q" . intero-destroy)
-             ("C-c m r" . intero-restart))
+  (defun mu-add-use-package-to-imenu ()
+    "Add `use-package' declarations to `imenu'."
+    (add-to-list 'imenu-generic-expression mu-use-package-imenu-expression))
 
-  (bind-keys :map intero-repl-mode-map
-             ("C-c C-q" . intero-destroy)
-             ("C-c m r" . intero-restart))
-
-  ;; This binding is for mu-counsel-search-project
-  (unbind-key "M-?" intero-mode-map)
-
-  (with-eval-after-load 'flycheck-mode
-    (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
-
-(use-package haskell-mode               ; Haskell editing
-  :ensure intero
-  :mode ("\\.ghci\\'" . haskell-mode)
-  :config
-  (add-hook 'haskell-mode-hook #'eldoc-mode)
-  (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
-  (add-hook 'haskell-mode-hook #'haskell-auto-insert-module-template)
-
-  (with-eval-after-load 'haskell-mode
-    (bind-key "C-c m h" #'hoogle haskell-mode-map)))
-
-(use-package hindent                    ; Use hindent to indent Haskell code
-  :ensure t
-  :config
-  (add-hook 'haskell-mode-hook #'hindent-mode)
-
-  ;; Suppress errors when hindent--before-save fails
-  (with-eval-after-load 'hindent
-    (when (require 'nadvice)
-      (defun mu-hindent--before-save-wrapper (oldfun &rest args)
-        (with-demoted-errors "Error invoking hindent: %s"
-          (let ((debug-on-error nil))
-            (apply oldfun args))))
-      (advice-add
-       'hindent--before-save :around 'mu-hindent--before-save-wrapper))))
+  (add-hook 'emacs-lisp-mode-hook #'mu-add-use-package-to-imenu))
 
 ;;; Idris
 (use-package idris-mode                 ; Idris editing
@@ -242,23 +242,6 @@
   :ensure t
   :defer t)
 
-;;; Databases
-(use-package sql                        ; SQL editing and REPL
-  :mode ("\\.sql\\'" . sql-mode)
-  :bind (("C-c d s" . sql-connect)
-         :map sql-mode-map
-         ("C-c m p" . sql-set-product)))
-
-(use-package sql-indent                 ; Indent SQL statements
-  :ensure t
-  :after sql)
-
-(use-package sqlup-mode                 ; Upcase SQL keywords
-  :ensure t
-  :bind (:map sql-mode-map
-              ("C-c m u" . sqlup-capitalize-keywords-in-region))
-  :config (add-hook 'sql-mode-hook #'sqlup-mode))
-
 ;;; Web development
 (use-package web-mode                   ; Major mode for editing web templates
   :ensure t
@@ -289,7 +272,6 @@
   ;; Better Imenu in j2-mode
   (add-hook 'js2-mode-hook #'js2-imenu-extras-mode))
 
-;;; PureScript
 (use-package purescript-mode            ; PureScript editing mode
   :ensure t
   :defer t)
@@ -369,6 +351,23 @@
 (use-package json-mode                  ; JSON editing
   :ensure t
   :mode "\\.json\\'")
+
+;;; Databases
+(use-package sql                        ; SQL editing and REPL
+  :mode ("\\.sql\\'" . sql-mode)
+  :bind (("C-c d s" . sql-connect)
+         :map sql-mode-map
+         ("C-c m p" . sql-set-product)))
+
+(use-package sql-indent                 ; Indent SQL statements
+  :ensure t
+  :after sql)
+
+(use-package sqlup-mode                 ; Upcase SQL keywords
+  :ensure t
+  :bind (:map sql-mode-map
+              ("C-c m u" . sqlup-capitalize-keywords-in-region))
+  :config (add-hook 'sql-mode-hook #'sqlup-mode))
 
 ;;; Bugs management
 (use-package bug-reference              ; Buttonize bug references
