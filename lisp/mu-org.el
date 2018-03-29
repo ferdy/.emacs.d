@@ -136,15 +136,6 @@
   :bind ("C-c t o" . org-indent-mode)
   :init (add-hook 'org-mode-hook #'org-indent-mode))
 
-(use-package autoinsert                 ; Auto insert custom text
-  :init
-  (auto-insert-mode)
-  (define-auto-insert '("\\.org\\'" . "Org skeleton")
-    '("Short description: "
-      "#+startup: showall\n"
-      > _ \n \n))
-  :config (validate-setq auto-insert-query nil))
-
 (use-package ox-pandoc                  ; Export Org documents via Pandoc
   :ensure t
   :config

@@ -27,6 +27,24 @@
   :ensure t
   :after pcomplete)
 
+(use-package autoinsert                 ; Auto insert custom text
+  :init
+  (auto-insert-mode)
+  (define-auto-insert
+    '("\\.org\\'" . "Org skeleton")
+    '("Startup: "
+      "#+startup: showall\n"
+      > _ \n \n))
+  (define-auto-insert '("/_posts/.*\\.md\\'" . "Markdown skeleton")
+    '("Header: "
+      "---\nlayout:     post\n"
+      "title:\n"
+      "date:       " (format-time-string "%Y-%m-%d") "\n"
+      "summary:\n"
+      "categories:\n---\n"
+      > _ \n \n))
+  :config (validate-setq auto-insert-query nil))
+
 (use-package yasnippet                  ; Snippets
   :ensure t
   :bind ("C-c y" . mu-yasnippet/body)
