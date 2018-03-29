@@ -31,17 +31,19 @@
   :init
   (auto-insert-mode)
   (define-auto-insert
-    '("\\.org\\'" . "Org skeleton")
+    '("\\.org\\'" . "Org files skeleton")
     '("Startup: "
       "#+startup: showall\n"
       > _ \n \n))
-  (define-auto-insert '("/_posts/.*\\.md\\'" . "Markdown skeleton")
+  (define-auto-insert '("/_posts/.*\\.md\\'" . "Blog posts skeleton")
     '("Header: "
-      "---\nlayout:     post\n"
+      "---\n"
+      "layout:     post\n"
       "title:\n"
       "date:       " (format-time-string "%Y-%m-%d") "\n"
       "summary:\n"
-      "categories:\n---\n"
+      "categories:\n"
+      "---\n"
       > _ \n \n))
   :config (validate-setq auto-insert-query nil))
 
