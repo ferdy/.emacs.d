@@ -38,6 +38,10 @@
   :init (dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook))
           (add-hook hook #'symbol-overlay-mode)))
 
+(use-package hl-todo                    ; Highlight TODO and similar keywords
+  :ensure t
+  :init (add-hook 'prog-mode-hook #'hl-todo-mode))
+
 (use-package highlight-numbers          ; Fontify number literals
   :ensure t
   :defer t
