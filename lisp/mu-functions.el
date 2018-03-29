@@ -11,49 +11,6 @@
 
 ;;; Code:
 
-(defun mu-all-init-files (&optional with-packages)
-  "Return a list of all Emacs Lisp files in my configuration.
-If WITH-PACKAGES is given and non-nil include 3rd party
-packages."
-  (append (list user-init-file)
-          (directory-files-recursively (locate-user-emacs-file "lisp/")
-                                       (rx ".el" eos))
-          (if with-packages
-              (directory-files-recursively package-user-dir
-                                           (rx ".el" eos))
-            nil)))
-
-;;;###autoload
-(defun mu-count-config-lines (&optional with-packages)
-  "Show a buffer with LoC statistics for my Emacs config.
-If WITH-PACKAGES is given and non-nil include 3rd party packages
-into the count."
-  (interactive "P")
-  (let ((tokei (executable-find "tokei")))
-    (unless tokei
-      (user-error "Please install tokei"))
-    (with-current-buffer (get-buffer-create " *LoC Emacs configuration*")
-      (text-mode)
-      (read-only-mode)
-      (view-mode)
-      (let ((inhibit-read-only t)
-            (files (mu-all-init-files with-packages)))
-        (erase-buffer)
-        (goto-char (point-min))
-        (apply #'call-process tokei nil t t files))
-      (pop-to-buffer (current-buffer)))))
-
-(defmacro with-timer (&rest forms)
-  "Run the given FORMS, counting and displaying the elapsed time."
-  (declare (indent 0))
-  (let ((nowvar (make-symbol "now"))
-        (body `(progn ,@forms)))
-    `(let ((,nowvar (current-time)))
-       (prog1 ,body
-         (let ((elapsed (float-time (time-subtract (current-time) ,nowvar))))
-           (when (> elapsed 0.001)
-             (message "spent (%.3fs)" elapsed)))))))
-
 (defun mu--string-to-acronym (string)
   "Convert STRING into an acronym.
 An acronym must be uppercase and have each letter followed by a dot."
@@ -102,17 +59,6 @@ With negative argument, convert previous words."
   (let ((face (or (get-char-property pos 'read-face-name)
                   (get-char-property pos 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
-
-;;;###autoload
-(defun toggle-touchpad ()
-  "Enable/disable touchpad using the external tool `tt'."
-  (interactive)
-  (let ((cmd "tt"))
-    (if (not (executable-find "tt"))
-        (error "Install touchpad with: sudo pip install touchpad")
-      (start-process-shell-command
-       cmd nil
-       (concat "nohup 1>/dev/null 2>/dev/null " cmd)))))
 
 (provide 'mu-functions)
 
