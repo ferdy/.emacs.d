@@ -114,6 +114,10 @@ Change dictionary and mode line lighter accordingly."
   :bind (("C-c a l d" . wordnut-search)
          ("C-c a l D" . wordnut-lookup-current-word)))
 
+(use-package sdcv                       ; Interface for sdcv
+  :ensure t
+  :bind ("C-c a l s" . sdcv-search-input))
+
 (provide 'mu-languages)
 
 ;; Local Variables:
