@@ -41,13 +41,7 @@
   (add-hook 'flycheck-mode-hook
             #'mu-flycheck-set-load-path-for-user-configuration)
 
-  (global-flycheck-mode)
-  :config
-  (validate-setq
-   flycheck-standard-error-navigation nil
-   flycheck-display-errors-function
-   #'flycheck-display-error-messages-unless-error-list
-   flycheck-stylelintrc "~/.stylelintrc"))
+  (global-flycheck-mode))
 
 (use-package flycheck-package          ; Check package conventions with Flycheck
   :ensure t
