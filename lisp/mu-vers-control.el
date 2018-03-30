@@ -29,7 +29,9 @@
          ("C-c v v" . magit-status)
          (:map magit-mode-map
                ([remap previous-line] . magit-previous-line)
-               ([remap next-line] . magit-next-line)))
+               ([remap next-line] . magit-next-line))
+         (:map dired-mode-map
+               ("l" . magit-dired-log)))
   :config
   (validate-setq
    magit-save-repository-buffers 'dontask
