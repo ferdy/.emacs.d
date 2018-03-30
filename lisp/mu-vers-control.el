@@ -26,7 +26,10 @@
          ("C-c v g" . magit-blame)
          ("C-c v l" . magit-log-buffer-file)
          ("C-c v p" . magit-pull)
-         ("C-c v v" . magit-status))
+         ("C-c v v" . magit-status)
+         (:map magit-mode-map
+               ([remap previous-line] . magit-previous-line)
+               ([remap next-line] . magit-next-line)))
   :config
   (validate-setq
    magit-save-repository-buffers 'dontask
