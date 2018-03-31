@@ -160,9 +160,7 @@ _e_: extra   _l_: list        _n_: new
 
 (use-package company-auctex             ; Backend for AUCTeX
   :ensure t
-  :init
-  (add-hook 'company-mode-hook #'yas-minor-mode)
-  (company-auctex-init))
+  :init (company-auctex-init))
 
 (use-package company-shell              ; Company support for shell functions
   :ensure t
