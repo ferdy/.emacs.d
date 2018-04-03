@@ -299,6 +299,10 @@
   :commands (turn-on-css-eldoc)
   :init (add-hook 'css-mode-hook #'turn-on-css-eldoc))
 
+(use-package less-css-mode              ; Mode for Less CSS files
+  :ensure t
+  :mode "\\.less\\'")
+
 (use-package web-beautify               ; Pretty format HTML/CSS/JS files
   :ensure t
   :init
