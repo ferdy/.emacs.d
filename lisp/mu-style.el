@@ -178,7 +178,9 @@
 (use-package minions                    ; A minor-mode menu for the mode line
   :ensure t
   :init (minions-mode)
-  :config (validate-setq minions-direct '(cider-mode flycheck-mode)))
+  :config (validate-setq minions-direct '(cider-mode
+                                          flycheck-mode
+                                          overwrite-mode)))
 
 (use-package moody                      ; Tabs and ribbons for the mode line
   :ensure t
