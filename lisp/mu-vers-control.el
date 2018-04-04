@@ -39,7 +39,8 @@
    magit-branch-prefer-remote-upstream '("master")
    magit-branch-adjust-remote-upstream-alist '(("origin/master" "master"))
    magit-completing-read-function 'ivy-completing-read
-   magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+   magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
+   magit-log-margin '(t "%Y-%m-%d %H:%M:%S" magit-log-margin-width t 18))
 
   ;; Hide "Recent Commits"
   (magit-add-section-hook 'magit-status-sections-hook
