@@ -14,9 +14,17 @@
 (use-package paren                      ; Highlight paired delimiters
   :init (show-paren-mode)
   :config
-  (validate-setq
-   show-paren-when-point-inside-paren t
-   show-paren-when-point-in-periphery t))
+  (defun show-paren-clear-highlight ()
+    "Turn off any previous paren highlighting."
+    (delete-overlay show-paren--overlay)
+    (delete-overlay show-paren--overlay-1))
+
+  (defun mu-show-paren-update-on-insert ()
+    (if (eq this-command 'self-insert-command)
+        (show-paren-function)
+      (show-paren-clear-highlight)))
+
+  (add-hook 'post-command-hook #'mu-show-paren-update-on-insert))
 
 (use-package diff-hl                    ; Show changes in fringe
   :ensure t
