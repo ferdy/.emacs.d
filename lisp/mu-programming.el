@@ -108,7 +108,8 @@
     (DELETE 2)
     (HEAD 2)
     (ANY 2)
-    (context 2)))
+    (context 2)
+    (reporting 1)))
 
 (use-package clojure-mode-extra-font-locking ; Extra font-locking for Clojure
   :ensure t)
