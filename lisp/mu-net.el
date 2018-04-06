@@ -31,7 +31,7 @@
   :config
   ;; Load and set my credentials.  Requires in ~/.ercpass the format
   ;; (:my-pass "password")
-  (validate-setq mu-credentials-file "~/.ercpass")
+  (defvar mu-credentials-file "~/.ercpass")
 
   (defun mu-retrieve-irc-password (_)
     (with-temp-buffer
