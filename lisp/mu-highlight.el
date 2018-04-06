@@ -20,7 +20,8 @@
     (delete-overlay show-paren--overlay-1))
 
   (defun mu-show-paren-update-on-insert ()
-    (if (eq this-command 'self-insert-command)
+    ;; A command with `delete-selection' property probably inserts text.
+    (if (get this-command 'delete-selection)
         (show-paren-function)
       (show-paren-clear-highlight)))
 
