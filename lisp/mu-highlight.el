@@ -42,10 +42,14 @@
 (use-package symbol-overlay             ; Highlight symbols
   :ensure t
   :bind (:map symbol-overlay-mode-map
+              ("M-h" . symbol-overlay-put)
               ("M-n" . symbol-overlay-jump-next)
               ("M-p" . symbol-overlay-jump-prev))
-  :init (dolist (hook '(prog-mode-hook html-mode-hook css-mode-hook))
-          (add-hook hook #'symbol-overlay-mode)))
+  :init
+  (add-hook 'prog-mode-hook #'symbol-overlay-mode)
+
+  (dolist (hook '(html-mode-hook css-mode-hook yaml-mode-hook conf-mode-hook))
+    (add-hook hook #'symbol-overlay-mode)))
 
 (use-package hl-todo                    ; Highlight TODO and similar keywords
   :ensure t
