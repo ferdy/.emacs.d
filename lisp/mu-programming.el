@@ -64,7 +64,6 @@
   :config
   (add-hook 'cider-mode-hook 'eldoc-mode)
 
-  ;; Do not offer to open ClojureScript app in browser
   (validate-setq cider-offer-to-open-cljs-app-in-browser nil))
 
 (use-package cider-mode                 ; CIDER mode for REPL interaction
@@ -76,6 +75,7 @@
   (require 'cider-client)
 
   (defun mu-cider-mode-line-info ()
+    "Simplify CIDER mode-line indicator."
     (if-let* ((current-connection (ignore-errors (cider-current-connection))))
         (with-current-buffer current-connection
           (concat
@@ -84,7 +84,6 @@
             ":%s" (or (cider--project-name nrepl-project-dir) "<no project>"))))
       "-"))
 
-  ;; Simplify CIDER mode-line indicator
   (validate-setq
    cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-mode-line-info)))))
 
@@ -156,7 +155,7 @@
   :init
   (defun mu-clojure-mode-hook ()
     (clj-refactor-mode 1)
-    (yas-minor-mode 1)                ; For adding require/use/import
+    (yas-minor-mode 1)
     (cljr-add-keybindings-with-prefix "C-c RET"))
 
   (add-hook 'clojure-mode-hook #'mu-clojure-mode-hook)
