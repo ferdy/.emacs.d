@@ -12,20 +12,7 @@
 ;;; Code:
 
 (use-package paren                      ; Highlight paired delimiters
-  :init (show-paren-mode)
-  :config
-  (defun show-paren-clear-highlight ()
-    "Turn off any previous paren highlighting."
-    (delete-overlay show-paren--overlay)
-    (delete-overlay show-paren--overlay-1))
-
-  (defun mu-show-paren-update-on-insert ()
-    ;; A command with `delete-selection' property probably inserts text.
-    (if (get this-command 'delete-selection)
-        (show-paren-function)
-      (show-paren-clear-highlight)))
-
-  (add-hook 'post-command-hook #'mu-show-paren-update-on-insert))
+  :init (show-paren-mode))
 
 (use-package diff-hl                    ; Show changes in fringe
   :ensure t
