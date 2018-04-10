@@ -125,6 +125,10 @@
   :ensure t
   :mode ("\\.list\\'" . apt-sources-list-mode))
 
+(use-package nov                        ; Featureful EPUB reader mode
+  :ensure t
+  :mode ("\\.epub\\'" . nov-mode))
+
 ;;; Utilities and key bindings
 (defun mu-current-file ()
   "Gets the \"file\" of the current buffer.
