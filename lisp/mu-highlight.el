@@ -16,15 +16,9 @@
 
 (use-package diff-hl                    ; Show changes in fringe
   :ensure t
-  :defer 10
-  :init
-  ;; Highlight changes to the current file in the fringe
-  (global-diff-hl-mode)
-  ;; Highlight changed files in the fringe of Dired
-  (add-hook 'dired-mode-hook #'diff-hl-dired-mode)
-  ;; Fall back to the display margin, if the fringe is unavailable
-  (unless (display-graphic-p)
-    (diff-hl-margin-mode)))
+  :hook ((dired-mode . diff-hl-dired-mode)
+         (prog-mode . diff-hl-mode)
+         (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 (use-package symbol-overlay             ; Highlight symbols
   :ensure t
