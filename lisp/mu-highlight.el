@@ -16,8 +16,8 @@
 
 (use-package diff-hl                    ; Show changes in fringe
   :ensure t
-  :hook ((dired-mode . diff-hl-dired-mode)
-         (prog-mode . diff-hl-mode)
+  :hook ((prog-mode          . diff-hl-mode)
+         (dired-mode         . diff-hl-dired-mode)
          (magit-post-refresh . diff-hl-magit-post-refresh)))
 
 (use-package symbol-overlay             ; Highlight symbols
