@@ -26,30 +26,28 @@
               ("M-h" . symbol-overlay-put)
               ("M-n" . symbol-overlay-jump-next)
               ("M-p" . symbol-overlay-jump-prev))
-  :init
-  (add-hook 'prog-mode-hook #'symbol-overlay-mode)
-
-  (dolist (hook '(html-mode-hook css-mode-hook yaml-mode-hook conf-mode-hook))
-    (add-hook hook #'symbol-overlay-mode)))
+  :hook ((prog-mode . symbol-overlay-mode)
+         (html-mode . symbol-overlay-mode)
+         (css-mode  . symbol-overlay-mode)
+         (yaml-mode . symbol-overlay-mode)
+         (conf-mode . symbol-overlay-mode)))
 
 (use-package hl-todo                    ; Highlight TODO and similar keywords
   :ensure t
-  :init (add-hook 'prog-mode-hook #'hl-todo-mode))
+  :hook (prog-mode . hl-todo-mode))
 
 (use-package highlight-numbers          ; Fontify number literals
   :ensure t
-  :defer t
-  :init (add-hook 'prog-mode-hook #'highlight-numbers-mode))
+  :hook (prog-mode . highlight-numbers-mode))
 
 (use-package rainbow-mode               ; Highlight colors
   :ensure t
   :bind ("C-c t R" . rainbow-mode)
-  :init (add-hook 'css-mode-hook #'rainbow-mode))
+  :hook (css-mode . rainbow-mode))
 
 (use-package rainbow-delimiters         ; Highlight parens
   :ensure t
-  :defer t
-  :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package hi-lock                    ; Custom regexp highlights
   :init (global-hi-lock-mode))

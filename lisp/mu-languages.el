@@ -57,9 +57,10 @@ be global."
 (use-package flyspell                   ; Spell checking on-the-fly
   :bind (:map flyspell-mode-map
               ("C-M-l" . mu-cycle-ispell-languages))
+  :hook ((prog-mode  . flyspell-prog-mode)
+         (text-mode  . flyspell-mode)
+         (LaTeX-mode . flyspell-mode))
   :init
-  (add-hook 'prog-mode-hook #'flyspell-prog-mode)
-
   (defun mu-current-dictionary-mode-line (language)
     "Return the current dictionary from LANGUAGE for the mode line."
     (interactive)
@@ -82,9 +83,6 @@ Change dictionary and mode line lighter accordingly."
       (validate-setq flyspell-mode-line-string
                      (mu-current-dictionary-mode-line language))
       (force-mode-line-update)))
-
-  (dolist (mode-hook '(text-mode-hook LaTeX-mode-hook))
-    (add-hook mode-hook (lambda () (flyspell-mode))))
   :config
   (validate-setq
    flyspell-use-meta-tab nil

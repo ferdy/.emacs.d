@@ -44,9 +44,8 @@
 
 (use-package outline                    ; Navigate outlines in buffers
   :defer t
-  :init
-  (dolist (hook '(text-mode-hook prog-mode-hook))
-    (add-hook hook #'outline-minor-mode)))
+  :hook ((prog-mode . outline-minor-mode)
+         (text-mode . outline-minor-mode)))
 
 (use-package beginend                   ; Redefine M-< and M-> for some modes
   :ensure t

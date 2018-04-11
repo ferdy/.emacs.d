@@ -156,9 +156,8 @@ The EShell is renamed to match that directory to make multiple windows easier."
 
 (use-package em-cmpl                    ; EShell TAB completion
   :ensure eshell
+  :hook (eshell-mode . eshell-cmpl-initialize)
   :config
-  (add-hook 'eshell-mode-hook #'eshell-cmpl-initialize)
-
   (add-to-list 'eshell-command-completions-alist
                '("gunzip" "gz\\'"))
   (add-to-list 'eshell-command-completions-alist
@@ -179,12 +178,12 @@ The EShell is renamed to match that directory to make multiple windows easier."
 
 (use-package eshell-bookmark            ; Bookmarks for EShell buffers
   :ensure t
-  :config (add-hook 'eshell-mode-hook #'eshell-bookmark-setup))
+  :hook (eshell-mode . eshell-bookmark-setup))
 
 (use-package fish-completion            ; Add Fish completion to EShell
   :ensure t
   :when (executable-find "fish")
-  :config (add-hook 'eshell-mode-hook #'fish-completion-mode))
+  :hook (eshell-mode . fish-completion-mode))
 
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s t" . ansi-term)
@@ -225,11 +224,9 @@ The EShell is renamed to match that directory to make multiple windows easier."
 (use-package fish-mode                  ; Handle Fish shell scripts
   :ensure t
   :mode ("\\.fish\\'" . fish-mode)
-  :config
-  ;; Run fish_indent before save
-  (add-hook 'fish-mode-hook
-            (lambda ()
-              (add-hook 'before-save-hook 'fish_indent-before-save))))
+  :hook (fish-mode . (lambda ()
+                       ;; Run fish_indent before save
+                       (add-hook 'before-save-hook 'fish_indent-before-save))))
 
 ;;; Utilities and key bindings
 (custom-set-variables

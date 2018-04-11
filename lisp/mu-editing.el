@@ -19,8 +19,9 @@
 (use-package aggressive-indent          ; Automatically indent code
   :ensure t
   :bind ("C-c t i" . aggressive-indent-mode)
-  :init (dolist (hook '(lisp-mode-hook emacs-lisp-mode-hook clojure-mode-hook))
-          (add-hook hook #'aggressive-indent-mode))
+  :hook ((lisp-mode       . aggressive-indent-mode)
+         (emacs-lisp-mode . aggressive-indent-mode)
+         (clojure-mode    . aggressive-indent-mode))
   :config
   ;; Free C-c C-q, used in Org and in CIDER
   (unbind-key "C-c C-q" aggressive-indent-mode-map)
@@ -31,8 +32,9 @@
   :ensure t
   :bind (("C-c t w" . whitespace-cleanup-mode)
          ("C-c x w" . whitespace-cleanup))
-  :init (dolist (hook '(prog-mode-hook text-mode-hook conf-mode-hook))
-          (add-hook hook #'whitespace-cleanup-mode)))
+  :hook ((prog-mode . whitespace-cleanup-mode)
+         (text-mode . whitespace-cleanup-mode)
+         (conf-mode . whitespace-cleanup-mode)))
 
 (use-package shrink-whitespace          ; Better whitespace removal
   :ensure t
@@ -75,29 +77,20 @@
 
 (use-package adaptive-wrap              ; Better line wrap
   :ensure t
-  :defer t
-  :config
-  (setq-default adaptive-wrap-extra-indent 2)
-
-  (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode))
+  :hook (visual-line-mode . adaptive-wrap-prefix-mode)
+  :config (setq-default adaptive-wrap-extra-indent 2))
 
 (use-package aggressive-fill-paragraph  ; Automatically fill paragrah
   :ensure t
-  :defer t
-  :config
-  (add-hook 'org-mode-hook #'aggressive-fill-paragraph-mode)
-  (add-hook 'TeX-mode-hook #'aggressive-fill-paragraph-mode))
+  :hook ((org-mode . aggressive-fill-paragraph-mode)
+         (TeX-mode . aggressive-fill-paragraph-mode)))
 
 (use-package visual-fill-column         ; Fill column wrapping
   :ensure t
   :bind ("C-c t v" . visual-fill-column-mode)
-  :init
-  ;; Turn on whenever visual line mode is on, and in all text or prog mode
-  ;; buffers to get centered text
-  (dolist (hook '(visual-line-mode-hook
-                  prog-mode-hook
-                  text-mode-hook))
-    (add-hook hook #'visual-fill-column-mode))
+  :hook ((visual-line-mode . visual-fill-column-mode)
+         (prog-mode        . visual-fill-column-mode)
+         (text-mode        . visual-fill-column-mode))
   :config
   ;; Split windows vertically despite large margins, because Emacs otherwise
   ;; refuses to vertically split windows with large margins
@@ -210,15 +203,10 @@
 
 (use-package typo                       ; Automatically use typographic quotes
   :ensure t
-  :init
-  (setq-default typo-language "English")
-
-  (typo-global-mode)
-
-  (dolist (hook '(org-mode-hook
-                  markdown-mode-hook
-                  rst-mode-hook))
-    (add-hook hook 'typo-mode)))
+  :hook ((org-mode      . typo-mode)
+         (markdown-mode . typo-mode)
+         (rst-mode      . typo-mode))
+  :init (setq-default typo-language "English"))
 
 (use-package olivetti                   ; Distraction-free interface
   :ensure t
@@ -227,11 +215,10 @@
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :bind ("C-c x t" . tildify-region)
-  :init (add-hook 'text-mode-hook #'tildify-mode)
-  :config
-  ;; Use the right space for LaTeX
-  (add-hook 'latex-mode-hook
-            (lambda () (setq-local tildify-space-string "~"))))
+  :hook ((text-mode  . tildify-mode)
+         (latex-mode . (lambda ()
+                         ;; Use the right space for LaTeX
+                         (setq-local tildify-space-string "~")))))
 
 (use-package unfill                     ; Smart fill/unfill paragraph
   :ensure t

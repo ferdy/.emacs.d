@@ -71,12 +71,11 @@
 (use-package magit-gitflow              ; gitflow extension for Magit
   :ensure t
   :after magit
+  :hook (magit-mode . turn-on-magit-gitflow)
   :config
   ;; Free C-f and use a more suitable key binding
   (unbind-key "C-f" magit-gitflow-mode-map)
-  (bind-key "C-c v f" #'magit-gitflow-popup magit-gitflow-mode-map)
-
-  (add-hook 'magit-mode-hook 'turn-on-magit-gitflow))
+  (bind-key "C-c v f" #'magit-gitflow-popup magit-gitflow-mode-map))
 
 (use-package git-commit                 ; Git commit message mode
   :ensure t

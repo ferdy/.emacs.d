@@ -92,6 +92,7 @@
 (use-package markdown-mode              ; Edit markdown files
   :ensure t
   :mode ("\\.md\\'" . markdown-mode)
+  :hook (markdown-mode . auto-fill-mode)
   :config
   (validate-setq markdown-fontify-code-blocks-natively t)
 
@@ -107,8 +108,7 @@
                      `("pandoc" "--toc" "--section-divs"
                        "--css" ,(concat "file://" stylesheet)
                        "--standalone" "-f" "markdown" "-t" "html5")
-                     " ")))
-  (add-hook 'markdown-mode-hook #'auto-fill-mode))
+                     " "))))
 
 (use-package dockerfile-mode            ; Edit docker's Dockerfiles
   :ensure t

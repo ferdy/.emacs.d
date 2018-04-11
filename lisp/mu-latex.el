@@ -67,8 +67,7 @@
 
 (use-package tex-fold                   ; Fold TeX macros
   :ensure auctex
-  :defer t
-  :init (add-hook 'TeX-mode-hook #'TeX-fold-mode))
+  :hook (TeX-mode . TeX-fold-mode))
 
 (use-package tex-mode                   ; Major mode for TeX files
   :ensure auctex
@@ -102,8 +101,7 @@
 
 (use-package latex-extra                ; Useful functionalities to LaTeX-mode
   :ensure t
-  :defer t
-  :config (add-hook 'LaTeX-mode-hook #'latex-extra-mode))
+  :hook (LaTeX-mode . latex-extra-mode))
 
 (use-package auctex-latexmk             ; Add LatexMk support to AUCTeX
   :ensure t
@@ -112,16 +110,12 @@
   :config (auctex-latexmk-setup))
 
 (use-package bibtex                     ; Edit and validate BibTeX files
-  :defer t
-  :config
-  ;; Run prog mode hooks for bibtex
-  (add-hook 'bibtex-mode-hook (lambda () (run-hooks 'prog-mode-hook)))
-  ;; Use a modern BibTeX dialect
-  (bibtex-set-dialect 'biblatex))
+  :hook (bibtext-mode . (lambda () (run-hooks 'prog-mode-hook)))
+  :config (bibtex-set-dialect 'biblatex))
 
 (use-package reftex                     ; TeX/BibTeX cross-reference management
   :defer t
-  :init (add-hook 'LaTeX-mode-hook #'reftex-mode)
+  :hook (LaTeX-mode . reftex-mode)
   :config
   (defun mu-reftex-find-ams-environment-caption (environment)
     "Find the caption of an AMS ENVIRONMENT."
@@ -159,8 +153,7 @@
 
 (use-package latex-unicode-math-mode    ; Input method for Unicode math symbols
   :ensure t
-  :defer t
-  :init (add-hook 'LaTeX-mode-hook 'latex-unicode-mode))
+  :hook (LaTeX-mode . latex-unicode-mode))
 
 (provide 'mu-latex)
 

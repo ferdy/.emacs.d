@@ -34,19 +34,17 @@
 (use-package haskell-mode               ; Haskell editing
   :ensure intero
   :mode ("\\.ghci\\'" . haskell-mode)
+  :hook ((haskell-mode . eldoc-mode)
+         (haskell-mode . haskell-indentation-mode)
+         (haskell-mode . haskell-auto-insert-module-template))
   :config
-  (add-hook 'haskell-mode-hook #'eldoc-mode)
-  (add-hook 'haskell-mode-hook #'haskell-indentation-mode)
-  (add-hook 'haskell-mode-hook #'haskell-auto-insert-module-template)
-
   (with-eval-after-load 'haskell-mode
     (bind-key "C-c m h" #'hoogle haskell-mode-map)))
 
 (use-package hindent                    ; Use hindent to indent Haskell code
   :ensure t
+  :hook (haskell-mode . hindent-mode)
   :config
-  (add-hook 'haskell-mode-hook #'hindent-mode)
-
   ;; Suppress errors when hindent--before-save fails
   (with-eval-after-load 'hindent
     (when (require 'nadvice)
@@ -60,11 +58,8 @@
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
-  :defer t
-  :config
-  (add-hook 'cider-mode-hook 'eldoc-mode)
-
-  (validate-setq cider-offer-to-open-cljs-app-in-browser nil))
+  :hook (cider-mode . eldoc-mode)
+  :config (validate-setq cider-offer-to-open-cljs-app-in-browser nil))
 
 (use-package cider-mode                 ; CIDER mode for REPL interaction
   :ensure cider
@@ -93,9 +88,8 @@
          ("\\.clj$"  . clojure-mode)
          ("\\.cljs$" . clojurescript-mode)
          ("\\.edn$"  . clojure-mode))
-  :init
-  (add-hook 'clojure-mode-hook #'cider-mode)
-  (add-hook 'clojure-mode-hook #'subword-mode)
+  :hook ((clojure-mode . cider-mode)
+         (clojure-mode . subword-mode))
   :config
   ;; Fix indentation of some common macros
   (define-clojure-indent
@@ -120,15 +114,13 @@
 
 (use-package cider-repl                 ; REPL interactions with CIDER
   :ensure cider
-  :defer t
   :bind (:map cider-repl-mode-map
               ("C-c C-o" . cider-repl-clear-buffer)
               ("C-c t p" . cider-toggle-pretty-printing))
+  :hook ((cider-repl-mode . company-mode)
+         (cider-repl-mode . eldoc-mode)
+         (cider-repl-mode . subword-mode))
   :config
-  (add-hook 'cider-repl-mode-hook #'company-mode)
-  (add-hook 'cider-repl-mode-hook #'eldoc-mode)
-  (add-hook 'cider-repl-mode-hook #'subword-mode)
-
   (validate-setq
    cider-repl-wrap-history t
    cider-repl-history-size 1000
@@ -151,14 +143,10 @@
 
 (use-package clj-refactor               ; Refactoring utilities
   :ensure t
-  :defer t
-  :init
-  (defun mu-clojure-mode-hook ()
-    (clj-refactor-mode 1)
-    (yas-minor-mode 1)
-    (cljr-add-keybindings-with-prefix "C-c RET"))
-
-  (add-hook 'clojure-mode-hook #'mu-clojure-mode-hook)
+  :hook (clojure-mode . (lambda ()
+                          (clj-refactor-mode 1)
+                          (yas-minor-mode 1)
+                          (cljr-add-keybindings-with-prefix "C-c RET")))
   :config
   (validate-setq
    cljr-suppress-middleware-warnings t
@@ -223,19 +211,17 @@
 
 (use-package racer                      ; Completion and navigation for Rust
   :ensure t
-  :defer t
   :bind (:map racer-mode-map
               ("C-c m h" . racer-describe)
               ("C-c m d" . racer-debug))
-  :init (add-hook 'rust-mode-hook #'racer-mode)
-  :config
-  (validate-setq racer-rust-src-path (getenv "RUST_SRC_PATH")))
+  :hook (rust-mode . racer-mode)
+  :config (validate-setq racer-rust-src-path (getenv "RUST_SRC_PATH")))
 
 (use-package cargo                      ; Control Cargo
   :ensure t
   :bind (:map rust-mode-map
               ("<f6>" . cargo-process-build))
-  :init (add-hook 'rust-mode-hook #'cargo-minor-mode))
+  :hook (rust-mode . cargo-minor-mode))
 
 (use-package toml-mode                  ; Toml for Cargo files
   :ensure t
@@ -259,6 +245,7 @@
 (use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
   :mode ("\\.js\\'" . js2-mode)
+  :hook (js2-mode . js2-imenu-extras-mode)
   :config
   (validate-setq
    ;; Disable parser errors and strict warnings
@@ -266,10 +253,7 @@
    js2-mode-show-strict-warnings nil)
 
   ;; Try to highlight most ECMA built-ins
-  (validate-setq js2-highlight-level 3)
-
-  ;; Better Imenu in j2-mode
-  (add-hook 'js2-mode-hook #'js2-imenu-extras-mode))
+  (validate-setq js2-highlight-level 3))
 
 (use-package purescript-mode            ; PureScript editing mode
   :ensure t
@@ -278,16 +262,15 @@
 (use-package psc-ide                    ; Minor mode for psc-ide
   :ensure t
   :after purescript-mode
-  :config (add-hook 'purescript-mode-hook
-                    (lambda ()
-                      (psc-ide-mode)
-                      (turn-on-purescript-indentation))))
+  :hook (purescript-mode . (lambda ()
+                             (psc-ide-mode)
+                             (turn-on-purescript-indentation))))
 
 (use-package psci                       ; PureScript REPL
   :ensure t
   :bind (:map purescript-mode-map
               ("C-c C-z" . psci))
-  :config (add-hook 'purescript-mode-hook 'inferior-psci-mode))
+  :hook (purescript-mode . inferior-psci-mode))
 
 (use-package css-mode                   ; Better CSS support
   :defer t
@@ -296,7 +279,7 @@
 (use-package css-eldoc                  ; Eldoc for CSS
   :ensure t
   :commands (turn-on-css-eldoc)
-  :init (add-hook 'css-mode-hook #'turn-on-css-eldoc))
+  :hook (css-mode . turn-on-css-eldoc))
 
 (use-package less-css-mode              ; Mode for Less CSS files
   :mode "\\.less\\'")
@@ -372,21 +355,19 @@
   :ensure t
   :bind (:map sql-mode-map
               ("C-c m u" . sqlup-capitalize-keywords-in-region))
-  :config (add-hook 'sql-mode-hook #'sqlup-mode))
+  :hook (sql-mode . sqlup-mode))
 
 ;;; Bugs management
 (use-package bug-reference              ; Buttonize bug references
   :defer t
-  :init
-  (add-hook 'prog-mode-hook #'bug-reference-prog-mode)
-  (add-hook 'text-mode-hook #'bug-reference-mode))
+  :hook ((prog-mode . bug-reference-prog-mode)
+         (text-mode . bug-reference-mode)))
 
 ;;; Misc utilities
 (use-package eldoc                      ; Documentation in the echo area
   :defer t
   ;; Enable Eldoc for `eval-expression', too
-  :init
-  (add-hook 'eval-expression-minibuffer-setup-hook #'eldoc-mode)
+  :hook (eval-expression-minibuffer-setup . eldoc-mode)
   :config
   (setq-default eldoc-documentation-function #'describe-char-eldoc)
   ;; Show eldoc more promptly

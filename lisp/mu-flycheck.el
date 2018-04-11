@@ -51,9 +51,8 @@
 
 (use-package flycheck-rust              ; Flycheck setup for Rust
   :ensure t
-  :defer t
   :after rust-mode
-  :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  :hook (flycheck-mode . flycheck-rust-setup))
 
 (use-package flycheck-vale              ; Flycheck setup for Vale
   :ensure t

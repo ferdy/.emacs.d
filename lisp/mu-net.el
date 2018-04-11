@@ -182,11 +182,9 @@
   :defer t
   :bind (("C-c t a" . goto-address-mode)
          ("C-c t A" . goto-address-prog-mode))
-  :init
-  (add-hook 'prog-mode-hook #'goto-address-prog-mode)
-  (add-hook 'text-mode-hook #'goto-address-mode)
-  (add-hook 'org-mode-hook (lambda ()
-                             (goto-address-mode -1))))
+  :hook ((prog-mode . goto-address-prog-mode)
+         (text-mode . goto-address-mode)
+         (org-mode  . (lambda () (goto-address-mode -1)))))
 
 (use-package eww                        ; Built-in web browser
   :bind  (("C-c a w b" . eww-list-bookmarks)
