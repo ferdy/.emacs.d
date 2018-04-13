@@ -112,7 +112,6 @@
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
      ("https://www.hongkongfp.com/feed" news)
-     ("http://www.internazionale.it/subscribe/backstage/" news)
      ("http://www.lastampa.it/italia/politica/rss.xml" news)
      ("http://www.princerecordings.com/feed/" music)
      ("http://www.rogerebert.com/feed/" cinema)
