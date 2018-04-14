@@ -104,7 +104,6 @@
      ("https://haskellweekly.news/haskell-weekly.atom" haskell)
      ("https://news.ycombinator.com/rss" news)
      ("http://outlawvern.com/feed/" cinema)
-     ("http://planet.clojure.in/atom.xml" lisp)
      ("https://planet.haskell.org/atom.xml" haskell)
      ("http://planet.emacsen.org/atom.xml" emacs)
      ("http://reverseshot.org/archive/entry/rss" cinema)
