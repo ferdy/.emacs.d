@@ -56,6 +56,9 @@
   ;; Refresh `magit-status' after saving a buffer
   (add-hook 'after-save-hook #'magit-after-save-refresh-status)
 
+  ;; Refresh VC state when Magit refreshes the buffer to keep ibuffer-vc in sync
+  (add-hook 'magit-refresh-buffer-hook #'vc-refresh-state)
+
   ;; Free C-c C-w for Eyebrowse
   (unbind-key "C-c C-w" git-commit-mode-map)
 
