@@ -115,7 +115,6 @@
      ("http://www.princerecordings.com/feed/" music)
      ("http://www.rogerebert.com/feed/" cinema)
      ("http://www.savagechickens.com/feed" comic)
-     ("http://www.signature-reads.com/feed/" books)
      ("http://www.slantmagazine.com/rss" cinema)
      ("https://www.theguardian.com/uk/environment/rss" news)
      ("https://www.theguardian.com/uk-news/rss" news)
