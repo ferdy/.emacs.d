@@ -14,12 +14,7 @@
 (use-package vc-hooks                   ; Simple version control
   :bind (("S-<f5>" . vc-revert)
          ("C-c v r" . vc-refresh-state))
-  :config
-  (validate-setq
-   ;; Always follow symlinks to files in VCS repos
-   vc-follow-symlinks t
-   ;; Use only Git as VC backend
-   vc-handled-backends '(Git)))
+  :config (validate-setq vc-follow-symlinks t))
 
 (use-package magit                      ; The best Git client out there
   :ensure t
