@@ -52,6 +52,10 @@
 (use-package hi-lock                    ; Custom regexp highlights
   :init (global-hi-lock-mode))
 
+(use-package fontify-face               ; Fontify symbols with that their face
+  :ensure t
+  :commands (fontify-face-mode))
+
 (provide 'mu-highlight)
 
 ;; Local Variables:
