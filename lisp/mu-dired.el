@@ -146,6 +146,11 @@
   :ensure t
   :config (diredfl-global-mode))
 
+(use-package dired-rsync                ; Allow rsync from dired buffers
+  :ensure t
+  :bind (:map dired-mode-map
+              ("C-c C-r" . dired-rsync)))
+
 (provide 'mu-dired)
 
 ;; Local Variables:
