@@ -146,21 +146,27 @@ _e_: extra   _l_: list        _n_: new
   :after company
   :config (company-quickhelp-mode))
 
-(use-package company-math               ; Backend for math symbols
+(use-package company-math               ; Backends for math symbols
   :ensure t
   :after company
   :config
   (add-to-list 'company-backends 'company-math-symbols-unicode)
   (add-to-list 'company-backends 'company-math-symbols-latex))
 
+(use-package company-auctex             ; Backend for AUCTeX
+  :ensure t
+  :init (company-auctex-init))
+
+(use-package company-reftex             ; Backends for RefTeX
+  :ensure t
+  :after company
+  (add-to-list 'company-backends 'company-reftex-labels)
+  (add-to-list 'company-backends 'company-reftex-citations))
+
 (use-package company-web                ; Backend for web development
   :ensure t
   :after company
   :config (add-to-list 'company-backends 'company-web-html))
-
-(use-package company-auctex             ; Backend for AUCTeX
-  :ensure t
-  :init (company-auctex-init))
 
 (use-package company-shell              ; Company support for shell functions
   :ensure t
