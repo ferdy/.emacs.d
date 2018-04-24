@@ -177,7 +177,9 @@
                 mode-line-buffer-identification " " mode-line-position
                 (vc-mode vc-mode)
                 (multiple-cursors-mode mc/mode-line)
-                " " mode-line-modes mode-line-end-spaces))
+                " " mode-line-modes
+                " " dired-rsync-modeline-status
+                mode-line-end-spaces))
 
 (defmacro rename-modeline (package-name mode new-name)
   "Rename PACKAGE-NAME with MODE into NEW-NAME in the mode line."
