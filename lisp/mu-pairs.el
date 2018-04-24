@@ -28,7 +28,11 @@
    ;; Disable debug messages
    sp-message-width nil
    ;; Keep pair content overlay on backward movement
-   sp-cancel-autoskip-on-backward-movement nil))
+   sp-cancel-autoskip-on-backward-movement nil)
+
+  (sp-with-modes sp--lisp-modes
+    (sp-local-pair "'" nil :actions nil)
+    (sp-local-pair "`" nil :actions nil)))
 
 (use-package smartparens-config         ; Configure Smartparens
   :ensure smartparens
