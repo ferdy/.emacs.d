@@ -115,7 +115,8 @@
 (use-package cider-repl                 ; REPL interactions with CIDER
   :ensure cider
   :bind (:map cider-repl-mode-map
-              ("C-c C-o" . cider-repl-clear-buffer)
+              ("C-c M-o" . cider-repl-clear-buffer)
+              ("C-c C-o" . cider-repl-switch-to-other)
               ("C-c t p" . cider-toggle-pretty-printing))
   :hook ((cider-repl-mode . company-mode)
          (cider-repl-mode . eldoc-mode)
