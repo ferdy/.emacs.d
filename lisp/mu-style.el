@@ -178,7 +178,7 @@
                 (vc-mode vc-mode)
                 (multiple-cursors-mode mc/mode-line)
                 " " mode-line-modes
-                " " dired-rsync-modeline-status
+                mode-line-process
                 mode-line-end-spaces))
 
 (defmacro rename-modeline (package-name mode new-name)
