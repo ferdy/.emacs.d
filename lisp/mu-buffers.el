@@ -44,11 +44,9 @@
 
 (validate-setq
  frame-resize-pixelwise t               ; Resize by pixels
- frame-title-format '(:eval (concat
-                             "Emacs - "
-                             (if (buffer-file-name)
-                                 (abbreviate-file-name (buffer-file-name))
-                               "%b"))))
+ frame-title-format '(:eval (if (buffer-file-name)
+                                (abbreviate-file-name (buffer-file-name))
+                              "%b")))
 
 ;; Configure `display-buffer' behaviour for some special buffers
 (validate-setq
