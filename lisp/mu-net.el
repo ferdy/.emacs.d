@@ -109,6 +109,7 @@
      ("http://planet.emacsen.org/atom.xml" emacs)
      ("http://reverseshot.org/archive/entry/rss" cinema)
      ("http://sensesofcinema.com/feed/" cinema)
+     ("http://www.500princesongs.com/feed" music)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
      ("https://www.hongkongfp.com/feed" news)
