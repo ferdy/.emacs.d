@@ -13,7 +13,10 @@
 
 (use-package files                      ; Core commands for files
   :bind (("<f5>" . revert-buffer)
-         ("C-c f l" . find-file-literally)))
+         ("C-c f l" . find-file-literally))
+  :config
+  ;; Always follow symlinks
+  (validate-setq find-file-visit-truename t))
 
 (use-package recentf                    ; Manage recent files
   :demand t
