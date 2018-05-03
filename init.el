@@ -71,6 +71,9 @@
 ;;; Initialization
 (setq inhibit-default-init t)           ; Disable the site default settings
 
+;; Ensure resizing Emacs window doesn't cause display problems
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+
 ;;; Validation
 (use-package validate                   ; Validate options
   :ensure t)
