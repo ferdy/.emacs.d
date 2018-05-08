@@ -80,9 +80,6 @@
 ;; Focus new help windows when opened
 (setq-default help-window-select t)
 
-;; Keep popping on C-SPC
-(validate-setq set-mark-command-repeat-pop t)
-
 ;;; Utilities and key bindings
 ;; Better forward and backward paragraph
 ;;;###autoload
