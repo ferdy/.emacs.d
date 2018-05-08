@@ -151,29 +151,6 @@
  ("C-S-f" . super-forward-char))
 
 ;;;###autoload
-(defun goto-prev-line-with-same-indentation ()
-  "Move to previous line with the same indentation as the current."
-  (interactive)
-  (back-to-indentation)
-  (re-search-backward
-   (s-concat "^" (s-repeat (current-column) " ") "[^ \t\r\n\v\f]"))
-  (back-to-indentation))
-
-;;;###autoload
-(defun goto-next-line-with-same-indentation ()
-  "Move to next line with the same indentation as the current."
-  (interactive)
-  (back-to-indentation)
-  (re-search-forward
-   (s-concat "^" (s-repeat (current-column) " ") "[^ \t\r\n\v\f]")
-   nil nil (if (= 0 (current-column)) 2 1))
-  (back-to-indentation))
-
-(bind-keys
- ("C-þ" . goto-prev-line-with-same-indentation)
- ("C-ñ" . goto-next-line-with-same-indentation))
-
-;;;###autoload
 (defun mu-goto-line-with-line-numbers ()
   "Display line numbers temporarily when using `goto-line'."
   (interactive)
