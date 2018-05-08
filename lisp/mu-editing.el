@@ -302,7 +302,7 @@ prefix argument."
       (open-line 1)
       (insert line-text))))
 
-(bind-key "C-x C-d" 'duplicate-line)    ; Duplicate line at point
+(bind-key "C-c x d" 'duplicate-line)    ; Duplicate line at point
 
 ;; Join line with the next one
 (bind-key "C-j" (lambda ()
