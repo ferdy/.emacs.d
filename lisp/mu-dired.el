@@ -151,6 +151,14 @@
   :bind (:map dired-mode-map
               ("C-c C-r" . dired-rsync)))
 
+(use-package dired-du
+  :ensure t
+  :defer t
+  :config
+  (validate-setq
+   dired-du-size-format t
+   dired-du-update-headers t))
+
 (provide 'mu-dired)
 
 ;; Local Variables:
