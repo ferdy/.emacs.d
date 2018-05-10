@@ -3,11 +3,7 @@
 This is the Emacs configuration I use everyday.
 
 It requires an Emacs version built from development sources and some external
-tools to work as expected. I devised a
-[script](https://github.com/manuel-uberti/scripts/blob/master/env-setup) to
-prepare the proper environment, but your mileage may vary.
-
-This configuration is finely honed to work with:
+tools to work as expected. It is finely honed to work with:
 
 - [Haskell](https://github.com/commercialhaskell/intero)
 - [Clojure and ClojureScript](https://github.com/clojure-emacs/cider)
