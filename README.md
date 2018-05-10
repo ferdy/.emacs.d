@@ -2,8 +2,8 @@
 
 This is the Emacs configuration I use everyday.
 
-It requires an Emacs version built from development sources and some external
-tools to work as expected. It is finely honed to work with:
+It requires an Emacs version built from development sources, and it is finely
+honed to work with:
 
 - [Haskell](https://github.com/commercialhaskell/intero)
 - [Clojure and ClojureScript](https://github.com/clojure-emacs/cider)
