@@ -155,7 +155,7 @@
 (use-package mu-flycheck :defer 1)
 (use-package mu-files :defer 1)
 (use-package mu-dired)
-(use-package mu-completion :defer 1)
+(use-package mu-completion)
 (use-package mu-languages)
 (use-package mu-latex :defer 2)
 (use-package mu-projectile)
