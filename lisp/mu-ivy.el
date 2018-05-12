@@ -47,6 +47,10 @@
   :ensure t
   :config (validate-setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
+(use-package ivy-yasnippet              ; Preview yasnippets with Ivy
+  :ensure t
+  :bind ("C-c y" . ivy-yasnippet))
+
 (use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind ("C-c s s" . swiper-all)
