@@ -49,7 +49,6 @@
 
 (use-package yasnippet                  ; Snippets
   :ensure t
-  :bind ("C-c y" . mu-yasnippet/body)
   :config
   (validate-setq
    yas-verbosity 1                      ; No need to be so verbose
@@ -59,29 +58,7 @@
     (validate-setq yas-snippet-dirs '(yasnippet-snippets-dir)))
 
   (yas-reload-all)
-  (yas-global-mode)
-
-  (defhydra mu-yasnippet (:hint nil)
-    "
-YASnippets (quit with _q_)
-^Modes^      ^Load/Visit^     ^Actions^
-^-----^------^----------^-----^-------^--------
-_g_: global  _d_: directory   _i_: insert
-_m_: minor   _f_: file        _t_: tryout
-_e_: extra   _l_: list        _n_: new
-         _a_ll
-"
-    ("q" nil)
-    ("d" yas-load-directory)
-    ("e" yas-activate-extra-mode)
-    ("i" yas-insert-snippet)
-    ("f" yas-visit-snippet-file)
-    ("n" yas-new-snippet)
-    ("t" yas-tryout-snippet)
-    ("l" yas-describe-tables)
-    ("g" yas-global-mode)
-    ("m" yas-minor-mode)
-    ("a" yas-reload-all)))
+  (yas-global-mode))
 
 (use-package yasnippet-snippets         ; Collection of snippets
   :ensure t)
