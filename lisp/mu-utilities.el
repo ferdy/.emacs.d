@@ -46,7 +46,7 @@
 (use-package pandoc-mode                ; Easily control Pandoc in Emacs
   :ensure t
   :bind ("C-c t P" . pandoc-mode)
-  :config (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings))
+  :config (add-hook 'pandoc-mode-hook #'pandoc-load-default-settings))
 
 (use-package proced                     ; Manage processes
   :defer t
@@ -54,7 +54,7 @@
   ;; Auto-update proced buffer
   (defun proced-settings ()
     (proced-toggle-auto-update 1))
-  (add-hook 'proced-mode-hook 'proced-settings))
+  (add-hook 'proced-mode-hook #'proced-settings))
 
 (use-package list-environment           ; List process environment variables
   :ensure t
