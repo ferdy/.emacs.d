@@ -158,6 +158,11 @@
   :after company
   :config (add-to-list 'company-backends 'company-restclient))
 
+(use-package company-ansible            ; Company support for ansible
+  :ensure t
+  :after company
+  :config (add-to-list 'company-backends 'company-ansible))
+
 (provide 'mu-completion)
 
 ;; Local Variables:
