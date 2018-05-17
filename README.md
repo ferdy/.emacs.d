@@ -20,7 +20,7 @@ This is how I build and install Emacs on Ubuntu. If you are using a different
 operative system, you need to understand how to install the required
 dependencies. Otherwise just run:
 ```console
-$ sudo apt-get build-dep emacs24
+$ sudo apt-get build-dep emacs25
 ```
 Once ready:
 
