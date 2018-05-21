@@ -35,6 +35,7 @@
   :ensure intero
   :mode ("\\.ghci\\'" . haskell-mode)
   :hook ((haskell-mode . eldoc-mode)
+         (haskell-mode . subword-mode)
          (haskell-mode . haskell-indentation-mode)
          (haskell-mode . haskell-auto-insert-module-template))
   :config
@@ -72,6 +73,12 @@
     (kill-local-variable 'exec-path)))
 
 (add-hook 'haskell-mode-hook #'stack-exec-path-mode)
+
+(use-package haskell-cabal              ; Support for Cabal packages
+  :ensure intero
+  :mode ("\\.cabal\\'" . haskell-cabal-mode)
+  :hook ((haskell-cabal-mode . eldoc-mode)
+         (haskell-cabal-mode . subword-mode)))
 
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
