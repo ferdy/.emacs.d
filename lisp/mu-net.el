@@ -127,7 +127,7 @@
   :ensure elfeed
   :after elfeed
   :config
-  (setq-default elfeed-search-filter "@1-week-ago +unread")
+  (setq-default elfeed-search-filter "@1-day-ago +unread")
 
   (defun mu-elfeed-mark-all-read ()
     "Mark all feeds as read."
