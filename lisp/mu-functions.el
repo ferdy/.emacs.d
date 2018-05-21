@@ -62,7 +62,8 @@ With negative argument, convert previous words."
 
 ;;;###autoload
 (defun mu-insert-version ()
-  "Insert Emacs version info and system details at point."
+  "Insert Emacs version info and system details at point.
+It requires `s.el'."
   (interactive)
   (insert (emacs-version) "\n")
   (when (and (boundp 'emacs-repository-version)

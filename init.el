@@ -66,6 +66,9 @@
 (use-package dash                       ; A modern list library
   :ensure t)
 
+(use-package s                          ; String manipulation library
+  :ensure t)
+
 (require 'subr-x)
 (require 'time-date)
 
