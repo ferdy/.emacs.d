@@ -42,6 +42,7 @@
 (setq load-prefer-newer t)              ; Always load newer compiled files
 (setq ad-redefinition-action 'accept)   ; Silence advice redefinition warnings
 (setq message-log-max 10000)            ; Debugging
+(setq enable-local-variables :all)      ; Always enable all local variables
 
 ;; Allow more than 800Kb cache during init
 (setq gc-cons-threshold 402653184
