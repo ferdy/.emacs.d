@@ -62,7 +62,7 @@ With negative argument, convert previous words."
 
 ;;;###autoload
 (defun mu-display-version ()
-  "Display Emacs version and system details at point in a temporary buffer.
+  "Display Emacs version and system details in a temporary buffer.
 It requires `s.el'."
   (interactive)
   (with-help-window "*version*"
