@@ -80,8 +80,8 @@ It requires `s.el'."
                 (mapconcat 'number-to-string (x-server-version) ".") "\n")
         (when (and system-configuration-options
                    (not (equal system-configuration-options "")))
-          (insert "\nConfigured using:\n" system-configuration-options "\n\n")
-          (fill-region (line-beginning-position -1) (point)))))))
+          (insert "\nConfigured using:\n"
+                  system-configuration-options "\n\n"))))))
 
 (provide 'mu-functions)
 
