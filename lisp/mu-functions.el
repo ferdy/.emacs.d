@@ -73,18 +73,14 @@ It requires `s.el'."
     (with-help-window buffer-name
       (with-current-buffer buffer-name
         (insert (emacs-version) "\n")
-        (when (and (boundp 'emacs-repository-version)
-                   (stringp emacs-repository-version))
-          (insert "\nRepository revision: " emacs-repository-version "\n"))
-        (when (stringp lsb)
-          (insert "\nSystem " (s-collapse-whitespace lsb) "\n"))
+        (insert "\nRepository revision: " emacs-repository-version "\n")
+        (insert "\nSystem " (s-collapse-whitespace lsb) "\n")
         (insert "\nWindowing system distributor `" (x-server-vendor)
                 "', version "
                 (mapconcat 'number-to-string (x-server-version) ".") "\n")
         (when (and system-configuration-options
                    (not (equal system-configuration-options "")))
-          (insert "\nConfigured using:\n `configure "
-                  system-configuration-options "'\n\n")
+          (insert "\nConfigured using:\n" system-configuration-options "\n\n")
           (fill-region (line-beginning-position -1) (point)))))))
 
 (provide 'mu-functions)
