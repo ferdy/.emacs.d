@@ -44,15 +44,6 @@ With negative argument, convert previous words."
           (insert (mu--string-to-acronym str)))))))
 
 ;;;###autoload
-(defun mu-emacs-debug-version ()
-  "Show version of Emacs and 7 characters of the commit hash."
-  (interactive)
-  (message
-   (format "GNU Emacs %s (commit %s)"
-           emacs-version
-           (substring (emacs-repository-get-version) 0 7))))
-
-;;;###autoload
 (defun mu-face-at-point (pos)
   "Show face at POS (point)."
   (interactive "d")
