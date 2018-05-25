@@ -54,11 +54,18 @@ With negative argument, convert previous words."
 (defun mu--os-version ()
   "Call `lsb_release' to retrieve OS version."
   (replace-regexp-in-string
-   "[ \t\n\r]+" " "
+   "Description:\\|[\t\n\r]+" ""
    (with-temp-buffer
      (and (eq 0
               (call-process "lsb_release" nil '(t nil) nil "-d"))
           (buffer-string)))))
+
+(defun mu--gnome-version ()
+  "Call `gnome-shell' to retrieve GNOME version."
+  (with-temp-buffer
+    (and (eq 0
+             (call-process "gnome-shell" nil '(t nil) nil "--version"))
+         (buffer-string))))
 
 ;;;###autoload
 (defun mu-display-version ()
@@ -69,14 +76,13 @@ With negative argument, convert previous words."
       (with-current-buffer buffer-name
         (insert (emacs-version) "\n")
         (insert "\nRepository revision: " emacs-repository-version "\n")
-        (insert "\nSystem " (mu--os-version) "\n")
-        (insert "\nWindowing system distributor `" (x-server-vendor)
-                "', version "
-                (mapconcat 'number-to-string (x-server-version) ".") "\n")
         (when (and system-configuration-options
                    (not (equal system-configuration-options "")))
           (insert "\nConfigured using:\n"
-                  system-configuration-options "\n\n"))))))
+                  system-configuration-options))
+        (insert "\n\nOperating system: " (mu--os-version) "\n")
+        (insert "Window system: " (getenv "XDG_SESSION_TYPE") "\n")
+        (insert "Desktop environment: " (mu--gnome-version))))))
 
 (provide 'mu-functions)
 
