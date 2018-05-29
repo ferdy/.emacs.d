@@ -153,11 +153,6 @@
   (add-to-list 'company-backends 'company-fish-shell)
   (add-to-list 'company-backends 'company-shell-env))
 
-(use-package company-restclient         ; Company support for restclient
-  :ensure t
-  :after company
-  :config (add-to-list 'company-backends 'company-restclient))
-
 (use-package company-ansible            ; Company support for ansible
   :ensure t
   :after company

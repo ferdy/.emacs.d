@@ -327,10 +327,6 @@
   :ensure t
   :mode "\\.yaml\\'")
 
-(use-package restclient                 ; Interactive HTTP client
-  :ensure t
-  :defer t)
-
 ;;; Other languages
 (use-package sh-script                  ; Shell scripts
   :defer t
