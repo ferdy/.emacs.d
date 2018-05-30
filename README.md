@@ -36,6 +36,7 @@ $ ./autogen.sh git
 $ ./configure --host=x86_64-debian-linux-gnu
 $ make
 $ sudo make install
+$ sudo make install-info
 $ make clean
 ```
 - clone this repo to your home directory:
@@ -59,31 +60,16 @@ This configuration tracks latest Emacs developments, so I highly recommend you
 update and build your sources once a week.
 
 You can use [Magit](https://github.com/magit/magit); `magit-status` is bound
-to <kbd>C-c v v</kbd>. Or you can do it with the command line:
-```console
-$ cd emacs
-$ git pull
-```
-Now you can build Emacs:
-```console
-$ ./configure --host=x86_64-debian-linux-gnu
-$ make
-$ sudo make install
-$ make clean
-```
+to <kbd>C-c v v</kbd>.
+
 I would also recommend you regularly upgrade every package installed. You can
 easily do it with [Paradox](https://github.com/Bruce-Connor/paradox), which is
 bound to <kbd>C-c a p</kbd>.
 
 If sources do not build correctly, or you find errors while using the latest
-commit, you can still revert to a working commit and re-build:
-```console
-$ git reset --hard <commit>
-$ ./configure --host=x86_64-debian-linux-gnu
-$ make
-$ sudo make install
-$ make clean
-```
+commit, you can still revert to a working commit with `git reset --hard
+<commit>` and re-build.
+
 With the help of tools such as [Magit](https://github.com/magit/magit),
 [Paradox](https://github.com/Bruce-Connor/paradox) and your preferred shell,
 maintenance is simple.
