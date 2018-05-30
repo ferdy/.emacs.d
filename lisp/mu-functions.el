@@ -59,7 +59,9 @@ With negative argument, convert previous words."
 
 (defun mu--gnome-version ()
   "Call `gnome-shell' to retrieve GNOME version."
-  (shell-command-to-string "gnome-shell --version"))
+  (replace-regexp-in-string
+   "[\t\n\r]+" ""
+   (shell-command-to-string "gnome-shell --version")))
 
 ;;;###autoload
 (defun mu-display-version ()
