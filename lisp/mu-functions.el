@@ -52,7 +52,7 @@ With negative argument, convert previous words."
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
 (defun mu--call-process-to-string (process options)
-  "Call PROCESS with OPTIONS using `call-process'."
+  "Call PROCESS with OPTIONS and return the result in a string."
   (with-temp-buffer
     (and (eq 0
              (call-process process nil '(t nil) nil options))
