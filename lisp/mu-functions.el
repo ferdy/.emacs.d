@@ -51,21 +51,22 @@ With negative argument, convert previous words."
                   (get-char-property pos 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
+(defun mu--call-process-to-string (process options)
+  "Call PROCESS with OPTIONS using `call-process'."
+  (with-temp-buffer
+    (and (eq 0
+             (call-process process nil '(t nil) nil options))
+         (buffer-string))))
+
 (defun mu--os-version ()
   "Call `lsb_release' to retrieve OS version."
   (replace-regexp-in-string
    "Description:\\|[\t\n\r]+" ""
-   (with-temp-buffer
-     (and (eq 0
-              (call-process "lsb_release" nil '(t nil) nil "-d"))
-          (buffer-string)))))
+   (mu--call-process-to-string "lsb_release" "-d")))
 
 (defun mu--gnome-version ()
   "Call `gnome-shell' to retrieve GNOME version."
-  (with-temp-buffer
-    (and (eq 0
-             (call-process "gnome-shell" nil '(t nil) nil "--version"))
-         (buffer-string))))
+  (mu--call-process-to-string "gnome-shell" "--version"))
 
 ;;;###autoload
 (defun mu-display-version ()
