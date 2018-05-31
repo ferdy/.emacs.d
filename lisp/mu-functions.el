@@ -74,9 +74,10 @@ With negative argument, convert previous words."
         (insert "\nRepository revision: " emacs-repository-version "\n")
         (when (and system-configuration-options
                    (not (equal system-configuration-options "")))
-          (insert "\nConfigured using:\n"
+          (insert "Configured using:\n"
                   system-configuration-options))
-        (insert "\n\nOperating system: " (mu--os-version) "\n")
+        (insert "\n\nEmacs uptime: " (emacs-uptime) "\n")
+        (insert "Operating system: " (mu--os-version) "\n")
         (insert "Window system: " (getenv "XDG_SESSION_TYPE") "\n")
         (insert "Desktop environment: " (mu--gnome-version))))))
 
