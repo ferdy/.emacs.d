@@ -66,8 +66,8 @@
 (use-package dash                       ; A modern list library
   :ensure t)
 
-(require 'subr-x)
-(require 'time-date)
+(require 'subr-x)                       ; Extra Lisp functions
+(require 'time-date)                    ; Functions for times and dates
 
 ;;; Initialization
 (setq inhibit-default-init t)           ; Disable the site default settings
