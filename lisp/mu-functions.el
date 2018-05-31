@@ -70,8 +70,8 @@ With negative argument, convert previous words."
   (let ((buffer-name "*version*"))
     (with-help-window buffer-name
       (with-current-buffer buffer-name
-        (insert (emacs-version) "\n")
-        (insert "\nRepository revision: " emacs-repository-version "\n")
+        (insert (emacs-version) "\n\n")
+        (insert "Repository revision: " emacs-repository-version "\n")
         (when (and system-configuration-options
                    (not (equal system-configuration-options "")))
           (insert "Configured using:\n"

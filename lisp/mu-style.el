@@ -122,18 +122,6 @@
     (set-face-attribute 'mode-line nil :box nil)
     (set-face-attribute 'mode-line-inactive nil :box nil)))
 
-(use-package doneburn-theme             ; Light theme
-  :disabled t
-  :ensure t
-  :config
-  (load-theme 'doneburn 'no-confirm)
-  (let ((line (face-attribute 'mode-line :underline)))
-    (set-face-attribute 'mode-line nil :overline line)
-    (set-face-attribute 'mode-line-inactive nil :overline line)
-    (set-face-attribute 'mode-line-inactive nil :underline line)
-    (set-face-attribute 'mode-line nil :box nil)
-    (set-face-attribute 'mode-line-inactive nil :box nil)))
-
 ;;; The mode line
 ;; Slightly decrease the font in the mode line
 (set-face-attribute 'mode-line nil
