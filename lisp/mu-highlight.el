@@ -34,7 +34,8 @@
 
 (use-package hl-todo                    ; Highlight TODO and similar keywords
   :ensure t
-  :hook (prog-mode . hl-todo-mode))
+  :hook ((prog-mode . hl-todo-mode)
+         (yaml-mode . hl-todo-mode)))
 
 (use-package highlight-numbers          ; Fontify number literals
   :ensure t
