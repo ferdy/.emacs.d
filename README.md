@@ -57,14 +57,14 @@ and set up thanks to [use-package](https://github.com/jwiegley/use-package).
 
 ## Updates
 This configuration tracks latest Emacs developments, so I highly recommend you
-update and build your sources once a week.
+update and build your sources frequently.
 
 You can use [Magit](https://github.com/magit/magit); `magit-status` is bound
 to <kbd>C-c v v</kbd>.
 
-I would also recommend you regularly upgrade every package installed. You can
-easily do it with [Paradox](https://github.com/Bruce-Connor/paradox), which is
-bound to <kbd>C-c a p</kbd>.
+I would also recommend you regularly upgrade every package installed. You can do
+it with [Paradox](https://github.com/Bruce-Connor/paradox), which is bound to
+<kbd>C-c a p</kbd>.
 
 If sources do not build correctly, or you find errors while using the latest
 commit, you can still revert to a working commit with `git reset --hard
