@@ -64,7 +64,7 @@ With negative argument, convert previous words."
    (shell-command-to-string "gnome-shell --version")))
 
 ;;;###autoload
-(defun mu-display-version ()
+(defun mu-env-info ()
   "Display Emacs version and system details in a temporary buffer."
   (interactive)
   (let ((buffer-name "*version*"))
