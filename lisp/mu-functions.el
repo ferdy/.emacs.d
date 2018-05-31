@@ -81,6 +81,8 @@ With negative argument, convert previous words."
         (insert "Window system: " (getenv "XDG_SESSION_TYPE") "\n")
         (insert "Desktop environment: " (mu--gnome-version))))))
 
+(bind-key "C-c h v" #'mu-env-info)
+
 (provide 'mu-functions)
 
 ;; Local Variables:
