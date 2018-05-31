@@ -55,6 +55,10 @@
               ("M-C-<up>"    . sp-splice-sexp-killing-around)
               ("M-?"         . sp-convolute-sexp)
               ("M-r"         . sp-raise-sexp)
+              ;; Wrap with
+              ("M-("         . sp-wrap-round)
+              ("C-è"         . sp-wrap-square)
+              ("C-à"         . sp-wrap-curly)
               ;; Barfage & Slurpage
               ("C-)"         . sp-forward-slurp-sexp)
               ("C-<right>"   . sp-forward-slurp-sexp)

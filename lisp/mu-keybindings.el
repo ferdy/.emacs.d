@@ -97,16 +97,6 @@
 (bind-key "M-=" #'count-words)   ; Use count-words instead of count-words-region
 (bind-key "C-z" #'undo)          ; C-z for undo
 
-;; These keybindings make it easier to type curly braces and square brackets
-;; with an Italian keyboard layout
-(defun mu-insert-pair (pair)
-  "Insert PAIR using Smartparens."
-  (insert pair)
-  (sp-insert-pair))
-
-(bind-key "C-è" (lambda () (interactive) (mu-insert-pair "[")))
-(bind-key "C-à" (lambda () (interactive) (mu-insert-pair "{")))
-
 ;; Disable C-x C-n to avoid the disabled command buffer
 (unbind-key "C-x C-n" global-map)
 
