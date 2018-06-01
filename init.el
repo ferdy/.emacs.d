@@ -103,13 +103,6 @@
 (defconst mu-custom-file (locate-user-emacs-file "custom.el")
   "File used to store settings from Customization UI.")
 
-;; Do not open external GUI for GnuPG password prompt
-(validate-setq epg-pinentry-mode 'loopback)
-
-(use-package pinentry
-  :ensure t
-  :config (pinentry-start))
-
 (use-package cus-edit                   ; Set up custom.el
   :defer t
   :config
