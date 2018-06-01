@@ -51,6 +51,13 @@ With negative argument, convert previous words."
                   (get-char-property pos 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
+(defun mu--colour-theme ()
+  "Get the currently applied colour theme."
+  (replace-regexp-in-string
+   "[\t\n\r ]+" ""
+   (let ((rs (shell-command-to-string "rg load-theme")))
+     (nth 1 (split-string rs "'")))))
+
 (defun mu--os-version ()
   "Call `lsb_release' to retrieve OS version."
   (replace-regexp-in-string
@@ -77,6 +84,7 @@ With negative argument, convert previous words."
           (insert "Configured using:\n"
                   system-configuration-options))
         (insert "\n\nEmacs uptime: " (emacs-uptime) "\n")
+        (insert "Colour theme: " (mu--colour-theme) "\n")
         (insert "Operating system: " (mu--os-version) "\n")
         (insert "Window system: " (getenv "XDG_SESSION_TYPE") "\n")
         (insert "Desktop environment: " (mu--gnome-version))))))
