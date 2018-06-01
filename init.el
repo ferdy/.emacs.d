@@ -99,6 +99,13 @@
 (validate-setq user-full-name (getenv "FULLNAME"))
 (validate-setq user-mail-address (getenv "EMAIL"))
 
+(defadvice epg--start (around advice-epg-disable-agent activate)
+  "Unset GPG_AGENT_INFO to avoid external password prompt."
+  (let ((agent (getenv "GPG_AGENT_INFO")))
+    (setenv "GPG_AGENT_INFO" nil)
+    ad-do-it
+    (setenv "GPG_AGENT_INFO" agent)))
+
 ;; Set separate custom file for the customize interface
 (defconst mu-custom-file (locate-user-emacs-file "custom.el")
   "File used to store settings from Customization UI.")
