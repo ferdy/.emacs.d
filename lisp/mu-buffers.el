@@ -63,7 +63,7 @@
                  "*compilation"         ; Compilation buffers
                  "*Flycheck errors*"    ; Flycheck error list
                  "*Calendar"            ; Calendar window
-                 "*version"             ; Emacs version from my custom function
+                 "*env-info"            ; Emacs version from my custom function
                  "*cider-repl"          ; CIDER REPL
                  "*intero"              ; Intero REPL
                  "*idris-repl"          ; Idris REPL

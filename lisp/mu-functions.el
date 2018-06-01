@@ -55,8 +55,9 @@ With negative argument, convert previous words."
   "Get the currently applied colour theme."
   (replace-regexp-in-string
    "[\t\n\r ]+" ""
-   (let ((rs (shell-command-to-string "rg load-theme")))
-     (nth 1 (split-string rs "'")))))
+   (let* ((command (concat "rg load-theme " user-emacs-directory))
+          (res (shell-command-to-string command)))
+     (nth 1 (split-string res "'")))))
 
 (defun mu--os-version ()
   "Call `lsb_release' to retrieve OS version."
@@ -74,7 +75,7 @@ With negative argument, convert previous words."
 (defun mu-env-info ()
   "Display Emacs version and system details in a temporary buffer."
   (interactive)
-  (let ((buffer-name "*version*"))
+  (let ((buffer-name "*env-info*"))
     (with-help-window buffer-name
       (with-current-buffer buffer-name
         (insert (emacs-version) "\n\n")
