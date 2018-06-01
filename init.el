@@ -106,6 +106,10 @@
 ;; Do not open external GUI for GnuPG password prompt
 (validate-setq epg-pinentry-mode 'loopback)
 
+(use-package pinentry
+  :ensure t
+  :config (pinentry-start))
+
 (use-package cus-edit                   ; Set up custom.el
   :defer t
   :config
