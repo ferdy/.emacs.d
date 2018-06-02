@@ -97,6 +97,10 @@
   :ensure t
   :defer t)
 
+(use-package git-timemachine            ; Walk through revisions of a file
+  :ensure t
+  :bind ("C-c v t" . git-timemachine))
+
 (provide 'mu-vers-control)
 
 ;; Local Variables:
