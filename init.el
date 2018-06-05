@@ -140,6 +140,9 @@
 ;; Confirm before quitting Emacs
 (validate-setq confirm-kill-emacs #'y-or-n-p)
 
+;; Do not ask for confirm when killing processes
+(validate-setq confirm-kill-processes nil)
+
 ;;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (use-package mu-style)
