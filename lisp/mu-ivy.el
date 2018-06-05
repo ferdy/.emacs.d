@@ -51,6 +51,10 @@
   :ensure t
   :bind ("C-c y" . ivy-yasnippet))
 
+(use-package ivy-bibtex                 ; Ivy interface for BibTeX entries
+  :ensure t
+  :defer t)
+
 (use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind ("C-c s s" . swiper-all)
