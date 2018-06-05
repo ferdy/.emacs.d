@@ -53,7 +53,11 @@
 
 (use-package ivy-bibtex                 ; Ivy interface for BibTeX entries
   :ensure t
-  :defer t)
+  :defer t
+  :config
+  (validate-setq ivy-re-builders-alist
+                 '((ivy-bibtex . ivy--regex-ignore-order)
+                   (t . ivy--regex-plus))))
 
 (use-package swiper                     ; Isearch with an overview
   :ensure t
