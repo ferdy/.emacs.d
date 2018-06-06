@@ -32,11 +32,9 @@ $ git clone git://git.savannah.gnu.org/emacs.git
 ```console
 $ cd emacs
 $ ./autogen.sh
-$ ./autogen.sh git
 $ ./configure --host=x86_64-debian-linux-gnu
 $ make
 $ sudo make install
-$ sudo make install-info
 $ make clean
 ```
 - clone this repo to your home directory:
