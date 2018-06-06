@@ -50,12 +50,13 @@ $ sudo cp etc/dictionaries/* /usr/share/hunspell
 ```
 - run Emacs
 
-The first time you run Emacs the packages I use will be automatically installed
-and set up thanks to [use-package](https://github.com/jwiegley/use-package).
+The first time you run Emacs,
+[use-package](https://github.com/jwiegley/use-package) will fetch, install and
+configure the packages I use.
 
 ## Updates
-This configuration tracks latest Emacs developments, so I highly recommend you
-update and build your sources frequently.
+This configuration tracks the latest Emacs developments, so I highly recommend
+you update and build your sources frequently.
 
 You can use [Magit](https://github.com/magit/magit); `magit-status` is bound
 to <kbd>C-c v v</kbd>.
