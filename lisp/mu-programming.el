@@ -367,7 +367,17 @@
   :mode ("\\.sql\\'" . sql-mode)
   :bind (("C-c d s" . sql-connect)
          :map sql-mode-map
-         ("C-c m p" . sql-set-product)))
+         ("C-c m f" . mu-sql-format)
+         ("C-c m p" . sql-set-product))
+  :config
+  (defun mu-sql-format (beg end)
+    "Reformat SQL in region from BEG to END using the \"sqlformat\" program.
+Install the Python \"sqlparse\" package to get \"sqlformat\"."
+    (interactive "r")
+    (shell-command-on-region beg end
+                             "sqlformat -r -"
+                             nil t
+                             "*sqlformat-errors*" t)))
 
 (use-package sqlup-mode                 ; Upcase SQL keywords
   :ensure t
