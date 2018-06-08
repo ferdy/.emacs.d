@@ -70,12 +70,7 @@
    ;; C-k C-g to go back to where the research started
    swiper-stay-on-quit t))
 
-(use-package smex                       ; Better M-x interface
-  :ensure t)
-
 (use-package amx                        ; Better M-x interface
-  ;; TODO: waiting for https://github.com/abo-abo/swiper/pull/1585
-  :disabled t
   :ensure t)
 
 (use-package counsel                    ; Completion functions with Ivy
