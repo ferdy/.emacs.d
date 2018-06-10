@@ -66,6 +66,9 @@
 (use-package dash                       ; A modern list library
   :ensure t)
 
+(use-package seq                        ; Sequence manipulation functions
+  :ensure t)
+
 (require 'subr-x)                       ; Extra Lisp functions
 (require 'time-date)                    ; Functions for times and dates
 
