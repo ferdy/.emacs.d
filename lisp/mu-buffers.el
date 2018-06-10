@@ -183,6 +183,21 @@ Add this to `kill-buffer-query-functions'."
 
 (bind-key "C-x C-k" #'kill-this-buffer)  ; Kill only the current buffer
 
+;;;###autoload
+(defun mu-kill-other-buffers ()
+  "Kill all buffers but the current one.
+Doesn't mess with special buffers."
+  (interactive)
+  (when (y-or-n-p
+         "Are you sure you want to kill all buffers but the current one? ")
+    (let* ((buffer-list (seq-filter #'buffer-file-name (buffer-list)))
+           (organizer (get-buffer "gtd.org"))
+           (without-current (delete (current-buffer) buffer-list))
+           (without-organizer (delete organizer without-current)))
+      (seq-each #'kill-buffer without-organizer))))
+
+(bind-key "C-c w k" #'mu-kill-other-buffers)
+
 (provide 'mu-buffers)
 
 ;; Local Variables:
