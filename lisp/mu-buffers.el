@@ -51,8 +51,7 @@
 ;; Configure `display-buffer' behaviour for some special buffers
 (validate-setq
  display-buffer-alist
- `(
-   ;; Messages, errors, processes, Calendar and REPLs in the bottom side window
+ `(;; Messages, errors, processes, Calendar in the bottom side window
    (,(rx bos (or "*Apropos"             ; Apropos buffers
                  "*Man"                 ; Man buffers
                  "*Help"                ; Help buffers
@@ -64,18 +63,22 @@
                  "*Flycheck errors*"    ; Flycheck error list
                  "*Calendar"            ; Calendar window
                  "*env-info"            ; Emacs version from my custom function
-                 "*cider-repl"          ; CIDER REPL
-                 "*intero"              ; Intero REPL
-                 "*idris-repl"          ; Idris REPL
-                 "*ielm"                ; IELM REPL
-                 "*SQL"                 ; SQL REPL
                  "*Cargo"               ; Cargo process buffers
-                 ;; AUCTeX command output
-                 (and (1+ nonl) " output*")))
+                 (and (1+ nonl) " output*"))) ; AUCTeX command output
     (display-buffer-reuse-window display-buffer-in-side-window)
     (side . bottom)
     (reusable-frames . visible)
     (window-height . 0.45))
+   ;; REPLs on the bottom half
+   (,(rx bos (or "*cider-repl"          ; CIDER REPL
+                 "*intero"              ; Intero REPL
+                 "*idris-repl"          ; Idris REPL
+                 "*ielm"                ; IELM REPL
+                 "*SQL"))               ; SQL REPL
+    (display-buffer-reuse-window display-buffer-in-side-window)
+    (side . bottom)
+    (reusable-frames . visible)
+    (window-height . 0.50))
    ;; Open shell in a single window
    (,(rx bos "*shell")
     (display-buffer-same-window)
