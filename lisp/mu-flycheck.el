@@ -45,7 +45,6 @@
 
 (use-package flycheck-package          ; Check package conventions with Flycheck
   :ensure t
-  :defer t
   :after flycheck
   :config (flycheck-package-setup))
 
@@ -56,7 +55,6 @@
 
 (use-package flycheck-vale              ; Flycheck setup for Vale
   :ensure t
-  :defer t
   :after flycheck
   :config (flycheck-vale-setup))
 
