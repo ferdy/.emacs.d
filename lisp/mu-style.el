@@ -87,9 +87,9 @@
   :defer t
   :init (global-page-break-lines-mode))
 
-(use-package prog-mode
-  ;; Prettify symbols
+(use-package prog-mode                  ; Generic programming modes settings
   :config
+  ;; Prettify symbols
   (global-prettify-symbols-mode 1)
 
   ;; Unprettify symbols with point on them and next to them
