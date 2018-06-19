@@ -98,7 +98,6 @@
      ("https://cinebeats.wordpress.com/feed/" cinema)
      ("http://feed.dilbert.com/dilbert/daily_strip" comic)
      ("https://feeds.feedburner.com/birthmoviesdeath" cinema)
-     ("https://feeds2.feedburner.com/PatrickRothfuss" books)
      ("https://film.avclub.com/rss" cinema)
      ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)
      ("https://haskellweekly.news/haskell-weekly.atom" haskell)
