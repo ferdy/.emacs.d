@@ -92,8 +92,6 @@
   :bind (:map cider-mode-map
               ("C-c m l" . cider-load-all-project-ns))
   :config
-  (require 'cider-client)
-
   (defun mu-cider-mode-line-info ()
     "Simplify CIDER mode-line indicator."
     (if-let* ((current-connection (ignore-errors (cider-current-repl))))
