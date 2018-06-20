@@ -134,6 +134,15 @@
 ;; Show buffer position percentage starting from top
 (validate-setq mode-line-percent-position '(-3 "%o"))
 
+(defun mu-prettify-workspace-number (num)
+  "Convert NUM to its prettify version."
+  (cond ((string= num "0") "🄌")
+        ((string= num "1") "➊")
+        ((string= num "2") "➋")
+        ((string= num "3") "➌")
+        ((string= num "4") "➍")
+        ((string= num "5") "➎")))
+
 (defvar mu-eyebrowse-mode-line
   '(:propertize
     (:eval
@@ -145,10 +154,9 @@
                     " "
                     (if (and tag (< 0 (length tag)))
                         tag
-                      (when num (int-to-string num)))
-                    " ")))
-         str)))
-    face (:background "#81a2be" :foreground "#373b41"))
+                      (when num
+                        (mu-prettify-workspace-number (int-to-string num)))))))
+         str))))
   "Mode line format for Eyebrowse.")
 
 (put 'mu-eyebrowse-mode-line 'risky-local-variable t)
