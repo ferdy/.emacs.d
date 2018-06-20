@@ -90,7 +90,22 @@
   :ensure cider
   :defer t
   :bind (:map cider-mode-map
-              ("C-c m l" . cider-load-all-project-ns)))
+              ("C-c m l" . cider-load-all-project-ns))
+  :config
+  (require 'cider-client)
+
+  (defun mu-cider-mode-line-info ()
+    "Simplify CIDER mode-line indicator."
+    (if-let* ((current-connection (ignore-errors (cider-current-repl))))
+        (with-current-buffer current-connection
+          (concat
+           cider-repl-type
+           (format
+            ":%s" (or (cider--project-name nrepl-project-dir) "<no project>"))))
+      "-"))
+
+  (validate-setq
+   cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-mode-line-info)))))
 
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
