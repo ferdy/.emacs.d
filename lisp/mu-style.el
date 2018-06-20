@@ -134,15 +134,6 @@
 ;; Show buffer position percentage starting from top
 (validate-setq mode-line-percent-position '(-3 "%o"))
 
-(defun mu-prettify-workspace-number (num)
-  "Convert NUM to its prettify version."
-  (cond ((string= num "1") "➊")
-        ((string= num "2") "➋")
-        ((string= num "3") "➌")
-        ((string= num "4") "➍")
-        ((string= num "5") "➎")
-        (t num)))
-
 (defvar mu-eyebrowse-mode-line
   '(:propertize
     (:eval
@@ -155,8 +146,10 @@
                     (if (and tag (< 0 (length tag)))
                         tag
                       (when num
-                        (mu-prettify-workspace-number (int-to-string num)))))))
-         str))))
+                        (int-to-string num)))
+                    " ")))
+         str)))
+    face (:background "#81a2be" :foreground "#373b41"))
   "Mode line format for Eyebrowse.")
 
 (put 'mu-eyebrowse-mode-line 'risky-local-variable t)
@@ -187,12 +180,9 @@
 (use-package minions                    ; A minor-mode menu for the mode line
   :ensure t
   :init (minions-mode)
-  :config
-  (validate-setq
-   minions-mode-line-lighter "Ⲙ"
-   minions-direct '(cider-mode
-                    flycheck-mode
-                    overwrite-mode)))
+  :config (validate-setq minions-direct '(cider-mode
+                                          flycheck-mode
+                                          overwrite-mode)))
 
 (use-package moody                      ; Tabs and ribbons for the mode line
   :ensure t
