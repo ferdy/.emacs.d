@@ -126,7 +126,7 @@
 ;; Slightly decrease the font in the mode line
 (set-face-attribute 'mode-line nil
                     :family "Iosevka"
-                    :height 140)
+                    :height 130)
 
 (line-number-mode)
 (column-number-mode)
@@ -136,12 +136,12 @@
 
 (defun mu-prettify-workspace-number (num)
   "Convert NUM to its prettify version."
-  (cond ((string= num "0") "🄌")
-        ((string= num "1") "➊")
+  (cond ((string= num "1") "➊")
         ((string= num "2") "➋")
         ((string= num "3") "➌")
         ((string= num "4") "➍")
-        ((string= num "5") "➎")))
+        ((string= num "5") "➎")
+        (t num)))
 
 (defvar mu-eyebrowse-mode-line
   '(:propertize
