@@ -96,7 +96,6 @@
      ("https://cavallette.noblogs.org/feed" security)
      ("http://chinafilminsider.com/feed/" cinema)
      ("https://cinebeats.wordpress.com/feed/" cinema)
-     ("http://feed.dilbert.com/dilbert/daily_strip" comic)
      ("https://feeds.feedburner.com/birthmoviesdeath" cinema)
      ("https://film.avclub.com/rss" cinema)
      ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)
