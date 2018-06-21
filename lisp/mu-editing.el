@@ -292,23 +292,54 @@ prefix argument."
       (while (re-search-forward "\\s-+" nil t)
         (replace-match " ")))))
 
-;;;###autoload
-(defun duplicate-line ()
-  "Duplicate the line containing point."
-  (interactive)
-  (save-excursion
-    (let (line-text)
-      (goto-char (line-beginning-position))
-      (let ((beg (point)))
-        (goto-char (line-end-position))
-        (setq line-text (buffer-substring beg (point))))
-      (if (eobp)
-          (insert ?\n)
-        (forward-line))
-      (open-line 1)
-      (insert line-text))))
+(defun crux-get-positions-of-line-or-region ()
+  "Return positions (beg . end) of the current line or region."
+  (let (beg end)
+    (if (and mark-active (> (point) (mark)))
+        (exchange-point-and-mark))
+    (setq beg (line-beginning-position))
+    (if mark-active
+        (exchange-point-and-mark))
+    (setq end (line-end-position))
+    (cons beg end)))
 
-(bind-key "C-c x d" 'duplicate-line)    ; Duplicate line at point
+;;;###autoload
+(defun mu-duplicate-current-line-or-region (arg)
+  "Duplicates the current line or region ARG times.
+If there's no region, the current line will be duplicated.  However, if
+there's a region, all lines that region covers will be duplicated."
+  (interactive "p")
+  (pcase-let* ((origin (point))
+               (`(,beg . ,end) (crux-get-positions-of-line-or-region))
+               (region (buffer-substring-no-properties beg end)))
+    (dotimes (_i arg)
+      (goto-char end)
+      (newline)
+      (insert region)
+      (setq end (point)))
+    (goto-char (+ origin (* (length region) arg) arg))))
+
+(bind-key "C-c x d" #'mu-duplicate-current-line-or-region)
+
+;;;###autoload
+(defun mu-duplicate-and-comment-current-line-or-region (arg)
+  "Duplicates and comments the current line or region ARG times.
+If there's no region, the current line will be duplicated.  However, if
+there's a region, all lines that region covers will be duplicated."
+  (interactive "p")
+  (pcase-let* ((origin (point))
+               (`(,beg . ,end) (crux-get-positions-of-line-or-region))
+               (region (buffer-substring-no-properties beg end)))
+    (comment-or-uncomment-region beg end)
+    (setq end (line-end-position))
+    (dotimes (_ arg)
+      (goto-char end)
+      (newline)
+      (insert region)
+      (setq end (point)))
+    (goto-char (+ origin (* (length region) arg) arg))))
+
+(bind-key "C-c x D" #'mu-duplicate-and-comment-current-line-or-region)
 
 ;; Join line with the next one
 (bind-key "C-j" (lambda ()
