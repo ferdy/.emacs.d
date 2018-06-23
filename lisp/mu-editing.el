@@ -238,7 +238,7 @@
   :ensure t
   :after outline
   :bind (:map outline-minor-mode-map
-              ("<C-tab>" . bicycle-cycle)
+              ("<C-tab>"   . bicycle-cycle)
               ("<backtab>" . bicycle-cycle-global)))
 
 ;; Disable tabs, but given them proper width
