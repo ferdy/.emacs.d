@@ -155,6 +155,7 @@
 
 (use-package cider-interaction          ; Buffer/REPL interactions
   :ensure cider
+  :after cider
   :config
   (validate-setq cider-invert-insert-eval-p t
                  cider-switch-to-repl-after-insert-p nil))
