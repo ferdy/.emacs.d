@@ -234,13 +234,6 @@
   :ensure t
   :defer t)
 
-(use-package bicycle                    ; Cycle outline and code visibility
-  :ensure t
-  :after outline
-  :bind (:map outline-minor-mode-map
-              ("<C-tab>"   . bicycle-cycle)
-              ("<backtab>" . bicycle-cycle-global)))
-
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil
               tab-width 8)
