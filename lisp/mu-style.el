@@ -88,6 +88,8 @@
   :init (global-page-break-lines-mode))
 
 (use-package prog-mode                  ; Generic programming modes settings
+  :hook ((prog-mode-hook . hs-minor-mode)
+         (prog-mode-hook . outline-minor-mode))
   :config
   ;; Prettify symbols
   (global-prettify-symbols-mode 1)
