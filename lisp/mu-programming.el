@@ -103,7 +103,9 @@
       "-"))
 
   (validate-setq
-   cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-mode-line-info)))))
+   cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-mode-line-info)))
+   cider-invert-insert-eval-p t
+   cider-switch-to-repl-after-insert-p nil))
 
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
@@ -152,13 +154,6 @@
    cider-repl-display-help-banner nil
    cider-repl-result-prefix ";; => "
    cider-repl-use-pretty-printing t))
-
-(use-package cider-interaction          ; Buffer/REPL interactions
-  :ensure cider
-  :after cider
-  :config
-  (validate-setq cider-invert-insert-eval-p t
-                 cider-switch-to-repl-after-insert-p nil))
 
 (use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
