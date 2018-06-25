@@ -32,7 +32,7 @@ $ git clone git://git.savannah.gnu.org/emacs.git
 ```console
 $ cd emacs
 $ ./autogen.sh
-$ ./configure --host=x86_64-debian-linux-gnu
+$ ./configure --host=x86_64-debian-linux-gnu --with-modules
 $ make
 $ sudo make install
 $ make clean
