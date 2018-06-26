@@ -97,10 +97,10 @@
               ("M-/" . company-other-backend))
   :config
   (validate-setq
+   company-minimum-prefix-length 2
+   company-show-numbers t
    company-tooltip-align-annotations t
-   company-tooltip-flip-when-above t
-   ;; Easy navigation to candidates with M-<n>
-   company-show-numbers t)
+   company-tooltip-flip-when-above t)
 
   (setq-default company-tooltip-align-annotations t))
 
