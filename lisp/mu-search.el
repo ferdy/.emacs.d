@@ -35,10 +35,6 @@
   :bind (([remap query-replace] . ez-query-replace)
          ("C-c M-%" . ez-query-replace-repeat)))
 
-(use-package deadgrep                   ; Search with ripgrep
-  :load-path "~/githubs/deadgrep"
-  :bind ("<f7>" . deadgrep))
-
 (provide 'mu-search)
 
 ;; Local Variables:
