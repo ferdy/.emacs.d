@@ -100,9 +100,7 @@
    company-minimum-prefix-length 2
    company-show-numbers t
    company-tooltip-align-annotations t
-   company-tooltip-flip-when-above t)
-
-  (setq-default company-tooltip-align-annotations t))
+   company-tooltip-flip-when-above t))
 
 (use-package company-dabbrev            ; dabbrev-like Company backend
   :after company
