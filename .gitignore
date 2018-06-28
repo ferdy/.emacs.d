@@ -20,6 +20,7 @@
 .historian
 recentf~
 network-security.data
+dired-history
 /tutorial/
 /.emacs.desktop*
 /.mc-lists.el
@@ -52,6 +53,3 @@ network-security.data
 /autosave/
 /backup/
 /ensime/
-
-# borg directories
-/lib/
