@@ -104,6 +104,7 @@
 
   (validate-setq
    cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-mode-line-info)))
+   cider-font-lock-dynamically t
    cider-invert-insert-eval-p t
    cider-switch-to-repl-after-insert-p nil))
 
