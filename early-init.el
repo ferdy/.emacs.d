@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2014-2018  Manuel Uberti
 
-;; Author: Manuel Uberti <manuel.uberti@inventati.org>
+;; Author: Manuel Uberti <manuel dot uberti at inventati dot org>
 ;; Keywords: convenience
 
 ;; This program is free software; you can redistribute it and/or modify

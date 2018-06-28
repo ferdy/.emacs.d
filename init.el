@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2014-2018  Manuel Uberti
 
-;; Author: Manuel Uberti manuel.uberti@inventati.org
+;; Author: Manuel Uberti <manuel dot uberti at inventati dot org>
 ;; URL: https://github.com/manuel-uberti/.emacs.d
 ;; Keywords: convenience
 
