@@ -40,7 +40,10 @@
          (haskell-mode . haskell-auto-insert-module-template))
   :config
   (with-eval-after-load 'haskell-mode
-    (bind-key "C-c m h" #'hoogle haskell-mode-map)))
+    (bind-key "C-c m h" #'hoogle haskell-mode-map))
+
+  (custom-set-variables
+   '(haskell-stylish-on-save t)))
 
 (use-package hindent                    ; Use hindent to indent Haskell code
   :ensure t
