@@ -28,14 +28,6 @@
 
   (add-to-list 'aggressive-indent-excluded-modes 'cider-repl-mode))
 
-(use-package whitespace-cleanup-mode    ; Cleanup whitespace in buffers
-  :ensure t
-  :bind (("C-c t w" . whitespace-cleanup-mode)
-         ("C-c x w" . whitespace-cleanup))
-  :hook ((prog-mode . whitespace-cleanup-mode)
-         (text-mode . whitespace-cleanup-mode)
-         (conf-mode . whitespace-cleanup-mode)))
-
 (use-package shrink-whitespace          ; Better whitespace removal
   :ensure t
   :bind ("M-SPC" . shrink-whitespace))
@@ -381,6 +373,7 @@ Including `indent-buffer', which should not be called automatically on save."
   (interactive)
   (untabify-buffer)
   (delete-trailing-whitespace)
+  (whitespace-cleanup)
   (indent-buffer))
 
 (bind-key "C-c t c" #'cleanup-buffer)
