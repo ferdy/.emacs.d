@@ -101,6 +101,11 @@
   :ensure t
   :bind ("C-c v t" . git-timemachine))
 
+(use-package rigid-tabs                 ; Fix TAB alignment in diff buffers
+  :ensure t
+  :hook ((diff-mode-hook . rigid-tabs-diff-align)
+         (magit-refresh-buffer-hook . rigid-tabs-diff-align)))
+
 (provide 'mu-vers-control)
 
 ;; Local Variables:
