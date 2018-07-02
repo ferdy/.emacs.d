@@ -185,6 +185,12 @@ The EShell is renamed to match that directory to make multiple windows easier."
   :when (executable-find "fish")
   :hook (eshell-mode . fish-completion-mode))
 
+(use-package esh-help                ; Add help functions and support for Eshell
+  :ensure t
+  :after eshell
+  :hook (eshell-mode . eldoc-mode)
+  :init (setup-esh-help-eldoc))
+
 (use-package ansi-term                  ; Powerful terminal emulator
   :bind ("C-c a s t" . ansi-term)
   :init
