@@ -2,9 +2,6 @@
 
 ;; Copyright (C) 2014-2018  Manuel Uberti
 
-;; Author: Manuel Uberti <manuel dot uberti at inventati dot org>
-;; Keywords: convenience
-
 ;;; Commentary:
 
 ;; This file stores my configuration for network and web utilities.
