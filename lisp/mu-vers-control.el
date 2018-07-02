@@ -69,6 +69,19 @@
 
   (bind-key "q" #'mu-magit-kill-buffers magit-status-mode-map))
 
+(use-package magit-files                ; Magit file operations
+  :ensure magit
+  :config
+  ;; Add more operations to the file popup
+  (magit-define-popup-action 'magit-file-popup
+    ?R "Rename file" 'magit-file-rename)
+  (magit-define-popup-action 'magit-file-popup
+    ?K "Delete file" 'magit-file-delete)
+  (magit-define-popup-action 'magit-file-popup
+    ?U "Untrack file" 'magit-file-untrack)
+  (magit-define-popup-action 'magit-file-popup
+    ?C "Checkout file" 'magit-file-checkout))
+
 (use-package magit-gitflow              ; gitflow extension for Magit
   :ensure t
   :after magit
