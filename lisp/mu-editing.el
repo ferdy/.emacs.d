@@ -28,6 +28,10 @@
 
   (add-to-list 'aggressive-indent-excluded-modes 'cider-repl-mode))
 
+(use-package whitespace-cleanup-mode    ; Cleanup whitespace in buffers
+  :ensure t
+  :hook (after-init-hook . global-whitespace-cleanup-mode))
+
 (use-package shrink-whitespace          ; Better whitespace removal
   :ensure t
   :bind ("M-SPC" . shrink-whitespace))
@@ -167,11 +171,6 @@
 
 (use-package saveplace                  ; Save point position in files
   :init (save-place-mode 1))
-
-(use-package super-save                 ; Autosave buffers when they lose focus
-  :ensure t
-  :init (super-save-mode)
-  :config (validate-setq super-save-auto-save-when-idle t))
 
 (use-package autorevert                 ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
