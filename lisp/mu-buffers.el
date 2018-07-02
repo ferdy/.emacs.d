@@ -98,8 +98,7 @@
   :config
   (validate-setq
    uniquify-buffer-name-style 'post-forward
-   uniquify-separator ":"
-   ;; Ignore special buffers
+   uniquify-separator " • "
    uniquify-ignore-buffers-re "^\\*"))
 
 (use-package ibuf-ext                   ; Extensions for Ibuffer
