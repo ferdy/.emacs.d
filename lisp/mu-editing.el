@@ -505,6 +505,21 @@ With arg N, insert N newlines."
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
+(setq-default show-trailing-whitespace t)
+
+(defun mu-no-trailing-whitespace ()
+  "Turn off display of trailing whitespace in the current buffer."
+  (setq show-trailing-whitespace nil))
+
+(dolist (hook '(special-mode-hook
+                Info-mode-hook
+                eww-mode-hook
+                term-mode-hook
+                comint-mode-hook
+                compilation-mode-hook
+                minibuffer-setup-hook))
+  (add-hook hook #'mu-no-trailing-whitespace))
+
 (provide 'mu-editing)
 
 ;; Local Variables:
