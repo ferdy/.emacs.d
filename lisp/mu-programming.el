@@ -77,6 +77,11 @@
   :hook ((haskell-cabal-mode . eldoc-mode)
          (haskell-cabal-mode . subword-mode)))
 
+(use-package dhall-mode                 ; Dhall support and editing
+  :ensure t
+  :hook ((dhall-mode-hook . mu-no-trailing-whitespace)
+         (dhall-mode-hook . stack-exec-path-mode)))
+
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
