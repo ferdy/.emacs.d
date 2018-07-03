@@ -132,8 +132,8 @@
 (validate-setq mode-line-percent-position '(-3 "%o"))
 
 (defvar mu-eyebrowse-mode-line
-  '(:propertize
-    (:eval
+  '(:eval
+    (moody-tab
      (when (bound-and-true-p eyebrowse-mode)
        (let* ((num (eyebrowse--get 'current-slot))
               (tag (when num
@@ -145,8 +145,8 @@
                       (when num
                         (int-to-string num)))
                     " ")))
-         str)))
-    face (:background "#81a2be" :foreground "#373b41"))
+         str))
+     nil 'up))
   "Mode line format for Eyebrowse.")
 
 (put 'mu-eyebrowse-mode-line 'risky-local-variable t)
