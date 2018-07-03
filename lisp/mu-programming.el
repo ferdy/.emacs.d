@@ -79,6 +79,7 @@
 
 (use-package dhall-mode                 ; Dhall support and editing
   :ensure t
+  :mode ("\\.dhall\\'" . dhall-mode)
   :hook ((dhall-mode-hook . mu-no-trailing-whitespace)
          (dhall-mode-hook . stack-exec-path-mode)))
 
