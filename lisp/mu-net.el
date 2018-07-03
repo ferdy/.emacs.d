@@ -228,6 +228,11 @@ buffer."
         (when (eq (car prop) 'image)
           (add-text-properties left pos (list from nil to prop) object))))))
 
+(defun curl (url)
+  "Put the content from URL in the current buffer."
+  (interactive "sEnter URL: ")
+  (url-insert-file-contents url nil nil nil t))
+
 (provide 'mu-net)
 
 ;; Local Variables:
