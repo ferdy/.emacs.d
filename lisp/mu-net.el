@@ -150,11 +150,12 @@
     (fullframe paradox-list-packages mu-pop-window-configuration))
 
   (validate-setq
-   paradox-github-token t             ; Don't ask for a token
-   paradox-execute-asynchronously nil ; No async updates
-   paradox-use-homepage-buttons nil   ; Hide download button
-   paradox-automatically-star nil     ; Don't star packages automatically
-   paradox-display-download-count t   ; Show all possible counts
+   paradox-spinner-type 'triangle       ; Prettier spinner
+   paradox-github-token t               ; Don't ask for a token
+   paradox-execute-asynchronously nil   ; No async updates
+   paradox-use-homepage-buttons nil     ; Hide download button
+   paradox-automatically-star nil       ; Don't star packages automatically
+   paradox-display-download-count t     ; Show all possible counts
    paradox-display-star-count t)
 
   ;; Don't need paradox report
