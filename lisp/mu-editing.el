@@ -222,6 +222,13 @@
   :ensure t
   :defer t)
 
+(use-package mmm-mode                   ; Allow multiple major modes in a buffer
+  :ensure t
+  :config
+  (require 'mmm-auto)
+  (validate-setq mmm-global-mode 'buffers-with-submode-classes
+                 mmm-submode-decoration-level 2))
+
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil
               tab-width 8)
