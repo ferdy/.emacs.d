@@ -54,6 +54,11 @@
   :ensure t
   :commands fontify-face-mode)
 
+(use-package beacon                     ; Highlight cursor on scrolling
+  :ensure t
+  :init (beacon-mode 1)
+  :config (setq-default beacon-size 5))
+
 (provide 'mu-highlight)
 
 ;; Local Variables:
