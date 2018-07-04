@@ -64,8 +64,15 @@
 ;; Disable startup echo area message
 (fset 'display-startup-echo-area-message #'ignore)
 
-(validate-setq x-gtk-use-system-tooltips nil) ; Use Emacs tooltips
-(validate-setq history-length 1000)           ; Store more history
+(validate-setq
+ x-gtk-use-system-tooltips nil          ; Use Emacs tooltips
+ history-length 1000)                   ; Store more history
+
+;; Do not truncate lines
+(validate-setq
+ truncate-lines nil
+ truncate-partial-width-windows nil)
+
 (setq-default line-spacing 0.2)         ; Increase line-spacing (default 0)
 
 ;; Configure a reasonable fill column and enable automatic filling
