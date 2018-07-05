@@ -407,6 +407,7 @@
   :mode ("\\.sql\\'" . sql-mode)
   :bind (("C-c d s" . sql-connect)
          :map sql-mode-map
+         ("C-c C-z" . mu-sql-switch-to-sqli)
          ("C-c m f" . mu-sql-format)
          ("C-c m p" . sql-set-product))
   :config
@@ -417,7 +418,15 @@ Install the Python \"sqlparse\" package to get \"sqlformat\"."
     (shell-command-on-region beg end
                              "sqlformat -r -"
                              nil t
-                             "*sqlformat-errors*" t)))
+                             "*sqlformat-errors*" t))
+
+  (defun mu-sql-switch-to-sqli ()
+    "Switch to SQLi buffer."
+    (interactive)
+    (unless (and sql-buffer
+                 (buffer-live-p (get-buffer sql-buffer)))
+      (sql-set-sqli-buffer))
+    (pop-to-buffer sql-buffer)))
 
 (use-package sqlup-mode                 ; Upcase SQL keywords
   :ensure t
