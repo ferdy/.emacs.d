@@ -108,6 +108,7 @@
      ("http://www.500princesongs.com/feed" music)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
+     ("http://www.haskell-ita.it/atom.xml" haskell)
      ("https://www.hongkongfp.com/feed" news)
      ("http://www.lastampa.it/italia/politica/rss.xml" news)
      ("http://www.princerecordings.com/feed/" music)
