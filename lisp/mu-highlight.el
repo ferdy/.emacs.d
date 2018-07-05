@@ -62,7 +62,8 @@
 
   ;; Disable beacon in REPLs and shells
   (add-to-list 'beacon-dont-blink-major-modes 'comint-mode t)
-  (add-to-list 'beacon-dont-blink-major-modes 'term-mode t))
+  (add-to-list 'beacon-dont-blink-major-modes 'term-mode t)
+  (add-to-list 'beacon-dont-blink-major-modes 'sql-interactive-mode t))
 
 (provide 'mu-highlight)
 
