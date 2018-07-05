@@ -88,11 +88,14 @@
 (use-package company                    ; Auto-completion
   :ensure t
   :init (global-company-mode)
-  :bind (:map company-active-map
-              ("C-n" . company-select-next)
-              ("C-p" . company-select-previous)
-              ("M-/" . company-other-backend))
   :config
+  (bind-key "M-/" #'company-complete company-mode-map)
+
+  (bind-keys :map company-active-map
+             ("C-n" . company-select-next)
+             ("C-p" . company-select-previous)
+             ("M-/" . company-other-backend))
+  
   (validate-setq
    company-minimum-prefix-length 2
    company-show-numbers t
