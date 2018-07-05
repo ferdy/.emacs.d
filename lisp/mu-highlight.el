@@ -57,7 +57,10 @@
 (use-package beacon                     ; Highlight cursor on scrolling
   :ensure t
   :init (beacon-mode 1)
-  :config (setq-default beacon-size 5))
+  :config
+  (setq-default beacon-size 5)
+  (add-to-list 'beacon-dont-blink-major-modes 'cider-repl-mode t)
+  (add-to-list 'beacon-dont-blink-major-modes 'intero-repl-mode t))
 
 (provide 'mu-highlight)
 
