@@ -356,7 +356,8 @@
 
 (use-package yaml-mode                  ; Edit YAML files
   :ensure t
-  :mode "\\.yaml\\'")
+  :mode "\\.yaml\\'"
+  :hook (yaml-mode-hook . goto-address-prog-mode))
 
 ;;; Other languages
 (use-package sh-script                  ; Shell scripts
