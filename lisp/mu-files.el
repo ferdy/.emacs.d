@@ -72,8 +72,8 @@
 
 (use-package csv-mode                   ; Better .csv files editing
   :ensure t
-  :no-require t
-  :mode "\\.csv\\'")
+  :mode "\\.csv\\'"
+  :config (validate-setq csv-separators '("," ";" "|" " ")))
 
 (use-package image-file                 ; Visit images as images
   :init (auto-image-file-mode))
