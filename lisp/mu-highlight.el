@@ -59,6 +59,8 @@
   :init (beacon-mode 1)
   :config
   (setq-default beacon-size 5)
+
+  ;; Disable beacon in REPLs and shells
   (add-to-list 'beacon-dont-blink-major-modes 'comint-mode t)
   (add-to-list 'beacon-dont-blink-major-modes 'term-mode t))
 
