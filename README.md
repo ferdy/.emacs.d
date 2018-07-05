@@ -14,21 +14,31 @@ honed to work with:
 There is a reasonable setup for other programming languages and utilities, just
 have a look inside the `lisp` directory if you want to know more.
 
+This configuration relies on external tools to complement Emacs
+capabilities. I use [Ansible
+Playbooks](https://github.com/manuel-uberti/playbooks) to set up my systems, but
+your mileage may vary.
+
 ## First steps
 
 This is how I build and install Emacs on Ubuntu. If you are using a different
 operative system, you need to understand how to install the required
 dependencies. Otherwise just run:
+
 ```console
 $ sudo apt-get build-dep emacs25
 ```
+
 Once ready:
 
 - clone Emacs trunk:
+
 ```console
 $ git clone git://git.savannah.gnu.org/emacs.git
 ```
+
 - build Emacs trunk:
+
 ```console
 $ cd emacs
 $ ./autogen.sh
@@ -37,17 +47,22 @@ $ make
 $ sudo make install
 $ make clean
 ```
+
 - clone this repo to your home directory:
+
 ```console
 $ cd
 $ git clone git@github.com:manuel-uberti/.emacs.d.git
 ```
+
 - install the dictionaries for the spell-checker:
+
 ```console
 $ cd .emacs.d
 $ sudo mkdir -p /usr/share/hunspell
 $ sudo cp etc/dictionaries/* /usr/share/hunspell
 ```
+
 - run Emacs
 
 The first time you run Emacs,
