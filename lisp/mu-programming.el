@@ -54,8 +54,7 @@
        'hindent--before-save :around 'mu-hindent--before-save-wrapper))))
 
 (define-minor-mode stack-exec-path-mode
-  "If this is a stack project, set `exec-path' to the path
-  \"stack exec\" would use."
+  "Set `exec-path' to the path \"stack exec\" would use."
   nil
   :lighter ""
   :global nil
@@ -63,10 +62,19 @@
       (when (and (executable-find "stack")
                  (locate-dominating-file default-directory "stack.yaml"))
         (setq-local
-         exec-path (parse-colon-path
-                    (replace-regexp-in-string
-                     "[\r\n]+\\'" ""
-                     (shell-command-to-string "stack path --bin-path")))))
+         exec-path
+         (seq-uniq
+          (append
+           (list
+            (concat
+             (string-trim-right
+              (shell-command-to-string "stack path --local-install-root"))
+             "/bin"))
+           (parse-colon-path
+            (replace-regexp-in-string
+             "[\r\n]+\\'" ""
+             (shell-command-to-string "stack path --bin-path"))))
+          'string-equal)))
     (kill-local-variable 'exec-path)))
 
 (add-hook 'haskell-mode-hook #'stack-exec-path-mode)
