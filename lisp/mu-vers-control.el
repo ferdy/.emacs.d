@@ -88,6 +88,10 @@
   (unbind-key "C-f" magit-gitflow-mode-map)
   (bind-key "C-c v f" #'magit-gitflow-popup magit-gitflow-mode-map))
 
+(use-package libgit                     ; Bindings for libgit2
+  :ensure t
+  :after magit)
+
 (use-package git-commit                 ; Git commit message mode
   :ensure t
   :init (global-git-commit-mode)
