@@ -113,12 +113,6 @@ The EShell is renamed to match that directory to make multiple windows easier."
                 ("C-c C-l"                . counsel-esh-history)
                 ([remap eshell-pcomplete] . completion-at-point))))
 
-  ;; Use system su/sudo
-  (with-eval-after-load "em-unix"
-    '(progn
-       (unintern 'eshell/su nil)
-       (unintern 'eshell/sudo nil)))
-
   (add-hook 'eshell-mode-hook #'with-editor-export-editor))
 
 (use-package em-banner                  ; EShell login banner
