@@ -32,6 +32,10 @@
   :bind (([remap query-replace] . ez-query-replace)
          ("C-c M-%" . ez-query-replace-repeat)))
 
+(use-package deadgrep                   ; Search with ripgrep
+  :ensure t
+  :bind ("<f7>" . deadgrep))
+
 (provide 'mu-search)
 
 ;; Local Variables:
