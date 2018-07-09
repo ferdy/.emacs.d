@@ -428,6 +428,10 @@ Install the Python \"sqlparse\" package to get \"sqlformat\"."
       (sql-set-sqli-buffer))
     (pop-to-buffer sql-buffer)))
 
+(use-package sql-indent                 ; Indent code in SQL files
+  :ensure t
+  :hook (sql-mode . sqlind-minor-mode))
+
 (use-package sqlup-mode                 ; Upcase SQL keywords
   :ensure t
   :bind (:map sql-mode-map
