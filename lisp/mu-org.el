@@ -88,7 +88,13 @@
 
   ;; Use a single full frame for org-agenda
   (with-eval-after-load 'org-agenda
-    (fullframe org-agenda-list mu-pop-window-configuration)))
+    (fullframe org-agenda-list mu-pop-window-configuration))
+
+  ;; Re-align tags when window shape changes
+  (with-eval-after-load 'org-agenda
+    (add-hook 'org-agenda-mode-hook
+              (lambda () (add-hook 'window-configuration-change-hook
+                              'org-agenda-align-tags nil t)))))
 
 (use-package org-capture                ; Fast note taking
   :after org
