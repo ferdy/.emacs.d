@@ -69,8 +69,8 @@
       (org-return)))
 
 
-  (unbind-key "C-c $" org-mode-map)     ; Free C-c $ (see: mu-languages.el)
-  (unbind-key "C-'" org-mode-map)       ; Free C-' (see: mu-editing.el)
+  (unbind-key "C-c $" org-mode-map)      ; Free C-c $ (see: mu-languages.el)
+  (unbind-key "C-'" org-mode-map)        ; Free C-' (see: mu-editing.el)
   (unbind-key "S-<return>" org-mode-map) ; Free S-RET (see: mu-editing.el)
 
   (defun mu-insert-checkbox ()
