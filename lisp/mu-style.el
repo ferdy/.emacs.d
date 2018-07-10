@@ -126,6 +126,11 @@
     (set-face-attribute 'mode-line nil :box nil)
     (set-face-attribute 'mode-line-inactive nil :box nil)))
 
+(use-package dimmer                     ; Highlight selected buffer
+  :ensure t
+  :init (dimmer-mode)
+  :config (setq-default dimmer-fraction 0.15))
+
 ;;; The mode line
 ;; Slightly decrease the font in the mode line
 (set-face-attribute 'mode-line nil
