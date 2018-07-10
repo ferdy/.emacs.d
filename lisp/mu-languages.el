@@ -106,12 +106,14 @@ Change dictionary and mode line lighter accordingly."
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
   :ensure t
-  :bind (("C-c a l d" . wordnut-search)
-         ("C-c a l D" . wordnut-lookup-current-word)))
+  :bind (("C-c a W" . wordnut-search)
+         ("C-c a w" . wordnut-lookup-current-word)))
 
-(use-package sdcv                       ; Interface for sdcv
+(use-package define-word                ; Display definitions of words
   :ensure t
-  :bind ("C-c a l s" . sdcv-search-input))
+  :bind (("C-c a D" . define-word)
+         ("C-c a d" . define-word-at-point))
+  :config (validate-setq define-word-limit 5))
 
 (provide 'mu-languages)
 

@@ -180,9 +180,8 @@
          (org-mode  . (lambda () (goto-address-mode -1)))))
 
 (use-package eww                        ; Built-in web browser
-  :bind  (("C-c a w b" . eww-list-bookmarks)
-          ("C-c a w w" . eww)
-          ("C-c a w u" . eww-browse-url))
+  :bind  (("C-c a e w" . eww)
+          ("C-c a e u" . eww-browse-url))
   :config
   (defun mu-eww-keep-lines (regexp)
     "Show only the lines matching regexp in the web page.
