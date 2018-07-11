@@ -4,7 +4,8 @@
 
 ;;; Commentary:
 
-;; This file stores my configuration for languages and translations utilities.
+;; This file stores my configuration for spell-checking and translations
+;; utilities.
 
 ;;; Code:
 
