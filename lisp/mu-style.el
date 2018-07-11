@@ -129,7 +129,7 @@
 (use-package dimmer                     ; Highlight selected buffer
   :ensure t
   :init (dimmer-mode)
-  :config (setq-default dimmer-fraction 0.15))
+  :config (setq-default dimmer-fraction 0.20))
 
 ;;; The mode line
 ;; Slightly decrease the font in the mode line
