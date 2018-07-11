@@ -12,9 +12,6 @@
   :ensure t
   :init (projectile-mode)
   :config
-  ;; Remove dead projects when Emacs is idle
-  (run-with-idle-timer 10 nil #'projectile-cleanup-known-projects)
-
   (validate-setq
    projectile-completion-system 'ivy
    projectile-find-dir-includes-top-level t)
