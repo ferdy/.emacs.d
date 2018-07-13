@@ -139,7 +139,6 @@
 
 (line-number-mode)
 (column-number-mode)
-(size-indication-mode)
 
 ;; Show buffer position percentage starting from top
 (validate-setq mode-line-percent-position '(-3 "%o"))
