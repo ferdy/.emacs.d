@@ -98,6 +98,7 @@
      ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)
      ("https://haskellweekly.news/haskell-weekly.atom" haskell)
      ("https://listen2prince.blogspot.com/feeds/posts/default" music)
+     ("http://lwlies.com/feed/" cinema)
      ("https://news.ycombinator.com/rss" news)
      ("http://outlawvern.com/feed/" cinema)
      ("http://planet.clojure.in/atom.xml" clojure)
