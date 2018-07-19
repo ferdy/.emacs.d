@@ -13,8 +13,9 @@
 ;; - Iosevka (https://github.com/be5invis/Iosevka)
 ;; - Fira Sans (https://github.com/mozilla/Fira/)
 (set-face-attribute 'default nil
-                    :family "Iosevka"
-                    :height 145)
+                    :family "Iosevka SS08"
+                    :height 145
+                    :weight 'semi-bold)
 (set-face-attribute 'variable-pitch nil
                     :family "Fira Sans"
                     :height 145
@@ -135,7 +136,8 @@
 ;; Slightly decrease the font in the mode line
 (set-face-attribute 'mode-line nil
                     :family "Iosevka"
-                    :height 130)
+                    :height 130
+                    :weight 'semi-bold)
 
 (line-number-mode)
 (column-number-mode)
@@ -183,15 +185,17 @@
   "Reset fonts to my preferences."
   (interactive)
   (set-face-attribute 'default nil
-                      :family "Iosevka"
-                      :height 150)
+                      :family "Iosevka SS08"
+                      :height 145
+                      :weight 'semi-bold)
   (set-face-attribute 'variable-pitch nil
                       :family "Fira Sans"
                       :height 145
                       :weight 'regular)
   (set-face-attribute 'mode-line nil
                       :family "Iosevka"
-                      :height 140))
+                      :height 130
+                      :weight 'semi-bold))
 
 (bind-key "C-c t f" #'mu-reset-fonts)
 
