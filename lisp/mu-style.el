@@ -15,7 +15,7 @@
 (set-face-attribute 'default nil
                     :family "Iosevka SS08"
                     :height 145
-                    :weight 'semi-bold)
+                    :weight 'regular)
 (set-face-attribute 'variable-pitch nil
                     :family "Fira Sans"
                     :height 145
@@ -137,7 +137,7 @@
 (set-face-attribute 'mode-line nil
                     :family "Iosevka"
                     :height 130
-                    :weight 'semi-bold)
+                    :weight 'regular)
 
 (line-number-mode)
 (column-number-mode)
@@ -187,7 +187,7 @@
   (set-face-attribute 'default nil
                       :family "Iosevka SS08"
                       :height 145
-                      :weight 'semi-bold)
+                      :weight 'regular)
   (set-face-attribute 'variable-pitch nil
                       :family "Fira Sans"
                       :height 145
@@ -195,7 +195,7 @@
   (set-face-attribute 'mode-line nil
                       :family "Iosevka"
                       :height 130
-                      :weight 'semi-bold))
+                      :weight 'regular))
 
 (bind-key "C-c t f" #'mu-reset-fonts)
 
