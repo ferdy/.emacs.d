@@ -12,6 +12,9 @@
   :ensure t
   :init (projectile-mode)
   :config
+  ;; Bring the old prefix back
+  (validate-setq projectile-keymap-prefix (kbd "C-c p"))
+  
   (validate-setq
    projectile-completion-system 'ivy
    projectile-find-dir-includes-top-level t)
