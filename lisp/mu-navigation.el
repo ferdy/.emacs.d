@@ -66,12 +66,6 @@
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
   :config (validate-setq dumb-jump-selector 'ivy))
 
-(use-package elisp-def             ; Macro-aware go-to-definition for Emacs Lisp
-  :ensure t
-  :bind (:map emacs-lisp-mode-map
-              ("M-." . elisp-def)
-              ("M-," . xref-pop-marker-stack)))
-
 (use-package macrostep                  ; Navigate through macros
   :ensure t
   :after lisp-mode
