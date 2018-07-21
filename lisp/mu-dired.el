@@ -148,7 +148,7 @@
   :bind (:map dired-mode-map
               ("C-c C-r" . dired-rsync)))
 
-(use-package dired-du
+(use-package dired-du                   ; Use du to display directories size
   :ensure t
   :defer t
   :config
