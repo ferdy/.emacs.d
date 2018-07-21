@@ -156,6 +156,11 @@
    dired-du-size-format t
    dired-du-update-headers t))
 
+(use-package dired-recent               ; Display recently visited paths
+  :ensure t
+  :disabled t
+  :confi (dired-recent-mode))
+
 (provide 'mu-dired)
 
 ;; Local Variables:
