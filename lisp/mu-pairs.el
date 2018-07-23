@@ -56,6 +56,7 @@
               ("M-("         . sp-wrap-round)
               ("C-è"         . sp-wrap-square)
               ("C-à"         . sp-wrap-curly)
+              ("M-\""        . mu-sp-wrap-double-quote)
               ;; Barfage & Slurpage
               ("C-)"         . sp-forward-slurp-sexp)
               ("C-<right>"   . sp-forward-slurp-sexp)
@@ -71,7 +72,11 @@
               ("C-M-t"       . sp-transpose-sexp))
   :bind (:map smartparens-strict-mode-map
               ("M-q" . sp-indent-defun))
-  :init (sp-pair "(" ")" :wrap "M-("))
+  :config
+  (defun mu-sp-wrap-double-quote ()
+    "Wrap following sexp in double quotes."
+    (interactive)
+    (sp-wrap-with-pair "\"")))
 
 (with-eval-after-load 'smartparens
   (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)
