@@ -12,7 +12,9 @@
   :ensure t
   :init (projectile-mode)
   :config
+  ;; Prefer old prefix
   (validate-setq projectile-keymap-prefix (kbd "C-c p"))
+  (unbind-key "C-c C-p" projectile-mode-map)
   
   (validate-setq
    projectile-completion-system 'ivy

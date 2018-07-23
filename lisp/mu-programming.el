@@ -141,6 +141,10 @@
     (context 2)
     (reporting 1)))
 
+(use-package cider-eval                 ; Interactive evaluation functionalities
+  :after cider
+  :config (unbind-key "C-c C-p" cider-mode-map))
+
 (use-package clojure-mode-extra-font-locking ; Extra font-locking for Clojure
   :ensure t)
 
