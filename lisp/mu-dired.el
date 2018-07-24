@@ -158,8 +158,8 @@
 
 (use-package dired-recent               ; Display recently visited paths
   :ensure t
-  :disabled t
-  :confi (dired-recent-mode))
+  :after dired
+  :config (dired-recent-mode))
 
 (provide 'mu-dired)
 
