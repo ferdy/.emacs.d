@@ -148,19 +148,6 @@
   :bind (:map dired-mode-map
               ("C-c C-r" . dired-rsync)))
 
-(use-package dired-du                   ; Use du to display directories size
-  :ensure t
-  :defer t
-  :config
-  (validate-setq
-   dired-du-size-format t
-   dired-du-update-headers t))
-
-(use-package dired-recent               ; Display recently visited paths
-  :ensure t
-  :after dired
-  :config (dired-recent-mode))
-
 (provide 'mu-dired)
 
 ;; Local Variables:
