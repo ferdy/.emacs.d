@@ -135,7 +135,7 @@
 ;;; The mode line
 ;; Slightly decrease the font in the mode line
 (set-face-attribute 'mode-line nil
-                    :family "Iosevka"
+                    :family "Iosevka SS08"
                     :height 130
                     :weight 'regular)
 
@@ -214,7 +214,7 @@
                       :height 145
                       :weight 'regular)
   (set-face-attribute 'mode-line nil
-                      :family "Iosevka"
+                      :family "Iosevka SS08"
                       :height 130
                       :weight 'regular))
 
