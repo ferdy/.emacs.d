@@ -91,6 +91,10 @@
   :hook ((dhall-mode-hook . mu-no-trailing-whitespace)
          (dhall-mode-hook . stack-exec-path-mode)))
 
+(use-package liquid-types               ; Show inferred liquid-types
+  :ensure t
+  :hook (haskell-mode . liquid-types-mode))
+
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
