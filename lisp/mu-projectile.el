@@ -18,11 +18,7 @@
   
   (validate-setq
    projectile-completion-system 'ivy
-   projectile-find-dir-includes-top-level t)
-
-  (projectile-register-project-type 'lein-cljs '("project.clj")
-                                    :compile "lein cljsbuild once"
-                                    :test "lein cljsbuild test"))
+   projectile-find-dir-includes-top-level t))
 
 (use-package counsel-projectile         ; Ivy integration for Projectile
   :ensure t
