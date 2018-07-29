@@ -21,6 +21,13 @@
                     :height 145
                     :weight 'regular)
 
+(use-package default-text-scale         ; Adjust the font size in all frames
+  :ensure t
+  :bind (("C-M-+" . default-text-scale-increase)
+         ("C-M--" . default-text-scale-decrease)
+         ("C-M-0" . default-text-scale-reset))
+  :init (default-text-scale-mode))
+
 ;;; Interface
 (use-package frame                      ; Frames
   :bind ("C-c w f" . toggle-frame-fullscreen)
