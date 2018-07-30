@@ -159,7 +159,7 @@
   :config
   (validate-setq
    nrepl-hide-special-buffers t
-   nrepl-repl-buffer-name-template "*cider-repl %j (%r:%S)*"))
+   nrepl-repl-buffer-name-template "*cider-repl %j %r:%S*"))
 
 (use-package cider-repl                 ; REPL interactions with CIDER
   :ensure cider
