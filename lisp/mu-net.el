@@ -22,42 +22,6 @@
 
   (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil)))
 
-(use-package circe                      ; Light IRC client
-  :ensure t
-  :bind ("C-c a c" . circe)
-  :config
-  ;; Load and set my credentials.  Requires in ~/.ercpass the format
-  ;; (:my-pass "password")
-  (defvar mu-credentials-file "~/.ercpass")
-
-  (defun mu-retrieve-irc-password (_)
-    (with-temp-buffer
-      (insert-file-contents-literally mu-credentials-file)
-      (plist-get (read (buffer-string)) :my-pass)))
-
-  (validate-setq circe-network-options
-                 '(("Freenode"
-                    :tls t
-                    :pass mu-retrieve-irc-password
-                    :channels ("#emacs" "#haskell"))))
-
-  (validate-setq
-   circe-default-nick "manuel-uberti"
-   circe-default-user "manuel-uberti"
-   circe-default-realname "Manuel Uberti"
-   circe-default-part-message "Bye!"
-   circe-default-quit-message "Bye!"
-   circe-use-cycle-completion t
-   circe-reduce-lurker-spam t
-   circe-format-self-say "<{nick}> {body}"
-   circe-format-server-topic "*** Topic Change by {userhost}: {topic-diff}"
-   circe-server-buffer-name "{network}"
-   circe-prompt-string (propertize ">> " 'face 'circe-prompt-face)))
-
-(use-package circe-color-nicks          ; Colour nicknames
-  :after circe
-  :config (validate-setq circe-color-nicks-everywhere t))
-
 (use-package elfeed                     ; RSS feed reader
   :ensure t
   :bind (("C-c a f" . mu-elfeed-open)
