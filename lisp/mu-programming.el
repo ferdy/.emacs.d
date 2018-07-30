@@ -156,7 +156,10 @@
 (use-package nrepl-client               ; Client for Clojure nREPL
   :ensure cider
   :defer t
-  :config (validate-setq nrepl-hide-special-buffers t))
+  :config
+  (validate-setq
+   nrepl-hide-special-buffers t
+   nrepl-repl-buffer-name-template "*cider-repl (%r:%S)*"))
 
 (use-package cider-repl                 ; REPL interactions with CIDER
   :ensure cider
