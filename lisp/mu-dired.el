@@ -148,6 +148,10 @@
   :bind (:map dired-mode-map
               ("C-c C-r" . dired-rsync)))
 
+(use-package fd-dired                   ; Use fd from Dired
+  :ensure t
+  :defer t)
+
 (provide 'mu-dired)
 
 ;; Local Variables:
