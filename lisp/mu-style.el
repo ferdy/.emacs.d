@@ -167,7 +167,7 @@
                       (when num (int-to-string num)))
                     " ")))
          str)))
-    face (:inherit highlight :underline nil))
+    face (:inherit fringe :underline nil))
   "Mode line format for Eyebrowse.")
 
 (put 'mu-eyebrowse-mode-line 'risky-local-variable t)
