@@ -223,7 +223,6 @@
 
 (use-package elisp-mode                 ; Emacs Lisp editing
   :defer t
-  :interpreter ("emacs" . emacs-lisp-mode)
   :bind (:map emacs-lisp-mode-map
               ("C-c C-k" . eval-buffer)
               ("C-c m e b" . eval-buffer)
