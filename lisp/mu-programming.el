@@ -251,7 +251,7 @@
   :config
   (bind-key "C-c C-q" #'idris-quit idris-mode-map)
   (bind-keys :map idris-repl-mode-map
-             ("C-c C-o" . idris-repl-clear-buffer)
+             ("C-c M-o" . idris-repl-clear-buffer)
              ("C-c C-q" . idris-quit)))
 
 ;;; Rust
