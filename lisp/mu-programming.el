@@ -37,7 +37,43 @@
          (haskell-mode . haskell-auto-insert-module-template))
   :config
   (with-eval-after-load 'haskell-mode
-    (bind-key "C-c m h" #'hoogle haskell-mode-map)))
+    (bind-key "C-c m h" #'hoogle haskell-mode-map))
+
+  (defvar haskell-prettify-symbols-alist
+    '(("::"     . ?∷)
+      ("forall" . ?∀)
+      ("exists" . ?∃)
+      ("->"     . ?→)
+      ("<-"     . ?←)
+      ("=>"     . ?⇒)
+      ("~>"     . ?⇝)
+      ("<~"     . ?⇜)
+      ("<>"     . ?⨂)
+      ("msum"   . ?⨁)
+      ("\\"     . ?λ)
+      ("not"    . ?¬)
+      ("&&"     . ?∧)
+      ("||"     . ?∨)
+      ("/="     . ?≠)
+      ("<="     . ?≤)
+      (">="     . ?≥)
+      ("<<<"    . ?⋘)
+      (">>>"    . ?⋙)
+
+      ("`elem`"             . ?∈)
+      ("`notElem`"          . ?∉)
+      ("`member`"           . ?∈)
+      ("`notMember`"        . ?∉)
+      ("`union`"            . ?∪)
+      ("`intersection`"     . ?∩)
+      ("`isSubsetOf`"       . ?⊆)
+      ("`isProperSubsetOf`" . ?⊂)
+      ("undefined"          . ?⊥)))
+
+  (defun mu-haskell-mode-hook ()
+    (setq-local prettify-symbols-alist haskell-prettify-symbols-alist))
+
+  (add-hook 'haskell-mode-hook #'mu-haskell-mode-hook))
 
 (use-package hindent                    ; Use hindent to indent Haskell code
   :ensure t
