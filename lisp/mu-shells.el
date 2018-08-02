@@ -8,6 +8,14 @@
 
 ;;; Code:
 
+(use-package shx                        ; Enhance comint-mode
+  :ensure t
+  :init (shx-global-mode 1))
+
+(use-package bash-completion            ; Bash completion for shell-mode
+  :ensure t
+  :config (bash-completion-setup))
+
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind (("<f1>"      . mu-shell-open)
          ("C-c a s s" . mu-shell-open)
@@ -24,8 +32,6 @@
     (fullframe shell mu-pop-window-configuration))
 
   (bind-key "C-c C-q" #'mu-pop-window-configuration shell-mode-map)
-
-  (dirtrack-mode)
 
   (unbind-key "C-c C-l" shell-mode-map)
   (bind-key "C-c C-l" #'counsel-shell-history shell-mode-map)
@@ -60,15 +66,20 @@
   (add-hook 'shell-mode-hook
             (lambda ()
               (set-process-query-on-exit-flag
-               (get-buffer-process (current-buffer)) nil))))
+               (get-buffer-process (current-buffer)) nil)))
 
-(use-package shx                        ; Enhance comint-mode
-  :ensure t
-  :init (shx-global-mode 1))
+  (defun mu-comint-hook ()
+    (validate-setq completion-at-point-functions
+                   '(bash-completion-dynamic-complete
+                     comint-c-a-p-replace-by-expanded-history
+                     shell-environment-variable-completion
+                     shell-command-completion
+                     shell-c-a-p-replace-by-expanded-directory
+                     shell-filename-completion
+                     comint-filename-completion))
+    (shell-dirtrack-mode 1))
 
-(use-package bash-completion            ; Bash completion for shell-mode
-  :ensure t
-  :config (bash-completion-setup))
+  (add-hook 'shell-mode-hook #'mu-comint-hook))
 
 (use-package eshell                     ; Emacs command shell
   :bind ("C-c a s e" . eshell-here)
