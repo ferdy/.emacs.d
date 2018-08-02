@@ -11,14 +11,13 @@
 (use-package dired                      ; File manager
   :defer t
   :bind (("<C-return>" . mu-open-in-external-app)
-         ("C-c f c"    . dired-create-empty-file)
-         ("C-c f g"    . mu-dired-get-size)
          ("C-c f f"    . find-name-dired))
   :bind (:map dired-mode-map
               ("M-p"         . mu-dired-up)
               ("^"           . mu-dired-up)
               ("<backspace>" . mu-dired-up)
               ("M-n"         . mu-dired-down)
+              ("N"           . dired-create-empty-file)
               ("RET"         . find-file-reuse-dir-buffer)
               ("!"           . mu-sudired)
               ("<prior>"     . beginend-dired-mode-goto-beginning)
@@ -74,19 +73,7 @@
     (let ((dir (expand-file-name default-directory)))
       (if (string-match "^/sudo:" dir)
           (user-error "Already in sudo")
-        (dired (concat "/sudo::" dir)))))
-
-  (defun mu-dired-get-size ()
-    "Quick and easy way to get file size in Dired."
-    (interactive)
-    (let ((files (dired-get-marked-files)))
-      (with-temp-buffer
-        (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
-        (message
-         "Size of all marked files: %s"
-         (progn
-           (re-search-backward "\\(^[0-9.,]+[A-Za-z]+\\).*total$")
-           (match-string 1)))))))
+        (dired (concat "/sudo::" dir))))))
 
 (use-package find-dired                 ; Run `find' in Dired
   :config
