@@ -490,9 +490,30 @@ With arg N, insert N newlines."
            ("C-c d c" . comment-region)
            ("C-c d u" . uncomment-region))
 
-;; Enable upcase-/downcase-region
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
+;;;###autoload
+(defun mu-upcase-region (beg end)
+  "`upcase-region' from BEG to END when region is active."
+  (interactive "*r")
+  (when (use-region-p)
+    (upcase-region beg end)))
+
+;;;###autoload
+(defun mu-downcase-region (beg end)
+  "`downcase-region' from BEG to END when region is active."
+  (interactive "*r")
+  (when (use-region-p)
+    (downcase-region beg end)))
+
+;;;###autoload
+(defun mu-capitalize-region (beg end)
+  "`capitalize-region'from BEG to END when and region is active."
+  (interactive "*r")
+  (when (use-region-p)
+    (capitalize-region beg end)))
+
+(bind-key "C-x C-u" #'mu-upcase-region)
+(bind-key "C-x C-l" #'mu-downcase-region)
+(bind-key "C-x M-c" #'mu-capitalize-region)
 
 (setq-default show-trailing-whitespace t)
 
