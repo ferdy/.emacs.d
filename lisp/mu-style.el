@@ -58,7 +58,7 @@
 (validate-setq x-stretch-cursor t)
 
 ;; Disable annoying prompts
-(validate-setq read-answer-short t)
+(fset 'yes-or-no-p 'y-or-n-p)
 (validate-setq kill-buffer-query-functions
                (remq 'process-kill-buffer-query-function
                      kill-buffer-query-functions))
