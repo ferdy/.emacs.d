@@ -17,7 +17,6 @@
               ("^"           . mu-dired-up)
               ("<backspace>" . mu-dired-up)
               ("M-n"         . mu-dired-down)
-              ("N"           . dired-create-empty-file)
               ("RET"         . find-file-reuse-dir-buffer)
               ("!"           . mu-sudired)
               ("<prior>"     . beginend-dired-mode-goto-beginning)
@@ -112,6 +111,9 @@
 (use-package dired-x                    ; Enable some nice Dired features
   :bind ("C-x C-j" . dired-jump)
   :config
+  (unbind-key "N" dired-mode-map)
+  (bind-key "N" #'dired-create-empty-file dired-mode-map)
+  
   (validate-setq
    ;; Be less verbose, Dired
    dired-omit-verbose nil
