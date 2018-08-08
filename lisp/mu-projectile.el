@@ -12,13 +12,15 @@
   :ensure t
   :init (projectile-mode)
   :config
+  (bind-key "C-c p" 'projectile-command-map projectile-mode-map)
+
   (validate-setq
-   projectile-keymap-prefix (kbd "C-c p")
    projectile-completion-system 'ivy
    projectile-find-dir-includes-top-level t))
 
 (use-package counsel-projectile         ; Ivy integration for Projectile
   :ensure t
+  :disabled t
   :bind (:map projectile-command-map
               ("p" . counsel-projectile-switch-project)
               ("r" . counsel-projectile-rg))
