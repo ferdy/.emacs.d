@@ -12,11 +12,8 @@
   :ensure t
   :init (projectile-mode)
   :config
-  ;; Prefer old prefix
-  (validate-setq projectile-keymap-prefix (kbd "C-c p"))
-  (unbind-key "C-c C-p" projectile-mode-map)
-  
   (validate-setq
+   projectile-keymap-prefix (kbd "C-c p")
    projectile-completion-system 'ivy
    projectile-find-dir-includes-top-level t))
 
