@@ -80,6 +80,7 @@
      ("http://www.rogerebert.com/feed/" cinema)
      ("http://www.savagechickens.com/feed" comic)
      ("http://www.slantmagazine.com/rss" cinema)
+     ("http://www.thecinephiliacs.net/feeds/posts/default" cinema)
      ("https://www.theguardian.com/uk/environment/rss" news)
      ("https://www.theguardian.com/uk-news/rss" news)
      ("https://www.theguardian.com/world/rss" news)
