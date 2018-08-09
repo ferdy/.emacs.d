@@ -60,6 +60,7 @@
      ("https://feeds.feedburner.com/birthmoviesdeath" cinema)
      ("https://film.avclub.com/rss" cinema)
      ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)
+     ("https://girishshambu.blogspot.com/feeds/posts/default" cinema)
      ("https://haskellweekly.news/haskell-weekly.atom" haskell)
      ("https://listen2prince.blogspot.com/feeds/posts/default" music)
      ("http://lwlies.com/feed/" cinema)
