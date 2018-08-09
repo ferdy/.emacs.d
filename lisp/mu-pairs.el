@@ -50,7 +50,6 @@
               ("M-<up>"      . sp-splice-sexp-killing-backward)
               ("M-<down>"    . sp-splice-sexp-killing-forward)
               ("M-C-<up>"    . sp-splice-sexp-killing-around)
-              ("M-?"         . sp-convolute-sexp)
               ("M-r"         . sp-raise-sexp)
               ;; Wrap with
               ("M-("         . sp-wrap-round)
