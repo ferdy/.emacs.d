@@ -57,6 +57,7 @@
      ("https://cavallette.noblogs.org/feed" security)
      ("http://chinafilminsider.com/feed/" cinema)
      ("https://cinebeats.wordpress.com/feed/" cinema)
+     ("https://curtsiesandhandgrenades.blogspot.com/feeds/posts/default" cinema)
      ("https://feeds.feedburner.com/birthmoviesdeath" cinema)
      ("https://film.avclub.com/rss" cinema)
      ("https://filmstudiesforfree.blogspot.com/feeds/posts/default" cinema)
