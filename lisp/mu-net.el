@@ -79,6 +79,7 @@
      ("https://www.hongkongfp.com/feed" news)
      ("http://www.lastampa.it/italia/politica/rss.xml" news)
      ("http://www.princerecordings.com/feed/" music)
+     ("https://www.theringer.com/rss/index.xml" cinema)
      ("http://www.rogerebert.com/feed/" cinema)
      ("http://www.savagechickens.com/feed" comic)
      ("http://www.slantmagazine.com/rss" cinema)
