@@ -73,6 +73,7 @@
      ("http://reverseshot.org/archive/entry/rss" cinema)
      ("http://sensesofcinema.com/feed/" cinema)
      ("http://www.500princesongs.com/feed" music)
+     ("http://www.anothergaze.com/feed/" cinema)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
      ("http://www.haskell-ita.it/atom.xml" haskell)
