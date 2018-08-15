@@ -20,7 +20,6 @@
 
 (use-package counsel-projectile         ; Ivy integration for Projectile
   :ensure t
-  :disabled t
   :bind (:map projectile-command-map
               ("p" . counsel-projectile-switch-project)
               ("r" . counsel-projectile-rg))
