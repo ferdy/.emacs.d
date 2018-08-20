@@ -44,7 +44,7 @@
    TeX-source-correlate-start-server t)
 
   ;; Update PDF buffers after successful LaTeX runs
-  (add-hook 'TeX-after-compilation-finished-function
+  (add-hook 'TeX-after-compilation-finished-functions
             #'TeX-revert-document-buffer))
 
 (use-package tex-buf                    ; External commands for AUCTeX
