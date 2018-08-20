@@ -78,6 +78,7 @@
      ("http://www.easternkicks.com/feed/" cinema)
      ("http://www.haskell-ita.it/atom.xml" haskell)
      ("https://www.hongkongfp.com/feed" news)
+     ("https://www.indiewire.com/feed/" cinema)
      ("http://www.lastampa.it/italia/politica/rss.xml" news)
      ("http://www.princerecordings.com/feed/" music)
      ("https://www.theringer.com/rss/index.xml" cinema)
