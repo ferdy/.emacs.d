@@ -10,19 +10,21 @@
 
 (use-package projectile                 ; Project management
   :ensure t
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map))
   :init (projectile-mode)
   :config
-  (bind-key "C-c p" 'projectile-command-map projectile-mode-map)
-
   (validate-setq
    projectile-completion-system 'ivy
    projectile-find-dir-includes-top-level t))
 
 (use-package counsel-projectile         ; Ivy integration for Projectile
   :ensure t
+  :after projectile
   :bind (:map projectile-command-map
-              ("p" . counsel-projectile-switch-project)
-              ("r" . counsel-projectile-rg))
+              ("p"   . counsel-projectile-switch-project)
+              ("r"   . counsel-projectile-rg)
+              ("s s" . counsel-projectile-rg))
   :init (counsel-projectile-mode))
 
 (provide 'mu-projectile)
