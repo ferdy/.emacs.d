@@ -138,7 +138,7 @@
   :config
   (validate-setq
    browse-url-browser-function 'browse-url-generic
-   browse-url-generic-program "opera"))
+   browse-url-generic-program "google-chrome"))
 
 (use-package goto-addr                  ; Make links clickable
   :defer t
