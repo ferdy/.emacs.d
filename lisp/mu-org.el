@@ -38,6 +38,7 @@
   ;; Define Agenda files for GTD
   (validate-setq org-agenda-files '("~/org/gtd/gtd.org"
                                     "~/org/gtd/inbox.org"
+                                    "~/org/gtd/palestra.org"
                                     "~/org/gtd/tickler.org"))
 
   ;; Define refile targets for GTD
