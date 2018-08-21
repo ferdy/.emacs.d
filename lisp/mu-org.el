@@ -41,11 +41,6 @@
                                     "~/org/gtd/palestra.org"
                                     "~/org/gtd/tickler.org"))
 
-  ;; Define refile targets for GTD
-  (setq org-refile-targets '(("~/org/gtd/gtd.org" :maxlevel . 3)
-                             ("~/org/gtd/someday.org" :level . 1)
-                             ("~/org/gtd/tickler.org" :maxlevel . 2)))
-
   ;; Use F12 to toggle image visualization
   (bind-key "<f12>"
             (lambda () (interactive) (org-toggle-inline-images t))
