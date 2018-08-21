@@ -23,7 +23,6 @@
          (:map magit-mode-map
                ([remap previous-line] . magit-previous-line)
                ([remap next-line] . magit-next-line))
-
          (:map dired-mode-map
                ("l" . magit-dired-log)))
   :config
