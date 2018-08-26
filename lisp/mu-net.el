@@ -143,11 +143,14 @@
 
 (use-package goto-addr                  ; Make links clickable
   :defer t
-  :bind (("C-c t a" . goto-address-mode)
-         ("C-c t A" . goto-address-prog-mode))
-  :hook ((prog-mode . goto-address-prog-mode)
-         (text-mode . goto-address-mode)
-         (org-mode  . (lambda () (goto-address-mode -1)))))
+  :bind (:map goto-address-highlight-keymap
+              ("<RET>"   . goto-address-at-point)
+              ("M-<RET>" . newline))
+  :hook ((eshell-mode . goto-address-mode)
+         (org-mode    . (lambda () (goto-address-mode -1)))
+         (prog-mode   . goto-address-prog-mode)
+         (shell-mode  . goto-address-mode)
+         (text-mode   . goto-address-mode)))
 
 (use-package eww                        ; Built-in web browser
   :bind  (("C-c a e w" . eww)
