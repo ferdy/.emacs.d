@@ -81,8 +81,9 @@
   (exec-path-from-shell-initialize))
 
 ;; Personal informations
-(validate-setq user-full-name (getenv "FULLNAME"))
-(validate-setq user-mail-address (getenv "EMAIL"))
+(validate-setq
+ user-full-name (getenv "FULLNAME")
+ user-mail-address (getenv "EMAIL"))
 
 ;; Set separate custom file for the customize interface
 (defconst mu-custom-file (locate-user-emacs-file "custom.el")
