@@ -59,11 +59,6 @@
                          '((ivy-bibtex . ivy--regex-ignore-order)
                            (t . ivy--regex-plus))))
 
-(use-package ivy-rich                   ; Richer ivy-switch-buffer interface
-  :ensure t
-  :after ivy
-  :init (ivy-rich-mode 1))
-
 (use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind ("C-c s s" . swiper-all)
