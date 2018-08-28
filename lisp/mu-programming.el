@@ -169,6 +169,8 @@
   :hook ((clojure-mode . cider-mode)
          (clojure-mode . subword-mode))
   :config
+  (validate-setq clojure-align-reader-conditionals t)
+  
   ;; Fix indentation of some common macros
   (define-clojure-indent
     (for-all 1)
