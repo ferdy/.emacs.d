@@ -20,7 +20,8 @@
 
 ;;; Commentary:
 
-;;  This file provides a minor mode that forces you to type slowly.
+;; This file provides a minor mode that forces you to type slowly.  Chris Done
+;; is the original author, I just grabbed his code and tweak it a bit.
 
 ;;; Code:
 
@@ -34,7 +35,7 @@
 (defvar slow-keys-repeat 0)
 (defvar slow-keys-last-press 0)
 (defvar slow-keys-sleep-for 0.5)
-(defvar slow-keys-min-delay 0.3)
+(defvar slow-keys-min-delay 0.1)
 
 (defun slow-keys-slow-down (msg)
   "Display warning MSG and sleep before let typing begin again."
@@ -62,7 +63,8 @@
     (when (and (> slow-keys-repeat 3)
                (not (slow-keys-typing-cmd this-command)))
       (slow-keys-slow-down
-       (format "Use repetition numbers or more high-level commands: %S" this-command)))
+       (format "Use repetition numbers or more high-level commands: %S"
+               this-command)))
     (let ((now (float-time)))
       (cond
        ((and (slow-keys-typing-cmd this-command)
