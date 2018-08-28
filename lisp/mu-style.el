@@ -200,7 +200,8 @@
   :init (minions-mode)
   :config (validate-setq minions-direct '(cider-mode
                                           flycheck-mode
-                                          overwrite-mode)))
+                                          overwrite-mode
+                                          slow-keys-mode)))
 
 (use-package moody                      ; Tabs and ribbons for the mode line
   :ensure t

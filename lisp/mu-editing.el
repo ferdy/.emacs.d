@@ -530,6 +530,8 @@ With arg N, insert N newlines."
                 minibuffer-setup-hook))
   (add-hook hook #'mu-no-trailing-whitespace))
 
+(bind-key "C-c t s" #'slow-keys-mode)
+
 (provide 'mu-editing)
 
 ;; Local Variables:
