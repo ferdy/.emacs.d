@@ -229,6 +229,10 @@
   (validate-setq mmm-global-mode 'buffers-with-submode-classes
                  mmm-submode-decoration-level 2))
 
+(use-package slow-keys                  ; Slow keys mode to avoid RSI
+  :load-path "~/githubs/manuel-uberti/slow-keys"
+  :bind ("C-c t s" . slow-keys-mode))
+
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil
               tab-width 8)
@@ -529,8 +533,6 @@ With arg N, insert N newlines."
                 compilation-mode-hook
                 minibuffer-setup-hook))
   (add-hook hook #'mu-no-trailing-whitespace))
-
-(bind-key "C-c t s" #'slow-keys-mode)
 
 (provide 'mu-editing)
 
