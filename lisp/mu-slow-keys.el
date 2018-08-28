@@ -21,7 +21,7 @@
 ;;; Commentary:
 
 ;; This file provides a minor mode that forces you to type slowly.
-;; Chris Done is the original author, I just grabbed his code and tweak.
+;; Chris Done is the original author, I just grabbed his code and tweaked it.
 
 ;;; Code:
 
