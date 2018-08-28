@@ -25,13 +25,6 @@
 
 ;;; Code:
 
-(define-minor-mode slow-keys-mode "Type slowly to avoid RSI."
-  :lighter " Slow"
-  :global t
-  (if (bound-and-true-p slow-keys-mode)
-      (add-hook 'post-command-hook 'slow-keys-do)
-    (remove-hook 'post-command-hook 'slow-keys-do)))
-
 (defvar slow-keys-repeat 0)
 (defvar slow-keys-last-press 0)
 (defvar slow-keys-sleep-for 0.5)
@@ -76,6 +69,13 @@
              (< (- now slow-keys-last-press) slow-keys-min-delay))
         (slow-keys-slow-down "Slow down command running!")))
       (setq slow-keys-last-press now))))
+
+(define-minor-mode slow-keys-mode "Type slowly to avoid RSI."
+  :lighter " Slow"
+  :global t
+  (if (bound-and-true-p slow-keys-mode)
+      (add-hook 'post-command-hook 'slow-keys-do)
+    (remove-hook 'post-command-hook 'slow-keys-do)))
 
 (provide 'mu-slow-keys)
 
