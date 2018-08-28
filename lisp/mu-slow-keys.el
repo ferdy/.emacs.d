@@ -30,21 +30,25 @@
 (defvar slow-keys-sleep-for 0.5)
 (defvar slow-keys-min-delay 0.1)
 
+;;;###autoload
 (defun slow-keys-slow-down (msg)
   "Display warning MSG and sleep before let typing begin again."
   (message "%s" (propertize msg 'face 'compilation-error))
   (redisplay)
   (sleep-for slow-keys-sleep-for))
 
+;;;###autoload
 (defun slow-keys-typing-cmd (cmd)
   "Check whether CMD is `self-insert-command' or `org-self-insert-command'."
   (or (eq cmd 'self-insert-command)
       (eq cmd 'org-self-insert-command)))
 
+;;;###autoload
 (defun slow-keys-ignore-cmd (cmd)
   "Check whether CMD should be ignored by slow typing check."
   (eq cmd 'mwheel-scroll))
 
+;;;###autoload
 (defun slow-keys-do ()
   "Check whether typing or running a command is done slowly enough."
   (unless (or executing-kbd-macro
