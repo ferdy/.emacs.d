@@ -20,8 +20,8 @@
 
 ;;; Commentary:
 
-;; This file provides a minor mode that forces you to type slowly.  Chris Done
-;; is the original author, I just grabbed his code and tweak it a bit.
+;; This file provides a minor mode that forces you to type slowly.
+;; Chris Done is the original author, I just grabbed his code and tweak.
 
 ;;; Code:
 
