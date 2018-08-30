@@ -8,7 +8,10 @@
 
 ;;; Code:
 
-(load "~/.emacs.d/lisp/PG/generic/proof-site")
+(use-package proof-general              ; Generic interface for proof assistants
+  :ensure t
+  :disabled t
+  :defer t)
 
 (use-package company-coq                ; Extensions for Proof General
   :ensure t
