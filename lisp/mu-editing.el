@@ -230,7 +230,7 @@
                  mmm-submode-decoration-level 2))
 
 (use-package slow-keys                  ; Slow keys mode to avoid RSI
-  :load-path "~/githubs/manuel-uberti/slow-keys"
+  :ensure t
   :bind ("C-c t s" . slow-keys-mode))
 
 ;; Disable tabs, but given them proper width
