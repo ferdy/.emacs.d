@@ -10,7 +10,6 @@
 
 (use-package proof-general              ; Generic interface for proof assistants
   :ensure t
-  :disabled t
   :mode  ("\\.v\\'" . coq-mode))
 
 (use-package company-coq                ; Extensions for Proof General
