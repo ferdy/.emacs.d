@@ -8,7 +8,12 @@
 
 ;;; Code:
 
-(setq package-enable-at-startup nil)
+(require 'package)
+
+(setq package-archives
+      '(("GNU ELPA" . "http://elpa.gnu.org/packages/")
+        ("MELPA"    . "https://melpa.org/packages/")
+        ("ORG"      . "https://orgmode.org/elpa/")))
 
 (provide 'early-init)
 ;;; early-init.el ends here

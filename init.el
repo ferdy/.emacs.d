@@ -11,16 +11,6 @@
 
 ;;; Code:
 
-;;; Package setup
-(require 'package)
-
-(setq package-archives
-      '(("GNU ELPA" . "http://elpa.gnu.org/packages/")
-        ("MELPA"    . "https://melpa.org/packages/")
-        ("ORG"      . "https://orgmode.org/elpa/")))
-
-(package-activate-all)
-
 (setq load-prefer-newer t)              ; Always load newer compiled files
 (setq ad-redefinition-action 'accept)   ; Silence advice redefinition warnings
 (setq message-log-max 10000)            ; Debugging
