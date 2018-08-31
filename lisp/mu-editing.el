@@ -231,7 +231,8 @@
 
 (use-package slow-keys                  ; Slow keys mode to avoid RSI
   :ensure t
-  :bind ("C-c t s" . slow-keys-mode))
+  :bind ("C-c t s" . slow-keys-mode)
+  :config (validate-setq slow-keys-min-delay 0.03))
 
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil
