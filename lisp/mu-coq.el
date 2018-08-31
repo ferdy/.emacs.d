@@ -32,7 +32,7 @@
                   company-coq-extra-symbols-cmd "SearchAbout -\"____\""
                   company-coq-features/prettify-symbols-in-terminal t)
 
-    (bind-key "<f10>" #'coq-compile-before-require-toggle company-coq-map)
+    (bind-key "<f10>" #'coq-compile-before-require-toggle company-coq-map)))
 
 (provide 'mu-coq)
 
