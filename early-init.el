@@ -11,7 +11,7 @@
 (require 'package)
 
 (setq package-archives
-      '(("GNU ELPA" . "http://elpa.gnu.org/packages/")
+      '(("GNU ELPA" . "https://elpa.gnu.org/packages/")
         ("MELPA"    . "https://melpa.org/packages/")
         ("ORG"      . "https://orgmode.org/elpa/")))
 
