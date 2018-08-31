@@ -33,7 +33,6 @@
                   company-coq-features/prettify-symbols-in-terminal t)
 
     (bind-key "<f10>" #'coq-compile-before-require-toggle company-coq-map)
-    (bind-key "C-c RET" #'company-coq-proof-goto-point company-coq-map)))
 
 (provide 'mu-coq)
 
