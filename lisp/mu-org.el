@@ -17,6 +17,8 @@
   :config
   (validate-setq
    org-src-fontify-natively t
+   org-edit-timestamp-down-means-later t
+   org-catch-invisible-edits 'show
    org-log-done 'time
    org-hide-emphasis-markers t
    org-highlight-latex-and-related '(latex)
@@ -112,7 +114,10 @@
 
 (use-package ox
   :ensure org
-  :config (validate-setq org-export-with-smart-quotes t))
+  :config
+  (validate-setq
+   org-export-with-smart-quotes t
+   org-export-coding-system 'utf8))
 
 (use-package ox-html
   :ensure org
