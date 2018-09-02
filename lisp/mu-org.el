@@ -40,7 +40,7 @@
   ;; Define Agenda files for GTD
   (validate-setq org-agenda-files '("~/org/gtd/gtd.org"
                                     "~/org/gtd/inbox.org"
-                                    "~/org/gtd/palestra.org"
+                                    "~/org/gtd/gym.org"
                                     "~/org/gtd/tickler.org"))
 
   ;; Use F12 to toggle image visualization
