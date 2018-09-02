@@ -81,7 +81,7 @@
          ("C-c g"   . counsel-git-grep)
          ("C-c G"   . counsel-git-log)
          ("C-c i"   . counsel-apropos)
-         ("C-c k"   . counsel-rg)
+         ("M-s s"   . counsel-rg)
          ("C-c l"   . counsel-find-library)
          ("C-c n i" . counsel-imenu)
          ("C-c u"   . counsel-unicode-char)
