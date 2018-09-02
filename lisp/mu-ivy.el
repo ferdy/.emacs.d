@@ -77,17 +77,18 @@
 (use-package counsel                    ; Completion functions with Ivy
   :ensure t
   :init (counsel-mode)
-  :bind (("C-c b"   . counsel-ibuffer)
+  :bind (("M-s a"   . counsel-apropos)
+         ("C-x j"   . counsel-bookmark)
+         ("C-c l"   . counsel-find-library)
          ("C-c g"   . counsel-git-grep)
          ("C-c G"   . counsel-git-log)
-         ("C-c i"   . counsel-apropos)
-         ("M-s s"   . counsel-rg)
-         ("C-c l"   . counsel-find-library)
-         ("C-c n i" . counsel-imenu)
-         ("C-c u"   . counsel-unicode-char)
          ("C-r"     . counsel-grep-or-swiper)
          ("C-s"     . counsel-grep-or-swiper)
-         ("C-x j"   . counsel-bookmark)
+         ("C-c b"   . counsel-ibuffer)
+         ("C-c i"   . counsel-imenu)
+         ("M-s l"   . counsel-locate)
+         ("M-s s"   . counsel-rg)
+         ("C-c u"   . counsel-unicode-char)
          :map read-expression-map
          ("C-r" . counsel-minibuffer-history))
   :config
