@@ -17,6 +17,7 @@
   :config
   (validate-setq
    org-src-fontify-natively t
+   org-fontify-done-headline t
    org-edit-timestamp-down-means-later t
    org-catch-invisible-edits 'show
    org-log-done 'time
