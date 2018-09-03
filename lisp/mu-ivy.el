@@ -84,10 +84,10 @@
          ("M-s G" . counsel-git-log)
          ("C-r"   . counsel-grep-or-swiper)
          ("C-s"   . counsel-grep-or-swiper)
-         ("C-c i" . counsel-imenu)
+         ("M-s i" . counsel-imenu)
          ("M-s l" . counsel-locate)
          ("M-s s" . counsel-rg)
-         ("C-c u" . counsel-unicode-char)
+         ("M-s u" . counsel-unicode-char)
          :map read-expression-map
          ("C-r" . counsel-minibuffer-history))
   :config
