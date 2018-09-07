@@ -138,8 +138,7 @@
 
 (use-package org-indent ; Dynamic indentation for Org-mode
   :ensure org
-  :bind ("C-c t o" . org-indent-mode)
-  :init (add-hook 'org-mode-hook #'org-indent-mode))
+  :bind ("C-c t o" . org-indent-mode))
 
 (use-package ox-pandoc                  ; Export Org documents via Pandoc
   :ensure t
