@@ -16,6 +16,10 @@
                     :family "Iosevka SS08"
                     :height 145
                     :weight 'regular)
+(set-face-attribute 'fixed-pitch nil
+                    :family "Iosevka SS08"
+                    :height 145
+                    :weight 'regular)
 (set-face-attribute 'variable-pitch nil
                     :family "Fira Sans"
                     :height 145
