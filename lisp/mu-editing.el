@@ -206,12 +206,9 @@
          (rst-mode      . typo-mode))
   :init (setq-default typo-language "English"))
 
-(use-package olivetti                   ; Distraction-free interface
+(use-package writeroom-mode             ; Distraction-free interface
   :ensure t
-  :bind ("C-c t r" . olivetti-mode)
-  :config
-  (setq-default olivetti-body-width 80)
-  (validate-setq olivetti-hide-mode-line t))
+  :bind ("C-c t r" . writeroom-mode))
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :bind ("C-c x t" . tildify-region)
