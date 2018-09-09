@@ -208,7 +208,8 @@
 
 (use-package writeroom-mode             ; Distraction-free interface
   :ensure t
-  :bind ("C-c t r" . writeroom-mode))
+  :bind ("C-c t r" . writeroom-mode)
+  :config (validate-setq writeroom-fullscreen-effect 'maximized))
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :bind ("C-c x t" . tildify-region)
