@@ -209,7 +209,10 @@
 (use-package writeroom-mode             ; Distraction-free editing
   :ensure t
   :bind ("C-c t r" . writeroom-mode)
-  :config (validate-setq writeroom-fullscreen-effect 'maximized))
+  :config
+  (validate-setq
+   writeroom-fullscreen-effect 'maximized
+   writeroom-bottom-divider-width 0))
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :hook ((text-mode  . tildify-mode)
