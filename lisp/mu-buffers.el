@@ -61,6 +61,7 @@
                  "*Calendar"            ; Calendar window
                  "*env-info"            ; Emacs version from my custom function
                  "*Cargo"               ; Cargo process buffers
+                 "*Word"                ; WordNut buffers
                  (and (1+ nonl) " output*"))) ; AUCTeX command output
     (display-buffer-reuse-window display-buffer-in-side-window)
     (side . bottom)
