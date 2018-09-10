@@ -206,13 +206,12 @@
          (rst-mode      . typo-mode))
   :init (setq-default typo-language "English"))
 
-(use-package writeroom-mode             ; Distraction-free interface
+(use-package writeroom-mode             ; Distraction-free editing
   :ensure t
   :bind ("C-c t r" . writeroom-mode)
   :config (validate-setq writeroom-fullscreen-effect 'maximized))
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
-  :bind ("C-c x t" . tildify-region)
   :hook ((text-mode  . tildify-mode)
          (latex-mode . (lambda ()
                          ;; Use the right space for LaTeX
