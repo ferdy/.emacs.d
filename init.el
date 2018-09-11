@@ -145,7 +145,6 @@
 (use-package mu-org)
 (use-package mu-programming)
 (use-package mu-shells)
-(use-package mu-coq :defer 1)
 
 ;; Reset default values
 (add-hook 'emacs-startup-hook #'mu-set-gc-threshold)
