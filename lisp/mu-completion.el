@@ -98,6 +98,7 @@
   
   (validate-setq
    company-minimum-prefix-length 2
+   company-selection-wrap-around t
    company-show-numbers t
    company-tooltip-align-annotations t
    company-tooltip-flip-when-above t))
