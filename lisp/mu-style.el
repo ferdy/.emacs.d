@@ -9,9 +9,6 @@
 ;;; Code:
 
 ;;; Fonts setup
-;; Fonts used:
-;; - Iosevka (https://github.com/be5invis/Iosevka)
-;; - Fira Sans (https://github.com/mozilla/Fira/)
 (set-face-attribute 'default nil
                     :family "Iosevka SS08"
                     :height 150
