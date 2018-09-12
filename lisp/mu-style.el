@@ -11,7 +11,7 @@
 ;;; Fonts setup
 (set-face-attribute 'default nil
                     :family "Iosevka SS08"
-                    :height 150
+                    :height 145
                     :weight 'regular)
 (set-face-attribute 'fixed-pitch nil
                     :family "Iosevka SS08"
@@ -240,7 +240,7 @@
   (interactive)
   (set-face-attribute 'default nil
                       :family "Iosevka SS08"
-                      :height 150
+                      :height 145
                       :weight 'regular)
   (set-face-attribute 'variable-pitch nil
                       :family "Fira Sans"
