@@ -152,6 +152,7 @@
   :ensure t
   :config
   (load-theme 'sanityinc-tomorrow-night 'no-confirm)
+
   (let ((line (face-attribute 'mode-line :underline)))
     (set-face-attribute 'mode-line nil :overline line)
     (set-face-attribute 'mode-line-inactive nil :overline line)
