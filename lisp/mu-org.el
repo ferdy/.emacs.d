@@ -27,9 +27,6 @@
    org-directory (expand-file-name "~/org/")
    org-default-notes-file (expand-file-name "gtd/gtd.org" org-directory))
 
-  ;; Use Org-mode for .eml files (useful for Thunderbird plugin)
-  (add-to-list 'auto-mode-alist '("\\.eml\\'" . org-mode))
-
   ;; Use Org structures and tables in message mode
   (add-hook 'message-mode-hook #'turn-on-orgtbl)
   (add-hook 'message-mode-hook #'turn-on-orgstruct++)
@@ -66,7 +63,6 @@
     (let* ((follow org-return-follows-link)
            (org-return-follows-link (and follow (not (or (bolp) (eolp))))))
       (org-return)))
-
 
   (unbind-key "C-c $" org-mode-map)      ; Free C-c $ (see: mu-languages.el)
   (unbind-key "C-'" org-mode-map)        ; Free C-' (see: mu-editing.el)
@@ -135,10 +131,6 @@
   (validate-setq org-latex-pdf-process
                  '("latexmk -pdflatex='lualatex -shell-escape
 -interaction nonstopmode' -pdf -f  %f")))
-
-(use-package org-indent ; Dynamic indentation for Org-mode
-  :ensure org
-  :bind ("C-c t o" . org-indent-mode))
 
 (use-package ox-pandoc                  ; Export Org documents via Pandoc
   :ensure t
