@@ -394,7 +394,7 @@ Including `indent-buffer', which should not be called automatically on save."
   (whitespace-cleanup)
   (indent-buffer))
 
-(bind-key "C-c t c" #'cleanup-buffer)
+(bind-key "C-c C-b" #'cleanup-buffer)
 
 ;;;###autoload
 (defun mu-smart-kill-whole-line (&optional arg)
