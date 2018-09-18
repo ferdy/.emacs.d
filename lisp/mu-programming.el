@@ -322,6 +322,11 @@
          "\\.tpl\\'"
          "\\.jsx\\'")
   :config
+  (validate-setq
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-markup-indent-offset 2)
+
   ;; Better JSX syntax-highlighting in web-mode
   (defadvice web-mode-highlight-part (around tweak-jsx activate)
     (if (equal web-mode-content-type "jsx")
