@@ -29,7 +29,6 @@
     "C-c a l"   "languages"
     "C-c a r"   "remote"
     "C-c a s"   "shells"
-    "C-c b"     "buffers"
     "C-c c"     "compile-and-comments"
     "C-c d"     "develop"
     "C-c f"     "files"
