@@ -24,7 +24,7 @@
   :config
   (validate-setq
    dired-auto-revert-buffer t           ; Revert buffers on revisiting
-   dired-listing-switches "-lFaGh1v --group-directories-first"
+   dired-listing-switches "-lFah1v --group-directories-first"
    dired-dwim-target t                  ; Use other pane as target
    dired-recursive-copies 'always       ; Copy dirs recursively
    dired-recursive-deletes ' always     ; Delete dirs recursively
