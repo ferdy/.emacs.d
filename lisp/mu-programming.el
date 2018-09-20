@@ -334,6 +334,10 @@
           ad-do-it)
       ad-do-it)))
 
+(use-package js                         ; JavaScript editing
+  :defer t
+  :config (validate-setq js-indent-level 2))
+
 (use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
   :mode ("\\.js\\'" . js2-mode)
