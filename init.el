@@ -90,6 +90,10 @@
    custom-unlispify-menu-entries nil)
   :init (load mu-custom-file 'no-error 'no-message))
 
+;; Disable auto save and backups
+(validate-setq auto-save-default nil)
+(validate-setq make-backup-files nil)
+
 (use-package no-littering               ; Keep .emacs.d clean
   :ensure t
   :config
