@@ -244,6 +244,12 @@
   :bind ("C-c t s" . slow-keys-mode)
   :config (validate-setq slow-keys-min-delay 0.03))
 
+(use-package super-save                 ; Auto-save buffers
+  :ensure t
+  :config
+  (super-save-mode +1)
+  (validate-setq super-save-auto-save-when-idle t))
+
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil
               tab-width 8)
@@ -302,7 +308,7 @@ prefix argument."
       (while (re-search-forward "\\s-+" nil t)
         (replace-match " ")))))
 
-(defun crux-get-positions-of-line-or-region ()
+(defun mu-get-positions-of-line-or-region ()
   "Return positions (beg . end) of the current line or region."
   (let (beg end)
     (if (and mark-active (> (point) (mark)))
@@ -320,7 +326,7 @@ If there's no region, the current line will be duplicated.  However, if
 there's a region, all lines that region covers will be duplicated."
   (interactive "p")
   (pcase-let* ((origin (point))
-               (`(,beg . ,end) (crux-get-positions-of-line-or-region))
+               (`(,beg . ,end) (mu-get-positions-of-line-or-region))
                (region (buffer-substring-no-properties beg end)))
     (dotimes (_i arg)
       (goto-char end)
@@ -338,7 +344,7 @@ If there's no region, the current line will be duplicated.  However, if
 there's a region, all lines that region covers will be duplicated."
   (interactive "p")
   (pcase-let* ((origin (point))
-               (`(,beg . ,end) (crux-get-positions-of-line-or-region))
+               (`(,beg . ,end) (mu-get-positions-of-line-or-region))
                (region (buffer-substring-no-properties beg end)))
     (comment-or-uncomment-region beg end)
     (setq end (line-end-position))
@@ -358,8 +364,8 @@ there's a region, all lines that region covers will be duplicated."
 
 ;;;###autoload
 (defun flush-kill-lines (regex)
-  "Flush lines matching REGEX and append to kill ring.  Restrict to region\
-if active."
+  "Flush lines matching REGEX and append to kill ring.
+Restrict to region if active."
   (interactive "sFlush kill regex: ")
   (save-excursion
     (save-restriction
