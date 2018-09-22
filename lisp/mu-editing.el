@@ -149,12 +149,12 @@
               ("Y"   . mc/mark-previous-symbol-like-this)
               ("w"   . mc/mark-next-word-like-this)
               ("W"   . mc/mark-previous-word-like-this))
-  :init
-  (setq mc/mode-line
-        ;; Simplify the MC mode line indicator
-        '(:propertize (:eval (concat " " (number-to-string
-                                          (mc/num-cursors))))
-                      face font-lock-warning-face)))
+  :init (setq mc/mode-line
+              ;; Simplify the MC mode line indicator
+              '(:propertize (:eval (concat " " (number-to-string
+                                                (mc/num-cursors))))
+                            face font-lock-warning-face))
+  :config (validate-setq mc/always-run-for-all t))
 
 (use-package mc-extras                  ; Extra functions for multiple-cursors
   :ensure t
