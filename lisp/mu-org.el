@@ -17,6 +17,8 @@
   :config
   (validate-setq
    org-src-fontify-natively t
+   org-src-tab-acts-natively t
+   org-src-preserve-indentation t
    org-fontify-done-headline t
    org-edit-timestamp-down-means-later t
    org-catch-invisible-edits 'show
@@ -36,10 +38,7 @@
    org-todo-keywords '("TODO(t)" "WAITING(w)" "|" "CANCELLED(c)" "DONE(d)"))
 
   ;; Define Agenda files for GTD
-  (validate-setq org-agenda-files '("~/org/gtd/gtd.org"
-                                    "~/org/gtd/gym.org"
-                                    "~/org/gtd/inbox.org"
-                                    "~/org/gtd/tickler.org"))
+  (validate-setq org-agenda-files '("~/org/gtd"))
 
   ;; Use F12 to toggle image visualization
   (bind-key "<f12>"
