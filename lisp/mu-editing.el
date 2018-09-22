@@ -41,7 +41,10 @@
 (use-package undo-tree                  ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode)
-  :config (validate-setq undo-tree-visualizer-timestamps t))
+  :config
+  (validate-setq
+   undo-tree-auto-save-history t
+   undo-tree-visualizer-timestamps t))
 
 (use-package delsel                     ; Delete the selection instead of insert
   :defer t
@@ -249,6 +252,12 @@
   :config
   (super-save-mode +1)
   (validate-setq super-save-auto-save-when-idle t))
+
+(use-package move-text                  ; Move line or region with M-up/M-down
+  :ensure t
+  :config
+  (bind-key* [M-down] #'move-text-down)
+  (bind-key* [M-up] #'move-text-up))
 
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil

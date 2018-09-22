@@ -46,10 +46,6 @@
               ("C-M-k"       . sp-kill-sexp)
               ("C-M-w"       . sp-copy-sexp)
               ;; Depth changing
-              ("M-S-<up>"    . sp-splice-sexp)
-              ("M-<up>"      . sp-splice-sexp-killing-backward)
-              ("M-<down>"    . sp-splice-sexp-killing-forward)
-              ("M-C-<up>"    . sp-splice-sexp-killing-around)
               ("M-r"         . sp-raise-sexp)
               ;; Wrap with
               ("M-("         . sp-wrap-round)
