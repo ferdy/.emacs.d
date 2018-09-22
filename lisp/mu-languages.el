@@ -118,7 +118,7 @@ Change dictionary and mode line lighter accordingly."
 
 (use-package powerthesaurus             ; Powerthesaurus integration
   :ensure t
-  :bind (("C-c a s" . powerthesaurus-lookup-word-dwim)))
+  :bind ("C-c a s" . powerthesaurus-lookup-word-dwim))
 
 (provide 'mu-languages)
 
