@@ -116,6 +116,10 @@ Change dictionary and mode line lighter accordingly."
          ("C-c a d" . define-word-at-point))
   :config (validate-setq define-word-limit 5))
 
+(use-package powerthesaurus             ; Powerthesaurus integration
+  :ensure t
+  :bind (("C-c a s" . powerthesaurus-lookup-word-dwim)))
+
 (provide 'mu-languages)
 
 ;; Local Variables:
