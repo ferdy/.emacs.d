@@ -18,7 +18,6 @@
 
 (use-package shell                 ; Specialized comint.el for running the shell
   :bind (("<f1>"      . mu-shell-open)
-         ("C-c a s s" . mu-shell-open)
          (:map shell-mode-map
                ("<tab>" . completion-at-point)))
   :config
@@ -82,7 +81,7 @@
   (add-hook 'shell-mode-hook #'mu-comint-hook))
 
 (use-package eshell                     ; Emacs command shell
-  :bind ("C-c a s e" . eshell-here)
+  :bind ("C-c a e" . eshell-here)
   :config
   (defun eshell-here ()
     "Open EShell in the directory associated with the current buffer's file.
@@ -194,7 +193,7 @@ The EShell is renamed to match that directory to make multiple windows easier."
   :init (setup-esh-help-eldoc))
 
 (use-package ansi-term                  ; Powerful terminal emulator
-  :bind ("C-c a s t" . ansi-term)
+  :defer t
   :init
   ;; Always use Bash
   (defvar mu-term-shell "/bin/bash")

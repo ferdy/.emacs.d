@@ -154,8 +154,7 @@
          (text-mode   . goto-address-mode)))
 
 (use-package eww                        ; Built-in web browser
-  :bind  (("C-c a e w" . eww)
-          ("C-c a e u" . eww-browse-url))
+  :defer t
   :config
   (defun mu-eww-keep-lines (regexp)
     "Show only the lines matching regexp in the web page.
