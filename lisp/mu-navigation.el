@@ -13,8 +13,8 @@
 
 (validate-setq
  scroll-conservatively 1000
- ;; Move to beg/end of buffer before signalling an error
- scroll-error-top-bottom t
+ scroll-margin 10
+ scroll-step 1
  ;; Ensure M-v always undoes C-v
  scroll-preserve-screen-position 'always
  ;; Start recentre from top
