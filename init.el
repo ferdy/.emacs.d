@@ -7,7 +7,7 @@
 ;;; Commentary:
 
 ;; This is the GNU Emacs configuration of Manuel Uberti, mostly used for
-;; Haskell, Clojure, Git, LaTeX and Org mode.
+;; Clojure, Haskell, Git, LaTeX and Org mode.
 
 ;;; Code:
 
