@@ -25,19 +25,6 @@
 
   (add-to-list 'aggressive-indent-excluded-modes 'cider-repl-mode))
 
-(use-package whitespace-cleanup-mode    ; Cleanup whitespace in buffers
-  :ensure t
-  :hook (after-init-hook . global-whitespace-cleanup-mode))
-
-(use-package shrink-whitespace          ; Better whitespace removal
-  :ensure t
-  :bind ("M-SPC" . shrink-whitespace))
-
-(use-package hungry-delete              ; Delete all whitespaces
-  :ensure t
-  :bind (("C-c <backspace>" . hungry-delete-backward)
-         ("C-c <deletechar>" . hungry-delete-forward)))
-
 (use-package undo-tree                  ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode)
@@ -81,6 +68,10 @@
   :hook ((org-mode . aggressive-fill-paragraph-mode)
          (TeX-mode . aggressive-fill-paragraph-mode)))
 
+(use-package unfill                     ; Smart fill/unfill paragraph
+  :ensure t
+  :bind ([remap fill-paragraph] . unfill-toggle))
+
 (use-package visual-fill-column         ; Fill column wrapping
   :ensure t
   :bind ("C-c t v" . visual-fill-column-mode)
@@ -111,76 +102,14 @@
   :ensure t
   :bind ("C-c x a i" . ialign))
 
-;; Free C-m and make it different from RET
-(define-key input-decode-map [?\C-m] [C-m])
-
-(use-package multiple-cursors        ; Easily place multiple cursors in a buffer
-  :ensure t
-  :bind (("C-'"         . set-rectangular-region-anchor)
-         ("<C-m> ^"     . mc/edit-beginnings-of-lines)
-         ("<C-m> $"     . mc/edit-ends-of-lines)
-         ("<C-m> '"     . mc/edit-ends-of-lines)
-         ("<C-m> R"     . mc/reverse-regions)
-         ("<C-m> S"     . mc/sort-regions)
-         ("<C-m> W"     . mc/mark-all-words-like-this)
-         ("<C-m> Y"     . mc/mark-all-symbols-like-this)
-         ("<C-m> a"     . mc/mark-all-like-this-dwim)
-         ("<C-m> c"     . mc/mark-all-dwim)
-         ("<C-m> l"     . mc/insert-letters)
-         ("<C-m> n"     . mc/insert-numbers)
-         ("<C-m> r"     . mc/mark-all-in-region-regexp)
-         ("<C-m> t"     . mc/mark-sgml-tag-pair)
-         ("<C-m> w"     . mc/mark-next-like-this-word)
-         ("<C-m> x"     . mc/mark-more-like-this-extended)
-         ("<C-m> y"     . mc/mark-next-like-this-symbol)
-         ("<C-m> C-SPC" . mc/mark-pop)
-         ("<C-m> ("     . mc/mark-all-symbols-like-this-in-defun)
-         ("<C-m> C-("   . mc/mark-all-words-like-this-in-defun)
-         ("<C-m> M-("   . mc/mark-all-like-this-in-defun)
-         ("<C-m> ["     . mc/vertical-align-with-space)
-         ("<C-m> {"     . mc/vertical-align))
-  :bind (:map selected-keymap
-              ("C-'" . mc/edit-lines)
-              ("c"   . mc/edit-lines)
-              ("."   . mc/mark-next-like-this)
-              ("<"   . mc/unmark-next-like-this)
-              ("C->" . mc/skip-to-next-like-this)
-              (","   . mc/mark-previous-like-this)
-              (">"   . mc/unmark-previous-like-this)
-              ("C-<" . mc/skip-to-previous-like-this)
-              ("y"   . mc/mark-next-symbol-like-this)
-              ("Y"   . mc/mark-previous-symbol-like-this)
-              ("w"   . mc/mark-next-word-like-this)
-              ("W"   . mc/mark-previous-word-like-this))
-  :init (setq mc/mode-line
-              ;; Simplify the MC mode line indicator
-              '(:propertize (:eval (concat " " (number-to-string
-                                                (mc/num-cursors))))
-                            face font-lock-warning-face))
-  :config (validate-setq mc/always-run-for-all t))
-
-(use-package mc-extras                  ; Extra functions for multiple-cursors
-  :ensure t
-  :bind (("C-. M-C-f" . mc/mark-next-sexps)
-         ("C-. M-C-b" . mc/mark-previous-sexps)
-         ("C-. <"     . mc/mark-all-above)
-         ("C-. >"     . mc/mark-all-below)
-         ("C-. C-d"   . mc/remove-current-cursor)
-         ("C-. C-k"   . mc/remove-cursors-at-eol)
-         ("C-. M-d"   . mc/remove-duplicated-cursors)
-         ("C-. |"     . mc/move-to-column)
-         ("C-. ~"     . mc/compare-chars)))
-
-(use-package mc-freeze
-  :ensure mc-extras
-  :bind ("C-. C-f" . mc/freeze-fake-cursors-dwim))
-
-(use-package mc-rect
-  :ensure mc-extras
-  :bind ("C-\"" . mc/rect-rectangle-to-multiple-cursors))
-
 (use-package saveplace                  ; Save point position in files
   :init (save-place-mode 1))
+
+(use-package super-save                 ; Auto-save buffers
+  :ensure t
+  :config
+  (super-save-mode +1)
+  (validate-setq super-save-auto-save-when-idle t))
 
 (use-package autorevert                 ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
@@ -223,10 +152,6 @@
                          ;; Use the right space for LaTeX
                          (setq-local tildify-space-string "~")))))
 
-(use-package unfill                     ; Smart fill/unfill paragraph
-  :ensure t
-  :bind ([remap fill-paragraph] . unfill-toggle))
-
 (use-package string-edit                ; Edit strings in a separate buffer
   :ensure t
   :bind ("C-c x s" . string-edit-at-point))
@@ -246,12 +171,6 @@
   :ensure t
   :bind ("C-c t s" . slow-keys-mode)
   :config (validate-setq slow-keys-min-delay 0.03))
-
-(use-package super-save                 ; Auto-save buffers
-  :ensure t
-  :config
-  (super-save-mode +1)
-  (validate-setq super-save-auto-save-when-idle t))
 
 (use-package move-text                  ; Move line or region with M-up/M-down
   :ensure t
@@ -543,21 +462,6 @@ With arg N, insert N newlines."
 (bind-key "C-x C-u" #'mu-upcase-region)
 (bind-key "C-x C-l" #'mu-downcase-region)
 (bind-key "C-x M-c" #'mu-capitalize-region)
-
-(setq-default show-trailing-whitespace t)
-
-(defun mu-no-trailing-whitespace ()
-  "Turn off display of trailing whitespace in the current buffer."
-  (setq show-trailing-whitespace nil))
-
-(dolist (hook '(special-mode-hook
-                Info-mode-hook
-                eww-mode-hook
-                term-mode-hook
-                comint-mode-hook
-                compilation-mode-hook
-                minibuffer-setup-hook))
-  (add-hook hook #'mu-no-trailing-whitespace))
 
 (provide 'mu-editing)
 
