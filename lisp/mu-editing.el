@@ -255,9 +255,8 @@
 
 (use-package move-text                  ; Move line or region with M-up/M-down
   :ensure t
-  :config
-  (bind-key* [M-down] #'move-text-down)
-  (bind-key* [M-up] #'move-text-up))
+  :bind* (([M-down] . move-text-down)
+          ([M-up]   . move-text-up)))
 
 ;; Disable tabs, but given them proper width
 (setq-default indent-tabs-mode nil
