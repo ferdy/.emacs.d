@@ -151,6 +151,7 @@
 (use-package mu-org)
 (use-package mu-programming)
 (use-package mu-shells)
+(use-package mu-feed :defer 2)
 
 ;; Reset default values
 (add-hook 'emacs-startup-hook #'mu-set-gc-threshold)
