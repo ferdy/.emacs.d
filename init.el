@@ -16,15 +16,6 @@
 (setq message-log-max 10000)            ; Debugging
 (setq enable-local-variables :all)      ; Always enable all local variables
 
-;; Allow more than 800Kb cache during init
-(setq gc-cons-threshold 402653184
-      gc-cons-percentage 0.6)
-
-(defun mu-set-gc-threshold ()
-  "Reset `gc-cons-threshold' and `gc-cons-percentage' to their default values."
-  (setq gc-cons-threshold 16777216
-        gc-cons-percentage 0.1))
-
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -152,9 +143,6 @@
 (use-package mu-programming)
 (use-package mu-shells)
 (use-package mu-feed :defer 2)
-
-;; Reset default values
-(add-hook 'emacs-startup-hook #'mu-set-gc-threshold)
 
 ;; Immediately visit my main GTD file
 (find-file "~/org/gtd/gtd.org")
