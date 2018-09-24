@@ -93,4 +93,10 @@
   (bind-key "R" #'mu-elfeed-mark-all-read elfeed-search-mode-map))
 
 (provide 'mu-feed)
+
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; mu-feed.el ends here
