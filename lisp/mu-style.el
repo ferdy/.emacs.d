@@ -192,8 +192,7 @@
                         tag
                       (when num (int-to-string num)))
                     " ")))
-         str)))
-    face (:inherit fringe :underline nil))
+         str))))
   "Mode line format for Eyebrowse.")
 
 (put 'mu-eyebrowse-mode-line 'risky-local-variable t)
