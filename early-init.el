@@ -16,4 +16,10 @@
         ("ORG"      . "https://orgmode.org/elpa/")))
 
 (provide 'early-init)
+
+;; Local Variables:
+;; coding: utf-8
+;; indent-tabs-mode: nil
+;; End:
+
 ;;; early-init.el ends here
