@@ -151,13 +151,13 @@
                          " "
                          filename-and-process))))
 
-(use-package ibuffer-vc                 ; Group buffers by VC project and status
+(use-package ibuffer-projectile        ; Group Ibuffer's list by Projectile root
   :ensure t
   :init (add-hook 'ibuffer-hook
                   (lambda ()
-                    (ibuffer-vc-set-filter-groups-by-vc-root)
-                    (unless (eq ibuffer-sorting-mode 'filename/process)
-                      (ibuffer-do-sort-by-filename/process)))))
+                    (ibuffer-projectile-set-filter-groups)
+                    (unless (eq ibuffer-sorting-mode 'alphabetic)
+                      (ibuffer-do-sort-by-alphabetic)))))
 
 ;; Use `emacs-lisp-mode' instead of `lisp-interaction-mode' for scratch buffer
 (validate-setq initial-major-mode 'emacs-lisp-mode)
