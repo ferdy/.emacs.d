@@ -130,7 +130,7 @@
      ((> (buffer-size) 1000000) (format "%7.1fM" (/ (buffer-size) 1000000.0)))
      ((> (buffer-size) 1000) (format "%7.1fk" (/ (buffer-size) 1000.0)))
      (t (format "%8d" (buffer-size)))))
-
+  
   (validate-setq ibuffer-formats
                  '((mark modified read-only " "
                          (name 35 35 :left :elide)
@@ -151,13 +151,13 @@
                          " "
                          filename-and-process))))
 
-(use-package ibuffer-projectile        ; Group Ibuffer's list by Projectile root
+(use-package ibuffer-vc                 ; Group buffers by VC project and status
   :ensure t
   :init (add-hook 'ibuffer-hook
                   (lambda ()
-                    (ibuffer-projectile-set-filter-groups)
-                    (unless (eq ibuffer-sorting-mode 'alphabetic)
-                      (ibuffer-do-sort-by-alphabetic)))))
+                    (ibuffer-vc-set-filter-groups-by-vc-root)
+                    (unless (eq ibuffer-sorting-mode 'filename/process)
+                      (ibuffer-do-sort-by-filename/process)))))
 
 ;; Use `emacs-lisp-mode' instead of `lisp-interaction-mode' for scratch buffer
 (validate-setq initial-major-mode 'emacs-lisp-mode)
