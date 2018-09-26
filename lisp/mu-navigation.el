@@ -77,6 +77,24 @@
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (validate-setq set-mark-command-repeat-pop t)
 
+(defun mu-pop-local-mark-ring ()
+  "Set the mark where the point is."
+  (interactive)
+  (set-mark-command t))
+
+(defun mu-unpop-to-mark-command ()
+  "Unpop off mark ring.  Does nothing if mark ring is empty."
+  (interactive)
+  (when mark-ring
+    (setq mark-ring (cons (copy-marker (mark-marker)) mark-ring))
+    (set-marker (mark-marker) (car (last mark-ring)) (current-buffer))
+    (when (null (mark t)) (ding))
+    (setq mark-ring (nbutlast mark-ring))
+    (goto-char (marker-position (car (last mark-ring))))))
+
+(bind-key* "C-," #'mu-pop-local-mark-ring)
+(bind-key* "C-." #'mu-unpop-to-mark-command)
+
 ;; Focus new help windows when opened
 (setq-default help-window-select t)
 
