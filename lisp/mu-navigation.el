@@ -142,18 +142,6 @@
   (ignore-errors (forward-line 5)))
 
 ;;;###autoload
-(defun super-previous-line ()
-  "Move 5 lines up."
-  (interactive)
-  (ignore-errors (forward-line -5)))
-
-;;;###autoload
-(defun super-backward-char ()
-  "Move point 5 characters back."
-  (interactive)
-  (ignore-errors (backward-char 5)))
-
-;;;###autoload
 (defun super-forward-char ()
   "Move point 5 characters forward."
   (interactive)
@@ -161,9 +149,7 @@
 
 (bind-keys
  ("C-S-n" . super-next-line)
- ("C-S-p" . super-previous-line)
- ("C-S-b" . super-backward-char)
- ("C-S-f" . super-forward-char))
+ ("C-S-p" . super-previous-line))
 
 ;;;###autoload
 (defun mu-goto-line-with-line-numbers ()
