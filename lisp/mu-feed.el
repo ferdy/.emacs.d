@@ -43,6 +43,7 @@
      ("https://cavallette.noblogs.org/feed" security)
      ("http://chinafilminsider.com/feed/" cinema)
      ("https://cinebeats.wordpress.com/feed/" cinema)
+     ("https://cinephiliabeyond.org/feed/rss/" cinema)
      ("https://curtsiesandhandgrenades.blogspot.com/feeds/posts/default" cinema)
      ("https://feeds.feedburner.com/birthmoviesdeath" cinema)
      ("https://film.avclub.com/rss" cinema)
@@ -58,8 +59,11 @@
      ("https://planet.haskell.org/atom.xml" haskell)
      ("http://planet.emacsen.org/atom.xml" emacs)
      ("http://reverseshot.org/archive/entry/rss" cinema)
+     ("https://selfstyledsiren.blogspot.com/feeds/posts/default" cinema)
      ("http://sensesofcinema.com/feed/" cinema)
+     ("https://sergioleoneifr.blogspot.com/feeds/posts/default" cinema)
      ("http://www.500princesongs.com/feed" music)
+     ("http://www.aintitcool.com/node/feed/" cinema)
      ("http://www.anothergaze.com/feed/" cinema)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
@@ -68,7 +72,6 @@
      ("https://www.indiewire.com/feed/" cinema)
      ("http://www.lastampa.it/italia/politica/rss.xml" news)
      ("http://www.princerecordings.com/feed/" music)
-     ("https://www.theringer.com/rss/index.xml" cinema)
      ("http://www.rogerebert.com/feed/" cinema)
      ("http://www.savagechickens.com/feed" comic)
      ("http://www.slantmagazine.com/rss" cinema)
@@ -97,6 +100,7 @@
 ;; Local Variables:
 ;; coding: utf-8
 ;; indent-tabs-mode: nil
+;; byte-compile-warnings: (not free-vars unresolved)
 ;; End:
 
 ;;; mu-feed.el ends here

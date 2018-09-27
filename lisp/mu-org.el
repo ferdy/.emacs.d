@@ -164,6 +164,7 @@
 ;; Local Variables:
 ;; coding: utf-8
 ;; indent-tabs-mode: nil
+;; byte-compile-warnings: (not free-vars unresolved)
 ;; End:
 
 ;;; mu-org.el ends here

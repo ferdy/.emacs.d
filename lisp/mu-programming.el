@@ -543,6 +543,7 @@ Install the Python \"sqlparse\" package to get \"sqlformat\"."
 ;; Local Variables:
 ;; coding: utf-8
 ;; indent-tabs-mode: nil
+;; byte-compile-warnings: (not free-vars unresolved)
 ;; End:
 
 ;;; mu-programming.el ends here

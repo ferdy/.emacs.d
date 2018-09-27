@@ -470,6 +470,7 @@ With arg N, insert N newlines."
 ;; Local Variables:
 ;; coding: utf-8
 ;; indent-tabs-mode: nil
+;; byte-compile-warnings: (not free-vars unresolved)
 ;; End:
 
 ;;; mu-editing.el ends here

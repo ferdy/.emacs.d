@@ -149,6 +149,7 @@ If SIDE is non-nil only get windows on that side."
 ;; Local Variables:
 ;; coding: utf-8
 ;; indent-tabs-mode: nil
+;; byte-compile-warnings: (not free-vars unresolved)
 ;; End:
 
 ;;; mu-windows.el ends here

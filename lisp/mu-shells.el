@@ -260,6 +260,7 @@ The EShell is renamed to match that directory to make multiple windows easier."
 ;; Local Variables:
 ;; coding: utf-8
 ;; indent-tabs-mode: nil
+;; byte-compile-warnings: (not free-vars unresolved)
 ;; End:
 
 ;;; mu-shells.el ends here
