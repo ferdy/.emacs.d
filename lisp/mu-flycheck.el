@@ -77,7 +77,9 @@
 (use-package flycheck-vale              ; Flycheck setup for Vale
   :ensure t
   :after flycheck
-  :config (flycheck-vale-setup))
+  :hook (flycheck-mode . flycheck-vale-setup)
+  :config (validate-setq flycheck-vale-modes
+                         '(text-mode org-mode markdown-mode rst-mode)))
 
 (provide 'mu-flycheck)
 
