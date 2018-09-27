@@ -87,8 +87,8 @@
     (side . right)
     (reusable-frames . visible)
     (window-width . 0.5))
-   ;; Let `display-buffer' reuse visible frames for all buffers.  This must
-   ;; be the last entry in `display-buffer-alist', because it overrides any
+   ;; Let `display-buffer' reuse visible frames for all buffers. This must be
+   ;; the last entry in `display-buffer-alist', because it overrides any
    ;; previous entry with more specific actions.
    ("." nil (reusable-frames . visible))))
 

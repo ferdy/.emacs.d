@@ -205,7 +205,7 @@
 (defmacro bol-with-prefix (function)
   "Define a new function which will call FUNCTION.
 Except it moves to beginning of line before calling FUNCTION when
-called with a prefix argument.  The FUNCTION still receives the
+called with a prefix argument. The FUNCTION still receives the
 prefix argument."
   (let ((name (intern (format "mu-%s-BOL" function))))
     `(progn
@@ -249,8 +249,9 @@ prefix argument."
 ;;;###autoload
 (defun mu-duplicate-current-line-or-region (arg)
   "Duplicates the current line or region ARG times.
-If there's no region, the current line will be duplicated.  However, if
-there's a region, all lines that region covers will be duplicated."
+If there's no region, the current line will be duplicated.
+However, if there's a region, all lines that region covers will
+be duplicated."
   (interactive "p")
   (pcase-let* ((origin (point))
                (`(,beg . ,end) (mu-get-positions-of-line-or-region))
@@ -267,8 +268,9 @@ there's a region, all lines that region covers will be duplicated."
 ;;;###autoload
 (defun mu-duplicate-and-comment-current-line-or-region (arg)
   "Duplicates and comments the current line or region ARG times.
-If there's no region, the current line will be duplicated.  However, if
-there's a region, all lines that region covers will be duplicated."
+If there's no region, the current line will be duplicated.
+However, if there's a region, all lines that region covers will
+be duplicated."
   (interactive "p")
   (pcase-let* ((origin (point))
                (`(,beg . ,end) (mu-get-positions-of-line-or-region))
@@ -356,12 +358,12 @@ With prefix ARG, kill that many lines."
 ;;;###autoload
 (defun mu-back-to-indentation-or-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
-Move point to the first non-whitespace character on this line.
-If point is already there, move to the beginning of the line.
+Move point to the first non-whitespace character on this line. If
+point is already there, move to the beginning of the line.
 Effectively toggle between the first non-whitespace character and
-the beginning of the line.
-If ARG is not nil or 1, move forward ARG - 1 lines first.  If
-point reaches the beginning or end of the buffer, stop there."
+the beginning of the line. If ARG is not nil or 1, move forward
+ARG - 1 lines first. If point reaches the beginning or end of the
+buffer, stop there."
   (interactive "^p")
   (setq arg (or arg 1))
 

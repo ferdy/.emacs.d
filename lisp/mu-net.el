@@ -96,11 +96,9 @@ Call `eww-reload' to undo the filtering."
 
 (defun mu-backup-display-property (invert &optional object)
   "Move the 'display property at POS to 'display-backup.
-Only applies if display property is an image.
-If INVERT is non-nil, move from 'display-backup to 'display
-instead.
-Optional OBJECT specifies the string or buffer.  Nil means current
-buffer."
+Only applies if display property is an image. If INVERT is
+non-nil, move from 'display-backup to 'display instead. Optional
+OBJECT specifies the string or buffer. Nil means current buffer."
   (let* ((inhibit-read-only t)
          (from (if invert 'display-backup 'display))
          (to (if invert 'display 'display-backup))

@@ -89,6 +89,9 @@
 (add-hook 'text-mode-hook #'auto-fill-mode)
 (diminish 'auto-fill-function)
 
+;; Sentences end with one space
+(validate-setq sentence-end-double-space nil)
+
 ;; Hide the cursor in inactive windows
 (setq-default cursor-in-non-selected-windows nil)
 
@@ -118,9 +121,9 @@
   (add-to-list 'mu-clojure-prettify-alist
                '("->" . (?- (Br . Bc) ?- (Br . Bc) ?>)))
   (add-to-list 'mu-clojure-prettify-alist
-               '("->>" .  (?\s (Br . Bl) ?\s (Br . Bl) ?\s
-                               (Bl . Bl) ?- (Bc . Br) ?- (Bc . Bc) ?>
-                               (Bc . Bl) ?- (Br . Br) ?>)))
+               '("->>" . (?\s (Br . Bl) ?\s (Br . Bl) ?\s
+                              (Bl . Bl) ?- (Bc . Br) ?- (Bc . Bc) ?>
+                              (Bc . Bl) ?- (Br . Br) ?>)))
 
   (with-eval-after-load 'clojure-mode
     (validate-setq clojure--prettify-symbols-alist

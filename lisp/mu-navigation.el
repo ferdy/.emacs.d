@@ -75,7 +75,7 @@
   (set-mark-command t))
 
 (defun mu-unpop-to-mark-command ()
-  "Unpop off mark ring.  Does nothing if mark ring is empty."
+  "Unpop off mark ring. Does nothing if mark ring is empty."
   (interactive)
   (when mark-ring
     (setq mark-ring (cons (copy-marker (mark-marker)) mark-ring))
