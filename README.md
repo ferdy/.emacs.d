@@ -55,14 +55,6 @@ $ cd
 $ git clone git@github.com:manuel-uberti/.emacs.d.git
 ```
 
-- install the dictionaries for the spell-checker:
-
-```console
-$ cd .emacs.d
-$ sudo mkdir -p /usr/share/hunspell
-$ sudo cp etc/dictionaries/* /usr/share/hunspell
-```
-
 - run Emacs
 
 Upon starting [use-package](https://github.com/jwiegley/use-package) will fetch,
