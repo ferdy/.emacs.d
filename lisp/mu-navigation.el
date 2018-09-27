@@ -13,13 +13,8 @@
 
 (validate-setq
  scroll-conservatively 1000
- scroll-margin 10
- scroll-step 1
- ;; Ensure M-v always undoes C-v
  scroll-preserve-screen-position 'always
- ;; Start recentre from top
  recenter-positions '(top middle bottom)
- ;; Disable mouse scrolling acceleration
  mouse-wheel-progressive-speed nil)
 
 (use-package bookmark                   ; Bookmarks to files and directories
