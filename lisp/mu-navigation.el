@@ -23,10 +23,7 @@
  mouse-wheel-progressive-speed nil)
 
 (use-package bookmark                   ; Bookmarks to files and directories
-  :bind
-  ;; Bind "C-x 4 r" to something more useful
-  ;; than `find-file-read-only-other-window'
-  ("C-x 4 r" . bookmark-jump-other-window)
+  :defer t
   :config
   (validate-setq bookmark-completion-ignore-case nil)
   (bookmark-maybe-load-default-file))
