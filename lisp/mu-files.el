@@ -21,8 +21,10 @@
    recentf-max-saved-items 200
    recentf-max-menu-items 15))
 
-(validate-setq view-read-only t)                 ; View read-only
-(validate-setq large-file-warning-threshold nil) ; No large file warning
+(validate-setq
+ delete-by-moving-to-trash t
+ view-read-only t
+ large-file-warning-threshold nil)
 
 (use-package ffap                       ; Find files at point
   :defer t
