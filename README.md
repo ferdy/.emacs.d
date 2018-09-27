@@ -22,8 +22,8 @@ your mileage may vary.
 ## First steps
 
 This is how I build and install Emacs on Ubuntu 18.04. If you are using a
-different operating system, you need to understand how to install the required
-dependencies. Otherwise just run:
+different OS, you need to understand how to install the required dependencies.
+Otherwise just run:
 
 ```console
 $ sudo apt-get build-dep emacs25
