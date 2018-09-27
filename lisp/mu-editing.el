@@ -28,10 +28,7 @@
 (use-package undo-tree                  ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode)
-  :config
-  (validate-setq
-   undo-tree-auto-save-history t
-   undo-tree-visualizer-timestamps t))
+  :config (validate-setq undo-tree-visualizer-timestamps t))
 
 (use-package delsel                     ; Delete the selection instead of insert
   :defer t
