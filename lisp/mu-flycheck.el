@@ -78,8 +78,7 @@
   :ensure t
   :after flycheck
   :hook (flycheck-mode . flycheck-vale-setup)
-  :config (validate-setq flycheck-vale-modes
-                         '(text-mode org-mode markdown-mode rst-mode)))
+  :config (flycheck-add-mode 'vale 'org-mode))
 
 (provide 'mu-flycheck)
 
