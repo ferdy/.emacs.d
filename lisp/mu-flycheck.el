@@ -77,8 +77,7 @@
 (use-package flycheck-vale              ; Flycheck setup for Vale
   :ensure t
   :after flycheck
-  :hook (flycheck-mode . flycheck-vale-setup)
-  :config (flycheck-add-mode 'vale 'org-mode))
+  :hook (flycheck-mode . flycheck-vale-setup))
 
 (provide 'mu-flycheck)
 
