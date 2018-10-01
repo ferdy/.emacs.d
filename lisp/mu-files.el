@@ -69,6 +69,11 @@
   ;; Zoom by 10% instead of default 25%
   (validate-setq pdf-view-resize-factor 1.1))
 
+(use-package pdfgrep                    ; Support for pdfgrep
+  :ensure t
+  :after pdf-tools
+  :config (pdfgrep-mode))
+
 (use-package archive-mode                   ; Browse archive files
   :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
 
