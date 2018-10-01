@@ -42,11 +42,7 @@
   (dolist (ext '(".fls" ".out" ".aux"))
     (add-to-list 'ignoramus-file-endings ext))
 
-  (validate-setq ignoramus-file-basename-beginnings
-                 '(
-                   ".#"                                   ; emacs
-                   "._"                                   ; thumbnails
-                   ))
+  (validate-setq ignoramus-file-basename-beginnings '( ".#" "._"))
 
   (ignoramus-setup))
 
