@@ -10,7 +10,7 @@
 
 (use-package pcomplete                  ; Programmable completion
   :config
-  (defvar pcomplete-man-user-commands
+  (defvar-local pcomplete-man-user-commands
     (split-string
      (shell-command-to-string
       "apropos -s 1 .|while read -r a b; do echo \" $a\";done;"))

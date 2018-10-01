@@ -114,7 +114,7 @@ If SIDE is non-nil only get windows on that side."
 
 (bind-key "C-c w t" #'mu-window-split-toggle)
 
-(defvar mu-saved-window-configuration nil)
+(defvar-local mu-saved-window-configuration nil)
 
 (defun mu-save-wins-then-call (func &optional args)
   "Save current window configuration, then call FUNC optionally with ARGS."

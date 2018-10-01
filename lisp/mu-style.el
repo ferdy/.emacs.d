@@ -112,7 +112,7 @@
   (validate-setq prettify-symbols-unprettify-at-point 'right-edge)
 
   ;; Add some pretty symbols to Clojure and Lisp modes
-  (defvar mu-clojure-prettify-alist '())
+  (defvar-local mu-clojure-prettify-alist '())
 
   (add-to-list 'mu-clojure-prettify-alist
                '("<=" . (?· (Br . Bl) ?≤)))
@@ -182,7 +182,7 @@
 (validate-setq mode-line-percent-position '(-3 "%o"))
 
 ;; Custom Eyebrowse mode-line indicator
-(defvar mu-eyebrowse-mode-line
+(defvar-local mu-eyebrowse-mode-line
   '(:propertize
     (:eval
      (when (bound-and-true-p eyebrowse-mode)

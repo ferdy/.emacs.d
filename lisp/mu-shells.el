@@ -196,7 +196,7 @@ The EShell is renamed to match that directory to make multiple windows easier."
   :defer t
   :init
   ;; Always use Bash
-  (defvar mu-term-shell "/bin/bash")
+  (defvar-local mu-term-shell "/bin/bash")
 
   (defadvice ansi-term (before force-bash)
     (interactive (list mu-term-shell)))

@@ -65,7 +65,7 @@ be global."
     (let ((dict (upcase (substring language 0 2))))
       (concat " " dict)))
 
-  (defvar mu-languages-ring nil "Languages ring for Ispell")
+  (defvar-local mu-languages-ring nil "Languages ring for Ispell")
 
   (let ((languages '("it_IT" "en_GB")))
     (validate-setq mu-languages-ring (make-ring (length languages)))

@@ -161,7 +161,7 @@
   (with-eval-after-load 'haskell-mode
     (bind-key "C-c m h" #'hoogle haskell-mode-map))
 
-  (defvar haskell-prettify-symbols-alist
+  (defvar-local haskell-prettify-symbols-alist
     '(("::"     . ?∷)
       ("forall" . ?∀)
       ("exists" . ?∃)
