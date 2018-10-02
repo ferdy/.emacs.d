@@ -227,11 +227,16 @@
                                  overwrite-mode
                                  slow-keys-mode)))
 
-(use-package moody                      ; Tabs and ribbons for the mode line
-  :ensure t
-  :config
-  (moody-replace-mode-line-buffer-identification)
-  (moody-replace-vc-mode))
+;; Increase mode-line size with a border (box) of the same colour and
+;; reduce font size by tweaking height
+(set-face-attribute 'mode-line nil
+                    :inverse-video nil
+                    :height 0.9
+                    :box '(:line-width 6 :color "#373b41" :style nil))
+(set-face-attribute 'mode-line-inactive nil
+                    :inverse-video nil
+                    :height 0.9
+                    :box '(:line-width 8 :color "#282a2e" :style nil))
 
 ;;; Utilities and key bindings
 (defun mu-reset-fonts ()
