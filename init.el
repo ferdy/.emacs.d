@@ -46,14 +46,14 @@
   :if (display-graphic-p)
   :config
   (setq exec-path-from-shell-variables
-                 '("PATH"               ; Full path
-                   "FULLNAME"           ; First and last name
-                   "EMAIL"              ; Personal email
-                   "INFOPATH"           ; Info directories
-                   "JAVA_OPTS"          ; Options for Java processes
-                   "RUST_SRC_PATH"      ; Rust sources, for racer
-                   "CARGO_HOME"         ; Cargo home, for racer
-                   ))
+        '("PATH"               ; Full path
+          "FULLNAME"           ; First and last name
+          "EMAIL"              ; Personal email
+          "INFOPATH"           ; Info directories
+          "JAVA_OPTS"          ; Options for Java processes
+          "RUST_SRC_PATH"      ; Rust sources, for racer
+          "CARGO_HOME"         ; Cargo home, for racer
+          ))
 
   (exec-path-from-shell-initialize))
 
@@ -69,7 +69,7 @@
   :defer t
   :config
   (setq custom-file mu-custom-file
-        custom-buffer-done-kill t     
+        custom-buffer-done-kill t
         custom-buffer-verbose-help nil  ; Remove redundant help text
         custom-unlispify-tag-names nil  ; Show me the real variable name
         custom-unlispify-menu-entries nil)
