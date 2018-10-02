@@ -42,17 +42,17 @@
       "categories:\n"
       "---\n"
       > _ \n \n))
-  :config (validate-setq auto-insert-query nil))
+  :config (setq auto-insert-query nil))
 
 (use-package yasnippet                  ; Snippets
   :ensure t
   :config
-  (validate-setq
+  (setq
    yas-verbosity 1                      ; No need to be so verbose
    yas-wrap-around-region t)
 
   (with-eval-after-load 'yasnippet
-    (validate-setq yas-snippet-dirs '(yasnippet-snippets-dir)))
+    (setq yas-snippet-dirs '(yasnippet-snippets-dir)))
 
   (yas-reload-all)
   (yas-global-mode))
@@ -62,26 +62,25 @@
 
 (use-package abbrev                     ; Save abbreviations
   :init (abbrev-mode)
-  :config (validate-setq save-abbrevs t))
+  :config (setq save-abbrevs t))
 
 ;; In `completion-at-point', do not pop up completion buffers for less
 ;; than five candidates. Cycle instead.
-(validate-setq completion-cycle-threshold 5)
+(setq completion-cycle-threshold 5)
 
 (use-package hippie-exp                 ; Powerful expansion and completion
   :bind ("C-c /" . hippie-expand)
   :config
-  (validate-setq
-   hippie-expand-try-functions-list
-   '(try-expand-dabbrev
-     try-expand-dabbrev-all-buffers
-     try-expand-dabbrev-from-kill
-     try-complete-file-name-partially
-     try-complete-file-name
-     try-expand-all-abbrevs
-     try-expand-list
-     try-complete-lisp-symbol-partially
-     try-complete-lisp-symbol)))
+  (setq hippie-expand-try-functions-list
+        '(try-expand-dabbrev
+          try-expand-dabbrev-all-buffers
+          try-expand-dabbrev-from-kill
+          try-complete-file-name-partially
+          try-complete-file-name
+          try-expand-all-abbrevs
+          try-expand-list
+          try-complete-lisp-symbol-partially
+          try-complete-lisp-symbol)))
 
 (add-to-list 'completion-styles 'initials t)
 
@@ -95,21 +94,17 @@
              ("C-n" . company-select-next)
              ("C-p" . company-select-previous)
              ("M-/" . company-other-backend))
-  
-  (validate-setq
-   company-minimum-prefix-length 2
-   company-selection-wrap-around t
-   company-tooltip-align-annotations t
-   company-tooltip-flip-when-above t))
+
+  (setq company-minimum-prefix-length 2
+        company-selection-wrap-around t
+        company-tooltip-align-annotations t
+        company-tooltip-flip-when-above t))
 
 (use-package company-dabbrev            ; dabbrev-like Company backend
   :after company
   :config
-  (validate-setq
-   ;; Ignore case
-   company-dabbrev-ignore-case t
-   ;; Do not downcase completion
-   company-dabbrev-downcase nil))
+  (setq company-dabbrev-ignore-case t
+        company-dabbrev-downcase nil))
 
 (use-package company-statistics         ; Show likelier candidates on top
   :ensure t

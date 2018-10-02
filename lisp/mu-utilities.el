@@ -33,12 +33,11 @@
 
 (use-package time                       ; Display time
   :config
-  (validate-setq
-   display-time-world-time-format "%H:%M %Z, %d. %b"
-   display-time-world-list '(("Europe/Rome" "Rome")
-                             ("Europe/London" "London")
-                             ("Asia/Hong_Kong" "Hong Kong")
-                             ("Asia/Tokyo" "Tokyo"))))
+  (setq display-time-world-time-format "%H:%M %Z, %d. %b"
+        display-time-world-list '(("Europe/Rome" "Rome")
+                                  ("Europe/London" "London")
+                                  ("Asia/Hong_Kong" "Hong Kong")
+                                  ("Asia/Tokyo" "Tokyo"))))
 
 (use-package pandoc-mode                ; Easily control Pandoc in Emacs
   :ensure t

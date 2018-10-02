@@ -20,19 +20,18 @@
          ("C-k" . ivy-switch-buffer-kill))
   :init (ivy-mode 1)
   :config
-  (validate-setq
-   ivy-count-format "(%d/%d) "          ; Show current match and matches
-   ivy-extra-directories nil            ; Do not show "./" and "../"
-   ivy-virtual-abbreviate 'full         ; Show full file path
-   ivy-dynamic-exhibit-delay-ms 150
-   ;; Jump back to first candidate when on the last one
-   ivy-wrap t
-   ;; Show recently killed buffers when calling `ivy-switch-buffer'
-   ivy-use-virtual-buffers t
-   ;; Always ignore buffers set in `ivy-ignore-buffers'
-   ivy-use-ignore-default 'always
-   ;; Ignore some buffers in `ivy-switch-buffer'
-   ivy-ignore-buffers '("company-statistics-cache.el" ".elfeed/index"))
+  (setq ivy-count-format "(%d/%d) "     ; Show current match and matches
+        ivy-extra-directories nil       ; Do not show "./" and "../"
+        ivy-virtual-abbreviate 'full    ; Show full file path
+        ivy-dynamic-exhibit-delay-ms 150
+        ;; Jump back to first candidate when on the last one
+        ivy-wrap t
+        ;; Show recently killed buffers when calling `ivy-switch-buffer'
+        ivy-use-virtual-buffers t
+        ;; Always ignore buffers set in `ivy-ignore-buffers'
+        ivy-use-ignore-default 'always
+        ;; Ignore some buffers in `ivy-switch-buffer'
+        ivy-ignore-buffers '("company-statistics-cache.el" ".elfeed/index"))
 
   ;; Ignore mouse left-click in ivy
   (with-eval-after-load 'ivy
@@ -48,7 +47,7 @@
 
 (use-package ivy-xref                   ; Ivy interface for xref results
   :ensure t
-  :config (validate-setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
+  :config (setq xref-show-xrefs-function #'ivy-xref-show-xrefs))
 
 (use-package ivy-yasnippet              ; Preview yasnippets with Ivy
   :ensure t
@@ -57,21 +56,17 @@
 (use-package ivy-bibtex                 ; Ivy interface for BibTeX entries
   :ensure t
   :defer t
-  :config (validate-setq ivy-re-builders-alist
-                         '((ivy-bibtex . ivy--regex-ignore-order)
-                           (t . ivy--regex-plus))))
+  :config (setq ivy-re-builders-alist
+                '((ivy-bibtex . ivy--regex-ignore-order)
+                  (t . ivy--regex-plus))))
 
 (use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind ("C-c s s" . swiper-all)
   :config
-  (validate-setq
-   ;; Always recentre when leaving Swiper
-   swiper-action-recenter t
-   ;; Jump to the beginning of match when leaving Swiper
-   swiper-goto-start-of-match t
-   ;; C-k C-g to go back to where the research started
-   swiper-stay-on-quit t))
+  (setq swiper-action-recenter t
+        swiper-goto-start-of-match t
+        swiper-stay-on-quit t))
 
 (use-package amx                        ; Better M-x interface
   :ensure t)
@@ -93,31 +88,27 @@
          :map read-expression-map
          ("C-r" . counsel-minibuffer-history))
   :config
-  (validate-setq
-   ;; Use ripgrep for counsel-git
-   counsel-git-cmd "rg --files"
-   ;; Use ripgrep instead of regular grep
-   counsel-grep-base-command
-   "rg -i -M 120 --no-heading --line-number --color never %s %s"
-   counsel-rg-base-command
-   "rg -i -M 120 --no-heading --line-number --color never %s .")
+  (setq counsel-git-cmd "rg --files"    ; Use ripgrep for counsel-git
+        ;; Use ripgrep instead of regular grep
+        counsel-grep-base-command
+        "rg -i -M 120 --no-heading --line-number --color never %s %s"
+        counsel-rg-base-command
+        "rg -i -M 120 --no-heading --line-number --color never %s .")
 
-  (validate-setq
-   counsel-mode-override-describe-bindings t
-   counsel-describe-function-function 'helpful-function
-   counsel-describe-variable-function 'helpful-variable
-   counsel-grep-post-action-hook '(recenter)
-   counsel-yank-pop-preselect-last t)
+  (setq counsel-mode-override-describe-bindings t
+        counsel-describe-function-function 'helpful-function
+        counsel-describe-variable-function 'helpful-variable
+        counsel-grep-post-action-hook '(recenter)
+        counsel-yank-pop-preselect-last t)
 
-  (validate-setq
-   counsel-find-file-ignore-regexp (concat
-                                    ;; File names beginning with # or .
-                                    "\\(?:\\`[#.]\\)"
-                                    ;; File names ending with # or ~
-                                    "\\|\\(?:\\`.+?[#~]\\'\\)"))
+  (setq counsel-find-file-ignore-regexp (concat
+                                         ;; File names beginning with # or .
+                                         "\\(?:\\`[#.]\\)"
+                                         ;; File names ending with # or ~
+                                         "\\|\\(?:\\`.+?[#~]\\'\\)"))
 
-  (validate-setq counsel-linux-app-format-function
-                 #'counsel-linux-app-format-function-name-only))
+  (setq counsel-linux-app-format-function
+        #'counsel-linux-app-format-function-name-only))
 
 ;;; Utilities and key bindings
 ;;;###autoload

@@ -41,15 +41,11 @@
 ;; Ensure resizing Emacs window doesn't cause display problems
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
-;;; Validation
-(use-package validate                   ; Validate options
-  :ensure t)
-
 (use-package exec-path-from-shell       ; Set up environment variables
   :ensure t
   :if (display-graphic-p)
   :config
-  (validate-setq exec-path-from-shell-variables
+  (setq exec-path-from-shell-variables
                  '("PATH"               ; Full path
                    "FULLNAME"           ; First and last name
                    "EMAIL"              ; Personal email
@@ -62,9 +58,8 @@
   (exec-path-from-shell-initialize))
 
 ;; Personal informations
-(validate-setq
- user-full-name (getenv "FULLNAME")
- user-mail-address (getenv "EMAIL"))
+(setq user-full-name (getenv "FULLNAME")
+      user-mail-address (getenv "EMAIL"))
 
 ;; Set separate custom file for the customize interface
 (defconst mu-custom-file (locate-user-emacs-file "custom.el")
@@ -73,17 +68,16 @@
 (use-package cus-edit                   ; Set up custom.el
   :defer t
   :config
-  (validate-setq
-   custom-file mu-custom-file
-   custom-buffer-done-kill nil          ; Kill when existing
-   custom-buffer-verbose-help nil       ; Remove redundant help text
-   custom-unlispify-tag-names nil       ; Show me the real variable name
-   custom-unlispify-menu-entries nil)
+  (setq custom-file mu-custom-file
+        custom-buffer-done-kill t     
+        custom-buffer-verbose-help nil  ; Remove redundant help text
+        custom-unlispify-tag-names nil  ; Show me the real variable name
+        custom-unlispify-menu-entries nil)
   :init (load mu-custom-file 'no-error 'no-message))
 
 ;; Disable auto save and backups
-(validate-setq auto-save-default nil)
-(validate-setq make-backup-files nil)
+(setq auto-save-default nil
+      make-backup-files nil)
 
 (use-package no-littering               ; Keep .emacs.d clean
   :ensure t
@@ -92,27 +86,25 @@
   (add-to-list 'recentf-exclude no-littering-var-directory)
   (add-to-list 'recentf-exclude no-littering-etc-directory)
 
-  (validate-setq
-   create-lockfiles nil
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)
+  (setq create-lockfiles nil
+        delete-old-versions t
+        kept-new-versions 6
+        kept-old-versions 2
+        version-control t)
 
-  (validate-setq
-   backup-directory-alist
-   `((".*" . ,(no-littering-expand-var-file-name "backup/")))
-   auto-save-file-name-transforms
-   `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
+  (setq backup-directory-alist
+        `((".*" . ,(no-littering-expand-var-file-name "backup/")))
+        auto-save-file-name-transforms
+        `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
 
 (use-package server                     ; The server of `emacsclient'
   :config (or (server-running-p) (server-mode)))
 
 ;; Confirm before quitting Emacs
-(validate-setq confirm-kill-emacs #'y-or-n-p)
+(setq confirm-kill-emacs #'y-or-n-p)
 
 ;; Do not ask for confirm when killing processes
-(validate-setq confirm-kill-processes nil)
+(setq confirm-kill-processes nil)
 
 ;;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))

@@ -22,7 +22,7 @@
               ("<prior>"     . beginend-dired-mode-goto-beginning)
               ("<next>"      . beginend-dired-mode-goto-end))
   :config
-  (validate-setq
+  (setq
    dired-auto-revert-buffer t           ; Revert buffers on revisiting
    dired-listing-switches "-lFah1v --group-directories-first"
    dired-dwim-target t                  ; Use other pane as target
@@ -77,50 +77,44 @@
 (use-package find-dired                 ; Run `find' in Dired
   :config
   ;; Prefer case-insensitive search
-  (validate-setq find-name-arg "-iname")
+  (setq find-name-arg "-iname")
 
   (defun mu-find-by-date (dir args)
     "Find file in DIR with given ARGS and sort the result by date."
     (interactive (list (read-directory-name "Run find in directory: " nil "" t)
                        (read-string "Run find (with args): " find-args
                                     '(find-args-history . 1))))
-    (validate-setq
-     find-ls-option '("-exec ls -lt {} + | cut -d ' ' -f5-" . "-lt"))
+    (setq find-ls-option '("-exec ls -lt {} + | cut -d ' ' -f5-" . "-lt"))
     (find-dired dir args)
-    (validate-setq find-ls-option '("-ls" . "-dilsb")))
+    (setq find-ls-option '("-ls" . "-dilsb")))
 
   (defun mu-find-by-size (dir args)
     "Find file in DIR with given ARGS and sort the result by size."
     (interactive (list (read-directory-name "Run find in directory: " nil "" t)
                        (read-string "Run find (with args): " find-args
                                     '(find-args-history . 1))))
-    (validate-setq
-     find-ls-option '("-exec ls -lSr {} + | cut -d ' ' -f5-" . "-lSr"))
+    (setq find-ls-option '("-exec ls -lSr {} + | cut -d ' ' -f5-" . "-lSr"))
     (find-dired dir args)
-    (validate-setq find-ls-option '("-ls" . "-dilsb"))))
+    (setq find-ls-option '("-ls" . "-dilsb"))))
 
 (use-package dired-aux                  ; Other Dired customizations
   :after dired
   :config
-  (validate-setq
-   ;; Ask for creation of missing directories when copying/moving
-   dired-create-destination-dirs 'ask
-   ;; Search only file names when point is on a file name
-   dired-isearch-filenames'dwim))
+  (setq dired-create-destination-dirs 'ask
+        ;; Search only file names when point is on a file name
+        dired-isearch-filenames 'dwim))
 
 (use-package dired-x                    ; Enable some nice Dired features
   :bind ("C-x C-j" . dired-jump)
   :config
   (unbind-key "N" dired-mode-map)
   (bind-key "N" #'dired-create-empty-file dired-mode-map)
-  
-  (validate-setq
-   ;; Be less verbose, Dired
-   dired-omit-verbose nil
-   ;; Do not ask for confirmation when killing deleted buffers
-   dired-clean-confirm-killing-deleted-buffers nil
-   ;; Omit dotfiles with C-x M-o
-   dired-omit-files (concat dired-omit-files "\\|^\\.+$\\|^\\..+$"))
+
+  (setq dired-omit-verbose nil          ; Be less verbose, Dired
+        ;; Do not ask for confirmation when killing deleted buffers
+        dired-clean-confirm-killing-deleted-buffers nil
+        ;; Omit dotfiles with C-x M-o
+        dired-omit-files (concat dired-omit-files "\\|^\\.+$\\|^\\..+$"))
 
   (add-hook 'dired-mode-hook #'dired-omit-mode))
 

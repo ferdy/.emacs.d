@@ -12,7 +12,7 @@
 (use-package cider                      ; Clojure development environment
   :ensure t
   :hook (cider-mode . eldoc-mode)
-  :config (validate-setq cider-offer-to-open-cljs-app-in-browser nil))
+  :config (setq cider-offer-to-open-cljs-app-in-browser nil))
 
 (use-package cider-mode                 ; CIDER mode for REPL interaction
   :ensure cider
@@ -30,11 +30,10 @@
             ":%s" (or (cider--project-name nrepl-project-dir) "<no project>"))))
       "-"))
 
-  (validate-setq
-   cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-mode-line-info)))
-   cider-font-lock-dynamically t
-   cider-invert-insert-eval-p t
-   cider-switch-to-repl-after-insert-p nil))
+  (setq cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-mode-line-info)))
+        cider-font-lock-dynamically t
+        cider-invert-insert-eval-p t
+        cider-switch-to-repl-after-insert-p nil))
 
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
@@ -45,7 +44,7 @@
   :hook ((clojure-mode . cider-mode)
          (clojure-mode . subword-mode))
   :config
-  (validate-setq clojure-align-reader-conditionals t)
+  (setq clojure-align-reader-conditionals t)
 
   ;; Fix indentation of some common macros
   (define-clojure-indent
@@ -71,9 +70,8 @@
   :ensure cider
   :defer t
   :config
-  (validate-setq
-   nrepl-hide-special-buffers t
-   nrepl-repl-buffer-name-template "*cider-repl %j %r:%S*"))
+  (setq nrepl-hide-special-buffers t
+        nrepl-repl-buffer-name-template "*cider-repl %j %r:%S*"))
 
 (use-package cider-repl                 ; REPL interactions with CIDER
   :ensure cider
@@ -85,13 +83,12 @@
          (cider-repl-mode . eldoc-mode)
          (cider-repl-mode . subword-mode))
   :config
-  (validate-setq
-   cider-repl-wrap-history t
-   cider-repl-history-size 1000
-   cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
-   cider-repl-display-help-banner nil
-   cider-repl-result-prefix ";; => "
-   cider-repl-use-pretty-printing t))
+  (setq cider-repl-wrap-history t
+        cider-repl-history-size 1000
+        cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
+        cider-repl-display-help-banner nil
+        cider-repl-result-prefix ";; => "
+        cider-repl-use-pretty-printing t))
 
 (use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
@@ -112,18 +109,16 @@
                           (yas-minor-mode 1)
                           (cljr-add-keybindings-with-prefix "C-c RET")))
   :config
-  (validate-setq
-   cljr-suppress-middleware-warnings t
-   cljr-add-ns-to-blank-clj-files t
-   cljr-auto-sort-ns t
-   cljr-favor-prefix-notation nil
-   cljr-favor-private-functions nil
-   cljr-warn-on-eval nil)
+  (setq cljr-suppress-middleware-warnings t
+        cljr-add-ns-to-blank-clj-files t
+        cljr-auto-sort-ns t
+        cljr-favor-prefix-notation nil
+        cljr-favor-private-functions nil
+        cljr-warn-on-eval nil)
 
-  (validate-setq
-   cljr-clojure-test-declaration "[clojure.test :refer :all]"
-   cljr-cljs-clojure-test-declaration
-   "[cljs.test :refer-macros [deftest is use-fixtures]]")
+  (setq cljr-clojure-test-declaration "[clojure.test :refer :all]"
+        cljr-cljs-clojure-test-declaration
+        "[cljs.test :refer-macros [deftest is use-fixtures]]")
 
   (advice-add 'cljr-add-require-to-ns :after
               (lambda (&rest _)
@@ -302,7 +297,7 @@
               ("C-c m h" . racer-describe)
               ("C-c m d" . racer-debug))
   :hook (rust-mode . racer-mode)
-  :config (validate-setq racer-rust-src-path (getenv "RUST_SRC_PATH")))
+  :config (setq racer-rust-src-path (getenv "RUST_SRC_PATH")))
 
 (use-package cargo                      ; Control Cargo
   :ensure t
@@ -322,10 +317,9 @@
          "\\.tpl\\'"
          "\\.jsx\\'")
   :config
-  (validate-setq
-   web-mode-css-indent-offset 2
-   web-mode-code-indent-offset 2
-   web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        web-mode-markup-indent-offset 2)
 
   ;; Better JSX syntax-highlighting in web-mode
   (defadvice web-mode-highlight-part (around tweak-jsx activate)
@@ -336,19 +330,17 @@
 
 (use-package js                         ; JavaScript editing
   :defer t
-  :config (validate-setq js-indent-level 2))
+  :config (setq js-indent-level 2))
 
 (use-package js2-mode                   ; Powerful JavaScript mode
   :ensure t
   :mode ("\\.js\\'" . js2-mode)
   :hook (js2-mode . js2-imenu-extras-mode)
   :config
-  (validate-setq
-   ;; Disable parser errors and strict warnings
-   js2-mode-show-parse-errors nil
-   js2-mode-show-strict-warnings nil
-   ;; Try to highlight most ECMA built-ins
-   js2-highlight-level 3))
+  (setq js2-mode-show-parse-errors nil
+        js2-mode-show-strict-warnings nil
+        ;; Try to highlight most ECMA built-ins
+        js2-highlight-level 3))
 
 (use-package purescript-mode            ; PureScript editing mode
   :ensure t
@@ -370,7 +362,7 @@
 (use-package css-mode                   ; Better CSS support
   :defer t
   :config
-  (validate-setq css-indent-offset 2)
+  (setq css-indent-offset 2)
 
   ;; Embedding in HTML
   (with-eval-after-load 'mmm-vars
@@ -427,25 +419,17 @@
 ;;; Other languages
 (use-package sh-script                  ; Shell scripts
   :defer t
-  :config
-
-  (validate-setq
-   ;; Use two spaces in shell scripts.
-   sh-basic-offset 2
-   ;; The offset for nested indentation
-   sh-basic-offset 2))
+  :config (setq sh-basic-offset 2))
 
 (use-package nxml-mode                  ; XML editing
   :mode "\\.xml\\'"
   :bind (:map nxml-mode-map
               ("C-c m f" . mu-xml-format))
   :config
-  (validate-setq
-   ;; Complete closing tags, and insert XML declarations into empty files
-   nxml-slash-auto-complete-flag t
-   nxml-auto-insert-xml-declaration-flag t
-   ;; Treat elements (with children) as sexps
-   nxml-sexp-element-flag t)
+  (setq nxml-slash-auto-complete-flag t
+        nxml-auto-insert-xml-declaration-flag t
+        ;; Treat elements (with children) as sexps
+        nxml-sexp-element-flag t)
 
   (defun mu-xml-format ()
     "Format an XML buffer with `xmllint'."
@@ -505,30 +489,29 @@ Install the Python \"sqlparse\" package to get \"sqlformat\"."
   :config
   (setq-default eldoc-documentation-function #'describe-char-eldoc)
   ;; Show eldoc more promptly
-  (validate-setq eldoc-idle-delay 0.1))
+  (setq eldoc-idle-delay 0.1))
 
 (use-package etags                      ; Tag navigation
   :defer t
   :config
   ;; Do not query before reverting TAGS tables
-  (validate-setq tags-revert-without-query t))
+  (setq tags-revert-without-query t))
 
 (use-package compile                    ; Compile from Emacs
   :defer t
   :config
-  (validate-setq
-   compilation-ask-about-save nil
-   ;; Kill old compilation processes before starting new ones
-   compilation-always-kill t
-   ;; Automatically scroll and jump to the first error
-   compilation-scroll-output 'first-error
-   compilation-auto-jump-to-first-error t
-   ;; Skip over warnings and info messages in compilation
-   compilation-skip-threshold 2
-   ;; Don't freeze when process reads from stdin
-   compilation-disable-input t
-   ;; Show three lines of context around the current message
-   compilation-context-lines 3))
+  (setq compilation-ask-about-save nil
+        ;; Kill old compilation processes before starting new ones
+        compilation-always-kill t
+        ;; Automatically scroll and jump to the first error
+        compilation-scroll-output 'first-error
+        compilation-auto-jump-to-first-error t
+        ;; Skip over warnings and info messages in compilation
+        compilation-skip-threshold 2
+        ;; Don't freeze when process reads from stdin
+        compilation-disable-input t
+        ;; Show three lines of context around the current message
+        compilation-context-lines 3))
 
 (use-package eros                       ; Display evaluation result as overlay
   :ensure t

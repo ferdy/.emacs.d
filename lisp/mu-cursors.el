@@ -54,7 +54,7 @@
               '(:propertize (:eval (concat " " (number-to-string
                                                 (mc/num-cursors))))
                             face font-lock-warning-face))
-  :config (validate-setq mc/always-run-for-all t))
+  :config (setq mc/always-run-for-all t))
 
 (use-package mc-extras                  ; Extra functions for multiple-cursors
   :ensure t

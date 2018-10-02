@@ -18,14 +18,13 @@
   (smartparens-global-mode)
   (show-smartparens-global-mode)
   :config
-  (validate-setq
-   sp-autoskip-closing-pair 'always
-   ;; Don't kill entire symbol on C-k
-   sp-hybrid-kill-entire-symbol nil
-   ;; Disable debug messages
-   sp-message-width nil
-   ;; Keep pair content overlay on backward movement
-   sp-cancel-autoskip-on-backward-movement nil)
+  (setq sp-autoskip-closing-pair 'always
+        ;; Don't kill entire symbol on C-k
+        sp-hybrid-kill-entire-symbol nil
+        ;; Disable debug messages
+        sp-message-width nil
+        ;; Keep pair content overlay on backward movement
+        sp-cancel-autoskip-on-backward-movement nil)
 
   (sp-with-modes sp--lisp-modes
     (sp-local-pair "'" nil :actions nil)

@@ -11,16 +11,15 @@
 ;; Scrolling
 (pixel-scroll-mode -1)                  ; Disable pixel-scroll-mode
 
-(validate-setq
- scroll-conservatively 1000
- scroll-preserve-screen-position 'always
- recenter-positions '(top middle bottom)
- mouse-wheel-progressive-speed nil)
+(setq scroll-conservatively 1000
+      scroll-preserve-screen-position 'always
+      recenter-positions '(top middle bottom)
+      mouse-wheel-progressive-speed nil)
 
 (use-package bookmark                   ; Bookmarks to files and directories
   :defer t
   :config
-  (validate-setq bookmark-completion-ignore-case nil)
+  (setq bookmark-completion-ignore-case nil)
   (bookmark-maybe-load-default-file))
 
 (use-package avy-jump                   ; Jump to characters in buffers
@@ -56,7 +55,7 @@
          ("M-g i" . dumb-jump-go-prompt)
          ("M-g x" . dumb-jump-go-prefer-external)
          ("M-g z" . dumb-jump-go-prefer-external-other-window))
-  :config (validate-setq dumb-jump-selector 'ivy))
+  :config (setq dumb-jump-selector 'ivy))
 
 (use-package macrostep                  ; Navigate through macros
   :ensure t
@@ -67,7 +66,7 @@
               ("C-c m m e" . macrostep-expand)))
 
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
-(validate-setq set-mark-command-repeat-pop t)
+(setq set-mark-command-repeat-pop t)
 
 (defun mu-pop-local-mark-ring ()
   "Set the mark where the point is."

@@ -15,30 +15,29 @@
          :map org-mode-map
          ("RET" . mu-org-return))
   :config
-  (validate-setq
-   org-src-fontify-natively t
-   org-src-tab-acts-natively t
-   org-src-preserve-indentation t
-   org-fontify-done-headline t
-   org-edit-timestamp-down-means-later t
-   org-catch-invisible-edits 'show
-   org-log-done 'time
-   org-hide-emphasis-markers t
-   org-highlight-latex-and-related '(latex)
-   org-return-follows-link t
-   org-directory (expand-file-name "~/org/")
-   org-default-notes-file (expand-file-name "gtd/gtd.org" org-directory))
+  (setq org-src-fontify-natively t
+        org-src-tab-acts-natively t
+        org-src-preserve-indentation t
+        org-fontify-done-headline t
+        org-edit-timestamp-down-means-later t
+        org-catch-invisible-edits 'show
+        org-log-done 'time
+        org-hide-emphasis-markers t
+        org-highlight-latex-and-related '(latex)
+        org-return-follows-link t
+        org-directory (expand-file-name "~/org/")
+        org-default-notes-file (expand-file-name "gtd/gtd.org" org-directory))
 
   ;; Use Org structures and tables in message mode
   (add-hook 'message-mode-hook #'turn-on-orgtbl)
   (add-hook 'message-mode-hook #'turn-on-orgstruct++)
 
   ;; Define TODO workflow states
-  (validate-setq
-   org-todo-keywords '("TODO(t)" "WAITING(w)" "|" "CANCELLED(c)" "DONE(d)"))
+  (setq org-todo-keywords
+        '("TODO(t)" "WAITING(w)" "|" "CANCELLED(c)" "DONE(d)"))
 
   ;; Define Agenda files for GTD
-  (validate-setq org-agenda-files '("~/org/gtd"))
+  (setq org-agenda-files '("~/org/gtd"))
 
   ;; Use F12 to toggle image visualization
   (bind-key "<f12>"
@@ -78,7 +77,7 @@
          ("C-c o s" . org-search-view)
          ("C-c o t" . org-todo-list))
   :config
-  (validate-setq org-agenda-restore-windows-after-quit t)
+  (setq org-agenda-restore-windows-after-quit t)
 
   ;; Use a single full frame for org-agenda
   (with-eval-after-load 'org-agenda
@@ -88,19 +87,19 @@
   (with-eval-after-load 'org-agenda
     (add-hook 'org-agenda-mode-hook
               (lambda () (add-hook 'window-configuration-change-hook
-                              'org-agenda-align-tags nil t)))))
+                                   'org-agenda-align-tags nil t)))))
 
 (use-package org-capture                ; Fast note taking
   :after org
   :bind ("C-c o c" . org-capture)
   :config
-  (setq
-   org-capture-templates '(("t" "Todo [inbox]" entry
-                            (file+headline "~/org/gtd/inbox.org" "Tasks")
-                            "* TODO %i%?")
-                           ("T" "Tickler" entry
-                            (file+headline "~/org/gtd/tickler.org" "Tickler")
-                            "* %i%? \n %^t"))))
+  (setq org-capture-templates
+        '(("t" "Todo [inbox]" entry
+           (file+headline "~/org/gtd/inbox.org" "Tasks")
+           "* TODO %i%?")
+          ("T" "Tickler" entry
+           (file+headline "~/org/gtd/tickler.org" "Tickler")
+           "* %i%? \n %^t"))))
 
 (use-package org-faces                  ; Faces definitions
   :after org
@@ -111,24 +110,21 @@
 (use-package ox
   :ensure org
   :config
-  (validate-setq
-   org-export-with-smart-quotes t
-   org-export-coding-system 'utf8))
+  (setq org-export-with-smart-quotes t
+        org-export-coding-system 'utf8))
 
 (use-package ox-html
   :ensure org
   :config
-  (validate-setq
-   ;; Turn off preamble and postamble in HTML export
-   org-html-preamble nil
-   org-html-postamble nil))
+  (setq org-html-preamble nil
+        org-html-postamble nil))
 
 (use-package ox-latex
   :ensure org
   :config
   ;; Use LuaTex for PDF export
-  (validate-setq org-latex-pdf-process
-                 '("latexmk -pdflatex='lualatex -shell-escape
+  (setq org-latex-pdf-process
+        '("latexmk -pdflatex='lualatex -shell-escape
 -interaction nonstopmode' -pdf -f  %f")))
 
 (use-package ox-pandoc                  ; Export Org documents via Pandoc
@@ -137,13 +133,13 @@
   ;; Use external css for html5
   (let ((stylesheet (expand-file-name
                      (locate-user-emacs-file "etc/pandoc.css"))))
-    (validate-setq org-pandoc-options-for-html5
-                   `((css . ,(concat "file://" stylesheet))))))
+    (setq org-pandoc-options-for-html5
+          `((css . ,(concat "file://" stylesheet))))))
 
 (use-package org-bullets                ; Bullets as UTF-8 characters
   :ensure t
   :init (add-hook 'org-mode-hook #'org-bullets-mode)
-  :config (validate-setq org-bullets-bullet-list '("◉" "○" "●" "►" "◇" "◎")))
+  :config (setq org-bullets-bullet-list '("◉" "○" "●" "►" "◇" "◎")))
 
 (use-package org-pdfview                ; Link to PDF files
   :ensure t

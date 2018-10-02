@@ -35,15 +35,13 @@
   (unbind-key "C-c C-l" shell-mode-map)
   (bind-key "C-c C-l" #'counsel-shell-history shell-mode-map)
 
-  (validate-setq
-   ;; Prefer Bash to Fish for compatibility reasons
-   explicit-shell-file-name "/bin/bash"
-   ;; Fix find-dired
-   shell-file-name "/bin/bash")
+  ;; Prefer Bash to Fish for compatibility reasons
+  (setq explicit-shell-file-name "/bin/bash"
+        shell-file-name "/bin/bash")
 
   ;; Do not echo input back at me
   (defun mu-shell-turn-echo-off ()
-    (validate-setq comint-process-echoes t))
+    (setq comint-process-echoes t))
 
   (add-hook 'shell-mode-hook #'mu-shell-turn-echo-off)
   (add-hook 'after-save-hook
@@ -68,14 +66,14 @@
                (get-buffer-process (current-buffer)) nil)))
 
   (defun mu-comint-hook ()
-    (validate-setq completion-at-point-functions
-                   '(bash-completion-dynamic-complete
-                     comint-c-a-p-replace-by-expanded-history
-                     shell-environment-variable-completion
-                     shell-command-completion
-                     shell-c-a-p-replace-by-expanded-directory
-                     shell-filename-completion
-                     comint-filename-completion))
+    (setq completion-at-point-functions
+          '(bash-completion-dynamic-complete
+            comint-c-a-p-replace-by-expanded-history
+            shell-environment-variable-completion
+            shell-command-completion
+            shell-c-a-p-replace-by-expanded-directory
+            shell-filename-completion
+            comint-filename-completion))
     (shell-dirtrack-mode 1))
 
   (add-hook 'shell-mode-hook #'mu-comint-hook))
@@ -128,10 +126,9 @@ The EShell is renamed to match that directory to make multiple windows easier."
 (use-package em-banner                  ; EShell login banner
   :ensure eshell
   :config
-  (validate-setq
-   eshell-banner-message (concat "Welcome to EShell, "
-                                 (capitalize user-login-name)
-                                 "!\n\n")))
+  (setq eshell-banner-message (concat "Welcome to EShell, "
+                                      (capitalize user-login-name)
+                                      "!\n\n")))
 
 (use-package em-prompt                  ; EShell command prompts
   :ensure eshell
@@ -153,7 +150,7 @@ The EShell is renamed to match that directory to make multiple windows easier."
 
 (use-package esh-mode                   ; EShell UI customizations
   :ensure eshell
-  :config (validate-setq eshell-scroll-to-bottom-on-input 'all))
+  :config (setq eshell-scroll-to-bottom-on-input 'all))
 
 (use-package em-cmpl                    ; EShell TAB completion
   :ensure eshell
@@ -166,7 +163,7 @@ The EShell is renamed to match that directory to make multiple windows easier."
 
 (use-package em-hist                    ; EShell History management
   :ensure eshell
-  :config (validate-setq eshell-hist-ignoredups t))
+  :config (setq eshell-hist-ignoredups t))
 
 (use-package em-term                    ; Handle visual commands in EShell
   :ensure eshell

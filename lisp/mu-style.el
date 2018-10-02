@@ -37,10 +37,10 @@
   (unbind-key "C-x C-z")
   :config (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
 
-(validate-setq echo-keystrokes 0.1)     ; Faster echo keystrokes
+(setq echo-keystrokes 0.1)     ; Faster echo keystrokes
 
 ;; Avoid showing ?? in the mode line when we have long lines.
-(validate-setq line-number-display-limit-width 10000)
+(setq line-number-display-limit-width 10000)
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -56,31 +56,28 @@
 (tooltip-mode -1)
 
 ;; Cursor stretches to the current glyph's width
-(validate-setq x-stretch-cursor t)
+(setq x-stretch-cursor t)
 
 ;; Disable annoying prompts
 (fset 'yes-or-no-p 'y-or-n-p)
-(validate-setq kill-buffer-query-functions
+(setq kill-buffer-query-functions
                (remq 'process-kill-buffer-query-function
                      kill-buffer-query-functions))
 
 ;; Disable startup messages
-(validate-setq
- ring-bell-function #'ignore
- inhibit-startup-screen t
- initial-scratch-message nil)
+(setq ring-bell-function #'ignore
+      inhibit-startup-screen t
+      initial-scratch-message nil)
 
 ;; Disable startup echo area message
 (fset 'display-startup-echo-area-message #'ignore)
 
-(validate-setq
- x-gtk-use-system-tooltips nil          ; Use Emacs tooltips
- history-length 1000)                   ; Store more history
+(setq x-gtk-use-system-tooltips nil          ; Use Emacs tooltips
+      history-length 1000)                   ; Store more history
 
 ;; Do not truncate lines
-(validate-setq
- truncate-lines nil
- truncate-partial-width-windows nil)
+(setq truncate-lines nil
+      truncate-partial-width-windows nil)
 
 (setq-default line-spacing 0.2)         ; Increase line-spacing (default 0)
 
@@ -90,7 +87,7 @@
 (diminish 'auto-fill-function)
 
 ;; Sentences end with one space
-(validate-setq sentence-end-double-space nil)
+(setq sentence-end-double-space nil)
 
 ;; Hide the cursor in inactive windows
 (setq-default cursor-in-non-selected-windows nil)
@@ -109,7 +106,7 @@
   (global-prettify-symbols-mode 1)
 
   ;; Unprettify symbols with point on them and next to them
-  (validate-setq prettify-symbols-unprettify-at-point 'right-edge)
+  (setq prettify-symbols-unprettify-at-point 'right-edge)
 
   ;; Add some pretty symbols to Clojure and Lisp modes
   (defvar-local mu-clojure-prettify-alist '())
@@ -126,14 +123,14 @@
                               (Bc . Bl) ?- (Br . Br) ?>)))
 
   (with-eval-after-load 'clojure-mode
-    (validate-setq clojure--prettify-symbols-alist
-                   (append mu-clojure-prettify-alist
-                           clojure--prettify-symbols-alist)))
+    (setq clojure--prettify-symbols-alist
+          (append mu-clojure-prettify-alist
+                  clojure--prettify-symbols-alist)))
 
   (with-eval-after-load 'lisp-mode
-    (validate-setq lisp-prettify-symbols-alist
-                   (append mu-clojure-prettify-alist
-                           lisp-prettify-symbols-alist))))
+    (setq lisp-prettify-symbols-alist
+          (append mu-clojure-prettify-alist
+                  lisp-prettify-symbols-alist))))
 
 (use-package ansi-color                 ; Colorize ANSI escape sequences
   :defer t
@@ -146,10 +143,10 @@
   (add-hook 'compilation-filter-hook #'mu-colorize-compilation))
 
 ;; Underline below the font bottomline instead of the baseline
-(validate-setq x-underline-at-descent-line t)
+(setq x-underline-at-descent-line t)
 
 ;;; Theme
-(validate-setq custom-safe-themes t)    ; Treat themes as safe
+(setq custom-safe-themes t)    ; Treat themes as safe
 
 (use-package color-theme-sanityinc-tomorrow ; Default theme
   :ensure t
@@ -179,7 +176,7 @@
 (column-number-mode)
 
 ;; Show buffer position percentage starting from top
-(validate-setq mode-line-percent-position '(-3 "%o"))
+(setq mode-line-percent-position '(-3 "%o"))
 
 ;; Custom Eyebrowse mode-line indicator
 (defvar-local mu-eyebrowse-mode-line
@@ -226,10 +223,10 @@
 (use-package minions                    ; A minor-mode menu for the mode line
   :ensure t
   :init (minions-mode)
-  :config (validate-setq minions-direct '(cider-mode
-                                          flycheck-mode
-                                          overwrite-mode
-                                          slow-keys-mode)))
+  :config (setq minions-direct '(cider-mode
+                                 flycheck-mode
+                                 overwrite-mode
+                                 slow-keys-mode)))
 
 (use-package moody                      ; Tabs and ribbons for the mode line
   :ensure t

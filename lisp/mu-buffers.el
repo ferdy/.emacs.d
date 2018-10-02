@@ -16,88 +16,81 @@
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode))
 
 ;; Allow to read from minibuffer while in minibuffer.
-(validate-setq enable-recursive-minibuffers t)
+(setq enable-recursive-minibuffers t)
 
 ;; Show the minibuffer depth (when larger than 1)
 (minibuffer-depth-indicate-mode 1)
 
-(validate-setq
- ;; Never use dialogs for minibuffer input
- use-dialog-box nil
- ;; Store more history
- history-length 1000)
+(setq use-dialog-box nil                ; Never use dialogs for minibuffer input
+      history-length 1000)              ; Store more history
 
 (use-package savehist                   ; Save minibuffer history
   :init (savehist-mode t)
   :config
-  (validate-setq
-   savehist-save-minibuffer-history t
-   savehist-autosave-interval 180))
+  (setq savehist-save-minibuffer-history t
+        savehist-autosave-interval 180))
 
 ;; Don't ask for confirmation
-(validate-setq kill-buffer-query-functions
-               (delq 'process-kill-buffer-query-function
-                     kill-buffer-query-functions))
+(setq kill-buffer-query-functions
+      (delq 'process-kill-buffer-query-function
+            kill-buffer-query-functions))
 
-(validate-setq
- frame-resize-pixelwise t               ; Resize by pixels
- frame-title-format '(:eval (if (buffer-file-name)
-                                (abbreviate-file-name (buffer-file-name))
-                              "%b")))
+(setq frame-resize-pixelwise t
+      frame-title-format '(:eval (if (buffer-file-name)
+                                     (abbreviate-file-name (buffer-file-name))
+                                   "%b")))
 
 ;; Configure `display-buffer' behaviour for some special buffers
-(validate-setq
- display-buffer-alist
- `(;; Messages, errors, processes, Calendar in the bottom side window
-   (,(rx bos (or "*Apropos"             ; Apropos buffers
-                 "*Man"                 ; Man buffers
-                 "*Help"                ; Help buffers
-                 "*Warnings*"           ; Emacs warnings
-                 "*Process List*"       ; Processes
-                 "*Proced"              ; Proced processes list
-                 "*Compile-Log*"        ; Emacs byte compiler log
-                 "*compilation"         ; Compilation buffers
-                 "*Flycheck errors*"    ; Flycheck error list
-                 "*Calendar"            ; Calendar window
-                 "*env-info"            ; Emacs version from my custom function
-                 "*Cargo"               ; Cargo process buffers
-                 "*Word"                ; WordNut buffers
-                 (and (1+ nonl) " output*"))) ; AUCTeX command output
-    (display-buffer-reuse-window display-buffer-in-side-window)
-    (side . bottom)
-    (reusable-frames . visible)
-    (window-height . 0.45))
-   ;; REPLs on the bottom half
-   (,(rx bos (or "*cider-repl"          ; CIDER REPL
-                 "*intero"              ; Intero REPL
-                 "*idris-repl"          ; Idris REPL
-                 "*ielm"                ; IELM REPL
-                 "*SQL"))               ; SQL REPL
-    (display-buffer-reuse-window display-buffer-in-side-window)
-    (side . bottom)
-    (reusable-frames . visible)
-    (window-height . 0.50))
-   ;; Open shell in a single window
-   (,(rx bos "*shell")
-    (display-buffer-same-window)
-    (reusable-frames . nil))
-   ;; Open PDFs in the right side window
-   (,(rx bos "*pdf")
-    (display-buffer-reuse-window display-buffer-in-side-window)
-    (side . right)
-    (reusable-frames . visible)
-    (window-width . 0.5))
-   ;; Let `display-buffer' reuse visible frames for all buffers. This must be
-   ;; the last entry in `display-buffer-alist', because it overrides any
-   ;; previous entry with more specific actions.
-   ("." nil (reusable-frames . visible))))
+(setq display-buffer-alist
+      `(;; Messages, errors, processes, Calendar in the bottom side window
+        (,(rx bos (or "*Apropos"                   ; Apropos buffers
+                      "*Man"                       ; Man buffers
+                      "*Help"                      ; Help buffers
+                      "*Warnings*"                 ; Emacs warnings
+                      "*Process List*"             ; Processes
+                      "*Proced"                    ; Proced processes list
+                      "*Compile-Log*"              ; Emacs byte compiler log
+                      "*compilation"               ; Compilation buffers
+                      "*Flycheck errors*"          ; Flycheck error list
+                      "*Calendar"                  ; Calendar window
+                      "*env-info"                  ; Environment information
+                      "*Cargo"                     ; Cargo process buffers
+                      "*Word"                      ; WordNut buffers
+                      (and (1+ nonl) " output*"))) ; AUCTeX command output
+         (display-buffer-reuse-window display-buffer-in-side-window)
+         (side . bottom)
+         (reusable-frames . visible)
+         (window-height . 0.45))
+        ;; REPLs on the bottom half
+        (,(rx bos (or "*cider-repl"     ; CIDER REPL
+                      "*intero"         ; Intero REPL
+                      "*idris-repl"     ; Idris REPL
+                      "*ielm"           ; IELM REPL
+                      "*SQL"))          ; SQL REPL
+         (display-buffer-reuse-window display-buffer-in-side-window)
+         (side . bottom)
+         (reusable-frames . visible)
+         (window-height . 0.50))
+        ;; Open shell in a single window
+        (,(rx bos "*shell")
+         (display-buffer-same-window)
+         (reusable-frames . nil))
+        ;; Open PDFs in the right side window
+        (,(rx bos "*pdf")
+         (display-buffer-reuse-window display-buffer-in-side-window)
+         (side . right)
+         (reusable-frames . visible)
+         (window-width . 0.5))
+        ;; Let `display-buffer' reuse visible frames for all buffers. This must
+        ;; be the last entry in `display-buffer-alist', because it overrides any
+        ;; previous entry with more specific actions.
+        ("." nil (reusable-frames . visible))))
 
 (use-package uniquify                   ; Unique buffer names
   :config
-  (validate-setq
-   uniquify-buffer-name-style 'post-forward
-   uniquify-separator " • "
-   uniquify-ignore-buffers-re "^\\*"))
+  (setq uniquify-buffer-name-style 'post-forward
+        uniquify-separator " • "
+        uniquify-ignore-buffers-re "^\\*"))
 
 (use-package ibuf-ext                   ; Extensions for Ibuffer
   :config
@@ -110,9 +103,8 @@
          :map ibuffer-mode-map
          ("q" . mu-pop-window-configuration))
   :config
-  (validate-setq
-   ibuffer-expert t              ; Do not prompt when on kill buffers operations
-   ibuffer-filter-group-name-face 'font-lock-doc-face)
+  (setq ibuffer-expert t         ; Do not prompt when on kill buffers operations
+        ibuffer-filter-group-name-face 'font-lock-doc-face)
 
   (defun mu-ibuffer-open ()
     "Save window configuration and call `ibuffer'."
@@ -138,25 +130,25 @@
      ((> (buffer-size) 1000) (format "%7.1fk" (/ (buffer-size) 1000.0)))
      (t (format "%8d" (buffer-size)))))
 
-  (validate-setq ibuffer-formats
-                 '((mark modified read-only " "
-                         (name 35 35 :left :elide)
-                         " "
-                         (size-h 9 -1 :right)
-                         " "
-                         (mode 16 16 :left :elide)
-                         " "
-                         filename-and-process)
-                   (mark modified read-only " "
-                         (name 35 35 :left :elide)
-                         " "
-                         (size-h 9 -1 :right)
-                         " "
-                         (mode 16 16 :left :elide)
-                         " "
-                         (vc-status 16 16 :left)
-                         " "
-                         filename-and-process))))
+  (setq ibuffer-formats
+        '((mark modified read-only " "
+                (name 35 35 :left :elide)
+                " "
+                (size-h 9 -1 :right)
+                " "
+                (mode 16 16 :left :elide)
+                " "
+                filename-and-process)
+          (mark modified read-only " "
+                (name 35 35 :left :elide)
+                " "
+                (size-h 9 -1 :right)
+                " "
+                (mode 16 16 :left :elide)
+                " "
+                (vc-status 16 16 :left)
+                " "
+                filename-and-process))))
 
 (use-package ibuffer-vc                 ; Group buffers by VC project and status
   :ensure t
@@ -167,7 +159,7 @@
                       (ibuffer-do-sort-by-filename/process)))))
 
 ;; Use `emacs-lisp-mode' instead of `lisp-interaction-mode' for scratch buffer
-(validate-setq initial-major-mode 'emacs-lisp-mode)
+(setq initial-major-mode 'emacs-lisp-mode)
 
 ;;; Utilities and key bindings
 ;; Don't kill the important buffers

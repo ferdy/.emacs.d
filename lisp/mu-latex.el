@@ -12,24 +12,20 @@
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
   :config
-  (validate-setq
-   TeX-clean-confirm nil         ; No confirmation when cleaning
-   TeX-parse-self t              ; Parse documents to provide completion
-   TeX-auto-save t               ; Automatically save style information
-   ;; Insert braces after sub- and superscripts in math mode
-   TeX-electric-sub-and-superscript t
-   TeX-electric-math '("\\(" . "\\)")
-   ;; Don't insert magic quotes right away
-   TeX-quote-after-quote t
-   ;; Provide forward and inverse search with SyncTeX
-   TeX-source-correlate-mode t
-   TeX-source-correlate-method 'synctex)
+  (setq TeX-clean-confirm nil           ; No confirmation when cleaning
+        TeX-parse-self t                ; Parse documents to provide completion
+        TeX-auto-save t                 ; Automatically save style information
+        ;; Insert braces after sub- and superscripts in math mode
+        TeX-electric-sub-and-superscript t
+        TeX-electric-math '("\\(" . "\\)")
+        ;; Don't insert magic quotes right away
+        TeX-quote-after-quote t
+        ;; Provide forward and inverse search with SyncTeX
+        TeX-source-correlate-mode t
+        TeX-source-correlate-method 'synctex)
 
-  (setq-default
-   ;; Ask for the master file
-   TeX-master nil
-   ;; Use luatex
-   TeX-engine 'luatex)
+  (setq-default TeX-master nil ; Ask for the master file
+                TeX-engine 'luatex)
 
   ;; Move to chktex
   (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
@@ -38,10 +34,8 @@
   (add-hook 'tex-mode-hook
             (lambda () (setq ispell-parser 'tex)))
 
-  (validate-setq
-   ;; Use pdf-tools to open PDF files
-   TeX-view-program-selection '((output-pdf "PDF Tools"))
-   TeX-source-correlate-start-server t)
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+        TeX-source-correlate-start-server t)
 
   ;; Update PDF buffers after successful LaTeX runs
   (add-hook 'TeX-after-compilation-finished-functions
@@ -51,16 +45,15 @@
   :ensure auctex
   :defer t
   ;; Don't ask for confirmation when saving before processing
-  :config (validate-setq TeX-save-query nil))
+  :config (setq TeX-save-query nil))
 
 (use-package tex-style           ; Customizable variables for AUCTeX style files
   :ensure auctex
   :defer t
   :config
-  (validate-setq
-   ;; Enable support for csquotes
-   LaTeX-csquotes-close-quote "}"
-   LaTeX-csquotes-open-quote "\\enquote{"))
+  ;; Enable support for csquotes
+  (setq LaTeX-csquotes-close-quote "}"
+        LaTeX-csquotes-open-quote "\\enquote{"))
 
 (use-package tex-fold                   ; Fold TeX macros
   :ensure auctex
@@ -82,17 +75,16 @@
   :ensure auctex
   :defer t
   :config
-  (validate-setq
-   ;; Teach TeX folding about KOMA script sections
-   TeX-outline-extra `((,(rx (0+ space) "\\section*{") 2)
-                       (,(rx (0+ space) "\\subsection*{") 3)
-                       (,(rx (0+ space) "\\subsubsection*{") 4)
-                       (,(rx (0+ space) "\\minisec{") 5))
-   ;; No language-specific hyphens please
-   LaTeX-babel-hyphen "")
+  ;; Teach TeX folding about KOMA script sections
+  (setq TeX-outline-extra `((,(rx (0+ space) "\\section*{") 2)
+                            (,(rx (0+ space) "\\subsection*{") 3)
+                            (,(rx (0+ space) "\\subsubsection*{") 4)
+                            (,(rx (0+ space) "\\minisec{") 5))
+        ;; No language-specific hyphens please
+        LaTeX-babel-hyphen "")
 
-  (validate-setq LaTeX-command-style
-                 '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
+  (setq LaTeX-command-style
+        '(("" "%(PDF)%(latex) -file-line-error %S%(PDFout)")))
 
   (add-hook 'LaTeX-mode-hook #'LaTeX-math-mode)) ; Easy math input
 
@@ -130,23 +122,22 @@
         (forward-list)
         (buffer-substring-no-properties beg (1- (point))))))
 
-  (validate-setq
-   reftex-plug-into-AUCTeX t ; Plug into AUCTeX
-   ;; Automatically derive labels, and prompt for confirmation
-   reftex-insert-label-flags '(t t)
-   ;; Additional label definitions for RefTeX.
-   reftex-label-alist '(("definition" ?d "def:" "~\\ref{%s}"
-                         mu-reftex-find-ams-environment-caption
-                         ("definition" "def.") -3)
-                        ("theorem" ?h "thm:" "~\\ref{%s}"
-                         mu-reftex-find-ams-environment-caption
-                         ("theorem" "th.") -3)
-                        ("example" ?x "ex:" "~\\ref{%s}"
-                         mu-reftex-find-ams-environment-caption
-                         ("example" "ex") -3)
-                        ;; Algorithms package
-                        ("algorithm" ?a "alg:" "~\\ref{%s}"
-                         "\\\\caption[[{]" ("algorithm" "alg") -3))))
+  (setq reftex-plug-into-AUCTeX t       ; Plug into AUCTeX
+        ;; Automatically derive labels, and prompt for confirmation
+        reftex-insert-label-flags '(t t)
+        ;; Additional label definitions for RefTeX.
+        reftex-label-alist '(("definition" ?d "def:" "~\\ref{%s}"
+                              mu-reftex-find-ams-environment-caption
+                              ("definition" "def.") -3)
+                             ("theorem" ?h "thm:" "~\\ref{%s}"
+                              mu-reftex-find-ams-environment-caption
+                              ("theorem" "th.") -3)
+                             ("example" ?x "ex:" "~\\ref{%s}"
+                              mu-reftex-find-ams-environment-caption
+                              ("example" "ex") -3)
+                             ;; Algorithms package
+                             ("algorithm" ?a "alg:" "~\\ref{%s}"
+                              "\\\\caption[[{]" ("algorithm" "alg") -3))))
 
 (use-package latex-unicode-math-mode    ; Input method for Unicode math symbols
   :ensure t

@@ -17,19 +17,17 @@
   :config
   (add-to-list 'recentf-exclude "^/\\(?:ssh\\|su\\|sudo\\)?:")
 
-  (validate-setq
-   recentf-max-saved-items 200
-   recentf-max-menu-items 15))
+  (setq recentf-max-saved-items 200
+        recentf-max-menu-items 15))
 
-(validate-setq
- delete-by-moving-to-trash t
- view-read-only t
- large-file-warning-threshold nil)
+(setq delete-by-moving-to-trash t
+      view-read-only t
+      large-file-warning-threshold nil)
 
 (use-package ffap                       ; Find files at point
   :defer t
   ;; Do not ping random hosts
-  :config (validate-setq ffap-machine-p-known 'reject))
+  :config (setq ffap-machine-p-known 'reject))
 
 (use-package ignoramus                  ; Ignore uninteresting files everywhere
   :ensure t
@@ -42,7 +40,7 @@
   (dolist (ext '(".fls" ".out" ".aux"))
     (add-to-list 'ignoramus-file-endings ext))
 
-  (validate-setq ignoramus-file-basename-beginnings '( ".#" "._"))
+  (setq ignoramus-file-basename-beginnings '( ".#" "._"))
 
   (ignoramus-setup))
 
@@ -63,7 +61,7 @@
   :after pdf-tools
   :config
   ;; Zoom by 10% instead of default 25%
-  (validate-setq pdf-view-resize-factor 1.1))
+  (setq pdf-view-resize-factor 1.1))
 
 (use-package pdfgrep                    ; Support for pdfgrep
   :ensure t
@@ -76,7 +74,7 @@
 (use-package csv-mode                   ; Better .csv files editing
   :ensure t
   :mode "\\.csv\\'"
-  :config (validate-setq csv-separators '("," ";" "|" " ")))
+  :config (setq csv-separators '("," ";" "|" " ")))
 
 (use-package image-file                 ; Visit images as images
   :init (auto-image-file-mode))
@@ -94,7 +92,7 @@
   :mode ("\\.md\\'" . markdown-mode)
   :hook (markdown-mode . auto-fill-mode)
   :config
-  (validate-setq markdown-fontify-code-blocks-natively t)
+  (setq markdown-fontify-code-blocks-natively t)
 
   ;; Don't change font in code blocks
   (set-face-attribute 'markdown-code-face nil

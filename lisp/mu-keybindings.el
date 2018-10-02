@@ -14,9 +14,8 @@
   :ensure t
   :init (which-key-mode)
   :config
-  (validate-setq
-   which-key-idle-delay 0.4
-   which-key-sort-order 'which-key-prefix-then-key-order)
+  (setq which-key-idle-delay 0.4
+        which-key-sort-order 'which-key-prefix-then-key-order)
 
   (which-key-add-key-based-replacements
     "C-c !"     "flycheck"

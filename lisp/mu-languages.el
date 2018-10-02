@@ -14,16 +14,15 @@
   :ensure t
   :defer t
   :mode "\\.po\\'"
-  :config (validate-setq po-keep-mo-file t))
+  :config (setq po-keep-mo-file t))
 
 ;;; Spell checking
 (use-package ispell                     ; Word correction
   :defer t
   :config
-  (validate-setq
-   ispell-program-name (executable-find "hunspell")
-   ispell-dictionary "en_GB"
-   ispell-choices-win-default-height 5)
+  (setq ispell-program-name (executable-find "hunspell")
+        ispell-dictionary "en_GB"
+        ispell-choices-win-default-height 5)
 
   (unless ispell-program-name
     (warn "No spell checker available. Plese install hunspell."))
@@ -68,7 +67,7 @@ be global."
   (defvar-local mu-languages-ring nil "Languages ring for Ispell")
 
   (let ((languages '("it_IT" "en_GB")))
-    (validate-setq mu-languages-ring (make-ring (length languages)))
+    (setq mu-languages-ring (make-ring (length languages)))
     (dolist (elem languages) (ring-insert mu-languages-ring elem)))
 
   (defun mu-cycle-ispell-languages ()
@@ -78,18 +77,14 @@ Change dictionary and mode line lighter accordingly."
     (let ((language (ring-ref mu-languages-ring -1)))
       (ring-insert mu-languages-ring language)
       (ispell-change-dictionary language)
-      (validate-setq flyspell-mode-line-string
-                     (mu-current-dictionary-mode-line language))
+      (setq flyspell-mode-line-string
+            (mu-current-dictionary-mode-line language))
       (force-mode-line-update)))
-  :config
-  (validate-setq
-   flyspell-use-meta-tab nil
-   ;; Make Flyspell less chatty
-   flyspell-issue-welcome-flag nil
-   flyspell-issue-message-flag nil)
-
-  (validate-setq flyspell-mode-line-string
-                 (mu-current-dictionary-mode-line ispell-dictionary))
+  :config (setq flyspell-use-meta-tab nil
+                flyspell-issue-welcome-flag nil
+                flyspell-issue-message-flag nil
+                flyspell-mode-line-string
+                (mu-current-dictionary-mode-line ispell-dictionary))
 
   ;; Free M-t for transpose words
   (unbind-key "M-t" flyspell-mode-map)
@@ -114,7 +109,7 @@ Change dictionary and mode line lighter accordingly."
   :ensure t
   :bind (("C-c a D" . define-word)
          ("C-c a d" . define-word-at-point))
-  :config (validate-setq define-word-limit 5))
+  :config (setq define-word-limit 5))
 
 (use-package powerthesaurus             ; Powerthesaurus integration
   :ensure t

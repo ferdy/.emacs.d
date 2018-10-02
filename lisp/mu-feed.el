@@ -30,13 +30,12 @@
   (with-eval-after-load 'elfeed
     (fullframe elfeed mu-elfeed-quit))
 
-  (validate-setq
-   elfeed-use-curl t                    ; Use curl to fetch the feeds
-   elfeed-search-title-max-width 80)
+  (setq elfeed-use-curl t
+        elfeed-search-title-max-width 80)
 
   (elfeed-set-timeout 30)               ; Increase timeout
 
-  (validate-setq
+  (setq
    elfeed-feeds
    '(("https://asiaincinema.com/feed/" cinema)
      ("https://asianfilmstrike.wordpress.com/feed/" cinema)

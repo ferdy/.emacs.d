@@ -28,7 +28,7 @@
 (use-package undo-tree                  ; Show buffer changes as a tree
   :ensure t
   :init (global-undo-tree-mode)
-  :config (validate-setq undo-tree-visualizer-timestamps t))
+  :config (setq undo-tree-visualizer-timestamps t))
 
 (use-package delsel                     ; Delete the selection instead of insert
   :defer t
@@ -78,7 +78,7 @@
   :config
   ;; Split windows vertically despite large margins, because Emacs otherwise
   ;; refuses to vertically split windows with large margins
-  (validate-setq split-window-preferred-function
+  (setq split-window-preferred-function
                  #'visual-fill-column-split-window-sensibly)
 
   (defun mu-maybe-adjust-visual-fill-column ()
@@ -106,27 +106,24 @@
   :ensure t
   :config
   (super-save-mode +1)
-  (validate-setq super-save-auto-save-when-idle t))
+  (setq super-save-auto-save-when-idle t))
 
 (use-package autorevert                 ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
   :bind ("C-c t t" . auto-revert-tail-mode)
   :config
-  (validate-setq
-   auto-revert-verbose nil
-   ;; Revert Dired buffers, too
-   global-auto-revert-non-file-buffers t
-   ;; Auto-revert files opened via TRAMP
-   auto-revert-remote-files t))
+  (setq auto-revert-verbose nil
+        ;; Revert Dired buffers, too
+        global-auto-revert-non-file-buffers t
+        ;; Auto-revert files opened via TRAMP
+        auto-revert-remote-files t))
 
 (use-package copyright                  ; Deal with copyright notices
   :defer t
   :config
-  (validate-setq
-   ;; Use ranges to denote consecutive years
-   copyright-year-ranges t
-   ;; Limit copyright changes to my own copyright
-   copyright-names-regexp (regexp-quote user-full-name)))
+  (setq copyright-year-ranges t   ; Use ranges to denote consecutive years
+        ;; Limit copyright changes to my own copyright
+        copyright-names-regexp (regexp-quote user-full-name)))
 
 (use-package typo                       ; Automatically use typographic quotes
   :ensure t
@@ -139,9 +136,8 @@
   :ensure t
   :bind ("C-c t r" . writeroom-mode)
   :config
-  (validate-setq
-   writeroom-fullscreen-effect 'maximized
-   writeroom-bottom-divider-width 0))
+  (setq writeroom-fullscreen-effect 'maximized
+        writeroom-bottom-divider-width 0))
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :hook ((text-mode  . tildify-mode)
@@ -161,13 +157,13 @@
   :ensure t
   :config
   (require 'mmm-auto)
-  (validate-setq mmm-global-mode 'buffers-with-submode-classes
-                 mmm-submode-decoration-level 2))
+  (setq mmm-global-mode 'buffers-with-submode-classes
+        mmm-submode-decoration-level 2))
 
 (use-package slow-keys                  ; Slow keys mode to avoid RSI
   :ensure t
   :bind ("C-c t s" . slow-keys-mode)
-  :config (validate-setq slow-keys-min-delay 0.03))
+  :config (setq slow-keys-min-delay 0.03))
 
 (use-package move-text                  ; Move line or region with M-up/M-down
   :ensure t
@@ -179,20 +175,18 @@
               tab-width 8)
 
 ;; Make Tab complete if the line is indented
-(validate-setq tab-always-indent 'complete)
+(setq tab-always-indent 'complete)
 
 ;; Indicate empty lines at the end of a buffer in the fringe, but require a
 ;; final new line
-(validate-setq
- indicate-empty-lines t
- require-final-newline t)
+(setq indicate-empty-lines t
+      require-final-newline t)
 
-(validate-setq
- kill-ring-max 200                      ; More killed items
- kill-do-not-save-duplicates t          ; No duplicates in kill ring
- ;; Save the contents of the clipboard to kill ring before killing
- save-interprogram-paste-before-kill t
- mouse-yank-at-point t)
+(setq kill-ring-max 200                 ; More killed items
+      kill-do-not-save-duplicates t     ; No duplicates in kill ring
+      ;; Save the contents of the clipboard to kill ring before killing
+      save-interprogram-paste-before-kill t
+      mouse-yank-at-point t)
 
 ;;; Utilities and key bindings
 (bind-key "C-c x i" #'indent-region)

@@ -8,7 +8,7 @@
 
 ;;; Code:
 
-(validate-setq window-combination-resize t) ; Size new windows proportionally
+(setq window-combination-resize t) ; Size new windows proportionally
 
 (use-package fullframe                 ; Generalized execution in a single frame
   :ensure t
@@ -18,11 +18,10 @@
   :ensure t
   :init (eyebrowse-mode t)
   :config
-  (validate-setq
-   eyebrowse-mode-line-separator " "
-   eyebrowse-mode-line-style 'always
-   eyebrowse-new-workspace t
-   eyebrowse-wrap-around t))
+  (setq eyebrowse-mode-line-separator " "
+        eyebrowse-mode-line-style 'always
+        eyebrowse-new-workspace t
+        eyebrowse-wrap-around t))
 
 (use-package windmove                   ; Quickly move between windows
   :bind (("C-c <up>"    . windmove-up)
@@ -35,15 +34,14 @@
   :bind (("C-x o"   . ace-window)
          ("C-c w w" . ace-window)
          ("C-c w s" . ace-swap-window))
-  :config (validate-setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
+  :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 (use-package ediff-wind                 ; Ediff window management
   :defer t
   :config
   ;; Prevent Ediff from spamming the frame
-  (validate-setq
-   ediff-window-setup-function #'ediff-setup-windows-plain
-   ediff-split-window-function #'split-window-horizontally))
+  (setq ediff-window-setup-function #'ediff-setup-windows-plain
+        ediff-split-window-function #'split-window-horizontally))
 
 ;;; Utilities and key bindings
 (defun mu-find-side-windows (&optional side)

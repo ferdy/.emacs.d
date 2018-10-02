@@ -14,11 +14,10 @@
   ;; the remote side to ask what the temporary directory is.
   (put 'temporary-file-directory 'standard-value '("/tmp"))
 
-  (validate-setq
-   tramp-verbose 1                      ; Reduce verbosity
-   tramp-default-method "ssh"
-   tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
-   auto-save-file-name-transforms nil)
+  (setq tramp-verbose 1
+        tramp-default-method "ssh"
+        tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
+        auto-save-file-name-transforms nil)
 
   (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil)))
 
@@ -38,13 +37,12 @@
   (with-eval-after-load 'paradox
     (fullframe paradox-list-packages mu-pop-window-configuration))
 
-  (validate-setq
-   paradox-spinner-type 'triangle       ; Prettier spinner
-   paradox-github-token t               ; Don't ask for a token
-   paradox-execute-asynchronously nil
-   paradox-use-homepage-buttons nil
-   paradox-automatically-star nil
-   paradox-display-star-count nil)
+  (setq paradox-spinner-type 'triangle
+        paradox-github-token t
+        paradox-execute-asynchronously nil
+        paradox-use-homepage-buttons nil
+        paradox-automatically-star nil
+        paradox-display-star-count nil)
 
   ;; Don't need paradox report
   (remove-hook 'paradox-after-execute-functions
@@ -54,9 +52,8 @@
 
 (use-package browse-url                 ; Browse URLs
   :config
-  (validate-setq
-   browse-url-browser-function 'browse-url-generic
-   browse-url-generic-program "google-chrome"))
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program "google-chrome"))
 
 (use-package goto-addr                  ; Make links clickable
   :defer t
@@ -91,7 +88,7 @@ Call `eww-reload' to undo the filtering."
 (defun mu-toggle-image-display ()
   "Toggle images display on current buffer."
   (interactive)
-  (validate-setq mu-display-images (null mu-display-images))
+  (setq mu-display-images (null mu-display-images))
   (mu-backup-display-property mu-display-images))
 
 (defun mu-backup-display-property (invert &optional object)
