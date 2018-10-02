@@ -61,8 +61,7 @@
 ;; Disable annoying prompts
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq kill-buffer-query-functions
-               (remq 'process-kill-buffer-query-function
-                     kill-buffer-query-functions))
+      (remq 'process-kill-buffer-query-function kill-buffer-query-functions))
 
 ;; Disable startup messages
 (setq ring-bell-function #'ignore

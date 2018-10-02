@@ -79,7 +79,7 @@
   ;; Split windows vertically despite large margins, because Emacs otherwise
   ;; refuses to vertically split windows with large margins
   (setq split-window-preferred-function
-                 #'visual-fill-column-split-window-sensibly)
+        #'visual-fill-column-split-window-sensibly)
 
   (defun mu-maybe-adjust-visual-fill-column ()
     "Readjust visual fill column when the global font size is modified."

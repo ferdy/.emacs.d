@@ -38,7 +38,7 @@
             #'mu-discard-undesired-html-tidy-error)
   (add-hook 'flycheck-mode-hook
             #'mu-flycheck-set-load-path-for-user-configuration)
-  
+
   (defhydra hydra-flycheck (:color blue)
     "
   ^
