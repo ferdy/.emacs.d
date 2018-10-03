@@ -54,11 +54,7 @@
     "C-c C-x" "md/structure")
 
   (which-key-add-major-mode-key-based-replacements 'emacs-lisp-mode
-    "C-c m"   "elisp/personal"
-    "C-c m m" "macroexpand"
-    "C-c m e" "eval"
-    "C-c m r" "refs"
-    "C-c m s" "el-search")
+    "C-c m"   "elisp/personal")
 
   (which-key-add-major-mode-key-based-replacements 'clojure-mode
     "C-c m"   "clj/personal"

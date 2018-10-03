@@ -61,9 +61,9 @@
   :ensure t
   :after lisp-mode
   :bind (:map emacs-lisp-mode-map
-              ("C-c m m e" . macrostep-expand))
+              ("C-c m e" . macrostep-expand))
   :bind (:map lisp-interaction-mode-map
-              ("C-c m m e" . macrostep-expand)))
+              ("C-c m e" . macrostep-expand)))
 
 ;; Quickly pop the mark several times with C-u C-SPC C-SPC
 (setq set-mark-command-repeat-pop t)
