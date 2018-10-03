@@ -241,8 +241,8 @@
 (use-package dhall-mode                 ; Dhall support and editing
   :ensure t
   :mode ("\\.dhall\\'" . dhall-mode)
-  :hook ((dhall-mode-hook . mu-no-trailing-whitespace)
-         (dhall-mode-hook . stack-exec-path-mode)))
+  :hook ((dhall-mode . mu-no-trailing-whitespace)
+         (dhall-mode . stack-exec-path-mode)))
 
 (use-package liquid-types               ; Show inferred liquid-types
   :ensure t
@@ -414,7 +414,7 @@
 (use-package yaml-mode                  ; Edit YAML files
   :ensure t
   :mode "\\.yaml\\'"
-  :hook (yaml-mode-hook . goto-address-prog-mode))
+  :hook (yaml-mode . goto-address-prog-mode))
 
 ;;; Other languages
 (use-package sh-script                  ; Shell scripts
@@ -461,7 +461,7 @@
 
 (use-package sql-indent                 ; SQL indentation
   :ensure t
-  :hook (sql-mode-hook . sqlind-minor-mode))
+  :hook (sql-mode . sqlind-minor-mode))
 
 (use-package sqlup-mode                 ; Upcase SQL keywords
   :ensure t
