@@ -483,9 +483,7 @@
 
 (use-package etags                      ; Tag navigation
   :defer t
-  :config
-  ;; Do not query before reverting TAGS tables
-  (setq tags-revert-without-query t))
+  :config (setq tags-revert-without-query t))
 
 (use-package compile                    ; Compile from Emacs
   :defer t
