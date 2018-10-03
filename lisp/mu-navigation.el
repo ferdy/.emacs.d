@@ -136,10 +136,10 @@
   (ignore-errors (forward-line 5)))
 
 ;;;###autoload
-(defun super-forward-char ()
-  "Move point 5 characters forward."
+(defun super-previous-line ()
+  "Move 5 lines up."
   (interactive)
-  (ignore-errors (forward-char 5)))
+  (ignore-errors (forward-line -5)))
 
 (bind-keys
  ("C-S-n" . super-next-line)
