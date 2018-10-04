@@ -23,7 +23,8 @@
     "Save feeds database, kill log buffer and restore window configuration."
     (interactive)
     (elfeed-db-save)
-    (kill-buffer "*elfeed-log*")
+    (when (get-buffer "*elfeed-log*")
+      (kill-buffer "*elfeed-log*"))
     (mu-pop-window-configuration))
 
   ;; Use a single full frame for elfeed
@@ -84,7 +85,7 @@
   :ensure elfeed
   :after elfeed
   :config
-  (setq-default elfeed-search-filter "@1-day-ago +unread")
+  (setq-default elfeed-search-filter "@1-week-ago +unread")
 
   (defun mu-elfeed-mark-all-read ()
     "Mark all feeds as read."
