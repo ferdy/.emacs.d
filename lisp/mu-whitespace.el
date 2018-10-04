@@ -27,13 +27,14 @@
   "Turn off display of trailing whitespace in the current buffer."
   (setq show-trailing-whitespace nil))
 
-(dolist (hook '(special-mode-hook
-                Info-mode-hook
-                eww-mode-hook
-                term-mode-hook
+(dolist (hook '(cider-repl-mode-hook
                 comint-mode-hook
                 compilation-mode-hook
-                minibuffer-setup-hook))
+                eww-mode-hook
+                minibuffer-setup-hook
+                special-mode-hook
+                term-mode-hook
+                Info-mode-hook))
   (add-hook hook #'mu-no-trailing-whitespace))
 
 (provide 'mu-whitespace)
