@@ -12,10 +12,6 @@
   :ensure t
   :hook (after-init-hook . global-whitespace-cleanup-mode))
 
-(use-package shrink-whitespace          ; Better whitespace removal
-  :ensure t
-  :bind ("M-SPC" . shrink-whitespace))
-
 (use-package hungry-delete              ; Delete all whitespaces
   :ensure t
   :bind (("C-c <backspace>" . hungry-delete-backward)
