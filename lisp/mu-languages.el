@@ -97,7 +97,7 @@ Change dictionary and mode line lighter accordingly."
   :ensure t
   :after flyspell
   :bind (:map flyspell-mode-map
-              ("C-c $" . flyspell-correct-word-generic)))
+              ("C-c $" . flyspell-correct-wrapper)))
 
 ;;; Dictionaries and synonyms
 (use-package wordnut                    ; Interface to WordNet
