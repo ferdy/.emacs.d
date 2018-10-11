@@ -158,12 +158,6 @@
   :config (setq-default dimmer-fraction 0.20))
 
 ;;; The mode line
-;; Slightly decrease the font in the mode line
-(set-face-attribute 'mode-line nil
-                    :family "Iosevka SS08"
-                    :height 130
-                    :weight 'regular)
-
 (line-number-mode)
 (column-number-mode)
 
@@ -220,15 +214,20 @@
                                  overwrite-mode
                                  slow-keys-mode)))
 
+;; Slightly decrease the font in the mode line
+(set-face-attribute 'mode-line nil
+                    :family "Iosevka SS08"
+                    :height 130
+                    :weight 'regular)
+
 ;; Increase mode-line size with a border (box) of the same colour and
 ;; reduce font size by tweaking height
 (set-face-attribute 'mode-line nil
                     :inverse-video nil
                     :height 0.9
-                    :box '(:line-width 6 :color "#373b41" :style nil))
+                    :box '(:line-width 8 :color "#373b41" :style nil))
 (set-face-attribute 'mode-line-inactive nil
                     :inverse-video nil
-                    :height 0.9
                     :box '(:line-width 8 :color "#282a2e" :style nil))
 
 ;;; Utilities and key bindings
