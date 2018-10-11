@@ -14,10 +14,9 @@
 ;;; Package setup
 (require 'package)
 
-(setq package-archives
-      '(("GNU ELPA" . "http://elpa.gnu.org/packages/")
-        ("MELPA"    . "https://melpa.org/packages/")
-        ("ORG"      . "https://orgmode.org/elpa/")))
+(setq package-archives '(("GNU ELPA" . "http://elpa.gnu.org/packages/")
+                         ("MELPA"    . "https://melpa.org/packages/")
+                         ("ORG"      . "https://orgmode.org/elpa/")))
 
 (setq package-enable-at-startup nil)
 
