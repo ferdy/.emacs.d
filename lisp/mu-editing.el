@@ -147,7 +147,9 @@
 
 (use-package string-edit                ; Edit strings in a separate buffer
   :ensure t
-  :bind ("C-c x s" . string-edit-at-point))
+  :bind (("C-c x s" . string-edit-at-point)
+         :map string-edit-mode-map
+         ("C-c C-q" . string-edit-abort)))
 
 (use-package edit-indirect              ; Edit regions in separate buffers
   :ensure t
