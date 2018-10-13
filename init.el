@@ -18,7 +18,7 @@
                          ("MELPA"    . "https://melpa.org/packages/")
                          ("ORG"      . "https://orgmode.org/elpa/")))
 
-(setq package-enable-at-startup nil)
+(package-activate-all)
 
 ;; Sane defaults
 (setq load-prefer-newer t)              ; Always load newer compiled files

@@ -10,12 +10,12 @@
 
 ;;; Fonts setup
 (set-face-attribute 'default nil
-                    :family "Iosevka SS08"
-                    :height 145
+                    :family "Fira Code"
+                    :height 135
                     :weight 'regular)
 (set-face-attribute 'fixed-pitch nil
-                    :family "Iosevka SS08"
-                    :height 145
+                    :family "Fira Code"
+                    :height 135
                     :weight 'regular)
 (set-face-attribute 'variable-pitch nil
                     :family "Fira Sans"
@@ -216,8 +216,8 @@
 
 ;; Slightly decrease the font in the mode line
 (set-face-attribute 'mode-line nil
-                    :family "Iosevka SS08"
-                    :height 130
+                    :family "Fira Code"
+                    :height 125
                     :weight 'regular)
 
 ;; Increase mode-line size with a border (box) of the same colour and
@@ -235,16 +235,16 @@
   "Reset fonts to my preferences."
   (interactive)
   (set-face-attribute 'default nil
-                      :family "Iosevka SS08"
-                      :height 145
+                      :family "Fira Code"
+                      :height 135
                       :weight 'regular)
   (set-face-attribute 'variable-pitch nil
                       :family "Fira Sans"
-                      :height 145
+                      :height 135
                       :weight 'regular)
   (set-face-attribute 'mode-line nil
-                      :family "Iosevka SS08"
-                      :height 130
+                      :family "Fira Code"
+                      :height 125
                       :weight 'regular))
 
 (bind-key "C-c t f" #'mu-reset-fonts)
