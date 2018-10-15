@@ -127,6 +127,10 @@
   :ensure t
   :mode ("\\.epub\\'" . nov-mode))
 
+(use-package adoc-mode                  ; Edit AsciiDoc files
+  :ensure t
+  :mode ("\\.adoc\\'" . adoc-mode))
+
 ;;; Utilities and key bindings
 (defun mu-current-file ()
   "Gets the \"file\" of the current buffer.
