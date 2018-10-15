@@ -77,7 +77,6 @@
      ("http://www.slantmagazine.com/rss" cinema)
      ("http://www.thecinephiliacs.net/feeds/posts/default" cinema)
      ("https://www.theguardian.com/uk/environment/rss" news)
-     ("https://www.theguardian.com/uk-news/rss" news)
      ("https://www.theguardian.com/world/rss" news)
      ("http://www.vcinemashow.com/feed/" cinema))))
 
