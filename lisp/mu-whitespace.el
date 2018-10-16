@@ -23,7 +23,8 @@
   "Turn off display of trailing whitespace in the current buffer."
   (setq show-trailing-whitespace nil))
 
-(dolist (hook '(cider-repl-mode-hook
+(dolist (hook '(calendar-mode
+                cider-repl-mode-hook
                 comint-mode-hook
                 compilation-mode-hook
                 eww-mode-hook
