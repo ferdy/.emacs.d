@@ -79,17 +79,7 @@
   ;; Split windows vertically despite large margins, because Emacs otherwise
   ;; refuses to vertically split windows with large margins
   (setq split-window-preferred-function
-        #'visual-fill-column-split-window-sensibly)
-
-  (defun mu-maybe-adjust-visual-fill-column ()
-    "Readjust visual fill column when the global font size is modified."
-    (if visual-fill-column-mode
-        (add-hook
-         'after-setting-font-hook 'visual-fill-column--adjust-window nil t)
-      (remove-hook
-       'after-setting-font-hook 'visual-fill-column--adjust-window t)))
-
-  (add-hook 'visual-fill-column-mode-hook #'mu-maybe-adjust-visual-fill-column))
+        #'visual-fill-column-split-window-sensibly))
 
 (use-package align                      ; Align text in buffers
   :bind (("C-c x a a" . align)
