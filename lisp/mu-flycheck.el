@@ -67,7 +67,8 @@
 (use-package flycheck-package          ; Check package conventions with Flycheck
   :ensure t
   :after flycheck
-  :config (flycheck-package-setup))
+  :config (with-eval-after-load 'elisp-mode
+            (flycheck-package-setup)))
 
 (use-package flycheck-rust              ; Flycheck setup for Rust
   :ensure t

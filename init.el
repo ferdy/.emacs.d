@@ -77,6 +77,9 @@
           "CARGO_HOME"         ; Cargo home, for racer
           ))
 
+  ;; Do not run a shell process twice
+  (setq-default exec-path-from-shell-arguments nil)
+
   (exec-path-from-shell-initialize))
 
 ;; Personal informations
@@ -119,8 +122,11 @@
         auto-save-file-name-transforms
         `((".*" ,(no-littering-expand-var-file-name "auto-save/") t))))
 
-(use-package server                     ; The server of `emacsclient'
-  :config (or (server-running-p) (server-mode)))
+;; Allow access from `emacsclient'
+(add-hook 'after-init-hook (lambda ()
+                             (require 'server)
+                             (unless (server-running-p)
+                               (server-start))))
 
 ;; Confirm before quitting Emacs
 (setq confirm-kill-emacs #'y-or-n-p)
@@ -134,7 +140,7 @@
 (use-package mu-functions)
 (use-package mu-keybindings)
 (use-package mu-pairs)
-(use-package mu-cursors)
+(use-package mu-cursors :defer 1)
 (use-package mu-highlight)
 (use-package mu-buffers)
 (use-package mu-windows)
@@ -142,7 +148,7 @@
 (use-package mu-editing)
 (use-package mu-whitespace)
 (use-package mu-navigation)
-(use-package mu-search)
+(use-package mu-search :defer 1)
 (use-package mu-flycheck :defer 1)
 (use-package mu-files :defer 1)
 (use-package mu-dired)
@@ -153,13 +159,10 @@
 (use-package mu-vers-control :defer 1)
 (use-package mu-net :defer 1)
 (use-package mu-utilities :defer 1)
-(use-package mu-org)
+(use-package mu-org :defer 1)
 (use-package mu-programming)
 (use-package mu-shells)
 (use-package mu-feed :defer 2)
-
-;; Immediately visit my main GTD file
-(find-file "~/org/gtd/gtd.org")
 
 ;; Local Variables:
 ;; coding: utf-8
