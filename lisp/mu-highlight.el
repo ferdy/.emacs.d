@@ -25,7 +25,6 @@
               ("M-p" . symbol-overlay-jump-prev))
   :hook ((prog-mode . symbol-overlay-mode)
          (html-mode . symbol-overlay-mode)
-         (css-mode  . symbol-overlay-mode)
          (yaml-mode . symbol-overlay-mode)
          (conf-mode . symbol-overlay-mode)))
 
