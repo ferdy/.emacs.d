@@ -82,7 +82,7 @@ Call `eww-reload' to undo the filtering."
 
 ;;; Utilities and key bindings
 ;; Toggle image display on/off, especially useful in eww
-(defvar-local mu-display-images t)
+(defvar mu-display-images t)
 
 ;;;###autoload
 (defun mu-toggle-image-display ()
