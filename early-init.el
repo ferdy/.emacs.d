@@ -11,8 +11,7 @@
 ;; Package Settings
 (customize-set-variable
  'package-archives '(("GNU ELPA" . "https://elpa.gnu.org/packages/")
-                     ("MELPA"    . "https://melpa.org/packages/")
-                     ("ORG"      . "https://orgmode.org/elpa/")))
+                     ("MELPA"    . "https://melpa.org/packages/")))
 
 ;; Allow more than 800Kb cache during init
 (setq gc-cons-threshold 402653184
