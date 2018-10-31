@@ -152,11 +152,6 @@
   (setq mmm-global-mode 'buffers-with-submode-classes
         mmm-submode-decoration-level 2))
 
-(use-package slow-keys                  ; Slow keys mode to avoid RSI
-  :ensure t
-  :bind ("C-c t s" . slow-keys-mode)
-  :config (setq slow-keys-min-delay 0.03))
-
 (use-package move-text                  ; Move line or region with M-up/M-down
   :ensure t
   :bind* (([M-down] . move-text-down)
