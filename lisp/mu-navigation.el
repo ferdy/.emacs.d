@@ -34,16 +34,6 @@
   :hook ((prog-mode . outline-minor-mode)
          (text-mode . outline-minor-mode)))
 
-(use-package hideshow                   ; Hide/show code blocks
-  :hook (prog-mode . hs-minor-mode))
-
-(use-package bicycle                    ; Cycle outline and code visibility
-  :ensure t
-  :after outline
-  :bind (:map outline-minor-mode-map
-              ("<C-tab>"   . bicycle-cycle)
-              ("<backtab>" . bicycle-cycle-global)))
-
 (use-package beginend                   ; Redefine M-< and M-> for some modes
   :ensure t
   :config (beginend-global-mode))
