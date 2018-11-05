@@ -64,6 +64,7 @@
      ("https://sergioleoneifr.blogspot.com/feeds/posts/default" cinema)
      ("http://www.500princesongs.com/feed" music)
      ("http://www.aintitcool.com/node/feed/" cinema)
+     ("https://www.alternateending.com/feed" cinema)
      ("http://www.anothergaze.com/feed/" cinema)
      ("http://www.commitstrip.com/en/feed/" comic)
      ("http://www.easternkicks.com/feed/" cinema)
