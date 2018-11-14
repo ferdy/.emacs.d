@@ -102,7 +102,7 @@
        ((mu--start-with-p "[")
         (mu--wrap-with-symbols "(" ")"))
        ((equal 1 (point))
-        (message "beginning of file reached, this was probably a mistake.")))
+        (message "Beginning of file reached, this was probably a mistake.")))
       (goto-char original-point)))
 
   (bind-key "C-`" #'mu-live-cycle-clj-coll clojure-mode-map)
