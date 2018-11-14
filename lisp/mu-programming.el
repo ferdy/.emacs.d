@@ -78,6 +78,13 @@
     (interactive)
     (equal symbol (buffer-substring-no-properties (point) (+ 1 (point)))))
 
+  (defun mu--wrap-with-symbols (opening closing)
+    "Wrap current sexp within OPENING and CLOSING."
+    (interactive)
+    (insert opening
+            (substring (mu--live-delete-and-extract-sexp) 1 -1)
+            closing))
+
   (defun mu-live-cycle-clj-coll ()
     "Convert the coll at (point) from (x) -> {x} -> [x] -> (x)."
     (interactive)
@@ -89,11 +96,11 @@
         (backward-char))
       (cond
        ((mu--start-with-p "(")
-        (insert "{" (substring (mu--live-delete-and-extract-sexp) 1 -1) "}"))
+        (mu--wrap-with-symbols "{" "}"))
        ((mu--start-with-p "{")
-        (insert "[" (substring (mu--live-delete-and-extract-sexp) 1 -1) "]"))
+        (mu--wrap-with-symbols "[" "]"))
        ((mu--start-with-p "[")
-        (insert "(" (substring (mu--live-delete-and-extract-sexp) 1 -1) ")"))
+        (mu--wrap-with-symbols "(" ")"))
        ((equal 1 (point))
         (message "beginning of file reached, this was probably a mistake.")))
       (goto-char original-point)))
