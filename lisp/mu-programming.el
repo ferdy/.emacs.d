@@ -64,6 +64,11 @@
     (context 2)
     (reporting 1))
 
+  (defun mu--start-with-p (symbol)
+    "Check if there is a SYMBOL at (point)."
+    (interactive)
+    (equal symbol (buffer-substring-no-properties (point) (+ 1 (point)))))
+
   (defun mu--live-delete-and-extract-sexp ()
     "Delete the sexp and return it."
     (interactive)
@@ -72,11 +77,6 @@
       (let* ((result (buffer-substring-no-properties begin (point))))
         (delete-region begin (point))
         result)))
-
-  (defun mu--start-with-p (symbol)
-    "Check if there is a SYMBOL at (point)."
-    (interactive)
-    (equal symbol (buffer-substring-no-properties (point) (+ 1 (point)))))
 
   (defun mu--wrap-with-symbols (opening closing)
     "Wrap current coll within OPENING and CLOSING."
