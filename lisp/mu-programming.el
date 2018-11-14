@@ -79,7 +79,7 @@
     (equal symbol (buffer-substring-no-properties (point) (+ 1 (point)))))
 
   (defun mu--wrap-with-symbols (opening closing)
-    "Wrap current sexp within OPENING and CLOSING."
+    "Wrap current coll within OPENING and CLOSING."
     (interactive)
     (insert opening
             (substring (mu--live-delete-and-extract-sexp) 1 -1)
