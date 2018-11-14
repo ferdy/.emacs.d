@@ -35,6 +35,11 @@
         cider-invert-insert-eval-p t
         cider-switch-to-repl-after-insert-p nil))
 
+(use-package cider-common               ; CIDER common use functions
+  :ensure cider
+  :after cider
+  :config (setq cider-prompt-for-symbol nil))
+
 (use-package clojure-mode               ; Major mode for Clojure files
   :ensure t
   :mode (("\\.boot$" . clojure-mode)
@@ -57,7 +62,55 @@
     (HEAD 2)
     (ANY 2)
     (context 2)
-    (reporting 1)))
+    (reporting 1))
+
+  (defun mu--live-delete-and-extract-sexp ()
+    "Delete the sexp and return it."
+    (interactive)
+    (let* ((begin (point)))
+      (forward-sexp)
+      (let* ((result (buffer-substring-no-properties begin (point))))
+        (delete-region begin (point))
+        result)))
+
+  (defun mu--start-with-p (symbol)
+    "Check if there is a SYMBOL at (point)."
+    (interactive)
+    (equal symbol (buffer-substring-no-properties (point) (+ 1 (point)))))
+
+  (defun mu-live-cycle-clj-coll ()
+    "Convert the coll at (point) from (x) -> {x} -> [x] -> (x)."
+    (interactive)
+    (let* ((original-point (point)))
+      (while (and (> (point) 1)
+                  (not (mu--start-with-p "("))
+                  (not (mu--start-with-p "{"))
+                  (not (mu--start-with-p "[")))
+        (backward-char))
+      (cond
+       ((mu--start-with-p "(")
+        (insert "{" (substring (mu--live-delete-and-extract-sexp) 1 -1) "}"))
+       ((mu--start-with-p "{")
+        (insert "[" (substring (mu--live-delete-and-extract-sexp) 1 -1) "]"))
+       ((mu--start-with-p "[")
+        (insert "(" (substring (mu--live-delete-and-extract-sexp) 1 -1) ")"))
+       ((equal 1 (point))
+        (message "beginning of file reached, this was probably a mistake.")))
+      (goto-char original-point)))
+
+  (bind-key "C-`" #'mu-live-cycle-clj-coll clojure-mode-map)
+
+  (defun mu-cider-switch-to-any-repl-buffer (&optional set-namespace)
+    "Switch to current REPL buffer, when possible in an existing window.
+The type of the REPL is inferred from the mode of current buffer.  With a
+prefix arg SET-NAMESPACE sets the namespace in the REPL buffer to that of
+the namespace in the Clojure source buffer"
+    (interactive "P")
+    (cider--switch-to-repl-buffer
+     (cider-current-repl "any" t)
+     set-namespace))
+
+  (bind-key "C-c z" #'mu-cider-switch-to-any-repl-buffer clojure-mode-map))
 
 (use-package cider-eval                 ; Interactive evaluation functionalities
   :after cider
