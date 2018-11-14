@@ -186,7 +186,6 @@ The EShell is renamed to match that directory to make multiple windows easier."
 (use-package esh-help                ; Add help functions and support for Eshell
   :ensure t
   :after eshell
-  :hook (eshell-mode . eldoc-mode)
   :init (setup-esh-help-eldoc))
 
 (use-package ansi-term                  ; Powerful terminal emulator

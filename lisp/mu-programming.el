@@ -11,7 +11,7 @@
 ;;; Clojure
 (use-package cider                      ; Clojure development environment
   :ensure t
-  :hook (cider-mode . eldoc-mode)
+  :defer t
   :config (setq cider-offer-to-open-cljs-app-in-browser nil))
 
 (use-package cider-mode                 ; CIDER mode for REPL interaction
@@ -80,7 +80,6 @@
               ("C-c C-o" . cider-repl-switch-to-other)
               ("C-c t p" . cider-toggle-pretty-printing))
   :hook ((cider-repl-mode . company-mode)
-         (cider-repl-mode . eldoc-mode)
          (cider-repl-mode . subword-mode))
   :config
   (setq cider-repl-wrap-history t
@@ -148,8 +147,7 @@
 (use-package haskell-mode               ; Haskell editing
   :ensure intero
   :mode ("\\.ghci\\'" . haskell-mode)
-  :hook ((haskell-mode . eldoc-mode)
-         (haskell-mode . subword-mode)
+  :hook ((haskell-mode . subword-mode)
          (haskell-mode . haskell-indentation-mode)
          (haskell-mode . haskell-auto-insert-module-template))
   :config
@@ -199,8 +197,7 @@
 (use-package haskell-cabal              ; Support for Cabal packages
   :ensure intero
   :mode ("\\.cabal\\'" . haskell-cabal-mode)
-  :hook ((haskell-cabal-mode . eldoc-mode)
-         (haskell-cabal-mode . subword-mode)))
+  :hook ((haskell-cabal-mode . subword-mode)))
 
 (use-package dhall-mode                 ; Dhall support and editing
   :ensure t
@@ -438,8 +435,6 @@
 ;;; Misc utilities
 (use-package eldoc                      ; Documentation in the echo area
   :defer t
-  ;; Enable Eldoc for `eval-expression', too
-  :hook (eval-expression-minibuffer-setup . eldoc-mode)
   :config
   (setq-default eldoc-documentation-function #'describe-char-eldoc)
   ;; Show eldoc more promptly
