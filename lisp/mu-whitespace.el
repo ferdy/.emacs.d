@@ -10,7 +10,6 @@
 
 (use-package whitespace-cleanup-mode    ; Cleanup whitespace in buffers
   :ensure t
-  :defer t
   :config (add-hook 'after-init-hook #'global-whitespace-cleanup-mode))
 
 (use-package hungry-delete              ; Delete all whitespaces
