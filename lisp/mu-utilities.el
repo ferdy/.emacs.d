@@ -29,7 +29,7 @@
          ("C-h v" . helpful-variable)))
 
 (use-package calendar                   ; Display a calendar
-  :config (setq calendar-week-start-day 1)) ; Start on Monday
+  :config (setq calendar-week-start-day 1))
 
 (use-package time                       ; Display time
   :config
