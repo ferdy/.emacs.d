@@ -58,7 +58,7 @@
 
 (use-package keychain-environment       ; Load keychain environment variables
   :ensure t
-  :defer t)
+  :config (keychain-refresh-environment))
 
 (provide 'mu-utilities)
 
