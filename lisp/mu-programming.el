@@ -25,7 +25,7 @@
     (if-let* ((current-connection (ignore-errors (cider-current-repl))))
         (with-current-buffer current-connection
           (concat
-           cider-repl-type
+           (symbol-name cider-repl-type)
            (format
             ":%s" (or (cider--project-name nrepl-project-dir) "<no project>"))))
       "-"))
