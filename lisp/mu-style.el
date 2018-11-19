@@ -209,10 +209,7 @@
 (use-package minions                    ; A minor-mode menu for the mode line
   :ensure t
   :init (minions-mode)
-  :config (setq minions-direct '(cider-mode
-                                 flycheck-mode
-                                 overwrite-mode
-                                 slow-keys-mode)))
+  :config (setq minions-direct '(cider-mode flycheck-mode overwrite-mode)))
 
 ;; Slightly decrease the font in the mode line
 (set-face-attribute 'mode-line nil
