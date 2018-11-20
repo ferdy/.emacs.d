@@ -516,7 +516,7 @@ as the current user."
       (add-hook 'find-file-hook #'mu-reopen-as-root)
     (remove-hook 'find-file-hook #'mu-reopen-as-root)))
 
-(add-hook 'after-init-hook (lambda () (mu-reopen-as-root-mode)))
+(add-hook 'after-init-hook #'mu-reopen-as-root-mode)
 
 (provide 'mu-editing)
 
