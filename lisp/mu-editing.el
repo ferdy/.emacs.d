@@ -509,6 +509,7 @@ Meant to be used as `find-file-hook'. See also `mu-reopen-as-root-mode'."
 (define-minor-mode mu-reopen-as-root-mode
   "Automatically reopen files as root if we can't write to them
 as the current user."
+  :lighter nil
   :global t
   :group 'mu
   (if mu-reopen-as-root-mode
