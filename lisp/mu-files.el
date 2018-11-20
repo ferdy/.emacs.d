@@ -48,10 +48,6 @@
   :ensure t
   :init (global-hardhat-mode))
 
-(use-package sudo-edit                  ; Edit files as root, through Tramp
-  :ensure t
-  :bind ("C-c f s" . sudo-edit))
-
 (use-package pdf-tools                  ; Better PDF support
   :ensure t
   :demand t
