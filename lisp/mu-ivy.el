@@ -133,6 +133,14 @@ instead."
 
 (bind-key* "M-?" #'mu-counsel-search-project)
 
+;;;###autoload
+(defun mu-swiper-at-point (sym)
+  "Use `swiper' to search for the SYM at point."
+  (interactive (list (thing-at-point 'symbol)))
+  (swiper sym))
+
+(bind-key "M-s /" #'mu-swiper-at-point ivy-mode-map)
+
 (provide 'mu-ivy)
 
 ;; Local Variables:
