@@ -35,7 +35,11 @@
 
   ;; Ignore mouse left-click in ivy
   (with-eval-after-load 'ivy
-    (bind-key [mouse-1] #'ignore ivy-minibuffer-map)))
+    (bind-key [mouse-1] #'ignore ivy-minibuffer-map))
+
+  ;; Show more results in counsel-rg
+  (with-eval-after-load 'ivy
+    (add-to-list 'ivy-height-alist (cons 'counsel-ag 15))))
 
 (use-package ivy-hydra                  ; Additional bindings for Ivy
   :ensure t
