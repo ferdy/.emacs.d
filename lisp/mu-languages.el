@@ -95,7 +95,7 @@ Change dictionary and mode line lighter accordingly."
 
 (use-package flyspell-correct-ivy       ; Better interface for corrections
   :ensure t
-  :after flyspell
+  :demand t
   :bind (:map flyspell-mode-map
               ("C-c $" . flyspell-correct-at-point)))
 
