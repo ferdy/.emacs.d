@@ -25,7 +25,7 @@
         ispell-choices-win-default-height 5)
 
   (unless ispell-program-name
-    (warn "No spell checker available. Plese install hunspell."))
+    (warn "No spell checker available. Please install hunspell."))
 
   (defun mu-ispell-word-then-abbrev (p)
     "Call `ispell-word', then create an abbrev for it.
