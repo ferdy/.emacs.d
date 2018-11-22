@@ -36,8 +36,10 @@
   (setq org-todo-keywords
         '("TODO(t)" "WAITING(w)" "|" "CANCELLED(c)" "DONE(d)"))
 
-  ;; Define Agenda files for GTD
-  (setq org-agenda-files '("~/org/gtd"))
+  ;; Configure Agenda for GTD
+  (setq org-agenda-files '("~/org/gtd")
+        org-default-notes-file "~/org/gtd/gtd.org"
+        org-refile-targets '((org-agenda-files :maxlevel . 2)))
 
   ;; Use F12 to toggle image visualization
   (bind-key "<f12>"
@@ -92,14 +94,13 @@
 (use-package org-capture                ; Fast note taking
   :after org
   :bind ("C-c o c" . org-capture)
-  :config
-  (setq org-capture-templates
-        '(("t" "Todo [inbox]" entry
-           (file+headline "~/org/gtd/inbox.org" "Tasks")
-           "* TODO %i%?")
-          ("T" "Tickler" entry
-           (file+headline "~/org/gtd/tickler.org" "Tickler")
-           "* %i%? \n %^t"))))
+  :config (setq org-capture-templates
+                '(("t" "Todo [inbox]" entry
+                   (file+headline "~/org/gtd/inbox.org" "Tasks")
+                   "* TODO %i%?")
+                  ("T" "Tickler" entry
+                   (file+headline "~/org/gtd/tickler.org" "Tickler")
+                   "* %i%? \n %^t"))))
 
 (use-package org-faces                  ; Faces definitions
   :after org
