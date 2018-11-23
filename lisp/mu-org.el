@@ -19,6 +19,7 @@
         org-src-tab-acts-natively t
         org-src-preserve-indentation t
         org-fontify-done-headline t
+        org-pretty-entities t
         org-edit-timestamp-down-means-later t
         org-catch-invisible-edits 'show
         org-log-done 'time
@@ -38,7 +39,6 @@
 
   ;; Configure Agenda for GTD
   (setq org-agenda-files '("~/org/gtd")
-        org-default-notes-file "~/org/gtd/gtd.org"
         org-refile-targets '((org-agenda-files :maxlevel . 2)))
 
   ;; Use F12 to toggle image visualization
