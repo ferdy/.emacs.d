@@ -10,21 +10,18 @@
 
 (use-package smartparens                ; Parenthesis editing and balancing
   :ensure t
-  :hook ((inferior-emacs-lisp-mode . smartparens-strict-mode)
+  :hook ((clojure-mode             . smartparens-strict-mode)
          (emacs-lisp-mode          . smartparens-strict-mode)
-         (scheme-mode              . smartparens-strict-mode)
-         (clojure-mode             . smartparens-strict-mode))
+         (inferior-emacs-lisp-mode . smartparens-strict-mode)
+         (scheme-mode              . smartparens-strict-mode))
   :init
   (smartparens-global-mode)
   (show-smartparens-global-mode)
   :config
-  (setq sp-autoskip-closing-pair 'always
-        ;; Don't kill entire symbol on C-k
+  (setq sp-cancel-autoskip-on-backward-movement nil
         sp-hybrid-kill-entire-symbol nil
-        ;; Disable debug messages
         sp-message-width nil
-        ;; Keep pair content overlay on backward movement
-        sp-cancel-autoskip-on-backward-movement nil)
+        sp-autoskip-closing-pair 'always)
 
   (sp-with-modes sp--lisp-modes
     (sp-local-pair "'" nil :actions nil)
@@ -66,11 +63,10 @@
               ("C-M-t"       . sp-transpose-sexp))
   :bind (:map smartparens-strict-mode-map
               ("M-q" . sp-indent-defun))
-  :config
-  (defun mu-sp-wrap-double-quote ()
-    "Wrap following sexp in double quotes."
-    (interactive)
-    (sp-wrap-with-pair "\"")))
+  :config (defun mu-sp-wrap-double-quote ()
+            "Wrap following sexp in double quotes."
+            (interactive)
+            (sp-wrap-with-pair "\"")))
 
 (with-eval-after-load 'smartparens
   (sp-local-pair 'minibuffer-inactive-mode "'" nil :actions nil)

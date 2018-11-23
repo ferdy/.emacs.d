@@ -31,8 +31,8 @@
   (with-eval-after-load 'elfeed
     (fullframe elfeed mu-elfeed-quit))
 
-  (setq elfeed-use-curl t
-        elfeed-search-title-max-width 80)
+  (setq elfeed-search-title-max-width 80
+        elfeed-use-curl t)
 
   (elfeed-set-timeout 30)               ; Increase timeout
 

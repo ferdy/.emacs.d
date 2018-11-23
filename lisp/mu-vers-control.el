@@ -26,13 +26,13 @@
          (:map dired-mode-map
                ("l" . magit-dired-log)))
   :config
-  (setq magit-save-repository-buffers 'dontask
-        magit-refs-show-commit-count 'all
+  (setq magit-branch-adjust-remote-upstream-alist '(("origin/master" "master"))
         magit-branch-prefer-remote-upstream '("master")
-        magit-branch-adjust-remote-upstream-alist '(("origin/master" "master"))
         magit-completing-read-function 'ivy-completing-read
         magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1
-        magit-log-margin '(t "%Y-%m-%d %H:%M:%S" magit-log-margin-width t 18))
+        magit-log-margin '(t "%Y-%m-%d %H:%M:%S" magit-log-margin-width t 18)
+        magit-refs-show-commit-count 'all
+        magit-save-repository-buffers 'dontask)
 
   ;; Hide "Recent Commits"
   (magit-add-section-hook 'magit-status-sections-hook
@@ -89,9 +89,8 @@
 (use-package git-commit                 ; Git commit message mode
   :ensure t
   :init (global-git-commit-mode)
-  :config
-  (remove-hook 'git-commit-finish-query-functions
-               #'git-commit-check-style-conventions))
+  :config (remove-hook 'git-commit-finish-query-functions
+                       #'git-commit-check-style-conventions))
 
 (use-package gitconfig-mode             ; Git configuration mode
   :ensure t

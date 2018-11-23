@@ -101,19 +101,14 @@
 (use-package autorevert                 ; Auto-revert buffers of changed files
   :init (global-auto-revert-mode)
   :bind ("C-c t t" . auto-revert-tail-mode)
-  :config
-  (setq auto-revert-verbose nil
-        ;; Revert Dired buffers, too
-        global-auto-revert-non-file-buffers t
-        ;; Auto-revert files opened via TRAMP
-        auto-revert-remote-files t))
+  :config (setq auto-revert-remote-files t
+                auto-revert-verbose nil
+                global-auto-revert-non-file-buffers t))
 
 (use-package copyright                  ; Deal with copyright notices
   :defer t
-  :config
-  (setq copyright-year-ranges t   ; Use ranges to denote consecutive years
-        ;; Limit copyright changes to my own copyright
-        copyright-names-regexp (regexp-quote user-full-name)))
+  :config (setq copyright-names-regexp (regexp-quote user-full-name)
+                copyright-year-ranges t))
 
 (use-package typo                       ; Automatically use typographic quotes
   :ensure t
@@ -125,9 +120,8 @@
 (use-package writeroom-mode             ; Distraction-free editing
   :ensure t
   :bind ("C-c t r" . writeroom-mode)
-  :config
-  (setq writeroom-fullscreen-effect 'maximized
-        writeroom-bottom-divider-width 0))
+  :config (setq writeroom-bottom-divider-width 0
+                writeroom-fullscreen-effect 'maximized))
 
 (use-package tildify                    ; Insert non-breaking spaces on the fly
   :hook ((text-mode  . tildify-mode)
@@ -169,11 +163,11 @@
 (setq indicate-empty-lines t
       require-final-newline t)
 
-(setq kill-ring-max 200                 ; More killed items
-      kill-do-not-save-duplicates t     ; No duplicates in kill ring
+(setq kill-do-not-save-duplicates t     ; No duplicates in kill ring
+      kill-ring-max 200                 ; More killed items
+      mouse-yank-at-point t
       ;; Save the contents of the clipboard to kill ring before killing
-      save-interprogram-paste-before-kill t
-      mouse-yank-at-point t)
+      save-interprogram-paste-before-kill t)
 
 ;;; Utilities and key bindings
 (bind-key "C-c x i" #'indent-region)
@@ -265,9 +259,7 @@ be duplicated."
 (bind-key "C-c x D" #'mu-duplicate-and-comment-current-line-or-region)
 
 ;; Join line with the next one
-(bind-key "C-j" (lambda ()
-                  (interactive)
-                  (join-line -1)))
+(bind-key "C-j" (lambda () (interactive) (join-line -1)))
 
 ;;;###autoload
 (defun flush-kill-lines (regex)

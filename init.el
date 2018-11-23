@@ -12,10 +12,10 @@
 ;;; Code:
 
 ;; Sane defaults
-(setq load-prefer-newer t)              ; Always load newer compiled files
 (setq ad-redefinition-action 'accept)   ; Silence advice redefinition warnings
-(setq message-log-max 10000)            ; Debugging
 (setq enable-local-variables :all)      ; Always enable all local variables
+(setq load-prefer-newer t)              ; Always load newer compiled files
+(setq message-log-max 10000)            ; Debugging
 
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
@@ -71,12 +71,11 @@
 
 (use-package cus-edit                   ; Set up custom.el
   :defer t
-  :config
-  (setq custom-file mu-custom-file
-        custom-buffer-done-kill t
-        custom-buffer-verbose-help nil  ; Remove redundant help text
-        custom-unlispify-tag-names nil  ; Show me the real variable name
-        custom-unlispify-menu-entries nil)
+  :config (setq custom-buffer-done-kill t
+                custom-buffer-verbose-help nil
+                custom-unlispify-menu-entries nil
+                custom-unlispify-tag-names nil
+                custom-file mu-custom-file)
   :init (load mu-custom-file 'no-error 'no-message))
 
 ;; Disable auto save and backups

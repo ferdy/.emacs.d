@@ -14,10 +14,10 @@
   ;; the remote side to ask what the temporary directory is.
   (put 'temporary-file-directory 'standard-value '("/tmp"))
 
-  (setq tramp-verbose 1
+  (setq auto-save-file-name-transforms nil
         tramp-default-method "ssh"
         tramp-shell-prompt-pattern "^[^$>\n]*[#$%>] *\\(\[[0-9;]*[a-zA-Z] *\\)*"
-        auto-save-file-name-transforms nil)
+        tramp-verbose 1)
 
   (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil)))
 
@@ -37,12 +37,12 @@
   (with-eval-after-load 'paradox
     (fullframe paradox-list-packages mu-pop-window-configuration))
 
-  (setq paradox-spinner-type 'triangle
-        paradox-github-token t
+  (setq paradox-automatically-star nil
+        paradox-display-star-count nil
         paradox-execute-asynchronously nil
+        paradox-github-token t
         paradox-use-homepage-buttons nil
-        paradox-automatically-star nil
-        paradox-display-star-count nil)
+        paradox-spinner-type 'triangle)
 
   ;; Don't need paradox report
   (remove-hook 'paradox-after-execute-functions
@@ -51,9 +51,8 @@
                #'paradox--report-buffer-display-if-noquery))
 
 (use-package browse-url                 ; Browse URLs
-  :config
-  (setq browse-url-browser-function 'browse-url-generic
-        browse-url-generic-program "google-chrome"))
+  :config (setq browse-url-browser-function 'browse-url-generic
+                browse-url-generic-program"google-chrome"))
 
 (use-package goto-addr                  ; Make links clickable
   :defer t
@@ -97,17 +96,17 @@ Call `eww-reload' to undo the filtering."
                                  :tls t
                                  :pass mu-retrieve-irc-password)))
 
-  (setq circe-default-nick "manuel-uberti"
-        circe-default-user "manuel-uberti"
-        circe-default-realname "Manuel Uberti"
-        circe-default-part-message "Bye!"
+  (setq circe-default-part-message "Bye!"
         circe-default-quit-message "Bye!"
-        circe-use-cycle-completion t
-        circe-reduce-lurker-spam t
+        circe-default-realname "Manuel Uberti"
+        circe-default-user "manuel-uberti"
         circe-format-self-say "<{nick}> {body}"
         circe-format-server-topic "*** Topic Change by {userhost}: {topic-diff}"
+        circe-prompt-string (propertize ">> " 'face 'circe-prompt-face)
+        circe-reduce-lurker-spam t
         circe-server-buffer-name "{network}"
-        circe-prompt-string (propertize ">> " 'face 'circe-prompt-face)))
+        circe-use-cycle-completion t
+        circe-default-nick "manuel-uberti"))
 
 ;;; Utilities and key bindings
 ;; Toggle image display on/off, especially useful in eww

@@ -17,11 +17,10 @@
 (use-package eyebrowse                  ; Easy workspaces creation and switching
   :ensure t
   :init (eyebrowse-mode t)
-  :config
-  (setq eyebrowse-mode-line-separator " "
-        eyebrowse-mode-line-style 'always
-        eyebrowse-new-workspace t
-        eyebrowse-wrap-around t))
+  :config (setq eyebrowse-mode-line-style 'always
+                eyebrowse-new-workspace t
+                eyebrowse-wrap-around t
+                eyebrowse-mode-line-separator " "))
 
 (use-package windmove                   ; Quickly move between windows
   :bind (("C-c <up>"    . windmove-up)
@@ -35,15 +34,12 @@
          ("C-c w w" . ace-window)
          ("C-c w s" . ace-swap-window))
   :config (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)
-                ;; Ignore case
                 aw-translate-char-function #'downcase))
 
 (use-package ediff-wind                 ; Ediff window management
   :defer t
-  :config
-  ;; Prevent Ediff from spamming the frame
-  (setq ediff-window-setup-function #'ediff-setup-windows-plain
-        ediff-split-window-function #'split-window-horizontally))
+  :config (setq ediff-split-window-function #'split-window-horizontally
+                ediff-window-setup-function #'ediff-setup-windows-plain))
 
 ;;; Utilities and key bindings
 (defun mu-find-side-windows (&optional side)

@@ -11,21 +11,17 @@
 (use-package tex                        ; TeX editing
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
-  :config
-  (setq TeX-clean-confirm nil           ; No confirmation when cleaning
-        TeX-parse-self t                ; Parse documents to provide completion
-        TeX-auto-save t                 ; Automatically save style information
-        ;; Insert braces after sub- and superscripts in math mode
-        TeX-electric-sub-and-superscript t
-        TeX-electric-math '("\\(" . "\\)")
-        ;; Don't insert magic quotes right away
-        TeX-quote-after-quote t
-        ;; Provide forward and inverse search with SyncTeX
-        TeX-source-correlate-mode t
-        TeX-source-correlate-method 'synctex)
+  :config (setq TeX-auto-save t
+                TeX-electric-math '("\\(" . "\\)")
+                TeX-electric-sub-and-superscript t
+                TeX-parse-self t
+                TeX-quote-after-quote t
+                TeX-source-correlate-method 'synctex
+                TeX-source-correlate-mode t
+                TeX-clean-confirm nil)
 
-  (setq-default TeX-master nil ; Ask for the master file
-                TeX-engine 'luatex)
+  (setq-default TeX-engine'luatex
+                TeX-master nil)
 
   ;; Move to chktex
   (setcar (cdr (assoc "Check" TeX-command-list)) "chktex -v6 %s")
@@ -34,8 +30,8 @@
   (add-hook 'tex-mode-hook
             (lambda () (setq ispell-parser 'tex)))
 
-  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
-        TeX-source-correlate-start-server t)
+  (setq TeX-source-correlate-start-server t
+        TeX-view-program-selection '((output-pdf "PDF Tools")))
 
   ;; Update PDF buffers after successful LaTeX runs
   (add-hook 'TeX-after-compilation-finished-functions
@@ -50,10 +46,8 @@
 (use-package tex-style           ; Customizable variables for AUCTeX style files
   :ensure auctex
   :defer t
-  :config
-  ;; Enable support for csquotes
-  (setq LaTeX-csquotes-close-quote "}"
-        LaTeX-csquotes-open-quote "\\enquote{"))
+  :config (setq LaTeX-csquotes-close-quote "}"
+                LaTeX-csquotes-open-quote "\\enquote{"))
 
 (use-package tex-fold                   ; Fold TeX macros
   :ensure auctex
@@ -122,10 +116,7 @@
         (forward-list)
         (buffer-substring-no-properties beg (1- (point))))))
 
-  (setq reftex-plug-into-AUCTeX t       ; Plug into AUCTeX
-        ;; Automatically derive labels, and prompt for confirmation
-        reftex-insert-label-flags '(t t)
-        ;; Additional label definitions for RefTeX.
+  (setq reftex-insert-label-flags '(t t)
         reftex-label-alist '(("definition" ?d "def:" "~\\ref{%s}"
                               mu-reftex-find-ams-environment-caption
                               ("definition" "def.") -3)

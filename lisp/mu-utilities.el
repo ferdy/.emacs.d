@@ -32,12 +32,11 @@
   :config (setq calendar-week-start-day 1))
 
 (use-package time                       ; Display time
-  :config
-  (setq display-time-world-time-format "%H:%M %Z, %d. %b"
-        display-time-world-list '(("Europe/Rome" "Rome")
-                                  ("Europe/London" "London")
-                                  ("Asia/Hong_Kong" "Hong Kong")
-                                  ("Asia/Tokyo" "Tokyo"))))
+  :config (setq display-time-world-list '(("Europe/Rome" "Rome")
+                                          ("Europe/London" "London")
+                                          ("Asia/Hong_Kong" "Hong Kong")
+                                          ("Asia/Tokyo" "Tokyo"))
+                display-time-world-time-format "%H:%M %Z, %d. %b"))
 
 (use-package pandoc-mode                ; Easily control Pandoc in Emacs
   :ensure t

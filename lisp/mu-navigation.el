@@ -11,10 +11,10 @@
 ;; Scrolling
 (pixel-scroll-mode -1)                  ; Disable pixel-scroll-mode
 
-(setq scroll-conservatively 1000
-      scroll-preserve-screen-position 'always
+(setq mouse-wheel-progressive-speed nil
       recenter-positions '(top middle bottom)
-      mouse-wheel-progressive-speed nil)
+      scroll-conservatively 1000
+      scroll-preserve-screen-position 'always)
 
 (use-package bookmark                   ; Bookmarks to files and directories
   :defer t

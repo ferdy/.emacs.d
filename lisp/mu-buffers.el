@@ -21,14 +21,14 @@
 ;; Show the minibuffer depth (when larger than 1)
 (minibuffer-depth-indicate-mode 1)
 
-(setq use-dialog-box nil                ; Never use dialogs for minibuffer input
-      history-length 1000)              ; Store more history
+(setq history-length 1000               ; Store more history
+      use-dialog-box nil)               ; Never use dialogs for minibuffer input
 
 (use-package savehist                   ; Save minibuffer history
   :init (savehist-mode t)
   :config
-  (setq savehist-save-minibuffer-history t
-        savehist-autosave-interval 180))
+  (setq savehist-autosave-interval 180
+        savehist-save-minibuffer-history t))
 
 ;; Don't ask for confirmation
 (setq kill-buffer-query-functions
@@ -89,8 +89,8 @@
 (use-package uniquify                   ; Unique buffer names
   :config
   (setq uniquify-buffer-name-style 'post-forward
-        uniquify-separator " • "
-        uniquify-ignore-buffers-re "^\\*"))
+        uniquify-ignore-buffers-re "^\\*"
+        uniquify-separator " • "))
 
 (use-package ibuf-ext                   ; Extensions for Ibuffer
   :config

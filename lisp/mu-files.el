@@ -17,12 +17,12 @@
   :config
   (add-to-list 'recentf-exclude "^/\\(?:ssh\\|su\\|sudo\\)?:")
 
-  (setq recentf-max-saved-items 200
-        recentf-max-menu-items 15))
+  (setq recentf-max-menu-items 15
+        recentf-max-saved-items 200))
 
 (setq delete-by-moving-to-trash t
-      view-read-only t
-      large-file-warning-threshold nil)
+      large-file-warning-threshold nil
+      view-read-only t)
 
 (use-package ffap                       ; Find files at point
   :defer t
@@ -55,17 +55,15 @@
 
 (use-package pdf-view                   ; View PDF documents
   :after pdf-tools
-  :config
-  ;; Zoom by 10% instead of default 25%
-  (setq pdf-view-resize-factor 1.1))
+  :config (setq pdf-view-resize-factor 1.1))
 
 (use-package pdfgrep                    ; Support for pdfgrep
   :ensure t
   :after pdf-tools
   :config (pdfgrep-mode))
 
-(use-package archive-mode                   ; Browse archive files
-  :mode ("\\.\\(cbr\\)\\'" . archive-mode)) ; Enable .cbr support
+(use-package archive-mode               ; Browse archive files
+  :mode "\\.cbr\\'")
 
 (use-package csv-mode                   ; Better .csv files editing
   :ensure t

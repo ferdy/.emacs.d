@@ -32,9 +32,7 @@
 ;;; Interface
 (use-package frame                      ; Frames
   :bind ("C-c w f" . toggle-frame-fullscreen)
-  :init
-  ;; Kill `suspend-frame'
-  (unbind-key "C-x C-z")
+  :init (unbind-key "C-x C-z")          ; Kill `suspend-frame'
   :config (add-to-list 'initial-frame-alist '(fullscreen . maximized)))
 
 (setq echo-keystrokes 0.1)     ; Faster echo keystrokes
@@ -64,15 +62,15 @@
       (remq 'process-kill-buffer-query-function kill-buffer-query-functions))
 
 ;; Disable startup messages
-(setq ring-bell-function #'ignore
+(setq initial-scratch-message nil
       inhibit-startup-screen t
-      initial-scratch-message nil)
+      ring-bell-function #'ignore)
 
 ;; Disable startup echo area message
 (fset 'display-startup-echo-area-message #'ignore)
 
-(setq x-gtk-use-system-tooltips nil          ; Use Emacs tooltips
-      history-length 1000)                   ; Store more history
+(setq history-length 1000                    ; Store more history
+      x-gtk-use-system-tooltips nil)         ; Use Emacs tooltips
 
 ;; Do not truncate lines
 (setq truncate-lines nil
@@ -149,8 +147,7 @@
 
 (use-package color-theme-sanityinc-tomorrow ; Default theme
   :ensure t
-  :config
-  (load-theme 'sanityinc-tomorrow-night 'no-confirm))
+  :config (load-theme 'sanityinc-tomorrow-night 'no-confirm))
 
 (use-package dimmer                     ; Highlight selected buffer
   :ensure t

@@ -47,9 +47,8 @@
 (use-package yasnippet                  ; Snippets
   :ensure t
   :config
-  (setq
-   yas-verbosity 1                      ; No need to be so verbose
-   yas-wrap-around-region t)
+  (setq yas-verbosity 1                 ; No need to be so verbose
+        yas-wrap-around-region t)
 
   (with-eval-after-load 'yasnippet
     (setq yas-snippet-dirs '(yasnippet-snippets-dir)))
@@ -71,16 +70,15 @@
 (use-package hippie-exp                 ; Powerful expansion and completion
   :bind ("C-c /" . hippie-expand)
   :config
-  (setq hippie-expand-try-functions-list
-        '(try-expand-dabbrev
-          try-expand-dabbrev-all-buffers
-          try-expand-dabbrev-from-kill
-          try-complete-file-name-partially
-          try-complete-file-name
-          try-expand-all-abbrevs
-          try-expand-list
-          try-complete-lisp-symbol-partially
-          try-complete-lisp-symbol)))
+  (setq hippie-expand-try-functions-list '(try-complete-file-name
+                                           try-complete-file-name-partially
+                                           try-complete-lisp-symbol
+                                           try-complete-lisp-symbol-partially
+                                           try-expand-all-abbrevs
+                                           try-expand-dabbrev-all-buffers
+                                           try-expand-dabbrev-from-kill
+                                           try-expand-list
+                                           try-expand-dabbrev)))
 
 (add-to-list 'completion-styles 'initials t)
 
@@ -95,16 +93,15 @@
              ("C-p" . company-select-previous)
              ("M-/" . company-other-backend))
 
-  (setq company-minimum-prefix-length 2
-        company-selection-wrap-around t
+  (setq company-selection-wrap-around t
         company-tooltip-align-annotations t
-        company-tooltip-flip-when-above t))
+        company-tooltip-flip-when-above t
+        company-minimum-prefix-length 2))
 
 (use-package company-dabbrev            ; dabbrev-like Company backend
   :after company
-  :config
-  (setq company-dabbrev-ignore-case t
-        company-dabbrev-downcase nil))
+  :config (setq company-dabbrev-downcase nil
+                company-dabbrev-ignore-case t))
 
 (use-package company-statistics         ; Show likelier candidates on top
   :ensure t
@@ -130,6 +127,7 @@
 (use-package company-reftex             ; Backends for RefTeX
   :ensure t
   :after company
+  :config
   (add-to-list 'company-backends 'company-reftex-labels)
   (add-to-list 'company-backends 'company-reftex-citations))
 

@@ -13,9 +13,9 @@
 
 (use-package diff-hl                    ; Show changes in fringe
   :ensure t
-  :hook ((prog-mode          . diff-hl-mode)
-         (dired-mode         . diff-hl-dired-mode)
-         (magit-post-refresh . diff-hl-magit-post-refresh)))
+  :hook ((dired-mode         . diff-hl-dired-mode)
+         (magit-post-refresh . diff-hl-magit-post-refresh)
+         (prog-mode          . diff-hl-mode)))
 
 (use-package symbol-overlay             ; Highlight symbols
   :ensure t
@@ -23,10 +23,10 @@
               ("M-h" . symbol-overlay-put)
               ("M-n" . symbol-overlay-jump-next)
               ("M-p" . symbol-overlay-jump-prev))
-  :hook ((prog-mode . symbol-overlay-mode)
+  :hook ((conf-mode . symbol-overlay-mode)
          (html-mode . symbol-overlay-mode)
-         (yaml-mode . symbol-overlay-mode)
-         (conf-mode . symbol-overlay-mode)))
+         (prog-mode . symbol-overlay-mode)
+         (yaml-mode . symbol-overlay-mode)))
 
 (use-package hl-todo                    ; Highlight TODO and similar keywords
   :ensure t

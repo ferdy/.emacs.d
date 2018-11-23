@@ -67,10 +67,9 @@
 (use-package swiper                     ; Isearch with an overview
   :ensure t
   :bind ("C-c s s" . swiper-all)
-  :config
-  (setq swiper-action-recenter t
-        swiper-goto-start-of-match t
-        swiper-stay-on-quit t))
+  :config (setq swiper-action-recenter t
+                swiper-goto-start-of-match t
+                swiper-stay-on-quit t))
 
 (use-package amx                        ; Better M-x interface
   :ensure t)
@@ -99,11 +98,11 @@
         counsel-rg-base-command
         "rg -i -M 120 --no-heading --line-number --color never %s .")
 
-  (setq counsel-mode-override-describe-bindings t
-        counsel-describe-function-function 'helpful-function
+  (setq counsel-describe-function-function 'helpful-function
         counsel-describe-variable-function 'helpful-variable
         counsel-grep-post-action-hook '(recenter)
-        counsel-yank-pop-preselect-last t)
+        counsel-yank-pop-preselect-last t
+        counsel-mode-override-describe-bindings t)
 
   (setq counsel-find-file-ignore-regexp (concat
                                          ;; File names beginning with # or .

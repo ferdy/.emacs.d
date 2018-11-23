@@ -13,9 +13,8 @@
 (use-package which-key                  ; Show help popups for prefix keys
   :ensure t
   :init (which-key-mode)
-  :config
-  (setq which-key-idle-delay 0.4
-        which-key-sort-order 'which-key-prefix-then-key-order)
+  :config (setq which-key-idle-delay 0.4
+                which-key-sort-order 'which-key-prefix-then-key-order)
 
   (which-key-add-key-based-replacements
     "C-c !"     "flycheck"

@@ -69,11 +69,11 @@
     (setq completion-at-point-functions
           '(bash-completion-dynamic-complete
             comint-c-a-p-replace-by-expanded-history
-            shell-environment-variable-completion
-            shell-command-completion
+            comint-filename-completion
             shell-c-a-p-replace-by-expanded-directory
-            shell-filename-completion
-            comint-filename-completion))
+            shell-command-completion
+            shell-environment-variable-completion
+            shell-filename-completion))
     (shell-dirtrack-mode 1))
 
   (add-hook 'shell-mode-hook #'mu-comint-hook))
@@ -125,10 +125,9 @@ The EShell is renamed to match that directory to make multiple windows easier."
 
 (use-package em-banner                  ; EShell login banner
   :ensure eshell
-  :config
-  (setq eshell-banner-message (concat "Welcome to EShell, "
-                                      (capitalize user-login-name)
-                                      "!\n\n")))
+  :config (setq eshell-banner-message (concat "Welcome to EShell, "
+                                              (capitalize user-login-name)
+                                              "!\n\n")))
 
 (use-package em-prompt                  ; EShell command prompts
   :ensure eshell
@@ -233,12 +232,11 @@ The EShell is renamed to match that directory to make multiple windows easier."
 
 ;;; Utilities and key bindings
 (custom-set-variables
- '(comint-scroll-to-bottom-on-input t)    ; Always insert at the bottom
- '(comint-scroll-to-bottom-on-output nil) ; Always add output at the bottom
- '(comint-scroll-show-maximum-output t)   ; Scroll to show max possible output
  '(comint-input-ignoredups t)             ; No duplicates in command history
  '(comint-completion-addsuffix t)         ; Insert space/slash after completion
- )
+ '(comint-scroll-to-bottom-on-input t)    ; Always insert at the bottom
+ '(comint-scroll-to-bottom-on-output nil) ; Always add output at the bottom
+ '(comint-scroll-show-maximum-output t))  ; Scroll to show max possible output
 
 (defun comint-clear-buffer ()
   "Easily clear comint buffers."

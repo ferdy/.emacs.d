@@ -22,13 +22,12 @@
               ("<prior>"     . beginend-dired-mode-goto-beginning)
               ("<next>"      . beginend-dired-mode-goto-end))
   :config
-  (setq
-   dired-auto-revert-buffer t           ; Revert buffers on revisiting
-   dired-listing-switches "-lFah1v --group-directories-first"
-   dired-dwim-target t                  ; Use other pane as target
-   dired-recursive-copies 'always       ; Copy dirs recursively
-   dired-recursive-deletes ' always     ; Delete dirs recursively
-   dired-ls-F-marks-symlinks t)         ; -F marks links with @
+  (setq dired-dwim-target t             ; Use other pane as target
+        dired-listing-switches "-lFah1v --group-directories-first"
+        dired-ls-F-marks-symlinks t      ; -F marks links with @
+        dired-recursive-copies 'always   ; Copy dirs recursively
+        dired-recursive-deletes ' always ; Delete dirs recursively
+        dired-auto-revert-buffer t)      ; Revert buffers on revisiting
 
   ;; Enable dired-find-alternate-file
   (put 'dired-find-alternate-file 'disabled nil)
@@ -110,11 +109,9 @@
   (unbind-key "N" dired-mode-map)
   (bind-key "N" #'dired-create-empty-file dired-mode-map)
 
-  (setq dired-omit-verbose nil          ; Be less verbose, Dired
-        ;; Do not ask for confirmation when killing deleted buffers
-        dired-clean-confirm-killing-deleted-buffers nil
-        ;; Omit dotfiles with C-x M-o
-        dired-omit-files (concat dired-omit-files "\\|^\\.+$\\|^\\..+$"))
+  (setq dired-clean-confirm-killing-deleted-buffers nil
+        dired-omit-files (concat dired-omit-files "\\|^\\.+$\\|^\\..+$")
+        dired-omit-verbose nil)
 
   (add-hook 'dired-mode-hook #'dired-omit-mode))
 

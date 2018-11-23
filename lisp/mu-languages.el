@@ -19,10 +19,9 @@
 ;;; Spell checking
 (use-package ispell                     ; Word correction
   :defer t
-  :config
-  (setq ispell-program-name (executable-find "hunspell")
-        ispell-dictionary "en_GB"
-        ispell-choices-win-default-height 5)
+  :config (setq ispell-dictionary "en_GB"
+                ispell-choices-win-default-height 5
+                ispell-program-name (executable-find "hunspell"))
 
   (unless ispell-program-name
     (warn "No spell checker available. Please install hunspell."))

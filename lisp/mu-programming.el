@@ -30,10 +30,11 @@
             ":%s" (or (cider--project-name nrepl-project-dir) "<no project>"))))
       "-"))
 
-  (setq cider-mode-line '(:eval (format " CIDER[%s]" (mu-cider-mode-line-info)))
-        cider-font-lock-dynamically t
+  (setq cider-font-lock-dynamically t
         cider-invert-insert-eval-p t
-        cider-switch-to-repl-after-insert-p nil))
+        cider-switch-to-repl-after-insert-p nil
+        cider-mode-line '(:eval
+                          (format " CIDER[%s]" (mu-cider-mode-line-info)))))
 
 (use-package cider-common               ; CIDER common use functions
   :ensure cider
@@ -129,9 +130,8 @@ the namespace in the Clojure source buffer"
 (use-package nrepl-client               ; Client for Clojure nREPL
   :ensure cider
   :defer t
-  :config
-  (setq nrepl-hide-special-buffers t
-        nrepl-repl-buffer-name-template "*cider-repl %j %r:%S*"))
+  :config (setq nrepl-hide-special-buffers t
+                nrepl-repl-buffer-name-template "*cider-repl %j %r:%S*"))
 
 (use-package cider-repl                 ; REPL interactions with CIDER
   :ensure cider
@@ -141,13 +141,13 @@ the namespace in the Clojure source buffer"
               ("C-c t p" . cider-toggle-pretty-printing))
   :hook ((cider-repl-mode . company-mode)
          (cider-repl-mode . subword-mode))
-  :config
-  (setq cider-repl-wrap-history t
-        cider-repl-history-size 1000
-        cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
-        cider-repl-display-help-banner nil
-        cider-repl-result-prefix ";; => "
-        cider-repl-use-pretty-printing t))
+  :config (setq
+           cider-repl-display-help-banner nil
+           cider-repl-history-file (locate-user-emacs-file "cider-repl-history")
+           cider-repl-history-size 1000
+           cider-repl-result-prefix ";; => "
+           cider-repl-use-pretty-printing t
+           cider-repl-wrap-history t))
 
 (use-package cider-stacktrace           ; Navigate stacktrace
   :ensure cider
@@ -155,11 +155,9 @@ the namespace in the Clojure source buffer"
 
 (use-package cider-util                 ; Common utilities
   :ensure cider
-  :config
-  ;; Set Clojure and Java sources for better stacktrace navigation
-  (setq cider-jdk-src-paths '("~/sources/clojure/clojure-1.8.0-sources"
-                              "~/sources/clojure/clojure-1.9.0-sources"
-                              "~/sources/java/openjdk-8-src")))
+  :config (setq cider-jdk-src-paths '("~/sources/clojure/clojure-1.8.0-sources"
+                                      "~/sources/clojure/clojure-1.9.0-sources"
+                                      "~/sources/java/openjdk-8-src")))
 
 (use-package clj-refactor               ; Refactoring utilities
   :ensure t
@@ -168,16 +166,16 @@ the namespace in the Clojure source buffer"
                           (yas-minor-mode 1)
                           (cljr-add-keybindings-with-prefix "C-c RET")))
   :config
-  (setq cljr-suppress-middleware-warnings t
-        cljr-add-ns-to-blank-clj-files t
+  (setq cljr-add-ns-to-blank-clj-files t
         cljr-auto-sort-ns t
         cljr-favor-prefix-notation nil
         cljr-favor-private-functions nil
-        cljr-warn-on-eval nil)
+        cljr-warn-on-eval nil
+        cljr-suppress-middleware-warnings t)
 
-  (setq cljr-clojure-test-declaration "[clojure.test :refer :all]"
-        cljr-cljs-clojure-test-declaration
-        "[cljs.test :refer-macros [deftest is use-fixtures]]")
+  (setq cljr-cljs-clojure-test-declaration
+        "[cljs.test :refer-macros [deftest is use-fixtures]]"
+        cljr-clojure-test-declaration "[clojure.test :refer :all]")
 
   (advice-add 'cljr-add-require-to-ns :after
               (lambda (&rest _)
@@ -207,12 +205,11 @@ the namespace in the Clojure source buffer"
 (use-package haskell-mode               ; Haskell editing
   :ensure intero
   :mode ("\\.ghci\\'" . haskell-mode)
-  :hook ((haskell-mode . subword-mode)
+  :hook ((haskell-mode . haskell-auto-insert-module-template)
          (haskell-mode . haskell-indentation-mode)
-         (haskell-mode . haskell-auto-insert-module-template))
-  :config
-  (with-eval-after-load 'haskell-mode
-    (bind-key "C-c m h" #'hoogle haskell-mode-map)))
+         (haskell-mode . subword-mode))
+  :config (with-eval-after-load 'haskell-mode
+            (bind-key "C-c m h" #'hoogle haskell-mode-map)))
 
 (use-package hindent                    ; Use hindent to indent Haskell code
   :ensure t
@@ -334,9 +331,9 @@ the namespace in the Clojure source buffer"
          "\\.tpl\\'"
          "\\.jsx\\'")
   :config
-  (setq web-mode-css-indent-offset 2
+  (setq web-mode-markup-indent-offset2
         web-mode-code-indent-offset 2
-        web-mode-markup-indent-offset 2)
+        web-mode-css-indent-offset 2)
 
   ;; Better JSX syntax-highlighting in web-mode
   (defadvice web-mode-highlight-part (around tweak-jsx activate)
@@ -353,11 +350,9 @@ the namespace in the Clojure source buffer"
   :ensure t
   :mode ("\\.js\\'" . js2-mode)
   :hook (js2-mode . js2-imenu-extras-mode)
-  :config
-  (setq js2-mode-show-parse-errors nil
-        js2-mode-show-strict-warnings nil
-        ;; Try to highlight most ECMA built-ins
-        js2-highlight-level 3))
+  :config (setq js2-highlight-level 3
+                js2-mode-show-parse-errors nil
+                js2-mode-show-strict-warnings nil))
 
 (use-package purescript-mode            ; PureScript editing mode
   :ensure t
@@ -443,10 +438,9 @@ the namespace in the Clojure source buffer"
   :bind (:map nxml-mode-map
               ("C-c m f" . mu-xml-format))
   :config
-  (setq nxml-slash-auto-complete-flag t
-        nxml-auto-insert-xml-declaration-flag t
-        ;; Treat elements (with children) as sexps
-        nxml-sexp-element-flag t)
+  (setq nxml-auto-insert-xml-declaration-flag t
+        nxml-sexp-element-flag t
+        nxml-slash-auto-complete-flag t)
 
   (defun mu-xml-format ()
     "Format an XML buffer with `xmllint'."
@@ -497,7 +491,6 @@ the namespace in the Clojure source buffer"
   :defer t
   :config
   (setq-default eldoc-documentation-function #'describe-char-eldoc)
-  ;; Show eldoc more promptly
   (setq eldoc-idle-delay 0.1))
 
 (use-package etags                      ; Tag navigation
@@ -506,19 +499,13 @@ the namespace in the Clojure source buffer"
 
 (use-package compile                    ; Compile from Emacs
   :defer t
-  :config
-  (setq compilation-ask-about-save nil
-        ;; Kill old compilation processes before starting new ones
-        compilation-always-kill t
-        ;; Automatically scroll and jump to the first error
-        compilation-scroll-output 'first-error
-        compilation-auto-jump-to-first-error t
-        ;; Skip over warnings and info messages in compilation
-        compilation-skip-threshold 2
-        ;; Don't freeze when process reads from stdin
-        compilation-disable-input t
-        ;; Show three lines of context around the current message
-        compilation-context-lines 3))
+  :config (setq compilation-always-kill t
+                compilation-auto-jump-to-first-error t
+                compilation-context-lines 3
+                compilation-disable-input t
+                compilation-scroll-output 'first-error
+                compilation-skip-threshold 2
+                compilation-ask-about-save nil))
 
 (use-package eros                       ; Display evaluation result as overlay
   :ensure t

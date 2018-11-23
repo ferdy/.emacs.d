@@ -13,10 +13,9 @@
   :bind (:map projectile-mode-map
               ("C-c p" . projectile-command-map))
   :init (projectile-mode)
-  :config
-  (setq projectile-completion-system 'ivy
-        projectile-require-project-root 'prompt
-        projectile-find-dir-includes-top-level t))
+  :config (setq projectile-completion-system 'ivy
+                projectile-find-dir-includes-top-level t
+                projectile-require-project-root 'prompt))
 
 (use-package counsel-projectile         ; Ivy integration for Projectile
   :ensure t
