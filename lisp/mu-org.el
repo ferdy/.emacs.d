@@ -15,19 +15,19 @@
          :map org-mode-map
          ("RET" . mu-org-return))
   :config
-  (setq org-src-fontify-natively t
-        org-src-tab-acts-natively t
-        org-src-preserve-indentation t
-        org-fontify-done-headline t
-        org-pretty-entities t
+  (setq org-catch-invisible-edits 'show
+        org-default-notes-file (expand-file-name "gtd/gtd.org" org-directory)
+        org-directory (expand-file-name "~/org/")
         org-edit-timestamp-down-means-later t
-        org-catch-invisible-edits 'show
-        org-log-done 'time
+        org-fontify-done-headline t
         org-hide-emphasis-markers t
         org-highlight-latex-and-related '(latex)
+        org-log-done 'time
+        org-pretty-entities t
         org-return-follows-link t
-        org-directory (expand-file-name "~/org/")
-        org-default-notes-file (expand-file-name "gtd/gtd.org" org-directory))
+        org-src-preserve-indentation t
+        org-src-tab-acts-natively t
+        org-src-fontify-natively t)
 
   ;; Use Org structures and tables in message mode
   (add-hook 'message-mode-hook #'turn-on-orgtbl)
